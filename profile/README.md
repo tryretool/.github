@@ -6,6 +6,10 @@ If you're new to Retool, welcome! Retool helps you build internal tools, remarka
 ### 🗺️ This README
 This README will point you to Retool Github repos that you might find helpful. Our [docs site](docs.retool.com) is a more comprehensive guide to using Retool.
 
+### ✨ Open source apps
+Retool has an open source App Exchange, where you can download ready-made apps. We also welcome you to contribute!
+* [retool-app-exchange](https://github.com/tryretool/retool-app-exchange) - a collection of open source apps built by Retools and community members.
+
 ### 👩‍💻 Resources for building
 #### Deploying a self-hosted instance
 The following repos contain deployment files you can use to set up a self-hosted instance of Retool. 
