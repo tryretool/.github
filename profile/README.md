@@ -4,7 +4,7 @@
 If you're new to Retool, welcome! Retool helps you build internal tools, remarkably fast. Learn more at [retool.com](https://retool.com/).
 
 ### 🗺️ This README
-This README will point you to Retool Github repos that you might find helpful. Our [docs site](docs.retool.com) is a more comprehensive guide to using Retool.
+This README will point you to Retool Github repos that you might find helpful. Our [docs site](https://docs.retool.com) is a more comprehensive guide to using Retool.
 
 ### ✨ Open source apps
 Retool has an open source App Exchange, where you can download ready-made apps. We also welcome you to contribute!
