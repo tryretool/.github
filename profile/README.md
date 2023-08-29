@@ -16,6 +16,7 @@ The following repos contain deployment files you can use to set up a self-hosted
 See [the deployment docs](https://docs.retool.com/docs/deploy) to learn about your options for self-hosting (also known as deploying on-premise).
 * [retool-onpremise](https://github.com/tryretool/retool-onpremise)
 * [retool-helm](https://github.com/tryretool/retool-helm)
+* [retool-workflows-helm](https://github.com/tryretool/retool-workflows-helm)
 * [terraform-retool-modules](https://github.com/tryretool/terraform-retool-modules)
 
 #### Building apps
