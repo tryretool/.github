@@ -1,10 +1,10 @@
 ## Hi there 👋
 
 ### ⚡ About us
-If you're new to Retool, welcome! Retool helps you build internal tools, remarkably fast. Learn more at [retool.com](https://retool.com/).
+If you're new to Retool, welcome! Retool helps you build internal tools, remarkably fast. Learn more at [retool.com](https://retool.com/?utm_source=github&utm_medium=referral&utm_campaign=github).
 
 ### 🗺️ This README
-This README will point you to Retool Github repos that you might find helpful. Our [docs site](https://docs.retool.com) is a more comprehensive guide to using Retool.
+This README will point you to Retool GitHub repos that you might find helpful. Our [docs site](https://docs.retool.com) is a more comprehensive guide to using Retool.
 
 ### ✨ Open source apps
 Retool has an open source App Exchange, where you can download ready-made apps. We also welcome you to contribute!
@@ -30,7 +30,7 @@ The repo below supports one of these options.
 ### 📖 Resources for learning
 Just getting started? The [Quickstart](https://docs.retool.com/docs/quickstart) is a great place to begin. 
 
-A bit rusty on Javascript or SQL? We've got you covered at [Retool University](https://docs.retool.com/docs/reschool).
+A bit rusty on JavaScript or SQL? We've got you covered at [Retool University](https://docs.retool.com/docs/reschool).
 
 Love tutorials? See our [YouTube channel](https://www.youtube.com/c/Retool) and the [Tutorials section of our docs](https://docs.retool.com/docs/google-sheets).
 
