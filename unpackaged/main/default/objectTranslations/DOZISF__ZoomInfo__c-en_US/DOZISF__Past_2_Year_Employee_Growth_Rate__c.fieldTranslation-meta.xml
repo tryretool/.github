@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Approximate company employee growth percentage in the past 2 year. --></help>
+        <label><!-- Past 2 Year Employee Growth Rate --></label>
+        <name>DOZISF__Past_2_Year_Employee_Growth_Rate__c</name>
+    </CustomFieldTranslation>

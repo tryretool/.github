@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <assignments>
+        <description>Assign the event details from the Conversation record</description>
+        <name>Assign_Event_Details</name>
+        <label>Assign Event Details</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignmentItems>
+            <assignToReference>New_Event.Subject</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>New_Event.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Gong__Primary_User__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>New_Event.Description</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Event_Description</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>New_Event.StartDateTime</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Gong__Call_Start__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>New_Event.EndDateTime</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Gong__Call_End__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>New_Event.WhatId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Related_To</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Event</targetReference>
+        </connector>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>Event_Description</name>
+        <dataType>String</dataType>
+        <expression>&#39;See the call recording and summary at https://app.gong.io/call?id=&#39; &amp; {!$Record.Gong__Call_ID__c} &amp; BR() &amp; BR() &amp; {!$Record.Gong__Call_Brief__c}</expression>
+    </formulas>
+    <formulas>
+        <description>This resource keeps the conversation primary opportunity, or primary account, or none of them</description>
+        <name>Related_To</name>
+        <dataType>String</dataType>
+        <expression>IF(!ISBLANK({!$Record.Gong__Primary_Opportunity__c}), {!$Record.Gong__Primary_Opportunity__c}, {!$Record.Gong__Primary_Account__c})</expression>
+    </formulas>
+    <interviewLabel>Gong for Salesforce - Create Event from Gong Conversation {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>Gong for Salesforce - Create Event from Gong Conversation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create the Event record</description>
+        <name>Create_Event</name>
+        <label>Create Event</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <inputReference>New_Event</inputReference>
+    </recordCreates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Event_Details</targetReference>
+        </connector>
+        <object>Gong__Gong_Call__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <description>Event record variable, to collect all the Event data from the Conversation</description>
+        <name>New_Event</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Event</objectType>
+    </variables>
+</Flow>

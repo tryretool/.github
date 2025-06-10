@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>GTM_Ticket_Accounting</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>GTM Ticket: Accounting</label>
+        <sharedTo>
+            <group>GTM_Tickets_Accounting</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sensitivity_Level__c</field>
+            <operation>equals</operation>
+            <value>3 - Accounting</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>GTM_Ticket_Executives</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>GTM Ticket: Executives</label>
+        <sharedTo>
+            <group>GTM_Tickets_Executives</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sensitivity_Level__c</field>
+            <operation>equals</operation>
+            <value>4 - Exec</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>GTM_Ticket_Variable_Comp</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>GTM Ticket: Variable Comp</label>
+        <sharedTo>
+            <group>GTM_Tickets_Variable_Comp</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sensitivity_Level__c</field>
+            <operation>equals</operation>
+            <value>3 - Variable Comp</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>GTM_Tickets_Managers</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>GTM Tickets: Managers</label>
+        <sharedTo>
+            <group>GTM_Tickets_Managers</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sensitivity_Level__c</field>
+            <operation>equals</operation>
+            <value>2 - Managers</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>GTM_Tickets_Public</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>GTM Tickets: Public</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sensitivity_Level__c</field>
+            <operation>equals</operation>
+            <value>1 - Public</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

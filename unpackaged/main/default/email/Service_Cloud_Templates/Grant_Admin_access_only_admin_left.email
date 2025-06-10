@@ -1,0 +1,9 @@
+Hi  {!Contact.FirstName}-
+
+<p>Thanks for reaching out. For best security practices, we cannot grant you admin access.</p>
+
+<p>If you’re able to access an admin’s email address (for example, maybe your IT team can regain access) you can reset the password to that Retool user's Retool account and recover the organization that way.</p>
+
+<p>Alternatively, the best approach is to create a new instance of Retool and rebuild the content you had there. If you are an editor, you can <a href="https://docs.retool.com/apps/management/guides/import-export" target="_blank">export</a> resources and apps and upload them to the new org. </p>
+
+<p>If you have other Account/Users/Billing related questions, you can find answers in <a href="https://community.retool.com/t/accounts-users-and-billing-faq/29043" target="_blank">Accounts, Users and Billing FAQ Community Post</a>.</p>

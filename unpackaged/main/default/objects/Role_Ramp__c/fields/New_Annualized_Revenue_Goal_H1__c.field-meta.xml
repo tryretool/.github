@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Annualized_Revenue_Goal_H1__c</fullName>
+    <formula>CASE(New_Annualized_Revenue_Goal_Disposition__c,
+  &quot;Calendar Month&quot;,(
+    New_Annualized_Revenue_Goal_Jan__c+
+    New_Annualized_Revenue_Goal_Feb__c+
+    New_Annualized_Revenue_Goal_Mar__c+
+    New_Annualized_Revenue_Goal_Apr__c+
+    New_Annualized_Revenue_Goal_May__c+
+    New_Annualized_Revenue_Goal_Jun__c
+    ),
+  NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>New Annualized Revenue Goal (H1)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

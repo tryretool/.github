@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Inform the customer that Retool credits have been added to their account</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>creditsAdded</name>
+    <style>none</style>
+    <subject>Retool credits have been added to your account</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

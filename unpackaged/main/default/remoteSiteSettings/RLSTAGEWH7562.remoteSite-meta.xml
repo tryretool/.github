@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Remote Site was created automatically by Rocketlane for integrating with your Salesforce account, but the integration is no longer active. 
+ YOU CAN SAFELY DELETE THIS REMOTE SITE</description>
+    <disableProtocolSecurity>false</disableProtocolSecurity>
+    <isActive>false</isActive>
+    <url>https://this-site-has-been-deleted.com</url>
+</RemoteSiteSetting>

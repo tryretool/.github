@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age_From_SQO__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+Sales_Qualified_Opportunity_S2__c,
+IF(Closed__c,Close_Date__c - Sales_Qualified_At__c,Snapshot_Date__c-Sales_Qualified_At__c-1),
+NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Age From SQO</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

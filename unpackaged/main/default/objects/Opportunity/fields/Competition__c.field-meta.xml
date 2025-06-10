@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Competition__c</fullName>
+    <description>&lt;a href=&quot;https://retoolconfluence.atlassian.net/wiki/spaces/SAL/pages/45842590/MEDDPICC+sales+methodology&quot; target=&quot;_blank&quot;&gt;Learn more about MEDDPICC&lt;/a&gt;</description>
+    <inlineHelpText>The name(s) of any other solutions that the prospect was seriously evaluating as part of the sales process.</inlineHelpText>
+    <label>[C] Competition</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Competitors</valueSetName>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

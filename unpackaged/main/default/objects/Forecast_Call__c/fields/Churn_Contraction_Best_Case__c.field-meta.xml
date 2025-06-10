@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Churn_Contraction_Best_Case__c</fullName>
+    <description>Rollup of Churn/Contraction Best Case quarterly forecast. Quarterly forecast updated weekly.
+
+Primarily used in Sales Manager Shotcaller Retool App.</description>
+    <inlineHelpText>Rollup of Churn/Contraction Best Case quarterly forecast. Quarterly forecast updated weekly.
+
+Primarily used in Sales Manager Shotcaller Retool App.</inlineHelpText>
+    <label>Churn/Contraction (Best Case)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

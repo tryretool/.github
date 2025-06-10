@@ -1,0 +1,27 @@
+<apex:page id="CustomApexGenerator" controller="breadwinner_ns.CustomApexGeneratorController" sidebar="false">
+
+        <apex:slds />
+        <apex:includeScript value="/lightning/lightning.out.js" />
+
+        <div id="CustomApexGeneratorId" />
+
+        <!-- for non-namespaced orgs we need to prefix 'c' otherwise it needs to be the namespace -->
+        <apex:variable var="componentPrefix" value="c" />
+        <apex:variable var="componentPrefix" value="{!namespace}" rendered="{!namespace != ''}" />    
+    
+        <script>
+            try{
+                $Lightning.use("{!JSENCODE(componentPrefix)}:customApexGenerator", function() {
+                    $Lightning.createComponent("{!JSENCODE(componentPrefix)}:customApexGeneratorStep1",
+                        {},
+                        "CustomApexGeneratorId",
+                        function(cmp) {
+                            console.log('Component created');
+                        });
+                });
+            } catch(ex){
+                console.log('Exception while loading the Component: ',ex.message);
+            }
+        </script>
+
+</apex:page>

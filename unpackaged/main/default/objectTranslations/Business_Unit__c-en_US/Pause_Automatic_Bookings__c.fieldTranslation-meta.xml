@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- If true, the billing script will not create any new opportunities related to this BU --></help>
+        <label><!-- zOLD Pause Automatic Bookings? --></label>
+        <name>Pause_Automatic_Bookings__c</name>
+    </CustomFieldTranslation>

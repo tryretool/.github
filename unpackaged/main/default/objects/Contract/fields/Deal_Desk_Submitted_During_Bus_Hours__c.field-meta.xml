@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Desk_Submitted_During_Bus_Hours__c</fullName>
+    <formula>HOUR(TIMEVALUE(Deal_Desk_Submitted_At__c)) &gt;= 8 &amp;&amp; HOUR(TIMEVALUE(Deal_Desk_Submitted_At__c)) &lt;= 17</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Deal Desk Submitted During Bus Hours?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

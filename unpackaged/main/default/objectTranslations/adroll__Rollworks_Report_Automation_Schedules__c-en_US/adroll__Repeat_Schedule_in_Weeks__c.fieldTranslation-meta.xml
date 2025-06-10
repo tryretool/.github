@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Export Repeat schedule --></help>
+        <label><!-- Repeat Schedule in Weeks --></label>
+        <name>adroll__Repeat_Schedule_in_Weeks__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- If checked TRUE, Harmonic sync will not update the Employees of the associated Account. --></help>
+        <label><!-- Do Not Update Employee Count --></label>
+        <name>Do_Not_Update_Employee_Count__c</name>
+    </CustomFieldTranslation>

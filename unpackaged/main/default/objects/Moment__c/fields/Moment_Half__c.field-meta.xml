@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moment_Half__c</fullName>
+    <description>Formula that displays the year and year split of the Moment based on the Moment Date.
+
+In System Use: Reports
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <formula>TEXT(YEAR(Moment_Date__c))
+&amp; &quot;-&quot;&amp;
+CASE(Month(Moment_Date__c),
+1, &quot;H1&quot;,
+2, &quot;H1&quot;,
+3, &quot;H1&quot;,
+4, &quot;H1&quot;,
+5, &quot;H1&quot;,
+6, &quot;H1&quot;,
+7, &quot;H2&quot;,
+8, &quot;H2&quot;,
+9, &quot;H2&quot;,
+10, &quot;H2&quot;,
+11, &quot;H2&quot;,
+12, &quot;H2&quot;,
+&quot;None&quot;)</formula>
+    <label>Moment Half</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

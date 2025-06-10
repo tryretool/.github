@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- First Marketing Signal Campaign --></label>
+        <name>LeanData__First_Marketing_Signal_Campaign__c</name>
+        <relationshipLabel><!-- Journey First Marketing Signal Campaign --></relationshipLabel>
+    </CustomFieldTranslation>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__CreatedFrom_SalesOrder__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Created From Sales Order</label>
+    <referenceTo>breadwinner_ns__BW_Sales_Order__c</referenceTo>
+    <relationshipLabel>Return Authorizations Created From this Sales Order</relationshipLabel>
+    <relationshipName>BWReturnAuthorizations</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

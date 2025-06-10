@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Campaign_Member_ID__c</fullName>
+    <description>Stores the unique Salesforce Id of the Campaign Member.
+
+In System Use: &#39;Campaign Member: After Save Automations&#39;
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Stores the unique Salesforce Id of the Campaign Member.</inlineHelpText>
+    <label>Campaign Member ID</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

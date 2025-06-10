@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Mass Action Child Log Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Message Information --></label>
+            <section>Message Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Mass Action Log Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Message Information --></label>
+            <section>Message Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Mass Action Parent Log Layout</layout>
+        <sections>
+            <label><!-- Batch Information --></label>
+            <section>Batch Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Message Information --></label>
+            <section>Message Information</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description><!-- Represents informational, success, and error messages of a batch job run for a configuration. --></description>
+        <label><!-- Child Log --></label>
+        <name>dca_mass_action__Child_Log</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Exactly one parent log should exist per batch job id for a configuration. --></description>
+        <label><!-- Parent Log --></label>
+        <name>dca_mass_action__Parent_Log</name>
+    </recordTypes>
+</CustomObjectTranslation>

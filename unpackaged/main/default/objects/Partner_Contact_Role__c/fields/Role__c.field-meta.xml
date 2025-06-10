@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Role__c</fullName>
+    <label>Role</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Full Stack Engineer</fullName>
+                <default>false</default>
+                <label>Full Stack Engineer</label>
+            </value>
+            <value>
+                <fullName>Retool Engineer</fullName>
+                <default>false</default>
+                <label>Retool Engineer</label>
+            </value>
+            <value>
+                <fullName>UX Designer</fullName>
+                <default>false</default>
+                <label>UX Designer</label>
+            </value>
+            <value>
+                <fullName>Project Manager</fullName>
+                <default>false</default>
+                <label>Project Manager</label>
+            </value>
+            <value>
+                <fullName>Relationship POC</fullName>
+                <default>false</default>
+                <label>Relationship POC</label>
+            </value>
+            <value>
+                <fullName>Partner Sponsor</fullName>
+                <default>false</default>
+                <label>Partner Sponsor</label>
+            </value>
+            <value>
+                <fullName>Partner Account Manager</fullName>
+                <default>false</default>
+                <label>Partner Account Manager</label>
+            </value>
+            <value>
+                <fullName>Partner Operations</fullName>
+                <default>false</default>
+                <label>Partner Operations</label>
+            </value>
+            <value>
+                <fullName>Partner Sales Account Exec</fullName>
+                <default>false</default>
+                <label>Partner Sales Account Exec</label>
+            </value>
+            <value>
+                <fullName>Partner Solution Engineer</fullName>
+                <default>false</default>
+                <label>Partner Solution Engineer</label>
+            </value>
+            <value>
+                <fullName>Partner Marketing Manager</fullName>
+                <default>false</default>
+                <label>Partner Marketing Manager</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

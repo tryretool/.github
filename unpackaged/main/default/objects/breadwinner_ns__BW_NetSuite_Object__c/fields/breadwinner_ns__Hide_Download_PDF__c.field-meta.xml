@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__Hide_Download_PDF__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Based on this field value we will hide the &quot;Download Invoice PDF&quot; button at the invoice records.</description>
+    <label>Hide Download PDF</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

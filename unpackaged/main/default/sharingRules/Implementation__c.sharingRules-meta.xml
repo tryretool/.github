@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>TAM_Read_Write</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>TAM Read Write</label>
+        <sharedTo>
+            <roleAndSubordinates>Head_of_Technical_Experience</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>Stage__c</field>
+            <operation>notEqual</operation>
+            <value>Inactive</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Executive Sponsor</fullName>
+        <default>false</default>
+        <label>Executive Sponsor</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account Executive</fullName>
+        <default>false</default>
+        <label>Account Executive</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Deployed Engineer</fullName>
+        <default>false</default>
+        <label>Deployed Engineer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Opportunity Owner</fullName>
+        <default>false</default>
+        <label>Opportunity Owner</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner Sales</fullName>
+        <default>false</default>
+        <label>Partner Sales</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Professional Services</fullName>
+        <default>false</default>
+        <label>Professional Services</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Outbound SDR</fullName>
+        <default>false</default>
+        <label>Outbound SDR</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Inbound SDR</fullName>
+        <default>false</default>
+        <label>Inbound SDR</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Renewal Manager</fullName>
+        <default>false</default>
+        <label>Renewal Manager</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales Engineer</fullName>
+        <default>false</default>
+        <label>Sales Engineer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Supporting Sales Engineer</fullName>
+        <default>false</default>
+        <label>Supporting Sales Engineer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Technical Account Manager</fullName>
+        <default>false</default>
+        <label>Technical Account Manager</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales Account Manager</fullName>
+        <default>false</default>
+        <label>Sales Account Manager</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Customer Engineer</fullName>
+        <default>false</default>
+        <label>Customer Engineer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Solution Architect</fullName>
+        <default>false</default>
+        <label>Solution Architect</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Opportunity Owner (Split)</fullName>
+        <default>false</default>
+        <label>Opportunity Owner (Split)</label>
+    </standardValue>
+</StandardValueSet>

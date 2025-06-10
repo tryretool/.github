@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Influenced</fullName>
+        <default>false</default>
+        <label>Influenced</label>
+    </customValue>
+    <customValue>
+        <fullName>Sourced</fullName>
+        <default>false</default>
+        <label>Sourced</label>
+    </customValue>
+    <masterLabel>Partner Attribution Types</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

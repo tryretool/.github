@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Industry</fullName>
+    <description>Industry classification for this account. Source: ZoomInfo</description>
+    <inlineHelpText>Industry classification for this account. Source: ZoomInfo.</inlineHelpText>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Individual_Ramp_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>(NOT(Ramp_Pct__c &gt;= 0) || ISBLANK(Ramp_Pct__c)) &amp;&amp; ISPICKVAL(Type__c,&quot;Individual&quot;)</errorConditionFormula>
+    <errorDisplayField>Ramp_Pct__c</errorDisplayField>
+    <errorMessage>Individual goals must have a Ramp %</errorMessage>
+</ValidationRule>

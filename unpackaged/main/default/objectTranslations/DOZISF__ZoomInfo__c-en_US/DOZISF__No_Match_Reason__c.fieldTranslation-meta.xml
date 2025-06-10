@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Reason why ZoomInfo was not able to match- only pushed when there is 1) Opt-Out , 2) Master Data suppression List or 3) Restricted Dataset access. --></help>
+        <label><!-- No-Match Reason --></label>
+        <name>DOZISF__No_Match_Reason__c</name>
+    </CustomFieldTranslation>

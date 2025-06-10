@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Num_Contact_Roles__c</fullName>
+    <defaultValue>0</defaultValue>
+    <externalId>false</externalId>
+    <inlineHelpText>Total number of associated opportunity contact role records with a defined role</inlineHelpText>
+    <label># Contact Roles</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

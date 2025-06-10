@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_in_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( NOW()- Last_Status_Change_At__c &gt;= 1 , TEXT( FLOOR( NOW()- Last_Status_Change_At__c ) ) &amp; &quot; days&quot; ,
+
+IF( (NOW()- Last_Status_Change_At__c)*24 &gt;= 1 , TEXT( FLOOR( MOD( (NOW()- Last_Status_Change_At__c ) * 24, 24 ) ) ) &amp; &quot; hours&quot;,
+
+IF( NOW()- Last_Status_Change_At__c &gt; 0 , TEXT( ROUND( MOD( (NOW()- Last_Status_Change_At__c ) * 24 * 60, 60 ), 0 ) ) &amp; &quot; minutes&quot;, &quot;&quot;
+
+)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Time in Status</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Duplicate</fullName>
+        <default>false</default>
+        <label>Duplicate</label>
+    </customValue>
+    <customValue>
+        <fullName>Parent/Child</fullName>
+        <default>false</default>
+        <label>Parent/Child</label>
+    </customValue>
+    <customValue>
+        <fullName>Inaccurate Data</fullName>
+        <default>false</default>
+        <label>Inaccurate Data</label>
+    </customValue>
+    <customValue>
+        <fullName>Bulk Upload</fullName>
+        <default>false</default>
+        <label>Bulk Upload</label>
+    </customValue>
+    <customValue>
+        <fullName>Dispute</fullName>
+        <default>false</default>
+        <label>Dispute</label>
+    </customValue>
+    <customValue>
+        <fullName>Ownership Change</fullName>
+        <default>false</default>
+        <label>Ownership Change</label>
+    </customValue>
+    <customValue>
+        <fullName>Routing</fullName>
+        <default>false</default>
+        <label>Routing</label>
+    </customValue>
+    <customValue>
+        <fullName>Custom Pricing</fullName>
+        <default>false</default>
+        <label>Custom Pricing</label>
+    </customValue>
+    <customValue>
+        <fullName>Non-Standard Paper</fullName>
+        <default>false</default>
+        <label>Non-Standard Paper</label>
+    </customValue>
+    <customValue>
+        <fullName>Contract Restructure</fullName>
+        <default>false</default>
+        <label>Contract Restructure</label>
+    </customValue>
+    <customValue>
+        <fullName>Replacement Agreement</fullName>
+        <default>false</default>
+        <label>Replacement Agreement</label>
+    </customValue>
+    <customValue>
+        <fullName>Manual Signature</fullName>
+        <default>false</default>
+        <label>Manual Signature</label>
+    </customValue>
+    <customValue>
+        <fullName>Unpaid Pilot</fullName>
+        <default>false</default>
+        <label>Unpaid Pilot</label>
+    </customValue>
+    <customValue>
+        <fullName>Debook/Putback</fullName>
+        <default>false</default>
+        <label>Debook/Putback</label>
+    </customValue>
+    <customValue>
+        <fullName>Report / Dashboard</fullName>
+        <default>false</default>
+        <label>Report / Dashboard</label>
+    </customValue>
+    <customValue>
+        <fullName>General Analysis</fullName>
+        <default>false</default>
+        <label>General Analysis</label>
+    </customValue>
+    <customValue>
+        <fullName>Planning</fullName>
+        <default>false</default>
+        <label>Planning</label>
+    </customValue>
+    <customValue>
+        <fullName>Policy</fullName>
+        <default>false</default>
+        <label>Policy</label>
+    </customValue>
+    <customValue>
+        <fullName>Enrichment</fullName>
+        <default>false</default>
+        <label>Enrichment</label>
+    </customValue>
+    <customValue>
+        <fullName>Revenue Bookings</fullName>
+        <default>false</default>
+        <label>Revenue Bookings</label>
+    </customValue>
+    <customValue>
+        <fullName>Team</fullName>
+        <default>false</default>
+        <label>Team</label>
+    </customValue>
+    <customValue>
+        <fullName>Demand Generation</fullName>
+        <default>false</default>
+        <label>Demand Generation</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Pipeline</fullName>
+        <default>false</default>
+        <label>Sales Pipeline</label>
+    </customValue>
+    <customValue>
+        <fullName>CPQ</fullName>
+        <default>false</default>
+        <label>CPQ</label>
+    </customValue>
+    <customValue>
+        <fullName>Accounting</fullName>
+        <default>false</default>
+        <label>Accounting</label>
+    </customValue>
+    <customValue>
+        <fullName>SPIF</fullName>
+        <default>false</default>
+        <label>SPIF</label>
+    </customValue>
+    <customValue>
+        <fullName>User Licensing</fullName>
+        <default>false</default>
+        <label>User Licensing</label>
+    </customValue>
+    <customValue>
+        <fullName>Data Pipeline</fullName>
+        <default>false</default>
+        <label>Data Pipeline</label>
+    </customValue>
+    <customValue>
+        <fullName>Flow / Automation</fullName>
+        <default>false</default>
+        <label>Flow / Automation</label>
+    </customValue>
+    <customValue>
+        <fullName>Refactor</fullName>
+        <default>false</default>
+        <label>Refactor</label>
+    </customValue>
+    <customValue>
+        <fullName>Implementation</fullName>
+        <default>false</default>
+        <label>Implementation</label>
+    </customValue>
+    <customValue>
+        <fullName>Incident</fullName>
+        <default>false</default>
+        <label>Incident</label>
+    </customValue>
+    <customValue>
+        <fullName>Evaluation</fullName>
+        <default>false</default>
+        <label>Evaluation</label>
+    </customValue>
+    <customValue>
+        <fullName>Training</fullName>
+        <default>false</default>
+        <label>Training</label>
+    </customValue>
+    <customValue>
+        <fullName>Tooling</fullName>
+        <default>false</default>
+        <label>Tooling</label>
+    </customValue>
+    <customValue>
+        <fullName>Asset Creation</fullName>
+        <default>false</default>
+        <label>Asset Creation</label>
+    </customValue>
+    <customValue>
+        <fullName>Event</fullName>
+        <default>false</default>
+        <label>Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Coaching</fullName>
+        <default>false</default>
+        <label>Coaching</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>New Routing</fullName>
+        <default>false</default>
+        <label>New Routing</label>
+    </customValue>
+    <customValue>
+        <fullName>Incorrect Routing</fullName>
+        <default>false</default>
+        <label>Incorrect Routing</label>
+    </customValue>
+    <customValue>
+        <fullName>Webinar</fullName>
+        <default>false</default>
+        <label>Webinar</label>
+    </customValue>
+    <customValue>
+        <fullName>Live Event</fullName>
+        <default>false</default>
+        <label>Live Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Feature Request</fullName>
+        <default>false</default>
+        <label>Feature Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Bug</fullName>
+        <default>false</default>
+        <label>Bug</label>
+    </customValue>
+    <customValue>
+        <fullName>NDA</fullName>
+        <default>false</default>
+        <label>NDA</label>
+    </customValue>
+    <customValue>
+        <fullName>MSA / DPA</fullName>
+        <default>false</default>
+        <label>MSA / DPA</label>
+    </customValue>
+    <customValue>
+        <fullName>Order Form</fullName>
+        <default>false</default>
+        <label>Order Form</label>
+    </customValue>
+    <customValue>
+        <fullName>Amendment</fullName>
+        <default>false</default>
+        <label>Amendment</label>
+    </customValue>
+    <customValue>
+        <fullName>Target Account</fullName>
+        <default>false</default>
+        <label>Target Account</label>
+    </customValue>
+    <customValue>
+        <fullName>Baseline Transfer</fullName>
+        <default>false</default>
+        <label>Baseline Transfer</label>
+    </customValue>
+    <customValue>
+        <fullName>Bridge Renewal</fullName>
+        <default>false</default>
+        <label>Bridge Renewal</label>
+    </customValue>
+    <customValue>
+        <fullName>Incentive Calculations</fullName>
+        <default>false</default>
+        <label>Incentive Calculations</label>
+    </customValue>
+    <customValue>
+        <fullName>Plan Administration</fullName>
+        <default>false</default>
+        <label>Plan Administration</label>
+    </customValue>
+    <customValue>
+        <fullName>Xactly Administration</fullName>
+        <default>false</default>
+        <label>Xactly Administration</label>
+    </customValue>
+    <customValue>
+        <fullName>Collections</fullName>
+        <default>false</default>
+        <label>Collections</label>
+    </customValue>
+    <masterLabel>GTM Ticket: Subtype</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

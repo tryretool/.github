@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Planning_Territory_Segment__c</fullName>
+    <description>Displays the `Segment` value from the related `Planning Territory` record at the Account.</description>
+    <externalId>false</externalId>
+    <formula>TEXT(Planning_Territory__r.Segment__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Displays the `Segment` value from the related `Planning Territory` record at the Account.</inlineHelpText>
+    <label>Planning Territory: Segment</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

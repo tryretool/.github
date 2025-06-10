@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>i7615_User</label>
+    <protected>false</protected>
+    <values>
+        <field>rocketlane__fieldsBeingListenedForUpdates__c</field>
+        <value xsi:type="xsd:string">[&quot;FirstName&quot;,&quot;Role_Name__c&quot;,&quot;LastName&quot;]</value>
+    </values>
+    <values>
+        <field>rocketlane__fieldsToFetchChildRecordsFor__c</field>
+        <value xsi:type="xsd:string">[]</value>
+    </values>
+    <values>
+        <field>rocketlane__integrationId__c</field>
+        <value xsi:type="xsd:string">7615</value>
+    </values>
+    <values>
+        <field>rocketlane__key__c</field>
+        <value xsi:type="xsd:string">7615_User</value>
+    </values>
+    <values>
+        <field>rocketlane__listenedFieldsCount__c</field>
+        <value xsi:type="xsd:double">3.0</value>
+    </values>
+    <values>
+        <field>rocketlane__sobjectType__c</field>
+        <value xsi:type="xsd:string">User</value>
+    </values>
+</CustomMetadata>

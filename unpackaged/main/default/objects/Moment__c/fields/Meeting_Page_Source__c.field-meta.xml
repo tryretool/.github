@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Meeting_Page_Source__c</fullName>
+    <description>Source of the Moment, for example: Campaign, Champify Alert, Hubspot Form, Koala, Madkudu
+Regie.ai, Retool User, or Support Handoff
+
+In System Use: Moment: Before Save Automations
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <label>Meeting Page Source</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

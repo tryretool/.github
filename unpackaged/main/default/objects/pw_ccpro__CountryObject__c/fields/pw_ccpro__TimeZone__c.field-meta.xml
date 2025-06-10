@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pw_ccpro__TimeZone__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <inlineHelpText>The Time Zone for countries which span only a single Time Zone</inlineHelpText>
+    <label>Time Zone</label>
+    <referenceTo>pw_ccpro__TimeZone__c</referenceTo>
+    <relationshipLabel>Countries</relationshipLabel>
+    <relationshipName>Countries</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_Billing</fullName>
+    <booleanFilter>1 AND 2 AND 3</booleanFilter>
+    <columns>Account_Priority__c</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>CASES.PRIORITY</columns>
+    <columns>CASES.SUBJECT</columns>
+    <columns>Time_to_Next_Milestone__c</columns>
+    <columns>Age__c</columns>
+    <columns>CASES.CREATED_DATE</columns>
+    <columns>CASES.LAST_UPDATE_DATE_ONLY</columns>
+    <columns>Account_Status_Committed__c</columns>
+    <columns>Support_Tier__c</columns>
+    <columns>Triage_TS__c</columns>
+    <columns>Billing_Triage_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Product_Area__c</field>
+        <operation>equals</operation>
+        <value>Billing</value>
+    </filters>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>New,Open,On Hold,Waiting for Customer</value>
+    </filters>
+    <filters>
+        <field>OWNER_NAME</field>
+        <operation>equals</operation>
+        <value>Billing Queue,Jack Liu</value>
+    </filters>
+    <label>Active Billing</label>
+    <sharedTo>
+        <role>Accounting</role>
+        <role>Customer_Service_Represtentative</role>
+        <roleAndSubordinates>Accounting</roleAndSubordinates>
+        <roleAndSubordinates>Head_of_Revenue_Operations</roleAndSubordinates>
+    </sharedTo>
+</ListView>

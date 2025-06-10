@@ -1,0 +1,91 @@
+<apex:page controller="LeanData.AssignPermissionSetController" sideBar="False" showHeader="false">
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__angela_app, 'styles.css')}"/> 
+    <style>
+        .pbBottomButtons {
+            display: none;
+        }
+
+        #info-text {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        select {
+            width: 250px;
+            background: url("{!URLFOR($Resource.LeanData__Reporting_Images, 'Down_Arrow_Icon.png')}") no-repeat right #fff;
+            background-size: 9.5px 5.5px;
+            border: 1px solid var(--lt-grey-2);
+            background-position: right 12px top 10px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            height: 25px;
+            padding-left: 5px;
+        }
+
+        body .pbBody table.list tr.dataRow.highlight td {
+            background-color: transparent !important;
+        }
+
+        .bPageBlock {
+            border: none !important;
+            background: none !important;
+        }
+
+    </style>
+    <script>
+    // this is to add classes for use with pendo
+    document.addEventListener('DOMContentLoaded', () => {
+        const selectNodes = document.querySelectorAll('select');
+        for (const selectNode of selectNodes) {
+          const name = selectNode.className.replace('_options-list-', '');
+          for (const optionNode of selectNode.getElementsByTagName('option')) {
+            const textToAppend = optionNode.innerText.replaceAll(' ', '');
+            optionNode.classList.add(`_option-${textToAppend}`);
+          }
+        }
+    });
+    function confirmDelete(){
+        var r=confirm("Are you sure you wish to clear all LeanData Permission Set Assignments?");
+        if (r==true) {
+            deleteAssignmentsAF();
+        }
+        else {
+        }    
+    }
+    </script>
+
+    <apex:form >
+        <apex:actionFunction name="deleteAssignmentsAF" action="{!deletePermissionSetAssignments}" rerender="permissionSetPageBlock"/>
+        <apex:actionFunction name="saveAssignmentsAF" action="{!savePermissionSetAssignments}" rerender="permissionSetPageBlock"/>
+        <apex:pageBlock title="Assign Permission Sets" id="permissionSetPageBlock">
+            <apex:pageMessages />
+            <div> 
+                <div class="ld-tertiary-large-button _clear-all-permission-set-assignments-button"
+                  onClick="confirmDelete();"
+                >Clear All Permission Set Assignments</div>
+                <div class="ld-primary-large-button _save-permission-set-assignments-button"
+                  onClick="saveAssignmentsAF();"
+                >Save Permission Set Assignments</div>
+            </div>
+            <div id="info-text">
+                <b>LeanData Dashboard Access</b><br/>
+                A restrictive Permission Set that limits a user to only viewing select pages. Ideal for users requiring minimal involvement.<br/>
+                <br/>
+                <b>LeanData Read Only with Routing Insights</b><br/>
+                Intermediate access to summary level information including Audit Logs, Routing Insights, and Deployment History. Ideal for providing management high level information without providing ability to configure.<br/>
+                <br/>
+                <b>LeanData Custom Objects Full Access</b><br/>
+                Full access to configure all LeanData pages and settings across the platform. Ideal for system administrators and sales operations team members.<br/>
+            </div>
+            <apex:pageBlockTable value="{!profilePermissionSetList}" var="P">
+                <apex:column headerValue="Profile Name"><apex:outputText value="{!P.prof.Name}"
+                styleClass="_profile-name-{!P.nameNoWhitespace}"/></apex:column>
+                <apex:column headerValue="Permission Set" >
+                    <apex:selectList styleClass="_options-list-{!P.nameNoWhitespace}" value="{!P.permSetId}" size="1">
+                        <apex:selectOptions value="{!PermissionSetPicklist}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

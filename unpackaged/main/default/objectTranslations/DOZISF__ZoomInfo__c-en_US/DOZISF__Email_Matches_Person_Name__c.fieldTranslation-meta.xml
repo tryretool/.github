@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Indicates if the email address contains the person&apos;s full name. --></help>
+        <label><!-- Email Matches Person Name --></label>
+        <name>DOZISF__Email_Matches_Person_Name__c</name>
+    </CustomFieldTranslation>

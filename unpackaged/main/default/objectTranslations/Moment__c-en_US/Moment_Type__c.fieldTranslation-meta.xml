@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Indicates the source of the Moment. --></help>
+        <label><!-- Moment Type --></label>
+        <name>Moment_Type__c</name>
+        <picklistValues>
+            <masterLabel>Champify Alert</masterLabel>
+            <translation><!-- Champify Alert --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Content Download</masterLabel>
+            <translation><!-- Content Download --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Demo Request</masterLabel>
+            <translation><!-- Demo Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Form Submission</masterLabel>
+            <translation><!-- Form Submission --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Koala Intent Signal</masterLabel>
+            <translation><!-- Koala Intent Signal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Live Event - Hackathon</masterLabel>
+            <translation><!-- Live Event - Hackathon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Live Event - Other</masterLabel>
+            <translation><!-- Live Event - Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Live Event - Retool Hosted</masterLabel>
+            <translation><!-- Live Event - Retool Hosted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Live Event - Tradeshow</masterLabel>
+            <translation><!-- Live Event - Tradeshow --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Referral</masterLabel>
+            <translation><!-- Partner Referral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Action</masterLabel>
+            <translation><!-- Product Action --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Signup</masterLabel>
+            <translation><!-- Product Signup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regie.ai - Conversion</masterLabel>
+            <translation><!-- Regie.ai - Conversion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regie.ai - Expansion</masterLabel>
+            <translation><!-- Regie.ai - Expansion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regie.ai - Started</masterLabel>
+            <translation><!-- Regie.ai - Started --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support</masterLabel>
+            <translation><!-- Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar - Live</masterLabel>
+            <translation><!-- Webinar - Live --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar - Recorded</masterLabel>
+            <translation><!-- Webinar - Recorded --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

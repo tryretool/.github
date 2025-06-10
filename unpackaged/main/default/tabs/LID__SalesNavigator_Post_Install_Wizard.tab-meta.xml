@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Created by Lightning App Builder</description>
+    <flexiPage>LID__SalesNavigator_Post_Install_Wizard</flexiPage>
+    <label>Sales Navigator Installation Wizard</label>
+    <motif>Custom67: Gears</motif>
+</CustomTab>

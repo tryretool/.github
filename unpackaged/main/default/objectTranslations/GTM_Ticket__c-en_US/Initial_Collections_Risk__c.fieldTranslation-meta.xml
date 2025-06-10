@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Initial &apos;Collections Risk&apos; value that is populated the first time &apos;Collections Risk&apos; is set. --></help>
+        <label><!-- Initial Collections Risk --></label>
+        <name>Initial_Collections_Risk__c</name>
+        <picklistValues>
+            <masterLabel>Certain</masterLabel>
+            <translation><!-- Certain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Risk</masterLabel>
+            <translation><!-- High Risk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Risk</masterLabel>
+            <translation><!-- Low Risk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium Risk</masterLabel>
+            <translation><!-- Medium Risk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Risk</masterLabel>
+            <translation><!-- No Risk --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

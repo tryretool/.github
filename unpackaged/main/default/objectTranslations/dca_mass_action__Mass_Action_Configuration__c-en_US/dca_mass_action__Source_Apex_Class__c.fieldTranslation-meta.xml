@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Name (including namespace if applicable) of an Apex class that implements Iterable&lt;Map&lt;String, Object&gt;&gt;. The returned iterator produces the source records to process. The source data, for example, could come from HTTP callouts to external web services. --></help>
+        <label><!-- Source Apex Class --></label>
+        <name>dca_mass_action__Source_Apex_Class__c</name>
+    </CustomFieldTranslation>

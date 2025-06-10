@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#73930F</headerColor>
+        <logo>Centro__centro_logo</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Centro is advanced Salesforce&lt;&gt;Slack. Create custom Flows, replace Chatter, and much more.</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>true</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>true</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Centro</label>
+    <navType>Standard</navType>
+    <tabs>Centro__Setup</tabs>
+    <tabs>Centro__Nudge__c</tabs>
+    <tabs>Centro__Message_Queue__c</tabs>
+    <tabs>Centro__Linked_Conversation__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Centro__Centro_UtilityBar</utilityBar>
+</CustomApplication>

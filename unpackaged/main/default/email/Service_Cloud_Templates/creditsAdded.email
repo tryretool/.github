@@ -1,0 +1,26 @@
+Hi {!Contact.FirstName},
+
+<p>Thanks for informing me! We’ve added $25,000 in credits to your Retool account to explore our paid plan. Activate your credits from your Retool account by upgrading to any paid plan (this can be done by visiting <b>Settings > Billing</b> or just clicking <b>Upgrade</b> in the top right on the homepage). Please note that any <b>unused credits will expire in 1 year</b>, so feel free to invite additional teammates to make full use of your credits. Also, Startup credits only work on <b>monthly plans</b>, so be sure to make sure this is chosen before you subscribe! </p>
+
+<p>Admins of Cloud orgs can check out the remaining credits by going to Settings -> Billing and scrolling to the bottom of the page. </p>
+
+<p><img src="https://downloads.intercomcdn.com/i/o/878631437/3a5f7a7f7a2dd94614a49605/image.png?expires=1727113500&signature=9d36dcf02f139fb428b676159a5d8d6388efa22e719a102a8fb42d3acc6f9141&req=fCcvEMp%2FmYJYFb4f3HP0gPDoFegJiiZG9pEXd6pS9NhC%0A" alt="Startup Credits" style="width:1000px;"></p>
+
+<p>Here are some resources that can help you get started on Retool:</p>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=8ZrJtnCKlxk&" target="_blank">Demo</a></li>
+
+<li><a href="https://docs.retool.com/apps/web/tutorial" target="_blank">Web app tutorial</a>- your first stop for learning the basics of Retool</li>
+
+<li><a href="https://www.youtube.com/watch?v=ZkdpZMb0oPI&list=PLqWdQFDVLADmkOrHQ-x-YPjma_Dzlvrq5" target="_blank">Lighting Demos w/ Brex, Ramp, Coursera</a> - walkthroughs of apps folks built.</li>
+
+<li><a href="https://retool.com/customers/" target="_blank">Customers</a></li>
+
+<li><a href="https://retool.com/integrations/" target="_blank">Integrations</a></li>
+
+<li><a href="https://retool.com/templates/"  target="_blank">Templates</a></li>
+</ol>
+
+<p>When in doubt, check out our <a href="http://docs.retool.com/" target="_blank">docs</a> and our <a href="http://community.retool.com/" target="_blank">community</a>.</p>
+
+<p>I am closing this ticket now, if you have any questions or concerns please don't hesitate to reach out to us by creating a new ticket. Happy building! 👋</p>

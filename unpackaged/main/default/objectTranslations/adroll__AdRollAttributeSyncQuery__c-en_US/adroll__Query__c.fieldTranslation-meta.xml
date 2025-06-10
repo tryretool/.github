@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Query generated based on the list of criteria and attributes --></help>
+        <label><!-- Query --></label>
+        <name>adroll__Query__c</name>
+    </CustomFieldTranslation>

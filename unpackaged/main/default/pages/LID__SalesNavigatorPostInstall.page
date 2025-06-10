@@ -1,0 +1,25 @@
+<!--
+        @author Alec Deane, Traction on Demand
+        @date   2019-05-29
+-->
+
+<apex:page id="SalesNavigatorPostInstall" showHeader="true">
+    <apex:includeLightning />
+
+    <div class="slds">
+        <!-- Target div for the Lightning component -->
+        <div id="SalesNavigatorPostInstallDiv"></div>
+    </div>
+
+    <script>
+        $Lightning.use("c:SalesNavigatorPostInstallApp", function() {
+
+            $Lightning.createComponent('c:SalesNavigatorPostInstall',
+                {},
+                'SalesNavigatorPostInstallDiv',
+                function(cmp) {
+                    // At this point the component has been created and loaded
+                });
+        });
+    </script>
+</apex:page>

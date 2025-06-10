@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChampifyIo__PersonName__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The default name field is limited to 80 chars, which is shorter than the contact name fields (40 + 80). So we&#39;re using a custom field instead.</description>
+    <externalId>false</externalId>
+    <label>Person Name</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

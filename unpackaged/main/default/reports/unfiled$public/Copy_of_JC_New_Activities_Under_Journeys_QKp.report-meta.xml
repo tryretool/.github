@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Journey__c$Name</field>
+    </columns>
+    <columns>
+        <field>Journey__c.Activities__r$Subject</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Meeting_Booked_At__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Meeting_Date__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Journey__c$Journey_Subtype__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Demo Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c.Activities__r$Subject</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Gong</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Copy of JC New Activities Under Journeys</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Activities_Under_Journeys__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Journey__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_LAST7</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>I_am_on_Account_Team__c</fullName>
+    <description>Helper field that returns TRUE if the running user is the current owner of Account record, or the user populated in the `Executive Sponsor`, `Partner Sales`, `Sales Development Representative`,  or `Technical Account Manager` lookup fields, or the current manager of any of these populated fields.</description>
+    <formula>$User.Id=OwnerId ||
+$User.Id=Executive_Sponsor__c ||
+$User.Id=Professional_Services__c ||
+$User.Id=Sales_Development_Representative__c ||
+$User.Id=Technical_Account_Manager__c || 
+$User.Id=Owner.ManagerId || 
+
+$User.Id=Executive_Sponsor__r.ManagerId ||
+$User.Id=Partner_Sales__r.ManagerId ||
+$User.Id=Professional_Services__r.ManagerId ||
+$User.Id=Sales_Development_Representative__r.ManagerId ||
+$User.Id=Technical_Account_Manager__r.ManagerId</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Helper field that returns TRUE if the running user is the current owner of Account record, or the user populated in the `Executive Sponsor`, `Partner Sales`, `Sales Development Representative`,  or `Technical Account Manager` lookup fields, or the current manager of any of these populated fields.</inlineHelpText>
+    <label>I am on Account Team?</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

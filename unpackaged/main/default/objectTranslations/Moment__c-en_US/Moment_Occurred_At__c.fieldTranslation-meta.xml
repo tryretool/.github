@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The date/time when the Moment occurred. --></help>
+        <label><!-- Moment Occurred At --></label>
+        <name>Moment_Occurred_At__c</name>
+    </CustomFieldTranslation>

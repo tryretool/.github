@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>start_date_before_end_date</fullName>
+    <active>true</active>
+    <errorConditionFormula>Agreement_Start_Date__c &gt;= Agreement_End_Date__c &amp;&amp; NOT(ISBLANK(Agreement_End_Date__c))</errorConditionFormula>
+    <errorDisplayField>Agreement_Start_Date__c</errorDisplayField>
+    <errorMessage>Relationship end date must be after relationship start date</errorMessage>
+</ValidationRule>

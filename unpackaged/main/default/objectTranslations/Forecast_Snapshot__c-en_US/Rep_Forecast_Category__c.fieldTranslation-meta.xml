@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Used on Manager snapshots for visibility. --></help>
+        <label><!-- Rep Forecast Category --></label>
+        <name>Rep_Forecast_Category__c</name>
+    </CustomFieldTranslation>

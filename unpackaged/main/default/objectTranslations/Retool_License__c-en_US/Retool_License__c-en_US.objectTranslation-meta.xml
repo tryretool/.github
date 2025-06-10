@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Retool License</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Retool Licenses</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>License Key Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Cannot associate SSOP Retool License with a Business Unit --></errorMessage>
+        <name>Business_Unit_No_SSOP</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Can only associate Retool License with Self-hosted or Managed Cloud BUs --></errorMessage>
+        <name>Business_Unit_Platform_Type</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot associate SSOP key with an opportunity --></errorMessage>
+        <name>Opportunity_No_SSOP</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot associate an SSOP key with a Partner Relationship --></errorMessage>
+        <name>SSOP_no_partner_relationship</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Partner license cannot be mapped to a business unit or opportunity --></errorMessage>
+        <name>partner_relationship_no_bu_no_opp</name>
+    </validationRules>
+</CustomObjectTranslation>

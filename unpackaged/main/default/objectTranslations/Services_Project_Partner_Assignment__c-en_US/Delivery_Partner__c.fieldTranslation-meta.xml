@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Delivery Partner --></label>
+        <lookupFilter>
+            <errorMessage><!-- This Partner Relationship is not record type Service Delivery --></errorMessage>
+            <informationalMessage><!-- Please select a Service Delivery partner relationship --></informationalMessage>
+        </lookupFilter>
+        <name>Delivery_Partner__c</name>
+        <relationshipLabel><!-- Services Project Partner Assignments --></relationshipLabel>
+    </CustomFieldTranslation>

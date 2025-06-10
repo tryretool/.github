@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expansion_Opportunities__c</fullName>
+    <inlineHelpText>Brief description of any expansion opportunities identified in sales process (e.g. new team or product launch).</inlineHelpText>
+    <label>Expansion Opportunities</label>
+    <length>32768</length>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

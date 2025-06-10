@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SalesLoft_Status__c</fullName>
+    <description>This is a field that is written via Salesloft in response to how people react to our Outreach emails. Based on people being sequenced, replying, opting out, etc. the status will update and have an impact on the lead lifecycle model</description>
+    <label>zSalesLoft Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Open</fullName>
+                <default>true</default>
+                <label>Open</label>
+            </value>
+            <value>
+                <fullName>Attempting Outreach</fullName>
+                <default>false</default>
+                <label>Attempting Outreach</label>
+            </value>
+            <value>
+                <fullName>Replied</fullName>
+                <default>false</default>
+                <label>Replied</label>
+            </value>
+            <value>
+                <fullName>Meeting Booked</fullName>
+                <default>false</default>
+                <label>Meeting Booked</label>
+            </value>
+            <value>
+                <fullName>Opp Identified</fullName>
+                <default>false</default>
+                <label>Opp Identified</label>
+            </value>
+            <value>
+                <fullName>Nurture</fullName>
+                <default>false</default>
+                <label>Nurture</label>
+            </value>
+            <value>
+                <fullName>Trash</fullName>
+                <default>false</default>
+                <label>Trash</label>
+            </value>
+            <value>
+                <fullName>Unsubscribed</fullName>
+                <default>false</default>
+                <label>Unsubscribed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

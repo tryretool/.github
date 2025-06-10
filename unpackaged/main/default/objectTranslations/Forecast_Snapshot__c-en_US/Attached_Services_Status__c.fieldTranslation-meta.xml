@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Current status of the attached professional services deal at the time of snapshot.
+None, Open, Lost, Won --></help>
+        <label><!-- Attached Services Status --></label>
+        <name>Attached_Services_Status__c</name>
+    </CustomFieldTranslation>

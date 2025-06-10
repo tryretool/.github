@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subtype__c</fullName>
+    <label>Subtype</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>GTM_Ticket_Subtype</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Strategy</controllingFieldValue>
+            <valueName>General Analysis</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Strategy</controllingFieldValue>
+            <valueName>Planning</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Strategy</controllingFieldValue>
+            <controllingFieldValue>Incentives</controllingFieldValue>
+            <valueName>Policy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Strategy</controllingFieldValue>
+            <valueName>Enrichment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Strategy</controllingFieldValue>
+            <controllingFieldValue>Data Quality</controllingFieldValue>
+            <valueName>Revenue Bookings</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Strategy</controllingFieldValue>
+            <valueName>Team</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Strategy</controllingFieldValue>
+            <valueName>Demand Generation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Strategy</controllingFieldValue>
+            <valueName>Sales Pipeline</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Strategy</controllingFieldValue>
+            <controllingFieldValue>Systems</controllingFieldValue>
+            <valueName>CPQ</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Strategy</controllingFieldValue>
+            <valueName>Accounting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Strategy</controllingFieldValue>
+            <controllingFieldValue>Data Quality</controllingFieldValue>
+            <controllingFieldValue>Uncategorized</controllingFieldValue>
+            <controllingFieldValue>ROE</controllingFieldValue>
+            <controllingFieldValue>Incentives</controllingFieldValue>
+            <controllingFieldValue>Deal Desk</controllingFieldValue>
+            <controllingFieldValue>Reporting</controllingFieldValue>
+            <controllingFieldValue>Demand</controllingFieldValue>
+            <controllingFieldValue>Systems</controllingFieldValue>
+            <controllingFieldValue>Enablement</controllingFieldValue>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Data Quality</controllingFieldValue>
+            <valueName>Duplicate</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Data Quality</controllingFieldValue>
+            <valueName>Parent/Child</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Data Quality</controllingFieldValue>
+            <valueName>Inaccurate Data</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Data Quality</controllingFieldValue>
+            <valueName>Bulk Upload</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ROE</controllingFieldValue>
+            <valueName>Dispute</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ROE</controllingFieldValue>
+            <valueName>Ownership Change</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ROE</controllingFieldValue>
+            <valueName>New Routing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ROE</controllingFieldValue>
+            <valueName>Incorrect Routing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>ROE</controllingFieldValue>
+            <valueName>Target Account</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incentives</controllingFieldValue>
+            <valueName>SPIF</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incentives</controllingFieldValue>
+            <valueName>Incentive Calculations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incentives</controllingFieldValue>
+            <valueName>Plan Administration</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incentives</controllingFieldValue>
+            <valueName>Xactly Administration</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Desk</controllingFieldValue>
+            <valueName>Custom Pricing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Desk</controllingFieldValue>
+            <valueName>Non-Standard Paper</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Desk</controllingFieldValue>
+            <valueName>Contract Restructure</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Desk</controllingFieldValue>
+            <valueName>Replacement Agreement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Desk</controllingFieldValue>
+            <valueName>Manual Signature</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Desk</controllingFieldValue>
+            <valueName>Unpaid Pilot</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Desk</controllingFieldValue>
+            <valueName>Debook/Putback</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Desk</controllingFieldValue>
+            <valueName>Baseline Transfer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Deal Desk</controllingFieldValue>
+            <valueName>Bridge Renewal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accounting</controllingFieldValue>
+            <valueName>Collections</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Reporting</controllingFieldValue>
+            <valueName>Report / Dashboard</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Demand</controllingFieldValue>
+            <valueName>Webinar</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Demand</controllingFieldValue>
+            <valueName>Live Event</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Systems</controllingFieldValue>
+            <valueName>User Licensing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Systems</controllingFieldValue>
+            <valueName>Data Pipeline</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Systems</controllingFieldValue>
+            <valueName>Flow / Automation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Systems</controllingFieldValue>
+            <valueName>Refactor</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Systems</controllingFieldValue>
+            <valueName>Implementation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Systems</controllingFieldValue>
+            <valueName>Incident</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Systems</controllingFieldValue>
+            <valueName>Evaluation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Systems</controllingFieldValue>
+            <valueName>Feature Request</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Systems</controllingFieldValue>
+            <valueName>Bug</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enablement</controllingFieldValue>
+            <valueName>Training</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enablement</controllingFieldValue>
+            <valueName>Tooling</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enablement</controllingFieldValue>
+            <valueName>Asset Creation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enablement</controllingFieldValue>
+            <valueName>Event</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enablement</controllingFieldValue>
+            <valueName>Coaching</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <valueName>NDA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <valueName>MSA / DPA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <valueName>Order Form</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <valueName>Amendment</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

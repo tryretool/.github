@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Area__c</fullName>
+    <label>Product Area</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>App Building</fullName>
+                <default>false</default>
+                <label>App Building</label>
+            </value>
+            <value>
+                <fullName>Deployments</fullName>
+                <default>false</default>
+                <label>Deployments</label>
+            </value>
+            <value>
+                <fullName>Connect</fullName>
+                <default>false</default>
+                <label>Connect</label>
+            </value>
+            <value>
+                <fullName>Hub</fullName>
+                <default>false</default>
+                <label>Hub</label>
+            </value>
+            <value>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+                <label>Mobile</label>
+            </value>
+            <value>
+                <fullName>Workflows</fullName>
+                <default>false</default>
+                <label>Workflows</label>
+            </value>
+            <value>
+                <fullName>Uncategorized</fullName>
+                <default>false</default>
+                <label>Uncategorized</label>
+            </value>
+            <value>
+                <fullName>Toolchain</fullName>
+                <default>false</default>
+                <label>Toolchain</label>
+            </value>
+            <value>
+                <fullName>Discovery</fullName>
+                <default>false</default>
+                <label>Discovery</label>
+            </value>
+            <value>
+                <fullName>Billing</fullName>
+                <default>false</default>
+                <label>Billing</label>
+            </value>
+            <value>
+                <fullName>Agents</fullName>
+                <default>false</default>
+                <label>Agents</label>
+            </value>
+            <value>
+                <fullName>Deployments Inbox</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Deployments Inbox</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

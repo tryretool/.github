@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Checked TRUE if the customer banner to expire access to Retool has been turned on. --></help>
+        <label><!-- Expiration Set Banner Turned On? --></label>
+        <name>Expiration_Set_Banner_Turned_On__c</name>
+    </CustomFieldTranslation>

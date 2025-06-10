@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Technical_Evaluation__c</entityName>
+    <fieldName>Stage__c</fieldName>
+    <masterLabel>Technical Evaluation - POC</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;strong&gt;To advance to the Won stage&lt;/strong&gt;: Ensure you have confirmation from the prospect that Retool is 100% technically validated, meets their requirements, and is either the vendor of choice or is a top choice (contingent on commercials). Then:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Complete the Production Use Cases and Production Details sections&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Next Stage&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;If you have confirmation that Retool lost the Technical Evaluation, click &lt;strong&gt;Close Lost.&lt;/strong&gt; If the evaluation terminated prematurely for non-technical reasons (e.g. commercial misalignment), select the &lt;u&gt;Evaluation Incomplete&lt;/u&gt; Lost Reason&lt;/p&gt;</info>
+        <picklistValueName>Evaluation</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;strong style=&quot;font-size: 11pt;&quot;&gt;To advance to the Evaluation stage: &lt;/strong&gt;Ensure you have a completed evaluation plan that has been agreed upon by both the Retool account team and the prospect. Then:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Complete all fields in the Evaluation Overview and Evaluation Details sections&lt;/li&gt;&lt;li&gt;Click &lt;strong&gt;Next Stage&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;If you have confirmation that Retool lost the Technical Evaluation or that it never started, click &lt;/span&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;Close Lost.&lt;/strong&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt; If the evaluation terminated prematurely for non-technical reasons (e.g. commercial misalignment), select the &lt;/span&gt;&lt;u&gt;Evaluation Incomplete&lt;/u&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt; Lost Reason&lt;/span&gt;&lt;/p&gt;</info>
+        <picklistValueName>Scoping</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>POC</recordTypeName>
+</PathAssistant>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Head of Sales field used to override Manager Forecast Best Case. --></help>
+        <label><!-- HoS: Best Case Override --></label>
+        <name>HoS_Best_Case_Override__c</name>
+    </CustomFieldTranslation>

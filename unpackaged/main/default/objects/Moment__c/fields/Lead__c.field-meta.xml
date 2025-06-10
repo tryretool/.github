@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The Lead related to the Moment.
+
+In System Use: Email_Formula; Lead_Source_Formula; Implied_Subteam_Formula; MK_Lead_Score_Formula; &#39;Autolaunch: Check MQL&#39;; &#39;Campaign Member: After Save Automations&#39;; &#39;Retool User - After Save Automations&#39;; &#39;Scheduled: Moments&#39;; &#39;Task - After Save Automations&#39;
+
+External Systems Utilization: None</description>
+    <inlineHelpText>The Lead related to the Moment.</inlineHelpText>
+    <label>Lead</label>
+    <referenceTo>Lead</referenceTo>
+    <relationshipLabel>Moments</relationshipLabel>
+    <relationshipName>Moments</relationshipName>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

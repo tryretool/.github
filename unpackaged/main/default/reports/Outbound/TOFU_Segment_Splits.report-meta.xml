@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Opportunity.New_Annualized_Revenue__c:SUM/WON:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Avg. Deal Size</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>WON:SUM/RowCount</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>SQO-to-CW</masterLabel>
+        <scale>0</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_97095557</developerName>
+        <masterLabel>Sourced by Group</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.Sourced_By_Role__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Account Executive</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Growth Account Executive</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Enterprise Account Executive</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Midmarket Account Executive</sourceValue>
+            </sourceValues>
+            <value>AE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Inbound SDR</sourceValue>
+            </sourceValues>
+            <value>Inbound SDR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Outbound SDR</sourceValue>
+            </sourceValues>
+            <value>Outbound SDR</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Retool Team</sourceValue>
+            </sourceValues>
+            <value>Retool team</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_9261095</developerName>
+        <masterLabel>Stage</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Won</sourceValue>
+            </sourceValues>
+            <value>Won</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Lost</sourceValue>
+            </sourceValues>
+            <value>Lost</value>
+        </values>
+    </buckets>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.New_Annualized_Revenue__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>CLOSE_DATE-Opportunity.Sales_Qualified_At__c</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Days from SQO to Closed</label>
+        <scale>0</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Account.Is_Test_Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Subtype__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New Commitment - Annual,New Commitment - Monthly,New Commitment - Quarterly,New Commitment - Other,Conversion - Self-Service to Annual,Conversion - Non-Annual to Annual</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Sales_Qualified_Opportunity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Business_Line__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>committed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Debooked_deal__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Booking_Channel_ARR__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>churn,contraction</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Segment__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_97095557</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>TOFU Segment Splits</name>
+    <params>
+        <name>open</name>
+        <value>closed</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2022-03-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2021-10-01</startDate>
+    </timeFrameFilter>
+</Report>

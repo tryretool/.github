@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ops_Notes_Related__c</fullName>
+    <description>Formula that uses the Contact Ops Notes if available. If the member is a Lead, then the Ops Notes on the Lead is used.
+
+In System Use: Layout and Reports
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <formula>IF( ISBLANK( Contact.Ops_Notes__c) , Lead.Ops_Notes__c ,Contact.Ops_Notes__c )</formula>
+    <inlineHelpText>Formula that uses the Contact Ops Notes if available. If the member is a Lead, then the Ops Notes on the Lead is used.</inlineHelpText>
+    <label>Ops Notes from Related</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

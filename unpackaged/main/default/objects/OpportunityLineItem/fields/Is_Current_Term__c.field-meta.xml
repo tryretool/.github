@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Current_Term__c</fullName>
+    <formula>Term_Number__c = Business_Unit__r.Most_Recent_Base_Opportunity__r.Term_Number__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Current Term?</label>
+    <type>Checkbox</type>
+</CustomField>

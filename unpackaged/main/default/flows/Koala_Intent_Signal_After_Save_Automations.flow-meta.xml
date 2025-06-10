@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <assignments>
+        <name>Assign_Created_Account</name>
+        <label>Assign Created Account</label>
+        <locationX>314</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Create_Account</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Contact_is_blank</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Created_Contact</name>
+        <label>Assign Created Contact</label>
+        <locationX>314</locationX>
+        <locationY>1463</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Contact__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Create_Contact</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Koala_Intent_Signal</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Found_Account</name>
+        <label>Assign Found Account</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Account__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Find_Domain_Map.Matched_Account__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Contact_is_blank</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Found_Contact</name>
+        <label>Assign Found Contact</label>
+        <locationX>50</locationX>
+        <locationY>1355</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Contact__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Find_Contact.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Koala_Intent_Signal</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Account_is_Blank</name>
+        <label>Account is Blank?</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Contact_is_blank</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Has an account</defaultConnectorLabel>
+        <rules>
+            <name>Blank_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Find_Domain_Map</targetReference>
+            </connector>
+            <label>Blank Account</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Contact_is_blank</name>
+        <label>Contact is blank</label>
+        <locationX>380</locationX>
+        <locationY>1031</locationY>
+        <defaultConnector>
+            <targetReference>Update_Koala_Intent_Signal</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Blank_contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Contact__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Find_Contact</targetReference>
+            </connector>
+            <label>Blank contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Domain_map_found</name>
+        <label>Domain map found?</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Create_Account</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No domain map</defaultConnectorLabel>
+        <rules>
+            <name>Found_a_domain_map</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_Domain_Map.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Found_Account</targetReference>
+            </connector>
+            <label>Found a domain map</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Was_a_contact_found</name>
+        <label>Was a contact found?</label>
+        <locationX>182</locationX>
+        <locationY>1247</locationY>
+        <defaultConnector>
+            <targetReference>Create_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No contact</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_Contact.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Found_Contact</targetReference>
+            </connector>
+            <label>Contact Found</label>
+        </rules>
+    </decisions>
+    <description>Adding Account and Contact creation flows. Replaced &#39;AccountId&#39; variable with the contact Id in the &#39;Assign Found Contact&#39; assignment node.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>MomentContext</name>
+        <dataType>String</dataType>
+        <expression>&quot;Intent Summary: &quot;&amp;{!$Record.Koala_Intent_Summary__c}&amp;BR()&amp;
+&quot;Intent Type: &quot;&amp;{!$Record.Koala_Intent_Type__c}&amp;BR()&amp;
+&quot;Intent Trigger ID: &quot;&amp;{!$Record.Koala_Intent_Trigger_ID__c}&amp;BR()&amp;
+&quot;Intent Trigger SFID: &quot;&amp;{!$Record.Id}</expression>
+    </formulas>
+    <formulas>
+        <name>MomentDescription</name>
+        <dataType>String</dataType>
+        <expression>IF( ISBLANK({!$Record.Koala_Visitor_Email__c}), 
+/* No contact */
+&quot;New unknown Koala Intent Signal (&quot;&amp;{!$Record.Name}&amp;&quot;) at &quot;&amp;{!$Record.Koala_Account_Name__c}, 
+/* Has Contact */
+&quot;New Koala Intent Signal (&quot;&amp;{!$Record.Name}&amp;&quot;) by&quot;&amp;{!$Record.Koala_Visitor_Email__c}&amp;&quot; at &quot;&amp;{!$Record.Koala_Account_Name__c}
+)</expression>
+    </formulas>
+    <interviewLabel>Koala Intent Signal - After Save Automations {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Koala Intent Signal - After Save Automations</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Account</name>
+        <label>Create Account</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Assign_Created_Account</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>$Record.Koala_Account_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>0055A00000BExg9</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Website</field>
+            <value>
+                <elementReference>$Record.Koala_Account_Domain__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Contact</name>
+        <label>Create Contact</label>
+        <locationX>314</locationX>
+        <locationY>1355</locationY>
+        <connector>
+            <targetReference>Assign_Created_Contact</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>$Record.Account__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Email</field>
+            <value>
+                <elementReference>$Record.Koala_Visitor_Email__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <stringValue>[unknown]</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>0055A00000BExg9</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Moment</name>
+        <label>Create Moment</label>
+        <locationX>380</locationX>
+        <locationY>1847</locationY>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>$Record.Account__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Check_MQL__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>$Record.Contact__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Created_From_Detail__c</field>
+            <value>
+                <stringValue>Koala Intent Signal - After Save Automations</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Created_From__c</field>
+            <value>
+                <stringValue>Koala</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Context__c</field>
+            <value>
+                <elementReference>MomentContext</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Description__c</field>
+            <value>
+                <elementReference>MomentDescription</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Occurred_At__c</field>
+            <value>
+                <elementReference>$Record.Intent_Triggered_At__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Type__c</field>
+            <value>
+                <stringValue>Koala Intent Signal</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Moment__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Find_Contact</name>
+        <label>Find Contact</label>
+        <locationX>182</locationX>
+        <locationY>1139</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_a_contact_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Koala_Visitor_Email__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>AccountId</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Find_Domain_Map</name>
+        <label>Find Domain Map</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Domain_map_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Koala_Account_Domain__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Domain_Map__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Koala_Intent_Signal</name>
+        <label>Update Koala Intent Signal</label>
+        <locationX>380</locationX>
+        <locationY>1739</locationY>
+        <connector>
+            <targetReference>Create_Moment</targetReference>
+        </connector>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Account_is_Blank</targetReference>
+        </connector>
+        <object>Koala_Intent_Signal__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_to_Next_Milestone__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Minutes_to_Next_Milestone__c = 9999, &quot;&quot;, 
+
+TEXT(FLOOR( Minutes_to_Next_Milestone__c / 1440)) &amp;&#39; Days &#39;&amp; TEXT( FLOOR( MOD(Minutes_to_Next_Milestone__c,1440 )  / 60)) &amp;&#39; hr &#39;&amp; 
+TEXT(FLOOR(MOD( MOD(Minutes_to_Next_Milestone__c,1440),60)))&amp;&#39; min&#39;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Time to Next Milestone</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

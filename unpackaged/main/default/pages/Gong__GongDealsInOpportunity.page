@@ -1,0 +1,3 @@
+<apex:page standardController="Opportunity">
+  <apex:canvasApp width="100%" height="700px" scrolling="yes" applicationName="Gong_Deals_Canvas_App" parameters="{crmEntityId: '{!Opportunity.ID}', method: 'opportunity'}"/>
+</apex:page>

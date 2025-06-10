@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Personalization Level --></label>
+        <name>Personalization_Level__c</name>
+        <picklistValues>
+            <masterLabel>1 Step</masterLabel>
+            <translation><!-- 1 Step --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 Steps</masterLabel>
+            <translation><!-- 2 Steps --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3 Steps</masterLabel>
+            <translation><!-- 3 Steps --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All Steps</masterLabel>
+            <translation><!-- All Steps --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

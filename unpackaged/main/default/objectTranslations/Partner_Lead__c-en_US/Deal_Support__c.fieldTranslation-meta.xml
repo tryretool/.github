@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Deal Support --></label>
+        <name>Deal_Support__c</name>
+        <picklistValues>
+            <masterLabel>Co-Sell - Architectural Validation</masterLabel>
+            <translation><!-- Co-Sell - Architectural Validation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Sell - Business Presentation</masterLabel>
+            <translation><!-- Co-Sell - Business Presentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Sell - Competitive Information</masterLabel>
+            <translation><!-- Co-Sell - Competitive Information --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Sell - Pricing Assistance</masterLabel>
+            <translation><!-- Co-Sell - Pricing Assistance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Sell - Retool Product Roadmap</masterLabel>
+            <translation><!-- Co-Sell - Retool Product Roadmap --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Co-Sell - Technical Consultation</masterLabel>
+            <translation><!-- Co-Sell - Technical Consultation --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Block_Closed_Won__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>If checked by Sales Operations, prevents the opportunity from being moved to Closed Won.</inlineHelpText>
+    <label>Block Closed Won</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

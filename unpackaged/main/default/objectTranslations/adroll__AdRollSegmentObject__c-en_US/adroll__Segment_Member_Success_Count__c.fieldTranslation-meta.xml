@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- No of Records Successfully processed --></help>
+        <label><!-- Segment Member Success Count(Deprecated) --></label>
+        <name>adroll__Segment_Member_Success_Count__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expansion_AR__c</fullName>
+    <formula>if(Booking_Channel_Annualized_Revenue__c=&quot;Expansion&quot;,Forecast_New_AR__c,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Expansion AR</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

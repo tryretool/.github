@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Moments__r$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Moments__r$Contact__c</field>
+    </columns>
+    <columns>
+        <field>Account.Moments__r$Email_Formula__c</field>
+    </columns>
+    <columns>
+        <field>Account.Moments__r$Moment_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Moments__r$Moment_Description__c</field>
+    </columns>
+    <columns>
+        <field>Account$Account_ID_case_safe__c</field>
+    </columns>
+    <columns>
+        <field>Account.Moments__r$Moment_ID_case_safe__c</field>
+    </columns>
+    <description>Returns Moment records at Accounts where `Is_Test_Account__c` = TRUE, grouped by Account Name.</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$Is_Test_Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Test Account Moments</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Moments__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clazar__AWSCoSellOpportunityCompactLayout</fullName>
+    <fields>clazar__apn_crm_unique_identifier__c</fields>
+    <fields>clazar__target_close_date__c</fields>
+    <fields>clazar__sale_stage__c</fields>
+    <fields>clazar__status__c</fields>
+    <fields>clazar__opportunity_ownership__c</fields>
+    <fields>clazar__cloud_created_date__c</fields>
+    <fields>clazar__aws_marketplace_engagement_score__c</fields>
+    <label>AWS Co-Sell Opportunity Compact Layout</label>
+</CompactLayout>

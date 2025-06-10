@@ -1,0 +1,264 @@
+
+{
+    "page": 1,
+    "limit": 5,
+    "count": 1,
+    "data": [
+        {
+            "stats": [
+                {
+                    "name": "unique_visitors",
+                    "count": 0
+                },
+                {
+                    "name": "invited",
+                    "count": 4
+                },
+                {
+                    "name": "rsvp_yes",
+                    "count": 21
+                },
+                {
+                    "name": "checkin_yes",
+                    "count": 0
+                }
+            ],
+            "event_owner_first_name": "Quinn",
+            "event_owner_last_name": "API",
+            "event_owner_email": "quinn.soutar222.api@splashthat.com",
+            "registration_updating_enabled": false,
+            "registration_updating_deadline": 0,
+            "id": 457443352,
+            "user": [],
+            "organization": [],
+            "event_type": {
+                "id": 51620,
+                "name": "Happy Hours"
+            },
+            "time_zone": [],
+            "event_stages": [
+                []
+            ],
+            "splash_theme": {
+                "id": 1200635,
+                "name": "Bedford",
+                "abbr": "Bedford",
+                "image_url": "//d24wuq6o951i2g.cloudfront.net/img/events/id/212/2129247/assets/d37.2019-05-13-19-00-bedford-v2.splashthat.com.png",
+                "thumbnail_url": null,
+                "sort": 25,
+                "active": true,
+                "created": "2015-04-14T14:34:43-0400"
+            },
+            "event_setting": {
+                "header_image": "http://d24wuq6o951i2g.cloudfront.net/img/events/id/205/2058638/assets/f98.Stocksy_txp88de263aPtI000_Medium_354714.jpg",
+                "rsvp_open": true,
+                "wait_list": false,
+                "id": 1439353,
+                "rsvp_method": "collect",
+                "lat": "NaN",
+                "lng": "NaN",
+                "currency": [],
+                "event_hashtag": "#BedfordV2",
+                "rsvp_max": 0,
+                "custom_questions": [
+                    {
+                        "type": "text",
+                        "name": "First Name",
+                        "required": true,
+                        "column_name": "first_name",
+                        "values": [],
+                        "selected_values": []
+                    },
+                    {
+                        "type": "text",
+                        "name": "Last Name",
+                        "required": true,
+                        "column_name": "last_name",
+                        "values": [],
+                        "selected_values": []
+                    },
+                    {
+                        "type": "email",
+                        "name": "Email",
+                        "required": true,
+                        "column_name": "email",
+                        "values": [],
+                        "selected_values": []
+                    }
+                ],
+                "event_cards": {
+                    "x1": "https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/splash/splashthat.com/sites/view/xavierschoolfinalsweek.splashthat.com%3Fpartial%3D898032%26screenshotHash%3Da8518a37a6791520%26showWorkspace%3D1%26t%3D1568149837%26isTakingScreenshot%3D132.png",
+                    "x2": "https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/splash/splashthat.com/sites/view/xavierschoolfinalsweek.splashthat.com%3Fpartial%3D898032%26screenshotHash%3Da8518a37a6791520%26showWorkspace%3D1%26t%3D1568149837%26isTakingScreenshot%3D15.png",
+                    "x3": "https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/splash/splashthat.com/sites/view/xavierschoolfinalsweek.splashthat.com%3Fpartial%3D898032%26screenshotHash%3Da8518a37a6791520%26showWorkspace%3D1%26t%3D1568149837%26isTakingScreenshot%3D179.png"
+                },
+                "venue_tbd": 1,
+                "rsvp_guest_display": false,
+                "rsvp_closed_state": "tminus0hours",
+                "rsvp_closed_at": "2015-11-04T11:14:17-0500",
+                "rsvp_closed_team_notified": false,
+                "waitlist_settings": [],
+                "page_privacy_type": "none",
+                "email_settings": [],
+                "event_host": "Quinn API"
+            },
+            "ticket_types": [],
+            "statistics": null,
+            "group_ids": [
+                ""
+            ],
+            "title": "Test Happy Hours Event",
+            "description": "This is another test description",
+            "description_text": "<p style=\"font-size:15px;\">Clear your calendar - It's going down! Bedford V2 kicks off on April 20th, and you're invited to take part in the festivities. Splash HQ (122 W 26th St) is our meeting spot for a night of fun and excitement. Come one, come all, bring a guest, and hang loose. This is going to be epic!</p>",
+            "event_start": "2025-06-01T16:30:00-0400",
+            "event_end": "2025-06-02T03:30:00-0400",
+            "hide_event_time": true,
+            "venue_name": "",
+            "address": "",
+            "city": "",
+            "state": "",
+            "zip_code": "",
+            "country": "",
+            "created_at": "2019-09-10T17:10:33-0400",
+            "modified_at": "2019-09-10T17:21:59-0400",
+            "domain": "xavierschoolfinalsweek",
+            "paid_for_domain": false,
+            "deleted": false,
+            "custom_domain": "",
+            "hub": 2,
+            "mobility_account_id": "",
+            "mobility_wholesaler_id": "",
+            "fq_url": "https://xavierschoolfinalsweek.splashthat.com",
+            "mobile_check_in_url": "https://xavierschoolfinalsweek.splashthat.com/checkin/44fa0008c4da6895bb2c70faa88d7f5913f2f24a36fee21acafb022a06064a5b"
+        },
+        {
+            "stats": [
+                {
+                    "name": "unique_visitors",
+                    "count": 0
+                },
+                {
+                    "name": "invited",
+                    "count": 0
+                },
+                {
+                    "name": "rsvp_yes",
+                    "count": 2
+                },
+                {
+                    "name": "checkin_yes",
+                    "count": 0
+                }
+            ],
+            "event_owner_first_name": "Quinn",
+            "event_owner_last_name": "API",
+            "event_owner_email": "quinn.soutar.api@splashthat.com",
+            "registration_updating_enabled": false,
+            "registration_updating_deadline": 0,
+            "id": 457443351,
+            "user": [],
+            "organization": [],
+            "event_type": {
+                "id": 24548,
+                "name": "Hub"
+            },
+            "time_zone": [],
+            "event_stages": [],
+            "splash_theme": {
+                "id": 1200637,
+                "name": "Thompson",
+                "abbr": "Thompson",
+                "image_url": "//d24wuq6o951i2g.cloudfront.net/img/events/id/212/2129258/assets/ca5.2019-05-13-19-29-thompson-v2.splashthat.com.png",
+                "thumbnail_url": null,
+                "sort": 33,
+                "active": true,
+                "created": "2015-04-14T19:56:05-0400"
+            },
+            "event_setting": {
+                "header_image": "http://d24wuq6o951i2g.cloudfront.net/img/events/id/204/2047527/assets/912.bw-room.jpg",
+                "rsvp_open": true,
+                "wait_list": false,
+                "id": 1439351,
+                "rsvp_method": "collect",
+                "lat": "40.7226196",
+                "lng": "-73.98638900000003",
+                "currency": [],
+                "event_hashtag": "#ThompsonV2",
+                "rsvp_max": 0,
+                "custom_questions": [
+                    {
+                        "type": "text",
+                        "name": "First Name",
+                        "required": true,
+                        "column_name": "first_name",
+                        "values": [],
+                        "selected_values": []
+                    },
+                    {
+                        "type": "text",
+                        "name": "Last Name",
+                        "required": true,
+                        "column_name": "last_name",
+                        "values": [],
+                        "selected_values": []
+                    },
+                    {
+                        "type": "email",
+                        "name": "Email",
+                        "required": true,
+                        "column_name": "email",
+                        "values": [],
+                        "selected_values": []
+                    }
+                ],
+                "event_cards": {
+                    "x1": "https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/splash/splashthat.com/sites/view/studyhallwithwolverine.splashthat.com%3Fpartial%3D866237%26screenshotHash%3D03fab093dece11bb%26showWorkspace%3D1%26t%3D1568149788%26isTakingScreenshot%3D127.png",
+                    "x2": "https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/splash/splashthat.com/sites/view/studyhallwithwolverine.splashthat.com%3Fpartial%3D866237%26screenshotHash%3D03fab093dece11bb%26showWorkspace%3D1%26t%3D1568149788%26isTakingScreenshot%3D114.png",
+                    "x3": "https://s3.amazonaws.com/s3.clients.splashthat.com/img/events/splash/splashthat.com/sites/view/studyhallwithwolverine.splashthat.com%3Fpartial%3D866237%26screenshotHash%3D03fab093dece11bb%26showWorkspace%3D1%26t%3D1568149788%26isTakingScreenshot%3D136.png"
+                },
+                "venue_tbd": 0,
+                "rsvp_guest_display": false,
+                "rsvp_closed_state": "tminus0hours",
+                "rsvp_closed_at": "2015-06-10T13:07:35-0400",
+                "rsvp_closed_team_notified": false,
+                "waitlist_settings": [],
+                "page_privacy_type": "none",
+                "email_settings": {
+                    "cached_maps": {
+                        "wide": "https://d24wuq6o951i2g.cloudfront.net/img/events/id/457/457443348/assets/map-1568149787.550x220.png",
+                        "square": "https://d24wuq6o951i2g.cloudfront.net/img/events/id/457/457443348/assets/map-1568149788.200x200.png"
+                    },
+                    "google_map_url": "http://maps.google.com/?q=40.7226196,-73.98638900000003"
+                },
+                "event_host": "Quinn API"
+            },
+            "ticket_types": [],
+            "statistics": null,
+            "group_ids": [
+                ""
+            ],
+            "title": "Test Hub Event",
+            "description": "This is a test description",
+            "description_text": "",
+            "event_start": "2025-06-01T16:30:00-0400",
+            "event_end": "2025-06-02T03:30:00-0400",
+            "hide_event_time": true,
+            "venue_name": "The Library",
+            "address": "7 Avenue A",
+            "city": "New York",
+            "state": "NY",
+            "zip_code": "10009",
+            "country": "United States",
+            "created_at": "2019-09-10T17:09:44-0400",
+            "modified_at": "2019-09-10T17:09:47-0400",
+            "domain": "studyhallwithwolverine",
+            "paid_for_domain": false,
+            "deleted": false,
+            "custom_domain": "",
+            "hub": 0,
+            "mobility_account_id": "",
+            "mobility_wholesaler_id": "",
+            "fq_url": "https://studyhallwithwolverine.splashthat.com",
+            "mobile_check_in_url": "https://studyhallwithwolverine.splashthat.com/checkin/9dbf77697ea302db1c5b52b4f7ef14175d02135f47b4186994f22fe20692710f"
+        }
+    ]
+}

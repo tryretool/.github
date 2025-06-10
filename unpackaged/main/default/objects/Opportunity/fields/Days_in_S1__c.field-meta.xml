@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_in_S1__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ ISBLANK( BLANKVALUE(SQL_At_S1__c , Qualification_Meeting_Set_At__c)),
+ NULL,
+ IF(
+  ISBLANK(Sales_Qualified_At__c) &amp;&amp; IsClosed = TRUE,
+  CloseDate -  BLANKVALUE(SQL_At_S1__c , Qualification_Meeting_Set_At__c),
+  IF(
+   ISBLANK(Sales_Qualified_At__c) &amp;&amp; IsClosed = FALSE,
+   TODAY() -  BLANKVALUE(SQL_At_S1__c , Qualification_Meeting_Set_At__c),
+   Sales_Qualified_At__c -  BLANKVALUE(SQL_At_S1__c , Qualification_Meeting_Set_At__c)   
+  )
+ )
+)</formula>
+    <inlineHelpText>Number of days between the Sales Qualification Meeting Set At date and the Close Date (if the opportunity is closed) or the current date (if open). Applies only to non-renewals that have reached at least stage (1) Qualification.</inlineHelpText>
+    <label>Days in S1: Qualification</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

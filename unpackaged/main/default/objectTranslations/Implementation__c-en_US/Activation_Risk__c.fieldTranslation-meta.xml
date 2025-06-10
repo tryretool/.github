@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Activation Risk --></label>
+        <name>Activation_Risk__c</name>
+        <picklistValues>
+            <masterLabel>Builder capacity / skills</masterLabel>
+            <translation><!-- Builder capacity / skills --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External technical dependency</masterLabel>
+            <translation><!-- External technical dependency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial difficulties / RIF</masterLabel>
+            <translation><!-- Financial difficulties / RIF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low priority</masterLabel>
+            <translation><!-- Low priority --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monolithic use case</masterLabel>
+            <translation><!-- Monolithic use case --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No issue identified</masterLabel>
+            <translation><!-- No issue identified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poor stakeholder support</masterLabel>
+            <translation><!-- Poor stakeholder support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing</masterLabel>
+            <translation><!-- Pricing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product / performance / stability issues</masterLabel>
+            <translation><!-- Product / performance / stability issues --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

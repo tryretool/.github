@@ -1,0 +1,12 @@
+Hello Support Team,
+
+We have received a billing-related inquiry that requires further assistance from your team. Please find the details below:
+
+Case Information:
+- Contact Name: {!Case.Contact}
+- Account Name: {!Case.Account}
+- Priority: {!Case.Priority}
+- Billing Concern: {!Case.Description}
+
+Thank you,  
+Billing Department

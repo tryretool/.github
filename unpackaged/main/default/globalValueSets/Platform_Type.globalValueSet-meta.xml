@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Cloud</fullName>
+        <default>false</default>
+        <label>Cloud</label>
+    </customValue>
+    <customValue>
+        <fullName>Self-hosted</fullName>
+        <default>false</default>
+        <label>Self-hosted</label>
+    </customValue>
+    <customValue>
+        <fullName>Air-gapped</fullName>
+        <default>false</default>
+        <label>Air-gapped</label>
+    </customValue>
+    <customValue>
+        <fullName>Managed Cloud</fullName>
+        <default>false</default>
+        <label>Managed Cloud</label>
+    </customValue>
+    <masterLabel>Platform Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

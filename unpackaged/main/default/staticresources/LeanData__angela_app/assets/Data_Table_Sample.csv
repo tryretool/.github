@@ -1,0 +1,11 @@
+Industry,Country,EmployeeCount,IsActive,OwnerId,Data Table Reasoning
+Input,Input,Input,Input,Output,Output
+Text,Country,Number,True/False,Owner,Text
+*Tech,USA,< 500,TRUE,USA Round Robin,Tech - USA - Small
+*Tech,USA,500 - 1000,TRUE,USA Round Robin,Tech - USA - Med
+*Tech,USA,> 1000,TRUE,USA Round Robin,Tech - USA - Large
+*Tech,USA,*,TRUE,00536000001ifg8,Tech - nonUSA - All
+*Consumer*,APAC,< 1000,TRUE,APAC Round Robin,Con - APAC - Small
+*Consumer*,APAC,1000 - 5000,TRUE,APAC Round Robin,Con - APAC - Med
+*Consumer*,APAC,> 5000,TRUE,APAC Round Robin,Con - APAC - Large
+*Consumer*,*,*,TRUE,00536000001ifg8,Con - All

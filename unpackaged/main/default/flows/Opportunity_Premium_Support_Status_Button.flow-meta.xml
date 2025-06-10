@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <choices>
+        <name>Approved_for_Sale</name>
+        <choiceText>Approved for Sale</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Approved for Sale</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Customer_Declined_Premium</name>
+        <choiceText>Customer Declined Premium</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Customer Declined Premium</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Requested</name>
+        <choiceText>Requested</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Requested</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Waitlist</name>
+        <choiceText>Waitlist</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Waitlist</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Waitlist_no_action</name>
+        <choiceText>Waitlist, no action</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Waitlist, no action</stringValue>
+        </value>
+    </choices>
+    <description>Updates Premium Support Request Status field, regardless of user permissions.</description>
+    <environments>Default</environments>
+    <interviewLabel>Opportunity - Premium Support Status Button {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - Premium Support Status Button</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Update_Status</name>
+        <label>Update Status</label>
+        <locationX>176</locationX>
+        <locationY>242</locationY>
+        <connector>
+            <targetReference>Premium_Support_Request_Status_Confirmation_Screen</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Premium_Support_Request_Status__c</field>
+            <value>
+                <elementReference>Premium_Support_Request_Status</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Premium_Support_Request_Status_Confirmation_Screen</name>
+        <label>Premium Support Request Status Confirmation Screen</label>
+        <locationX>176</locationX>
+        <locationY>350</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Confirmation_Text</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Premium Support Request Status&lt;/strong&gt; has been updated for &lt;a href=&quot;https://retool.lightning.force.com/lightning/r/Opportunity/{!recordId.Id}/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;{!recordId.Name}&lt;/strong&gt;&lt;/a&gt;!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Update_Premium_Support_Status_Screen</name>
+        <label>Update Premium Support Status Screen</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Update_Status</targetReference>
+        </connector>
+        <fields>
+            <name>Premium_Support_Request_Status</name>
+            <choiceReferences>Requested</choiceReferences>
+            <choiceReferences>Waitlist</choiceReferences>
+            <choiceReferences>Waitlist_no_action</choiceReferences>
+            <choiceReferences>Customer_Declined_Premium</choiceReferences>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>recordId.Premium_Support_Request_Status__c</elementReference>
+            </defaultValue>
+            <fieldText>Premium Support Request Status</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Premium_Support_Status_Screen</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$Website</field>
+    </columns>
+    <columns>
+        <field>Account.adroll__RollWorksCompanyData__r$adroll__SalesInsights_SpikeLevel__c</field>
+    </columns>
+    <columns>
+        <field>Account.adroll__RollWorksCompanyData__r$adroll__SalesInsights_SpikeReason__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.adroll__RollWorksCompanyData__r$adroll__SalesInsights_MatchedContactsCount__c</field>
+    </columns>
+    <columns>
+        <field>Account.adroll__RollWorksCompanyData__r$Name</field>
+    </columns>
+    <description>Customizable report that surfaces each accounts that are spiking in engagement, and the actions that drove the Spiking Accounts</description>
+    <filter>
+        <criteriaItems>
+            <column>Account.adroll__RollWorksCompanyData__r$adroll__SalesInsights_SpikeLevel__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Owner</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>RollWorks Sales Insights Spiking Account</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>adroll__Accounts_with_RW_Aggregated_Data__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

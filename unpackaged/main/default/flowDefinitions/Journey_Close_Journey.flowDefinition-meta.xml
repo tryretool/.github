@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>15</activeVersionNumber>
+    <description>Adding Rejected Reason option when a Journey is in the stage &#39;Meeting Booked&#39;.</description>
+    <masterLabel>Journey - Update Stage</masterLabel>
+</FlowDefinition>

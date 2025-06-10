@@ -1,0 +1,32 @@
+<apex:page sidebar="false" standardStylesheets="false" controller="bombora_data.AdminController">
+    <style type="text/css">
+        html { height: 100%; }
+        body.slds-scope:not(html) { 
+            background-color: rgb(175,196,222);
+            padding: .75rem;
+            height: 100%;
+        }
+        .noSidebarCell.slds-scope {
+            padding:0;
+        }
+    </style>
+    <apex:slds />
+    <apex:includeLightning />
+
+    <div class="slds-scope--inner">
+        <div id="appContainer" />
+    </div>
+
+    <script>
+        $Lightning.use('{!namespace}:BomboraAdminApp', function () {
+            $Lightning.createComponent(
+                '{!namespace}:bomboraAdmin',
+                { isVisualforce: true },
+                'appContainer',
+                function (cmp, status, errorMessage) {
+                    // created
+                }
+            );
+        });
+    </script>
+</apex:page>

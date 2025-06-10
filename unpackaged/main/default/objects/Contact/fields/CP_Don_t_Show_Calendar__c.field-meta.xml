@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CP_Don_t_Show_Calendar__c</fullName>
+    <description>Prevent prospects from booking meetings from our Inbound Demo Request form if any of the following criteria is met:
+- Contact&#39;s related Account is less than 50 employees
+- Email Domain Type is equal to `Public` or `Education`
+- Contact&#39;s related Account is &#39;Disqualified&#39;
+
+External Systems Utilization: Chili Piper</description>
+    <formula>ISPICKVAL(Email_Domain_Type__c, &quot;Public&quot;) 
+|| ISPICKVAL(Email_Domain_Type__c, &quot;Education&quot;)
+|| Account_Status_Overall__c  = &quot;Disqualified&quot;
+|| IF( ISBLANK(Account.NumberOfEmployees) || Account.NumberOfEmployees = 0, 
+     IF(
+     ISPICKVAL(Employee_Picklist__c,&quot;1-25&quot;) 
+     || ISPICKVAL(Employee_Picklist__c,&quot;26-50&quot;) 
+     || ISBLANK(TEXT( Employee_Picklist__c))
+     , True, False),
+   IF(Account.NumberOfEmployees &lt;=50, True, False))</formula>
+    <inlineHelpText>Prevents non-icp prospects from booking meetings from our Inbound Demo Request form.</inlineHelpText>
+    <label>CP Don&#39;t Show Calendar</label>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

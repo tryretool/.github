@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- AWS Partner Success Manager --></label>
+        <name>clazar__aws_partner_success_manager__c</name>
+        <relationshipLabel><!-- Clazar AWS Co-Sell Opportunities (AWS Partner Success Manager) --></relationshipLabel>
+    </CustomFieldTranslation>

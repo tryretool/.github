@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Formula that checks true if the Contact’s associated Account is different from the one specified in the related Account. --></help>
+        <label><!-- Contact Account Mismatch --></label>
+        <name>Contact_Account_Mismatch__c</name>
+    </CustomFieldTranslation>

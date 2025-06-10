@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__NetSuite_Subscription_Prices</fullName>
+    <columns>NAME</columns>
+    <columns>breadwinner_ns__LineNumber__c</columns>
+    <columns>breadwinner_ns__Status__c</columns>
+    <columns>breadwinner_ns__ItemInternalId__c</columns>
+    <columns>breadwinner_ns__Quantity__c</columns>
+    <columns>breadwinner_ns__StartDate__c</columns>
+    <columns>breadwinner_ns__Frequency__c</columns>
+    <columns>breadwinner_ns__CatalogType__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>breadwinner_ns__NS_Object_Type__c</field>
+        <operation>equals</operation>
+        <value>SubscriptionPriceLine</value>
+    </filters>
+    <label>NetSuite Subscription Prices</label>
+</ListView>

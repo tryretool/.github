@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- This is the number used to sort this record with sibling records. --></help>
+        <label><!-- Display Order --></label>
+        <name>adroll__DisplayOrder__c</name>
+    </CustomFieldTranslation>

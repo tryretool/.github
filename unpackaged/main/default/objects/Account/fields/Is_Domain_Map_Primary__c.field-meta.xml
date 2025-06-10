@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Domain_Map_Primary__c</fullName>
+    <description>Returns TRUE if the Account ID matches the `Matched Account` of the associated `Website Domain Map` record.</description>
+    <formula>Id =  Website_Domain_Map__r.Matched_Account__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Returns TRUE if the Account ID matches the `Matched Account` of the associated `Website Domain Map` record.</inlineHelpText>
+    <label>Is Domain Map Primary?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

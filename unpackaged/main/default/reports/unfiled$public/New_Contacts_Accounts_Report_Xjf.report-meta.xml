@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_37966786</developerName>
+        <masterLabel>Sales team</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>OWNER_ROLE_DISPLAY</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>EMEA Outbound SDR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Enterprise Outbound SDR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Midmarket Outbound SDR</sourceValue>
+            </sourceValues>
+            <value>Outbound SDRs</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Revenue Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Retool Team</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Professional Services</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Head of Revenue Operations</sourceValue>
+            </sourceValues>
+            <value>Integration users</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Inbound SDR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Inbound SDR Lead</sourceValue>
+            </sourceValues>
+            <value>Inbound SDRs</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Growth Sales Account Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Midmarket Sales Account Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales Account Management Lead</sourceValue>
+            </sourceValues>
+            <value>Account Management</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Enterprise &amp; Strategic Sales Lead (US East)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Enterprise Account Executive (US East)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Enterprise Account Executive (US Remote)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Enterprise Account Executive (US West)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Senior Enterprise Account Executive (US East)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Senior Enterprise Account Executive (US Remote)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Enterprise Sales Lead (US Remote)</sourceValue>
+            </sourceValues>
+            <value>Enterprise Account Executive</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_37966786</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>Contact.ChampifyIo__Champify_Engaged__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>Contact.ChampifyIo__Champify_Persona__c</field>
+    </columns>
+    <columns>
+        <field>Contact.ChampifyIo__Past_Account__c</field>
+    </columns>
+    <columns>
+        <field>Contact.ChampifyIo__GetIntroFrom__c</field>
+    </columns>
+    <columns>
+        <field>Contact.ChampifyIo__LinkedIn_URL__c</field>
+    </columns>
+    <columns>
+        <field>PHONE1</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>Contact.ChampifyIo__Past_Contact__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Contact.ChampifyIo__Is_a_Champify__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_37966786</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contact.ChampifyIo__Champify_Engaged__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CONTACT_OWNER</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Champify adoption by team</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

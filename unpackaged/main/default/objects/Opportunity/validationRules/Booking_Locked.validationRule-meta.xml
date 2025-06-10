@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_Locked</fullName>
+    <active>true</active>
+    <errorConditionFormula>(
+ ISPICKVAL(Booking_Status__c,&quot;Locked&quot;)
+)
+&amp;&amp;
+NOT(ISCHANGED(Permission_Check__c)) &amp;&amp;
+(
+ ISCHANGED(Amount) ||
+ ISCHANGED(CloseDate) ||
+ ISCHANGED(Booking_Channel_ARR__c) ||
+ ISCHANGED(Booking_Channel_MRR__c) ||
+ ISCHANGED(Booking_Channel_Annualized_Revenue__c) ||
+ ISCHANGED(Booking_Channel_Demand_Gen__c) ||
+
+ ISCHANGED(Booking_Date__c) ||
+ ISCHANGED(Booking_Date_Method__c) ||
+ ISCHANGED(Booking_Date_Exception_Reason__c) ||
+ ISCHANGED(Business_Unit__c) || 
+ ISCHANGED(Booking_Type__c) || 
+ ISCHANGED(IsClosed) || 
+ ISCHANGED(ContractId) || 
+ ISCHANGED(Contract_Term__c) || 
+ ISCHANGED(OwnerId) || 
+ ISCHANGED(RecordTypeId) || 
+ ISCHANGED(Segment__c) ||
+ ISCHANGED(Parent_Opportunity__c) ||
+ ISCHANGED(Renewal_Baseline_ARR__c) ||
+ ISCHANGED(Renewal_Baseline_MRR__c) || 
+ ISCHANGED(Originating_Opportunity__c) || 
+ ISCHANGED(Owner_Role__c) || 
+ ISCHANGED(Owner_Department__c) || 
+ ISCHANGED(Owner_Team__c) || 
+ ISCHANGED(Owner_Subteam__c) || 
+ ISCHANGED(Owner_Level__c) || 
+ ISCHANGED(Owner_Territory__c) ||  
+ ISCHANGED(Owner_Region__c) ||  
+ ISCHANGED(Owner_Subregion__c) ||  
+ ISCHANGED(Rep_Attainment_Ignore__c) || 
+ ISCHANGED(Sales_Engineer__c) || 
+ ISCHANGED(Sales_Engineer_Role__c) ||
+ ISCHANGED(Qualification_Meeting_Set_At__c) || 
+ ISCHANGED(StageName) || 
+ ISCHANGED(Subtype__c) || 
+ ISCHANGED(Sales_Manager__c) || 
+ ISCHANGED(Sales_Manager_Role__c) || 
+ ISCHANGED(Customer_Success_Tier__c) || 
+ ISCHANGED(Technical_Account_Manager__c) || 
+ ISCHANGED(Technical_Account_Manager_Role__c) || 
+ ISCHANGED(Technical_Account_Manager_Department__c) || 
+ ISCHANGED(Technical_Account_Manager_Team__c) || 
+ ISCHANGED(Technical_Account_Manager_Subteam__c) || 
+ ISCHANGED(Technical_Account_Manager_Level__c) || 
+ ISCHANGED(Technical_Account_Manager_Territory__c) || 
+ ISCHANGED(Contract_End_Date__c) || 
+ ISCHANGED(Term_Start_Date__c) || 
+ ISCHANGED(Term_Number__c) || 
+ ISCHANGED(Type) || 
+ ISCHANGED(Total_ARR__c) ||
+ ISCHANGED(Total_MRR__c) || 
+ ISCHANGED(Total_NRR__c) || 
+ ISCHANGED(IsWon) ||
+ ISCHANGED(Seats_Sold__c) ||
+ ISCHANGED(Total_Users__c) ||
+ ISCHANGED(Geo_Country__c) ||
+ ISCHANGED(Geo_Region__c) ||
+ ISCHANGED(Geo_Subregion__c) ||
+ ISCHANGED(Geo_Intermediate_Region__c) ||
+ ISCHANGED(Geo_Territory__c) ||
+
+ ISCHANGED(Sourced_By__c) || 
+ ISCHANGED(Sourced_By_Role__c) || 
+ ISCHANGED(Sourced_By_Department__c) || 
+ ISCHANGED(Sourced_By_Team__c) || 
+ ISCHANGED(Sourced_By_Subteam__c) || 
+ ISCHANGED(Sourced_By_Level__c) || 
+ ISCHANGED(Sourced_By_Territory__c) || 
+ ISCHANGED(Sourced_By_Category__c) || 
+ ISCHANGED(Sales_Qualified_At__c) || 
+ ISCHANGED(Qualified_Pipeline_AR_Date__c) ||
+  ISCHANGED(Qualified_Pipeline_AR__c) ||
+
+ ISCHANGED(Forecast_Total_NRR__c) ||
+ ISCHANGED(Forecast_Total_AR__c)
+)</errorConditionFormula>
+    <errorMessage>This booking has been locked and cannot be edited.</errorMessage>
+</ValidationRule>

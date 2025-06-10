@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The reason why this evaluation is proceeding without a written plan (leave blank if a link to a written plan is provided) --></help>
+        <label><!-- Evaluation Plan Missing Details --></label>
+        <name>Evaluation_Plan_Missing_Details__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Journey__c$Name</field>
+    </columns>
+    <columns>
+        <field>Journey__c.Activities__r$Subject</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Journey__c$Journey_Subtype__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>demo,product</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c$Journey_Category__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>product</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Journey__c$Journey_Subtype__c</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <name>Other journey + email activites</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Activities_Under_Journeys__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Journey__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-01-01</startDate>
+    </timeFrameFilter>
+</Report>

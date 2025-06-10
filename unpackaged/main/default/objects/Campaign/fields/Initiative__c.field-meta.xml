@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Initiative__c</fullName>
+    <description>For reporting segmentation
+
+iI System Use: Flow: &#39;Campaign - Create Campaign Button
+
+External Systems Utilization: None</description>
+    <inlineHelpText>For reporting segmentation</inlineHelpText>
+    <label>Initiative</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>AI</fullName>
+                <default>false</default>
+                <label>AI</label>
+            </value>
+            <value>
+                <fullName>AI - New Logos</fullName>
+                <default>false</default>
+                <label>AI - New Logos</label>
+            </value>
+            <value>
+                <fullName>AWS</fullName>
+                <default>false</default>
+                <label>AWS</label>
+            </value>
+            <value>
+                <fullName>Manufacturing</fullName>
+                <default>false</default>
+                <label>Manufacturing</label>
+            </value>
+            <value>
+                <fullName>TAP</fullName>
+                <default>false</default>
+                <label>TAP</label>
+            </value>
+            <value>
+                <fullName>TAP Base1</fullName>
+                <default>false</default>
+                <label>TAP Base1</label>
+            </value>
+            <value>
+                <fullName>Vertical</fullName>
+                <default>false</default>
+                <label>Vertical</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

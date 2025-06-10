@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sendoso_List_of_Items_in_Bundle__c</fullName>
+    <description>Sendoso list of Items in bundle.</description>
+    <inlineHelpText>Sendoso list of Items in bundle.</inlineHelpText>
+    <label>Sendoso: List of Items in Bundle</label>
+    <length>32768</length>
+    <securityClassification>Caution</securityClassification>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

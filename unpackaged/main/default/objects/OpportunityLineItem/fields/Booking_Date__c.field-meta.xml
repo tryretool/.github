@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_Date__c</fullName>
+    <formula>IF(
+  Opportunity.Booking_Date__c &gt; ServiceDate,
+  Opportunity.Booking_Date__c,
+  IF(
+    ServiceDate = Opportunity.Term_Start_Date__c,
+    Opportunity.Booking_Date__c,
+    ServiceDate
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Booking Date</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Date</type>
+</CustomField>

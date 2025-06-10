@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Revenue_Ops</fullName>
+    <booleanFilter>(1 OR 2) AND 3</booleanFilter>
+    <columns>FULL_NAME</columns>
+    <columns>CORE.USER_ROLE.NAME</columns>
+    <columns>Manager_Full_Name__c</columns>
+    <columns>Team__c</columns>
+    <columns>CORE.PROFILE.NAME</columns>
+    <columns>CORE.USERS.EMAIL</columns>
+    <columns>User_ID_case_safe__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Team__c</field>
+        <operation>equals</operation>
+        <value>Revenue Operations</value>
+    </filters>
+    <filters>
+        <field>Team__c</field>
+        <operation>equals</operation>
+        <value>Sales Enablement</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.ACTIVE</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Revenue Ops &amp; Enablement</label>
+    <language>en_US</language>
+</ListView>

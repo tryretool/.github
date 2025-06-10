@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>whistic_profile__Lead_Id__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Lead Id</label>
+    <referenceTo>Lead</referenceTo>
+    <relationshipLabel>Profile Share Contacts</relationshipLabel>
+    <relationshipName>Profile_Share_Contacts</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

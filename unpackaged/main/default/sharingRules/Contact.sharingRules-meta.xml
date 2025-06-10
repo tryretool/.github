@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Inbound_SDRs_can_edit_contacts_in_account_pool</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Inbound SDRs can edit contacts in account pool</label>
+        <sharedTo>
+            <role>Inbound_SDR</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>OwnerId</field>
+            <operation>equals</operation>
+            <value>0055A00000BExg9QAD</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Users_can_edit_contact_owners</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Sales Reps (AE/BDR/ASE) can edit contact owners of eligible contacts:
+- Contact status != &#39;Trash&#39;
+- Outreach_Actively_Being_Sequenced__c = FALSE
+- ChampifyIo__No_longer_at_company__c = FALSE</description>
+        <label>Users can edit contact owners</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+        <criteriaItems>
+            <field>Contact_Status__c</field>
+            <operation>notEqual</operation>
+            <value>8</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>ChampifyIo__No_longer_at_company__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Outreach_Actively_Being_Sequenced__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

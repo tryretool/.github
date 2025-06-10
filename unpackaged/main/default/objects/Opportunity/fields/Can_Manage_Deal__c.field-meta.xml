@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Can_Manage_Deal__c</fullName>
+    <formula>Opportunity_I_am_Owner__c ||
+Opportunity_I_Am_Owner_Manager__c ||
+(Sales_Qualified_By__c = $User.Id &amp;&amp; ISPICKVAL(Type,&quot;Unqualified&quot;)) ||
+$User.Manage_Bookings__c || 
+(
+  ISPICKVAL($User.Department__c,&quot;Sales&quot;) &amp;&amp;
+  (
+    ISPICKVAL($User.Team__c,&quot;Leadership&quot;) || 
+    ISPICKVAL($User.Team__c,&quot;Account Executives&quot;) || 
+    ISPICKVAL($User.Team__c,&quot;Sales Account Management&quot;)
+  ) &amp;&amp;
+  (
+    ISPICKVAL($User.Level__c,&quot;Head&quot;) || ISPICKVAL($User.Level__c,&quot;Lead&quot;)
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Can Manage Deal?</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

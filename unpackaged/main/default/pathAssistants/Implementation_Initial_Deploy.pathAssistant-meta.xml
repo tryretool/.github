@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Implementation__c</entityName>
+    <fieldName>Stage__c</fieldName>
+    <masterLabel>Implementation - Initial Deploy</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;&lt;b&gt;New:&lt;/b&gt; The customer has completed the handoff call with the DE/AE. and they have what they need to start building initial use cases in Retool.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To advance to &lt;b&gt;Build&lt;/b&gt; stage:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Log a Call &lt;/b&gt;with type AE Handoff Notes containing your notes from the handoff call&lt;/li&gt;&lt;li&gt;Ensure all fields in the &lt;b&gt;Implementation Details&lt;/b&gt; section are complete&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;When you have completed these steps, click &lt;b&gt;Mark Stage as Complete&lt;/b&gt;. &lt;/p&gt;</info>
+        <picklistValueName>New</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Success_Intro_Date__c</fieldNames>
+        <info>&lt;p&gt;&lt;b&gt;Unassigned: &lt;/b&gt;The customer just signed the deal with Retool and has not been introduced to their Deployed Engineer yet.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To advance to &lt;b&gt;New&lt;/b&gt; stage and handoff this implementation to a Deployed Engineer, complete the following:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Ensure a&lt;b&gt; Success Owner &lt;/b&gt;and &lt;b&gt;Customer Tier &lt;/b&gt;are both assigned on the account record&lt;/li&gt;&lt;li&gt;Schedule a handoff call with the Success Owner and note the date in &lt;b&gt;Success Intro Date&lt;/b&gt;&lt;/li&gt;&lt;li&gt;Complete as much information as you can in the &lt;b&gt;Implementation Details&lt;/b&gt; section&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;When you have completed these steps, click &lt;b&gt;Mark Stage as Complete&lt;/b&gt;. The implementation will automatically be transferred into the Success Owner&amp;#39;s name.&lt;/p&gt;</info>
+        <picklistValueName>Unassigned</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Lifecycle</recordTypeName>
+</PathAssistant>

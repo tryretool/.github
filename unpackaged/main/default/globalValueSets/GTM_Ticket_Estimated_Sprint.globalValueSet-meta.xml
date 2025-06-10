@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Sprint 36: 2025-05-27 / 2025-06-09</fullName>
+        <default>false</default>
+        <label>Sprint 36: 2025-05-27 / 2025-06-09</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 37: 2025-06-10 / 2025-06-23</fullName>
+        <default>false</default>
+        <label>Sprint 37: 2025-06-10 / 2025-06-23</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 38: 2025-06-24 / 2025-07-07</fullName>
+        <default>false</default>
+        <label>Sprint 38: 2025-06-24 / 2025-07-07</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 4: 2024-02-27 / 2024-03-11</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 4: 2024-02-27 / 2024-03-11</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 5: 2024-03-12 / 2024-03-25</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 5: 2024-03-12 / 2024-03-25</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 6: 2024-03-26 / 2024-04-08</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 6: 2024-03-26 / 2024-04-08</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 7: 2024-04-09 / 2024-04-22</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 7: 2024-04-09 / 2024-04-22</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 8: 2024-04-23 / 2024-05-06</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 8: 2024-04-23 / 2024-05-06</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 9: 2024-05-07 / 2024-05-20</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 9: 2024-05-07 / 2024-05-20</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 10: 2024-05-21 / 2024-06-03</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 10: 2024-05-21 / 2024-06-03</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 11: 2024-06-04 / 2024-06-17</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 11: 2024-06-04 / 2024-06-17</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 12: 2024-06-18 / 2024-07-01</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 12: 2024-06-18 / 2024-07-01</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 13: 2024-07-02 / 2024-07-15</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 13: 2024-07-02 / 2024-07-15</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 14: 2024-07-16 / 2024-07-29</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 14: 2024-07-16 / 2024-07-29</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 15: 2024-07-30 / 2024-08-12</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 15: 2024-07-30 / 2024-08-12</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 16: 2024-08-13 / 2024-08-26</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 16: 2024-08-13 / 2024-08-26</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 17: 2024-08-27 / 2024-09-09</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 17: 2024-08-27 / 2024-09-09</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 18: 2024-09-10 / 2024-09-23</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 18: 2024-09-10 / 2024-09-23</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 19: 2024-09-24 / 2024-10-07</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 19: 2024-09-24 / 2024-10-07</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 1: 2024-01-09 / 2024-01-22</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 1: 2024-01-09 / 2024-01-22</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 21: 2024-10-22 / 2024-11-04</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 21: 2024-10-22 / 2024-11-04</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 22: 2024-11-05 / 2024-11-18</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 22: 2024-11-05 / 2024-11-18</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 23: 2024-11-19 / 2024-12-02</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 23: 2024-11-19 / 2024-12-02</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 24: 2024-12-03 / 2024-12-16</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 24: 2024-12-03 / 2024-12-16</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 25: 2024-12-17 / 2025-01-06</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 25: 2024-12-17 / 2025-01-06</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 26: 2025-01-07 / 2025-01-20</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 26: 2025-01-07 / 2025-01-20</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 27: 2025-01-21 / 2025-02-03</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 27: 2025-01-21 / 2025-02-03</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 28: 2025-02-04 / 2025-02-17</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 28: 2025-02-04 / 2025-02-17</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 29: 2025-02-18 / 2025-03-03</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 29: 2025-02-18 / 2025-03-03</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 30: 2025-03-04 / 2025-03-17</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 30: 2025-03-04 / 2025-03-17</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 31: 2025-03-18 / 2025-03-31</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 31: 2025-03-18 / 2025-03-31</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 32: 2025-04-01 / 2025-04-14</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 32: 2025-04-01 / 2025-04-14</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 33: 2025-04-15 / 2025-04-28</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 33: 2025-04-15 / 2025-04-28</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 34: 2025-04-29 / 2025-05-12</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 34: 2025-04-29 / 2025-05-12</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 35: 2025-05-13 / 2025-05-26</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 35: 2025-05-13 / 2025-05-26</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 20: 2024-10-08 / 2024-10-21</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 20: 2024-10-08 / 2024-10-21</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 2: 2024-01-30 / 2024-02-11</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 2: 2024-01-30 / 2024-02-11</label>
+    </customValue>
+    <customValue>
+        <fullName>Sprint 3: 2024-02-13 / 2024-02-26</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sprint 3: 2024-02-13 / 2024-02-26</label>
+    </customValue>
+    <description>GTM Ticket Estimated Sprints. Generally 2 weeks, starting Tuesday and ending Monday. Sprint schedules may vary due to Holidays and business events (i.e. SKO)</description>
+    <masterLabel>GTM Ticket: Estimated Sprint</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

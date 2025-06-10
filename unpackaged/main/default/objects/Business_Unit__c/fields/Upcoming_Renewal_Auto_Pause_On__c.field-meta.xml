@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Upcoming_Renewal_Auto_Pause_On__c</fullName>
+    <businessStatus>DeprecateCandidate</businessStatus>
+    <formula>IF(
+ ISBLANK(Open_Renewal__c) || Subscription_Typ__c = &#39;Enterprise Monthly&#39; || Subscription_Typ__c = &#39;Self Service&#39;,
+ NULL,
+ IF(
+   (Open_Renewal__r.Renewal_Target_Close_Date__c - 30) &lt; (Most_Recent_Base_Opportunity__r.Contract_End_Date__c - 60),
+   (Open_Renewal__r.Renewal_Target_Close_Date__c - 30),
+   (Most_Recent_Base_Opportunity__r.Contract_End_Date__c - 60)
+ )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>zOLD Upcoming Renewal Auto Pause On</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

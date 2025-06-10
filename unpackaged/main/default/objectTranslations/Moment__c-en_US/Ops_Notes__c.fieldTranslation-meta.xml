@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Stores notes about the Journey creation. For example: &quot;OtherJourney&quot;, &quot;JourneyError&quot;, &quot;rcid not found&quot;. --></help>
+        <label><!-- Ops Notes --></label>
+        <name>Ops_Notes__c</name>
+    </CustomFieldTranslation>

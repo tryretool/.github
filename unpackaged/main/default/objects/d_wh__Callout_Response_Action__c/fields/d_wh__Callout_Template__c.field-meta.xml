@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>d_wh__Callout_Template__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Callout Template</label>
+    <referenceTo>d_wh__Callout_Template__c</referenceTo>
+    <relationshipLabel>Callout Response Actions</relationshipLabel>
+    <relationshipName>Callout_Response_Actions</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

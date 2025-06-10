@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>BU - # Enterprise Cloud Orgs</label>
+    <protected>false</protected>
+    <values>
+        <field>dlrs__Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>dlrs__AggregateAllRows__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>dlrs__AggregateOperation__c</field>
+        <value xsi:type="xsd:string">Count</value>
+    </values>
+    <values>
+        <field>dlrs__AggregateResultField__c</field>
+        <value xsi:type="xsd:string">Num_Enterprise_Cloud_Retool_Orgs__c</value>
+    </values>
+    <values>
+        <field>dlrs__BypassPermissionApiName__c</field>
+        <value xsi:nil="true" />
+    </values>
+    <values>
+        <field>dlrs__CalculationMode__c</field>
+        <value xsi:type="xsd:string">Realtime</value>
+    </values>
+    <values>
+        <field>dlrs__CalculationSharingMode__c</field>
+        <value xsi:type="xsd:string">System</value>
+    </values>
+    <values>
+        <field>dlrs__ChildObject__c</field>
+        <value xsi:type="xsd:string">Retool_Org__c</value>
+    </values>
+    <values>
+        <field>dlrs__ConcatenateDelimiter__c</field>
+        <value xsi:nil="true" />
+    </values>
+    <values>
+        <field>dlrs__Description__c</field>
+        <value xsi:nil="true" />
+    </values>
+    <values>
+        <field>dlrs__FieldToAggregate__c</field>
+        <value xsi:type="xsd:string">Id</value>
+    </values>
+    <values>
+        <field>dlrs__FieldToOrderBy__c</field>
+        <value xsi:nil="true" />
+    </values>
+    <values>
+        <field>dlrs__ParentObject__c</field>
+        <value xsi:type="xsd:string">Business_Unit__c</value>
+    </values>
+    <values>
+        <field>dlrs__RelationshipCriteriaFields__c</field>
+        <value xsi:type="xsd:string">Hosting_Style__c
+Space_Type__c
+Is_Archived__c
+Plan_Family__c</value>
+    </values>
+    <values>
+        <field>dlrs__RelationshipCriteria__c</field>
+        <value xsi:type="xsd:string">Hosting_Style__c = &#39;Cloud&#39; AND Space_Type__c != &#39;child&#39; AND Is_Archived__c = FALSE AND Plan_Family__c = &#39;Enterprise&#39;</value>
+    </values>
+    <values>
+        <field>dlrs__RelationshipField__c</field>
+        <value xsi:type="xsd:string">Business_Unit__c</value>
+    </values>
+    <values>
+        <field>dlrs__RowLimit__c</field>
+        <value xsi:nil="true" />
+    </values>
+    <values>
+        <field>dlrs__TestCode2__c</field>
+        <value xsi:nil="true" />
+    </values>
+    <values>
+        <field>dlrs__TestCodeParent__c</field>
+        <value xsi:nil="true" />
+    </values>
+    <values>
+        <field>dlrs__TestCodeSeeAllData__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>dlrs__TestCode__c</field>
+        <value xsi:nil="true" />
+    </values>
+</CustomMetadata>

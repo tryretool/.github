@@ -1,0 +1,28 @@
+<apex:page sidebar="false" controller="driveconnect.constants" showHeader="false">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <apex:includeLightning />
+        <apex:slds />
+        <style>
+            .dc-setup-complete-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 40em;
+                height: 20em;
+                margin-left: -20em;
+                margin-top: -10em;
+            }
+        </style>
+    <div class="dc-setup-complete-content">
+        <h2 class="slds-text-heading_medium slds-text-align_center">You're almost ready to start working with Drive Connect. Let's finish setting things up.</h2>
+        <div class="slds-align_absolute-center">
+        <button onclick="navigateToSetup()" class="slds-text-align_center slds-align_absolute-center slds-button slds-button_brand slds-p-horizontal_large slds-p-vertical_small slds-text-heading_small slds-m-vertical_large" type="button" style="display: inline-flex;">Complete Setup</button>
+    </div>
+    </div>
+    </html>
+    <script type="text/javascript">
+        function navigateToSetup(event) {
+            window.parent.location.href = '/lightning/app/{!JSENCODE(NAMESPACE)}__DriveConnect/n/{!JSENCODE(NAMESPACE)}__Setup'
+        }
+    </script>
+</apex:page>

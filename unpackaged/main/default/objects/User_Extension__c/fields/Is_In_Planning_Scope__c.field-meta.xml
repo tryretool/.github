@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_In_Planning_Scope__c</fullName>
+    <formula>Department_Current__c = &quot;Sales&quot; ||
+Department_Current__c = &quot;Success&quot; || 
+TEXT(User__r.Department__c) = &quot;Sales&quot; ||
+TEXT(User__r.Department__c) = &quot;Success&quot; ||
+NOT(ISPICKVAL(TBH_Index__c,&quot;&quot;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is In Planning Scope?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

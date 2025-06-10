@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Closed__c</fullName>
+    <formula>IF(
+CASE(  Status__c ,
+&quot;Completed&quot;, 1,
+&quot;Rejected&quot;, 1,
+&quot;Canceled&quot;, 1,
+0) =1, TRUE, FALSE)</formula>
+    <label>Is Closed?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

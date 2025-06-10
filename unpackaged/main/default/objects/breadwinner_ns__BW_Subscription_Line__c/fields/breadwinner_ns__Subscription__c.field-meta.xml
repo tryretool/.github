@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__Subscription__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <description>Subscription lookup for the subscription line and subscription plan lookup for the subscription plan line</description>
+    <label>Subscription / Subscription Plan</label>
+    <referenceTo>breadwinner_ns__BW_Subscription__c</referenceTo>
+    <relationshipLabel>NetSuite Subscription Lines</relationshipLabel>
+    <relationshipName>BWSubscriptionLines</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

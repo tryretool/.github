@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Units_Year_2__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  Is_Year_2__c,
+  Total_Units_Ending__c,
+  0
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Units (Year 2)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

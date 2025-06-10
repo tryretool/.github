@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Describes the iteration of the score, for example v1, v2, v3. The version is stamped along with the score to the Moment. --></help>
+        <label><!-- Version --></label>
+        <name>Version__c</name>
+    </CustomFieldTranslation>

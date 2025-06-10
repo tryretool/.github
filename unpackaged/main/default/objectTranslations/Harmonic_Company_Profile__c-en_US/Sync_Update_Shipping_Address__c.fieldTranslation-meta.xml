@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Checked TRUE if `Do Not Update Shipping Address` is FALSE and the Account Shipping City does not equal the Harmonic Company City. --></help>
+        <label><!-- Sync: Update Shipping Address? --></label>
+        <name>Sync_Update_Shipping_Address__c</name>
+    </CustomFieldTranslation>

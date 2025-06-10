@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Sales Qualified At date from the related Opportunity. --></help>
+        <label><!-- SQO Date --></label>
+        <name>SQO_Date__c</name>
+    </CustomFieldTranslation>

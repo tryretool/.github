@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invalid_Stage_Change</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISCHANGED(StageName) &amp;&amp;
+NOT(ISCHANGED(Permission_Check__c)) &amp;&amp;
+NOT(ISNEW())</errorConditionFormula>
+    <errorDisplayField>StageName</errorDisplayField>
+    <errorMessage>Cannot change opportunity stage. Please use the Next Stage button in the Salesforce UI to advance this opportunity&#39;s stage.</errorMessage>
+</ValidationRule>

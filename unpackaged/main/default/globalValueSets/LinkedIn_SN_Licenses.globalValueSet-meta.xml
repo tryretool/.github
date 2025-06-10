@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>active</fullName>
+        <default>false</default>
+        <label>active</label>
+    </customValue>
+    <customValue>
+        <fullName>inactive</fullName>
+        <default>false</default>
+        <label>inactive</label>
+    </customValue>
+    <masterLabel>LinkedIn SN: Licenses</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

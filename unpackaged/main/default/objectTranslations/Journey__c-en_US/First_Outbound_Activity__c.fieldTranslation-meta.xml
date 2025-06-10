@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Timestamp of when the first Outbound Activity (Email, Call, Social touch) occurred. --></help>
+        <label><!-- First Outbound Activity --></label>
+        <name>First_Outbound_Activity__c</name>
+    </CustomFieldTranslation>

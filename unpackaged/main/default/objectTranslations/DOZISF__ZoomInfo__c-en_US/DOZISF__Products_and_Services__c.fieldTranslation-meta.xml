@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- This is a lookup to a third party database we work with to find what other products or services that company many have, not listed in ZoomInfo. --></help>
+        <label><!-- Products and Services --></label>
+        <name>DOZISF__Products_and_Services__c</name>
+    </CustomFieldTranslation>

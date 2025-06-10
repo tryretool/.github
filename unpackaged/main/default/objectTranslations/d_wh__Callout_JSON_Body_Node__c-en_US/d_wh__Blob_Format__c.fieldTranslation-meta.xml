@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Blob Format --></label>
+        <name>d_wh__Blob_Format__c</name>
+        <picklistValues>
+            <masterLabel>Base64</masterLabel>
+            <translation><!-- Base64 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hex</masterLabel>
+            <translation><!-- Hex --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

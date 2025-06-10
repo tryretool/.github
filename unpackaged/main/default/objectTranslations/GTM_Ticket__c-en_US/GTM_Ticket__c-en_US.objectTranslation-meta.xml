@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>GTM Ticket</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>GTM Tickets</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Ops Ticket Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Get Help --></label>
+        <name>Get_Help</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Unwatch --></label>
+        <name>Unwatch</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Watch --></label>
+        <name>Watch</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Collections --></label>
+        <name>Collections</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Record type used for Parent Tickets. --></description>
+        <label><!-- Epic --></label>
+        <name>Epic</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Project --></label>
+        <name>Project</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Task --></label>
+        <name>Task</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Requestor is required --></errorMessage>
+        <name>Requestor_required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Descope reason details required for descoped ticket --></errorMessage>
+        <name>descope_reason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please set a descope reason to descope this ticket --></errorMessage>
+        <name>descope_status_without_reason</name>
+    </validationRules>
+</CustomObjectTranslation>

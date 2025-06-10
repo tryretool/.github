@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Formula that displays the Lead source from the Contact or the Lead. --></help>
+        <label><!-- Lead Source (Formula) --></label>
+        <name>Lead_Source_Formula__c</name>
+    </CustomFieldTranslation>

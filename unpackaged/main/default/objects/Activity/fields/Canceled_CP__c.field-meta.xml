@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canceled_CP__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>True if the meeting was cancelled by the prospect (via Chili Piper)</inlineHelpText>
+    <label>Canceled?</label>
+    <securityClassification>Safe</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

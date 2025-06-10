@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>POC_description__c</fullName>
+    <description>If a POC is required, describe the POC scope, goals, timeline, and any relevant technical details related to deployment, data sources, authentication, etc.</description>
+    <inlineHelpText>If a POC is required, describe the POC scope, goals, timeline, and any relevant technical details related to deployment, data sources, authentication, etc.</inlineHelpText>
+    <label>POC description</label>
+    <length>5000</length>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Html</type>
+    <visibleLines>15</visibleLines>
+</CustomField>

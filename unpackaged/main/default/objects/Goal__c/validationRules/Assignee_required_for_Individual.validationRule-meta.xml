@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assignee_required_for_Individual</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK(Assignee__c) &amp;&amp; ISPICKVAL(Type__c, &quot;Individual&quot;)</errorConditionFormula>
+    <errorDisplayField>Assignee__c</errorDisplayField>
+    <errorMessage>Assignee is required for an Individual goal</errorMessage>
+</ValidationRule>

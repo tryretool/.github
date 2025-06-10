@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Calculation --></label>
+        <name>Calculation__c</name>
+        <picklistValues>
+            <masterLabel>Count All</masterLabel>
+            <translation><!-- Count All --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Count First</masterLabel>
+            <translation><!-- Count First --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Count Last</masterLabel>
+            <translation><!-- Count Last --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Max</masterLabel>
+            <translation><!-- Max --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sum</masterLabel>
+            <translation><!-- Sum --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

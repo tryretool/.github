@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Centro__Read_Only_While_Active</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(NOT(ISNEW()),
+    NOT(ISCHANGED(Centro__Status__c)), NOT(ISCHANGED(Centro__External_ID__c)),  
+    TEXT(Centro__Status__c) = &quot;Active&quot; 
+)</errorConditionFormula>
+    <errorDisplayField>Centro__Status__c</errorDisplayField>
+    <errorMessage>Please make embedding inactive before making any changes.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Meeting</fullName>
+        <default>true</default>
+        <label>Meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>On-site / Hackathon / Build Session</fullName>
+        <default>false</default>
+        <label>On-site / Hackathon / Build Session</label>
+    </standardValue>
+    <standardValue>
+        <fullName>EBR</fullName>
+        <default>false</default>
+        <label>EBR</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hackathon</fullName>
+        <default>false</default>
+        <label>Hackathon</label>
+    </standardValue>
+</StandardValueSet>

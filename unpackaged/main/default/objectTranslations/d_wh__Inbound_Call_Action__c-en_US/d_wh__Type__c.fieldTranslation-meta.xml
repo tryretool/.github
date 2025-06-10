@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Type --></label>
+        <name>d_wh__Type__c</name>
+        <picklistValues>
+            <masterLabel>Create New Record</masterLabel>
+            <translation><!-- Create New Record --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Run Apex</masterLabel>
+            <translation><!-- Run Apex --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Run Autolaunched Flow</masterLabel>
+            <translation><!-- Run Autolaunched Flow --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update Main Record</masterLabel>
+            <translation><!-- Update Main Record --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Update Related Record</masterLabel>
+            <translation><!-- Update Related Record --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upsert List of Records</masterLabel>
+            <translation><!-- Upsert List of Records --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Upsert Single Record</masterLabel>
+            <translation><!-- Upsert Single Record --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

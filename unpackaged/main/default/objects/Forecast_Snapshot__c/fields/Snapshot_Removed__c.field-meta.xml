@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Snapshot_Removed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checked true if a rep edits their forecast in the given period.</description>
+    <inlineHelpText>Checked true if a rep edits their forecast in the given period.</inlineHelpText>
+    <label>Snapshot Removed?</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

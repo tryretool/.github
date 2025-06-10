@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Technical Evaluation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Technical Evaluations</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Technical Evaluation Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Add Technical Asset --></label>
+        <name>Add_Technical_Asset</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Approve &amp; Assign --></label>
+        <name>Approve_and_Assign</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Change SE Owner --></label>
+        <name>Change_SE_Owner</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Close Lost --></label>
+        <name>Close_Lost</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Closed Won --></label>
+        <name>Closed_Won</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Next Stage --></label>
+        <name>Next_Stage</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Reject --></label>
+        <name>Reject</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Reopen --></label>
+        <name>Reopen</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Evaluation --></label>
+        <name>Evaluation</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- POC --></label>
+        <name>POC</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Request --></label>
+        <name>Request</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Cannot change details of a closed technical evaluation --></errorMessage>
+        <name>Closed_No_Changes</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Discovery date must be before scoping date --></errorMessage>
+        <name>Discovery_before_scoping</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Evaluation Start Date must be before Close Date --></errorMessage>
+        <name>In_Progress_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You must use the Salesforce UI to close the technical evaluation --></errorMessage>
+        <name>Invalid_Close</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Scoping start date must be before evaluation start date --></errorMessage>
+        <name>Scoping_Start_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please use the next stage button to modify the stage of this technical evaluation --></errorMessage>
+        <name>Use_Next_Stage_Button</name>
+    </validationRules>
+</CustomObjectTranslation>

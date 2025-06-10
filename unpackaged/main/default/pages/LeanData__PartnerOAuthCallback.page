@@ -1,0 +1,327 @@
+<apex:page controller="LeanData.PartnerOAuthCallbackController" docType="html-5.0" sidebar="false" showHeader="false">
+  <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'jquery-3.7.0.min.js')}" />
+  <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'loadingoverlay-2.1.7.min.js')}" />
+  <head>
+    <link rel="stylesheet" href="{!URLFOR($Resource.angela_app, 'styles.css')}"></link>
+  </head>
+  <style>
+    html, body{
+      height: 100%;
+    }
+    :root {
+      --lt-grey-1_5: #F2F2F2;
+      --med-grey-1: #B3B3B3;
+      --med-grey-2: #808080;
+      --dk-grey-1: #666666;
+      --dk-grey-2: #4D4D4D;
+      --ld-green: #2DB670;
+      --ld-red: #C1272D;
+      --white: #FFFFFF;
+    }
+    #legacy-container{
+      background-color: white;
+    }
+    #message-wrapper {
+      padding: 20px;
+      border-radius: 10px;
+      background: var(--med-grey-2);
+      display: inline-block;
+      margin: 20px;
+      font-size: 15px;
+      color: var(--white);
+    }
+    #message-wrapper.success {
+      background: var(--ld-green);
+    }
+    #message-wrapper.error {
+      background: var(--ld-red);
+      width: 600px;
+    }
+    #button-wrapper {
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px;
+      font-size: 15px;
+      cursor: pointer;
+      text-align: center;
+      vertical-align: top;
+      background-color: var(--dk-grey-1);
+      width: 150px;
+      text-decoration: none;
+    }
+    #button-wrapper:hover {
+      background-color: var(--med-grey-2) !important;
+    }
+    #back-link {
+      text-decoration: none;
+      color: var(--white);
+      display: block;
+      width: fit-content;
+    }
+    .callback-container{
+      height: 100%;
+      padding-top: 160px;
+      background-color: var(--lt-grey-1_5);
+    }
+    #nylas-status-div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #nylas-loading-div, #nylas-succeeded-auth-div, #nylas-failed-auth-div {
+      box-sizing: border-box;
+      display: inline-block;
+      height: 450px;
+      width: 850px;
+      background-color: white;
+    }
+    #nylas-loading-div {
+      padding-top: 130px;
+    }
+    #nylas-loading-div .lds-page-description-large{
+      line-height: 22px;
+    }
+    #nylas-loading-div .lds-page-description-large {
+      text-align: center;
+      font-size: 19px;
+      margin-bottom: 34px;
+    }
+    #nylas-failed-auth-div .img-container {
+      margin-top: 60px;
+      margin-bottom: 40px;
+    }
+    #nylas-failed-auth-div .button-container a{
+      margin-right: 20px;
+    }
+    #nylas-failed-auth-div .lds-subheader {
+      margin-bottom: 20px;
+    }
+    #nylas-failed-auth-div .lds-page-description-large {
+      margin-bottom: 40px;
+    }
+    #nylas-succeeded-auth-div .img-container {
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+    #nylas-succeeded-auth-div .lds-subheader {
+      margin-bottom: 20px;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+    }
+    .lds-page-description-large, .lds-subheader {
+      text-align: center;
+    }
+    .img-container{
+      display: flex;
+      justify-content: center;
+    }
+    #spinner-div {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+    }
+    .spinner-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    
+  </style>
+  
+  <div id="legacy-container" style="display:none;">
+    <div id="message-wrapper">
+      <span id='status-message'>Authenticating...</span>
+    </div>
+
+    <a href="https://{!host}/apex/Dashboard#integrations" id='back-link'>
+      <div id="button-wrapper" style="display:none;">
+        Back to LeanData
+      </div>
+    </a>
+  </div>
+  
+  <div class="callback-container" style="display:none;">
+    <div id="nylas-status-div">
+      <div id="nylas-loading-div" style="display:none;">
+        <div class="spinner-container">
+          <div id="spinner-div"></div>
+        </div>
+        <div id="nylas-status-message" class="lds-page-description-large">
+          Your calendar is being authorized for LeanData BookIt.<br/>
+          This could take up to <b>5 minutes</b>.
+        </div>
+        <div class="lds-page-description-large">
+          Please do not close this page while the authorization is in progress.
+        </div>
+      </div>
+      <div id="nylas-failed-auth-div" style="display:none;">
+        <div class="img-container">
+          <img src="{!URLFOR($Resource.images, 'exclamation@2x.png')}" width="140px" height="140px"/>
+        </div>
+        <div class="lds-subheader">Error retrieving calendar id.</div>
+        <div class="lds-page-description-large">
+          Please try authorizing again in a few minutes. <br/>
+          Please contact LeanData at support@leandata.com for assistance.
+        </div>
+        <div class="button-container">
+          <a href="https://{!host}/apex/Dashboard#">
+            <div class="ld-tertiary-large-button">Return to LeanData</div>
+          </a>
+          <div class="ld-primary-large-button" onClick="retryFetchCalendarId()">Retry Authorization</div>
+        </div>
+      </div>
+      <div id="nylas-succeeded-auth-div" style="display:none;">
+        <div class="img-container">
+          <img src="{!URLFOR($Resource.images, 'balloons@2x.png')}" width="245px" height="245px"/>
+        </div>
+        <div class="lds-subheader">Your calendar is authorized!</div>
+        <div class="button-container">
+          <a href="https://{!host}/apex/Dashboard#">
+            <div class="ld-primary-large-button">Return to LeanData</div>
+          </a>
+        </div>
+      </div>
+    </div> <!--end nylas status div-->
+  </div><!--end container -->
+
+  <script>
+    var urlParams=getUrlVars();
+    let nylasFetchCalendarRetry = 1; // first retry is set by retrieveOAuthToken
+    let nylasTokenData;
+    let retryTime = 30000;
+    if(urlParams.type === 'nylas') {
+      $('.callback-container').show();
+      $('#message-wrapper').hide();
+      Visualforce.remoting.Manager.invokeAction(
+        '{!$RemoteAction.PartnerOAuthCallbackController.retrieveOAuthToken}',
+        urlParams,
+        function(result,event) {
+          if(result.result == 'success'){
+            nylasShowDiv('succeeded');
+          } else if (result.result == 'calendar id not found') {
+            $('#spinner-div').LoadingOverlay('show');
+            nylasTokenData = result.tokenData;
+            retryFetchCalendarId();
+          } else {
+            console.log(event.message);
+            nylasShowDiv('failed');
+          }
+        }
+      );
+    } else {
+      $('#legacy-container').show();
+      createRSS();
+    }
+    
+    function tryFetchingCalendarId(tokenData) {
+      Visualforce.remoting.Manager.invokeAction(
+        '{!$RemoteAction.PartnerOAuthCallbackController.retrieveNylasCalendarIdAndUpsertToken}',
+        tokenData,
+        null,
+        function(result,event) {
+          if (result.result == 'calendar id not found') {
+            if(nylasFetchCalendarRetry < 10) {
+              nylasFetchCalendarRetry++;
+              setTimeout(tryFetchingCalendarId, retryTime, result.tokenData);
+            } else {
+              nylasShowDiv('failed');
+              nylasTokenData = result.tokenData;
+            }
+          } else if (result.result === 'success') {
+            nylasShowDiv('succeeded');
+          } else {
+            console.log(event.message);
+            nylasShowDiv('failed');
+          }
+        }
+      );
+    }
+    
+    function retryFetchCalendarId() {
+      nylasFetchCalendarRetry = 1;
+      nylasShowDiv('loading');
+      setTimeout(tryFetchingCalendarId, retryTime, nylasTokenData);
+    }
+    
+    function nylasShowDiv(divName) {
+      if (divName === 'loading') {
+        $('#nylas-failed-auth-div').hide();
+        $('#nylas-succeeded-auth-div').hide();
+        $('#nylas-loading-div').css('display', 'inline-block');
+      } else if (divName === 'succeeded') {
+        $('#nylas-failed-auth-div').hide();
+        $('#nylas-loading-div').hide();
+        $('#nylas-succeeded-auth-div').css('display', 'inline-block');
+      } else {
+        $('#nylas-succeeded-auth-div').hide();
+        $('#nylas-loading-div').hide();
+        $('#nylas-failed-auth-div').css('display', 'inline-block');
+      }
+    }
+
+    function createRSS() {
+      var binding = new XMLHttpRequest();
+      var request =
+        '<?xml version="1.0" encoding="utf-8"?>'+
+        '<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'+
+          '<env:Header>'+
+            '<urn:SessionHeader xmlns:urn="http://soap.sforce.com/2006/04/metadata">'+
+              '<urn:sessionId>{!$Api.Session_ID}</urn:sessionId>'+
+            '</urn:SessionHeader>'+
+          '</env:Header>'+
+          '<env:Body>'+
+            '<createMetadata xmlns="http://soap.sforce.com/2006/04/metadata">'+
+              '<metadata xsi:type="RemoteSiteSetting">'+
+                '<fullName>{!rssName}</fullName>'+
+                '<description>{!rssDescription}</description>'+
+                '<disableProtocolSecurity>false</disableProtocolSecurity>'+
+                '<isActive>true</isActive>'+
+                '<url>https://{!host}</url>'+
+              '</metadata>'+
+            '</createMetadata>'+
+          '</env:Body>'+
+        '</env:Envelope>';
+      binding.open('POST','https://{!host}/services/Soap/m/31.0');
+      binding.setRequestHeader('SOAPAction','""');
+      binding.setRequestHeader('Content-Type','text/xml');
+      binding.onreadystatechange=function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {
+            urlParams=getUrlVars();
+            Visualforce.remoting.Manager.invokeAction(
+              '{!$RemoteAction.PartnerOAuthCallbackController.retrieveOAuthToken}',
+              urlParams,
+              function(result,event) {
+                if(result.result == 'success'){
+                  $('#status-message').html('Success');
+                  $('#message-wrapper').addClass('success');
+                } else {
+                  $('#status-message').html(result.result||(event.message + ' Please contact LeanData at support@leandatainc.com for assistance.'));
+                  $('#message-wrapper').addClass('error');
+                }
+                $('#button-wrapper').show();
+              }
+            );
+          } else {
+            $('#status-message').html('This authorization requires access to Remote Site Settings. Salesforce requires this in order to establish outgoing traffic to Partners by creating Remote Site Settings for each integration. <br /><br />Please initiate one of the below options and then try again. <br /><strong>Option 1:</strong> Have your Salesforce Administrator authorize in LeanData <br /><strong>Option 2:</strong> Have your Salesforce Administrator temporarily provide the "Modify Metadata Through Metadata API" permission to you and then remove upon authorization completion. <br /><br /><em>Please contact support@leandatainc.com for further assistance.</em>');
+            $('#message-wrapper').addClass('error');
+            $('#button-wrapper').show();
+            console.error('[createRSS] - response, statusText: ', binding.response, binding.statusText);
+          }
+        }
+      }
+      binding.send(request);
+    }
+
+    function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(m,key,value) {
+        vars[key] = value;
+      });
+      return vars;
+    }
+
+  </script>
+</apex:page>

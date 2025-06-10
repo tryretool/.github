@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>sales_upcoming_renewals</name>
+        <label>sales_upcoming_renewals</label>
+        <locationX>854</locationX>
+        <locationY>133</locationY>
+        <actionName>Centro__NotifyFlow</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>{!channel_sales_upcoming_renewals}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>InterviewGuid</name>
+            <value>
+                <stringValue>{!$Flow.InterviewGuid}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <stringValue>{!slack_post}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>pinMessage</name>
+            <value>
+                <stringValue>false</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>showCompactLayout</name>
+            <value>
+                <stringValue>false</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Centro__NotifyFlow</nameSegment>
+    </actionCalls>
+    <apiVersion>52.0</apiVersion>
+    <decisions>
+        <name>Org_is</name>
+        <label>Org is</label>
+        <locationX>590</locationX>
+        <locationY>140</locationY>
+        <defaultConnector>
+            <targetReference>sales_upcoming_renewals</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Production</defaultConnectorLabel>
+        <rules>
+            <name>Sandbox</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_organization.IsSandbox</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Sandbox</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>Close_Style</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ {!$Record.Auto_close__c},
+ &quot;Automatically &quot;&amp;TEXT({!$Record.Auto_close_Notice_days__c})&amp;&quot; days before current term ends&quot;,
+ &quot;Manually&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Commercial_Owner</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ {!$Record.Owner.Is_Account_Pool__c},
+ &quot;Not assigned&quot;,
+ &quot;&lt;@&quot;&amp;{!$Record.Owner.Slack_ID__c}&amp;&quot;&gt;&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Customer_Since_Formatted</name>
+        <dataType>String</dataType>
+        <expression>TEXT(MONTH({!$Record.Account.Customer_Since__c}))&amp;&quot;/&quot;&amp;
+TEXT(DAY({!$Record.Account.Customer_Since__c}))&amp;&quot;/&quot;&amp;
+TEXT(YEAR({!$Record.Account.Customer_Since__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>RTCD_formatted</name>
+        <dataType>String</dataType>
+        <expression>TEXT(MONTH({!$Record.Renewal_Target_Close_Date__c}))&amp;&quot;/&quot;&amp;
+TEXT(DAY({!$Record.Renewal_Target_Close_Date__c}))&amp;&quot;/&quot;&amp;
+TEXT(YEAR({!$Record.Renewal_Target_Close_Date__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>slack_rm</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ ISBLANK({!$Record.Renewal_Manager__c}),
+ &quot;&quot;,
+ &quot;*Renewal Manager:* &lt;@&quot;&amp;{!$Record.Renewal_Manager__r.Slack_ID__c}&amp;&quot;&gt;&quot;&amp;BR()
+)</expression>
+    </formulas>
+    <formulas>
+        <name>slack_tam</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ ISBLANK({!$Record.Technical_Account_Manager__c}),
+ &quot;&quot;,
+ &quot;*Technical Account Manager:* &lt;@&quot;&amp;{!$Record.Technical_Account_Manager__r.Slack_ID__c}&amp;&quot;&gt;&quot;&amp;BR()
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Unassigned_alert</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ {!$Record.Owner.Is_Account_Pool__c} &amp;&amp; NOT({!$Record.Auto_close__c}),
+ &quot;:rotating_light: &lt;!subteam^S02CVG04341&gt; Alert: upcoming manual renewal without a commercial owner&quot;,
+ &quot;&quot;
+)</expression>
+    </formulas>
+    <interviewLabel>Scheduled: Upcoming Renewal {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Scheduled: Upcoming Renewal</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_organization</name>
+        <label>Get organization</label>
+        <locationX>431</locationX>
+        <locationY>108</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Org_is</targetReference>
+        </connector>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Organization</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <runInMode>DefaultMode</runInMode>
+    <start>
+        <locationX>50</locationX>
+        <locationY>47</locationY>
+        <connector>
+            <targetReference>Get_organization</targetReference>
+        </connector>
+        <filterLogic>(1 OR (2 AND 3 AND 6)) AND 4 AND 5</filterLogic>
+        <filters>
+            <field>Time_to_Renewal_days__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <numberValue>90.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Time_to_Renewal_days__c</field>
+            <operator>LessThan</operator>
+            <value>
+                <numberValue>90.0</numberValue>
+            </value>
+        </filters>
+        <filters>
+            <field>OwnerId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0055A00000BExg9QAD</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Renewal</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Auto_close__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2021-08-26</startDate>
+            <startTime>06:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>slack_post</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>:recycle: *&lt;https://retool.lightning.force.com/lightning/r/Opportunity/{!$Record.Id}/view|{!$Record.Account.Name}&gt; upcoming renewal on {!RTCD_formatted}* :recycle:
+{!$Record.Segment__c} | {!$Record.Account.Customer_Success_Tier__c} | {!$Record.Account.Industry} | Customer Since: {!Customer_Since_Formatted} | Current Term: {!$Record.Originating_Opportunity__r.Term_Number__c}
+*Commercial Owner:* {!Commercial_Owner}
+{!slack_rm}{!slack_tam}
+*Renewal Baseline:* ${!$Record.Renewal_Baseline_Annualized_Revenue__c} ({!$Record.Baseline_Growth_Pct__c}% growth vs. prior term)
+*Closes:* {!Close_Style}
+{!Unassigned_alert}</text>
+    </textTemplates>
+    <variables>
+        <name>channel_sales_upcoming_renewals</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>C02CJ9BL4KX</stringValue>
+        </value>
+    </variables>
+</Flow>

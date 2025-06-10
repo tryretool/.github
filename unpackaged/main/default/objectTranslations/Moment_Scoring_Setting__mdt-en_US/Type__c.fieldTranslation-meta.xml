@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The field that will be evaluated (e.g., &quot;Is Target Account&quot;, &quot;Seniority&quot;, &quot;Event&quot;) --></help>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Demo Reason</masterLabel>
+            <translation><!-- Demo Reason --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Department</masterLabel>
+            <translation><!-- Department --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation><!-- Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Job Change</masterLabel>
+            <translation><!-- Job Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Engagement</masterLabel>
+            <translation><!-- Product Engagement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seniority</masterLabel>
+            <translation><!-- Seniority --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Target Account</masterLabel>
+            <translation><!-- Target Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vertical Industry Target</masterLabel>
+            <translation><!-- Vertical Industry Target --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Warm Outbound</masterLabel>
+            <translation><!-- Warm Outbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Website Engagement</masterLabel>
+            <translation><!-- Website Engagement --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

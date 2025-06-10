@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Owner</fullName>
+    <active>false</active>
+    <errorConditionFormula>Owner:User.IsActive = FALSE &amp;&amp;
+Owner:User.Is_Account_Pool__c = FALSE &amp;&amp;
+NOT(ISCHANGED(Trigger__c))</errorConditionFormula>
+    <errorMessage>The Implementation owner or Account Success Owner is no longer active. Please re-assign this Implementation and the Account Success Owner to an active user.</errorMessage>
+</ValidationRule>

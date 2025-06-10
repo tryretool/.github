@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>whistic_profile__RequiredValues</fullName>
+    <active>false</active>
+    <errorConditionFormula>OR(
+  ISBLANK( whistic_profile__Company_Url__c ),
+  ISBLANK( whistic_profile__Contact_Id__c ),
+  ISBLANK( whistic_profile__Email__c  ),
+  ISBLANK( whistic_profile__First_Name__c  ),
+  ISBLANK( whistic_profile__Last_Name__c  ),
+  ISBLANK( whistic_profile__Profile_Share__c  ),
+  ISBLANK( whistic_profile__Title__c  )
+)</errorConditionFormula>
+    <errorMessage>Required fields are missing from the contact (First &amp; Last Name, Email, Title, Account.Website)</errorMessage>
+</ValidationRule>

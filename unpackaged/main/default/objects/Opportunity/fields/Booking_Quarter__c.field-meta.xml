@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_Quarter__c</fullName>
+    <description>&lt;a href=&quot;https://retoolconfluence.atlassian.net/wiki/spaces/SAL/pages/121077975/Booking+and+Contract+Dates&quot; target=&quot;_blank&quot;&gt;Learn more about Opportunity date fields&lt;/a&gt;</description>
+    <externalId>false</externalId>
+    <formula>TEXT(YEAR(Booking_Date__c))
+&amp; &quot;-&quot;&amp;
+CASE(Month(Booking_Date__c),
+1, &quot;Q1&quot; ,
+2, &quot;Q1&quot;,
+3, &quot;Q1&quot;,
+4, &quot;Q2&quot;,
+5, &quot;Q2&quot;,
+6, &quot;Q2&quot;,
+7, &quot;Q3&quot;,
+8, &quot;Q3&quot;,
+9, &quot;Q3&quot;,
+10, &quot;Q4&quot;,
+11, &quot;Q4&quot;,
+12, &quot;Q4&quot;,
+&quot;None&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The first day of the calendar quarter in which the Booking Date falls.</inlineHelpText>
+    <label>Booking Quarter</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

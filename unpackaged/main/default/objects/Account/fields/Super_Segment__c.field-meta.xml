@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Super_Segment__c</fullName>
+    <description>Returns the &#39;Super Segment&#39; categorization based on the Account Segment:
+- GRWMMK/ENT: Corporate
+- Strategic: Strategic
+- GOV/EDU: SLED (State, Local, Education)</description>
+    <externalId>false</externalId>
+    <formula>CASE(Segment__c,
+ &quot;GRW&quot;,&quot;Corporate&quot;,
+ &quot;MMK&quot;,&quot;Corporate&quot;,
+ &quot;ENT&quot;,&quot;Corporate&quot;,
+ &quot;STR&quot;,&quot;Strategic&quot;,
+ &quot;GOV&quot;,&quot;SLED&quot;,
+ &quot;EDU&quot;,&quot;SLED&quot;,
+ NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Returns the &#39;Super Segment&#39; categorization based on the Account Segment:
+- GRWMMK/ENT: Corporate
+- Strategic: Strategic
+- GOV/EDU: SLED (State, Local, Education)</inlineHelpText>
+    <label>Super Segment</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

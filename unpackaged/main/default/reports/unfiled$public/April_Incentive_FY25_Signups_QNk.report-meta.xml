@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Moment__c$Name</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Contact__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Contact__c.Contact_Status__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Contact__c.Email</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Contact__c.Title</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c.Most_Recent_SDR_Activity__c</field>
+    </columns>
+    <description>April Incentive, FY25 Signups</description>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Moment_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Content Download,Live Event - Retool Hosted,Live Event - Tradeshow,Product Action,Product Signup,Webinar - Live,Webinar - Recorded</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Moment_Occurred_At__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>11/1/2024 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Moment_Occurred_At__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>4/10/2025 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Contact__c.Email_Domain_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Corporate</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Account__c.Account_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Active Customer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Contact__c.Contact_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Demand Marketable</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Account__c.NumberOfEmployees</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>50</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Account__c.Target_Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Contact__c.Title</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>teacher,student,member,intern,tutor,Instructor,human,Marketing,account,Service</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Account__c.ShippingCountry</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>United States</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Account__c.Tags__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>excludes</operator>
+            <value>FY25 AINLHi,FY25 AINLLo,FY25 AINLCo</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>April Incentive, FY25 Moments</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$Moment_Occurred_At__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

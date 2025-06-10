@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Campaign --></label>
+        <name>Campaign__c</name>
+        <picklistValues>
+            <masterLabel>2024: Q2 Enterprise Case Study SPIF</masterLabel>
+            <translation><!-- 2024: Q2 Enterprise Case Study SPIF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2024: Q3 Self Sourced Create &amp; Close SPIF</masterLabel>
+            <translation><!-- 2024: Q3 Self Sourced Create &amp; Close SPIF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2024: Q4 Oktoberfast Start SPIF</masterLabel>
+            <translation><!-- 2024: Q4 Oktoberfast Start SPIF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2024: Q4 SDR SPIF</masterLabel>
+            <translation><!-- 2024: Q4 SDR SPIF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2025: H1 BDR SPIF</masterLabel>
+            <translation><!-- 2025: H1 BDR SPIF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2025: H1 Enterprise AE Expansion SPIF</masterLabel>
+            <translation><!-- 2025: H1 Enterprise AE Expansion SPIF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2025: H1 Expansion SPIF - SE</masterLabel>
+            <translation><!-- 2025: H1 Expansion SPIF - SE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2025: H1 Expansion SPIF - TAM</masterLabel>
+            <translation><!-- 2025: H1 Expansion SPIF - TAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commission</masterLabel>
+            <translation><!-- Commission --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medical Leave</masterLabel>
+            <translation><!-- Medical Leave --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi Year (Year 2)</masterLabel>
+            <translation><!-- Multi Year (Year 2) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi Year (Year 3)</masterLabel>
+            <translation><!-- Multi Year (Year 3) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Annualized Revenue</masterLabel>
+            <translation><!-- New Annualized Revenue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Recurring Revenue</masterLabel>
+            <translation><!-- Non-Recurring Revenue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OKR</masterLabel>
+            <translation><!-- OKR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Parental Leave</masterLabel>
+            <translation><!-- Parental Leave --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Policy Exception</masterLabel>
+            <translation><!-- Policy Exception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ramp</masterLabel>
+            <translation><!-- Ramp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SQO</masterLabel>
+            <translation><!-- SQO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spot Bonus</masterLabel>
+            <translation><!-- Spot Bonus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Write-off Offset: Partial Payment</masterLabel>
+            <translation><!-- Write-off Offset: Partial Payment --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

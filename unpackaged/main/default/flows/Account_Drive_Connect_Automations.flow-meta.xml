@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Create_account_folder</name>
+        <label>Create account folder</label>
+        <locationX>149</locationX>
+        <locationY>658</locationY>
+        <actionName>driveconnect__automateDrive</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Create_account_planx</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>data</name>
+            <value>
+                <stringValue>{&quot;recordId&quot;:&quot;{!$Record.Id}&quot;,&quot;actionApiName&quot;:&quot;Create_account_folder&quot;,&quot;operations&quot;:[{&quot;key&quot;:&quot;1678114759518&quot;,&quot;type&quot;:{&quot;value&quot;:&quot;folder&quot;,&quot;supportsChildOperations&quot;:true},&quot;config&quot;:{&quot;publishResultsEvent&quot;:false,&quot;folderName&quot;:&quot;{!$Record.Account_Name_Compiled__c}&quot;,&quot;destinationFolder&quot;:{&quot;value&quot;:&quot;defaultObject&quot;},&quot;linkFolder&quot;:true,&quot;setDefault&quot;:true,&quot;experienceCloudShare&quot;:false},&quot;childOperations&quot;:[{&quot;key&quot;:&quot;1678114778449&quot;,&quot;type&quot;:{&quot;value&quot;:&quot;updateField&quot;,&quot;supportsChildOperations&quot;:false},&quot;config&quot;:{&quot;publishResultsEvent&quot;:false,&quot;recordId&quot;:&quot;{!$Record.Id}&quot;,&quot;field&quot;:&quot;Account.Account_Folder__c&quot;,&quot;parentType&quot;:&quot;folder&quot;,&quot;value&quot;:&quot;driveUrl&quot;},&quot;childOperations&quot;:[]}]}]}</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>driveconnect__automateDrive</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Create_account_planx</name>
+        <label>Create account plan</label>
+        <locationX>428</locationX>
+        <locationY>895</locationY>
+        <actionName>driveconnect__automateDrive</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Clear_automation_trigger</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>data</name>
+            <value>
+                <stringValue>{&quot;recordId&quot;:&quot;{!$Record.Id}&quot;,&quot;actionApiName&quot;:&quot;Create_folder_and_account_plan&quot;,&quot;operations&quot;:[{&quot;key&quot;:&quot;1678111753907&quot;,&quot;type&quot;:{&quot;value&quot;:&quot;merge&quot;,&quot;supportsChildOperations&quot;:true},&quot;config&quot;:{&quot;publishResultsEvent&quot;:false,&quot;template&quot;:{&quot;label&quot;:&quot;Account Plan Template v2&quot;,&quot;value&quot;:&quot;1TkuVzmz0ceBQeEc-kXnMeg1jKURxys6ecN5SkUlEdtE&quot;},&quot;destinationFolder&quot;:{&quot;value&quot;:&quot;defaultRecord&quot;,&quot;lookupObject&quot;:&quot;&quot;,&quot;recordId&quot;:&quot;&quot;,&quot;lookup&quot;:&quot;&quot;},&quot;format&quot;:&quot;&quot;,&quot;linkFile&quot;:true,&quot;experienceCloudShare&quot;:false},&quot;childOperations&quot;:[{&quot;key&quot;:&quot;1678113805786&quot;,&quot;type&quot;:{&quot;value&quot;:&quot;updateField&quot;,&quot;supportsChildOperations&quot;:false},&quot;config&quot;:{&quot;publishResultsEvent&quot;:false,&quot;recordId&quot;:&quot;{!$Record.Id}&quot;,&quot;field&quot;:&quot;Account.Account_Plan__c&quot;,&quot;parentType&quot;:&quot;merge&quot;,&quot;value&quot;:&quot;driveUrl&quot;},&quot;childOperations&quot;:[]}]}]}</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>driveconnect__automateDrive</nameSegment>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <assignments>
+        <name>Clear_automation_trigger</name>
+        <label>Clear automation trigger</label>
+        <locationX>536</locationX>
+        <locationY>1042</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Drive_Connect_Action__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_account</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Action_type</name>
+        <label>Action type</label>
+        <locationX>726</locationX>
+        <locationY>637</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Create_account_plan</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Drive_Connect_Action__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Create account plan</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Has_linked_folder</targetReference>
+            </connector>
+            <label>Create account plan</label>
+        </rules>
+        <rules>
+            <name>Replace_account_plan</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Drive_Connect_Action__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Replace account plan</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Clear_automation_trigger</targetReference>
+            </connector>
+            <label>Replace account plan</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Has_linked_folder</name>
+        <label>Has linked folder?</label>
+        <locationX>381</locationX>
+        <locationY>627</locationY>
+        <defaultConnector>
+            <targetReference>Create_account_folder</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_has_folder</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account_Folder__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_account_planx</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Account - Drive Connect Automations {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account - Drive Connect Automations</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_account</name>
+        <label>Update account</label>
+        <locationX>537</locationX>
+        <locationY>1218</locationY>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>417</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Action_type</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Drive_Connect_Action__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

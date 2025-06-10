@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Num_Pricing_Schedules__c</fullName>
+    <label># Pricing Schedules</label>
+    <securityClassification>Caution</securityClassification>
+    <summaryForeignKey>Product_Pricing_Schedule__c.Opportunity__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

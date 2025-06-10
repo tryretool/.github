@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Technical Asset</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Technical Assets</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Submitted By required --></errorMessage>
+        <name>Submitted_By_Required</name>
+    </validationRules>
+</CustomObjectTranslation>

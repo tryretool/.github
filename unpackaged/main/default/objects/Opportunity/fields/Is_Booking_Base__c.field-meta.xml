@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Booking_Base__c</fullName>
+    <formula>IF(
+ CASE(Subtype__c,
+  &quot;Expansion - Committed&quot;,0,
+  &quot;Expansion - Uncommitted&quot;,0,
+  &quot;Contraction - Uncommitted&quot;,0,
+  &quot;Conversion - Non-Annual to Annual&quot;,1,
+  &quot;Conversion - Self-Service to Annual&quot;,1,
+  &quot;New Commitment - Annual&quot;,1,
+  &quot;New Commitment - Quarterly&quot;,1,
+  &quot;New Commitment - Monthly&quot;,1,
+  &quot;New Commitment - Other&quot;,1,
+  &quot;New Subsidiary - Annual&quot;,1,
+  &quot;Partnership&quot;,1,
+  &quot;Pilot - Paid&quot;,1,
+  &quot;Renewal - Annual&quot;,1,
+  &quot;Renewal - Quarterly&quot;,1,
+  &quot;Renewal - Bi-Monthly&quot;,1,
+  &quot;Renewal - Bridge&quot;,1,
+  &quot;Renewal - Monthly&quot;,1,
+  &quot;Renewal - Pilot Conversion&quot;,1,
+  &quot;Renewal - Pilot Extension&quot;,1,
+  0
+ ) = 1,
+ TRUE,
+ FALSE
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True for committed bookings that are not expansions.</inlineHelpText>
+    <label>Is Booking Base?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

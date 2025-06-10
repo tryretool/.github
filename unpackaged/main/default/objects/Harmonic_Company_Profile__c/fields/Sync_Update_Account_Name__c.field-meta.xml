@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sync_Update_Account_Name__c</fullName>
+    <description>Checked TRUE if `Do Not Update Account Name` is FALSE and the Account Website does not equal the Harmonic Company Profile Name.</description>
+    <formula>NOT(ISBLANK(Account__c)) &amp;&amp;
+Account__r.Name != Name &amp;&amp;
+NOT(ISBLANK(Name)) &amp;&amp;
+Do_Not_Update_Account_Name__c = FALSE &amp;&amp;
+LEFT(Name, 3) != &#39;a3U&#39;</formula>
+    <inlineHelpText>Checked TRUE if `Do Not Update Account Name` is FALSE and the Account Website does not equal the Harmonic Company Profile Name.</inlineHelpText>
+    <label>Sync: Update Account Name?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

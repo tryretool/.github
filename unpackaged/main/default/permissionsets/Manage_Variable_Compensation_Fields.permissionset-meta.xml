@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Manage Variable Compensation Fields</label>
+    <license>Salesforce</license>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>ROE_Rule__c.Variable_Incentive_Plan__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>User.Variable_Incentive_Plan__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+</PermissionSet>

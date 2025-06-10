@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Override_Reason__c</fullName>
+    <description>Category related to &#39;RevOps Override Details&#39;.</description>
+    <inlineHelpText>Category related to &#39;RevOps Override Details&#39;.</inlineHelpText>
+    <label>Override Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Collection No Longer Needed</fullName>
+                <default>false</default>
+                <label>Collection No Longer Needed</label>
+            </value>
+            <value>
+                <fullName>Committed to Pay</fullName>
+                <default>false</default>
+                <label>Committed to Pay</label>
+            </value>
+            <value>
+                <fullName>Contract Restructure</fullName>
+                <default>false</default>
+                <label>Contract Restructure</label>
+            </value>
+            <value>
+                <fullName>Invoice Correction</fullName>
+                <default>false</default>
+                <label>Invoice Correction</label>
+            </value>
+            <value>
+                <fullName>Marketplace</fullName>
+                <default>false</default>
+                <label>Marketplace</label>
+            </value>
+            <value>
+                <fullName>Missing PO</fullName>
+                <default>false</default>
+                <label>Missing PO</label>
+            </value>
+            <value>
+                <fullName>Payment Plan</fullName>
+                <default>false</default>
+                <label>Payment Plan</label>
+            </value>
+            <value>
+                <fullName>Portal Upload</fullName>
+                <default>false</default>
+                <label>Portal Upload</label>
+            </value>
+            <value>
+                <fullName>Professional Services</fullName>
+                <default>false</default>
+                <label>Professional Services</label>
+            </value>
+            <value>
+                <fullName>Updated Contact Details</fullName>
+                <default>false</default>
+                <label>Updated Contact Details</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

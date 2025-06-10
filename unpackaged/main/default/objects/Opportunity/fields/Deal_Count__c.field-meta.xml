@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Count__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ ISPICKVAL(Booking_Type__c,&quot;Debook&quot;),
+ -1,
+ IF(
+  Booking_Channel_Annualized_Revenue__c = &quot;Churn&quot; || ISPICKVAL(Subtype__c,&quot;Baseline Transfer - In&quot;) || ISPICKVAL(Subtype__c,&quot;Baseline Transfer - Out&quot;),
+  0,
+  1
+ )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Equal to 1 when Booking Type is either &quot;Standard&quot; or &quot;Putback&quot; and -1 for Booking Type &quot;Debook&quot;. Used when counting the number of deals closed in a given period.</inlineHelpText>
+    <label>Deal Count</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

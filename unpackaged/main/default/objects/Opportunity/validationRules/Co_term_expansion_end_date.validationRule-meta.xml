@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Co_term_expansion_end_date</fullName>
+    <active>true</active>
+    <errorConditionFormula>CONTAINS(TEXT(Subtype__c),&#39;Expansion&#39;) &amp;&amp;
+NOT(ISBLANK(Originating_Opportunity__c)) &amp;&amp;
+ Contract_End_Date__c !=  Originating_Opportunity__r.Contract_End_Date__c &amp;&amp;
+ $User.Full_Name__c != &quot;RevOps Integration&quot; &amp;&amp;
+ISPICKVAL(Booking_Type__c, &#39;Standard&#39;) &amp;&amp; 
+NOT(ISPICKVAL(Originating_Opportunity__r.Subtype__c,&#39;New Commitment - Monthly&#39;))</errorConditionFormula>
+    <errorDisplayField>Contract_End_Date__c</errorDisplayField>
+    <errorMessage>The end date of an expansion opportunity must exactly match the end date of the deal that it is related to (i.e., the originating opportunity)</errorMessage>
+</ValidationRule>

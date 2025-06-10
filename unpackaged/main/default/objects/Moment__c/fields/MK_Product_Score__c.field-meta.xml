@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MK_Product_Score__c</fullName>
+    <description>The Madkudu product score.
+
+In System Use: Reports
+
+External Systems Utilization: Madkudu</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The Madkudu product score.</inlineHelpText>
+    <label>MK Product Score</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

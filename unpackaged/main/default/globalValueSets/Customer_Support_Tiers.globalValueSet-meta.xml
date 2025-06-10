@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Community</fullName>
+        <default>false</default>
+        <label>Community</label>
+    </customValue>
+    <customValue>
+        <fullName>Basic</fullName>
+        <default>false</default>
+        <label>Basic</label>
+    </customValue>
+    <customValue>
+        <fullName>Enterprise</fullName>
+        <default>false</default>
+        <label>Enterprise</label>
+    </customValue>
+    <customValue>
+        <fullName>Premium</fullName>
+        <default>false</default>
+        <label>Premium</label>
+    </customValue>
+    <customValue>
+        <fullName>Custom</fullName>
+        <default>false</default>
+        <label>Custom</label>
+    </customValue>
+    <customValue>
+        <fullName>Basic [Legacy]</fullName>
+        <default>false</default>
+        <label>Basic [Legacy]</label>
+    </customValue>
+    <customValue>
+        <fullName>Enterprise [Legacy]</fullName>
+        <default>false</default>
+        <label>Enterprise [Legacy]</label>
+    </customValue>
+    <masterLabel>Customer Support Tiers</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

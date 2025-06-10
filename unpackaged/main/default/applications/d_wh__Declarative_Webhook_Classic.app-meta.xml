@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>d_wh__Callout_Template__c</defaultLandingTab>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Declarative Webhooks</label>
+    <logo>d_wh__Declarative_Webhooks/d_wh__Declarative_Webhooks_Logo_RGB_Horizontal.png</logo>
+    <tabs>d_wh__Home</tabs>
+    <tabs>d_wh__Callout_Template__c</tabs>
+    <tabs>d_wh__Callout_Sequence__c</tabs>
+    <tabs>d_wh__Inbound_Call_Template__c</tabs>
+    <tabs>d_wh__Callout_Log__c</tabs>
+    <tabs>d_wh__Sequence_Log__c</tabs>
+    <tabs>d_wh__Callout_Retry__c</tabs>
+    <tabs>d_wh__Administration</tabs>
+</CustomApplication>

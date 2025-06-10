@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Split_Reason_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(
+  Split_Type_Label__c = &quot;New Annualized Revenue&quot; &amp;&amp; SplitPercentage &lt; 1 &amp;&amp; SplitPercentage &gt; 0 &amp;&amp; (Is_Committed_Booking__c = TRUE || Opportunity__r.IsClosed = FALSE) &amp;&amp; (ISPICKVAL(Split_Reason__c,&quot;&quot;) || ISBLANK(SplitNote)),
+  TRUE,
+  FALSE
+)</errorConditionFormula>
+    <errorDisplayField>Split_Reason__c</errorDisplayField>
+    <errorMessage>Split Reason and Notes required for New Annualized Revenue splits</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<label class="card-filter-card-container">
+  <input type="radio" style="display: none;" name="<%- name %>" value="<%- value %>" <%- checked ? 'checked' : '' %> >
+  <div class="card-filter-card">
+    <% if (icon) { %>
+    <span class="card-filter-icon"><%= icon %></span>
+    <% } %>
+    <span class="card-filter-label"><%- label %></span>
+  </div>
+</label>

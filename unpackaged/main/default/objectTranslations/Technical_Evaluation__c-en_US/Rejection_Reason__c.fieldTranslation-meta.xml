@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Rejection Reason --></label>
+        <name>Rejection_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Not sales qualified</masterLabel>
+            <translation><!-- Not sales qualified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poor product fit</masterLabel>
+            <translation><!-- Poor product fit --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

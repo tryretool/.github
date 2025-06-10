@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>NetSuite Subscription Line Layout</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Primary Information --></label>
+            <section>Primary Information</section>
+        </sections>
+        <sections>
+            <label><!-- Subscription Line Information --></label>
+            <section>Subscription Line Information</section>
+        </sections>
+        <sections>
+            <label><!-- Subscription Plan Line Information --></label>
+            <section>Subscription Plan Line Information</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

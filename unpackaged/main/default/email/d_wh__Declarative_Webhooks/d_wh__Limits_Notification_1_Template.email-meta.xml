@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Declarative Webhooks: Notification for usage at 80% of the limits</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Limits Notification 1 Template</name>
+    <style>none</style>
+    <subject>Notification: Approaching Declarative Webhooks Calls Limit</subject>
+    <textOnly>Hi!
+
+
+We hope this email finds you well. We are reaching out to notify you that you are approaching your monthly limit for outbound or inbound calls.
+
+
+As per our records, you have utilized 80% of your allowed number of calls for the current month. Once you reach your limit, you will not be able to make any additional calls until next month.
+
+
+To avoid any disruption in your service, we recommend upgrading to a higher tier plan before hitting the limit. If you feel like you are unlikely to hit your call limit this month, please ignore this notification.
+
+
+If you have any questions or concerns, please don&#39;t hesitate to reach out to our customer support team, and we will be happy to assist you.
+
+
+Thank you for choosing Declarative Webhooks for your Salesforce integration needs!
+
+
+The Declarative Webhooks Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

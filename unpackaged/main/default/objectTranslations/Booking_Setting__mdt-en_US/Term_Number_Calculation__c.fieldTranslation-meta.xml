@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Term Number Calculation --></label>
+        <name>Term_Number_Calculation__c</name>
+        <picklistValues>
+            <masterLabel>0</masterLabel>
+            <translation><!-- 0 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Add 1 to originating opp</masterLabel>
+            <translation><!-- Add 1 to originating opp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Equal originating opp</masterLabel>
+            <translation><!-- Equal originating opp --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

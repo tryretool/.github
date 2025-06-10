@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status</fullName>
+    <description>Indicates if the campaign is In Progress, Planned, or Complete
+
+In System Use: Flow - &#39;Campaign - Create Campaign Button&#39;
+
+External Systems Utilization: None</description>
+    <inlineHelpText>Indicates if the campaign is In Progress, Planned, or Complete</inlineHelpText>
+    <securityClassification>Safe</securityClassification>
+    <type>Picklist</type>
+</CustomField>

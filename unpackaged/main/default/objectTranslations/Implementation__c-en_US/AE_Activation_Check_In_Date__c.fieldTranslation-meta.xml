@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The date that the AE did a check-in with the economic buyer/champion during the activation phase. Typically done 30 days after purchase. --></help>
+        <label><!-- AE Activation Check In Date --></label>
+        <name>AE_Activation_Check_In_Date__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,62 @@
+<apex:page id="LeanDataJourneyTrackerPage"
+    sideBar="false"
+    showHeader="false"
+    controller="LeanData.DashboardBaseController"
+    extensions="LeanData.RemotingRouter"
+  >
+    <head>
+      <base href="./LeanDataJourneyTracker"></base>
+      <link rel="stylesheet" href="{!URLFOR($Resource.layout_views_app, 'styles.css')}"></link>
+      <style>
+        @font-face {
+          font-family: "Open Sans";
+          src: url("{!URLFOR($Resource.Libraries, 'fonts/OpenSans-Light.ttf')}") format('truetype');
+          font-weight: 300;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Open Sans";
+          src: url("{!URLFOR($Resource.Libraries, 'fonts/OpenSans-Regular.ttf')}") format('truetype');
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Open Sans";
+          src: url("{!URLFOR($Resource.Libraries, 'fonts/OpenSans-SemiBold.ttf')}") format('truetype');
+          font-weight: 600;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: "Open Sans";
+          src: url("{!URLFOR($Resource.Libraries, 'fonts/OpenSans-Bold.ttf')}") format('truetype');
+          font-weight: 700;
+          font-style: normal;
+        }
+      </style>
+    </head>
+    
+    <body>
+      <layout-views-root style="display: flex;"></layout-views-root>
+      
+      <!-- Default initial values -->
+      <script>
+        // Page level variables
+        window.ns = '{!nameSpace}';
+        Visualforce.remoting.timeout = 120000;
+        window.objId = '{!JSENCODE(recordId)}';
+      </script>
+      
+      <!-- Angular -->
+      <script type="text/javascript" src="{!URLFOR($Resource.layout_views_app, 'runtime.js')}"></script>
+      <script type="text/javascript" src="{!URLFOR($Resource.layout_views_app, 'polyfills.js')}"></script>
+      <script type="text/javascript" src="{!URLFOR($Resource.layout_views_app, 'scripts.js')}"></script>
+      <script type="text/javascript" src="{!URLFOR($Resource.layout_views_app, 'vendor.js')}"></script> <!-- dev build only -->
+      <script type="text/javascript" src="{!URLFOR($Resource.layout_views_app, 'main.js')}"></script>
+
+      <c:ModalJS />
+      <c:javascriptPaginator />
+
+    </body>
+
+
+</apex:page>

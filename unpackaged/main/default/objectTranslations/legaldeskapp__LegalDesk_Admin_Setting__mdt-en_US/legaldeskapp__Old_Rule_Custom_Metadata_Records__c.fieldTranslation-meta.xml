@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Old Rule Custom Metadata Records --></label>
+        <name>legaldeskapp__Old_Rule_Custom_Metadata_Records__c</name>
+    </CustomFieldTranslation>

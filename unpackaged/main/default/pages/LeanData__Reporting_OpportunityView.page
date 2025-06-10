@@ -1,0 +1,1803 @@
+<apex:page sideBar="false" showHeader="false" standardStylesheets="false" docType="html-5.0" standardcontroller="Opportunity" extensions="LeanData.Reporting_OpportunityViewController,LeanData.CheckOnDemandAllowed">
+    <!-- Bootstrap Core CSS -->
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__bootstrap_v3_3_4, 'css/bootstrap.css')}" />  <!-- includes modified data selectors for v5.0.2 -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__angela_app, 'styles.css')}"/> 
+    <!-- Fonts -->
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__DataTables, 'DataTables/2.0.2-responsive.dataTables.min.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__Libraries, 'styles/jquery.dataTables.min.css')}"/>  <!-- 1.10.16 -->
+    
+    <style>    
+        @font-face {
+            font-family: 'Open Sans';
+            src: url("{!URLFOR($Resource.Libraries, 'fonts/OpenSans-Regular.ttf')}") format('truetype')
+        }
+
+        body{
+            margin: 0;
+        }
+        
+        .bs .semi-bold{
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: open-sans-light;
+            src: url("{!URLFOR($Resource.OpenSansLight)}");
+        }
+        
+        .bs {
+            line-height: 1;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 200;
+            font-size: 16px;
+            display: table;
+            width: 100%;
+            min-width: 1000px;
+        }
+        
+        .bs .header-container {
+          margin-bottom: 5px;
+          display: inline-block;
+          min-width: 1000px;
+          width: 100%;
+          text-align: center;
+        }
+
+        .bs .header-title-container {
+          float: left;
+          display: inline-block;
+          margin-top: 3px;
+        }
+
+        .bs .header-title {
+            color: var(--dk-grey-2);
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-block;
+            float: left;
+            margin-right: 10px;
+        }
+        
+        .bs .header-metrics {
+            display: flex;
+            align-items: center;
+            float: left;
+            margin-right: 7.5px;
+            font-family: 'Open Sans';
+            margin-top: 10px;
+        }
+        
+        .bs .header-metrics div:not(:first-child) {
+            float: right;
+            margin-left: 20px;
+            line-height: 0.8px;
+        }
+
+        .dropdown-label {
+            display: inline-block;
+            float: right;
+            margin-right: 7.5px;
+            margin-top: 10px;
+        }
+
+        .bs .opp-analyzer-link-container {
+            float: right;
+            display: inline-block;
+            margin-top: 1px;
+        }
+
+        .bs .opp-analyzer-link {
+            font-family: 'Open Sans';
+            font-size: 14px;
+            color: var(--dk-grey-2);
+        }
+
+        .bs .opp-analyzer-link:hover {
+            color: var(--ld-green);
+        }
+
+        .bs .body-large {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1;
+            color: var(--dk-grey-2);
+        }
+
+        .bs .body-medium {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 1;
+            color: var(--dk-grey-2);
+        }
+
+        .bs .logo {
+            margin-top: 0px !important;
+            float: right;
+            display: inline-block;
+        }
+
+        .bs .marketing-touch-model-options {
+            float: right;
+            display: inline-block;
+        }
+
+        .bs .inner-wrapper {
+            width: 100%;
+            background: white;
+            border: 1px solid var(--lt-grey-2);
+            border-radius: 7.5px;         
+        }
+        
+        .bs .legend-div{
+            float:left;
+            margin-top: 12.5px;
+            margin-left: 12.5px;
+            cursor: pointer;
+        }
+        
+        .bs .legend-div:hover{
+            opacity: .5;
+        }
+        
+        .bs .clarity-link-div{
+            float:right;
+            margin-top: 12.5px;
+            margin-right: 12.5px;
+            font-size: 10pt;
+            color: #1b527f;
+        }
+        
+        .bs .timeline{    
+            margin: 100px auto;
+            width:950px;       
+        }
+        
+        .bs .detail-table-div{    
+            min-width: 850px;
+            height: 334px;
+            margin-top: 20px;
+            display:none;
+            text-align:center;
+            padding: 50px;
+            padding-top: 0px;
+        }
+        
+        .bs .timeline-section{
+            float: left;
+        }
+
+        .bs .timeline-start{
+            width:35px;
+            font-weight:400;
+            margin-right:40px;
+            font-size:9pt;
+            color:#1b527f;
+            display:none;
+        }
+        
+        .bs .second-half-timeline{
+            left: -290px !important;
+        }
+        
+        .bs .top-section{
+            height: 70px;
+            overflow: visible;
+            position: relative;
+        }
+        
+        .bs .mid-section{
+            background: var(--lt-green-2);
+            height: 14px;
+            position: relative;
+            cursor:pointer;
+        }
+        
+        
+        .bs .bottom-section{
+            vertical-align: top;
+            height: 70px;
+            overflow: visible;
+            position: relative;
+        }
+
+        #invalidNotice, #invalidNoticeError {
+            height:186px;
+            display:none;
+            text-align:center;
+            color:#4D4D4D;
+            font-size: 16px;
+            font-weight: regular;
+            background-image: url("{!URLFOR($Resource.DashboardImages,'LD-logo_watermark_2x.png')}");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 185px;
+        }
+
+        #invalidNoticeInnerContainer, #invalidNoticeInnerContainerError {
+            height: 186px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #invalidNoticeMessage {
+            margin-top: 10px;
+        }
+        
+        .bs .toggle-mode-div{
+            margin: 0 auto;           
+            text-align: center;
+            margin-bottom: 12.5px;
+            background:var(--lt-grey-2);
+            border-radius:7.5px;
+            width: 92px;
+            height:20px;
+            padding:3px;
+            display:none;
+            clear:both;
+        }
+        
+        .bs .mode-div:hover{
+            background: #f0f8ff !important; 
+            text-decoration: none !important;
+            color: #1b527f !important;
+        }
+        
+        .bs .marketing-pointer{
+            margin-left:5px;
+            position: absolute;
+            bottom: 0;
+        }
+        
+        .bs .flip-vertical {
+            -moz-transform: scaleY(-1);
+            -webkit-transform: scaleY(-1);
+            transform: scaleY(-1);
+            filter: flipv; /*IE*/
+        }
+        
+        .bs .marketing-info{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 8pt;
+            color: var(--dk-grey-2);
+            position: absolute;
+            bottom: 40px;
+            left: 5px;
+            -webkit-transform: rotate(-45deg); 
+            -moz-transform: rotate(-45deg);  
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-5); /*for IE*/
+        }
+        
+        .bs .special-event-marketing-info{
+            /*bottom: 20px;
+            left: 15px;*/
+        }
+        
+        .bs .sales-pointer{
+            margin-left:5px;
+            position: absolute;
+            top: 0;
+        }
+        
+        .bs .flip-vertical {
+            -moz-transform: scaleY(-1);
+            -webkit-transform: scaleY(-1);
+            transform: scaleY(-1);
+            filter: flipv; /*IE*/
+        }
+        
+        .bs .sales-info{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 8pt;
+            color: var(--dk-grey-2);
+            top: 95px;
+            right: 23-30px;
+            position: absolute;
+            -webkit-transform: rotate(-45deg); 
+            -moz-transform: rotate(-45deg);  
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=-5); /*for IE*/
+        }
+        
+        .bs .stage-change-section{
+            border-right: 1px solid white;
+            border-left: 1px solid white;
+            background: #fcd79c !important;
+        }
+        span.clear { clear: left; display: block; }
+        
+        th{
+            background: #f0f8ff !important;
+        }
+        <!-- modal -->
+        .bs .modal {
+            z-index: 1150;
+        }
+
+        .bs .modal-backdrop {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1040;
+            background-color: #000;
+        }
+        
+        .bs .modal-backdrop.fade {
+            filter: alpha(opacity=0);
+            opacity: 0;
+        }
+        
+        .bs .modal-backdrop.in {
+            filter: alpha(opacity=50);
+            opacity: .5;
+        }
+        
+        .bs .modal-header {
+            border-bottom: none;
+        }
+        
+        .bs .close {
+            background: none;
+            border: none;
+            opacity: 1;
+            color: #6ab4c9;
+            font-size: 32px;
+            margin-top: -10px !important;
+        }
+        
+         button:focus {outline:0;}
+        
+        .bs .close:active {
+            border:none;
+        }
+        
+        .bs .lean {
+            font-size: 14px !important;
+        }
+        
+        .bs .modal-body h2 { 
+            color: #005980;
+            font-size: 18px;
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 30px;
+            font-weight: 200;
+            margin-top: -10px;
+            margin-bottom: 32px;
+        }
+        
+        .bs .modal-body p {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #666666;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 20px;
+            margin-bottom: 28px
+        }
+        
+        .bs .modal-dialog {
+            margin: 0px auto;
+        }
+
+        .modal-dialog .modal-content {
+            height: 340px;
+            display: inline-block;
+            background: #eeefef;
+            border-radius: 0px;
+        }
+        
+        .bs .modal-backdrop {
+            opacity: 0.34 !important;
+        }
+        
+        .bs .dg_inner-wrapper {
+            background: white;
+            border: 1.5px solid #8da8bf;
+            border-radius: 7.5px;
+            margin: 20px 20px 20px 20px;
+            float: left;
+            width: 288px;
+            min-height: 275px;
+            height: 295px;
+            padding: 10px 35px 50px 35px;
+        }
+        
+        .bs .dg_inner-wrapper:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .bs .dg_inner-wrapper-header {
+            width: 100%;
+            height: 30px;
+            font-size: 15px;
+            color: #000000;
+            text-align: center;
+            line-height: 30px;
+            border-bottom: 1px solid #9da8bf;
+        }
+        
+        .bs .dg_inner-wrapper-content {
+            width: 100%;
+            padding: 15px;
+            padding-top: 7px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .bs .dg_inner-wrapper-content p{
+          margin-bottom: 16.5px;
+        }
+        
+        .bs .dg_inner-wrapper-content:not(:last-child) {
+            border-bottom: 1px solid var(--lt-grey-2);
+        }
+        
+        .bs .dg_inner-wrapper-content:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        <!-- End Modal -->
+        
+        .bs .detail-table{
+            width:100%;
+            margin-top: 15px;
+        }
+        .detail-table th{
+            padding-left:10px !important;
+        }
+
+        .detail-table-div .detail-table th.sorting_asc,
+        .detail-table-div .detail-table th.sorting_desc,
+        .detail-table-div .detail-table th.sorting {
+            background: var(--lt-grey-2) !important;
+            border-bottom: var(--lt-grey-2);
+        }
+
+        .detail-table-div .detail-table td {
+            border-bottom: 1px solid var(--lt-grey-2);
+        }
+        
+        .bs th{
+            font-size: 10px;
+        }
+        
+        .bs .dataCell{
+            font-size: 10px;
+            border-bottom: 1px solid #dddddd;
+            padding: 6px 10px !important;
+            text-align:left;
+        }
+        
+        .bs .dataCell div {
+            line-height: 14px;
+        }
+        
+        .bs .detail-column{
+            border-bottom: 1px solid #dddddd;
+        }
+        
+        .bs .section-tool-tip { display:none; }
+        .bs .selected-tool-tip-icon{ display:none;}
+        /*.bs .mid-section:hover{ background:#54cdb5 !important; }*/
+        .bs .mid-section:hover .selected-tool-tip-icon { display:block; }
+        .bs .mid-section:hover .section-tool-tip { display:block; }
+        .bs .hidden-tool-tip-icon{ display: none !important; }
+        
+        .bs .tool-tip-header{
+            font-size: 9pt;
+        }
+        .bs .active-toggle{
+            color:white !important;
+            background: var(--lt-green-2) !important;
+        }
+        .bs .view-toggle{
+            color:#555;
+            cursor:pointer;
+            text-align:center;
+            line-height:14px;
+            font-size:6pt;
+            font-weight:400;
+            float:left;
+            width:40px;
+            height:14px;
+            border-radius:5px;
+        }
+        
+        .bs .first-touch-shift{
+            margin-left:16px;
+        }
+
+        .bs a.customTarget{
+            color: var(--dk-grey-2);
+            text-decoration:underline;
+        }
+        .bs a.customTarget:hover{
+            opacity: 0.5;
+            color: var(--ld-green);
+            text-decoration : underline;
+        }
+
+        .timeline-wrapper {
+            overflow: scroll;
+            height: 500px;
+        }
+
+        .download-button{
+            float: right;
+            margin-bottom: 15px;
+        }
+        
+        .download-button a{
+            text-decoration: none;
+        }
+
+        .opp-stage-change-div {
+            float:left;
+            height:20px;
+            width:20px;
+            background:#fcd79c;
+            margin-right: 7px;
+        }
+
+        .opp-stage-change-label {
+            font-size: 12px;
+            color: var(--dk-grey-2);
+            line-height: 20px;
+            margin-bottom: 27.5px;
+        }
+
+    </style>
+    <div class="bs">
+        <apex:form >
+            <apex:actionFunction name="rerenderOppView" rerender="oppView" />
+            <apex:outputPanel id="oppView">
+                <div id="invalidNoticeError">
+                    <div id="invalidNoticeInnerContainerError">
+                        <div id="invalidNoticeErrorText"></div>
+                    </div>
+                </div>
+                <div id="oppView">
+                    <div class="header-container">
+                        <div class="header-title-container"> 
+                            <div class="header-title">
+                                <a class="report-link customTarget" target="_blank" style="cursor:pointer;"/> - Buyers Journey
+                            </div>
+                            <div class="opp-analyzer-link-container"></div>
+                        </div>
+                        <div class="logo">
+                            <img width="119.5" height="24" alt="Logo" src="{!URLFOR($Resource.DashboardImages,'LD-logo_2x.png')}"/>
+                        </div>
+                    </div>
+                    <div id="segmentInfo"></div>
+                    <div class="header-container">
+                        <div class="header-metrics"></div>
+                        <div class="marketing-touch-model-options" id="marketingTouchModelDiv">
+                            <select id="marketingTouchModelOptions" onchange="marketingTouchModelChanged(this);">
+                                <option value="Unweighted">Unweighted</option>
+                                <option value="Weighted">Weighted</option>
+                            </select>
+                        </div>
+                        <div class="dropdown-label body-medium" id="marketingTouchModelText">Marketing Touch Model</div>
+                    </div>
+                    <apex:outputPanel layout="block">
+                        <div class="inner-wrapper timeline-wrapper">
+                            <a class="legend-div" data-bs-toggle="modal" data-bs-target="#infoModal">
+                                <img style="width:18px;height:18px;" src="{!URLFOR($Resource.Reporting_Images, 'Info_Button_Icon.png')}"/>
+                            </a>
+                            <div class="timeline">
+                                <div id="emptyLoadingDiv" style="height:186px;">
+                                    <apex:image style="vertical-align:center;width:30px;height:30px;margin-left:450px;margin-top:70px;" value="{!URLFOR($Resource.LeanData__spinning)}"/>
+                                </div>
+                                <div id="timelineEntry" class="timeline-section timeline-start">
+                                    <div class="top-section">
+                                        <div style="position:absolute;bottom:0;width:70px;text-align:right;" class="med-grey-2">MARKETING</div>
+                                    </div>
+                                    <div class="mid-section" style="background:none;">
+                                    </div>
+                                    <div class="bottom-section">
+                                        <div style="position:absolute;width:70px;text-align:right;" class="med-grey-2">SALES</div>
+                                    </div>
+                                </div>
+                                <div id="invalidNotice">
+                                    <div id="invalidNoticeInnerContainer">
+                                    <div id="defaultInvalidNoticeMessage">No Buyer's Journey Available</div>
+                                    <div id="invalidNoticeMessage"></div>
+                                    </div>
+                                </div>  
+                                <span class="clear"></span>
+                            </div>
+                            <div class="detail-table-div">
+                                <div class="ld-secondary-small-button download-button" onClick="downloadCSV();">Export</div>
+                                <table class="detail-table" ></table>
+                            </div>
+                            <span class="clear"></span>
+                            <div class="toggle-mode-div">
+                                <div onClick="toggleView();" class="view-toggle active-toggle">
+                                    TIMELINE
+                                </div> 
+                                <div onClick="toggleView();" class="view-toggle">
+                                    DETAILS
+                                </div>         
+                            </div>
+                        </div> <!-- Close timeline wrapper -->                    
+                    </apex:outputPanel>
+                </div>
+                <!-- Begin Tooltip -->
+                <div id="infoModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <a data-bs-dismiss="modal" style="position:absolute; float:right;top:5px;right:5px;" href="#">
+                                <img style="width:15px;height:15px;" src="{!URLFOR($Resource.Reporting_Images, 'Close_Window_Icon.png')}"/>
+                            </a>
+                            <div class="dg_inner-wrapper">
+                                <div class="dg_inner-wrapper-header" >
+                                    Legend
+                                </div>
+                                <div class="dg_inner-wrapper-content" >
+                                    <p><apex:image style="width:24px;height:24px;" value="{!URLFOR($Resource.LeanData__Reporting_Images, '1st_Icon.png')}" /> - First Touch </p>
+                                    <p><apex:image style="width:24px;height:24px;" value="{!URLFOR($Resource.LeanData__Reporting_Images, 'Opp_Created_Icon.png')}" /> - Opportunity Created Date</p>
+                                    <p><apex:image style="width:24px;height:24px;" value="{!URLFOR($Resource.LeanData__Reporting_Images, 'Closed_Won_Icon.png')}" /> - Opportunity Closed Date</p>
+                                    <p><apex:image style="width:24px;height:24px;" value="{!URLFOR($Resource.LeanData__Reporting_Images, 'Today_Icon.png')}" /> - Current Date</p>
+                                    <p>
+                                        <div class="opp-stage-change-div"></div>
+                                        <div class="opp-stage-change-label"> - Opportunity Stage Change</div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Tooltip -->
+            </apex:outputPanel>
+        </apex:form>
+    </div>
+    
+    <!-- jQuery Version 3.5.1 -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'jquery-3.7.0.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'jquery-ui-1.13.2.min.js')}" />
+    <!-- Bootstrap Core JavaScript -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'bootstrap-5.0.2.bundle.min.js')}" />  <!-- includes popper.js dependency -->
+    <!-- JavaScript -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'dataTables-1.11.5.min.js')}" />  <!-- jquery dataTables -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__DataTables, 'DataTables/2.0.2-responsive.dataTables.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'moment-2.29.4.min.js')}" />
+    <apex:includeScript value="{!$Resource.LeanData__viewJSResource}"/>
+
+    <c:googleAnalytics analyticsCategory="View" />
+    
+    <script>
+        if({!isProductionOrg}) {
+          (function(apiKey) {
+              (function(p, e, n, d, o) {
+                  var v, w, x, y, z;
+                  o = p[d] = p[d] || {};
+                  o._q = [];
+                  v = ['initialize', 'identify', 'updateOptions', 'pageLoad'];
+                  for (w = 0, x = v.length; w < x; ++w)(function(m) {
+                      o[m] = o[m] || function() {
+                          o._q[m === v[0] ? 'unshift' : 'push']([m].concat([].slice.call(arguments, 0)));
+                      };
+                  })(v[w]);
+                  y = e.createElement(n);
+                  y.async = !0;
+                  y.src = 'https://cdn.pendo.io/agent/static/' + apiKey + '/pendo.js';
+                  z = e.getElementsByTagName(n)[0];
+                  z.parentNode.insertBefore(y, z);
+              })(window, document, 'script', 'pendo');
+          })('7e7cd4b3-14da-445e-7723-b673afae6f3c');
+
+          pendo.initialize({
+              sanitizeUrl: function (url) {
+                  /*
+                    When Opp View is loaded from Classic, the URL is masked with `servlet/servlet.Integration`
+                    and does not contain Reporting_OpportunityView like it should so we want to manually 
+                    edit the URL so Pendo can track it properly
+                  */
+                  const sanitizedUrl = location.origin + '/apex/Reporting_OpportunityView?id={!oppId}';
+                  
+                  // if classic, return sanitized URL
+                  // if LEX, return original URL
+                  return url.includes('servlet/servlet.Integration') ? sanitizedUrl : url;
+              },            
+              visitor: {
+                  id: '{!JSENCODE(userId)}', // Salesforce User Id
+                  userProfile: '{!JSENCODE(userProfile)}', //Salesforce User Profile
+                  userRole: '{!JSENCODE(userRole)}' //Salesforce User Role
+              },
+              account: {
+                  id: '{!JSENCODE(orgId)}' // Salesforce Org Id
+              }
+          });
+        }
+        Visualforce.remoting.timeout = 120000; // Set timeout at page level
+        j$ = jQuery.noConflict();
+        
+        ga_event('Opportunity View');
+
+        function escapeHTML(unsafe) {
+          /*Escape HTML to prevent XSS*/
+          if (unsafe != null){
+            return unsafe.toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+          }
+          return unsafe; /*return original if it's not a string*/
+        }
+
+        function retrieveOppViewColumns() {
+            return [
+                {
+                    "label": "Touch Type",
+                    "name": "eventType",
+                    "type": "CUSTOM",
+                },
+                {
+                    "label": "Name",
+                    "name": "eventTargetName",
+                    "type": "CUSTOM",
+                },
+                {
+                    "label": "Object Type",
+                    "name": "eventObjectType",
+                    "type": "CUSTOM",
+                },
+                {
+                    "label": "Account",
+                    "name": "eventAccountId",
+                    "type": "REFERENCE",
+                },
+                {
+                    "label": "Campaign",
+                    "name": "eventCampaignId",
+                    "type": "REFERENCE",
+                },
+                {
+                    "label": (marketingTouchModel === "Weighted" ? "Weighted MT Attribution" : "MT Attribution"),
+                    "name": "eventAttribution",
+                    "type": "INTEGER",
+                },
+                {
+                    "label": "Campaign Member Status",
+                    "name": "eventStatus",
+                    "type": "STRING",
+                },
+                {
+                    "label": "Date",
+                    "name": "eventDate",
+                    "type": "DATETIME",
+                },
+            ];
+        }
+        
+        var oppViewMap;
+        var firstTouch;
+        var whoIds;
+        var opportunityTimeline
+        var timelineNumberOfBuckets;
+        var frontEndEvents;
+        var timelineWidth = 800; //Width of timeline is pixels in px
+        var minSpacingWidth = 12; //Minimum space between dots for no overlap in px
+        var dotWidth = 8; //Width of timeline points in px
+        var timelineSectionMap;
+        var timelineBucketSize;
+        var timelineSectionWidth;
+        var timelineDays;
+        var stageOpacityIndexMap;
+        var stageOpacityMap;
+        let marketingTouchModel = '';
+        let oppSegment = '';
+        let shouldQueryMATFields = {!shouldQueryMATFields};
+        let isLDANInstalled = {!isLDANInstalled};
+        let segmentActive = true;
+
+        getOppView();
+
+        function getOppView() {
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.Reporting_OpportunityViewController.getOppViewData}',
+                {
+                    'oppId': '{!Opportunity.Id}',
+                    'oppSegment': oppSegment,
+                    'shouldQueryMATFields' : shouldQueryMATFields,
+                    'isLDANInstalled': isLDANInstalled
+                },
+                function(result, event) {
+                    if (event.status) {
+                        if (result.hasOwnProperty('Private Campaigns')) {
+                            setErrorMsg('Private Campaigns');
+                            return;
+                        } else if(result.hasOwnProperty('No Account Id')) {
+                            setErrorMsg('No Account Id');
+                            return;
+                        }
+                        oppViewMap = cleanNameSpace(result);
+                        if (marketingTouchModel === '') {
+                            marketingTouchModel = (oppViewMap.campaignTypeWeightingOn ?
+                                                  'Weighted' :
+                                                  'Unweighted');
+                            shouldQueryMATFields = result.shouldQueryMATFields;
+                        }
+                        oppSegment = result.oppSegment;
+                        segmentActive = result.segmentActive;
+                        if (shouldQueryMATFields) {
+                            j$('#segmentInfo').text(`Segment - ${oppSegment}`);
+                        }
+                        j$('#marketingTouchModelOptions').val(marketingTouchModel);
+                        console.log( oppViewMap );
+                        if (shouldQueryMATFields && !segmentActive) {
+                            j$('#segmentInfo').toggle();
+                            j$('#marketingTouchModelDiv').toggle();
+                            j$('#marketingTouchModelText').toggle();
+                            j$('#invalidNoticeMessage').html(`The Segment '${oppSegment}' is turned off.`);
+                            j$('#emptyLoadingDiv').toggle();
+                            j$('#invalidNotice').toggle();
+                        }  else {
+                            buildTimeline();
+                        }
+                    } else {
+                        setErrorMsg(event.message);
+                        return;
+                    }
+                },
+                {escape:false}
+            );
+            
+            // check for any critical errors on load and set feature param
+            Visualforce.remoting.Manager.invokeAction(
+              '{!$RemoteAction.CheckOnDemandAllowed.setFeatureParamForCriticalErrors}', function(result, event) { }
+            );
+        }
+
+        
+        function cleanNameSpace(obj){
+            if( isArray( obj ) ){
+                for (var i=0; i < obj.length; i++) {
+                  obj[i] = cleanNameSpace(obj[i]);
+                }
+            }
+            else{
+                //Iterate Fields in an Object replace
+                for (var key in obj) {
+                    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                        //Remove namespace
+                        var newKey = key;
+                        newKey = newKey.replace('LeanData__','');
+                        newKey = newKey.replace('LDAN__', '');
+                        //console.log(newKey);
+                        if( newKey != key ){
+                            obj[newKey] = obj[key];
+                            delete obj[key]; 
+                        }
+                        if( isObject( obj[newKey] ) || isArray( obj[newKey] ) ){
+                            obj[newKey] = cleanNameSpace( obj[newKey]);
+                        }
+                    }
+                }
+            }
+            return obj;
+        }
+
+        function setErrorMsg(msg) {
+            j$('#marketingTouchModelDiv').toggle();
+            j$('#emptyLoadingDiv').toggle();
+            j$('#invalidNoticeError').toggle();
+            j$('#oppView').toggle();
+            let errorMsg;
+
+            if (msg.startsWith('Insufficient permissions') || msg.includes('does not have permission to')) {
+                const psetType = shouldQueryMATFields ? 'Analytics' : 'Marketing Touch'
+                const securedFields = msg.includes('does not have permission to')
+                    ? msg.substring(msg.indexOf(': {'))
+                    : '';
+                errorMsg = `You do not have access to the LeanData View. Please ask your LeanData Admin or System Admin to check if \
+                    you have the LeanData ${psetType} Permission Set or enable permissions to these required fields${securedFields}`;
+            } else if (msg.includes('Private') || msg.includes('Cannot read property') || msg.includes('sharing access')) {
+                errorMsg = 'You do not have permission to view some of the records on this page.';
+            } else if (msg.includes('cannot be read by')) {
+                errorMsg = `You do not have access to the LeanData View. ${msg}`;
+            } else if (msg === 'No Account Id') {
+                errorMsg = 'Opportunities without accounts are excluded from attribution.';
+            } else {
+                errorMsg = 'Unknown error while fetching data. Please contact LeanData for assistance.';
+            }
+            j$('#invalidNoticeErrorText').text(errorMsg);
+        }
+
+        function marketingTouchModelChanged(event) {
+            datatablesInit = false;
+            marketingTouchModel = event.value;
+            rerenderOppView();
+            getOppView();
+        }
+
+        isObject = function(a) {
+            return (!!a) && (a.constructor === Object);
+        };
+
+        isArray = function(a) {
+            return (!!a) && (a.constructor === Array);
+        };
+        function buildTimeline() {
+            j$('.report-link').text(oppViewMap.selectedOpportunity.Name.substring(0,30) + (oppViewMap.selectedOpportunity.Name.length > 30 ? '...' : ''));
+            if(!shouldQueryMATFields) {
+                const reportURL = `${location.origin}/{!reportLinkURL}`;
+                j$('.report-link').prop("href",`${reportURL}`);
+            } else {
+                j$('.report-link').contents().unwrap();
+            }
+            // oppViewMap, reporting_context and settingsMap are guaranteed to be non null
+            const lastRunDate = oppViewMap.lastRunDate;
+            frontEndEvents = [];
+
+            const { timelineValid, noticeMessage } = timelineValidAndNoticeMessage(lastRunDate);
+            if (timelineValid) {
+                j$('#emptyLoadingDiv').toggle();
+                j$('#timelineEntry').toggle();
+                j$('.toggle-mode-div').toggle();
+                firstTouch = findFirstTouch(oppViewMap.relatedMarketingTouches, oppViewMap.relatedTasks, oppViewMap.relatedEvents);
+                setUpOpportunityTimeline();
+                createTimelinesections(oppViewMap.relatedMarketingTouches, oppViewMap.relatedTasks, oppViewMap.relatedEvents);
+                setUpOppStageChanges();
+                setFirstLastTouch();
+                opportunityTimeline = getValuesFromMap(timelineSectionMap);
+                opportunityTimeline.sort(timelineSectionSort);   
+                for (i = 0; i < opportunityTimeline.length; i++){
+                    opportunityTimeline[i].index = i;
+                } 
+                timelineNumberOfBuckets = opportunityTimeline.length;
+                var tlContent = generateTimelineContent();
+                j$('#timelineEntry').after(tlContent);
+                loadMetrics();
+                addLinkToOppAnalyzer();
+            } else {
+                j$('#marketingTouchModelDiv').toggle();
+                j$('#marketingTouchModelText').toggle();
+                j$('#invalidNoticeMessage').html(noticeMessage);
+                j$('#emptyLoadingDiv').toggle();
+                j$('#invalidNotice').toggle();
+            }
+        }
+
+        // Returns an object { timelineValid: boolean, noticeMessage: string }
+        function timelineValidAndNoticeMessage(lastRunDate) {
+            let noticeMessage = 'default';
+            let startEndInvalid = false;
+            if (oppViewMap.isFilteredOut) {
+              noticeMessage = 'This Opportunity has been excluded from Attribution.'
+              return { timelineValid: false, noticeMessage };
+            }
+            // Check start and end dates for problems
+            if(oppViewMap.startDate == null || oppViewMap.endDate == null) {
+                startEndInvalid = true;
+                noticeMessage = 'Opportunity Date is invalid. Please ensure that Opportunity Created Date & Close Date are mapped to valid fields in '
+                                + '<a target="_blank" href="/apex/dashboard#attribution/advanced_settings/custom_field_mappings">Custom Field Mappings ' 
+                                +' Settings</a>.';
+            } else if (getDate(oppViewMap.startDate) > getDate(oppViewMap.endDate)) {
+                startEndInvalid = true;
+                if (getDate(Date.now()) < getDate(oppViewMap.startDate)) {
+                    noticeMessage = `Opportunity’s Created Date ${moment(oppViewMap.startDate).format("L")} is in the future.`;
+                } else {
+                  noticeMessage = 'The Opportunity Close Date ' + moment(oppViewMap.endDate).format("L") + ' is earlier than the Opportunity Created Date ' + moment(oppViewMap.startDate).format("[(]L[)].");
+                }
+            }
+            // Return here if the there is an issue with the start and end dates.
+            if (startEndInvalid) { return { timelineValid: false, noticeMessage }; }
+
+            // Loop through marketing touches
+            const invalidMTs = oppViewMap.relatedMarketingTouches.some(mt => {
+              // 86400000 for millisenconds in 1 day to account for inconsistency between mt dates and the enddate in current implementation
+                return moment(getDate(shouldQueryMATFields ? mt.Campaign_Member_Date__c : mt.Campaign_Member_Created_Date__c))
+                        .isAfter(moment(oppViewMap.endDate + 86400000), 'day'); 
+            });
+            if (invalidMTs) {
+                noticeMessage = 'Opportunity has been modified. Please kick off another Attribution run to access the Buyer’s Journey';
+                return { timelineValid: false, noticeMessage };
+            }
+            return { timelineValid: true, noticeMessage };
+        }
+        
+        function findFirstTouch(marketingTouches, tasks, events) {
+            var firstTouch;
+            for (var i = 0; i < marketingTouches.length; i++) {
+                const cmDateField = (shouldQueryMATFields ? 'Campaign_Member_Date__c' : 'Campaign_Member_Created_Date__c');
+                if (marketingTouches[i][cmDateField] < oppViewMap.startDate) {
+                    oppViewMap.startDate = marketingTouches[i][cmDateField];
+                    firstTouch = new TimelineEvent(marketingTouches[i] , 'Marketing Touch', oppViewMap.leadsMap, oppViewMap.contactsMap);
+                }
+            }
+            whoIds = new Set();
+            for (var i = 0; i <tasks.length; i++) {
+                whoIds.add(tasks[i].WhoId);
+                if (tasks[i].CreatedDate < oppViewMap.startDate){
+                    oppViewMap.startDate = tasks[i].CreatedDate;
+                    firstTouch = new TimelineEvent(tasks[i], 'Task', oppViewMap.leadsMap, oppViewMap.contactsMap);
+                }
+            }
+            for (var i = 0; i <events.length; i++) {
+                whoIds.add(events[i].WhoId);
+                if (events[i].StartDateTime < oppViewMap.startDate){
+                    oppViewMap.startDate = events[i].StartDateTime;
+                    firstTouch = new TimelineEvent(events[i], 'Event', oppViewMap.leadsMap, oppViewMap.contactsMap);
+                } 
+            }
+            return firstTouch; 
+        }
+            
+        function setUpOpportunityTimeline() {
+            timelineDays = daysBetween(oppViewMap.startDate, oppViewMap.endDate) + 1;
+            timelineDays = timelineDays <= 0 ? 1 : timelineDays;
+            var temptimelineBucketSize =  timelineDays / (timelineWidth / (minSpacingWidth + dotWidth));
+            timelineBucketSize = Math.ceil(temptimelineBucketSize);
+            var actualSpacingWidth = timelineWidth / (timelineDays/timelineBucketSize) - dotWidth;
+            timelineSectionWidth = Math.ceil(actualSpacingWidth + dotWidth);
+            timelineSectionMap = {};
+
+            var currentDate = oppViewMap.startDate;
+
+            while (moment(currentDate).isSameOrBefore(moment(oppViewMap.endDate), 'day')){
+                // timelineSectionMap[currentDate] = new TimelineSection(currentDate, currentDate + (timelineBucketSize - 1) * (1000*60*60*24));
+                timelineSectionMap[currentDate] = new TimelineSection(currentDate, moment(currentDate).add(timelineBucketSize - 1, 'days').valueOf());
+                // currentDate = currentDate + (timelineBucketSize * (1000*60*60*24));
+                currentDate = moment(currentDate).add(timelineBucketSize, 'days').valueOf();
+            }
+        }
+        
+        function createTimelinesections(marketingTouches, tasks, events){
+            for (i = 0; i < marketingTouches.length; i++){
+                let campaignTypeLabel = marketingTouches[i].Related_Campaign__r.Type;
+                if (campaignTypeLabel === '' || campaignTypeLabel === undefined) {
+                    campaignTypeLabel = 'Blank';
+                }
+                var KVPair = getRelatedTimeSectKVPair(marketingTouches[i][shouldQueryMATFields ? 'Campaign_Member_Date__c' : 'Campaign_Member_Created_Date__c']);  
+                tempSection = KVPair.value;  
+                var newEvent = new TimelineEvent(marketingTouches[i], 'Marketing Touch', oppViewMap.leadsMap, oppViewMap.contactsMap);       
+                tempSection.timelineEvents.push(newEvent);
+                frontEndEvents.push(new FrontEndEvent(newEvent, oppViewMap.leadsMap, oppViewMap.contactsMap));
+                tempSection.marketingEventTypes.add(campaignTypeLabel);
+                tempSection.numberOfMarketingTouches++;
+                timelineSectionMap[KVPair.key] = tempSection;
+            }
+            for (i = 0; i < tasks.length; i++){
+                var KVPair = getRelatedTimeSectKVPair(tasks[i].CreatedDate);
+                tempSection = KVPair.value;
+                var newEvent = new TimelineEvent(tasks[i], 'Task', oppViewMap.leadsMap, oppViewMap.contactsMap);
+                tempSection.timelineEvents.push(newEvent);
+                frontEndEvents.push(new FrontEndEvent(newEvent, oppViewMap.leadsMap, oppViewMap.contactsMap, oppViewMap.ocrMap, oppViewMap.acrMap));
+                if (tasks[i].Type != undefined) {
+                    tempSection.salesEventTypes.add(tasks[i].Type);  
+                }
+                tempSection.numberOfSalesTouches++;
+                timelineSectionMap[KVPair.key] = tempSection;
+            }
+            for (i = 0; i < events.length; i++){
+                var KVPair = getRelatedTimeSectKVPair(events[i].StartDateTime);
+                tempSection = KVPair.value;
+                var newEvent = new TimelineEvent(events[i], 'Event', oppViewMap.leadsMap, oppViewMap.contactsMap);
+                tempSection.timelineEvents.push(newEvent);
+                frontEndEvents.push(new FrontEndEvent(newEvent, oppViewMap.leadsMap, oppViewMap.contactsMap, oppViewMap.ocrMap, oppViewMap.acrMap));
+                if (events[i].Type != undefined) {
+                    tempSection.salesEventTypes.add(events[i].Type);    
+                }
+                tempSection.numberOfSalesTouches++;
+                timelineSectionMap[KVPair.key] = tempSection;
+            }
+        }
+        
+        function getRelatedTimeSectKVPair(eventDate){
+            var dateDifference = daysBetween(oppViewMap.startDate, eventDate);
+            var bucketIndex = Math.floor(dateDifference / timelineBucketSize);
+            // var KVPair = {'key': oppViewMap.startDate + (bucketIndex * timelineBucketSize * (1000*60*60*24))};
+            var KVPair = {'key': moment(oppViewMap.startDate).add(bucketIndex * timelineBucketSize, 'days').valueOf()};
+            if (timelineSectionMap[KVPair.key] != null) {
+                KVPair.value = timelineSectionMap[KVPair.key];
+                return KVPair;
+            } else {
+                console.log('cannot find related timeline section');
+                console.log(eventDate);
+                console.log(bucketIndex);
+                console.log(timelineBucketSize);
+                console.log(KVPair.key);
+                KVPair.value = new TimelineSection(eventDate, eventDate);
+                return KVPair;
+            }
+        }
+        
+        function setUpOppStageChanges() {
+            var lastStage = 'Before Opp Creation';
+            var totalChangeSections = 1;
+            stageOpacityIndexMap = {};
+            stageOpacityIndexMap['Before Opp Creation'] = 1;
+            var oppHistoryList = oppViewMap.oppHist;
+            
+            for (i = 0; i < oppHistoryList.length; i++) {
+                if (lastStage === null) {
+                    lastStage = oppHistoryList[i].StageName;
+                }
+                if (oppHistoryList[i].StageName != lastStage ){
+                    lastStage = oppHistoryList[i].StageName;
+                    var KVPair = getRelatedTimeSectKVPair(getDate(oppHistoryList[i].CreatedDate));
+                    var tempSection = KVPair.value;
+                    
+                    tempSection.timelineEvents.push(new TimelineEvent(new StageChangeEvent(lastStage, oppHistoryList[i].StageName, oppHistoryList[i].CreatedDate), 'Stage Change', oppViewMap.leadsMap, oppViewMap.contactsMap));
+                    
+                    if (tempSection.hasStageChange === false){
+                        totalChangeSections++;
+                    }
+                    
+                    if (!stageOpacityIndexMap.hasOwnProperty(oppHistoryList[i].StageName)) {
+                        stageOpacityIndexMap[oppHistoryList[i].StageName] = totalChangeSections;
+                    }
+                    
+                    tempSection.oppStageName = oppHistoryList[i].StageName;
+                    tempSection.hasStageChange = true;
+                    timelineSectionMap[KVPair.key] = tempSection;
+                }
+            }
+            
+            stageOpacityMap = {};
+            var stageIndexKeys = Object.keys(stageOpacityIndexMap);
+            for (var i = 0; i < stageIndexKeys.length; i++) {
+                if (totalChangeSections != 1) {
+                    stageOpacityMap[stageIndexKeys[i]] = .2 + .8*(((stageOpacityIndexMap[stageIndexKeys[i]]) * 1.0) / ((totalChangeSections - 1) * 1.0));
+                } else {
+                    stageOpacityMap[stageIndexKeys[i]] = 1;
+                }
+            }
+    
+            var currentStage = 'Before Opp Creation';
+            
+            var tempSections = getValuesFromMap(timelineSectionMap);
+            tempSections.sort(timelineSectionSort);
+            for (var i = 0; i < tempSections.length; i++){
+                if (tempSections[i].hasStageChange) {
+                    currentStage = tempSections[i].oppStageName;
+                } else {
+                    var KVPair = getRelatedTimeSectKVPair(getDate(tempSections[i].startDate));
+                    var tempSection = KVPair.value;
+                    tempSection.oppStageName = currentStage;
+                    timelineSectionMap[KVPair.key] = tempSection;
+                }
+            }
+        }
+        
+        function setFirstLastTouch() {
+            var createKVPair = getRelatedTimeSectKVPair(getDate(oppViewMap.selectedOpportunity[oppViewMap.oppCreatedDateField]));
+            var oppCreateSection = createKVPair.value;
+            oppCreateSection.isOppCreate = true;
+            oppCreateSection.hasStageChange = false;
+            timelineSectionMap[createKVPair.key] = oppCreateSection;
+            
+            // Includes might not work for older browsers
+            if (oppViewMap.closedWonStages.includes(oppViewMap.selectedOpportunity.StageName)){
+                var closeKVPair = getRelatedTimeSectKVPair(oppViewMap.endDate);
+                var oppCloseSection = closeKVPair.value;
+                oppCloseSection.isOppClose = true;
+                timelineSectionMap[closeKVPair.key] = oppCloseSection;
+            } else if (oppViewMap.closedLostStages.includes(oppViewMap.selectedOpportunity.StageName)) {
+                var closeKVPair = getRelatedTimeSectKVPair(oppViewMap.selectedOpportunity[oppViewMap.oppCloseDateField]);
+                var oppCloseSection = closeKVPair.value;
+                oppCloseSection.isOppCloseLost = true;
+                timelineSectionMap[closeKVPair.key] = oppCloseSection;
+            } else {
+                var currentKVPair = getRelatedTimeSectKVPair(moment(oppViewMap.endDate).valueOf());
+                var currentDateSection = currentKVPair.value;
+                currentDateSection.isToday = true;
+                timelineSectionMap[currentKVPair.key] = currentDateSection;
+            }
+            if (firstTouch != null){
+                var firstKVPair = getRelatedTimeSectKVPair(getDate(firstTouch.eventDate));
+                var firstTouchSection = firstKVPair.value;
+                firstTouchSection.isFirstTouch = true;
+                timelineSectionMap[firstKVPair.key] = firstTouchSection;
+            }
+        }
+        
+        function daysBetween(startDate, endDate) {
+            var date1 = moment(getDate(startDate));
+            var date2 = moment(getDate(endDate));
+            var difference = date2.diff(date1, 'days');
+            return difference;
+        }
+        
+        // Strips down dateTime to date
+        function getDate(dateTime) {
+            var dateObject = new Date(dateTime);
+            var hoursInMilli = dateObject.getHours() * 60 * 60 * 1000;
+            var minutesInMilli = dateObject.getMinutes() * 60 * 1000;
+            var secondsInMilli = dateObject.getSeconds() * 1000;
+            var milliseconds = dateObject.getMilliseconds();
+            return (dateTime -(hoursInMilli + minutesInMilli + secondsInMilli + milliseconds));
+        }
+        
+        // Mapping through keys to get all values in a given hashmap
+        function getValuesFromMap(hashmap) {
+            var mapKeys = Object.keys(hashmap);
+            return mapKeys.map(function(key) {return hashmap[key]});
+        }
+        
+        function TimelineSection(startDate, endDate) {
+            this.startDate = startDate;
+            this.endDate = endDate;  
+            this.numberOfDays = daysBetween(startDate, endDate) + 1;
+            this.timelineEvents = [];
+            this.salesEventTypes = new Set();
+            this.marketingEventTypes = new Set();
+            this.numberOfSalesTouches = 0;
+            this.numberOfMarketingTouches = 0;
+            this.isFirstTouch = false;
+            this.isOppCreate = false;
+            this.hasStageChange = false;
+            this.isOppClose = false;
+            this.isOppCloseLost = false;
+            this.isToday = false;
+        }
+        
+        // In place of compareTo for TimelineSection
+        function timelineSectionSort(sectionA, sectionB) {
+            return sectionA.startDate - sectionB.startDate;
+        }
+        
+        function TimelineEvent(event, eventType, leadsMap, contactsMap) {
+            if (eventType === 'Marketing Touch') {
+                this.marketingTouch = event;
+                this.eventDate = event[shouldQueryMATFields ? 'Campaign_Member_Date__c' : 'Campaign_Member_Created_Date__c'];
+                this.eventType = 'Marketing Touch';
+                this.activityType = event.Related_Campaign__r.Type;
+                if (this.activityType === '' || this.activityType === undefined) {
+                    this.activityType = 'Blank';
+                }
+                if(event.Contact__c != null){
+                    this.eventTargetName = event.Contact__r.Name;
+                } else if(event.Lead__c != null ){
+                    this.eventTargetName = event.Lead__r.Name;
+                }
+            } else if (eventType === 'Task') {
+                this.salesTask = event;
+                this.eventDate = event.CreatedDate;
+                this.eventType = 'Task';
+                this.activityType = event.Type;
+                if (event.WhoId != null){    
+                    if (contactsMap[event.WhoId] != null){                    
+                        tempContact = contactsMap[event.WhoId];
+                        this.eventTargetName = tempContact.Name;
+                    }    
+                    else if (leadsMap[event.WhoId] != null){
+                        tempLead = leadsMap[event.WhoId];
+                        this.eventTargetName = tempLead.Name;
+                    }
+                }
+                else if (event.WhatId != null){
+                    this.eventTargetName = event.What.Name;
+                }           
+            } else if (eventType === 'Event') {
+                this.salesEvent = event;
+                this.eventDate = event.StartDateTime ;
+                this.eventType = 'Event';
+                this.activityType = event.Type;
+                if (event.WhoId != null){
+                    if (contactsMap[event.WhoId] != null){
+                        tempContact = contactsMap[event.WhoId];
+                        this.eventTargetName = tempContact.Name;
+                    }    
+                    else if (leadsMap[event.WhoId] != null){
+                        tempLead = leadsMap[event.WhoId];
+                        this.eventTargetName = tempLead.Name;
+                    }
+                }
+                else if (event.WhatId != null ){
+                    this.eventTargetName = event.What.Name;
+                } 
+            } else if (eventType === 'Stage Change') {
+                this.stageChangeEvent = event;
+                this.eventDate = event.eventDate ;
+                this.eventType = 'Stage Change';
+                this.activityType = 'Stage Change to ' + event.newStage;
+            }
+            this.activityType = escapeHTML(this.activityType);
+            this.eventTargetName = escapeHTML(this.eventTargetName);
+        }
+        
+        // In place of compareTo for TimelineEvent
+        function timelineEventSort(eventA, eventB) {
+            return eventA.eventDate - eventB.eventDate;
+        }
+        
+        function StageChangeEvent(oldStage, newStage, eventDate) {
+            this.oldStage = oldStage;
+            this.newStage = newStage;
+            this.eventDate = eventDate;
+        }
+
+        function FrontEndEvent(event, leadsMap, contactsMap, ocrMap, acrMap) {
+            this.eventType = event.eventType;
+            this.eventDate = (new Date(event.eventDate)).toString();
+            this.eventStatus = '-';
+
+            //NEW STUFF
+            this.eventCampaign = {};
+            this.eventAccount = {};
+            this.eventAccountId = '';
+            this.eventCampaignId = '';
+            const mtAttrProperty = (marketingTouchModel === 'Weighted' ?
+                                   (shouldQueryMATFields ? 'Weighted_MT_Attr_Amount__c' : 'Weighted_MT_Attribution_Amount__c') :
+                                   (shouldQueryMATFields ? 'MT_Attr_Amount__c' : 'MT_Attribution_Amount__c'));
+
+            if (this.eventType == 'Marketing Touch') {
+                if (event.marketingTouch.Contact__c != null) {
+                    this.eventTargetName = event.marketingTouch.Contact__r.Name;
+                    this.eventTargetId = event.marketingTouch.Contact__c;
+                    this.eventObjectType = event.marketingTouch.Campaign_Member_Object_Type__c;
+                    this.eventObjectTypeId = event.marketingTouch.Contact__c;
+                } else if (event.marketingTouch.Lead__c != null) {
+                    this.eventTargetName = event.marketingTouch.Lead__r.Name;
+                    this.eventTargetId = event.marketingTouch.Lead__c;
+                    this.eventObjectType = event.marketingTouch.Campaign_Member_Object_Type__c;
+                    this.eventObjectTypeId = event.marketingTouch.Lead__c;
+                }
+                this.eventAccountId = event.marketingTouch.Account__c;
+                this.eventAccount['Name'] = event.marketingTouch.Account__r.Name;
+                this.eventCampaignId = event.marketingTouch.Related_Campaign__c;
+                this.eventCampaign['Name'] = event.marketingTouch.Related_Campaign__r.Name;
+                this.eventStatus = event.marketingTouch.Campaign_Member_Status__c;
+                var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (2 || -1) + '})?');
+                this.eventAttribution = event.marketingTouch[mtAttrProperty].toString().match(re)[0];
+            } else if (this.eventType == 'Task') {
+                this.eventStatus = event.salesTask.Status;
+                if (event.salesTask.WhoId != null) {
+                    if(oppViewMap.ocrMap[event.salesTask.WhoId] != null) {
+                        var tempOCR = oppViewMap.ocrMap[event.salesTask.WhoId];
+                        this.eventTargetName = tempOCR.Contact.Name;
+                        this.eventTargetId = tempOCR.ContactId;
+                        this.eventAccountId = tempOCR.Contact.AccountId;
+                        this.eventAccount["Name"] = tempOCR.Contact.Account.Name;
+                        this.eventObjectType = 'Opportunity Contact Role';
+                        this.eventObjectTypeId = tempOCR.ContactId;
+                    }
+                    else if(oppViewMap.acrMap[event.salesTask.WhoId] != null) {
+                        var tempACR = oppViewMap.acrMap[event.salesTask.WhoId];
+                        this.eventTargetName = tempACR.Contact.Name;
+                        this.eventTargetId = tempACR.ContactId;
+                        this.eventAccountId = tempACR.Contact.AccountId;
+                        this.eventAccount["Name"] = tempACR.Contact.Account.Name;
+                        this.eventObjectType = 'Account Contact Role';
+                        this.eventObjectTypeId = tempACR.ContactId;
+                    }
+                    else if (oppViewMap.contactsMap[event.salesTask.WhoId] != null) {
+                        var tempContact = oppViewMap.contactsMap[event.salesTask.WhoId];
+                        this.eventTargetName = tempContact.Name;
+                        this.eventTargetId = tempContact.Id;
+                        this.eventAccountId = tempContact.AccountId;
+                        this.eventAccount["Name"] = tempContact.Account.Name;
+                        this.eventObjectType = 'Contact';
+                        this.eventObjectTypeId = tempContact.Id;
+                    } else if (oppViewMap.leadsMap[event.salesTask.WhoId] != null) {
+                        var tempLead = oppViewMap.leadsMap[event.salesTask.WhoId];
+                        this.eventTargetName = tempLead.Name;
+                        this.eventTargetId = tempLead.Id;
+                        this.eventAccountId = tempLead.Reporting_Matched_Account__c;
+                        this.eventAccount["Name"] = tempLead.Reporting_Matched_Account__r.Name;
+                        this.eventObjectType = 'Lead';
+                        this.eventObjectTypeId = tempLead.Id;
+                    }
+                } else if (event.salesTask.WhatId != null) {
+                    this.eventTargetName = event.salesTask.What.Name;
+                    this.eventTargetId = event.salesTask.WhatId;
+                    this.eventAccountId = event.salesTask.WhatId;
+                    this.eventAccount["Name"] = event.salesTask.What.Name;
+                }
+                
+            } else if (this.eventType == 'Event') {
+                if (event.salesEvent.WhoId != null) {
+                    if(oppViewMap.ocrMap[event.salesEvent.WhoId] != null) {
+                        var tempOCR = oppViewMap.ocrMap[event.salesEvent.WhoId];
+                        this.eventTargetName = tempOCR.Contact.Name;
+                        this.eventTargetId = tempOCR.ContactId;
+                        this.eventAccountId = tempOCR.Contact.AccountId;
+                        this.eventAccount["Name"] = tempOCR.Contact.Account.Name;
+                        this.eventObjectType = 'Opportunity Contact Role';
+                    }
+                    else if(oppViewMap.acrMap[event.salesEvent.WhoId] != null) {
+                        var tempACR = oppViewMap.acrMap[event.salesEvent.WhoId];
+                        this.eventTargetName = tempACR.Contact.Name;
+                        this.eventTargetId = tempACR.ContactId;
+                        this.eventAccountId = tempACR.Contact.AccountId;
+                        this.eventAccount["Name"] = tempACR.Contact.Account.Name;
+                        this.eventObjectType = 'Account Contact Role';
+                    }
+                    else if (oppViewMap.contactsMap[event.salesEvent.WhoId] != null) {
+                        var tempContact = oppViewMap.contactsMap[event.salesEvent.WhoId];
+                        this.eventTargetName = tempContact.Name;
+                        this.eventTargetId = tempContact.Id;
+                        // this.eventAccountName = tempContact.AccountId;
+                        // this.eventAccountId = tempContact.Account.Name;
+                        this.eventAccountId = tempContact.AccountId;
+                        this.eventAccount["Name"] = tempContact.Account.Name;
+                        this.eventObjectType = 'Contact';
+                        this.eventObjectTypeId = tempContact.Id;
+                    } else if (oppViewMap.leadsMap[event.salesEvent.WhoId] != null) {
+                        var tempLead = oppViewMap.leadsMap[event.salesEvent.WhoId];
+                        this.eventTargetName = tempLead.Name;
+                        this.eventTargetId = tempLead.Id;
+                        // this.eventAccountName = tempLead.Reporting_Matched_Account__c;
+                        // this.eventAccountId = tempLead.Reporting_Matched_Account__r.Name;
+                        this.eventAccountId = tempLead.Reporting_Matched_Account__c;
+                        this.eventAccount["Name"] = tempLead.Reporting_Matched_Account__r.Name;
+                        this.eventObjectType = 'Lead';
+                        this.eventObjectTypeId = tempLead.Id;
+                    }
+                } else if (event.salesTask !== undefined && event.salesTask.WhatId != null) {
+                    this.eventTargetName = event.salesEvent.What.Name;
+                    this.eventTargetId = event.salesEvent.WhatId;
+                    // this.eventAccountName = event.salesEvent.What.Name;
+                    // this.eventAccountId = event.salesEvent.WhatId;
+                    this.eventAccountId = event.salesEvent.WhatId;
+                    this.eventAccount["Name"] = event.salesEvent.What.Name;
+                }
+            }
+            this.eventTargetName = escapeHTML(this.eventTargetName);
+            this.eventObjectType = escapeHTML(this.eventObjectType);
+            this.eventAccount['Name'] = escapeHTML(this.eventAccount['Name']);
+            this.eventCampaign['Name'] = escapeHTML(this.eventCampaign['Name']);
+            this.eventStatus = escapeHTML(this.eventStatus);
+        }
+        
+        function loadMetrics() {
+            var metrics = '';
+            metrics += '<div class="body-medium">Total Days: <b>' + timelineDays + '</b></div>';
+            metrics += '<div class="body-medium">Marketing Touches: <b>' + oppViewMap.relatedMarketingTouches.length + '</b></div>';
+            metrics += '<div class="body-medium">Sales Touches: <b>' + (oppViewMap.relatedTasks.length + oppViewMap.relatedEvents.length) + '</b></div>';
+            const lastRunDate = oppViewMap.lastRunDate;
+            metrics +=  '<div class="body-medium">Report is current as of: <b>' + moment(lastRunDate).format('MM/DD/YYYY') + '</b></div>';
+            j$('.header-metrics').append(metrics);
+        }
+
+        function addLinkToOppAnalyzer() {
+            let domainUrl = location.origin;
+            if(isLDANInstalled) {
+                domainUrl = domainUrl.includes('--leandata') // custom domain urls
+                    ? domainUrl.replace('--leandata', '--ldan') 
+                    : domainUrl.replace('leandata', 'ldan'); // default NAxxx server urls
+            }
+            else {
+                domainUrl = domainUrl.includes('--leandata')
+                    ? domainUrl = domainUrl.replace('--leandata', '--c')
+                    : domainUrl = domainUrl.replace('leandata', 'c');
+            }
+
+            const oldLink = `/apex/dashboard#attribution/opportunity_analyzer?page=attribution-oppAnalyzer&oppId=${oppViewMap.selectedOpportunity.Id}`;
+            const newLink = `${domainUrl}/apex/AnalyticsDashboard#/attribution/opportunity-analyzer/${oppViewMap.selectedOpportunity.Id}`;
+            const link = (shouldQueryMATFields ? newLink : oldLink);
+            const linkToOppAnalyzer = 
+                `<div><a class="customTarget" target="_blank" ` 
+                + `href=${link}>`
+                + `<div class="opp-analyzer-link">Analyze Opportunity</div></a></div>`;
+            j$('.opp-analyzer-link-container').append(linkToOppAnalyzer);
+        }
+        
+        function generateTimelineContent() {
+            var content = '';
+            for (var i = 0; i < opportunityTimeline.length; i++) {
+                var timeSect = opportunityTimeline[i];
+                var section = '';
+                section += '<div class="timeline-section" style="width:' + timelineSectionWidth + 'px;">';
+
+                // Start of top-section
+                section += '<div class="top-section" style="width:' + timelineSectionWidth + 'px;">';
+                if (timeSect.numberOfMarketingTouches > 0) {
+                    section += '<div class="marketing-info';
+                    if (timeSect.isOppCreate || timeSect.isFirstTouch) {
+                        section += ' special-event-marketing-info';
+                    }
+                    section += '">';
+                    section += '<div style="width:190px;position:absolute;white-space: nowrap; overflow:hidden;text-overflow: ellipsis;" >';
+                    section += '<span class="semi-bold">' + '[' + escapeHTML([...timeSect.marketingEventTypes]) + ']' + ' |</span>' + ' ' + timeSect.numberOfMarketingTouches + ' touch';
+                    if (timeSect.numberOfMarketingTouches > 1) {
+                        section += 'es';
+                    }
+                    section += '</div></div>';
+                    section += '<div class="marketing-pointer"><img style="height:24px;width:8px;" src="' + '{!URLFOR($Resource.Reporting_Images, "Circle_Point_Icon_Top.png")}' + '" /></div>'
+                }
+                section += '</div>'
+
+                // Start of mid-section
+                section += '<div class="mid-section ';
+                if (timeSect.hasStageChange && !timeSect.isOppClose) {
+                    section += 'stage-change-section';
+                }
+                section += '" style="background: \'#1b527f\';color:';
+                if (stageOpacityMap[timeSect.oppStageName] > 0.5) {
+                    section += 'white';
+                } else {
+                    section += '#555555';
+                }
+                section += ';width:' + timelineSectionWidth + 'px;';
+                section += 'font-size:9px;background:rgba(129,211,169,' + escapeHTML(stageOpacityMap[timeSect.oppStageName]) + ');">';
+                if (timeSect.isFirstTouch) {
+                    section += '<img style="width:24px;height:24px;left:-2px;top:-6px;position:absolute;z-index: 1101;" ';
+                    section += 'src="' + '{!URLFOR($Resource.Reporting_Images, "1st_Icon.png")}' + '" />';
+                }
+                if (timeSect.isOppCreate) {
+                    section += '<img style="width:24px;height:24px;left:-2px;top:-5px;position:absolute;" ';
+                    section += 'src="' + '{!URLFOR($Resource.Reporting_Images, "Opp_Created_Icon.png")}' + '" />';
+                }
+                if (timeSect.isOppClose) {
+                    section += '<img style="width:24px;height:24px;left:-2px;top:-5px;position:absolute;z-index: 1101;" ';
+                    section += 'src="' + '{!URLFOR($Resource.Reporting_Images, "Closed_Won_Icon.png")}' + '" />';
+                }
+                if (timeSect.isOppCloseLost) {
+                    section += '<img style="width:24px;height:24px;left:-2px;top:-5px;position:absolute;z-index: 1101;" ';
+                    section += 'src="' + '{!URLFOR($Resource.Reporting_Images, "Frowny_Icon.png")}' + '" />';    
+                }
+                if (timeSect.isToday) {
+                    section += '<img style="width:24px;height:24px;left:-2px;top:-6px;position:absolute;z-index: 1101;" ';
+                    section += 'src="' + '{!URLFOR($Resource.Reporting_Images, "Today_Icon.png")}' + '" />';
+                }
+                
+                section += '<img class="selected-tool-tip-icon ';
+                if (timeSect.isFirstTouch || timeSect.isOppCreate || timeSect.isOppClose || timeSect.isToday) {
+                    section += 'hidden-tool-tip-icon';
+                }
+                section += '" style="z-index:1100;width:24px;height:24px;left:1px;top:-5px;position:absolute;" src="' + '{!URLFOR($Resource.Reporting_Images, "List_Icon.png")}' + '" />  ';
+                section += '<div class="section-tool-tip';
+                if (timelineNumberOfBuckets / 2 < timeSect.index) {
+                    section += ' second-half-timeline';
+                }
+                section += '" style="cursor:default;top:10px;width:300px;left:10px;color:var(--dk-grey-2);z-index:1000;background:white;position:absolute;padding:15px;border:1px solid var(--lt-grey-2);border-radius:3px;">';
+
+                var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                var startDate = new Date(timeSect.startDate);
+                var endDate = new Date(timeSect.endDate); 
+                section += '<div class="tool-tip-header"><span>' + monthNames[startDate.getMonth()] + ' ' + startDate.getDate() + ' - ';
+                section += monthNames[endDate.getMonth()] + ' ' + endDate.getDate() + ', ' + endDate.getFullYear() + ' |' + escapeHTML(timeSect.oppStageName) + '</span></div>';
+                section += generateTimelineEvents(timeSect.timelineEvents) + '</div></div>';
+
+                //Start of bottom-section
+                section += '<div class="bottom-section" style="width:' + timelineSectionWidth + 'px;">';
+                if (timeSect.numberOfSalesTouches > 0) {
+                    section += '<div class="sales-pointer">' + '<img style="height:24px;width:8px;" src="' + '{!URLFOR($Resource.Reporting_Images, "Circle_Point_Icon.png")}' + '" /></div>';
+                    section += '<div class="sales-info" style="right:' + (timelineSectionWidth - 30) + 'px;">'; 
+                    section += '<div style="width:200px;text-align:right;white-space: nowrap; overflow:hidden;text-overflow: ellipsis;" >';
+                    section += '<span class="semi-bold">';
+                    if (timeSect.salesEventTypes.size != 0) {
+                        section += '[' + escapeHTML([...timeSect.salesEventTypes]) + ']' + ' |';    
+                    }
+                    section += '</span>' + timeSect.numberOfSalesTouches + ' touch';
+                    if (timeSect.numberOfSalesTouches > 1) {
+                        section += 'es';
+                    }
+                    section += '</div></div>';
+                }
+                section += '</div></div>';
+
+                content += section; 
+            }
+            return content;
+        }
+        
+        function generateTimelineEvents(tlEvents) {
+            var eventsHTML = '';    
+            for (var j = 0; j < tlEvents.length; j++) {
+                var tlEvent = tlEvents[j];
+                eventsHTML += '<div class="tool-tip-body" style="font-size:8pt;margin-top:7px;">';
+                eventsHTML += '<div style="height:12px;white-space: nowrap; overflow:hidden;text-overflow: ellipsis; width:270px;">';
+                eventsHTML += '<img style="width:10px;height:10px;" src="' + '{!URLFOR($Resource.Reporting_Images, 'Green_Arrow_Icon.png')}' + '" /> &nbsp; ';
+                if (tlEvent.eventType == 'Task' || tlEvent.eventType == 'Event') {
+                    eventsHTML += '<span style="font-weight:normal;">' + escapeHTML(tlEvent.eventType);
+                }
+                if (tlEvent.activityType != undefined) {
+                    if (tlEvent.eventType == 'Task' || tlEvent.eventType == 'Event') {
+                        eventsHTML += '/';
+                    }
+                    eventsHTML += tlEvent.activityType;
+                }
+                eventsHTML += '</span> - ';
+                var eventDate = new Date(tlEvent.eventDate);
+                var month = ('0' + (eventDate.getMonth() + 1)).slice(-2);
+                eventsHTML += '<span>' + month + '/' + eventDate.getDate() + '</span>';
+                if (tlEvent.eventType == 'Marketing Touch') {
+                    eventsHTML += '<span style="font-weight:normal;">' + ' ' + escapeHTML(tlEvent.marketingTouch.Related_Campaign__r.Name) + '</span>';
+                }
+                if (tlEvent.eventType != 'Stage Change' && tlEvent.eventTargetName != undefined) {
+                    eventsHTML += '/' + tlEvent.eventTargetName; 
+                }
+                eventsHTML += '</div></div>';
+            }
+            return eventsHTML;
+        }
+
+        // Modified version of getHTMLForValue so that Dates and Datetimes will display in the local timezone.
+        function getDateForOppViewTable(value, columnMap) {
+          const formatDateOppViewTable = (dateVal) => {
+              const dateObject = new Date( dateVal );
+              if (dateObject === 'Invalid Date') return '';
+              return `${dateObject.getFullYear()}-${pad2(dateObject.getMonth()+1)}-${pad2(dateObject.getDate())}`;
+          }
+          const formatDateTimeOppViewTable = (timeInteger) => {
+              if (!timeInteger) return '';
+              const dateObject = new Date(timeInteger);
+              const date = formatDateOppViewTable(timeInteger);
+              return date;
+          }
+
+          if(value === null) return null;
+          let lookups = columnMap["name"].split(".");
+          let colValue = value;
+          for (let i = 0; i < lookups.length-1; i++) {
+              colValue = colValue[lookups[i]];
+              if(!colValue) return null;
+          }
+          let field = lookups[lookups.length-1];
+          colValue = colValue[field];
+          if(columnMap["type"] === "DATETIME") {
+              return formatDateTimeOppViewTable(colValue);
+          } else {
+              return formatDateOppViewTable(colValue);
+          }
+        }
+
+        // Table form of Opp view
+        var datatablesInit = false;
+        function setTable(){
+            datatablesInit = true;
+            const oppViewColumns = retrieveOppViewColumns();
+
+            var tableParent = j$('.detail-table')[0]; //getPageBlockBody("campaign_history_pb");
+            var tableStyle = {
+                'Touch Type': 'width:90px',
+                'Name': 'width:90px',
+                'Object Type': 'width:90px',
+                'Account': 'width:90px',
+                'Campaign': 'width:90px',
+                [marketingTouchModel === "Weighted" ? "Weighted MT Attribution" : "MT Attribution"]: 'width:90px',
+                'Campaign Member Status': 'width:120px',
+                'Date': 'width:60px'
+            }
+
+            tableParent.appendChild(table = generateTableAndHeader(tableParent, oppViewColumns, '', tableStyle));
+
+            var tasksArr = oppViewMap.relatedTasks;
+            var eventsArr = oppViewMap.relatedEvents;
+            var marketingTouchesArr = oppViewMap.relatedMarketingTouches;
+     
+            table.appendChild(tbody = document.createElement("tbody"));
+            var displayColumns = oppViewColumns;
+
+            for (var i=0;i<frontEndEvents.length;i++) {
+                var obj = frontEndEvents[i];
+                tbody.appendChild(row = generateTableRow());
+
+                if (obj["eventType"] == "Task"){
+                    var task = tasksArr.splice(0,1);
+                    obj["link"] = task[0]["Id"];
+                } 
+                else if (obj["eventType"] == "Event"){
+                    var event = eventsArr.splice(0,1);
+                    obj["link"] = event[0]["Id"];  
+                }
+                else if (obj["eventType"] == "Marketing Touch"){
+                    var mt = marketingTouchesArr.splice(0,1);
+                    obj["link"] = mt[0]["Campaign_Member_Id__c"];
+                }
+                
+                for (var j = 0; j < displayColumns.length; j++) {
+                    var cell = generateDataTablesCell(row, false);
+                    
+                    // Want date and datetimes displayed in local timezone
+                    if (displayColumns[j].type === 'DATE' || displayColumns[j].type === 'DATETIME') {
+                      cell.innerHTML = getDateForOppViewTable(obj, displayColumns[j]);
+                    } else if (displayColumns[j].name === 'eventStatus' && obj['eventStatus'] && oppViewMap.campaignMemberStatusAPINameToLabel[obj['eventStatus']]) {
+                      cell.innerHTML = oppViewMap.campaignMemberStatusAPINameToLabel[obj['eventStatus']] 
+                    } else {
+                      cell.innerHTML = getHTMLForValue(obj, displayColumns[j]);
+                    }
+                    if (
+                        (displayColumns[j]["label"] === "MT Attribution" ||
+                        displayColumns[j]["label"] === "Weighted MT Attribution") && obj.eventType === "Marketing Touch"
+                    ) {
+                        cell.textContent = oppViewMap.currencySymbol + obj['eventAttribution'];
+                    }
+                    cell.innerHTML = cell.innerHTML === '' ? '-' : cell.innerHTML;
+                    
+                    var limit = 30;
+                    
+                    if (cell.innerHTML[0] != '<') {
+                        if (cell.innerHTML.length > limit){
+                            cell.innerHTML = shortenString(cell.innerHTML, limit)
+                        }
+                    } 
+                    
+                    else {
+                        var a = j$(cell.innerHTML);
+
+                        if (a[0].innerHTML.length > limit){
+                            a.html(shortenString(a[0].innerHTML, limit));
+                            cell.innerHTML = a[0].outerHTML;
+                        }
+                    }
+                    
+                }
+            }
+            initializeDataTable(j$(table), 'opp-view',{"pageLength": 8});
+        }
+
+        function shortenString(text, limit){
+            return text.substring(0, limit) + "...";            
+        }
+
+        function toggleView() {
+            j$(".legend-div").toggle();
+            j$(".timeline").toggle();
+            j$(".detail-table-div").toggle();
+
+            if (!datatablesInit) {
+                setTable();
+            } 
+            j$(".view-toggle").toggleClass("active-toggle");
+            
+        }
+    // need to sanitize data here?
+
+        function downloadCSV( ){
+            console.log( frontEndEvents );
+            const filename = oppViewMap.selectedOpportunity.Name+'_Opportunity_Timeline_Export.csv';
+            let csvFile = 
+                'Touch Type,Name,Object Type,Object Type Id,Account,Account Id,Campaign,Campaign Id,'  
+                + (marketingTouchModel === "Weighted" ? "Weighted MT Attribution" : "MT Attribution") 
+                + ',Campaign Member Status,Date\r\n';
+
+            OPP_VIEW_COLUMNS = [
+                {"label" : "Touch Type", "name" : "eventType", "type" : "CUSTOM"},
+                {"label" : "Name", "name" : "eventTargetName", "type" : "CUSTOM"},
+                {"label" : "Object Type", "name" : "eventObjectType", "type" : "CUSTOM"},
+                {"label" : "Object Type Id", "name" : "eventObjectTypeId", "type" : "CUSTOM"},
+                {"label" : "Account", "name" : "eventAccount", "type" : "REFERENCE"},
+                {"label" : "Account Id", "name" : "eventAccountId", "type" : "CUSTOM"},
+                {"label" : "Campaign", "name" : "eventCampaign", "type" : "REFERENCE"},
+                {"label" : "Campaign Id", "name" : "eventCampaignId", "type" : "CUSTOM"},
+                {"label" : (marketingTouchModel === "Weighted" ? "Weighted " : "") + "MT Attribution", "name" : "eventAttribution", "type" : "INTEGER"},
+                {"label" : "Campaign Member Status", "name" : "eventStatus", "type" : "CUSTOM"},
+                {"label" : "Date", "name" : "eventDate", "type" : "DATETIME"}
+            ];
+
+            frontEndEvents.forEach((rowObj) => {
+                let rowElements = [];
+                OPP_VIEW_COLUMNS.forEach((field) => {
+                    let rowElement = field["type"] === 'REFERENCE' ? rowObj[field["name"]]["Name"] : rowObj[field["name"]];
+                    if (field["name"] === 'eventDate') {
+                        rowElement = getDateValueFrom(new Date(rowElement));
+                    } else if (field["name"] === 'eventAttribution') {
+                        rowElement = (rowElement ? oppViewMap.currencySymbol + rowElement : "-");
+                    } else if (field["name"] === 'eventStatus' && rowElement && oppViewMap.campaignMemberStatusAPINameToLabel[rowElement]) {
+                        rowElement = oppViewMap.campaignMemberStatusAPINameToLabel[rowElement];
+                    }
+                    // Question for reviewer: I don't think I need to escape formulas here since data here is stringify'd. Does that sound right?
+                    rowElements.push(rowElement ? JSON.stringify(rowElement) : '');
+                })
+                csvFile += rowElements.join() + '\r\n';
+            })
+
+            var a = document.createElement('a');
+            a.href     = 'data:attachment/csv;charset=utf-8,\ufeff' + encodeURIComponent(csvFile);
+            a.target   ='_blank';
+            a.download = filename;
+            a.innerHTML = "Click me to download the file.";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }    
+
+        function getDateValueFrom(originalDateVal){
+            return (originalDateVal.getMonth() + 1) + '/' + originalDateVal.getDate() + '/' +  originalDateVal.getFullYear();
+        }     
+    </script>
+
+</apex:page>

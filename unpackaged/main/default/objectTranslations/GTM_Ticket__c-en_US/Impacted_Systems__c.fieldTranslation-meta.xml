@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Impacted Systems --></label>
+        <name>Impacted_Systems__c</name>
+        <picklistValues>
+            <masterLabel>Calendly</masterLabel>
+            <translation><!-- Calendly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Centro</masterLabel>
+            <translation><!-- Centro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Champify</masterLabel>
+            <translation><!-- Champify --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chili Piper</masterLabel>
+            <translation><!-- Chili Piper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clazar</masterLabel>
+            <translation><!-- Clazar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clearbit</masterLabel>
+            <translation><!-- Clearbit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DocuSign</masterLabel>
+            <translation><!-- DocuSign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drive Connector</masterLabel>
+            <translation><!-- Drive Connector --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endgame</masterLabel>
+            <translation><!-- Endgame --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gong</masterLabel>
+            <translation><!-- Gong --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hightouch</masterLabel>
+            <translation><!-- Hightouch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hubspot</masterLabel>
+            <translation><!-- Hubspot --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intercom</masterLabel>
+            <translation><!-- Intercom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Klarity</masterLabel>
+            <translation><!-- Klarity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LaneFour</masterLabel>
+            <translation><!-- LaneFour --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LeadGenius</masterLabel>
+            <translation><!-- LeadGenius --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LeadIQ</masterLabel>
+            <translation><!-- LeadIQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LeanData</masterLabel>
+            <translation><!-- LeanData --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LinkedIn Sales Insights</masterLabel>
+            <translation><!-- LinkedIn Sales Insights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LinkedIn Sales Navigator</masterLabel>
+            <translation><!-- LinkedIn Sales Navigator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Netsuite</masterLabel>
+            <translation><!-- Netsuite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outreach</masterLabel>
+            <translation><!-- Outreach --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Polytomic</masterLabel>
+            <translation><!-- Polytomic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regie.ai</masterLabel>
+            <translation><!-- Regie.ai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retool</masterLabel>
+            <translation><!-- Retool --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RevOps.io</masterLabel>
+            <translation><!-- RevOps.io --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rocketlane</masterLabel>
+            <translation><!-- Rocketlane --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce</masterLabel>
+            <translation><!-- Salesforce --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Splash</masterLabel>
+            <translation><!-- Splash --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Stripe</masterLabel>
+            <translation><!-- Stripe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Whistic</masterLabel>
+            <translation><!-- Whistic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WorkRamp</masterLabel>
+            <translation><!-- WorkRamp --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Xactly</masterLabel>
+            <translation><!-- Xactly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ZoomInfo</masterLabel>
+            <translation><!-- ZoomInfo --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

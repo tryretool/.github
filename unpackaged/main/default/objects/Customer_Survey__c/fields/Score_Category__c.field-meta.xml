@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Score_Category__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(Survey_Type__c,
+  &quot;nps&quot;,
+  IF(
+    Score__c &lt;= 6,
+    &quot;Detractor&quot;,
+    IF(
+      Score__c &lt;= 8,
+      &quot;Neutral&quot;,
+      IF(
+        Score__c &gt;= 9,
+        &quot;Promoter&quot;,
+        &quot;Error&quot;
+       )
+     )
+   ),
+   &quot;csat&quot;,
+   CASE(Score__c, 5, &quot;Positive&quot;, 4, &quot;Positive&quot;, 3, &quot;Negative&quot;, 2, &quot;Negative&quot;, 1, &quot;Negative&quot;, &quot;Error&quot;),
+   &quot;Error&quot;
+ )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Score Category</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

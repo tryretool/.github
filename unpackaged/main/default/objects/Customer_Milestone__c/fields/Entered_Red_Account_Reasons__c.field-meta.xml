@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Entered_Red_Account_Reasons__c</fullName>
+    <label>Entered Red Account Reasons</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Low Adoption</fullName>
+                <default>false</default>
+                <label>Low Adoption</label>
+            </value>
+            <value>
+                <fullName>Company Restructure or Layoffs</fullName>
+                <default>false</default>
+                <label>Company Restructure or Layoffs</label>
+            </value>
+            <value>
+                <fullName>No Relationship With Exec Buyer</fullName>
+                <default>false</default>
+                <label>No Relationship With Exec Buyer</label>
+            </value>
+            <value>
+                <fullName>Lack of Resources</fullName>
+                <default>false</default>
+                <label>Lack of Resources</label>
+            </value>
+            <value>
+                <fullName>Lack of Prioritization</fullName>
+                <default>false</default>
+                <label>Lack of Prioritization</label>
+            </value>
+            <value>
+                <fullName>Technical Escalation</fullName>
+                <default>false</default>
+                <label>Technical Escalation</label>
+            </value>
+            <value>
+                <fullName>Not Activated</fullName>
+                <default>false</default>
+                <label>Not Activated</label>
+            </value>
+            <value>
+                <fullName>Non payment</fullName>
+                <default>false</default>
+                <label>Non payment</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

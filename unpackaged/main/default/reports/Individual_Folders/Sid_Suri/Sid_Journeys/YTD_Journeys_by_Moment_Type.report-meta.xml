@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Journey__c$Name</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Created_From_Moment__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Account__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Stage__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Meeting_Booked_At__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Opportunity__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Opportunity__c.Qualified_Pipeline_AR_Date__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Journey__c$Moment_Type_Reporting__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Demo Request</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>Journey__c$CreatedDate</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>YTD Journeys for DRs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Journeys_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Journey__c$Accepted_At__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

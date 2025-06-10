@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Haven’t Heard Back - Closing</name>
+    <style>none</style>
+    <subject>Re: {!Case.Subject}</subject>
+    <textOnly>Hello! Since I haven&#39;t heard back from you yet, I need to go ahead and close out this thread. Please open a new Retool Support ticket if any other issues or questions arise.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Moment__c$Name</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Contact__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Moment_Context__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Moment_Occurred_At__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$MQL_Check_Results__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Moment_Description__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Nethawk</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>NetHawk Interactive</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Account__c.Tags__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>excludes</operator>
+            <value>FY24 Target Account</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Moment__c$Moment_Description__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Content Syndication Leads (Non-target)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

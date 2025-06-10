@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Indicate the work completed on the Identified Use Cases what was built by the customer vs. Retool. --></help>
+        <label><!-- Use Case Progress --></label>
+        <name>Use_Case_Progress__c</name>
+    </CustomFieldTranslation>

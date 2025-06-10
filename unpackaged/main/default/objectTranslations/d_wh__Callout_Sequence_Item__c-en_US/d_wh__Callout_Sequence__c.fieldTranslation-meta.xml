@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Callout Sequence --></label>
+        <name>d_wh__Callout_Sequence__c</name>
+        <relationshipLabel><!-- Callout Sequence Items --></relationshipLabel>
+    </CustomFieldTranslation>

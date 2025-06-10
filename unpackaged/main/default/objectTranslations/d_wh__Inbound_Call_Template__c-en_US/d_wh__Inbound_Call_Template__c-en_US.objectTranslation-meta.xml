@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Inbound Call Template Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- External URL --></label>
+            <section>External URL</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- Export_Template --></label>
+        <name>d_wh__Export_Template</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Import_Template --></label>
+        <name>d_wh__Import_Template</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Test_Inbound_Call_Template --></label>
+        <name>d_wh__Test_Inbound_Call_Template</name>
+    </webLinks>
+</CustomObjectTranslation>

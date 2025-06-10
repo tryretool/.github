@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bombora_data__Surge_Activity__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Percentage of valid domains in a customer&#39;s data set that are showing intent as of this sync.</description>
+    <label>Surge Activity</label>
+    <precision>5</precision>
+    <required>false</required>
+    <scale>3</scale>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

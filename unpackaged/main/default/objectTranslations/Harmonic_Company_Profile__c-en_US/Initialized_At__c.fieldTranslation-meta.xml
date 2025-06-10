@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Date company was added to the Harmonic database --></help>
+        <label><!-- Initialized At --></label>
+        <name>Initialized_At__c</name>
+    </CustomFieldTranslation>

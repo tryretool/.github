@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Amount of Last funding round. --></help>
+        <label><!-- Last Funding Round Amount --></label>
+        <name>DOZISF__Last_Funding_Round_Amount__c</name>
+    </CustomFieldTranslation>

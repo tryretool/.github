@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Enables `Api Only User` permissions in System Permissions: Access Salesforce.com only through a Salesforce.com API.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>API Only User</label>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ApiUserOnly</name>
+    </userPermissions>
+</PermissionSet>

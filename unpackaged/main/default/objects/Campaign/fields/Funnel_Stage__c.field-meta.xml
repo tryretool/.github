@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Funnel_Stage__c</fullName>
+    <description>For reporting segmentation
+
+in System Use -
+Required field in Flow: &#39;Campaign - Create Campaign Button
+
+External Systems Utilization: None</description>
+    <inlineHelpText>For reporting segmentation</inlineHelpText>
+    <label>Funnel Stage</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Awareness</fullName>
+                <default>false</default>
+                <label>Awareness</label>
+            </value>
+            <value>
+                <fullName>Expansion</fullName>
+                <default>false</default>
+                <label>Expansion</label>
+            </value>
+            <value>
+                <fullName>Nurture</fullName>
+                <default>false</default>
+                <label>Nurture</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

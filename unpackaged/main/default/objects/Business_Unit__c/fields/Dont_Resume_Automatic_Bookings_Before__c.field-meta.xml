@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dont_Resume_Automatic_Bookings_Before__c</fullName>
+    <businessStatus>DeprecateCandidate</businessStatus>
+    <label>zOLD Don&#39;t Resume Automatic Bookings Bef</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

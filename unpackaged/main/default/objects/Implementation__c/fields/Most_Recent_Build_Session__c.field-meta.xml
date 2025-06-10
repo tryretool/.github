@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Most_Recent_Build_Session__c</fullName>
+    <description>Displays the date/time of the most recent build session.</description>
+    <inlineHelpText>Displays the date/time of the most recent build session.</inlineHelpText>
+    <label>Most Recent Build Session</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

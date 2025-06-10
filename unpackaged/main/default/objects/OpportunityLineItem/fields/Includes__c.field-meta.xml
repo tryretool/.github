@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Includes__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE( Product_Type__c,
+ &quot;Platform&quot;,
+  IF(
+  PricebookEntry.Product2.Unlimited_units__c,
+   &quot;Unlimited users&quot;,
+   TEXT(Included_Units__c) &amp; &quot; &quot;&amp;  TEXT(Included_Unit_Type__c)  &amp; IF(Unit_Overage_Rate__c &gt;0,&quot; (addl. @ $&quot;&amp; TEXT(Unit_Overage_Rate__c) &amp; &quot;/mo)&quot;,NULL)
+  ),
+ &quot;&quot;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Includes</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

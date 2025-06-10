@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Harmonic_Match_Issue__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Checked TRUE if an Account record is matched incorrectly with a Harmonic Company Profile record and is flagged for review.</description>
+    <inlineHelpText>Checked TRUE if an Account record is matched incorrectly with a Harmonic Company Profile record and is flagged for review.</inlineHelpText>
+    <label>Harmonic Match Issue?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Engagement_Score__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Rolling_Engagement_Score__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Engagement_Score_Details__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Moment_Type__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Moment_Occurred_At__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Name</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Engagement_Decay__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(Moment__c.Contact__c.Person_Grade__c &gt;= 80, &quot;A&quot;, 
+    IF(Moment__c.Contact__c.Person_Grade__c &gt;= 60, &quot;B&quot;, 
+        IF(Moment__c.Contact__c.Person_Grade__c &gt;= 40, &quot;C&quot;, 
+            IF(Moment__c.Contact__c.Person_Grade__c &gt;= 20, &quot;D&quot;, 
+                &quot;E&quot; )))
+) &amp; 
+IF(Moment__c.Engagement_Score__c &gt;= 80, &quot;1&quot;, 
+    IF(Moment__c.Engagement_Score__c &gt;= 60, &quot;2&quot;, 
+        IF(Moment__c.Engagement_Score__c &gt;= 40, &quot;3&quot;, 
+            IF(Moment__c.Engagement_Score__c &gt;= 20, &quot;4&quot;, 
+                &quot;5&quot;))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Person/Engagement Score</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Contact__c.Id</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>003Du000005I5JU,003Du000005KZuq</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Engagement_Score__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Engagement_Score__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Moment__c$Contact__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Moment__c$Account__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Moment__c$Contact__c.Person_Grade_Details__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Multi-Dimensional Scoring</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>Moment__c$Moment_Occurred_At__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

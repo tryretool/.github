@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Journey_Type__c</fullName>
+    <description>Returns the Current Open Journey Type. Created as a workaround for the 4/25 LeanData Incident
+
+External Systems Utilization: LeanData.</description>
+    <externalId>false</externalId>
+    <formula>Current_Open_Journey__r.Journey_Type__c</formula>
+    <inlineHelpText>Returns the Current Open Journey Type. Created as a workaround for the 4/25 LeanData Incident.</inlineHelpText>
+    <label>Current Journey Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Journey__c$Name</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Owner_Role__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Is_SAL__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Is_SQL__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Is_SQO__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Journey__c$Created_From_Moment__c.Moment_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Demo Request</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>Journey__c$Created_At__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2024-06 Demo Request Journeys</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Journeys_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Journey__c$Created_At__c</dateColumn>
+        <endDate>2024-06-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-01-01</startDate>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Admin only button used to reopen Journey records.</description>
+    <flowDefinition>Journey_Reopen_Button</flowDefinition>
+    <label>Reopen Journey</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

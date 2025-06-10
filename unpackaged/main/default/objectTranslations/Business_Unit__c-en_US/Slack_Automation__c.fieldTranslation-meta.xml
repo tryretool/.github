@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Slack Automation --></label>
+        <name>Slack_Automation__c</name>
+        <picklistValues>
+            <masterLabel>Add Polytomic External</masterLabel>
+            <translation><!-- Add Polytomic External --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Add Polytomic Internal</masterLabel>
+            <translation><!-- Add Polytomic Internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Add Support External</masterLabel>
+            <translation><!-- Add Support External --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remove Polytomic External</masterLabel>
+            <translation><!-- Remove Polytomic External --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remove Polytomic Internal</masterLabel>
+            <translation><!-- Remove Polytomic Internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remove Support External</masterLabel>
+            <translation><!-- Remove Support External --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

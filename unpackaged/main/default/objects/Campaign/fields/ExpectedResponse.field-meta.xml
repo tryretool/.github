@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ExpectedResponse</fullName>
+    <description>An estimate of the percentage of responses a campaign will generate.
+
+In System Use: None
+
+External Systems Utilization: None</description>
+    <inlineHelpText>An estimate of the percentage of responses a campaign will generate.</inlineHelpText>
+    <securityClassification>Ignore</securityClassification>
+</CustomField>

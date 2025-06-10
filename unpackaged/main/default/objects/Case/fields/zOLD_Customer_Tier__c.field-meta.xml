@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>zOLD_Customer_Tier__c</fullName>
+    <label>zOLD Customer Tier</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Premium</fullName>
+                <default>false</default>
+                <label>Premium</label>
+            </value>
+            <value>
+                <fullName>Committed</fullName>
+                <default>false</default>
+                <label>Committed</label>
+            </value>
+            <value>
+                <fullName>Business</fullName>
+                <default>false</default>
+                <label>Business</label>
+            </value>
+            <value>
+                <fullName>Free</fullName>
+                <default>false</default>
+                <label>Free</label>
+            </value>
+            <value>
+                <fullName>Team</fullName>
+                <default>false</default>
+                <label>Team</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

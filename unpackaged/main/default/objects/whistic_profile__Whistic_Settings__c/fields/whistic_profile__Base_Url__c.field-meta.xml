@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>whistic_profile__Base_Url__c</fullName>
+    <defaultValue>&quot;https://api.whistic.com&quot;</defaultValue>
+    <deprecated>false</deprecated>
+    <description>used to specify the base url for the Whistic api</description>
+    <inlineHelpText>remember to remove the &#39;/&#39; from the end of the url if it exists</inlineHelpText>
+    <label>Base Url</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>

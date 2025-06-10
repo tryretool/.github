@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Name</fullName>
+    <description>Format &quot;YearQuarter - Channel - Custom Title&quot;
+Format Example &quot;25Q1 - Event-Tradeshow - NYC Meetup&quot;
+
+In System Use: Flow &quot;Campaign - Create Campaign Button&quot;
+
+External Systems Utilization: Hubspot</description>
+    <inlineHelpText>Format &quot;YearQuarter - Channel - Custom Title&quot;
+Format Example &quot;25Q1 - Event-Tradeshow - NYC Meetup&quot;</inlineHelpText>
+    <securityClassification>Safe</securityClassification>
+</CustomField>

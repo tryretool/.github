@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Formula that displays the owner name of the Account related to the Moment. --></help>
+        <label><!-- Account Owner (Formula) --></label>
+        <name>Account_Owner_Formula__c</name>
+    </CustomFieldTranslation>

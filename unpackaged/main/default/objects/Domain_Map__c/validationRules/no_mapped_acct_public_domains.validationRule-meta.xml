@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>no_mapped_acct_public_domains</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISPICKVAL(Type__c,&quot;Public&quot;) &amp;&amp; NOT(ISBLANK(Matched_Account__c))</errorConditionFormula>
+    <errorDisplayField>Type__c</errorDisplayField>
+    <errorMessage>Cannot map an account to a public domain</errorMessage>
+</ValidationRule>

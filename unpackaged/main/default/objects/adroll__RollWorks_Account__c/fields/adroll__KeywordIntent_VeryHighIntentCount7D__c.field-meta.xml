@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>adroll__KeywordIntent_VeryHighIntentCount7D__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Number of Keywords for which the account is demonstrating very high intent in the last seven days</description>
+    <externalId>false</externalId>
+    <label>Count Very High Intent KWs (last 7 days)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

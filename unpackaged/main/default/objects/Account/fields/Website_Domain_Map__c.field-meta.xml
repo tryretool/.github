@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Website_Domain_Map__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Link to the related Domain Map record.</description>
+    <inlineHelpText>Link to the related Domain Map record.</inlineHelpText>
+    <label>Website Domain Map</label>
+    <referenceTo>Domain_Map__c</referenceTo>
+    <relationshipLabel>Accounts</relationshipLabel>
+    <relationshipName>Accounts</relationshipName>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manager_New_ARR_Override__c</fullName>
+    <description>Replaces the unweighted New ARR amount entered by the Account Executive. Used for forecasting purposes by Sales Managers.</description>
+    <inlineHelpText>Replaces the unweighted New ARR amount entered by the Account Executive. Used for forecasting purposes by Sales Managers.</inlineHelpText>
+    <label>Manager New ARR Override</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

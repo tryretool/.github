@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChampifyIo__Source_Field_Name__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Source Field Name</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>ChampifyIo__Object_Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Company - Address</fullName>
+                <default>true</default>
+                <label>Company - Address</label>
+            </value>
+            <value>
+                <fullName>Company - Address - Street</fullName>
+                <default>false</default>
+                <label>Company - Address - Street</label>
+            </value>
+            <value>
+                <fullName>Company - Address - City</fullName>
+                <default>false</default>
+                <label>Company - Address - City</label>
+            </value>
+            <value>
+                <fullName>Company - Address - State</fullName>
+                <default>false</default>
+                <label>Company - Address - State</label>
+            </value>
+            <value>
+                <fullName>Company - Address - Postal Code</fullName>
+                <default>false</default>
+                <label>Company - Address - Postal Code</label>
+            </value>
+            <value>
+                <fullName>Company - Address - Country</fullName>
+                <default>false</default>
+                <label>Company - Address - Country</label>
+            </value>
+            <value>
+                <fullName>Company - Employee Count</fullName>
+                <default>false</default>
+                <label>Company - Employee Count</label>
+            </value>
+            <value>
+                <fullName>Company - Industry</fullName>
+                <default>false</default>
+                <label>Company - Industry</label>
+            </value>
+            <value>
+                <fullName>Company - LinkedIn URL</fullName>
+                <default>false</default>
+                <label>Company - LinkedIn URL</label>
+            </value>
+            <value>
+                <fullName>Company - Website</fullName>
+                <default>false</default>
+                <label>Company - Website</label>
+            </value>
+            <value>
+                <fullName>Person - Email</fullName>
+                <default>false</default>
+                <label>Person - Email</label>
+            </value>
+            <value>
+                <fullName>Person - LinkedIn URL</fullName>
+                <default>false</default>
+                <label>Person - LinkedIn URL</label>
+            </value>
+            <value>
+                <fullName>Person - Mobile</fullName>
+                <default>false</default>
+                <label>Person - Mobile</label>
+            </value>
+            <value>
+                <fullName>Person - Title</fullName>
+                <default>false</default>
+                <label>Person - Title</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Account</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Company - Address</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Company - Address - Street</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Company - Address - City</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Company - Address - State</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Company - Address - Postal Code</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Company - Address - Country</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Company - Employee Count</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Company - Industry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Company - LinkedIn URL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Account</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Company - Website</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Contact</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Person - Email</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Contact</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Person - LinkedIn URL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Contact</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Person - Mobile</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Contact</controllingFieldValue>
+            <controllingFieldValue>Lead</controllingFieldValue>
+            <valueName>Person - Title</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

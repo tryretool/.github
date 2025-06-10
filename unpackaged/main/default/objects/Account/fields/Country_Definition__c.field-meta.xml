@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country_Definition__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Link to the associated Country definition record related to Shipping Country. Country definitions consist of geographical meta data (i.e. Region, Subregion, Territory, Business Status etc..)</description>
+    <inlineHelpText>Link to the associated Country definition record related to Shipping Country.</inlineHelpText>
+    <label>Country Definition (Shipping)</label>
+    <referenceTo>Country_Definition__c</referenceTo>
+    <relationshipLabel>Accounts</relationshipLabel>
+    <relationshipName>Accounts</relationshipName>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

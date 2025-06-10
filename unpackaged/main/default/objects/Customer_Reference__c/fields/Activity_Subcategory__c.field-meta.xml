@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activity_Subcategory__c</fullName>
+    <label>Activity Subcategory</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Activity_Category__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Target Account Swag Kit (Exec Buyer)</fullName>
+                <default>false</default>
+                <label>Target Account Swag Kit (Exec Buyer)</label>
+            </value>
+            <value>
+                <fullName>Target Account Swag Kit (Champion)</fullName>
+                <default>false</default>
+                <label>Target Account Swag Kit (Champion)</label>
+            </value>
+            <value>
+                <fullName>Customer Advisory Board</fullName>
+                <default>false</default>
+                <label>Customer Advisory Board</label>
+            </value>
+            <value>
+                <fullName>Customer Dinner</fullName>
+                <default>false</default>
+                <label>Customer Dinner</label>
+            </value>
+            <value>
+                <fullName>Account Experience/Event</fullName>
+                <default>false</default>
+                <label>Account Experience/Event</label>
+            </value>
+            <value>
+                <fullName>Retool-sponsored (marketing supported)</fullName>
+                <default>false</default>
+                <label>Retool-sponsored (marketing supported)</label>
+            </value>
+            <value>
+                <fullName>Retool-included (marketing supported)</fullName>
+                <default>false</default>
+                <label>Retool-included (marketing supported)</label>
+            </value>
+            <value>
+                <fullName>Enterprise Customer Success Story</fullName>
+                <default>false</default>
+                <label>Enterprise Customer Success Story</label>
+            </value>
+            <value>
+                <fullName>Flagship Customer Film</fullName>
+                <default>false</default>
+                <label>Flagship Customer Film</label>
+            </value>
+            <value>
+                <fullName>User event - Featured Customer / Brand</fullName>
+                <default>false</default>
+                <label>User event - Featured Customer / Brand</label>
+            </value>
+            <value>
+                <fullName>Roadshow - customer speaker / presenter</fullName>
+                <default>false</default>
+                <label>Roadshow - customer speaker / presenter</label>
+            </value>
+            <value>
+                <fullName>User event - mainstage keynote speaker</fullName>
+                <default>false</default>
+                <label>User event - mainstage keynote speaker</label>
+            </value>
+            <value>
+                <fullName>3rd party event - co-presenter, co-marketer (booth)</fullName>
+                <default>false</default>
+                <label>3rd party event - co-presenter, co-marketer (booth)</label>
+            </value>
+            <value>
+                <fullName>User Meetup - content partner</fullName>
+                <default>false</default>
+                <label>User Meetup - content partner</label>
+            </value>
+            <value>
+                <fullName>Fireside chat - participant</fullName>
+                <default>false</default>
+                <label>Fireside chat - participant</label>
+            </value>
+            <value>
+                <fullName>SME Panelist - virtual or live (webinar, roadshow, meetup event)</fullName>
+                <default>false</default>
+                <label>SME Panelist - virtual or live (webinar, roadshow, meetup event)</label>
+            </value>
+            <value>
+                <fullName>Meetups -  sponsor or session leader</fullName>
+                <default>false</default>
+                <label>Meetups -  sponsor or session leader</label>
+            </value>
+            <value>
+                <fullName>Analyst Report contributor - customer testimonial, quote, survey</fullName>
+                <default>false</default>
+                <label>Analyst Report contributor - customer testimonial, quote, survey</label>
+            </value>
+            <value>
+                <fullName>Customer quote (press announcement)</fullName>
+                <default>false</default>
+                <label>Customer quote (press announcement)</label>
+            </value>
+            <value>
+                <fullName>Industry roundup (press mentions/name drops for Mfg customers, for ex or Finserv)</fullName>
+                <default>false</default>
+                <label>Industry roundup (press mentions/name drops for Mfg customers, for ex or Finserv)</label>
+            </value>
+            <value>
+                <fullName>Tier 1 Press (stand-alone press feature, focusing one one customer/story)</fullName>
+                <default>false</default>
+                <label>Tier 1 Press (stand-alone press feature, focusing one one customer/story)</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Gifting Campaign</controllingFieldValue>
+            <valueName>Target Account Swag Kit (Exec Buyer)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Gifting Campaign</controllingFieldValue>
+            <valueName>Target Account Swag Kit (Champion)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VIP Access/Experience</controllingFieldValue>
+            <valueName>Customer Advisory Board</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VIP Access/Experience</controllingFieldValue>
+            <valueName>Customer Dinner</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>VIP Access/Experience</controllingFieldValue>
+            <valueName>Account Experience/Event</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hackathon</controllingFieldValue>
+            <valueName>Retool-sponsored (marketing supported)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hackathon</controllingFieldValue>
+            <valueName>Retool-included (marketing supported)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brand Spotlight</controllingFieldValue>
+            <valueName>Enterprise Customer Success Story</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brand Spotlight</controllingFieldValue>
+            <valueName>Flagship Customer Film</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brand Spotlight</controllingFieldValue>
+            <valueName>User event - Featured Customer / Brand</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event or Webinar Speaker</controllingFieldValue>
+            <valueName>Roadshow - customer speaker / presenter</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event or Webinar Speaker</controllingFieldValue>
+            <valueName>User event - mainstage keynote speaker</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event or Webinar Speaker</controllingFieldValue>
+            <valueName>3rd party event - co-presenter, co-marketer (booth)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event or Webinar Speaker</controllingFieldValue>
+            <valueName>User Meetup - content partner</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event or Webinar Speaker</controllingFieldValue>
+            <valueName>Fireside chat - participant</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event or Webinar Speaker</controllingFieldValue>
+            <valueName>SME Panelist - virtual or live (webinar, roadshow, meetup event)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Event or Webinar Speaker</controllingFieldValue>
+            <valueName>Meetups -  sponsor or session leader</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PR/AR</controllingFieldValue>
+            <valueName>Analyst Report contributor - customer testimonial, quote, survey</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PR/AR</controllingFieldValue>
+            <valueName>Customer quote (press announcement)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PR/AR</controllingFieldValue>
+            <valueName>Industry roundup (press mentions/name drops for Mfg customers, for ex or Finserv)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>PR/AR</controllingFieldValue>
+            <valueName>Tier 1 Press (stand-alone press feature, focusing one one customer/story)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

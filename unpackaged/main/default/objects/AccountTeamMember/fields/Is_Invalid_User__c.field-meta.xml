@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Invalid_User__c</fullName>
+    <formula>IF(CASE(TeamMemberRole,
+ &quot;Account Executive&quot;,IF(User__c = Account__r.OwnerId,0,1),
+ &quot;Technical Account Manager&quot;,IF(User__c = Account__r.Technical_Account_Manager__c,0,1),
+ &quot;Outbound SDR&quot;,IF(User__c = Account__r.OwnerId || User__c = Account__r.Owner.Mapped_BDR__c || User__c = Account__r.Sales_Development_Representative__c,0,1),
+ &quot;Inbound SDR&quot;,IF(User__c = Account__r.OwnerId || User__c = Account__r.Sales_Development_Representative__c,0,1),
+ &quot;Renewal Manager&quot;,IF(User__c = Account__r.Renewal_Manager__c,0,1),
+ &quot;Professional Services&quot;,IF(User__c = Account__r.Professional_Services__c,0,1),
+ 0
+)=1,TRUE,FALSE) ||
+User__r.Is_Account_Pool__c ||
+User__r.Is_integration_user__c || 
+User__r.Is_Vendor_User__c || 
+NOT(User__r.IsActive)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Invalid User?</label>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- If checked the Auto Scheduling of Segment Creation will be suppressed. Otherwise it will be auto created --></help>
+        <label><!-- Suppress Auto Schedule --></label>
+        <name>adroll__SuppressAutoSchedule__c</name>
+    </CustomFieldTranslation>

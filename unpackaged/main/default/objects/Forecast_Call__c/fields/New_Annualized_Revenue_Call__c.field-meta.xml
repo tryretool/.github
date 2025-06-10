@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Annualized_Revenue_Call__c</fullName>
+    <description>New Annualized Revenue Call amount for the given snapshot week.</description>
+    <inlineHelpText>New Annualized Revenue Call amount for the given snapshot week.</inlineHelpText>
+    <label>New Annualized Revenue (Call)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

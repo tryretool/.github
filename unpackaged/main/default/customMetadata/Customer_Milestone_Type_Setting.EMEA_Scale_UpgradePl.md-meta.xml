@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>EMEA-Scale-Upgrade Pl</label>
+    <protected>false</protected>
+    <values>
+        <field>Description__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Geo__c</field>
+        <value xsi:type="xsd:string">EMEA</value>
+    </values>
+    <values>
+        <field>Request_by_Sales__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Tier__c</field>
+        <value xsi:type="xsd:string">Scale</value>
+    </values>
+    <values>
+        <field>Type_Definition__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Upgrade Plan</value>
+    </values>
+</CustomMetadata>

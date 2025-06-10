@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Notes__c</fullName>
+    <description>Multi-purpose text field used to store notes about the Contact (i.e. Opt In/Opt Out details)
+
+External Systems Utilization:</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Multi-purpose text field used to store notes about the Contact (i.e. Opt In/Opt Out details)</inlineHelpText>
+    <label>Contact Notes</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Checked TRUE if we communicated the disruption of service date with the customer. --></help>
+        <label><!-- Disruption of Service Comms Sent? --></label>
+        <name>Disruption_of_Service_Comms_Sent__c</name>
+    </CustomFieldTranslation>

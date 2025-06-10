@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Auto computed field that is used in reports for aggregations. --></help>
+        <label><!-- Gong Count --></label>
+        <name>Gong__Gong_Count__c</name>
+    </CustomFieldTranslation>

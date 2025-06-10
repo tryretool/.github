@@ -1,0 +1,2 @@
+<apex:page controller="LeanData.A2BGroupDisplayController" readOnly="true">
+</apex:page>

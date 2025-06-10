@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Relationship_Summary__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(ROUND(Relationship_Score__c,0),
+  3,&quot;High&quot;,
+  2,&quot;Medium&quot;,
+  &quot;Low&quot;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Relationship Summary</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

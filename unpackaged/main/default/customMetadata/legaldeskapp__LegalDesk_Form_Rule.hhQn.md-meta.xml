@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>LD_Rule_Record_IFHk</label>
+    <protected>false</protected>
+    <values>
+        <field>legaldeskapp__Action_Field_Id__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Action__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Comparator__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Created_Date__c</field>
+        <value xsi:type="xsd:dateTime">2025-04-16T23:41:24.000Z</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Form_Mapped__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>legaldeskapp__LegalDesk_Rule_Id__c</field>
+        <value xsi:type="xsd:string">680007e4aa21e9b61b1b1cf5</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Request_Type__c</field>
+        <value xsi:type="xsd:string">Deal Support</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Rule_Order__c</field>
+        <value xsi:type="xsd:string">7</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Trigger_Field_Id__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Value__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

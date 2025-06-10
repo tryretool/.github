@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ROE_Is_Out_of_Segment__c</fullName>
+    <description>TRUE if the current owner is assigned to an Account that does not align with their assigned Segment.</description>
+    <formula>Owner.Is_Account_Pool__c = FALSE &amp;&amp; (
+ (NOT(ISPICKVAL(Owner.Opportunity_Segment__c,&quot;&quot;)) &amp;&amp; TEXT(Owner.Opportunity_Segment__c) != TEXT(Segment__c)) ||
+ (NOT(ISPICKVAL(Sales_Development_Representative__r.Opportunity_Segment__c,&quot;&quot;)) &amp;&amp; TEXT(Sales_Development_Representative__r.Opportunity_Segment__c) != TEXT(Segment__c))
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>TRUE if the current owner is assigned to an Account that does not align with their assigned Segment</inlineHelpText>
+    <label>ROE Is Out of Segment?</label>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

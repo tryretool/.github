@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SALES_Cognism_Contacts_Created_Today</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CONTACT.PHONE1</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>CONTACT.TITLE</columns>
+    <columns>LinkedIn_Manual_Entry__c</columns>
+    <columns>Congism_Last_Updated_Date__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Contact_Cognism_ID__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Congism_Last_Updated_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>CONTACT.CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>Opt_Out_Sales__c</field>
+        <operation>notEqual</operation>
+        <value>True</value>
+    </filters>
+    <filters>
+        <field>Suppression_Reason__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>[SALES] Cognism Contacts Created Today</label>
+</ListView>

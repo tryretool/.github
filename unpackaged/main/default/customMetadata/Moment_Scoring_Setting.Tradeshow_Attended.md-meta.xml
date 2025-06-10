@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Tradeshow - Attended</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Calculation__c</field>
+        <value xsi:type="xsd:string">Sum</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">Engagement Band</value>
+    </values>
+    <values>
+        <field>Duration_Decay__c</field>
+        <value xsi:type="xsd:double">90.0</value>
+    </values>
+    <values>
+        <field>Factor__c</field>
+        <value xsi:type="xsd:string">Live Event - Tradeshow</value>
+    </values>
+    <values>
+        <field>Score__c</field>
+        <value xsi:type="xsd:double">15.0</value>
+    </values>
+    <values>
+        <field>Status__c</field>
+        <value xsi:type="xsd:string">Attended</value>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Event</value>
+    </values>
+    <values>
+        <field>Version__c</field>
+        <value xsi:type="xsd:string">v1</value>
+    </values>
+</CustomMetadata>

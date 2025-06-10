@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Can_Manage_Milestones__c</fullName>
+    <formula>ISPICKVAL($User.Team__c,&quot;Revenue Operations&quot;) ||
+(
+  ISPICKVAL($User.Team__c,&quot;Technical Account Management&quot;) &amp;&amp; NOT(ISPICKVAL($User.Level__c,&quot;IC&quot;))
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Can Manage Milestones?</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

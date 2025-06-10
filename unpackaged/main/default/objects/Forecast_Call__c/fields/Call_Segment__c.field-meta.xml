@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Segment__c</fullName>
+    <description>Team segment + geo.</description>
+    <label>Call Segment</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>GRW</fullName>
+                <default>false</default>
+                <label>GRW</label>
+            </value>
+            <value>
+                <fullName>MMK (SF)</fullName>
+                <default>false</default>
+                <label>MMK (SF)</label>
+            </value>
+            <value>
+                <fullName>MMK (NYC)</fullName>
+                <default>false</default>
+                <label>MMK (NYC)</label>
+            </value>
+            <value>
+                <fullName>ENT (SF)</fullName>
+                <default>false</default>
+                <label>ENT (SF)</label>
+            </value>
+            <value>
+                <fullName>ENT (NYC)</fullName>
+                <default>false</default>
+                <label>ENT (NYC)</label>
+            </value>
+            <value>
+                <fullName>ENT (Remote)</fullName>
+                <default>false</default>
+                <label>ENT (Remote)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

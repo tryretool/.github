@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Commercials_Accepted__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>True if the commercial terms of the deal are complete and have been signed off by the economic buyer</inlineHelpText>
+    <label>Call: Commercials Accepted?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

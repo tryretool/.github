@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Moment__c$Name</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Moment_Context__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Moment_Description__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Moment_Context__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Gartner</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Gartner deep dive</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

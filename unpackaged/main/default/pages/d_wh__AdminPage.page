@@ -1,0 +1,1095 @@
+<apex:page controller="d_wh.AdminPage">
+
+    <script type="text/javascript" src="/canvas/sdk/js/50.0/controller.js"></script>
+
+    <apex:slds />
+
+    <style>
+        .vf-message-wrapper .message {
+            margin: 0px;
+        }
+        .vf-message-wrapper .message table td:first-child {
+            width: 35px;
+        }
+        .slds-modal__container { 
+            position: fixed !important;
+            right: 0 !important;
+            padding: 0px !important;
+        }
+        .slds-modal__container .slds-modal__header {
+            border-top-right-radius: 0 !important;
+            border-top-left-radius: 0 !important;
+        }
+        .slds-modal__container .slds-modal__content {
+            height: 100% !important;
+        }
+        .slds-modal__container .slds-modal__footer {
+            border-bottom-right-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+        }
+        .trial-warning {
+            font-weight: bold;
+        }
+        .trial-warning a {
+            border: none !important;
+            margin-left: 3px !important;
+            margin-right: 3px !important;
+        }
+    </style>
+
+    <apex:form id="entireForm">
+
+        <apex:actionStatus id="actionStatus">
+            <apex:facet name="start">
+                <div class="demo-only demo-only demo-only_viewport" style="position: fixed; left: 0; right: 0; top: 0; bottom: 0; z-index: 10000; background-color: rgb(255 255 255 / 50%);" id="form1ActionStatus">
+                    <div role="status" class="slds-spinner slds-spinner_medium">
+                        <span class="slds-assistive-text">{!$Label.Loading}</span>
+                        <div class="slds-spinner__dot-a"></div>
+                        <div class="slds-spinner__dot-b"></div>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionStatus>
+
+
+        <apex:actionFunction name="ChangeTab" action="{!ChangeTab}" rerender="entireForm" status="actionStatus">
+            <apex:param name="tabName" value="Templates" />
+        </apex:actionFunction>
+
+        <div class="slds-scope" style="padding: 20px; background-color: #E5E5E5">
+
+            <div class="slds-card">
+                <div class="slds-card__body slds-card__body_inner">
+
+                    <div class="slds-tabs_default">
+                        <ul class="slds-tabs_default__nav" role="tablist">
+                            <li class="slds-tabs_default__item {!IF(activeTab == 'Limits', 'slds-is-active', '')}" title="Limits" role="presentation">
+                                <a class="slds-tabs_default__link" href="#" role="tab" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item" onclick="ChangeTab('Limits'); return false;">{!$Label.Overview}</a>
+                            </li>
+                            <li class="slds-tabs_default__item {!IF(activeTab == 'Templates', 'slds-is-active', '')}" title="Callout Templates" role="presentation">
+                                <a class="slds-tabs_default__link" href="#" role="tab" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item" onclick="ChangeTab('Templates'); return false;">{!$Label.Callout_Templates}</a>
+                            </li>
+                            <li class="slds-tabs_default__item {!IF(activeTab == 'Sequences', 'slds-is-active', '')}" title="Callout Sequences" role="presentation">
+                                <a class="slds-tabs_default__link" href="#" role="tab" aria-selected="true" aria-controls="tab-default-7" id="tab-default-7__item" onclick="ChangeTab('Sequences'); return false;">{!$Label.Callout_Sequences}</a>
+                            </li>
+                            <li class="slds-tabs_default__item {!IF(activeTab == 'Inbound Templates', 'slds-is-active', '')}" title="Inbound Templates" role="presentation">
+                                <a class="slds-tabs_default__link" href="#" role="tab" aria-selected="false" aria-controls="tab-default-5" id="tab-default-5__item" onclick="ChangeTab('Inbound Templates'); return false;">{!$Label.Inbound_Call_Templates}</a>
+                            </li>
+                            <li class="slds-tabs_default__item {!IF(activeTab == 'Logs', 'slds-is-active', '')}" title="Logs" role="presentation">
+                                <a class="slds-tabs_default__link" href="#" role="tab" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item" onclick="ChangeTab('Logs'); return false;">{!$Label.Logs_Settings}</a>
+                            </li>
+                            <li class="slds-tabs_default__item {!IF(activeTab == 'Scheduled', 'slds-is-active', '')}" title="Scheduled Jobs" role="presentation">
+                                <a class="slds-tabs_default__link" href="#" role="tab" aria-selected="false" aria-controls="tab-default-4" id="tab-default-4__item" onclick="ChangeTab('Scheduled'); return false;">{!$Label.Scheduled_Jobs}</a>
+                            </li>
+                            <li class="slds-tabs_default__item {!IF(activeTab == 'Retry', 'slds-is-active', '')}" title="Retry Jobs" role="presentation">
+                                <a class="slds-tabs_default__link" href="#" role="tab" aria-selected="false" aria-controls="tab-default-6" id="tab-default-6__item" onclick="ChangeTab('Retry'); return false;">{!$Label.Retry_Jobs}</a>
+                            </li>
+                            <li class="slds-tabs_default__item {!IF(activeTab == 'Waiting', 'slds-is-active', '')}" title="Waiting Callouts" role="presentation">
+                                <a class="slds-tabs_default__link" href="#" role="tab" aria-selected="false" aria-controls="tab-default-8" id="tab-default-8__item" onclick="ChangeTab('Waiting'); return false;">Waiting Callouts</a>
+                            </li>
+                        </ul>
+
+                        <div id="tab-default-2" class="slds-tabs_default__content {!IF(activeTab == 'Limits', 'slds-show', 'slds-hide')}" role="tabpanel" aria-labelledby="tab-default-2__item">
+                            
+                            <br />
+                            <div style="font-size: 150%; font-weight: bold; padding-left: 16px;">Declarative Webhooks, version: {!version}</div>
+                            <br />
+
+                            <apex:outputPanel layout="none" rendered="{!IsInTrial}">
+                                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert">
+                                    <span class="slds-assistive-text">warning</span>
+                                    <h2>
+                                        <apex:outputText value="{!TrialLabel}" escape="false" styleClass="trial-warning" />
+                                    </h2>
+                                </div>
+                                <br /><br />
+                            </apex:outputPanel>
+
+                            <apex:outputPanel layout="none" rendered="{!NOT(SyncIsScheduled)}">
+                                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                                    <span class="slds-assistive-text">error</span>
+                                    <h2>
+                                        <span style="margin-top: 5px;">{!$Label.No_Sync_Error} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+                                        <apex:commandButton value="{!$Label.d_wh__Click_Here_To_Fix_It}" action="{!ScheduleSync}" styleClass="slds-button slds-button_brand" />
+                                    </h2>
+                                </div>
+                            </apex:outputPanel>
+                            
+                            <apex:outputPanel layout="none" rendered="{!SyncIsScheduled}">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <div class="slds-m-horizontal_medium slds-m-vertical_x-small">
+                                            <div class="slds-grid slds-grid_align-spread slds-p-bottom_x-small">
+                                                <span>{!$Label.Number_of_Active_Templates}</span>
+                                                <span aria-hidden="true">
+                                                    <strong>{!noActiveTemplates}/{!activeTemplatesLimit}</strong>
+                                                </span>
+                                            </div>
+                                            <div class="slds-progress-bar slds-progress-bar_large" aria-valuemin="0" aria-valuemax="{!activeTemplatesLimit}" aria-valuenow="{!noActiveTemplates}" role="progressbar">
+                                                <span class="slds-progress-bar__value" style="width:{!activeTemplatesPercent}%; background-color: {!activeTemplatesColor};">
+                                                    <span class="slds-assistive-text">Progress: {!activeTemplatesPercent}%</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <div class="slds-m-horizontal_medium slds-m-vertical_x-small">
+                                            <div class="slds-grid slds-grid_align-spread slds-p-bottom_x-small">
+                                                <span>{!$Label.Number_of_Active_Inbound_Templates}</span>
+                                                <span aria-hidden="true">
+                                                    <strong>{!noActiveInboundTemplates}/{!activeInboundTemplatesLimit}</strong>
+                                                </span>
+                                            </div>
+                                            <div class="slds-progress-bar slds-progress-bar_large" aria-valuemin="0" aria-valuemax="{!activeInboundTemplatesLimit}" aria-valuenow="{!noActiveInboundTemplates}" role="progressbar">
+                                                <span class="slds-progress-bar__value" style="width:{!activeInboundTemplatesPercent}%; background-color: {!activeInboundTemplatesColor};">
+                                                    <span class="slds-assistive-text">Progress: {!activeInboundTemplatesPercent}%</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <div class="slds-m-horizontal_medium slds-m-vertical_x-small">
+                                            <div class="slds-grid slds-grid_align-spread slds-p-bottom_x-small">
+                                                <span>{!$Label.Number_of_Callouts_This_Month}</span>
+                                                <span aria-hidden="true">
+                                                    <strong>{!calloutsThisMonth}/{!calloutLimit}</strong>
+                                                </span>
+                                            </div>
+                                            <div class="slds-progress-bar slds-progress-bar_large" aria-valuemin="0" aria-valuemax="{!calloutLimit}" aria-valuenow="{!calloutsThisMonth}" role="progressbar">
+                                                <span class="slds-progress-bar__value" style="width:{!calloutsPercent}%; background-color: {!calloutsColor};">
+                                                    <span class="slds-assistive-text">Progress: {!calloutsPercent}%</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <div class="slds-m-horizontal_medium slds-m-vertical_x-small">
+                                            <div class="slds-grid slds-grid_align-spread slds-p-bottom_x-small">
+                                                <span>{!$Label.Number_of_Inbound_Calls_This_Month}</span>
+                                                <span aria-hidden="true">
+                                                    <strong>{!inboundCallsThisMonth}/{!inboundCallLimit}</strong>
+                                                </span>
+                                            </div>
+                                            <div class="slds-progress-bar slds-progress-bar_large" aria-valuemin="0" aria-valuemax="{!inboundCallLimit}" aria-valuenow="{!inboundCallsThisMonth}" role="progressbar">
+                                                <span class="slds-progress-bar__value" style="width:{!inboundCallsPercent}%; background-color: {!inboundCallsColor};">
+                                                    <span class="slds-assistive-text">Progress: {!inboundCallsPercent}%</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <div class="slds-m-horizontal_medium slds-m-vertical_xx-large">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    {!$Label.Limit_Reach_Notification_Email}:
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    <table style="width: 100%;">
+                                                        <tr>
+                                                            <td>
+                                                                <apex:inputText value="{!NotificationEmailAddress}" styleClass="slds-input" />
+                                                            </td>
+                                                            <td style="width: 1%; padding-left: 5px;">
+                                                                <apex:commandButton styleClass="slds-button slds-button_brand" value="{!$Label.d_wh__Save_Changes}" action="{!SaveSettings}" rerender="entireForm" status="actionStatus" style="white-space: nowrap;" />
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="vf-message-wrapper">
+                                    <apex:pageMessages />
+                                </div>
+                                
+                                <br />
+                                <br />
+                                <br />
+                                <div class="slds-text-heading_small"><b>{!$Label.Monthly_Usage}</b></div>
+                                <br />
+                                
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!$Label.Month}">{!$Label.Month}</div>
+                                            </th>
+                                            <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!$Label.Number_of_Callouts}">{!$Label.Number_of_Callouts}</div>
+                                            </th>
+                                            <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!$Label.Number_of_Inbound_Calls}">{!$Label.Number_of_Inbound_Calls}</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!usage}" var="usageMonth">
+                                            <tr class="slds-hint-parent">
+                                                <td data-label="{!$Label.d_wh__Month}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!usageMonth.d_wh__Month__c}">
+                                                        <apex:outputText value="{0, date, MMM yyyy}">
+                                                            <apex:param value="{!usageMonth.d_wh__Month__c}" />
+                                                        </apex:outputText>
+                                                    </div>
+                                                </td>
+                                                <td data-label="{!$Label.d_wh__Number_of_Callouts}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!usageMonth.d_wh__Callouts__c}">
+                                                        {!usageMonth.d_wh__Callouts__c}
+                                                    </div>
+                                                </td>
+                                                <td data-label="{!$Label.d_wh__Number_of_Callouts}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!usageMonth.d_wh__Inbound_Calls__c}">
+                                                        {!usageMonth.d_wh__Inbound_Calls__c}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+
+                        </div>
+
+                        <div id="tab-default-1" class="slds-tabs_default__content {!IF(activeTab == 'Templates', 'slds-show', 'slds-hide')}" role="tabpanel" aria-labelledby="tab-default-1__item">
+
+                            <div class="vf-message-wrapper">
+                                <apex:pageMessages />
+                            </div>
+                            <br />
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="">
+                                                <apex:commandLink value="" />
+                                            </div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__Active__c.Label}">{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__Active__c.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.d_wh__Callout_Template__c.fields.Id.Label}">{!$ObjectType.d_wh__Callout_Template__c.fields.Id.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.d_wh__Callout_Template__c.fields.Name.Label}">{!$ObjectType.d_wh__Callout_Template__c.fields.Name.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__Developer_Name__c.Label}">{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__Developer_Name__c.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__Method__c.Label}">{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__Method__c.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__URL__c.Label}">{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__URL__c.Label}</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!templates}" var="template">
+                                        <tr class="slds-hint-parent">
+                                            <td data-label="" style="vertical-align: middle;">
+                                                <apex:commandLink action="{!Activate}" rendered="{!template.d_wh__Active__c != true}" rerender="entireForm" status="actionStatus">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/images/play.png')}" style="height: 18px;" title="{!$Label.Activate}" />
+                                                    <apex:param name="templateId" value="{!template.Id}" />
+                                                </apex:commandLink>
+                                                <apex:commandLink action="{!Deactivate}" rendered="{!template.d_wh__Active__c == true}" rerender="entireForm" status="actionStatus">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/images/pause.png')}" style="height: 18px; margin-right: 6px;" title="{!$Label.Deactivate}" />
+                                                    <apex:param name="templateId" value="{!template.Id}" />
+                                                </apex:commandLink>
+                                                &nbsp;
+                                                <apex:commandLink action="{!GoToEdit}" rerender="entireForm" status="actionStatus">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/images/edit.svg')}" style="height: 18px;" title="{!$Label.Edit}" />
+                                                    <apex:param name="templateId" value="{!template.Id}" />
+                                                </apex:commandLink>
+                                                &nbsp;
+                                                <apex:commandLink action="{!GoToExport}" rerender="entireForm" status="actionStatus">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/images/share.png')}" style="height: 18px;" title="{!$Label.Export}" />
+                                                    <apex:param name="templateId" value="{!template.Id}" />
+                                                </apex:commandLink>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__Active__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!template.d_wh__Active__c}">
+                                                    <apex:outputField value="{!template.d_wh__Active__c}" />
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Callout_Template__c.fields.Id.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!template.Id}">
+                                                    {!template.Id}
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Callout_Template__c.fields.Name.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!template.Name}">
+                                                    <a href="/{!template.Id}">{!template.Name}</a>
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__Developer_Name__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!template.d_wh__Developer_Name__c}">
+                                                    {!template.d_wh__Developer_Name__c}
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__Method__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!template.d_wh__Method__c}">
+                                                    {!template.d_wh__Method__c}
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Callout_Template__c.fields.d_wh__URL__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!template.d_wh__URL__c}">
+                                                    {!template.d_wh__URL__c}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+
+                            <div class="slds-grid slds-gutters" style="margin-top: 50px;">
+                                <div class="slds-col">
+                                    <a class="slds-button slds-button_brand" href="{!EditPageURL}">{!$Label.d_wh__New_Callout_Template}</a>
+                                    <a class="slds-button slds-button_brand" href="{!ImportPageURL}">{!$Label.d_wh__Import_Template}</a>
+                                </div>
+                                <div class="slds-col" style="text-align: right;">
+                                    <apex:commandLink rendered="{!hasMoreTemplates}" styleClass="slds-button slds-button_neutral" value="{!$Label.d_wh__Load_More}" action="{!LoadMoreTemplates}" rerender="entireForm" status="actionStatus" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="tab-default-7" class="slds-tabs_default__content {!IF(activeTab == 'Sequences', 'slds-show', 'slds-hide')}" role="tabpanel" aria-labelledby="tab-default-7__item">
+
+                            <apex:outputPanel layout="none" rendered="{!sequencesEnabled}">
+                                <div class="vf-message-wrapper">
+                                    <apex:pageMessages />
+                                </div>
+                                <br />
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="">
+                                                    <apex:commandLink value="" />
+                                                </div>
+                                            </th>
+                                            <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!$ObjectType.d_wh__Callout_Sequence__c.fields.Id.Label}">{!$ObjectType.d_wh__Callout_Sequence__c.fields.Id.Label}</div>
+                                            </th>
+                                            <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!$ObjectType.d_wh__Callout_Sequence__c.fields.Name.Label}">{!$ObjectType.d_wh__Callout_Sequence__c.fields.Name.Label}</div>
+                                            </th>
+                                            <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!$ObjectType.d_wh__Callout_Sequence__c.fields.d_wh__Developer_Name__c.Label}">{!$ObjectType.d_wh__Callout_Sequence__c.fields.d_wh__Developer_Name__c.Label}</div>
+                                            </th>
+                                            <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!$ObjectType.d_wh__Callout_Sequence__c.fields.d_wh__Main_Object__c.Label}">{!$ObjectType.d_wh__Callout_Sequence__c.fields.d_wh__Main_Object__c.Label}</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!sequences}" var="sequence">
+                                            <tr class="slds-hint-parent">
+                                                <td data-label="" style="vertical-align: middle;">
+                                                    <apex:commandLink action="{!GoToEditSequence}" rerender="entireForm" status="actionStatus">
+                                                        <img src="{!URLFOR($Resource.DWDesign, '/images/edit.svg')}" style="height: 18px;" title="{!$Label.Edit}" />
+                                                        <apex:param name="sequenceId" value="{!sequence.Id}" />
+                                                    </apex:commandLink>
+                                                    <!--&nbsp;
+                                                    <apex:commandLink action="{!GoToExportSequence}" rerender="entireForm" status="actionStatus">
+                                                        <img src="{!URLFOR($Resource.DWDesign, '/images/share.png')}" style="height: 18px;" title="{!$Label.Export}" />
+                                                        <apex:param name="sequenceId" value="{!sequence.Id}" />
+                                                    </apex:commandLink>-->
+                                                </td>
+                                                <td data-label="{!$ObjectType.d_wh__Callout_Sequence__c.fields.Id.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!sequence.Id}">
+                                                        {!sequence.Id}
+                                                    </div>
+                                                </td>
+                                                <td data-label="{!$ObjectType.d_wh__Callout_Sequence__c.fields.Name.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!sequence.Name}">
+                                                        <a href="/{!sequence.Id}">{!sequence.Name}</a>
+                                                    </div>
+                                                </td>
+                                                <td data-label="{!$ObjectType.d_wh__Callout_Sequence__c.fields.d_wh__Developer_Name__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!sequence.d_wh__Developer_Name__c}">
+                                                        {!sequence.d_wh__Developer_Name__c}
+                                                    </div>
+                                                </td>
+                                                <td data-label="{!$ObjectType.d_wh__Callout_Sequence__c.fields.d_wh__Main_Object__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!sequence.d_wh__Main_Object__c}">
+                                                        {!sequence.d_wh__Main_Object__c}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+
+                                <div class="slds-grid slds-gutters" style="margin-top: 50px;">
+                                    <div class="slds-col">
+                                        <a class="slds-button slds-button_brand" href="{!EditPageURLSequence}">{!$Label.New_Callout_Sequence}</a>
+                                        <!--<a class="slds-button slds-button_brand" href="{!ImportPageURL}">{!$Label.Import_Template}</a>-->
+                                    </div>
+                                    <div class="slds-col" style="text-align: right;">
+                                        <apex:commandLink rendered="{!hasMoreSequences}" styleClass="slds-button slds-button_neutral" value="{!$Label.d_wh__Load_More}" action="{!LoadMoreSequences}" rerender="entireForm" status="actionStatus" />
+                                    </div>
+                                </div>
+
+                            </apex:outputPanel>
+
+                            <apex:outputPanel layout="none" rendered="{!NOT(sequencesEnabled)}">
+                                <b><apex:outputText value="{!$Label.d_wh__Sequences_Not_Enabled}" escape="false" /></b>
+                            </apex:outputPanel>
+
+                        </div>
+
+                        <div id="tab-default-5" class="slds-tabs_default__content {!IF(activeTab == 'Inbound Templates', 'slds-show', 'slds-hide')}" role="tabpanel" aria-labelledby="tab-default-5__item">
+
+                            <div class="vf-message-wrapper">
+                                <apex:pageMessages />
+                            </div>
+                            <br />
+                            <apex:canvasApp id="dwrsCanvas" developerName="Declarative_Webhooks_Relay_Server" height="150px" width="100%" parameters="{!CanvasJSON}" />
+                            <apex:actionFunction name="SetCanvasUser" action="{!SetCanvasUser}" reRender="dwrsCanvas" />
+                            <script>
+                                Sfdc.canvas.controller.subscribe({ name : 'dwrs.setUser', onData : function (e) {
+                                    SetCanvasUser();
+                                }});
+                            </script>
+                            <br />
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="">
+                                                <apex:commandLink value="" />
+                                            </div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.d_wh__Active__c.Label}">{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.d_wh__Active__c.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.Id.Label}">{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.Id.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.Name.Label}">{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.Name.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.d_wh__Developer_Name__c.Label}">{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.d_wh__Developer_Name__c.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.d_wh__Method__c.Label}">{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.d_wh__Method__c.Label}</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!inboundTemplates}" var="template">
+                                        <tr class="slds-hint-parent">
+                                            <td data-label="" style="vertical-align: middle;">
+                                                <apex:commandLink action="{!ActivateInbound}" rendered="{!template.d_wh__Active__c != true}" rerender="entireForm" status="actionStatus">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/images/play.png')}" style="height: 18px;" title="{!$Label.Activate}" />
+                                                    <apex:param name="templateId" value="{!template.Id}" />
+                                                </apex:commandLink>
+                                                <apex:commandLink action="{!DeactivateInbound}" rendered="{!template.d_wh__Active__c == true}" rerender="entireForm" status="actionStatus">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/images/pause.png')}" style="height: 18px; margin-right: 6px;" title="{!$Label.Deactivate}" />
+                                                    <apex:param name="templateId" value="{!template.Id}" />
+                                                </apex:commandLink>
+                                                &nbsp;
+                                                <apex:commandLink action="{!GoToEditInbound}" rerender="entireForm" status="actionStatus">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/images/edit.svg')}" style="height: 18px;" title="{!$Label.Edit}" />
+                                                    <apex:param name="templateId" value="{!template.Id}" />
+                                                </apex:commandLink>
+                                                &nbsp;
+                                                <apex:commandLink action="{!GoToExportInbound}" rerender="entireForm" status="actionStatus">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/images/share.png')}" style="height: 18px;" title="{!$Label.Export}" />
+                                                    <apex:param name="templateId" value="{!template.Id}" />
+                                                </apex:commandLink>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.d_wh__Active__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!template.d_wh__Active__c}">
+                                                    <apex:outputField value="{!template.d_wh__Active__c}" />
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.Id.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!template.Id}">
+                                                    {!template.Id}
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.Name.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!template.Name}">
+                                                    <a href="/{!template.Id}">{!template.Name}</a>
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.d_wh__Developer_Name__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!template.d_wh__Developer_Name__c}">
+                                                    {!template.d_wh__Developer_Name__c}
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Inbound_Call_Template__c.fields.d_wh__Method__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!template.d_wh__Method__c}">
+                                                    {!template.d_wh__Method__c}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+
+                            <div class="slds-grid slds-gutters" style="margin-top: 50px;">
+                                <div class="slds-col">
+                                    <a class="slds-button slds-button_brand" href="{!EditPageURLInbound}">{!$Label.d_wh__New_Inbound_Call_Template}</a>
+                                    <a class="slds-button slds-button_brand" href="{!ImportPageURLInbound}">{!$Label.d_wh__Import_Template}</a>
+                                </div>
+                                <div class="slds-col" style="text-align: right;">
+                                    <apex:commandLink rendered="{!hasMoreInboundTemplates}" styleClass="slds-button slds-button_neutral" value="{!$Label.d_wh__Load_More}" action="{!LoadMoreInboundTemplates}" rerender="entireForm" status="actionStatus" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="tab-default-3" class="slds-tabs_default__content {!IF(activeTab == 'Logs', 'slds-show', 'slds-hide')}" role="tabpanel" aria-labelledby="tab-default-3__item">
+
+                            <br />
+
+                            <apex:outputPanel id="logsSection">
+                                <div class="slds-grid slds-wrap slds-gutters">
+                                    <div class="slds-col slds-size_1-of-2">
+
+                                        <div class="slds-form-element">
+                                            <span class="slds-form-element__label">&nbsp;</span>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputCheckbox value="{!deleteIsScheduled}">
+                                                    <apex:actionSupport event="onchange" rerender="logsSection" />
+                                                </apex:inputCheckbox>
+                                                &nbsp;{!$Label.Delete_Older_Logs}
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <apex:outputPanel layout="none" rendered="{!deleteIsScheduled}">
+                                                <span class="slds-form-element__label">{!$Label.d_wh__Delete_Logs_Days_Back}</span>
+                                                <div class="slds-form-element__control">
+                                                    <apex:selectList value="{!ScheduledDays}" size="1" multiselect="false" styleClass="slds-input">
+                                                        <apex:selectOption itemValue="1" itemLabel="1" />
+                                                        <apex:selectOption itemValue="3" itemLabel="3" />
+                                                        <apex:selectOption itemValue="7" itemLabel="7" />
+                                                        <apex:selectOption itemValue="14" itemLabel="14" />
+                                                        <apex:selectOption itemValue="30" itemLabel="30" />
+                                                        <apex:selectOption itemValue="90" itemLabel="90" />
+                                                        <apex:selectOption itemValue="365" itemLabel="365" />
+                                                    </apex:selectList>
+                                                </div>
+                                            </apex:outputPanel>
+                                        </div>
+
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2"> 
+                                        
+                                        <div class="slds-form-element">
+                                            <span class="slds-form-element__label">&nbsp;</span>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputCheckbox value="{!deleteIsScheduled2}">
+                                                    <apex:actionSupport event="onchange" rerender="logsSection" />
+                                                </apex:inputCheckbox>
+                                                &nbsp;{!$Label.Delete_Older_Sequence_Logs}
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <apex:outputPanel layout="none" rendered="{!deleteIsScheduled2}">
+                                                <span class="slds-form-element__label">{!$Label.d_wh__Delete_Sequence_Logs_Days_Back}</span>
+                                                <div class="slds-form-element__control">
+                                                    <apex:selectList value="{!ScheduledDays2}" size="1" multiselect="false" styleClass="slds-input">
+                                                        <apex:selectOption itemValue="1" itemLabel="1" />
+                                                        <apex:selectOption itemValue="3" itemLabel="3" />
+                                                        <apex:selectOption itemValue="7" itemLabel="7" />
+                                                        <apex:selectOption itemValue="14" itemLabel="14" />
+                                                        <apex:selectOption itemValue="30" itemLabel="30" />
+                                                        <apex:selectOption itemValue="90" itemLabel="90" />
+                                                        <apex:selectOption itemValue="365" itemLabel="365" />
+                                                    </apex:selectList>
+                                                </div>
+                                            </apex:outputPanel>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </apex:outputPanel>
+
+                            <div>
+                                <br />
+                                <div class="vf-message-wrapper">
+                                    <apex:pageMessages />
+                                </div>
+                                <br />
+                                <apex:commandButton styleClass="slds-button slds-button_brand" value="{!$Label.d_wh__Save_Changes}" action="{!SaveLogsChanges}" rerender="entireForm" status="actionStatus" />
+                            </div>
+
+                        </div>
+
+                        <div id="tab-default-4" class="slds-tabs_default__content {!IF(activeTab == 'Scheduled', 'slds-show', 'slds-hide')}" role="tabpanel" aria-labelledby="tab-default-4__item">
+
+                            <div class="vf-message-wrapper">
+                                <apex:pageMessages />
+                            </div>
+
+                            <apex:actionFunction name="DeleteScheduledJob" action="{!DeleteScheduledJob}" rerender="entireForm" status="actionStatus">
+                                <apex:param name="settingId" value="" />
+                            </apex:actionFunction>
+                            <apex:actionFunction name="EditScheduledJob" action="{!EditScheduledJob}" rerender="entireForm" status="actionStatus">
+                                <apex:param name="settingId" value="" />
+                            </apex:actionFunction>
+                            <br />
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title=""></div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.Scheduled_DW_Jobs__c.fields.Name.Label}">{!$ObjectType.Scheduled_DW_Jobs__c.fields.Name.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$Label.Callout_Template}">{!$Label.Callout_Template}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.Scheduled_DW_Jobs__c.fields.Batch_Size__c.Label}">{!$ObjectType.Scheduled_DW_Jobs__c.fields.Batch_Size__c.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.CronTrigger.fields.CronExpression.Label}">{!$ObjectType.CronTrigger.fields.CronExpression.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.CronTrigger.fields.TimesTriggered.Label}">{!$ObjectType.CronTrigger.fields.TimesTriggered.Label}</div>
+                                        </th>
+                                        <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                            <div class="slds-truncate" title="{!$ObjectType.CronTrigger.fields.NextFireTime.Label}">{!$ObjectType.CronTrigger.fields.NextFireTime.Label}</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!scheduledJobs}" var="job">
+                                        <tr class="slds-hint-parent">
+                                            <td data-label="" style="vertical-align: middle;">
+                                                <a href="#" onclick="EditScheduledJob('{!job.setting.Id}');">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/images/edit.svg')}" style="height: 18px;" title="{!$Label.Edit}" />
+                                                </a>
+                                                &nbsp;&nbsp;
+                                                <a href="#" onclick="if (confirm('{!$Label.Are_you_sure_you_want_to_delete_this_scheduled_job}')) DeleteScheduledJob('{!job.setting.Id}');">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/images/delete.png')}" style="height: 18px;" title="{!$Label.Delete}" />
+                                                </a>
+                                            </td>
+                                            <td data-label="{!$ObjectType.Scheduled_DW_Jobs__c.fields.Name.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!job.setting.Name}">
+                                                    {!job.setting.Name}
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$Label.Callout_Template}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <apex:outputPanel layout="none" rendered="{!job.template != null}">
+                                                    <div class="slds-truncate" title="{!job.template.Name}">
+                                                        <a href="/{!job.template.Id}">{!job.template.Name}</a>
+                                                    </div>
+                                                </apex:outputPanel>
+                                            </td>
+                                            <td data-label="{!$ObjectType.d_wh__Scheduled_DW_Jobs__c.fields.d_wh__Batch_Size__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!job.setting.d_wh__Batch_Size__c}">
+                                                    {!job.setting.d_wh__Batch_Size__c}
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$ObjectType.CronTrigger.fields.CronExpression.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <apex:outputPanel layout="none" rendered="{!job.cron != null}">
+                                                    <div class="slds-truncate" title="{!job.cron.CronExpression}">
+                                                        <apex:outputField value="{!job.cron.CronExpression}" />
+                                                    </div>
+                                                </apex:outputPanel>
+                                            </td>
+                                            <td data-label="{!$ObjectType.CronTrigger.fields.TimesTriggered.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <apex:outputPanel layout="none" rendered="{!job.cron != null}">
+                                                    <div class="slds-truncate" title="{!job.cron.TimesTriggered}">
+                                                        <apex:outputField value="{!job.cron.TimesTriggered}" />
+                                                    </div>
+                                                </apex:outputPanel>
+                                            </td>
+                                            <td data-label="{!$ObjectType.CronTrigger.fields.NextFireTime.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <apex:outputPanel layout="none" rendered="{!job.cron != null}">
+                                                    <div class="slds-truncate" title="{!job.cron.NextFireTime}">
+                                                        <apex:outputField value="{!job.cron.NextFireTime}" />
+                                                    </div>
+                                                </apex:outputPanel>
+                                            </td>
+                                        </tr>
+                                    </apex:repeat>
+                                    <apex:outputPanel layout="none" rendered="{!!hasScheduledJobs}">
+                                        <tr>
+                                            <td colspan="7" style="text-align: center; padding-top: 30px; padding-bottom: 30px;">
+                                                {!$Label.d_wh__No_Jobs_Are_Scheduled_To_Run}
+                                            </td>
+                                        </tr>
+                                    </apex:outputPanel>
+                                </tbody>
+                            </table>
+
+                            <div class="slds-grid slds-gutters" style="margin-top: 50px;">
+                                <div class="slds-col">
+                                    <apex:commandButton styleClass="slds-button slds-button_brand" value="{!$Label.d_wh__Schedule_New_Job}" action="{!CreateScheduledJob}" reRender="entireForm" status="actionStatus" />
+                                </div>
+                                <div class="slds-col" style="text-align: right;">
+                                    <apex:commandLink rendered="{!hasMoreScheduledJobs}" styleClass="slds-button slds-button_neutral" value="{!$Label.d_wh__Load_More}" action="{!LoadMoreScheduledJobs}" rerender="entireForm" status="actionStatus" />
+                                </div>
+                            </div>
+
+                            <apex:outputPanel layout="none" rendered="{!newScheduledJob}">
+                                <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                                    <div class="slds-modal__container">
+                                        <div class="slds-modal__header">
+                                            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{!$Label.d_wh__Schedule_New_Job}</h2>
+                                        </div>
+                                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                            
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    {!$ObjectType.Scheduled_DW_Jobs__c.fields.Name.Label}:
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputText value="{!newScheduledName}" styleClass="slds-input" />
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    {!$Label.Schedule_Cron_Expression}:
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputText value="{!scheduleCron}" styleClass="slds-input" />
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    {!$Label.Callout_Template}:
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    <apex:selectList value="{!templateId}" size="1" multiselect="false" styleClass="slds-input">
+                                                        <apex:selectOptions value="{!availableTemplates}" />
+                                                        <apex:actionSupport event="onchange" rerender="batchSizeInput,whereFormItem" />
+                                                    </apex:selectList>
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <apex:outputPanel id="whereFormItem">
+                                                <apex:outputPanel layout="none" rendered="{!templateHasObject}">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label">
+                                                            {!$Label.d_wh__Batch_Size}:
+                                                        </label>
+                                                        <div class="slds-form-element__control">
+                                                            <apex:selectList value="{!batchSize}" size="1" multiselect="false" styleClass="slds-input" id="batchSizeInput">
+                                                                <apex:selectOptions value="{!availableBatchSizes}" />
+                                                            </apex:selectList>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label">
+                                                            {!$Label.Where_Filter}:
+                                                        </label>
+                                                        <div class="slds-form-element__control">
+                                                            <table>
+                                                                <tr>
+                                                                    <td style="width: 1%; white-space: nowrap; padding-top: 6px; padding-right: 6px;">{!queryPrefix}</td>
+                                                                    <td>
+                                                                        <apex:inputText value="{!whereFilter}" styleClass="slds-input" />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+
+                                            <div class="vf-message-wrapper">
+                                                <apex:pageMessages />
+                                            </div>
+        
+                                        </div>
+                                        <div class="slds-modal__footer">
+                                            <apex:commandButton styleClass="slds-button slds-button_neutral" value="{!$Label.d_wh__Cancel}" action="{!CancelCreateScheduledJob}" reRender="entireForm" status="actionStatus" />
+                                            <apex:commandButton styleClass="slds-button slds-button_brand" value="{!$Label.d_wh__Schedule_New_Job}" action="{!SaveScheduledJob}" reRender="entireForm" status="actionStatus" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-backdrop slds-backdrop_open"></div>
+                            </apex:outputPanel>
+
+                            <apex:outputPanel layout="none" rendered="{!editScheduledJob}">
+                                <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                                    <div class="slds-modal__container">
+                                        <div class="slds-modal__header">
+                                            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Edit existing job</h2>
+                                        </div>
+                                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                            
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    {!$ObjectType.Scheduled_DW_Jobs__c.fields.Name.Label}:
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputText value="{!editScheduledName}" styleClass="slds-input" />
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    {!$Label.Schedule_Cron_Expression}:
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputText value="{!editScheduleCron}" styleClass="slds-input" disabled="true" />
+                                                    <span style="font-size: 75%;">The cron expression cannot be changed. If you need another schedule, delete this job and create a new one.</span>
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    {!$Label.Callout_Template}:
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    <apex:selectList value="{!editTemplateId}" size="1" multiselect="false" styleClass="slds-input">
+                                                        <apex:selectOptions value="{!availableTemplates}" />
+                                                        <apex:actionSupport event="onchange" rerender="batchSizeInput2,whereFormItem2" />
+                                                    </apex:selectList>
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            <apex:outputPanel id="whereFormItem2">
+                                                <apex:outputPanel layout="none" rendered="{!editTemplateHasObject}">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label">
+                                                            {!$Label.d_wh__Batch_Size}:
+                                                        </label>
+                                                        <div class="slds-form-element__control">
+                                                            <apex:selectList value="{!editBatchSize}" size="1" multiselect="false" styleClass="slds-input" id="batchSizeInput2">
+                                                                <apex:selectOptions value="{!availableBatchSizes}" />
+                                                            </apex:selectList>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+
+                                                    
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label">
+                                                            {!$Label.Where_Filter}:
+                                                        </label>
+                                                        <div class="slds-form-element__control">
+                                                            <table>
+                                                                <tr>
+                                                                    <td style="width: 1%; white-space: nowrap; padding-top: 6px; padding-right: 6px;">{!editQueryPrefix}</td>
+                                                                    <td>
+                                                                        <apex:inputText value="{!editWhereFilter}" styleClass="slds-input" />
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+
+                                            <div class="vf-message-wrapper">
+                                                <apex:pageMessages />
+                                            </div>
+        
+                                        </div>
+                                        <div class="slds-modal__footer">
+                                            <apex:commandButton styleClass="slds-button slds-button_neutral" value="{!$Label.d_wh__Cancel}" action="{!CancelEditScheduledJob}" reRender="entireForm" status="actionStatus" />
+                                            <apex:commandButton styleClass="slds-button slds-button_brand" value="Save Job Details" action="{!SaveEditScheduledJob}" reRender="entireForm" status="actionStatus" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-backdrop slds-backdrop_open"></div>
+                            </apex:outputPanel>
+                            
+                        </div>
+
+                        <div id="tab-default-6" class="slds-tabs_default__content {!IF(activeTab == 'Retry', 'slds-show', 'slds-hide')}" role="tabpanel" aria-labelledby="tab-default-6__item">
+                            
+                            <br />
+
+                            <apex:outputPanel layout="none" rendered="{!retryEnabled}">
+                                <apex:outputPanel layout="none" rendered="{!NOT(RetryIsScheduled)}">
+                                    <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                                        <span class="slds-assistive-text">error</span>
+                                        <h2>
+                                            <span style="margin-top: 5px;">{!$Label.No_Retry_Error} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+                                            <apex:commandButton value="{!$Label.d_wh__Click_Here_To_Fix_It}" action="{!ScheduleRetry}" styleClass="slds-button slds-button_brand" />
+                                        </h2>
+                                    </div>
+                                </apex:outputPanel>
+
+                                <apex:outputPanel layout="none" rendered="{!RetryIsScheduled}">
+
+                                    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                        <thead>
+                                            <tr class="slds-line-height_reset">
+                                                <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title=""></div>
+                                                </th>
+                                                <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!$ObjectType.Callout_Retry__c.fields.Name.Label}">{!$ObjectType.Callout_Retry__c.fields.Name.Label}</div>
+                                                </th>
+                                                <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!$ObjectType.Callout_Retry__c.fields.Callout_Template__c.Label}">{!$ObjectType.Callout_Retry__c.fields.Callout_Template__c.Label}</div>
+                                                </th>
+                                                <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!$ObjectType.Callout_Retry__c.fields.Record_Ids__c.Label}">{!$ObjectType.Callout_Retry__c.fields.Record_Ids__c.Label}</div>
+                                                </th>
+                                                <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!$ObjectType.Callout_Retry__c.fields.Scheduled_Time__c.Label}">{!$ObjectType.Callout_Retry__c.fields.Scheduled_Time__c.Label}</div>
+                                                </th>
+                                                <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!$ObjectType.Callout_Retry__c.fields.Retry_Number__c.Label}">{!$ObjectType.Callout_Retry__c.fields.Retry_Number__c.Label}</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <apex:repeat value="{!retries}" var="retry">
+                                                <tr class="slds-hint-parent">
+                                                    <td data-label="" style="padding-top: 14px; padding-bottom: 14px;">
+                                                        
+                                                    </td>
+                                                    <td data-label="{!$ObjectType.d_wh__Callout_Retry__c.fields.Name.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                        <div class="slds-truncate" title="{!retry.Name}">
+                                                            <a href="/{!retry.Id}">{!retry.Name}</a>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="{!$ObjectType.d_wh__Callout_Retry__c.fields.d_wh__Callout_Template__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                        <div class="slds-truncate" title="{!retry.Callout_Template__r.Name}">
+                                                            <a href="/{!retry.d_wh__Callout_Template__c}">{!retry.Callout_Template__r.Name}</a>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="{!$ObjectType.d_wh__Callout_Retry__c.fields.d_wh__Record_Ids__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                        <div class="slds-truncate" title="{!retry.d_wh__Record_Ids__c}">
+                                                            <apex:outputField value="{!retry.d_wh__Record_Ids__c}" />
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="{!$ObjectType.Callout_Retry__c.fields.Scheduled_Time__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                        <div class="slds-truncate" title="{!retry.d_wh__Scheduled_Time__c}" style="{!IF(retry.Scheduled_Time__c < NOW(), 'color: red;', '')}">
+                                                            <apex:outputField value="{!retry.d_wh__Scheduled_Time__c}" />
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="{!$ObjectType.d_wh__Callout_Retry__c.fields.d_wh__Retry_Number__c.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                        <div class="slds-truncate" title="{!retry.d_wh__Retry_Number__c}">
+                                                            <apex:outputField value="{!retry.d_wh__Retry_Number__c}" />
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </apex:repeat>
+                                            <apex:outputPanel layout="none" rendered="{!!hasRetries}">
+                                                <tr>
+                                                    <td colspan="6" style="text-align: center; padding-top: 30px; padding-bottom: 30px;">
+                                                        {!$Label.d_wh__No_Retries_Are_Scheduled_To_Run}
+                                                    </td>
+                                                </tr>
+                                            </apex:outputPanel>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="slds-grid slds-gutters" style="margin-top: 50px;">
+                                        <div class="slds-col">
+                                        </div>
+                                        <div class="slds-col" style="text-align: right;">
+                                            <apex:commandLink rendered="{!hasMoreRetries}" styleClass="slds-button slds-button_neutral" value="{!$Label.d_wh__Load_More}" action="{!LoadMoreRetries}" rerender="entireForm" status="actionStatus" />
+                                        </div>
+                                    </div>
+                                    
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+
+                            <apex:outputPanel layout="none" rendered="{!NOT(retryEnabled)}">
+                                <b><apex:outputText value="{!$Label.d_wh__Retry_Not_Enabled}" escape="false" /></b>
+                            </apex:outputPanel>
+                        </div>
+
+                        <div id="tab-default-8" class="slds-tabs_default__content {!IF(activeTab == 'Waiting', 'slds-show', 'slds-hide')}" role="tabpanel" aria-labelledby="tab-default-8__item">
+                            
+                            <br />
+
+                            <apex:outputPanel layout="none" rendered="{!NOT(WaitingCalloutIsScheduled)}">
+                                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                                    <span class="slds-assistive-text">error</span>
+                                    <h2>
+                                        <span style="margin-top: 5px;">The backup Waiting Calls job is not running &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+                                        <apex:commandButton value="{!$Label.d_wh__Click_Here_To_Fix_It}" action="{!ScheduleWaitingCallout}" styleClass="slds-button slds-button_brand" />
+                                    </h2>
+                                </div>
+                            </apex:outputPanel>
+
+                            <apex:outputPanel layout="none" rendered="{!WaitingCalloutIsScheduled}">
+
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title=""></div>
+                                            </th>
+                                            <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="{!$ObjectType.Waiting_Callout__c.fields.Name.Label}">{!$ObjectType.Waiting_Callout__c.fields.Name.Label}</div>
+                                            </th>
+                                            <th class="" scope="col" style="padding-top: 14px; padding-bottom: 14px;">
+                                                <div class="slds-truncate" title="Number of callouts waiting">Number of callouts waiting</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!waitingCallouts}" var="waitingCall">
+                                            <tr class="slds-hint-parent">
+                                                <td data-label="" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    
+                                                </td>
+                                                <td data-label="{!$ObjectType.d_wh__Waiting_Callout__c.fields.Name.Label}" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!waitingCall.Name}">
+                                                        <a href="/{!waitingCall.Id}">{!waitingCall.Name}</a>
+                                                    </div>
+                                                </td>
+                                                <td data-label="Number of callouts waiting" style="padding-top: 14px; padding-bottom: 14px;">
+                                                    <div class="slds-truncate" title="{!waitingCall.NumberCalls}">
+                                                        {!waitingCall.NumberCalls}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                        <apex:outputPanel layout="none" rendered="{!!hasWaitingCallouts}">
+                                            <tr>
+                                                <td colspan="6" style="text-align: center; padding-top: 30px; padding-bottom: 30px;">
+                                                    No Callouts are waiting
+                                                </td>
+                                            </tr>
+                                        </apex:outputPanel>
+                                    </tbody>
+                                </table>
+
+                                <div class="slds-grid slds-gutters" style="margin-top: 50px;">
+                                    <div class="slds-col">
+                                    </div>
+                                    <div class="slds-col" style="text-align: right;">
+                                        <apex:commandLink rendered="{!hasMoreWaitingCallouts}" styleClass="slds-button slds-button_neutral" value="{!$Label.d_wh__Load_More}" action="{!LoadMoreWaitingCallouts}" rerender="entireForm" status="actionStatus" />
+                                    </div>
+                                </div>
+                                
+                            </apex:outputPanel>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </apex:form>
+
+</apex:page>

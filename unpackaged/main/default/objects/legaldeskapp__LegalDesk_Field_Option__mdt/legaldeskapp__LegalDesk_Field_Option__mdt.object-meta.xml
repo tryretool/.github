@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Custom Metadata Type will store the option values for Streamline AI input fields of type Select, Radio, and Checkbox.</description>
+    <label>Streamline AI Field Option</label>
+    <pluralLabel>Streamline AI Field Options</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

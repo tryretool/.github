@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>regieai__Regie_Intent_Score__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This stores the current regie intent value based on prospecting interactions and optionally based on website visits and other intent platform data</description>
+    <externalId>false</externalId>
+    <label>Regie Intent Score</label>
+    <precision>5</precision>
+    <required>false</required>
+    <scale>1</scale>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Business Unit</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Business Units</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Business Unit Layout</layout>
+        <sections>
+            <label><!-- Automatic Bookings --></label>
+            <section>Automatic Bookings</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Opportunity Chain --></label>
+            <section>Opportunity Chain</section>
+        </sections>
+        <sections>
+            <label><!-- Revenue and Subscription --></label>
+            <section>Revenue and Subscription</section>
+        </sections>
+        <sections>
+            <label><!-- Usage and Utilization --></label>
+            <section>Usage and Utilization</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Book Contraction --></label>
+        <name>Book_Contraction</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Business Unit Details --></label>
+        <name>Business_Unit_Details</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Edit Internal Domain List --></label>
+        <name>Edit_Internal_Domain_List</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Contact Role --></label>
+        <name>New_Contact_Role</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Implementation --></label>
+        <name>New_Implementation</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Milestone --></label>
+        <name>New_Milestone</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Note --></label>
+        <name>New_Note</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Transfer Baseline --></label>
+        <name>Transfer_Baseline</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Update SLA --></label>
+        <name>Update_SLA</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Committed --></label>
+        <name>Committed</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Self Service --></label>
+        <name>Self_Service</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- If you get this error, tell Jon (Payment term blank bug) --></errorMessage>
+        <name>trap_payment_term_bug</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Send_to_Slack --></label>
+        <name>Send_to_Slack</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Slack_Alerts --></label>
+        <name>Slack_Alerts</name>
+    </webLinks>
+</CustomObjectTranslation>

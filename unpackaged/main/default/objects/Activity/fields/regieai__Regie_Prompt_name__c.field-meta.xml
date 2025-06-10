@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>regieai__Regie_Prompt_name__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This is the name of the prompt used to generate customer communications with Regie.ai</description>
+    <externalId>false</externalId>
+    <label>Regie Prompt Used</label>
+    <length>60</length>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

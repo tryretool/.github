@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Score_Updated_At__c</fullName>
+    <description>The date when the Engagement Score was updated.
+
+External Systems Utilization: Polytomic</description>
+    <inlineHelpText>The date when the Engagement Score was updated.</inlineHelpText>
+    <label>Engagement Score Updated At</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- European union geographic region designation. --></help>
+        <label><!-- Within EU --></label>
+        <name>DOZISF__Within_EU__c</name>
+    </CustomFieldTranslation>

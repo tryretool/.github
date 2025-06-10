@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Qual: Budget --></label>
+        <name>Qual_Budget__c</name>
+        <picklistValues>
+            <masterLabel>Expressed Budget</masterLabel>
+            <translation><!-- Expressed Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Funded Company Budget</masterLabel>
+            <translation><!-- Funded Company Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Budget</masterLabel>
+            <translation><!-- No Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Company Budget</masterLabel>
+            <translation><!-- Public Company Budget --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

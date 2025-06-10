@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Context_Processed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used in flows to confirm that Hubspot form data is collated.
+
+In System Use: &#39;Campaign Member: After Save Automations&#39;, &#39;Moment: Before Save Automations&#39;
+
+External Systems Utilization: Hubspot</description>
+    <label>Context Processed</label>
+    <securityClassification>Caution</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Enables user to update the Doc__c URL field</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>GTM Ticket - Doc Update</label>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>GTM_Ticket__c.Doc__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>GTM_Ticket__c.Short_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+</PermissionSet>

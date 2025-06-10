@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unit_Type__c</fullName>
+    <label>Unit Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Product_Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Unit_Types</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Feature</controllingFieldValue>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>workflow-runs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>users</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>apps</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>user-apps</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>mobile-mau</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>custom</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Platform</controllingFieldValue>
+            <valueName>unlimited</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>service-hours</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>service-months</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Service</controllingFieldValue>
+            <valueName>service-deliverables</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>users-view-only</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>workflow-gb</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>external-users</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>external-apps</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>orgs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>end-users</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <controllingFieldValue>Pricing Tiers</controllingFieldValue>
+            <valueName>external-use-case</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Usage</controllingFieldValue>
+            <valueName>agent-credits</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

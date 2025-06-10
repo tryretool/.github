@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_Conversion__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Updated by Polytomic, and checked TRUE if the Lead record becomes linked with a Matched Contact or Account. This toggle is to prevent Apex conversion errors from occurring when a large batch of leads are created at once.
+
+External Systems Utilization: Polytomic</description>
+    <inlineHelpText>Updated by Polytomic, and checked TRUE if the Lead record becomes linked with a Matched Contact or Account. This toggle is to prevent Apex conversion errors from occurring when a large batch of leads are created at once.</inlineHelpText>
+    <label>Auto Conversion?</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

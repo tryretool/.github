@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Included_Services_Amount__c</fullName>
+    <label>Included Services Amount</label>
+    <securityClassification>Caution</securityClassification>
+    <summarizedField>OpportunityLineItem.TotalPrice</summarizedField>
+    <summaryFilterItems>
+        <field>OpportunityLineItem.Product_Family__c</field>
+        <operation>equals</operation>
+        <value>Professional Services</value>
+    </summaryFilterItems>
+    <summaryForeignKey>OpportunityLineItem.OpportunityId</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

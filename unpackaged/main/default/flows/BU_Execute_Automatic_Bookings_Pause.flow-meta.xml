@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Post_to_chatter_0</name>
+        <label>Post to chatter</label>
+        <locationX>1516</locationX>
+        <locationY>229</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <elementReference>Chatter_post</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>Get_BU.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>chatterPost</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>52.0</apiVersion>
+    <assignments>
+        <name>Set_BU_fields</name>
+        <label>Set BU fields</label>
+        <locationX>1183</locationX>
+        <locationY>228</locationY>
+        <assignmentItems>
+            <assignToReference>Get_BU.Pause_Automatic_Bookings_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>pause_reason</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_BU.Pause_Automatic_Bookings_On__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>pause_date</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_BU.Resume_Automatic_Bookings_On__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>resume_date</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_BU.Require_manual_resume_of_auto_bookings__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>require_manual_resume</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_BU.Dont_Resume_Automatic_Bookings_Before__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>dont_resume_before_date</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_BU</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_pause_auto_bookings</name>
+        <label>Set pause auto bookings</label>
+        <locationX>1024</locationX>
+        <locationY>72</locationY>
+        <assignmentItems>
+            <assignToReference>Get_BU.Pause_Automatic_Bookings__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_BU.Pause_Automatic_Bookings_On__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>pause_date</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Set_BU_fields</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>pause_date_is</name>
+        <label>Pause date is</label>
+        <locationX>813</locationX>
+        <locationY>224</locationY>
+        <defaultConnector>
+            <targetReference>Set_BU_fields</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Future</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>pause_date</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_pause_auto_bookings</targetReference>
+            </connector>
+            <label>Today or past</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Related_opp_provided</name>
+        <label>Related opp provided?</label>
+        <locationX>587</locationX>
+        <locationY>226</locationY>
+        <defaultConnector>
+            <targetReference>pause_date_is</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_related_opp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>related_opp_id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_related_opp</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <name>future_past</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ {!pause_date}&lt;= {!$Flow.CurrentDate},
+ &quot;paused automatic bookings&quot;,
+ &quot;scheduled automatic bookings to be paused&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>text_dont_resume_date</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!dont_resume_before_date}),NULL,
+&quot;Don&#39;t Resume Before: &quot;&amp;TEXT(MONTH({!dont_resume_before_date}))&amp;&quot;/&quot;&amp;TEXT(DAY({!dont_resume_before_date}))&amp;&quot;/&quot;&amp;TEXT(YEAR({!dont_resume_before_date}))&amp;BR()
+)</expression>
+    </formulas>
+    <formulas>
+        <name>text_pause_date</name>
+        <dataType>String</dataType>
+        <expression>TEXT(MONTH({!pause_date}))&amp;&quot;/&quot;&amp;TEXT(DAY({!pause_date}))&amp;&quot;/&quot;&amp;TEXT(YEAR({!pause_date}))</expression>
+    </formulas>
+    <formulas>
+        <name>text_related_opp</name>
+        <dataType>String</dataType>
+        <expression>&quot;Triggered By: &quot;&amp;IF(
+ ISBLANK({!related_opp_id}),
+ IF({!$Flow.CurrentDate}={!Get_BU.Pause_Automatic_Bookings_On__c},&quot;Scheduled&quot;,&quot;Manually Set&quot;),
+&quot;Opportunity - &quot;&amp;{!Get_related_opp.Name}&amp;&quot; (&quot;&amp;{!Get_related_opp.Id}&amp;&quot;)&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Text_resume_bookings</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ {!require_manual_resume},
+ &quot;Automatic bookings set to remain off until manually enabled.&quot;,
+ IF(
+  ISBLANK({!resume_date}),
+  &quot;&quot;,
+ &quot;Resume on: &quot;&amp;TEXT(MONTH({!resume_date}))&amp;&quot;/&quot;&amp;TEXT(DAY({!resume_date}))&amp;&quot;/&quot;&amp;TEXT(YEAR({!resume_date}))
+ )
+)</expression>
+    </formulas>
+    <interviewLabel>BU - Execute Automatic Bookings Pause {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>BU - Execute Automatic Bookings Pause</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_BU</name>
+        <label>Get BU</label>
+        <locationX>440</locationX>
+        <locationY>223</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Related_opp_provided</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>bu_id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Business_Unit__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_related_opp</name>
+        <label>Get related opp</label>
+        <locationX>699</locationX>
+        <locationY>90</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>pause_date_is</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>related_opp_id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_BU</name>
+        <label>Update BU</label>
+        <locationX>1360</locationX>
+        <locationY>228</locationY>
+        <connector>
+            <targetReference>Post_to_chatter_0</targetReference>
+        </connector>
+        <inputReference>Get_BU</inputReference>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <start>
+        <locationX>50</locationX>
+        <locationY>203</locationY>
+        <connector>
+            <targetReference>Get_BU</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>Chatter_post</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Flow.CurrentDateTime}: {!$User.FirstName} {!$User.LastName} {!future_past}. 
+Pause Date: {!text_pause_date}
+{!text_dont_resume_date}
+Business Unit: {!Get_BU.Name}
+Reason: {!pause_reason}
+{!text_related_opp}
+{!Text_resume_bookings}</text>
+    </textTemplates>
+    <variables>
+        <name>bu_id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>dont_resume_before_date</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>pause_date</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>pause_reason</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>related_opp_id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>require_manual_resume</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>resume_date</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

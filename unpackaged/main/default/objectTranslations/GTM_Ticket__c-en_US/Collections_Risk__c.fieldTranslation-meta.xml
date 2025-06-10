@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Used for forecasting the level of risk involved collecting from the given customer. --></help>
+        <label><!-- Collections Risk --></label>
+        <name>Collections_Risk__c</name>
+        <picklistValues>
+            <masterLabel>Certain</masterLabel>
+            <translation><!-- Certain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Risk</masterLabel>
+            <translation><!-- High Risk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Risk</masterLabel>
+            <translation><!-- Low Risk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium Risk</masterLabel>
+            <translation><!-- Medium Risk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Risk</masterLabel>
+            <translation><!-- No Risk --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ParentId</fullName>
+    <description>Connects a campaign to another campaign, creating a campaign hierarchy. Rarely used field.
+
+In System Use: None
+
+External Systems Utilization: None</description>
+    <inlineHelpText>Connects a campaign to another campaign, creating a campaign hierarchy.</inlineHelpText>
+    <securityClassification>Safe</securityClassification>
+    <type>Lookup</type>
+</CustomField>

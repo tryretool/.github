@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Employee_Level_Mismatch__c</fullName>
+    <formula>NOT(ISPICKVAL(Current_User_Role__r.Employee_Level__c,&quot;&quot;)) &amp;&amp;
+TEXT(Current_User_Role__r.Employee_Level__c) &lt;&gt; User__r.Employee_Level__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Employee Level Mismatch?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

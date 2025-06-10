@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- remember to start with a &apos;/&apos; as it will be appended to the &quot;Base Url&quot; --></help>
+        <label><!-- Profile Share Endpoint Path --></label>
+        <name>whistic_profile__Profile_Share_Endpoint_Path__c</name>
+    </CustomFieldTranslation>

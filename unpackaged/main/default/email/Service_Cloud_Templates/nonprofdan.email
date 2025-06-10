@@ -1,0 +1,24 @@
+Hi {!Contact.FirstName},
+
+<p>Sharing some good news! We have added you to our Nonprofit Program now! This means you now have access to a monthly discount valued at $1625 off per month. You can activate this from your Retool account by upgrading to a Business Monthly or Team Monthly plan (this can be done from Settings > Billing panel). Please make sure to select the "Monthly" button in the upper-right corner on the billing page before upgrading.</p>
+
+<p>You will need to enter billing information to upgrade your plan, but your monthly discount of $1,625 will be applied starting on your first invoice. Feel free to add colleagues to your Retool organization!</p>
+
+<p>Here are some resources that can help you get started on Retool:</p>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=8ZrJtnCKlxk&" target="_blank">Demo</a></li>
+
+<li><a href="https://docs.retool.com/docs/retool-university" target="_blank">Retool University</a>- your first stop for learning the basics of Retool</li>
+
+<li><a href="https://www.youtube.com/watch?v=ZkdpZMb0oPI&list=PLqWdQFDVLADmkOrHQ-x-YPjma_Dzlvrq5" target="_blank">Lighting Demos w/ Brex, Ramp, Coursera</a> - walkthroughs of apps folks built.</li>
+
+<li><a href="https://retool.com/customers/" target="_blank">Customers</a></li>
+
+<li><a href="https://retool.com/integrations/" target="_blank">Integrations</a></li>
+
+<li><a href="https://retool.com/templates/"  target="_blank">Templates</a></li>
+</ol>
+
+<p>When in doubt, check out our <a href="http://docs.retool.com/" target="_blank">docs</a> and our <a href="http://community.retool.com/" target="_blank">community</a>.</p>
+
+<p>Happy building!</p>

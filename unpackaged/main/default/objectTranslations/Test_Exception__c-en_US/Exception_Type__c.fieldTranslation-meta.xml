@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Exception Type --></label>
+        <name>Exception_Type__c</name>
+        <picklistValues>
+            <masterLabel>Snooze Test</masterLabel>
+            <translation><!-- Snooze Test --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Snooze Test Run</masterLabel>
+            <translation><!-- Snooze Test Run --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

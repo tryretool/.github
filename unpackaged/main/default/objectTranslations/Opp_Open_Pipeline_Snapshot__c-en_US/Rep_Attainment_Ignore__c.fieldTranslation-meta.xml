@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Rep Attainment: Ignore --></label>
+        <name>Rep_Attainment_Ignore__c</name>
+    </CustomFieldTranslation>

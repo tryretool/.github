@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Sequence Definition</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Sequence Definitions</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Sequence Definition already exists with this name --></errorMessage>
+        <name>Seq_Def_not_unique</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Treatment required when defining an experiment --></errorMessage>
+        <name>experiment_without_treatment</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Cannot set treatment without a defined experiment --></errorMessage>
+        <name>treatment_without_experiment</name>
+    </validationRules>
+</CustomObjectTranslation>

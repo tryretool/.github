@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Journey_Subtype__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(NOT(ISPICKVAL(Created_From_Moment__r.Moment_Type__c,&quot;&quot;)), 
+
+CASE(Created_From_Moment__r.Moment_Type__c, 
+
+&quot;Demo Request&quot;, IF(Created_From_Moment__r.Is_MQL__c = TRUE, &quot;Demo Request&quot;, &quot;Demo Request (Non-MQL)&quot;),
+&quot;Product Signup&quot;, &quot;Product Signup&quot;,
+&quot;Product Action&quot;, &quot;Product Action&quot;,
+&quot;Content Download&quot;, &quot;Content&quot;,
+&quot;Form Submission&quot;, &quot;Content&quot;, 
+&quot;Koala Intent Signal&quot;, &quot;Koala&quot;,
+&quot;Champify Alert&quot;, &quot;Champify&quot;,
+&quot;Partner Referral&quot;, &quot;Partner&quot;, 
+&quot;Support&quot;, &quot;Support&quot;,
+&quot;Regie.ai - Conversion&quot;, &quot;Regie.ai&quot;,
+&quot;Event&quot;
+),
+
+IF( Outbound_Sequence__c = TRUE, &quot;Outbound Sequence&quot;, 
+  IF( ISBLANK(Meeting_Booked_At__c), &quot;Other Journey&quot;, 
+&quot;Other Meeting&quot; )
+    )
+ )</formula>
+    <label>Journey Subtype</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

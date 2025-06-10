@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Max_Role_At_SS_Org__c</fullName>
+    <description>Rollup of the frequent role found on related Retool User records for self service orgs
+- Synced every 24 hours
+- Subscription Type != &#39;Committed&#39;
+- Excludes churned committed customers: Account Status (Committed) != &#39;Former Customer&#39;
+- Excludes Retool Users that haven&#39;t `logged in` in the last 90 days
+
+External Systems Utilization: Polytomic</description>
+    <inlineHelpText>Rollup of the frequent role found on related Retool User records for self service orgs (Subscription Type != &#39;Committed&#39;)
+- Excludes churned committed customers (Account Status (Committed) != &#39;Former Customer&#39;)
+- Excludes Retool Users that haven&#39;t `logged in` in the last 90 days</inlineHelpText>
+    <label>Max Role At SS Org</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Contact_Max_Role</valueSetName>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Additional_Usage_Pause_Billing_End_Date__c</fullName>
+    <formula>IF(
+  NOT(ISNUMBER(Additional_Usage_Pause_Billing_Months__c)),
+  NULL,
+  ADDMONTHS(StartDate,VALUE(Additional_Usage_Pause_Billing_Months__c)) - 1
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Additional Usage: Pause Billing End Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

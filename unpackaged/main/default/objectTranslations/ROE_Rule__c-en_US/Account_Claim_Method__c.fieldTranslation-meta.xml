@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Account Claim Method --></label>
+        <name>Account_Claim_Method__c</name>
+        <picklistValues>
+            <masterLabel>Any - Unowned Only</masterLabel>
+            <translation><!-- Any - Unowned Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Any - Unowned or From Others</masterLabel>
+            <translation><!-- Any - Unowned or From Others --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disabled</masterLabel>
+            <translation><!-- Disabled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Request - Unowned Only</masterLabel>
+            <translation><!-- Request - Unowned Only --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Uploaded_to_Netsuite__c</fullName>
+    <formula>IF(ISBLANK(Uploaded_to_Netsuite_At__c),FALSE,TRUE)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Uploaded to Netsuite?</label>
+    <securityClassification>Caution</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

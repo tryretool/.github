@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Journey__c$Name</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Account__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Account__c.Account_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Account__c.Sales_Development_Representative__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Contact__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Contact__c.Email</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Owner</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Journey_Type__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Journey_Subtype__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Stage__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Create_Method__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Ops_Notes__c</field>
+    </columns>
+    <description>Journey records created for 2024 AWS re:Invent meeting invites.</description>
+    <filter>
+        <criteriaItems>
+            <column>Journey__c$Ops_Notes__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>AWS re:Invent meeting invite</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>24&#39;AWS re:Invent meeting invite Journeys</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Journeys_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Journey__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

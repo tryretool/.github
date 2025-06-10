@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country_Definition_at_Creation__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Country Definition at Creation</label>
+    <referenceTo>Country_Definition__c</referenceTo>
+    <relationshipLabel>JourneysCreated</relationshipLabel>
+    <relationshipName>JourneysCreation</relationshipName>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

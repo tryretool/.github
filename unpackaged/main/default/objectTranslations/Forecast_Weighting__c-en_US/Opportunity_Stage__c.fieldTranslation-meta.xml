@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Opportunity Stage --></label>
+        <name>Opportunity_Stage__c</name>
+        <picklistValues>
+            <masterLabel>(1) Onboarding</masterLabel>
+            <translation><!-- (1) Onboarding --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(1) Qualification</masterLabel>
+            <translation><!-- (1) Qualification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(2) Discovery</masterLabel>
+            <translation><!-- (2) Discovery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(2) Nurture</masterLabel>
+            <translation><!-- (2) Nurture --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(3) POC Scoping</masterLabel>
+            <translation><!-- (3) POC Scoping --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(3) Proposal</masterLabel>
+            <translation><!-- (3) Proposal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(4) Proof of Concept</masterLabel>
+            <translation><!-- (4) Proof of Concept --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(5) Validating Business Case/Negotiating</masterLabel>
+            <translation><!-- (5) Validating Business Case/Negotiating --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>(6) Signature</masterLabel>
+            <translation><!-- (6) Signature --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

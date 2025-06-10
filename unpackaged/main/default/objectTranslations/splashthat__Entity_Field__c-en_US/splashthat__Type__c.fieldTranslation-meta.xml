@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Type --></label>
+        <name>splashthat__Type__c</name>
+        <picklistValues>
+            <masterLabel>Boolean</masterLabel>
+            <translation><!-- Boolean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Date</masterLabel>
+            <translation><!-- Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DateTime</masterLabel>
+            <translation><!-- DateTime --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lookup</masterLabel>
+            <translation><!-- Lookup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Number</masterLabel>
+            <translation><!-- Number --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>String</masterLabel>
+            <translation><!-- String --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>int</masterLabel>
+            <translation><!-- int --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

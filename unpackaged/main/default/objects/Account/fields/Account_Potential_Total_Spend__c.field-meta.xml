@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Potential_Total_Spend__c</fullName>
+    <description>Estimated total spend that the Account can allocate towards Retool.
+
+External Systems Utilization: MadKudu</description>
+    <inlineHelpText>Estimated total spend that the Account can allocate towards Retool.</inlineHelpText>
+    <label>Account Potential: Total Spend</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

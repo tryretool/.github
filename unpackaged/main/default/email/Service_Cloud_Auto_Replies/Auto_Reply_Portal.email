@@ -1,0 +1,10 @@
+Hello!
+
+<p>Thank you for reaching out to Retool Support! Your ticket number is {!Case.CaseNumber}. </p>
+
+<p>We highly recommend subscribing to our <a href="https://status.retool.com/" target="_blank">status page</a> for staying informed about any ongoing incidents or maintenance updates that might impact your experience with Retool.</p>
+
+<p>Rest assured, we're here to help and will be in touch as soon as we have an update or need further information regarding your issue.</p>
+
+Sincerely,<br>
+The Retool Support Team

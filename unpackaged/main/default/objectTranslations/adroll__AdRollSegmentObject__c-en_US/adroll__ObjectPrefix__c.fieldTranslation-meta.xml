@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Prefix to link to the object from the contact (ex Account for Select Id From Contact Where Account.xxx). Field name of the object reference --></help>
+        <label><!-- ObjectPrefix --></label>
+        <name>adroll__ObjectPrefix__c</name>
+    </CustomFieldTranslation>

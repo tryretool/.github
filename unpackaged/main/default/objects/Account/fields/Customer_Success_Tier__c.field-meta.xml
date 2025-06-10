@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Success_Tier__c</fullName>
+    <description>Link to documentation: https://docs.google.com/presentation/d/1Ebl47gAdFlq_bFJghzbjNRd75BBGywkQ6POsuRhdJso/edit#slide=id.g257fa631d3e_0_94</description>
+    <inlineHelpText>Link to documentation: https://docs.google.com/presentation/d/1Ebl47gAdFlq_bFJghzbjNRd75BBGywkQ6POsuRhdJso/edit#slide=id.g257fa631d3e_0_94</inlineHelpText>
+    <label>Customer Success Tier</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Customer_Success_Tiers</valueSetName>
+    </valueSet>
+</CustomField>

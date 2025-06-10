@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- How much of the deployment - including SSO/source control, externalized storage DB, and resource setup - is completed, which steps must be done post-sale, as well as if the customer is deploying differently in production than they did during the evaluation. --></help>
+        <label><!-- Deployment Progress --></label>
+        <name>Deployment_Progress__c</name>
+    </CustomFieldTranslation>

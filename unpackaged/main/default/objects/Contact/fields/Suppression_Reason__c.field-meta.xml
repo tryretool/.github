@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Suppression_Reason__c</fullName>
+    <description>Reason why something was moved to Trash status</description>
+    <label>Suppression Reason</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Junk Data</fullName>
+                <default>false</default>
+                <label>Junk Data</label>
+            </value>
+            <value>
+                <fullName>Email Hard Bounce</fullName>
+                <default>false</default>
+                <label>Email Hard Bounce</label>
+            </value>
+            <value>
+                <fullName>No longer at company</fullName>
+                <default>false</default>
+                <label>No longer at company</label>
+            </value>
+            <value>
+                <fullName>Competitor</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Competitor</label>
+            </value>
+            <value>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Duplicate</label>
+            </value>
+            <value>
+                <fullName>Not a good company fit</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not a good company fit</label>
+            </value>
+            <value>
+                <fullName>Not the right person</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not the right person</label>
+            </value>
+            <value>
+                <fullName>Outside Core Geo&#39;s</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Outside Core Geo&#39;s</label>
+            </value>
+            <value>
+                <fullName>Responded Negatively</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Responded Negatively</label>
+            </value>
+            <value>
+                <fullName>Retool Employee</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Retool Employee</label>
+            </value>
+            <value>
+                <fullName>Sticking with Free plan (Self-serve target)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sticking with Free/Cloud Plan</label>
+            </value>
+            <value>
+                <fullName>Unsubscribed/Do Not Contact</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unsubscribed/Do Not Contact</label>
+            </value>
+            <value>
+                <fullName>Use case not good fit</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Use case not good fit</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

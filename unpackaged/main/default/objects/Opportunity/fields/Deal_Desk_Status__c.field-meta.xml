@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deal_Desk_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ IsClosed,
+ &quot;complete&quot;,
+ IF(
+  ISBLANK(Contract.Proposal_Status__c),
+  &quot;no proposal&quot;,
+  Contract.Proposal_Status__c
+ )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Deal Desk Status</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

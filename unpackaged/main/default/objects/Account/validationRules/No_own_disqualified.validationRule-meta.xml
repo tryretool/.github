@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_own_disqualified</fullName>
+    <active>true</active>
+    <errorConditionFormula>Account_Status__c = &quot;Disqualified&quot; &amp;&amp;
+NOT(Owner.Is_Account_Pool__c ) &amp;&amp;
+Owner.User_ID_case_safe__c != &quot;0055A00000ApunnQAB&quot;</errorConditionFormula>
+    <errorMessage>Only the account pool may own disqualified accounts</errorMessage>
+</ValidationRule>

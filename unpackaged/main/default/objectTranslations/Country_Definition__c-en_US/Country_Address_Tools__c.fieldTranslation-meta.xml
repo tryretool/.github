@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Country (Address Tools) --></label>
+        <name>Country_Address_Tools__c</name>
+        <relationshipLabel><!-- Country Definitions --></relationshipLabel>
+    </CustomFieldTranslation>

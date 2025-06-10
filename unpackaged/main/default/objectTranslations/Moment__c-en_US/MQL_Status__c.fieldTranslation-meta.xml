@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Formula that indicates the MQL status. If there is an indication to check the MQL status, the value is &quot;Waiting Enrichment&quot;. If the &apos;MQL Check At&apos; date/time field is blank, the result is &quot;Not MQL&quot;. --></help>
+        <label><!-- MQL Status --></label>
+        <name>MQL_Status__c</name>
+    </CustomFieldTranslation>

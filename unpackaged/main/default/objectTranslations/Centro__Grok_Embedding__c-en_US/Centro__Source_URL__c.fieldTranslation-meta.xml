@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Displays to user to verify answers from source material. Unique identifier within Topic Name. --></help>
+        <label><!-- Source URL --></label>
+        <name>Centro__Source_URL__c</name>
+    </CustomFieldTranslation>

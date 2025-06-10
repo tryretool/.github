@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Batch Size for Segment Processing --></help>
+        <label><!-- Segment Batch Size --></label>
+        <name>adroll__SegmentBatchSize__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,1 @@
+<apex:page standardController="d_wh__Inbound_Call_Body_Node__c" extensions="d_wh.InboundCallTemplateRedirects" action="{!RedirectToTemplatePage}"></apex:page>

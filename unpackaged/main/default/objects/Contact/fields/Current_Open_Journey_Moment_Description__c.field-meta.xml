@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Open_Journey_Moment_Description__c</fullName>
+    <description>Current Open Journey: Moment Description. Used in Contact List views and Reports.</description>
+    <externalId>false</externalId>
+    <formula>Current_Open_Journey__r.Moment_Description__c</formula>
+    <inlineHelpText>Current Open Journey: Moment Description. Used in Contact List views and Reports.</inlineHelpText>
+    <label>Current Open Journey: Moment Description</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

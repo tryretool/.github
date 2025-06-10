@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Industry --></label>
+        <name>Industry__c</name>
+        <picklistValues>
+            <masterLabel>Automotive</masterLabel>
+            <translation><!-- Automotive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>E-Learning</masterLabel>
+            <translation><!-- E-Learning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Services</masterLabel>
+            <translation><!-- Financial Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Generic</masterLabel>
+            <translation><!-- Generic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Healthcare</masterLabel>
+            <translation><!-- Healthcare --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT Services</masterLabel>
+            <translation><!-- IT Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Logistics</masterLabel>
+            <translation><!-- Logistics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketplaces</masterLabel>
+            <translation><!-- Marketplaces --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Media &amp; Entertainment</masterLabel>
+            <translation><!-- Media &amp; Entertainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail &amp; Ecommerce</masterLabel>
+            <translation><!-- Retail &amp; Ecommerce --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SaaS</masterLabel>
+            <translation><!-- SaaS --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

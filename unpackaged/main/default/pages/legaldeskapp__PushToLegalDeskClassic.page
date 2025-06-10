@@ -1,0 +1,20 @@
+<apex:page standardController="Opportunity">
+    <apex:includeLightning />
+ 
+    <div id="lightning" />
+ 
+    <script>
+        $Lightning.use("c:LightningOutApp", function() {
+          $Lightning.createComponent(
+              "c:PushToLegalDesk",
+              {
+              	"recordId" : "{!$CurrentPage.parameters.id}"
+              },
+              "lightning",
+              function(cmp) {
+                  console.log('Component created');
+              }
+          );
+        });
+    </script>
+</apex:page>

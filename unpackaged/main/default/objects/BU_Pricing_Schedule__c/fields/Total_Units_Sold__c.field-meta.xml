@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Units_Sold__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(Unit_Type__c,
+ &quot;users&quot;,Business_Unit__r.Total_Seats__c,
+ &quot;apps&quot;,NULL,
+ &quot;users-view-only&quot;,NULL,
+ &quot;service-hours&quot;,NULL,
+ &quot;mobile-mau&quot;,Business_Unit__r.Total_Users_Mobile_only__c,
+ &quot;external-users&quot;,Business_Unit__r.Total_External_Users__c,
+ &quot;external-apps&quot;,Business_Unit__r.Total_External_Apps__c,
+ &quot;orgs&quot;,NULL,
+ &quot;unlimited&quot;,NULL,
+ &quot;custom&quot;,NULL,
+ NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Units: Sold</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

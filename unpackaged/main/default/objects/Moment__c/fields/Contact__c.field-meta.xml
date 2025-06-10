@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The Contact related to the Moment.
+
+In System Use: Email_Formula; Lead_Source_Formula; Implied_Subteam_Formula; MK_Lead_Score_Formula; Contact_Account_Mismatch
+
+External Systems Utilization: None</description>
+    <label>Contact</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Moments</relationshipLabel>
+    <relationshipName>Moments</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

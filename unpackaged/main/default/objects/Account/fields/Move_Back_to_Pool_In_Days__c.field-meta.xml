@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Move_Back_to_Pool_In_Days__c</fullName>
+    <description>Displays the number of days until the Account record moves back to the Account Pool ownership.</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Moves_back_to_pool_at__c),NULL,Moves_back_to_pool_at__c - TODAY())</formula>
+    <inlineHelpText>Displays the number of days until the Account record moves back to the Account Pool ownership.</inlineHelpText>
+    <label>Move Back to Pool In (Days)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

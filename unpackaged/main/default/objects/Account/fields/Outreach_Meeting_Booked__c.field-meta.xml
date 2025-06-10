@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outreach_Meeting_Booked__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether or not a recent meeting has been booked from one of the related contacts at the account.</description>
+    <inlineHelpText>Indicates whether or not a recent meeting has been booked from one of the related contacts at the account.</inlineHelpText>
+    <label>Outreach: Meeting Booked?</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

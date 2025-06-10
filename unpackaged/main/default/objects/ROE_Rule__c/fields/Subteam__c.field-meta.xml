@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subteam__c</fullName>
+    <label>Subteam</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Team__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Role_Subteam</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Sales Account Management</controllingFieldValue>
+            <controllingFieldValue>Enterprise Support Engineering</controllingFieldValue>
+            <controllingFieldValue>Escalation Engineering</controllingFieldValue>
+            <controllingFieldValue>Sales Engineering</controllingFieldValue>
+            <controllingFieldValue>Account Executives</controllingFieldValue>
+            <valueName>ENT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Account Management</controllingFieldValue>
+            <controllingFieldValue>Sales Engineering</controllingFieldValue>
+            <controllingFieldValue>Account Executives</controllingFieldValue>
+            <valueName>MMK</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Account Management</controllingFieldValue>
+            <controllingFieldValue>Sales Engineering</controllingFieldValue>
+            <controllingFieldValue>Account Executives</controllingFieldValue>
+            <valueName>GRW</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Account Management</controllingFieldValue>
+            <controllingFieldValue>Sales Engineering</controllingFieldValue>
+            <controllingFieldValue>Revenue Operations</controllingFieldValue>
+            <controllingFieldValue>Account Executives</controllingFieldValue>
+            <controllingFieldValue>Technical Account Management</controllingFieldValue>
+            <valueName>STR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Account Management</controllingFieldValue>
+            <controllingFieldValue>Sales Engineering</controllingFieldValue>
+            <controllingFieldValue>Leadership</controllingFieldValue>
+            <controllingFieldValue>Account Executives</controllingFieldValue>
+            <controllingFieldValue>Technical Account Management</controllingFieldValue>
+            <valueName>EUR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Account Management</controllingFieldValue>
+            <controllingFieldValue>Data</controllingFieldValue>
+            <controllingFieldValue>Enterprise Support Engineering</controllingFieldValue>
+            <controllingFieldValue>Escalation Engineering</controllingFieldValue>
+            <controllingFieldValue>Customer Service</controllingFieldValue>
+            <controllingFieldValue>Community Support</controllingFieldValue>
+            <controllingFieldValue>Security Engineering</controllingFieldValue>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Revenue Enablement</controllingFieldValue>
+            <controllingFieldValue>Sales Engineering</controllingFieldValue>
+            <controllingFieldValue>Partnerships</controllingFieldValue>
+            <controllingFieldValue>Revenue Operations</controllingFieldValue>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>Accounting</controllingFieldValue>
+            <controllingFieldValue>Business Operations</controllingFieldValue>
+            <controllingFieldValue>FP&amp;A</controllingFieldValue>
+            <controllingFieldValue>Leadership</controllingFieldValue>
+            <controllingFieldValue>Account Executives</controllingFieldValue>
+            <controllingFieldValue>Deployed Engineering</controllingFieldValue>
+            <controllingFieldValue>Marketing Demand Gen</controllingFieldValue>
+            <controllingFieldValue>Product</controllingFieldValue>
+            <controllingFieldValue>Product Marketing</controllingFieldValue>
+            <controllingFieldValue>Sales Development</controllingFieldValue>
+            <controllingFieldValue>Renewal Management</controllingFieldValue>
+            <controllingFieldValue>Technical Account Management</controllingFieldValue>
+            <valueName>XXX</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enterprise Support Engineering</controllingFieldValue>
+            <controllingFieldValue>Escalation Engineering</controllingFieldValue>
+            <valueName>ELE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Enterprise Support Engineering</controllingFieldValue>
+            <controllingFieldValue>Escalation Engineering</controllingFieldValue>
+            <controllingFieldValue>Customer Service</controllingFieldValue>
+            <valueName>ESC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Customer Service</controllingFieldValue>
+            <valueName>REP</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>IND</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Revenue Operations</controllingFieldValue>
+            <valueName>SPO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Revenue Operations</controllingFieldValue>
+            <valueName>LEG</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Development</controllingFieldValue>
+            <valueName>ASE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales Development</controllingFieldValue>
+            <valueName>BDR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical Account Management</controllingFieldValue>
+            <valueName>DED</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical Account Management</controllingFieldValue>
+            <valueName>SCL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Technical Account Management</controllingFieldValue>
+            <valueName>DIG</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

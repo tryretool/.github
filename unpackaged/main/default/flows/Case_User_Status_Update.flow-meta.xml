@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <choices>
+        <name>Yes</name>
+        <choiceText>Yes</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Yes</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>Confirmation_of_Reassignment</name>
+        <label>Confirmation of Reassignment</label>
+        <locationX>182</locationX>
+        <locationY>458</locationY>
+        <defaultConnector>
+            <targetReference>Update_User</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>All Good</defaultConnectorLabel>
+        <rules>
+            <name>Not_Active_and_Reassigned_Selected</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Current_User.Support_Assignment__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not Active and Reassign</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Confirmation_of_Not_Active_and_Reassignment</targetReference>
+            </connector>
+            <label>Not Active and Reassigned Selected</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Does_User_Have_Support_Capability</name>
+        <label>Does User Have Support Capability?</label>
+        <locationX>336</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Issue with User Settings</defaultConnectorLabel>
+        <rules>
+            <name>Queues_populated_and_Limit_exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Current_User.Eligible_Queues__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Current_User.Support_Case_Limit__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Confirmation_of_Reassignment</targetReference>
+            </connector>
+            <label>Queues populated and Limit exists</label>
+        </rules>
+    </decisions>
+    <description>Adding Not Active and Reassign, and a confirmation screen for it.</description>
+    <environments>Default</environments>
+    <interviewLabel>Case - User Status Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - User Status Update</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Current_User</name>
+        <label>Get Current User</label>
+        <locationX>336</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_User_Status</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_User</name>
+        <label>Update User</label>
+        <locationX>182</locationX>
+        <locationY>758</locationY>
+        <connector>
+            <targetReference>Confirmation</targetReference>
+        </connector>
+        <inputReference>Get_Current_User</inputReference>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Confirmation</name>
+        <label>Confirmation</label>
+        <locationX>182</locationX>
+        <locationY>866</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>ConfirmationText</name>
+            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;Your status is all updated! 🎉&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Confirmation_of_Not_Active_and_Reassignment</name>
+        <label>Confirmation of Not Active and Reassignment</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Update_User</targetReference>
+        </connector>
+        <fields>
+            <name>ReassignConfirmationHeader</name>
+            <fieldText>&lt;p&gt;You have selected to go &lt;strong&gt;Not Active and Reassign&lt;/strong&gt;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This means that no new cases will be assigned to you, and any existing owned cases which are moved to Open from On Hold / Waiting for Customer / Solved will be reassigned to the relevant queue based on the Support Tier of the Case. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This is intended to be used for extended leaves, vacations, etc. &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>I_confirm_I_want_to_reassign_cases_in_my_name_if_they_wake_up_while_I_m_out</name>
+            <choiceReferences>Yes</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>I confirm I want to reassign cases in my name if they &quot;wake up&quot; while I&#39;m out.</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Error</name>
+        <label>Error</label>
+        <locationX>490</locationX>
+        <locationY>458</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>ConfirmationText_0</name>
+            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;Unfortunately your user is either missing assigned queues or a case limit. &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;Please reach out to RevOps to get this corrected. &lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Update_User_Status</name>
+        <label>Update User Status</label>
+        <locationX>336</locationX>
+        <locationY>242</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Does_User_Have_Support_Capability</targetReference>
+        </connector>
+        <fields>
+            <name>Header</name>
+            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 16px;&quot;&gt;Update User Ticket Assignment Status&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;This button allows you to update whether you are able to receive tickets from the assignment workflows or not. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;When you move to Active, the flow will top you up with tickets &lt;em&gt;every 10 minutes&lt;/em&gt;, and as you move tickets to Solved, it&#39;ll look for new tickets to add to your queue.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;As you&#39;re wrapping up your day, it&#39;s recommended to go to Inactive, then finish closing out some of the active tickets - otherwise we&#39;ll keep adding more when you&#39;re trying to close out!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>Get_Current_User.Support_Assignment__c</objectFieldReference>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>210</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Current_User</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

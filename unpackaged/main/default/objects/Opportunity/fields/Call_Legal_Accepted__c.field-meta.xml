@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Legal_Accepted__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>True if the deal&#39;s legal terms have been successfully agreed and accepted by Retool and the customer</inlineHelpText>
+    <label>Call: Legal Accepted?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

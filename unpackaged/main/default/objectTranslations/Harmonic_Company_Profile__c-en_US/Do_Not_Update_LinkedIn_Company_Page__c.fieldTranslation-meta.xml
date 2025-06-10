@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- If checked TRUE, Harmonic sync will not update the LinkedIn Company Page of the related Account record. --></help>
+        <label><!-- Do Not Update LinkedIn Company Page --></label>
+        <name>Do_Not_Update_LinkedIn_Company_Page__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type</fullName>
+    <description>Type of campaign (not in use as of 1/31/2025)
+
+In System Use: None
+
+External Systems Utilization: None</description>
+    <securityClassification>Caution</securityClassification>
+    <type>Picklist</type>
+</CustomField>

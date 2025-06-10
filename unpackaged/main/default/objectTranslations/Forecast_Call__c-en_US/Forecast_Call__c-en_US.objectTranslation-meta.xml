@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Forecast Call</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Forecast Calls</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Forecast Call Layout</layout>
+        <sections>
+            <label><!-- Attribution --></label>
+            <section>Attribution</section>
+        </sections>
+        <sections>
+            <label><!-- Churn/Contraction Call --></label>
+            <section>Churn/Contraction Call</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Manager Notes --></label>
+            <section>Manager Notes</section>
+        </sections>
+        <sections>
+            <label><!-- NUE Call --></label>
+            <section>NUE Call</section>
+        </sections>
+        <sections>
+            <label><!-- Rep Notes --></label>
+            <section>Rep Notes</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Call date must be a Monday --></errorMessage>
+        <name>Call_Date_Monday</name>
+    </validationRules>
+</CustomObjectTranslation>

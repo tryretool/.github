@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Source Field Name --></label>
+        <name>ChampifyIo__Source_Field_Name__c</name>
+        <picklistValues>
+            <masterLabel>Company - Address</masterLabel>
+            <translation><!-- Company - Address --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Company - Address - City</masterLabel>
+            <translation><!-- Company - Address - City --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Company - Address - Country</masterLabel>
+            <translation><!-- Company - Address - Country --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Company - Address - Postal Code</masterLabel>
+            <translation><!-- Company - Address - Postal Code --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Company - Address - State</masterLabel>
+            <translation><!-- Company - Address - State --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Company - Address - Street</masterLabel>
+            <translation><!-- Company - Address - Street --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Company - Employee Count</masterLabel>
+            <translation><!-- Company - Employee Count --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Company - Industry</masterLabel>
+            <translation><!-- Company - Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Company - LinkedIn URL</masterLabel>
+            <translation><!-- Company - LinkedIn URL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Company - Website</masterLabel>
+            <translation><!-- Company - Website --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Person - Email</masterLabel>
+            <translation><!-- Person - Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Person - LinkedIn URL</masterLabel>
+            <translation><!-- Person - LinkedIn URL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Person - Mobile</masterLabel>
+            <translation><!-- Person - Mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Person - Title</masterLabel>
+            <translation><!-- Person - Title --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

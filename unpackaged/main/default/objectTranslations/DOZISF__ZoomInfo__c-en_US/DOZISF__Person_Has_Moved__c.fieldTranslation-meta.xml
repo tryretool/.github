@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Indicates ZoomInfo recognizes the person company input value does not match ZoomInfo current company but does match known employment history. --></help>
+        <label><!-- Person Has Moved --></label>
+        <name>DOZISF__Person_Has_Moved__c</name>
+    </CustomFieldTranslation>

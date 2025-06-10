@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Qualified_At_Week__c</fullName>
+    <description>&lt;a href=&quot;https://retoolconfluence.atlassian.net/wiki/spaces/SAL/pages/121077975/Booking+and+Contract+Dates&quot; target=&quot;_blank&quot;&gt;Learn more about Opportunity date fields&lt;/a&gt;</description>
+    <formula>CASE(MOD(Sales_Qualified_At__c - DATE(1900, 1, 6), 7),
+0, Sales_Qualified_At__c + 0,
+1, Sales_Qualified_At__c + 6,
+2, Sales_Qualified_At__c + 5,
+3, Sales_Qualified_At__c + 4,
+4, Sales_Qualified_At__c + 3,
+5, Sales_Qualified_At__c + 2,
+6, Sales_Qualified_At__c + 1,
+null)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The calendar week in which the Sales Qualified At date falls. Returns the date of the Saturday as the last day of the week that the date falls in.</inlineHelpText>
+    <label>Sales Qualified At Week</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

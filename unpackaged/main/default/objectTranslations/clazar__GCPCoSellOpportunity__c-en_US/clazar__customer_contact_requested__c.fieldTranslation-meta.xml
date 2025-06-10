@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Customer Contact Requested --></label>
+        <name>clazar__customer_contact_requested__c</name>
+    </CustomFieldTranslation>

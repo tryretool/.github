@@ -1,0 +1,808 @@
+<apex:page sidebar="false" standardController="breadwinner_ns__BW_Contact__c" extensions="breadwinner_ns.RecordInfoExtension" tabStyle="breadwinner_ns__BW_Contact__c" applyHtmlTag="true" title="{!IF(ISNULL(recordId),'New Contact','Contact: ')} {!con.Name}">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <title>Breadwinner Contact Record</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <apex:slds />
+            <apex:includeLightning /> 
+            <apex:variable value="{!OR($User.UIThemeDisplayed == 'Theme4d', $User.UIThemeDisplayed == 'Theme4t')}" var="isLightning" />
+            <apex:variable value="{!$User.UIThemeDisplayed == 'Theme4t'}" var="isSalesforce1" />
+            <apex:includeScript value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Scripts/jquery-3.5.1.min.js')}" />
+            <script type="text/javascript">
+                var j$ = jQuery.noConflict();
+                j$(function(){
+                    message();
+                    if(document.getElementsByTagName("title") && document.getElementsByTagName("title")[0]){ 
+                        document.getElementsByTagName("title")[0].innerHTML = '{!JSENCODE(recordId)}' == '' ? "New Contact" : "Contact: {!JSENCODE(con.Name)}";
+                    }
+                    checkText();
+                });
+                function message(){
+                    j$(".infoM6, .infoM4, .infoM3, .infoM2, .infoS1").addClass("slds-notify slds-notify_alert slds-theme_inverse-text  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px","background-color":"rgba(84,105,141,.95)","border-color":"rgba(84,105,141,.95)"});
+                    j$(".errorM6, .errorM4, .errorM3, .errorM2, .errorS1").addClass("slds-notify slds-notify_alert slds-theme_error  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css({"font-weight":"500","line-height":"1.4","word-spacing":"1px","display":"block","border-radius":"5px"});
+                    j$(".warningM6, .warningM4, .warningM3, .warningM2, .warningS1").addClass("slds-notify slds-notify_alert slds-theme_warning  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+                    j$(".confirmM6, .confirmM4, .confirmM3, .confirmM2, .confirmS1").addClass("slds-notify slds-notify_alert slds-theme_success slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+                    
+                    j$("div .messageText h4").css( "color", "white" );
+                    j$("div[class*='warning'] div.messageText h4").css( "color", "black" );
+                    j$("table.messageTable td").css({"color" : "white"});
+                    j$("div[class*='warning'] table.messageTable td").css( "color", "black" );
+                }
+                function showHideSectionConent(sectionId,sectionContentId){
+                    var sectiondiv=document.getElementById(sectionId);
+                    j$("#"+sectionContentId).show();
+                    if(j$(sectiondiv).hasClass("slds-is-open")){
+                        j$(sectiondiv).removeClass("slds-is-open");
+                    }
+                    else{
+                        j$(sectiondiv).addClass("slds-is-open");
+                    }
+                }
+                function checkText() {
+                    var $element = j$('#comments');
+                    var $main = j$('#CommentSection');
+                    var $copy = $element.clone().css({display: 'inline', width: 'auto', visibility: 'hidden'}).appendTo('body');
+                    if( $copy.width() > $element.width() ){
+                        // text was truncated.
+                        j$('#comments').css("max-width", $main.width()+"px"); 
+                        j$('#read').addClass('slds-show').removeClass('slds-hide');
+                    }
+                    else{
+                        j$('#read').addClass('slds-hide').removeClass('slds-show');
+                    }
+                    $copy.remove();
+                }
+                window.onresize = function(event) {
+                    checkText();
+                };
+                function openPopover(){
+                    j$('#help').addClass('slds-show').removeClass('slds-hide');
+                }
+                function closePopover(){
+                    j$('#help').addClass('slds-hide').removeClass('slds-show');   
+                }
+                j$(document).keydown (
+                    function(event){
+                        var code = event.keyCode || event.which;
+                        if (code == 27) {
+                            j$('.slds-modal.slds-fade-in-open').find('.executeOnEscape').click();
+                            j$('#help').find('.executeOnEscape').click();
+                        }
+                    });
+            </script>
+            <style>
+                .permission_warning_message br {
+                display: none;
+                }
+                .permission_warning_message {
+                padding-top: 10px !important;
+                }         
+                .message {
+                margin-left: 0px !important; margin-right: 0px !important;
+                }
+                .messageCell {
+                width: 100%;
+                }
+                .slds-scope .slds-card__header {
+                padding: .75rem 1rem 0.75rem !important;
+                }
+                .defaultHeight{
+                min-height: 45px;
+                }
+                .slds-scope .slds-item_label {
+                font-size: 0.75rem;
+                text-align: left;
+                white-space: nowrap; 
+                }
+                .slds-scope .slds-tile+.slds-tile {
+                margin-top: 0px;
+                }
+                .slds-scope .slds-list_horizontal .slds-item_label, .slds-scope .slds-list_horizontal .slds-item_detail {
+                padding-bottom: 4px;
+                }
+                .slds-scope .slds-list_vertical .slds-item_label {
+                padding-bottom: 4px;
+                }
+                @media only screen and (min-width: 768px) and (max-width: 1023px) {
+                .slds-scope .slds-item_label{
+                text-align: left;
+                } 
+                .slds-scope .slds-list_horizontal .slds-item_label {
+                width: 40%;
+                }
+                .slds-scope .slds-list_horizontal .slds-item_detail {
+                width: 60%;
+                }
+                .slds-scope .slds-gutters .slds-col {
+                padding: 0px;
+                }
+                .slds-scope .slds-list_vertical {
+                border-top: 1px solid rgb(221, 219, 218);
+                padding-top: 10px;
+                margin-top: 4px;
+                min-height: 3rem;
+                min-height: 40px;
+                }
+                .panel{
+                min-height: 40px;
+                }
+                }
+                @media only screen and (min-width: 1024px) {
+                    .slds-scope .slds-list_horizontal .slds-item_label{
+                    text-align: right;
+                    }
+                    .slds-scope .slds-gutters .firstCol{
+                    padding-left: 0px;
+                    }  
+                    .slds-scope .firstTile .slds-item_label {
+                    width: 130px;
+                    margin-right: 5px;
+                    padding-right: 0px;
+                    }
+                    .slds-scope .firstTile .slds-item_detail {
+                    width: calc(100% - 135px);
+                    padding-left: .5rem;
+                    }
+                }
+                @media only screen and (max-width: 768px) {
+                    @media only screen and (max-width: 767px) {
+                        .slds-scope .xyz .slds-list_vertical {
+                        border-top: none;
+                        margin-top: 0px;
+                        padding-top: 0px;
+                        }
+                        .slds-scope .slds-list_horizontal .slds-item_detail,.slds-scope .xyz .slds-list_vertical .panel {
+                        width: 100%;
+                        border-bottom: 1px solid rgb(221, 219, 218);
+                        margin-bottom: 4px;
+                        min-height: 1.5rem;
+                        }
+                        .panel{
+                        padding-bottom:4px;
+                        }
+                    }
+                    .slds-scope .slds-table_col-bordered td+td {
+                    border-left: none;
+                    }
+                    .slds-scope .slds-border_right {
+                    border-right: none;
+                    }
+                    .slds-scope .slds-border_left {
+                    border-left: none;
+                    }
+                    .myTableRow tr:nth-child(n+2) {
+                    margin-top: 20px;
+                    }
+                    .slds-scope .slds-max-medium-table_stacked-horizontal tr {
+                    border: 2px solid rgb(221, 219, 218);
+                    }
+                    .slds-scope .slds-max-medium-table_stacked-horizontal tr>td:first-child {
+                    border-top: none; 
+                    }
+                }
+                .slds-scope .slds-section__title-action:hover, .slds-scope .slds-section__title-action:focus, .slds-scope .slds-section__title-action:active {
+                background: rgb(243, 242, 242); box-shadow: none;
+                }
+                .sections{
+                background: white;
+                }
+                .slds-item_detail , .panel{
+                white-space: normal;
+                overflow-wrap: break-word;
+                }
+                .LastModifiedDateNS, .grayTextWithLinks{
+                font-size: 0.85rem;font-style: italic;color: gray;
+                }
+                .slds-list_vertical .slds-item_label{
+                text-align: left;
+                }
+                .slds-scope .slds-brand-band:after{
+                height:0px;
+                }
+                .grayText{
+                color:grey;
+                }
+                .slds-scope .slds-form-element {
+                min-height: 45px;
+                }
+                .grayLinks {
+                color: gray !important;
+                text-decoration: underline !important;
+                }
+                .slds-scope .spinner-main {
+                position: fixed;
+                z-index: 9999;
+                }
+                .slds-scope lightning-formatted-lookup.slds-form-element__static{
+                    color : rgb(1, 118, 211);
+                }
+                .slds-scope lightning-formatted-lookup.slds-form-element__static:hover{
+                	color : rgb(1, 68, 134);
+                	text-decoration : underline !important;
+                }
+                .yellowbackground{
+                    background :yellow;
+                }
+                .overrideDefaultHeight .slds-form-element{
+                    min-height: 0px;
+                }
+            </style>
+        </head>
+        <body style="{!IF(AND(isLightning,showBWLayout), 'background: rgba(176, 196, 223, 1);','')}">
+            <div class="slds-scope">
+                <apex:form id="formId">
+                    <apex:actionStatus id="action-status" layout="block">
+                        <apex:facet name="start">
+                            <div class="slds-spinner_container spinner-main">
+                                <div class="slds-spinner slds-spinner_brand slds-spinner_medium" aria-hidden="false" role="alert">
+                                    <span class="slds-assistive-text">Loading</span>
+                                    <div class="slds-spinner__dot-a"></div>
+                                    <div class="slds-spinner__dot-b"></div>
+                                </div>
+                            </div>
+                        </apex:facet>
+                    </apex:actionStatus>
+                    <apex:outputPanel rendered="{!ISNULL(recordId)}" layout="block">
+                        <apex:pageMessage severity="ERROR" strength="2" summary="Breadwinner does not support NetSuite Contact creation from within Salesforce." escape="false" />
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="block" rendered="{!NOT(showBWLayout)}">
+                        <div class="slds-box slds-align_absolute-center" style="height: 200px;">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="image" style="width: 200px;">
+                                        <apex:image url="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/breadwinner.png')}" />
+                                    </td>
+                                    <td class="content ">
+                                        <div class="slds-text-align_center" style="font-size: 2.1em;">
+                                            <a id="ContactLayout" rel="noopener noreferrer" href="{!$Page.ContactRecordInfo}?id={!recordId}&showBWLayout=true" target="_parent">View NetSuite Contact in Dedicated Layout</a>    
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!AND(showBWLayout,ISNULL(con.id),NOT(ISNULL(recordId)))}" layout="block" styleClass="{!IF(isLightning,'slds-p-around_small','')}">
+                        <apex:pageMessage severity="ERROR" strength="2" summary="<b>Record deleted<b/>" escape="false" rendered="{!showRecordDeletedMessage}">
+                            <p>The record you attempted to access has been deleted. The user who deleted this record may be able to recover it from the Recycle Bin. Deleted data is stored in the Recycle Bin for 15 days.</p>
+                        </apex:pageMessage>
+                        <apex:pageMessages id="beforeRecordFetch" rendered="{!!showRecordDeletedMessage}"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel id="ContactPage" layout="block" styleClass="{!IF(isLightning,'slds-p-around_small slds-brand-band slds-brand-band_cover slds-brand-band_medium','')}">
+                        <apex:outputPanel layout="block" rendered="{!AND(showBWLayout,NOT(ISNULL(con.id)))}" >
+                            <!-- Page Header Start -->
+                            <div class="slds-page-header slds-m-bottom_small" role="banner">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-has-flexi-truncate">
+                                        <div class="slds-media slds-media_center">
+                                            <div class="slds-media__figure">
+                                                <span class="slds-icon_container slds-icon-standard-contact">
+                                                    <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS,'assets/icons/standard-sprite/svg/symbols.svg#contact')}" />
+                                                    </svg>
+                                                    <span class="slds-assistive-text"></span>
+                                                </span>
+                                            </div>
+                                            <div class="slds-media__body">
+                                                <p>NetSuite Contact</p>
+                                                <p class="slds-page-header__title slds-truncate">
+                                                    <apex:outputText value="{!con.Name}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.Name.Accessible}"/>&nbsp;
+                                                    <apex:outputText value="{!con.Company__r.breadwinner_ns__CompanyName__c}" rendered="{!IF(AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,NOT(ISNULL(con.breadwinner_ns__Company__c))),'TRUE','FALSE')}" styleClass="grayText"/>
+                                                    <apex:outputText value="{!con.Company__r.Name}" rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.Name.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible,AND(ISNULL(con.Company__r.breadwinner_ns__CompanyName__c),ISNULL(con.Company__r.breadwinner_ns__FirstName__c)))}" styleClass="grayText"/>
+                                                    <apex:outputPanel rendered="{!IF(AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__IsPerson__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,con.Company__r.breadwinner_ns__IsPerson__c,ISNULL(con.Company__r.breadwinner_ns__CompanyName__c)),'TRUE','FALSE')}" styleClass="grayText">
+                                                        <apex:outputText value="{!con.Company__r.breadwinner_ns__Salutation__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Salutation__c.Accessible}"/>
+                                                        <apex:outputText value="{!con.Company__r.breadwinner_ns__FirstName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible}"/>
+                                                        <apex:outputText value="{!con.Company__r.breadwinner_ns__MiddleName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__MiddleName__c.Accessible}"/>
+                                                        <apex:outputText value="{!con.Company__r.breadwinner_ns__LastName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__LastName__c.Accessible}"/>
+                                                    </apex:outputPanel>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-grid slds-align-bottom slds-grid_align-end slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12">
+                                        <div class="slds-grid slds-wrap">
+                                            <div class="slds-col slds-p-bottom_xx-small slds-p-left_xx-small">
+                                                <apex:commandButton id="EditContact" value="Edit Contact" styleClass="slds-button slds-button_brand" action="{!EditContactPage}" reRender="ContactPage, EditContactSection" status="action-status" rendered="{!AND($ObjectType.breadwinner_ns__BW_Contact__c.Accessible,$ObjectType.breadwinner_ns__BW_Contact__c.Updateable)}"></apex:commandButton>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Page Header End -->
+                            <apex:pageMessages />
+                            <apex:pageMessage severity="Error" rendered="{!AND(ISBLANK(acWrapper.Name),$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__NetSuite_Org_Id__c.Accessible)}" summary="The NetSuite Org ID provided is not authorized with Breadwinner. Please connect to it from Breadwinner for NetSuite tab."/>
+                            <apex:pageMessage severity="Warning" rendered="{!isSyncNotActive}" summary="Contacts sync was disabled for this {!IF(NOT(isSubsidiaryDisabledInNetSuite),'respective Subsidiary or','')} NetSuite Account. To see the accurate data, please ask your Salesforce Administrator to enable the Contacts sync from Configure NetSuite Objects Sync to Salesforce step in the Breadwinner for NetSuite tab."/>
+                            <apex:pageMessage escape="false" severity="WARNING" summary="{!pageMessage}" rendered="{!LEN(pageMessage)>0}" />
+                            <apex:outputPanel styleClass="permission_warning_message" rendered="{!AND(NOT(isBWPermissionSetAssingedToCurrentUser),$ObjectType.PermissionSetAssignment.Accessible)}">
+                                <apex:pageMessage severity="Warning">
+                                    <apex:outputText value="You might not see all the fields on this page as no Breadwinner Permission Sets were assigned to you. You must at least have a Breadwinner Read Only Permission Set assigned, to see all the fields. "/>
+                                    <apex:outputText rendered="{!(isAdministrator)}">
+                                        You can add the Breadwinner Permission Set to one or more users by going to the Permissions tab on the
+                                        <a rel="noopener noreferrer" href="{!$Page.BreadwinnerForNetSuite}"> Breadwinner For NetSuite page.</a>
+                                    </apex:outputText>
+                                    <apex:outputText rendered="{!NOT(isAdministrator)}" value="Please ask your Salesforce Administrator to assign you appropriate Permissions."/>
+                                </apex:pageMessage>
+                            </apex:outputPanel>
+                            <div class="slds-card slds-grid slds-grid_vertical slds-m-bottom_small sections">
+                                <div class="slds-card__header slds-p-left_none slds-m-bottom_none">
+                                    <div class="slds-grid slds-gutters slds-wrap slds-p-right_small slds-p-left_small">
+                                        <div class="slds-col slds-tile slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4 firstCol">
+                                            <div class="slds-tile__detail slds-wrap">
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.Name.Accessible}">
+                                                    <dt class="slds-item_label">Contact</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!con.Name}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__Salutation__c.Accessible}">
+                                                    <dt class="slds-item_label">Mr./Ms...</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!con.breadwinner_ns__Salutation__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Contact__c.fields.Name.Accessible)}">
+                                                    <dt class="slds-item_label">Name</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!con.breadwinner_ns__FirstName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__FirstName__c.Accessible}"/>
+                                                            <apex:outputText value="{!con.breadwinner_ns__MiddleName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__MiddleName__c.Accessible}"/>
+                                                            <apex:outputText value="{!con.breadwinner_ns__LastName__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__LastName__c.Accessible}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__Title__c.Accessible}">
+                                                    <dt class="slds-item_label">Job Title</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!con.breadwinner_ns__Title__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-tile slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                                            <div class="slds-tile__detail slds-wrap">
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__IsInactive__c.Accessible,con.breadwinner_ns__IsInactive__c)}">
+                                                    <dt class="slds-item_label">Inactive</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputField value="{!con.breadwinner_ns__IsInactive__c}"/> 
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__Email__c.Accessible}">
+                                                    <dt class="slds-item_label">Email</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!con.breadwinner_ns__Email__c}"/> 
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__AltEmail__c.Accessible}">
+                                                    <dt class="slds-item_label">Alt. Email</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!con.breadwinner_ns__AltEmail__c}"/> 
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__Phone__c.Accessible}">
+                                                    <dt class="slds-item_label">Main Phone</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!con.breadwinner_ns__Phone__c}"/> 
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__Fax__c.Accessible}">
+                                                    <dt class="slds-item_label">Fax</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!con.breadwinner_ns__Fax__c} "/> 
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-tile slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                                            <div class="slds-tile__detail xyz">
+                                                <dl class="slds-list_vertical slds-wrap">
+                                                    <dt class="slds-item_label">Billing Address</dt>
+                                                    <apex:outputPanel layout="block" styleClass="panel">
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__BillingAttention__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__BillingAttention__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__BillingAddressee__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__BillingAddressee__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__BillingAddr1__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__BillingAddr1__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__BillingAddr2__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__BillingAddr2__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__BillingCity__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__BillingCity__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__BillingState__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__BillingState__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__BillingCountry__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__BillingCountry__c.Accessible}"/> </dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__BillingZip__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__BillingZip__c.Accessible}"/> </dd>
+                                                    </apex:outputPanel>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-tile slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                                            <div class="slds-tile__detail xyz">
+                                                <dl class="slds-list_vertical slds-wrap">
+                                                    <dt class="slds-item_label">Shipping Address</dt>
+                                                    <apex:outputPanel layout="block" styleClass="panel">
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__ShippingAttention__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__ShippingAttention__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__ShippingAddressee__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__ShippingAddressee__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__ShippingAddr1__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__ShippingAddr1__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__ShippingAddr2__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__ShippingAddr2__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__ShippingCity__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__ShippingCity__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__ShippingState__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__ShippingState__c.Accessible}"/></dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__ShippingCountry__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__ShippingCountry__c.Accessible}"/> </dd>
+                                                        <dd class="slds-item_detail"><apex:outputText value="{!con.breadwinner_ns__ShippingZip__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__ShippingZip__c.Accessible}"/> </dd>
+                                                    </apex:outputPanel>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Strat Last Modified Info Section -->
+                                <apex:outputPanel layout="block" styleClass="slds-has-divider_top">
+                                    <div class="slds-m-bottom_small slds-m-top_x-small slds-m-horizontal_medium LastModifiedDateNS">
+                                        <span>
+                                            This NetSuite Contact was Last Modified in NetSuite on&nbsp;<apex:outputField rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__LastModifiedDate__c.Accessible}" value="{!con.breadwinner_ns__LastModifiedDate__c}" />.&nbsp;
+                                            <apex:outputText rendered="{!AND(NOT(ISBLANK(acWrapper.Name)),NOT(isSyncNotActive))}">This NetSuite Contact is accurate as of {!lastRegularSyncTime} in NetSuite.</apex:outputText>&nbsp;
+                                            <apex:commandLink rel="noopener noreferrer" rendered="{!AND(NOT(ISBLANK(acWrapper.Name)),$ObjectType.breadwinner_ns__BW_Contact__c.updateable,NOT(isSyncNotActive))}" action="{!checkForUpdateInNetSuite}" oncomplete="showHideModal('updateInfoModal','updateInfoModaldrop');message();" styleClass="grayLinks" reRender="updateInfoId,modalScriptId" status="action-status">Check to see if it has been updated since then.</apex:commandLink>
+                                        </span>
+                                    </div>
+                                    <!-- Starts SLDS Modal popup for Checking Updated record from NetSuite -->
+                                    <div id="updateInfoModal" class="slds-modal slds-modal_small" aria-hidden="false" role="dialog">
+                                        <div class="slds-modal__container">
+                                            <header class="slds-modal__header">
+                                                <button id="updateInfoCloseButton" class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse executeOnEscape" title="Close" onclick="showHideModal('updateInfoModal','updateInfoModaldrop');cancelAction();return false;">
+                                                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                                        <use rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#close')}"></use>
+                                                    </svg>
+                                                    <span class="slds-assistive-text">Close</span>
+                                                </button>
+                                                <h2 class="slds-text-heading_medium">Contact # {!con.Name}</h2>
+                                            </header>
+                                            <div class="slds-modal__content slds-p-around_medium">
+                                                <apex:outputPanel id="updateInfoId" layout="block" styleClass="slds-m-bottom_medium">
+                                                    <apex:pageMessages />
+                                                    <apex:pageMessage severity="ERROR" strength="2" rendered="{!AND(NOT(isUpdateAvailableInNetSuite), isRecordDeletedInNetSuite)}" summary="This record has been deleted in NetSuite or locked by a user defined workflow." escape="false" />
+                                                    <apex:outputPanel layout="block" rendered="{!AND(NOT(isRecordDeletedInNetSuite),NOT(ISBLANK(con.breadwinner_ns__InternalId__c)),NOT(ISBLANK(acWrapper.Name)),NOT(LEN(pageMessage)>0))}">
+                                                        <apex:outputText rendered="{!isUpdateAvailableInNetSuite}">This record has just been updated in NetSuite {!lastRegularSyncTime}, and that update is reflected here.</apex:outputText>
+                                                        <apex:outputText rendered="{!NOT(isUpdateAvailableInNetSuite)}">No updates have been made in NetSuite on this record since&nbsp;<apex:outputField rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__LastModifiedDate__c.Accessible}" value="{!con.breadwinner_ns__LastModifiedDate__c}" />. Do you still want to sync this record?
+                                                        <apex:commandLink value=" Yes" action="{!checkForUpdateInNetSuite}" rendered="{!AND(NOT(ISBLANK(acWrapper.Name)),$ObjectType.breadwinner_ns__BW_Contact__c.updateable,NOT(isSyncNotActive))}"  status="action-status" onclick="showHideModal('updateInfoModal','updateInfoModaldrop');message();" styleClass="grayLinks" reRender="updateInfoId,modalScriptId" oncomplete="refreshPageView();">
+  															<apex:param name="saveFetchedResponse" value="TRUE" assignTo="{!saveFetchedResponse}" />
+ 														</apex:commandLink> /<apex:commandLink value="No" rendered="{!AND(NOT(ISBLANK(acWrapper.Name)),$ObjectType.breadwinner_ns__BW_Contact__c.updateable,NOT(isSyncNotActive))}" onclick="cancelAction();" styleClass="grayLinks"  status="action-status"/>
+                                                        </apex:outputText>
+                                                    </apex:outputPanel>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-backdrop" id="updateInfoModaldrop"></div>
+                                    <!-- Ends SLDS Modal popup for Checking Updated record from NetSuite-->
+                                    <apex:actionFunction name="refreshPageView" action="{!view}" status="action-status" reRender="nothing"/>
+                                    <apex:outputPanel id="modalScriptId">
+                                        <script type="text/javascript">
+                                            function showHideModal(modalId,backdropId){
+                                                if(j$('#'+ modalId).hasClass('slds-fade-in-open')){
+                                                    j$('#'+ modalId).removeClass('slds-fade-in-open');
+                                                    j$('#'+ backdropId).removeClass('slds-backdrop_open');
+                                                }
+                                                else{
+                                                    j$('#'+ backdropId).addClass('slds-backdrop_open');
+                                                    j$('#'+ modalId).addClass('slds-fade-in-open');
+                                                }    
+                                            }
+                                            function cancelAction(){
+                                                if({!JSENCODE(IF(isUpdateAvailableInNetSuite && NOT(LEN(pageMessage)>0),"true", "false")) == 'true'}) refreshPageView();
+                                            }
+                                        </script>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                                <!--End Last Modified Info Section -->
+                            </div>
+                            <div class="slds-card slds-p-top_x-small slds-p-bottom_none slds-m-top_none sections">
+                                <div class="slds-card__body">
+                                    <!-- Contact Information SECTION START -->
+                                    <div class="slds-panel__section slds-p-top_none slds-p-bottom_none">
+                                        <div class="slds-section slds-is-open">
+                                            <h3 class="slds-section__title slds-theme_shade">
+                                                <span class="slds-truncate slds-p-horizontal_small">Contact Information</span>
+                                            </h3>
+                                            <div class="slds-section__content slds-p-around_small">
+                                                <div class="slds-grid slds-gutters_large slds-has-flexi-truncate slds-wrap">
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_1 slds-medium-order_1 slds-order_1">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">Company</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(con.breadwinner_ns__Company__c)}" rendered="{!IF(AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,NOT(ISNULL(con.breadwinner_ns__Company__c))),'TRUE','FALSE')}" target="_blank">{!con.Company__r.breadwinner_ns__CompanyName__c}</apex:outputLink>
+                                                                    <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(con.breadwinner_ns__Company__c)}" rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.Name.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible,NOT(ISNULL(con.breadwinner_ns__Company__c)),AND(ISNULL(con.Company__r.breadwinner_ns__CompanyName__c),ISNULL(con.Company__r.breadwinner_ns__FirstName__c)))}" target="_blank">{!con.Company__r.Name}</apex:outputLink>
+                                                                    <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(con.breadwinner_ns__Company__c)}" rendered="{!IF(AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__IsPerson__c.Accessible,con.Company__r.breadwinner_ns__IsPerson__c,NOT(ISNULL(con.breadwinner_ns__Company__c)),ISNULL(con.Company__r.breadwinner_ns__CompanyName__c)),'TRUE','FALSE')}" target="_blank">
+                                                                        <apex:outputText value="{!con.Company__r.breadwinner_ns__Salutation__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Salutation__c.Accessible}"/>
+                                                                        <apex:outputText value="{!con.Company__r.breadwinner_ns__FirstName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible}"/>
+                                                                        <apex:outputText value="{!con.Company__r.breadwinner_ns__MiddleName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__MiddleName__c.Accessible}"/>
+                                                                        <apex:outputText value="{!con.Company__r.breadwinner_ns__LastName__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__LastName__c.Accessible}"/>
+                                                                    </apex:outputLink>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_2 slds-medium-order_3 slds-order_3" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__Salesforce_Account__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">Salesforce Account</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(con.breadwinner_ns__Salesforce_Account__c)}" rendered="{!IF(NOT(ISNULL(con.breadwinner_ns__Salesforce_Account__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedSalesforceAccount">
+                                                                        <apex:outputText value="{!con.Salesforce_Account__r.Name}"/>
+                                                                    </apex:outputLink>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_5 slds-medium-order_5 slds-order_4" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__Salesforce_Contact__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">Associated Salesforce Contact</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(con.breadwinner_ns__Salesforce_Contact__c)}" rendered="{!IF(NOT(ISNULL(con.breadwinner_ns__Salesforce_Contact__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedSalesforceContact">
+                                                                        <apex:outputText value="{!con.Salesforce_Contact__r.Name}"/>
+                                                                    </apex:outputLink>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_4 slds-medium-order_2 slds-order_2" rendered="{!AND($ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__Subsidiary__c.Accessible,NOT(isSubsidiaryDisabledInNetSuite))}">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">Subsidiary</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(con.breadwinner_ns__Subsidiary__c)}" rendered="{!IF(NOT(ISNULL(con.breadwinner_ns__Subsidiary__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedSubsidiary">
+                                                                        <apex:outputText value="{!con.Subsidiary__r.Name}"/>
+                                                                    </apex:outputLink>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_3 slds-medium-order_4 slds-order_5" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__Comments__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">Comments</label>
+                                                            <div class="slds-form-element__control slds-grid slds-truncate_container_85" id="CommentSection">
+                                                                <span class="slds-form-element__static slds-truncate" id="comments" style="max-width:383px">{!con.breadwinner_ns__Comments__c}</span>
+                                                                <span class="slds-no-flex slds-hide slds-is-relative" id="read">
+                                                                    <a onclick="openPopover()" aria-describedby="help"> Read more</a>
+                                                                    <div class="slds-popover slds-popover_large slds-hide slds-nubbin_bottom-right slds-is-absolute" role="tooltip" id="help" style="bottom: 25px; left: -342px;">
+                                                                        <button class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close executeOnEscape" title="Close dialog" onclick="closePopover();return false;">
+                                                                            <svg class="slds-button__icon" aria-hidden="true">
+                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#close')}" />
+                                                                            </svg>
+                                                                            <span class="slds-assistive-text">Close dialog</span>
+                                                                        </button>
+                                                                        <header class="slds-popover__header">
+                                                                            <h2 class="slds-text-heading_small" id="commentsHeader">Comments</h2>
+                                                                        </header>
+                                                                        <div class="slds-popover__body slds-popover__body_small">
+                                                                            <apex:outputField value="{!con.breadwinner_ns__Comments__c}"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col  slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_6 slds-medium-order_6 slds-order_6" rendered="{!AND($ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__NetSuite_Org_Id__c.Accessible,$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__InternalId__c.Accessible,NOT(ISBLANK(netSuite_URL)))}">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">View this Contact in NetSuite</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputLink rel="noopener noreferrer" value="{!netSuite_URL}" target="_blank">Click Here</apex:outputLink>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Contact Information SECTION END -->
+                                    <!-- NetSuite Custom Fields SECTION START -->
+                                    <div id="NetsuiteCustomFieldsComponentid" />
+                                    <div id="NetsuiteCustomFieldsComponentid-spin">
+                                        <div style="height: 3rem;position:relative;">
+                                            <div role="status" class="slds-spinner slds-spinner_small slds-spinner_brand">
+                                                <span class="slds-assistive-text">Loading</span>
+                                                <div class="slds-spinner__dot-a"></div>
+                                                <div class="slds-spinner__dot-b"></div>
+                                            </div>
+                                        </div>
+    								</div>
+                                    <apex:variable var="cmpNamespacePrefix" value="{!getCompNamespacePrefix}" />
+                                    <script>
+                                        $Lightning.use("{!JSENCODE(cmpNamespacePrefix)}:lightningOutUnstyled", function() {
+                                            $Lightning.createComponent("{!JSENCODE(cmpNamespacePrefix)}:recordFieldsDisplay",
+                                                                            { 
+                                                                                recordId : '{!recordId}',
+                                                                                isFromBreadwinner : true ,
+                                                                                sectionType : "NetSuite's Custom Fields"
+                                
+                                                                            },
+                                                                            "NetsuiteCustomFieldsComponentid", 
+                                                                            function(cmp) {
+                                                                                setTimeout(function(){document.getElementById('NetsuiteCustomFieldsComponentid-spin').style.display="none";},3000);
+                                                                            });
+                                            });
+                                    </script>
+									<apex:outputPanel rendered="{!AND(isAdministrator,NOT(isAccessToAllCustomFields))}">
+										<div class="slds-border_bottom slds-m-bottom_small slds-p-bottom_small slds-m-horizontal_medium">
+											<div class="slds-inline_icon_text slds-text-heading_small slds-grid slds-inline_icon_text--warning">
+												<svg aria-hidden="true" class="slds-icon slds-icon-text-warning slds-icon--small slds-m-left--small slds-m-right--small slds-col slds-no-flex" style="fill: #FEA22E;">
+													<use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+												</svg>
+												<div class="slds-col slds-align-middle">
+													<p style="color: #FEA22E;" >
+														There are certain custom fields that are currently not visible on this page. To enable the visibility of the custom fields on this page, please grant the necessary permissions. It is recommended to use a single permission set, such as 'Breadwinner for NetSuite Custom Fields Permission Set' or a similar option for all the custom fields.
+													</p>
+												</div>
+											</div>
+										</div>
+									</apex:outputPanel>
+                                    <!-- NetSuite Custom Fields SECTION END -->
+                                    <!-- Salesforce Custom Fields SECTION START -->
+                                    <div id="SfCustomFieldsComponentid" />
+                                    <div id="SfCustomFieldsComponentid-spin">
+        								<div style="height: 3rem;position:relative;">
+            								<div role="status" class="slds-spinner slds-spinner_small slds-spinner_brand">
+                                                <span class="slds-assistive-text">Loading</span>
+                                                <div class="slds-spinner__dot-a"></div>
+                                                <div class="slds-spinner__dot-b"></div>
+            							    </div>
+       								    </div>
+    								</div>
+                                    <script>
+                                        $Lightning.use("{!JSENCODE(cmpNamespacePrefix)}:lightningOutUnstyled", function() {
+                                                $Lightning.createComponent("{!JSENCODE(cmpNamespacePrefix)}:recordFieldsDisplay",
+                                                                            { 
+                                                                                recordId : '{!recordId}',
+                                                                                isFromBreadwinner : true ,
+                                                                                sectionType : "Your Company's Custom Fields"
+                                
+                                                                            },
+                                                                            "SfCustomFieldsComponentid", 
+                                                                            function(cmp) {
+                                                                                setTimeout(function(){document.getElementById('SfCustomFieldsComponentid-spin').style.display="none";},3000);
+                                                                            });
+                                        });
+                                    </script>
+                                    <!-- Salesforce Custom Fields SECTION END -->
+                                    <div class="slds-panel__section slds-p-bottom_none slds-p-top_none">
+                                        <div class="slds-section" id="SectionHeader">
+                                            <h3 class="slds-section__title slds-theme_shade">
+                                                <button class="slds-button slds-section__title-action" type="button" onclick="showHideSectionConent('SectionHeader','addSection');">
+                                                    <svg aria-hidden="true" class="slds-section__title-action-icon slds-button__icon slds-button__icon_left">
+                                                        <use rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#switch')}"></use>
+                                                    </svg>Additional Information</button>
+                                            </h3>
+                                            <div class="slds-section__content slds-p-around_small slds-p-top_none" id="addSection">
+                                                <div class="slds-grid slds-gutters_large slds-has-flexi-truncate slds-wrap slds-p-top_x-small">
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_1 slds-medium-order_1 slds-order_1" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.OwnerId.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">Owner</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!con.OwnerId}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_2 slds-medium-order_3 slds-order_3" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__InternalId__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">Internal Id</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!con.breadwinner_ns__InternalId__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_5 slds-medium-order_5 slds-order_4" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__ExternalId__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">External Id</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!con.breadwinner_ns__ExternalId__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_3 slds-medium-order_4 slds-order_5" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__DateCreated__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">Date Created in NetSuite</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!con.breadwinner_ns__DateCreated__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_4 slds-medium-order_2 slds-order_2" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.breadwinner_ns__NetSuite_Org_Id__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">NetSuite Org Id</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!con.breadwinner_ns__NetSuite_Org_Id__c}" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-large-order_6 slds-medium-order_6 slds-order_6" rendered="{!$ObjectType.breadwinner_ns__BW_Contact__c.fields.LastModifiedDate.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom">
+                                                            <label class="slds-form-element__label">Last Modified Date in Salesforce</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!con.LastModifiedDate}" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Related Records Section Start -->
+                            <apex:outputPanel layout="block" styleClass="slds-card__body slds-m-bottom_small sections">                            
+                            <!-- Addresses Section Start -->
+                            <c:customRelatedListSingle cmpUniqueId="addresses"
+                                     relatedListTitle="Addresses"                                    
+                                     parentRecordId="{!$CurrentPage.parameters.Id}"
+                                     relatedChildObjectAPIName="BW_Address__c"
+                                     relatedLookupFieldAPIName="Contact__c"
+                                     relatedListIconName="standard:address"
+                                     customMessageOnNoData="This Contact has no Addresses"
+                                     hideNameColumn="TRUE" rendered="{!$ObjectType.breadwinner_ns__BW_Address__c.Accessible}"
+                            >
+                            </c:customRelatedListSingle>
+                            <!-- Addresses Section Ends -->
+                            </apex:outputPanel>    
+                            <!-- Related Records Section Ends -->
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    <!-- Edit Contact Section Starts -->
+                    <apex:outputPanel id="EditContactSection" >
+                        <apex:outputPanel layout="block" rendered="{!AND(isEditContact,NOT(showBWLayout))}" styleClass="{!IF(isLightning,'slds-p-horizontal_small slds-brand-band slds-brand-band_cover slds-brand-band_medium','')}">   
+                            <div id="EditContactid" />
+                            <div id="EditContactid-spin">
+                                <div style="height: 3rem;position:relative;">
+                                    <div role="status" class="slds-spinner slds-spinner_small slds-spinner_brand">
+                                        <span class="slds-assistive-text">Loading</span>
+                                        <div class="slds-spinner__dot-a"></div>
+                                        <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <apex:variable var="cmpNamespacePrefix" value="{!getCompNamespacePrefix}" />
+                            <script>
+                                $Lightning.use("{!JSENCODE(cmpNamespacePrefix)}:lightningOutUnstyled", function() {
+                                    console.log('create cmp');
+                                $Lightning.createComponent("{!JSENCODE(cmpNamespacePrefix)}:netsuiteContact",
+                                { 
+                                    recordId : '{!recordId}',
+                                    currentPage:'{!$Page.breadwinner_ns__ContactRecordInfo}'
+                                },
+                                "EditContactid", 
+                                    function(cmp) {
+                                        setTimeout(function(){document.getElementById('EditContactid-spin').style.display="none";},3000);
+                                    });
+                                });
+                            </script>    
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    <!-- Edit Contact Section Ends -->
+                </apex:form>
+            </div>
+        </body>
+    </html>
+</apex:page>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CRO_New_ARR_Override__c</fullName>
+    <description>Replaces the unweighted New ARR amount entered by the Account Executive. Used for forecasting purposes by the CRO.</description>
+    <inlineHelpText>Replaces the unweighted New ARR amount entered by the Account Executive. Used for forecasting purposes by the CRO.</inlineHelpText>
+    <label>CRO New ARR Override</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <securityClassification>Confidential</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

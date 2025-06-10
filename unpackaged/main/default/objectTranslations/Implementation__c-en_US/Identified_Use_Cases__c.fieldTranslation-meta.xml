@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- What are the identified key use cases for Retool? --></help>
+        <label><!-- Identified Use Cases --></label>
+        <name>Identified_Use_Cases__c</name>
+    </CustomFieldTranslation>

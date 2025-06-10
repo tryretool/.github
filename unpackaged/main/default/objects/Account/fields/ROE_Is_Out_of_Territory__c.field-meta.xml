@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ROE_Is_Out_of_Territory__c</fullName>
+    <description>TRUE if the current owner is assigned to an Account that does not align with their assigned Territory.</description>
+    <formula>Owner.Is_Account_Pool__c = FALSE &amp;&amp; (
+ (NOT(ISPICKVAL(Owner.Territory__c,&quot;&quot;)) &amp;&amp; TEXT(Owner.Territory__c) != ROE_Territory__c) ||
+ (NOT(ISPICKVAL(Sales_Development_Representative__r.Territory__c,&quot;&quot;)) &amp;&amp; TEXT(Sales_Development_Representative__r.Territory__c) != ROE_Territory__c)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>TRUE if the current owner is assigned to an Account that does not align with their assigned Territory.</inlineHelpText>
+    <label>ROE Is Out of Territory?</label>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

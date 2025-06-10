@@ -1,0 +1,19 @@
+.disabled li:not(:first-of-type) {
+    cursor: not-allowed;
+    position: relative;
+    pointer-events: none;
+}
+
+.disabled li:not(:first-of-type)::after {
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    content: ' ';
+    display: block;
+    background-color: var(--lwc-colorBackground);
+    opacity: 50%;
+}

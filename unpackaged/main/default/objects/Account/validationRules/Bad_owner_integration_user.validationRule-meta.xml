@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bad_owner_integration_user</fullName>
+    <active>true</active>
+    <errorConditionFormula>Owner.Is_integration_user__c = TRUE &amp;&amp; NOT(ISPICKVAL(Disqualified_Reason__c,&quot;Internal&quot;))</errorConditionFormula>
+    <errorMessage>An integration user can&#39;t be the account owner</errorMessage>
+</ValidationRule>

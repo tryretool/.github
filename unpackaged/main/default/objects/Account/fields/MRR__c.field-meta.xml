@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MRR__c</fullName>
+    <description>The current total MRR (Monthly Recurring Revenue) of all Business Units related to the Account.
+
+External Systems Utilization: MadKudu</description>
+    <inlineHelpText>The current total MRR (Monthly Recurring Revenue) of all Business Units related to the Account.</inlineHelpText>
+    <label>MRR</label>
+    <securityClassification>Safe</securityClassification>
+    <summarizedField>Business_Unit__c.MRR__c</summarizedField>
+    <summaryForeignKey>Business_Unit__c.Account__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

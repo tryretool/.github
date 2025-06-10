@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Seq_Def_not_unique</fullName>
+    <active>true</active>
+    <errorConditionFormula>VLOOKUP($ObjectType.Sequence_Definition__c.Fields.Name,$ObjectType.Sequence_Definition__c.Fields.Name,Name)=Name &amp;&amp; (ISNEW() || ISCHANGED(Name))</errorConditionFormula>
+    <errorMessage>Sequence Definition already exists with this name</errorMessage>
+</ValidationRule>

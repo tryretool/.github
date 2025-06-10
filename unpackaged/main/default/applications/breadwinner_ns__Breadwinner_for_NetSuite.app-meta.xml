@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>breadwinner_ns__BreadwinnerForNetSuite</defaultLandingTab>
+    <description>NetSuite and Salesforce Integration</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Breadwinner for NetSuite</label>
+    <logo>breadwinner_ns__Breadwinner_for_NetSuite/breadwinner_ns__Logo.png</logo>
+    <tabs>breadwinner_ns__BreadwinnerForNetSuite</tabs>
+    <tabs>breadwinner_ns__BW_Company__c</tabs>
+    <tabs>breadwinner_ns__BW_Estimate__c</tabs>
+    <tabs>breadwinner_ns__BW_Sales_Order__c</tabs>
+    <tabs>breadwinner_ns__BW_Purchase_Order__c</tabs>
+    <tabs>breadwinner_ns__BW_Invoice__c</tabs>
+    <tabs>breadwinner_ns__BW_Bill__c</tabs>
+    <tabs>breadwinner_ns__BW_Return_Authorization__c</tabs>
+    <tabs>breadwinner_ns__BW_Payment__c</tabs>
+    <tabs>breadwinner_ns__BW_Credit_Memo__c</tabs>
+    <tabs>breadwinner_ns__BW_Item__c</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Opportunity</tabs>
+    <tabs>breadwinner_ns__BW_Subsidiary__c</tabs>
+    <tabs>breadwinner_ns__BW_Contact__c</tabs>
+    <tabs>breadwinner_ns__BW_Item_Fulfillment__c</tabs>
+    <tabs>breadwinner_ns__BW_Check__c</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>Customer_Reference__c</tabs>
+</CustomApplication>

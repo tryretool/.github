@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Router_Name_CP__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The name of the Chili Piper Router a meeting was booked from. Only used when a meeting is booked via Concierge or Inbound Router.</inlineHelpText>
+    <label>Router Name</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

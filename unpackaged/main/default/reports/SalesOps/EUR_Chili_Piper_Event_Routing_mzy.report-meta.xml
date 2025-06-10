@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_52080984</developerName>
+        <masterLabel>Team Bucket</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Activity.Queue_Name_CP__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>2b - GRW AE RR - Concierge</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>2b - GRW AE RR - Handoff</sourceValue>
+            </sourceValues>
+            <value>Growth</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>2a - MMK AE RR - Concierge</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>2c - MMK AE RR - Handoff</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>2 - MMK AE RR - Handoff - Inbound</sourceValue>
+            </sourceValues>
+            <value>Midmarket</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>2a - ENT AE RR - Concierge</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>2a - ENT AE RR - Handoff</sourceValue>
+            </sourceValues>
+            <value>Enterprise</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>1a - ASE Account Owner</sourceValue>
+            </sourceValues>
+            <value>ASE</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>1 - Account Owner - Concierge</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>1 - Account Owner - Handoff</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>3 - Default Demo</sourceValue>
+            </sourceValues>
+            <value>Account Owner</value>
+        </values>
+        <values>
+            <value>Misc.</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EUR - Concierge</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>EUR - Handoff</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>India SDR - Handoff</sourceValue>
+            </sourceValues>
+            <value>EMEA/India</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>SDR Discovery Call</sourceValue>
+            </sourceValues>
+            <value>SDR Discovery</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBarStacked</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>Activity.Queue_Name_CP__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>ASSIGNED</secondaryGroupingColumn>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>SUBJECT</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>EMAIL</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_COUNTRY</field>
+    </columns>
+    <columns>
+        <field>Contact.Contact_Implied_Country__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>EMPLOYEES</field>
+    </columns>
+    <columns>
+        <field>Contact.Contact_Implied_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Employee_Picklist__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_52080984</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Activity.Canceled_CP__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Activity.No_Show_CP__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Activity.Queue_Name_CP__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>startsWith</operator>
+            <value>EUR</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Month</dateGranularity>
+        <field>DUE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Activity.Queue_Name_CP__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ASSIGNED</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EUR - Chili Piper Event Routing</name>
+    <params>
+        <name>closed</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>type</name>
+        <value>e</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactActivity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>DUE_DATE</dateColumn>
+        <interval>INTERVAL_CURRENTQ</interval>
+    </timeFrameFilter>
+</Report>

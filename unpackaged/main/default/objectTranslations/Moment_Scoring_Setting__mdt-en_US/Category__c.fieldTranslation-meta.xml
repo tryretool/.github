@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Defines if the score for evaluation is &quot;Person Grade&quot; or &quot;Engagement Band&quot;. --></help>
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+        <picklistValues>
+            <masterLabel>Engagement Band</masterLabel>
+            <translation><!-- Engagement Band --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Person Grade</masterLabel>
+            <translation><!-- Person Grade --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

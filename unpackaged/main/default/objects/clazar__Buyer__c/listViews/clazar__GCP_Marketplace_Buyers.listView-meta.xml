@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clazar__GCP_Marketplace_Buyers</fullName>
+    <columns>NAME</columns>
+    <columns>clazar__cloud__c</columns>
+    <columns>clazar__domain__c</columns>
+    <columns>clazar__status__c</columns>
+    <columns>clazar__latest_contract_id__c</columns>
+    <columns>clazar__listing_id__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>clazar__cloud__c</field>
+        <operation>equals</operation>
+        <value>gcp</value>
+    </filters>
+    <label>GCP Marketplace Buyers</label>
+</ListView>

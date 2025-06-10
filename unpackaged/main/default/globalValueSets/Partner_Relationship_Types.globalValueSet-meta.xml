@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>CoSell</fullName>
+        <default>false</default>
+        <label>CoSell</label>
+    </customValue>
+    <customValue>
+        <fullName>Marketplace</fullName>
+        <default>false</default>
+        <label>Marketplace</label>
+    </customValue>
+    <customValue>
+        <fullName>Referral</fullName>
+        <default>false</default>
+        <label>Referral</label>
+    </customValue>
+    <customValue>
+        <fullName>Reseller</fullName>
+        <default>false</default>
+        <label>Reseller</label>
+    </customValue>
+    <customValue>
+        <fullName>Service Delivery</fullName>
+        <default>false</default>
+        <label>Service Delivery</label>
+    </customValue>
+    <masterLabel>Partner Relationship Types</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

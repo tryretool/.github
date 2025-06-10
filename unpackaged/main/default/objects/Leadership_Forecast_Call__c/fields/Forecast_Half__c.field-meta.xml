@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Forecast_Half__c</fullName>
+    <externalId>false</externalId>
+    <formula>TEXT(YEAR(Forecast_Week__c))
+&amp; &quot;-&quot;&amp;
+CASE(Month(Forecast_Week__c),
+1, &quot;H1&quot;,
+2, &quot;H1&quot;,
+3, &quot;H1&quot;,
+4, &quot;H1&quot;,
+5, &quot;H1&quot;,
+6, &quot;H1&quot;,
+7, &quot;H2&quot;,
+8, &quot;H2&quot;,
+9, &quot;H2&quot;,
+10, &quot;H2&quot;,
+11, &quot;H2&quot;,
+12, &quot;H2&quot;,
+&quot;None&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Forecast Half</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

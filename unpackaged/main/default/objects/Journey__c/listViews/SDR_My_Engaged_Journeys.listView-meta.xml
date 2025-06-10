@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SDR_My_Engaged_Journeys</fullName>
+    <columns>Close__c</columns>
+    <columns>NAME</columns>
+    <columns>Action_Required__c</columns>
+    <columns>Approached_At__c</columns>
+    <columns>Days_Since_Most_Recent_Outbound_Email__c</columns>
+    <columns>Engaged_At__c</columns>
+    <columns>Days_Since_Most_Recent_Inbound_Email__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Stage__c</field>
+        <operation>equals</operation>
+        <value>Engaged</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Journey__c.Demand</value>
+    </filters>
+    <filters>
+        <field>Action_Required__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>[SDR] My Engaged Journeys</label>
+</ListView>

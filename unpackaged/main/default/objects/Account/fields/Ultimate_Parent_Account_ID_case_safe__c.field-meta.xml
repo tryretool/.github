@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ultimate_Parent_Account_ID_case_safe__c</fullName>
+    <description>Helper field that returns the Account ID at the highest level of the parent/child hierarchy. Value is NULL if there are no associated Parent Account records.</description>
+    <externalId>false</externalId>
+    <formula>CASESAFEID(Ultimate_Parent_Account__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Helper field that returns the Account ID at the highest level of the parent/child hierarchy. Value is NULL if there are no associated Parent Account records.</inlineHelpText>
+    <label>Ultimate Parent Account ID (case safe)</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

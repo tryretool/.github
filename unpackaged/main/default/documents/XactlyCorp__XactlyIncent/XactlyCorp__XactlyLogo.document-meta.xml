@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Xactly Logo. Used for displaying the custom logo for the application</description>
+    <internalUseOnly>false</internalUseOnly>
+    <keywords>logo</keywords>
+    <name>Xactly Logo</name>
+    <public>true</public>
+</Document>

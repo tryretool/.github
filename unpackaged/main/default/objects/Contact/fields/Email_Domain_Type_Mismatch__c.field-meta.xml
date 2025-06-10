@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Domain_Type_Mismatch__c</fullName>
+    <description>Checked TRUE if the Contact `Email_Domain_Type__c` does not align with the lookup relationship `Email_Domain_Map__r.Type__c` value.</description>
+    <formula>ISBLANK(Email_Domain_Map__c) 
+||
+(NOT(ISBLANK(Email_Domain_Map__c)) &amp;&amp; TEXT(Email_Domain_Map__r.Type__c)!=TEXT(Email_Domain_Type__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Checked TRUE if the Contact `Email_Domain_Type__c` does not align with the lookup relationship `Email_Domain_Map__r.Type__c` value.</inlineHelpText>
+    <label>Email Domain Type Mismatch?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

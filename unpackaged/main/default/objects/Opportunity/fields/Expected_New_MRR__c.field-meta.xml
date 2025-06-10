@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expected_New_MRR__c</fullName>
+    <formula>New_MRR__c * IF(ISPICKVAL(StageName,&quot;Churn&quot;),1,Probability)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>New MRR multiplied by the opportunity probability.</inlineHelpText>
+    <label>Expected New MRR</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

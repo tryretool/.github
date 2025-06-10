@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Entered Red Account Reasons --></label>
+        <name>Entered_Red_Account_Reasons__c</name>
+        <picklistValues>
+            <masterLabel>Company Restructure or Layoffs</masterLabel>
+            <translation><!-- Company Restructure or Layoffs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lack of Prioritization</masterLabel>
+            <translation><!-- Lack of Prioritization --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lack of Resources</masterLabel>
+            <translation><!-- Lack of Resources --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Adoption</masterLabel>
+            <translation><!-- Low Adoption --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Relationship With Exec Buyer</masterLabel>
+            <translation><!-- No Relationship With Exec Buyer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non payment</masterLabel>
+            <translation><!-- Non payment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Activated</masterLabel>
+            <translation><!-- Not Activated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Escalation</masterLabel>
+            <translation><!-- Technical Escalation --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

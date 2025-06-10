@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Domain_Type__c</fullName>
+    <description>Domain Type (i.e. Corporate, Public etc..) derived form the Domain Map record associated with the Contact&#39;s `Email Domain`.</description>
+    <inlineHelpText>Domain Type (i.e. Corporate, Public etc..) derived form the Domain Map record associated with the Contact&#39;s `Email Domain`.</inlineHelpText>
+    <label>Email Domain Type</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Domain_Types</valueSetName>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Goal_Ramps</fullName>
+    <columns>NAME</columns>
+    <columns>Assignee_Role__c</columns>
+    <columns>Manager__c</columns>
+    <columns>Start_Date__c</columns>
+    <columns>Month_Index_All_Roles__c</columns>
+    <columns>Month_Index_Current_Role__c</columns>
+    <columns>Ramp_Pct__c</columns>
+    <columns>Renewal_Rate_Goal__c</columns>
+    <columns>New_Annualized_Revenue_Goal__c</columns>
+    <columns>Net_Expansion_Goal__c</columns>
+    <columns>Non_Rec_Rev_Goal__c</columns>
+    <columns>SQO_Goal__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Type__c</field>
+        <operation>equals</operation>
+        <value>Individual</value>
+    </filters>
+    <filters>
+        <field>Period_Start__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>10/1/2024</value>
+    </filters>
+    <filters>
+        <field>Assignee__c</field>
+        <operation>equals</operation>
+        <value>Amar Shah</value>
+    </filters>
+    <label>Goal Ramps</label>
+</ListView>

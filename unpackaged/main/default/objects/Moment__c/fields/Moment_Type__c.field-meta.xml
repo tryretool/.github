@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moment_Type__c</fullName>
+    <description>Indicates the source of the Moment.
+
+In System Use: &#39;Autolaunch: Check MQL&#39;, &#39;Case - Handoff Button&#39;, &#39;Contact - After Save Automations&#39;, &#39;Campaign Member: After Save Automations&#39;, &#39;Moment: After Save Automations&#39;,  &#39;Retool User - After Save Automations&#39;, &#39;Task - After Save Automations&#39;
+
+External Systems Utilization: None</description>
+    <inlineHelpText>Indicates the source of the Moment.</inlineHelpText>
+    <label>Moment Type</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Champify Alert</fullName>
+                <default>false</default>
+                <label>Champify Alert</label>
+            </value>
+            <value>
+                <fullName>Content Download</fullName>
+                <default>false</default>
+                <label>Content Download</label>
+            </value>
+            <value>
+                <fullName>Demo Request</fullName>
+                <default>false</default>
+                <label>Demo Request</label>
+            </value>
+            <value>
+                <fullName>Form Submission</fullName>
+                <default>false</default>
+                <label>Form Submission</label>
+            </value>
+            <value>
+                <fullName>Koala Intent Signal</fullName>
+                <default>false</default>
+                <label>Koala Intent Signal</label>
+            </value>
+            <value>
+                <fullName>Live Event - Hackathon</fullName>
+                <default>false</default>
+                <label>Live Event - Hackathon</label>
+            </value>
+            <value>
+                <fullName>Live Event - Retool Hosted</fullName>
+                <default>false</default>
+                <label>Live Event - Retool Hosted</label>
+            </value>
+            <value>
+                <fullName>Live Event - Tradeshow</fullName>
+                <default>false</default>
+                <label>Live Event - Tradeshow</label>
+            </value>
+            <value>
+                <fullName>Live Event - Other</fullName>
+                <default>false</default>
+                <label>Live Event - Other</label>
+            </value>
+            <value>
+                <fullName>Product Action</fullName>
+                <default>false</default>
+                <label>Product Action</label>
+            </value>
+            <value>
+                <fullName>Product Signup</fullName>
+                <default>false</default>
+                <label>Product Signup</label>
+            </value>
+            <value>
+                <fullName>Support</fullName>
+                <default>false</default>
+                <label>Support</label>
+            </value>
+            <value>
+                <fullName>Webinar - Live</fullName>
+                <default>false</default>
+                <label>Webinar - Live</label>
+            </value>
+            <value>
+                <fullName>Webinar - Recorded</fullName>
+                <default>false</default>
+                <label>Webinar - Recorded</label>
+            </value>
+            <value>
+                <fullName>Regie.ai - Started</fullName>
+                <default>false</default>
+                <label>Regie.ai - Started</label>
+            </value>
+            <value>
+                <fullName>Regie.ai - Conversion</fullName>
+                <default>false</default>
+                <label>Regie.ai - Conversion</label>
+            </value>
+            <value>
+                <fullName>Regie.ai - Expansion</fullName>
+                <default>false</default>
+                <label>Regie.ai - Expansion</label>
+            </value>
+            <value>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+                <label>Partner Referral</label>
+            </value>
+            <value>
+                <fullName>Campaign Other</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Campaign Other</label>
+            </value>
+            <value>
+                <fullName>Endgame Alert</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Endgame Alert</label>
+            </value>
+            <value>
+                <fullName>Event - Digital</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Event - Digital</label>
+            </value>
+            <value>
+                <fullName>Event - Physical</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Event - Physical</label>
+            </value>
+            <value>
+                <fullName>Gated Content</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gated Content</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

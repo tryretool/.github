@@ -1,0 +1,32 @@
+<!--Uses standard controller for ability to add to record page  -->
+<apex:page standardController="Account" sidebar="false" standardStylesheets="false" extensions="bombora_data.CompanyTrendsController">
+    <style type="text/css">
+        html { height: 100%; }
+        body.slds-scope:not(html) { 
+        }
+        .noSidebarCell.slds-scope {
+            padding:0;
+        }
+    </style>
+    <apex:slds />
+    <apex:includeLightning />
+
+    <div class="slds-scope--inner">
+        <div class="classic" id="appContainer" />
+    </div>
+    <script>
+        $Lightning.use('{!namespace}:CompanyTrendsSummaryApp', function () {
+            $Lightning.createComponent(
+                '{!namespace}:companyTrendsSummary',
+                { isVisualforce: true, 
+                  recordId: '{!$CurrentPage.parameters.id}',
+                  objectApiName: '{!objectName}' },
+                'appContainer',
+                function (cmp, status, errorMessage) {
+                    // created
+                }
+            );
+        });
+
+    </script>
+</apex:page>

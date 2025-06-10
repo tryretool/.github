@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>User_Must_have_role</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK(UserRoleId) &amp;&amp; 
+ISCHANGED(UserRoleId) &amp;&amp;
+IsActive = TRUE &amp;&amp;
+ISNEW() = FALSE</errorConditionFormula>
+    <errorMessage>User must have role</errorMessage>
+</ValidationRule>

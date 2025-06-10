@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Custom Metadata Type object to store Streamline AI form field rules metadata being sent from the Streamline AI form API</description>
+    <label>Streamline AI Form Rule</label>
+    <pluralLabel>Streamline AI Form Rules</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

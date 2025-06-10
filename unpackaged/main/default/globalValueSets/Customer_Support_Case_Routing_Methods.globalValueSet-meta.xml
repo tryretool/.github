@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Pool</fullName>
+        <default>false</default>
+        <label>Pool</label>
+    </customValue>
+    <customValue>
+        <fullName>Named</fullName>
+        <default>false</default>
+        <label>Named</label>
+    </customValue>
+    <masterLabel>Customer Support Case Routing Methods</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

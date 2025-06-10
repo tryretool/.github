@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Centro__Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Feedback Type</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Answer Hallucinated</fullName>
+                <default>false</default>
+                <label>Answer Hallucinated</label>
+            </value>
+            <value>
+                <fullName>Answer Not Relevant</fullName>
+                <default>false</default>
+                <label>Answer Not Relevant</label>
+            </value>
+            <value>
+                <fullName>Source Incorrect</fullName>
+                <default>false</default>
+                <label>Source Incorrect</label>
+            </value>
+            <value>
+                <fullName>Source Not Relevant</fullName>
+                <default>false</default>
+                <label>Source Not Relevant</label>
+            </value>
+            <value>
+                <fullName>Remove Source</fullName>
+                <default>false</default>
+                <label>Remove Source</label>
+            </value>
+            <value>
+                <fullName>Other Comments</fullName>
+                <default>false</default>
+                <label>Other Comments</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

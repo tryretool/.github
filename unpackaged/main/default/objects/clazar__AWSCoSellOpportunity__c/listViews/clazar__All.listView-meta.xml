@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clazar__All</fullName>
+    <columns>NAME</columns>
+    <columns>clazar__customer_company_name__c</columns>
+    <columns>clazar__apn_crm_unique_identifier__c</columns>
+    <columns>clazar__opportunity_ownership__c</columns>
+    <columns>clazar__status__c</columns>
+    <columns>clazar__expected_monthly_aws_revenue__c</columns>
+    <columns>clazar__aws_marketplace_engagement_score__c</columns>
+    <columns>clazar__cloud_created_date__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

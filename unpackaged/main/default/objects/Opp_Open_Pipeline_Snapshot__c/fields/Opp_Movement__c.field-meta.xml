@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opp_Movement__c</fullName>
+    <description>Reference the Previous Snapshot Booking Date. Returns the current Booking Date if no Previous Snapshot record is found.</description>
+    <formula>IF(ISBLANK(Previous_Snapshot__c), Booking_Date__c, Previous_Snapshot__r.Booking_Date__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Opp Movement</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

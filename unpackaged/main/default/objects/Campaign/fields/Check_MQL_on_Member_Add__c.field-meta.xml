@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_MQL_on_Member_Add__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>For RevOps Use Only. Indicates that SDRs will be following up with the campaign member.
+
+In System Use: Flows - &#39;Campaign - After Save Automations&#39;, &#39;Campaign Member: After Save Automations&#39; 
+
+External Systems Utilization: None</description>
+    <inlineHelpText>For RevOps Use Only. Indicates that SDRs will be following up with the campaign member.</inlineHelpText>
+    <label>Check MQL on Member Add</label>
+    <securityClassification>Caution</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

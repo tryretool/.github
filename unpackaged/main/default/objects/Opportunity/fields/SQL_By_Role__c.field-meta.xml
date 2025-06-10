@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SQL_By_Role__c</fullName>
+    <description>The SDR who passed a Journey to an AE. Mapped from the &#39;Pass to Opp&#39; Journey button flow.</description>
+    <externalId>false</externalId>
+    <label>SQL By Role</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

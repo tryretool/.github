@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Generate HAR file</name>
+    <style>none</style>
+    <subject>Re: {!Case.Subject}</subject>
+    <textOnly>Can you please generate a HAR file and send it over to help us continue troubleshooting? I want to check the network trace to see what could be going on. You can follow the steps below, or read directions here:
+1. Open your browser’s Developer Tools.
+2. Click the Network tab.
+3. Refresh the page.
+4. Make sure Preserve log is checked.
+5. Reproduce the issue you’re experiencing.
+6. Export the HAR file via the icon with the down arrow.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

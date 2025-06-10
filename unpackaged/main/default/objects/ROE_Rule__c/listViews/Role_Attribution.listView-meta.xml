@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Role_Attribution</fullName>
+    <columns>NAME</columns>
+    <columns>Num_Active_Users__c</columns>
+    <columns>Opportunity_Segment__c</columns>
+    <columns>Department__c</columns>
+    <columns>Team__c</columns>
+    <columns>Subteam__c</columns>
+    <columns>Level__c</columns>
+    <columns>Territory__c</columns>
+    <columns>Region__c</columns>
+    <columns>User_Role_Short_Name__c</columns>
+    <columns>Role_Family__c</columns>
+    <columns>Status__c</columns>
+    <columns>Attributable_Region_Subteams__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Role Attribution</label>
+</ListView>

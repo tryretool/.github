@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Qual: Timeline --></label>
+        <name>Qual_Timeline__c</name>
+        <picklistValues>
+            <masterLabel>Latent Demand / Exploratory</masterLabel>
+            <translation><!-- Latent Demand / Exploratory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Urgent (ASAP)</masterLabel>
+            <translation><!-- Urgent (ASAP) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Within 3 Months</masterLabel>
+            <translation><!-- Within 3 Months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Within 6 Months</masterLabel>
+            <translation><!-- Within 6 Months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Within 9 Months</masterLabel>
+            <translation><!-- Within 9 Months --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

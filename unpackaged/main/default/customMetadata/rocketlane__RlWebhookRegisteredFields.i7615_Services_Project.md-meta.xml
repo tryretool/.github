@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>i7615_Services_Project</label>
+    <protected>false</protected>
+    <values>
+        <field>rocketlane__fieldsBeingListenedForUpdates__c</field>
+        <value xsi:type="xsd:string">[&quot;Business_Unit__c&quot;,&quot;Opportunity_Product__c.TotalPrice&quot;,&quot;Sales_Owner_Region__c&quot;,&quot;Opportunity__c.Name&quot;,&quot;Technical_Account_Manager_Subteam__c&quot;,&quot;Owner_Email__c&quot;,&quot;Account__c.ShippingCountry&quot;,&quot;Opportunity__c&quot;,&quot;Name&quot;,&quot;Technical_Account_Manager__c&quot;,&quot;Account__c.Shipping_Subregion__c&quot;,&quot;Due_Date__c&quot;,&quot;Owner_Role__c&quot;,&quot;Opportunity__c.Opportunity_Team__c&quot;,&quot;Opportunity_Product__c&quot;,&quot;Sales_Owner__c&quot;,&quot;Account__c.Account_Name_Compiled__c&quot;,&quot;Sales_Owner_Subteam__c&quot;,&quot;Start_Date__c&quot;,&quot;Account__c.Account_Owner__c&quot;,&quot;Opportunity_Product__c.Product2Id&quot;,&quot;Opportunity_Product__c.Total_Service_Minutes__c&quot;,&quot;Opportunity__c.Term_Start_Date__c&quot;,&quot;SOW_End_Date__c&quot;,&quot;SOW_Start_Date__c&quot;,&quot;Business_Unit__c.Business_Unit_ID_case_safe__c&quot;,&quot;Opportunity_Product__c.Id&quot;,&quot;Sales_Manager__c&quot;,&quot;Account__c.Id&quot;,&quot;Account__c.Shipping_Region__c&quot;,&quot;Sales_Owner_Team__c&quot;,&quot;Type__c&quot;,&quot;Technical_Account_Manager_Region__c&quot;,&quot;Push_to_Rocketlane__c&quot;,&quot;Business_Unit__c.Name&quot;,&quot;Account__c&quot;,&quot;Opportunity__c.Contract_End_Date__c&quot;,&quot;Opportunity__c.Id&quot;,&quot;Id&quot;,&quot;Status__c&quot;,&quot;Opportunity_Product__c.Name&quot;]</value>
+    </values>
+    <values>
+        <field>rocketlane__fieldsToFetchChildRecordsFor__c</field>
+        <value xsi:type="xsd:string">[&quot;Account__c&quot;,&quot;Opportunity_Product__c&quot;,&quot;Opportunity__c&quot;,&quot;Business_Unit__c&quot;]</value>
+    </values>
+    <values>
+        <field>rocketlane__integrationId__c</field>
+        <value xsi:type="xsd:string">7615</value>
+    </values>
+    <values>
+        <field>rocketlane__key__c</field>
+        <value xsi:type="xsd:string">7615_Services_Project__c</value>
+    </values>
+    <values>
+        <field>rocketlane__listenedFieldsCount__c</field>
+        <value xsi:type="xsd:double">45.0</value>
+    </values>
+    <values>
+        <field>rocketlane__sobjectType__c</field>
+        <value xsi:type="xsd:string">Services_Project__c</value>
+    </values>
+</CustomMetadata>

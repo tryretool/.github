@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Renewal_Manager__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Previously used to associate a Renewal Manager to the Account.</description>
+    <inlineHelpText>Previously used to associate a Renewal Manager to the Account.</inlineHelpText>
+    <label>Renewal Manager</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Accounts8</relationshipName>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

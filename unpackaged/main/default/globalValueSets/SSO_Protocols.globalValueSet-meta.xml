@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Username/password</fullName>
+        <default>false</default>
+        <label>Username/password</label>
+    </customValue>
+    <customValue>
+        <fullName>SAML</fullName>
+        <default>false</default>
+        <label>SAML</label>
+    </customValue>
+    <customValue>
+        <fullName>OIDC</fullName>
+        <default>false</default>
+        <label>OIDC</label>
+    </customValue>
+    <customValue>
+        <fullName>SCIM</fullName>
+        <default>false</default>
+        <label>SCIM</label>
+    </customValue>
+    <masterLabel>SSO Protocols</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

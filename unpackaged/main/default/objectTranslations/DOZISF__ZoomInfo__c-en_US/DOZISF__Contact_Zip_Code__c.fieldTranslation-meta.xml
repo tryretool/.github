@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- A person&apos;s zip code based on their personal location. --></help>
+        <label><!-- Contact Zip Code --></label>
+        <name>DOZISF__Contact_Zip_Code__c</name>
+    </CustomFieldTranslation>

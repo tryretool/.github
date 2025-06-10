@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Individual_subteam</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL(Subteam__c,&quot;&quot;) &amp;&amp; ISPICKVAL(Type__c, &quot;Individual&quot;)</errorConditionFormula>
+    <errorMessage>Subteam required for individual goal</errorMessage>
+</ValidationRule>

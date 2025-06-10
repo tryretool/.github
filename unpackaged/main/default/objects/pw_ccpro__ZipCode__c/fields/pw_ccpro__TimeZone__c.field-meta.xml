@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pw_ccpro__TimeZone__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <inlineHelpText>The time zone this Zip Code covers (where data is available)</inlineHelpText>
+    <label>Time Zone</label>
+    <referenceTo>pw_ccpro__TimeZone__c</referenceTo>
+    <relationshipLabel>ZIP Codes</relationshipLabel>
+    <relationshipName>ZipCodes</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

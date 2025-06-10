@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Github</fullName>
+        <default>false</default>
+        <label>Github</label>
+    </customValue>
+    <customValue>
+        <fullName>Github Enterprise</fullName>
+        <default>false</default>
+        <label>Github Enterprise</label>
+    </customValue>
+    <customValue>
+        <fullName>Gitlab (Cloud)</fullName>
+        <default>false</default>
+        <label>Gitlab (Cloud)</label>
+    </customValue>
+    <customValue>
+        <fullName>Gitlab (Self-managed)</fullName>
+        <default>false</default>
+        <label>Gitlab (Self-managed)</label>
+    </customValue>
+    <customValue>
+        <fullName>AWS CodeCommit</fullName>
+        <default>false</default>
+        <label>AWS CodeCommit</label>
+    </customValue>
+    <customValue>
+        <fullName>Azure Repos</fullName>
+        <default>false</default>
+        <label>Azure Repos</label>
+    </customValue>
+    <customValue>
+        <fullName>Bitbucket</fullName>
+        <default>false</default>
+        <label>Bitbucket</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <masterLabel>Source Control Providers</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

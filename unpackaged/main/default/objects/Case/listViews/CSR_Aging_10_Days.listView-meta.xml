@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSR_Aging_10_Days</fullName>
+    <columns>Account_Priority__c</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>CASES.SUBJECT</columns>
+    <columns>Age__c</columns>
+    <columns>NAME</columns>
+    <columns>CASES.PRIORITY</columns>
+    <columns>CASES.CREATED_DATE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Owner_Team__c</field>
+        <operation>equals</operation>
+        <value>Customer Service</value>
+    </filters>
+    <filters>
+        <field>Age__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>10</value>
+    </filters>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>notEqual</operation>
+        <value>Solved,Closed,Merged</value>
+    </filters>
+    <label>CSR Aging (10+ Day)</label>
+</ListView>

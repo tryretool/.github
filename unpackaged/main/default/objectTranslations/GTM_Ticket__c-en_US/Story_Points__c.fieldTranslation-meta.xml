@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Project/Task sizing estimations (points):
+0.1 = 10 mins or less
+1 = 30 mins
+2 = 1 hour
+3 = Half Day
+5 = Full Day
+8 = Multiple Days (placeholder for something that needs to be split out) --></help>
+        <label><!-- Story Points --></label>
+        <name>Story_Points__c</name>
+    </CustomFieldTranslation>

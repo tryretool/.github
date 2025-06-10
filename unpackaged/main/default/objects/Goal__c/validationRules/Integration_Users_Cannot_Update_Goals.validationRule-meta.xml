@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Integration_Users_Cannot_Update_Goals</fullName>
+    <active>true</active>
+    <description>Prevents goals from being updated by any integration user except in the case where the goal (either ARR or SQO or SQL) is blank.
+
+https://retool.lightning.force.com/lightning/r/GTM_Ticket__c/a4lDu00000000QjIAI/view</description>
+    <errorConditionFormula>$User.Is_integration_user__c  = TRUE &amp;&amp; NOT(ISCHANGED(Ramp_Automation__c)) &amp;&amp;
+(
+ (NOT(ISBLANK(New_Annualized_Revenue_Goal__c)) &amp;&amp; ISCHANGED(New_Annualized_Revenue_Goal__c)) || 
+ (NOT(ISBLANK(SQO_Goal__c)) &amp;&amp; ISCHANGED(SQO_Goal__c))  || 
+ (NOT(ISBLANK(SQL_Goal__c)) &amp;&amp; ISCHANGED(SQL_Goal__c))
+)</errorConditionFormula>
+    <errorMessage>Integration Users cannot modify existing New AR, SQO, or SQL goal values.</errorMessage>
+</ValidationRule>

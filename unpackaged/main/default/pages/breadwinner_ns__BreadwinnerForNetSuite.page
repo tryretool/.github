@@ -1,0 +1,3928 @@
+<apex:page sidebar="false"
+	tabStyle="BreadwinnerForNetSuite__tab"
+	controller="breadwinner_ns.BreadwinnerController"
+	id="page"
+	title="Breadwinner for NetSuite"
+	docType="html-5.0"
+>
+	<html>
+		<apex:includeLightning />
+		<head>
+			<meta charset="utf-8" />
+			<meta http-equiv="x-ua-compatible" content="ie=edge" />
+			<title>Breadwinner for NetSuite</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+			<apex:slds />
+			<apex:variable value="{!OR($User.UIThemeDisplayed == 'Theme4d', $User.UIThemeDisplayed == 'Theme4t')}" var="isLightning" />
+			<apex:includeScript value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Scripts/jquery-3.5.1.min.js')}" />
+			<apex:includeScript value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Scripts/select2.full.min.js')}" />
+			<link href="{!URLFOR($Resource.Breadwinner_for_NetSuite, 'Breadwinner/Styles/select2.min.css')}" rel="stylesheet" />
+			<apex:includeScript value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Scripts/gstatic.min.js')}" />
+			<style>
+				html,
+				body {
+					height: 100%;
+				}
+				.Secret {
+					type: 'password';
+				}
+				/* Arrow Path styles Start */
+				.slds-scope .slds-path__nav .slds-is-complete,
+				.slds-scope .slds-path__nav .slds-is-complete:before,
+				.slds-scope .slds-path__nav .slds-is-complete:after {
+					background: rgb(75, 202, 129);
+				}
+				.slds-scope .slds-path__nav .slds-is-active,
+				.slds-scope .slds-path__nav .slds-is-active:before,
+				.slds-scope .slds-path__nav .slds-is-active:after {
+					background: rgba(27, 82, 151, 1);
+				}
+				.slds-scope .slds-path__nav .slds-is-incomplete,
+				.slds-scope .slds-path__nav .slds-is-incomplete:before,
+				.slds-scope .slds-path__nav .slds-is-incomplete:after {
+					background: rgb(236, 235, 234);
+				}
+				.slds-scope .slds-path__nav .slds-is-complete:hover,
+				.slds-scope .slds-path__nav .slds-is-complete:hover:before,
+				.slds-scope .slds-path__nav .slds-is-complete:hover:after {
+					background: rgb(4, 132, 75);
+				}
+				.slds-scope .slds-path__nav .slds-is-active:hover,
+				.slds-scope .slds-path__nav .slds-is-active:hover:before,
+				.slds-scope .slds-path__nav .slds-is-active:hover:after {
+					background: rgba(0, 68, 135, 1);
+				}
+				.slds-scope .slds-path__nav .slds-is-incomplete:hover,
+				.slds-scope .slds-path__nav .slds-is-incomplete:hover:before,
+				.slds-scope .slds-path__nav .slds-is-incomplete:hover:after {
+					background: rgb(221, 219, 218);
+				}
+				.slds-scope .slds-path__nav a:hover {
+					cursor: default !important;
+				}
+				.slds-path__title {
+					font-size: medium;
+				}
+				/* Arrow Path styles End */
+				.message {
+					margin-left: 0px !important;
+					margin-right: 0px !important;
+				}
+				.messageCell {
+					width: 100%;
+				}
+				.setup-table td {
+					padding: 0.5rem !important;
+					white-space: normal !important;
+				}
+				.last-col-content {
+					margin-left: 1rem;
+				}
+				/* Checkbox toggle - Read only/Active modes styles Start */
+				.bwMode .slds-checkbox_toggle .slds-checkbox_faux {
+					width: 8rem;
+					font-weight: bold;
+					white-space: nowrap;
+					background-color: rgb(75, 202, 129) !important;
+					border-color: rgb(75, 202, 129) !important;
+				}
+				.bwMode .slds-checkbox_toggle .slds-checkbox_faux:focus,
+				.bwMode .slds-checkbox_toggle .slds-checkbox_faux:hover {
+					background-color: rgb(4, 132, 75) !important;
+				}
+				.bwMode .slds-checkbox_toggle .slds-checkbox_faux:before {
+					position: absolute;
+					top: 0.25rem;
+					right: 0.6rem;
+					content: 'Read Only Mode';
+					color: white;
+				}
+				.bwMode .slds-checkbox_toggle [type='checkbox']:checked + .slds-checkbox_faux_container .slds-checkbox_faux {
+					background-color: rgba(27, 82, 151, 1) !important;
+					border-color: rgba(27, 82, 151, 1) !important;
+				}
+				.bwMode .slds-checkbox_toggle [type='checkbox']:checked + .slds-checkbox_faux_container .slds-checkbox_faux:hover {
+					background-color: rgba(0, 68, 135, 1) !important;
+				}
+				.bwMode .slds-checkbox_toggle [type='checkbox']:checked + .slds-checkbox_faux_container .slds-checkbox_faux:after {
+					position: absolute;
+					top: 0.25rem;
+					left: 0.6rem;
+					transform: rotate(0deg);
+					border-bottom: 0px;
+					border-right: 0px;
+					content: 'Active Mode';
+					color: white;
+				}
+				/* Checkbox toggle for Read only/Active styles End */
+				.iconDiv {
+					text-align: right;
+				}
+				.error {
+					border: 1px solid red !important;
+				}
+				.diff-table td,
+				th {
+					white-space: normal !important;
+					padding: 10px !important;
+				}
+				.nohover:hover {
+					box-shadow: none !important;
+				}
+				.slds-scope {
+					height: 100%;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+				}
+				.container {
+					height: 100%;
+				}
+				.GrayLinks {
+					color: gray !important;
+					text-decoration: underline !important;
+				}
+				.accountMatch {
+					color: red !important;
+					text-decoration: underline !important;
+				}
+				.slds-page-header {
+					background-color: #f7f9fb !important;
+				}
+				#BreadwinnerInfo tr > td:first-child {
+					text-align: right;
+					padding: 5px;
+				}
+				#BreadwinnerInfo tr > td:last-child {
+					text-align: left;
+					padding: 5px;
+				}
+				.showSecret,
+				.hideSecret {
+					bottom: 3px !important;
+					right: 10px !important;
+					top: 15px !important;
+				}
+				.slds-scope .slds-tree__item:hover,
+				.slds-scope .slds-tree__item:focus,
+				.slds-scope .slds-tree__item:active,
+				.slds-scope .subBtn:hover,
+				.slds-scope .subBtn:focus,
+				.slds-scope .subBtn:active {
+					background: none;
+					box-shadow: none;
+				}
+				.slds-scope .subBtn {
+					display: inline-flex !important;
+					color: inherit !important;
+				}
+				.slds-tree__item-label {
+					color: inherit !important;
+					font-size: 0.95rem !important;
+				}
+				.slds-scope .subsidiaryRecordLink {
+					color: gray !important;
+					margin-top: 7px;
+					font-size: 0.75rem;
+					text-decoration: underline;
+				}
+				.slds-scope .subsidiaryRecordLink:hover {
+					text-decoration: underline !important;
+					color: rgb(0, 109, 204) !important;
+				}
+				.slds-scope .subsidiaryImageContainer {
+					margin-right: 5px;
+					width: 15px;
+				}
+				.slds-scope .slds-section__title-action:hover,
+				.slds-scope .slds-section__title-action:focus,
+				.slds-scope .slds-section__title-action:active {
+					background: rgb(243, 242, 242);
+					box-shadow: none;
+				}
+				.slds-scope .slds-button + .slds-button {
+					margin-left: 0rem;
+				}
+				/* Product Match Styles Starts here */
+				.arrow {
+					font-size: 37px;
+					color: #42b7f4;
+				}
+				.NSProductMatch {
+					background: #f4f6f9;
+					line-height: 22px;
+					padding: 10px;
+					text-align: left;
+					word-wrap: break-word;
+				}
+				dt {
+					font-weight: normal;
+					color: #54698d;
+					font-size: 0.75rem;
+				}
+				.lookupInput a {
+					border: none !important;
+					min-height: 1rem !important;
+					padding: 0px !important;
+				}
+				.message .messageTable .messageCell {
+					width: 100%;
+				}
+				.message .messageText {
+					margin-left: 0px !important;
+				}
+				.slds-scope .spinner-pm,
+				.slds-scope .spinner-main {
+					position: fixed;
+					z-index: 9999;
+				}
+				.radioButton {
+					margin-top: 3px;
+				}
+				.slds-clearfix {
+					display: inline-flex;
+				}
+				.item_label_cls {
+					width: 35% !important;
+				}
+				.item_detail_cls {
+					width: 65% !important;
+				}
+				.slds-scope li .slds-tabs_default__link[tabindex='0']:focus,
+				.slds-cope li a:hover {
+					text-decoration: none;
+				}
+				.otherOptions {
+					display: block !important;
+				}
+				@media only screen and (max-width: 768px) {
+					.arrowCell {
+						transform: rotateZ(90deg);
+					}
+				}
+				.slds-scope .restartLink:hover,
+				.slds-scope .restartLink:active,
+				.slds-scope .restartLink:focus {
+					text-decoration: underline !important;
+				}
+				/* Product Match Styles Ends Here*/
+				.NSObjectTabs li .slds-tabs_default__link[tabindex='0']:focus,
+				.NSObjectTabs li a:hover {
+					text-decoration: none;
+				}
+				.coreToggle .slds-checkbox_toggle [type='checkbox'][disabled] + .slds-checkbox_faux_container .slds-checkbox_faux {
+					background-color: rgba(27, 82, 151, 1);
+				}
+				.customFieldTabToggle,
+				.coreToggle {
+					display: inline-block;
+				}
+				.oneClick {
+					font-size: 0.9rem !important;
+				}
+				.coreCFCreation {
+					font-size: 0.9rem !important;
+				}
+				.slds-scope .slds-table_bordered tr.border-class th {
+					border-left: 1px solid rgb(221, 219, 218) !important;
+				}
+				.checkboxColumnHeaderClass {
+					text-align: center !important;
+					vertical-align: top;
+					width: 4%;
+					min-width: 80px;
+				}
+				.topRowHeaderClass {
+					text-align: center !important;
+					font-size: 0.85rem;
+				}
+				.picklistHeaderClass {
+					width: 8%;
+					min-width: 150px;
+					vertical-align: top;
+				}
+				.circleClass {
+					height: 5px;
+					width: 5px;
+					background-color: black;
+					border-radius: 50%;
+					border: 1px solid black;
+					margin: 7px 2px;
+					display: inline-block;
+					vertical-align: middle;
+				}
+				.helpIcon {
+					background: transparent url(/img/alohaSkin/help_grey.png) no-repeat !important;
+				}
+				/* Select2 Styles */
+				.select2-container {
+					width: 100% !important;
+				}
+				.select2-dropdown {
+					border: 1px solid #d8dde6;
+				}
+				.select2-container--default .select2-search--dropdown .select2-search__field {
+					border: 1px solid #d8dde6;
+					border-radius: 4px;
+				}
+				.select2-results__option {
+					margin-left: 0;
+					line-height: 18px !important;
+				}
+				li.select2-results__option {
+					margin-left: 0px;
+				}
+				.select2-results__options {
+					list-style: inherit;
+				}
+				.select2-results__option:first-child {
+					min-height: 24px !important;
+				}
+				.select2-container .select2-selection--single {
+					height: 23px !important;
+					padding: 15px;
+				}
+				.select2-container--default .select2-selection--single .select2-selection__rendered {
+					line-height: 23px !important;
+					margin: -11px;
+					margin-right: 1.1rem;
+				}
+				.select2-container .select2-selection--single .select2-selection__rendered {
+					padding-right: 0px !important;
+					text-overflow: inherit;
+				}
+				.select2-container--default .select2-selection--single {
+					border: 1px solid #d8dde6;
+				}
+				.select2-container--default .select2-selection--single .select2-selection__arrow b {
+					border-color: black transparent transparent;
+					transform: rotate(180deg);
+					margin-left: -3px;
+					border-width: 5px 3px 1px 3px;
+					top: 29%;
+				}
+				.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+					border-color: transparent transparent black transparent;
+					transform: rotate(0deg);
+					margin-left: -3px;
+					border-width: 5px 3px 5px 3px;
+					top: 15%;
+				}
+				/* Expense Report Section Styles */
+				.slds-scope .slds-table.expenseTableClass th {
+					background-color: white !important;
+					font-weight: normal !important;
+					text-align: center !important;
+					text-transform: uppercase !important;
+				}
+				.quantityColumnClass,
+				.expRefColumnClass {
+					width: 8%;
+				}
+				.rateColumnClass,
+				.amountColumnClass {
+					width: 10%;
+				}
+				.expDateColumnClass {
+					min-width: 120px;
+					width: 10%;
+				}
+				.DeleteColumnClass {
+					width: 4%;
+				}
+				.expCategoryColumnClass {
+					width: 20%;
+				}
+				.memoColumnClass {
+					width: 30%;
+				}
+				.expReportPageMsg span .message .messageText h4 {
+					font-weight: inherit;
+					display: initial;
+				}
+				.sortlink {
+					text-decoration: none !important;
+					color: rgb(81, 79, 77) !important;
+				}
+				.sortlink:hover {
+					color: rgb(0, 95, 178) !important;
+				}
+				.customFieldsCheckboxColumn {
+					vertical-align: top;
+					width: 6%;
+					min-width: 80px;
+					padding: 6px !important;
+				}
+				#customFieldsInfo .message {
+					margin-bottom: 0rem !important;
+				}
+				#CustomFieldsSection .customFieldsTextColumn {
+					padding-right: 1rem !important;
+				}
+				#PreviewTableSection .previewObjColumn:hover,
+				#ProgressTableSection .progressObjColumn:hover,
+				#CustomFieldsSection input:hover {
+					cursor: pointer;
+				}
+				#PreviewTableSection .slds-table thead th,
+				#ProgressTableSection .slds-table thead th {
+					background-color: white !important;
+					padding: 5px !important;
+				}
+				#PreviewTableSection .previewObjColumn,
+				#ProgressTableSection .progressObjColumn {
+					min-width: 100px !important;
+				}
+				.previewTableHeaders {
+					width: 1%;
+        			color: rgb(81, 79, 77);
+        			font-weight: 700;
+				}
+				.google-visualization-table-table th {
+					white-space: nowrap !important;
+					padding: 2px 0.35em !important;
+				}
+				.google-visualization-table-div-page [role='button'] {
+					line-height: 12px;
+					font-size: 12px;
+				}
+				.allObjectCFColumn {
+					background-color: #efecec !important;
+				}
+				.sfCFLabelColumn {
+					width: 120px !important;
+				}
+				.pageMessageTextCls {
+					justify-content: left !important;
+				}
+				.orgLevelImportProgressCls {
+					max-width: 255px !important;
+					min-width: 230px !important;
+				}
+				.multicurrecyCls {
+					background-color: #f9a2a2;
+				}
+				.slds-spinner.slds-spinner_small.slds-spinner_brand.troubleshootspinner {
+					top: inherit !important;
+					left: inherit !important;
+					transform: translate(0%, 0%) rotate(90deg) !important;
+				}
+				.slds-spinner-displaytext {
+					top: 55%;
+					position: absolute;
+					width: 100%;
+					text-align: center;
+					font-size: larger;
+				}
+			</style>
+		</head>
+		<body>
+			<div class="slds-scope" style="position: {!HTMLENCODE(IF(isLightning,'absolute','inherit'))};">
+				<apex:actionStatus id="action-status" layout="block">
+					<apex:facet name="start">
+						<div class="slds-spinner_container spinner-main">
+							<div class="slds-spinner slds-spinner_brand slds-spinner_medium" aria-hidden="false" role="alert">
+								<span class="slds-assistive-text">Loading</span>
+								<div class="slds-spinner__dot-a"></div>
+								<div class="slds-spinner__dot-b"></div>
+							</div>
+						</div>
+					</apex:facet>
+				</apex:actionStatus>
+				<apex:actionStatus id="count-action-status" layout="block">
+					<apex:facet name="start">
+						<div class="slds-spinner_container spinner-main">
+							<div class="slds-spinner_brand slds-spinner slds-spinner_medium" aria-hidden="false" role="alert">
+								<div class="slds-spinner__dot-a"></div>
+								<div class="slds-spinner__dot-b"></div>
+							</div>
+							<div
+								class="slds-container_fluid slds-text-heading_medium slds-grid slds-grid_align-center"
+								style="position: absolute; top: 55%"
+							>
+								<p>Breadwinner is updating the records count. It might take a few minutes to complete.</p>
+							</div>
+						</div>
+					</apex:facet>
+				</apex:actionStatus>
+				<apex:actionStatus id="action-status-pm" layout="block">
+					<apex:facet name="start">
+						<div class="slds-spinner_container spinner-pm">
+							<div class="slds-spinner slds-spinner_brand slds-spinner_medium" aria-hidden="false" role="alert">
+								<span class="slds-assistive-text">Loading</span>
+								<div class="slds-spinner__dot-a"></div>
+								<div class="slds-spinner__dot-b"></div>
+							</div>
+						</div>
+					</apex:facet>
+				</apex:actionStatus>
+				<div id="spinnerId" class="slds-spinner_container spinner-main slds-hide">
+					<div class="slds-spinner_brand slds-spinner slds-spinner_medium" aria-hidden="false" role="alert">
+						<div class="slds-spinner__dot-a"></div>
+						<div class="slds-spinner__dot-b"></div>
+					</div>
+				</div>
+				<div class="container slds-grid {!HTMLENCODE(IF(isLightning,'slds-wrap',''))} slds-grid_vertical-stretch">
+					<div
+						class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_2-of-12 slds-p-horizontal_x-small"
+						id="Menu"
+						style="border-right: 1px solid gray;{!HTMLENCODE(IF(isLightning,'background-color: white;',''))};"
+					>
+						<div id="close" class="slds-hide slds-m-right_medium slds-float_right" style="z-index: 1">
+							<button
+								class="slds-button slds-button_icon slds-button_icon-small slds-is-absolute slds-p-right_none"
+								onclick="closeMenu();return false;"
+							>
+								<svg class="slds-button__icon" aria-hidden="true">
+									<use
+										xmlns:xlink="http://www.w3.org/1999/xlink"
+										rel="noopener noreferrer"
+										xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#close')}"
+									/>
+								</svg>
+							</button>
+						</div>
+						<div class="slds-align_absolute-center slds-border_bottom" style="height: 125px">
+							<img
+								src="{!URLFOR($Resource.Breadwinner_for_NetSuite, 'Breadwinner/Images/breadwinner.png')}"
+								alt="Breadwinner Logo"
+							/>
+						</div>
+						<div id="Breadwinner-Left-Menu" class="slds-grid slds-grid_vertical slds-navigation-list_vertical">
+							<h2 class="slds-text-title_caps slds-p-around_medium" id="SETUPANDCONFIG">SETUP AND CONFIG</h2>
+							<ul>
+								<li class="slds-nav-vertical__item">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="Setup"
+										title="Setup"
+										>Setup</a
+									>
+								</li>
+								<li
+									class="nestedcheck {!IF(AND(isNetSuiteConnected, canPerformBreadwinnerOperations),'slds-show','slds-hide')}"
+									id="ConfigTabSection"
+								>
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="showHideNestedMenu(this);"
+										class="slds-truncate slds-text-link_reset slds-nav-vertical__action slds-p-left_x-small nohover"
+										id="Configuration"
+										title="Configuration"
+									>
+										<svg
+											aria-hidden="true"
+											class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"
+										>
+											<use
+												xmlns:xlink="http://www.w3.org/1999/xlink"
+												rel="noopener noreferrer"
+												xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#switch')}"
+											></use>
+										</svg>
+										<span>Configuration</span>
+									</a>
+									<ul class="slds-list_vertical slds-has-block-links slds-is-nested slds-hide">
+										<li class="slds-nav-vertical__item">
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('General Configuration');"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="GeneralConfig"
+												title="GeneralConfig"
+												>General</a
+											>
+										</li>
+										<li class="slds-nav-vertical__item">
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="CompanyConfig"
+												title="CompanyConfig"
+												>Company</a
+											>
+										</li>
+										<li class="slds-nav-vertical__item">
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="PrimaryContactConfig"
+												title="Primary Contact Configuration"
+												>Primary Contact</a
+											>
+										</li>
+										<li class="slds-nav-vertical__item">
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="PDFsConfig"
+												title="PDFs Configuration"
+												>PDFs</a
+											>
+										</li>
+									</ul>
+								</li>
+								<li
+									class="slds-nav-vertical__item"
+									style="display:{!if(OR(isBreadwinnerAdministrator, canPerformBreadwinnerOperations),'Block','None')}"
+								>
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Permissions');"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="Permissions"
+										title="Permissions"
+										>Permissions</a
+									>
+								</li>
+								<li
+									class="slds-nav-vertical__item {!IF(AND(isNetSuiteConnected, isBreadwinnerAdministrator),'slds-show','slds-hide')}"
+									id="SubsidiaryTabSection"
+								>
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Subsidiary');"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="Subsidiary"
+										title="Subsidiary"
+										>Subsidiary</a
+									>
+								</li>
+								<li
+									class="slds-nav-vertical__item {!IF(AND(isNetSuiteConnected, isBreadwinnerAdministrator),'slds-show','slds-hide')}"
+									id="CurrencyTabSection"
+								>
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Currency');"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="Currency"
+										title="Currency"
+										>Currency</a
+									>
+								</li>
+								<li class="nestedcheck {!IF(AND(isNetSuiteConnected, canPerformBreadwinnerOperations),'slds-show','slds-hide')}" id="ProductMatchSection">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="showHideNestedMenu(this);"
+										class="slds-truncate slds-text-link_reset slds-nav-vertical__action slds-p-left_x-small nohover"
+										id="ProductsMatch"
+										title="Product Match"
+									>
+										<svg
+											aria-hidden="true"
+											class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"
+										>
+											<use
+												xmlns:xlink="http://www.w3.org/1999/xlink"
+												rel="noopener noreferrer"
+												xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#switch')}"
+											></use>
+										</svg>
+										<span>Product Match</span>
+									</a>
+									<ul class="slds-list_vertical slds-has-block-links slds-is-nested slds-hide">
+										<li class="slds-nav-vertical__item">
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="SyncSettings"
+												title="Sync Settings"
+												>Sync Settings</a
+											>
+										</li>
+										<li
+											class="slds-nav-vertical__item"
+											id="ProductMatchTabSection"
+										>
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="ProductMatch"
+												title="Products"
+												>Products</a
+											>
+										</li>
+										<li class="slds-nav-vertical__item" id="PriceBookMatchTabSection">
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="PriceBook"
+												title="Price Books"
+												>Price Books</a
+											>
+										</li>
+										<li class="slds-nav-vertical__item" id="PriceBookEntryMatchTabSection">
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="PriceBookEntry"
+												title="Price Book Entries"
+												>Price Book Entries</a
+											>
+										</li>
+									</ul>
+								</li>
+								<li
+									class="slds-nav-vertical__item {!IF(AND(isNetSuiteConnected, isBreadwinnerAdministrator),'slds-show','slds-hide')}"
+									id="NetSuiteObjectTab"
+								>
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Custom Objects');"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="NetSuiteObjects"
+										title="NetSuite Objects"
+										>NetSuite Objects</a
+									>
+								</li>
+								<li
+									class="slds-nav-vertical__item {!IF(AND(isNetSuiteConnected, isBreadwinnerAdministrator),'slds-show','slds-hide')}"
+									id="CustomFieldsTab"
+								>
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="CustomFields"
+										title="Custom Fields"
+										>Custom Fields</a
+									>
+								</li>
+							</ul>
+							<ul
+								class="{!IF(AND(isNetSuiteConnected, isBreadwinnerAdministrator),'slds-show','slds-hide')} hideOnDisconnect"
+							>
+								<li class="nestedcheck">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="showHideNestedMenu(this);"
+										class="slds-truncate slds-text-link_reset slds-nav-vertical__action slds-p-left_x-small nohover"
+										id="Employee"
+										title="Employee"
+									>
+										<svg
+											aria-hidden="true"
+											class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"
+										>
+											<use
+												xmlns:xlink="http://www.w3.org/1999/xlink"
+												rel="noopener noreferrer"
+												xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#switch')}"
+											></use>
+										</svg>
+										<span>Employee</span>
+									</a>
+									<ul class="slds-list_vertical slds-has-block-links slds-is-nested slds-hide">
+										<li class="slds-nav-vertical__item">
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Employee Sync Settings');"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="EmployeeSyncSettings"
+												title="Sync Settings"
+												>Sync Settings</a
+											>
+										</li>
+										<li class="slds-nav-vertical__item">
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="EmployeeMatch"
+												title="Employee Match"
+												>Employee Match (Beta)</a
+											>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h2 class="slds-text-title_caps slds-p-around_medium" id="LEARN">LEARN</h2>
+							<ul>
+								<li class="slds-nav-vertical__item">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Knowledge Base');"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="KnowledgeBase"
+										title="Knowledge Base"
+										>Knowledge Base</a
+									>
+								</li>
+								<li class="slds-nav-vertical__item">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Contact Support');"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="ContactSupport"
+										title="Contact Support"
+										>Contact Support</a
+									>
+								</li>
+							</ul>
+							<h2 class="slds-text-title_caps slds-p-around_medium" id="ADMIN">ADMIN</h2>
+							<ul>
+								<li class="slds-nav-vertical__item">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="Billing"
+										title="Billing"
+										>Billing</a
+									>
+								</li>
+								<!--<li class="slds-nav-vertical__item"><a rel="noopener noreferrer" href="javascript:void(0);" onclick="selectTab(this);refreshTSContent();onTabEnterPushToInteractionLog('Troubleshooting');" class="slds-truncate slds-nav-vertical__action slds-text-link_reset" id="Troubleshooting" title="Troubleshoot">Troubleshoot</a></li>-->
+								<li class="nestedcheck">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="showHideNestedMenu(this);"
+										class="slds-truncate slds-text-link_reset slds-nav-vertical__action slds-p-left_x-small nohover"
+										id="Troubleshoot"
+										title="Troubleshoot"
+									>
+										<svg
+											aria-hidden="true"
+											class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"
+										>
+											<use
+												xmlns:xlink="http://www.w3.org/1999/xlink"
+												rel="noopener noreferrer"
+												xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#switch')}"
+											></use>
+										</svg>
+										<span>Troubleshoot</span>
+									</a>
+									<ul class="slds-list_vertical slds-has-block-links slds-is-nested slds-hide">
+										<li class="slds-nav-vertical__item">
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="Troubleshooting"
+												title="General"
+												>General</a
+											>
+										</li>
+										<li class="slds-nav-vertical__item">
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Status Logs'); scrollWinToTop();"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="StatusLogs"
+												title="Status Logs"
+												>Status Logs</a
+											>
+										</li>
+										<li
+											class="slds-nav-vertical__item {!IF(AND(isNetSuiteConnected, isBreadwinnerAdministrator),'slds-show','slds-hide')}"
+											id="ProgressTab"
+										>
+											<a
+												rel="noopener noreferrer"
+												href="javascript:void(0);"
+												onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Import Progress');"
+												class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+												id="Progress"
+												title="Import Progress"
+												>Import Progress</a
+											>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h2
+								class="slds-text-title_caps slds-p-around_medium hideOnDisconnect {!IF(AND(isNetSuiteConnected, canPerformBreadwinnerOperations),'slds-show','slds-hide')}"
+								id="TOOLS"
+							>
+								TOOLS
+							</h2>
+							<ul class="{!IF(AND(isNetSuiteConnected, canPerformBreadwinnerOperations),'slds-show','slds-hide')} hideOnDisconnect">
+								<li class="searachableclass slds-nav-vertical__item">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);window.scrollTo(0,0);onTabEnterPushToInteractionLog('Apex Generator');showspinner();"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="ApexGenerator"
+										title="Apex Generator"
+										>Apex Generator</a
+									>
+								</li>
+								<li class="searachableclass slds-nav-vertical__item">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);window.scrollTo(0,0);onTabEnterPushToInteractionLog('Custom URL Generator');"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="cURLGenerator"
+										title="Custom URL Generator"
+										>Custom URL Generator</a
+									>
+								</li>
+								<li
+									class="slds-nav-vertical__item {!IF(isBreadwinnerAdministrator,'slds-show','slds-hide')}"
+									id="ReportBuilderTab"
+								>
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Report Builder'); scrollWinToTop();"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="ReportBuilder"
+										title="Report Builder"
+										>Report Builder</a
+									>
+								</li>
+							</ul>
+							<h2
+								class="slds-text-title_caps slds-p-around_medium hideOnDisconnect {!IF(AND(isNetSuiteConnected, canPerformBreadwinnerOperations),'slds-show','slds-hide')}"
+								id="EMPLOYEETOOLS"
+							>
+								EMPLOYEE TOOLS
+							</h2>
+							<ul class="{!IF(AND(isNetSuiteConnected, canPerformBreadwinnerOperations),'slds-show','slds-hide')} hideOnDisconnect">
+								<li class="slds-nav-vertical__item" id="ExpenseReportTab">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);scrollWinToTop();"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="ExpenseReport"
+										title="Enter Expense Report"
+										>Enter Expense Report</a>
+								</li>
+								<li class="slds-nav-vertical__item" id="ApproveExpenseReportTab">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Approve Expense Report');scrollWinToTop();message();"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="ApproveExpenseReport"
+										title="Approve Expense Report"
+										>Approve Expense Report</a>
+								</li>
+								<li class="slds-nav-vertical__item" id="PurchaseRequestTab">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Enter Purchase Request');scrollWinToTop();message();"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="EnterPurchaseRequest"
+										title="Enter Purchase Request"
+										>Enter Purchase Request</a>
+								</li>
+								<li class="slds-nav-vertical__item" id="ApprovePurchaseRequestTab">
+									<a
+										rel="noopener noreferrer"
+										href="javascript:void(0);"
+										onclick="handleLeftMenuClick(this);onTabEnterPushToInteractionLog('Approve Purchase Request');scrollWinToTop();message();"
+										class="slds-truncate slds-nav-vertical__action slds-text-link_reset"
+										id="ApprovePurchaseRequest"
+										title="Approve Purchase Request"
+										>Approve Purchase Request</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Right Section Starts -->
+					<div
+						class="slds-col slds-size_1-of-1 slds-small-size_1-of-1 slds-medium-size_9-of-12 slds-large-size_10-of-12 slds-show_small"
+						id="breadwinner-right-content"
+					>
+						<apex:form id="formId">
+							<apex:actionFunction name="initializeApp"
+								action="{!initializeApp}"
+								reRender="setup-content"
+								status="action-status"
+								oncomplete="onTabEnterPushToInteractionLog('Setup');message();"
+							/>
+							<apex:actionFunction name="onTabEnterPushToInteractionLog"
+								action="{!pushInteractionLogOnTabEnter}"
+								reRender="nothing"
+							>
+								<apex:param name="tabName" value="" />
+							</apex:actionFunction>
+
+							<apex:actionFunction name="loadDynamicPageAF"
+								action="{!loadDynamicPage}"
+								reRender="dynamicPage,leftMenuMethods"
+								status="action-status"
+								oncomplete="showTabAndRefresh();"
+							>
+								<apex:param name="initiatingElementName" assignTo="{!selectedSubMenu}" value="" />
+							</apex:actionFunction>
+
+							<apex:actionFunction name="setSelectedSubMenu"
+								action="{!setProperties}"
+								status="action-status"
+								reRender="leftMenuMethods"
+								oncomplete="showTabAndRefresh()"
+							>
+								<apex:param name="subMenuName" assignTo="{!selectedSubMenu}" value="" />
+							</apex:actionFunction>
+
+							<!-- Setup Section Starts -->
+							<div class="slds-show" aria-labelledby="Setup">
+								<c:PageHeader headerText="Setup"
+									svgName="/icons/custom-sprite/svg/symbols.svg#custom3"
+									spanIconClasses="slds-icon-custom-custom3"
+								/>
+
+								<apex:outputPanel layout="block" id="setup-content" styleClass="slds-p-around_small">
+									<apex:outputPanel layout="block" rendered="{!initialize}">
+										<apex:pageMessage summary="Breadwinner is unable to sync data from NetSuite due to a connection failure. Click the 'Please reconnect with NetSuite' link below to try to fix the issue."
+											severity="Warning"
+											strength="3"
+											rendered="{!AND(bsWrapper.active, isNetSuiteConnected, acWrapper.needToReconnect)}"
+											escape="false"
+										/>
+										<apex:outputPanel layout="block"
+											styleClass="slds-m-vertical_small"
+											rendered="{!IF(contains(bsWrapper.endpointURL, 'api.'), FALSE, TRUE)}"
+										>
+											<apex:outputLabel style="color: #3f3f3f"
+												styleClass="slds-align_absolute-center"
+												value="You are using the endpoint {!bsWrapper.endpointURL}"
+											/>
+										</apex:outputPanel>
+										<apex:pageMessages id="pgMsg" />
+										<apex:pageMessage summary="Breadwinner is unable to see if you have a Breadwinner Permission Set or not. This is because you do not have access to Permission Set Assignments."
+											severity="Warning"
+											strength="3"
+											rendered="{!isPermissionSetsNotAccessible}"
+										/>
+										<apex:outputPanel layout="block" rendered="{!isBreadwinnerAdministrator}" id="inactiveUserMessage">
+											<apex:outputPanel layout="block"
+												styleClass="warningM3"
+												style="border-radius: 4px"
+												rendered="{!NOT(areScheduledJobsRunByActiveUser)}"
+											>
+												Breadwinner scheduled Jobs are running from an Inactive User. Please visit the General tab under the Troubleshoot section to fix this.
+											</apex:outputPanel>
+										</apex:outputPanel>
+										
+										<!-- Arrow Path Starts -->
+										<div class="slds-path slds-m-bottom_x-small">
+											<div class="slds-path__track">
+												<div class="slds-path__scroller-container">
+													<div class="slds-path__scroller" role="application">
+														<div class="slds-path__scroller_inner">
+															<ul class="slds-path__nav" role="listbox" aria-orientation="horizontal">
+																<li class="slds-path__item slds-is-complete" role="presentation">
+																	<a
+																		aria-selected="false"
+																		class="slds-path__link"
+																		rel="noopener noreferrer"
+																		href="javascript:void(0);"
+																		role="option"
+																		tabindex="-1"
+																	>
+																		<span class="slds-path__stage" id="stage1">
+																			<svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+																				<use
+																					xmlns:xlink="http://www.w3.org/1999/xlink"
+																					rel="noopener noreferrer"
+																					xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}"
+																				/>
+																			</svg>
+																			<span class="slds-assistive-text">Breadwinner Installed</span>
+																		</span>
+																		<span class="slds-path__title">Breadwinner Installed</span>
+																	</a>
+																</li>
+																<li
+																	class="slds-path__item {!IF(bsWrapper.active,'slds-is-complete','slds-is-active')}"
+																	role="presentation"
+																>
+																	<a
+																		aria-selected="false"
+																		class="slds-path__link"
+																		rel="noopener noreferrer"
+																		href="javascript:void(0);"
+																		role="option"
+																		tabindex="-1"
+																	>
+																		<span class="slds-path__stage" id="stage2">
+																			<svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+																				<use
+																					xmlns:xlink="http://www.w3.org/1999/xlink"
+																					rel="noopener noreferrer"
+																					xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}"
+																				/>
+																			</svg>
+																			<span class="slds-assistive-text"
+																				>{!IF(HTMLENCODE(bsWrapper.status)
+																				=='subscribed','Subscribed',IF(HTMLENCODE(bsWrapper.status)
+																				=='trial','In Trial','Trial/Subscription Expired'))}</span
+																			>
+																		</span>
+																		<span class="slds-path__title"
+																			>{!IF(HTMLENCODE(bsWrapper.status)
+																			=='subscribed','Subscribed',IF(HTMLENCODE(bsWrapper.status)
+																			=='trial','In Trial','Trial/Subscription Expired'))}</span
+																		>
+																	</a>
+																</li>
+																<li
+																	class="slds-path__item {!IF(bsWrapper.active, IF(isNetSuiteConnected,'slds-is-complete','slds-is-active'),'slds-is-incomplete')}"
+																	role="presentation"
+																>
+																	<a
+																		aria-selected="false"
+																		class="slds-path__link"
+																		rel="noopener noreferrer"
+																		href="javascript:void(0);"
+																		role="option"
+																		tabindex="-1"
+																	>
+																		<span class="slds-path__stage" id="stage3">
+																			<svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+																				<use
+																					xmlns:xlink="http://www.w3.org/1999/xlink"
+																					rel="noopener noreferrer"
+																					xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}"
+																				/>
+																			</svg>
+																			<span class="slds-assistive-text"
+																				><apex:outputText value="{!IF(isNetSuiteConnected,'NetSuite Connected','Connect to NetSuite')}"
+																			/></span>
+																		</span>
+																		<span class="slds-path__title"
+																			><apex:outputText value="{!IF(isNetSuiteConnected,'NetSuite Connected','Connect to NetSuite')}"
+																		/></span>
+																	</a>
+																</li>
+																<li
+																	class="slds-path__item {!IF(AND(bsWrapper.active, isNetSuiteConnected), IF(isNetSuiteObjectSyncConfigDone,'slds-is-complete','slds-is-active'),'slds-is-incomplete')}"
+																	role="presentation"
+																>
+																	<a
+																		aria-selected="false"
+																		class="slds-path__link"
+																		rel="noopener noreferrer"
+																		href="javascript:void(0);"
+																		role="option"
+																		tabindex="-1"
+																	>
+																		<span class="slds-path__stage" id="stage4">
+																			<svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+																				<use
+																					xmlns:xlink="http://www.w3.org/1999/xlink"
+																					rel="noopener noreferrer"
+																					xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}"
+																				/>
+																			</svg>
+																			<span class="slds-assistive-text"
+																				><apex:outputText value="Object Sync Settings"
+																			/></span>
+																		</span>
+																		<span class="slds-path__title"
+																			><apex:outputText value="Object Sync Settings"
+																		/></span>
+																	</a>
+																</li>
+																<li
+																	class="slds-path__item {!IF(AND(bsWrapper.active, isNetSuiteConnected, isNetSuiteObjectSyncConfigDone), IF(acWrapper.IsCustomerMatchCompleted,'slds-is-complete','slds-is-active'),'slds-is-incomplete')}"
+																	role="presentation"
+																>
+																	<a
+																		aria-selected="false"
+																		class="slds-path__link"
+																		rel="noopener noreferrer"
+																		href="javascript:void(0);"
+																		role="option"
+																		tabindex="-1"
+																	>
+																		<span class="slds-path__stage" id="stage5">
+																			<svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+																				<use
+																					xmlns:xlink="http://www.w3.org/1999/xlink"
+																					rel="noopener noreferrer"
+																					xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}"
+																				/>
+																			</svg>
+																			<span class="slds-assistive-text"
+																				><apex:outputText value="{!IF(AND(bsWrapper.active, isNetSuiteConnected,acWrapper.IsCustomerMatchCompleted,isNetSuiteObjectSyncConfigDone),'Companies Matched','Match Companies')}"
+																			/></span>
+																		</span>
+																		<span class="slds-path__title"
+																			><apex:outputText value="{!IF(AND(bsWrapper.active, isNetSuiteConnected, acWrapper.IsCustomerMatchCompleted, isNetSuiteObjectSyncConfigDone),'Companies Matched','Match Companies')}"
+																		/></span>
+																	</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Arrow Path End -->
+
+										<apex:actionFunction name="changeBreadwinnerMode"
+											action="{!changeBreadwinnerMode}"
+											reRender="bwModeText"
+											status="action-status"
+										/>
+										<table
+											class="slds-table slds-no-row-hover slds-table_bordered slds-max-medium-table_stacked-horizontal slds-m-top_small setup-table"
+											style="border-top: none"
+										>
+											<tbody>
+												<tr>
+													<td style="width: 45%">
+														<div class="slds-text-heading_medium">
+															<apex:outputText id="bwModeText"
+																value="Breadwinner is currently in {!IF(bsWrapper.activeMode,'Active Mode','Read Only Mode')}"
+																styleClass="slds-text-heading_medium"
+															></apex:outputText>
+														</div>
+													</td>
+													<td style="width: 10%">
+														<div class="bwMode iconDiv">
+															<label class="slds-checkbox_toggle" style="margin-right: 0px">
+																<apex:inputCheckbox id="bwModeToggle"
+																	value="{!bsWrapper.activeMode}"
+																	onclick="changeBreadwinnerMode();"
+																	disabled="{!OR(NOT(isBreadwinnerAdministrator),bsWrapper.status =='expired')}"
+																/>
+																<span class="slds-checkbox_faux_container" aria-live="assertive">
+																	<span class="slds-checkbox_faux"></span>
+																</span>
+															</label>
+														</div>
+													</td>
+													<td style="width: 45%">
+														<div class="slds-text-body_small last-col-content">
+															<a
+																rel="noopener noreferrer"
+																href="#"
+																onclick="showHideModal('DifferenceSection','diffBackdrop');"
+																class="GrayLinks"
+																>Explain the difference between Read Only and Active Modes</a
+															>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<apex:outputPanel layout="block" styleClass="slds-text-heading_medium">
+															<apex:outputText value="{!IF(bsWrapper.status =='subscribed','You have an active, valid subscription to Breadwinner',IF(bsWrapper.status =='trial','Your fully-featured free trial has been activated','Your trial/subscription has expired'))}"
+															/>
+														</apex:outputPanel>
+														<apex:outputPanel layout="block"
+															rendered="{!IF(bsWrapper.status =='expired', true, false)}"
+															styleClass="slds-text-body_small"
+														>
+															Please contact sales@breadwinner.com
+														</apex:outputPanel>
+													</td>
+													<td>
+														<div class="iconDiv">
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/green_check.png')}"
+																rendered="{!bsWrapper.active}"
+															/>
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/red_check.png')}"
+																rendered="{!NOT(bsWrapper.active)}"
+															/>
+														</div>
+													</td>
+													<td>
+														<apex:outputPanel layout="block"
+															styleClass="slds-text-heading_medium last-col-content"
+															rendered="{!IF(bsWrapper.status =='trial', true, false)}"
+														>
+															<apex:outputText value="Your trial will expire in {!noOfDaysLeft} {!IF(noOfDaysLeft==1,'Day','Days')}"
+															/>
+														</apex:outputPanel>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="slds-text-heading_medium">
+															Connect Breadwinner / Salesforce to NetSuite
+														</div>
+														<apex:outputPanel layout="block" styleClass="slds-text-body_small">
+															Need to connect more than one NetSuite org to Salesforce? Please&nbsp;
+															<apex:outputLink rel="noopener noreferrer"
+																onclick="OpenContactSupportTab();"
+																value="javascript:void(0);"
+																id="ContactSupportForMultiOrg"
+																styleClass="GrayLinks"
+																>contact Breadwinner Sales</apex:outputLink>
+														</apex:outputPanel>
+													</td>
+													<td>
+														<div class="iconDiv">
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/green_check.png')}"
+																rendered="{!AND(bsWrapper.active, isNetSuiteConnected, !acWrapper.needToReconnect)}"
+															/>
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/red_check.png')}"
+																rendered="{!OR(NOT(bsWrapper.active), NOT(isNetSuiteConnected))}"
+															/>
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/yellow_check.png')}"
+																rendered="{!AND(bsWrapper.active, isNetSuiteConnected, acWrapper.needToReconnect)}"
+															/>
+														</div>
+													</td>
+													<td>
+														<div class="last-col-content" id="connectPart">
+															<apex:commandButton value="Connect to NetSuite"
+																action="{!onConnect}"
+																rendered="{!AND(bsWrapper.active, NOT(isNetSuiteConnected), isBreadwinnerAdministrator)}"
+																reRender="connectToNSModal"
+																oncomplete="showHideModal('connectToNetSuiteModal','connectBackdrop');secretStyleHide();"
+																styleClass="slds-button slds-button_brand slds-p-horizontal_x-small"
+																style="border-radius: 25px"
+																id="connectToNSBtn"
+															/>
+															<apex:outputPanel layout="block" rendered="{!isNetSuiteConnected}">
+																<div class="slds-text-heading_medium">
+																	<apex:outputText value="({!acWrapper.Name}) is Connected" />
+																</div>
+																<apex:outputPanel layout="block" rendered="{!isBreadwinnerAdministrator}">
+																	<apex:commandLink rel="noopener noreferrer"
+																		value="{!IF(acWrapper.needToReconnect,'Please reconnect with NetSuite','Reconnect')}"
+																		action="{!onConnect}"
+																		reRender="connectToNSModal,ConnectionTabSection"
+																		oncomplete="showHideModal('connectToNetSuiteModal','connectBackdrop');secretStyleHide();"
+																		styleClass="{!IF(acWrapper.NeedToReconnect, 'slds-text-heading_medium slds-text-color_error', 'slds-text-body_small')} slds-m-right_x-small"
+																		style="color:{!IF(acWrapper.NeedToReconnect,'red','gray')};text-decoration: underline;"
+																		id="reconnectBtn"
+																		rendered="{!bsWrapper.active}"
+																	/>
+																	<apex:commandLink rel="noopener noreferrer"
+																		value="Disconnect"
+																		onclick="showHideModal('disconnectmodal','discBackdrop');"
+																		styleClass="slds-text-body_small GrayLinks"
+																		reRender="ConnectionTabSection,nothing"
+																		id="disconnectBtn"
+																	/>
+																</apex:outputPanel>
+															</apex:outputPanel>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="slds-text-heading_medium">
+															Configure NetSuite Objects Sync to Salesforce
+														</div>
+													</td>
+													<td>
+														<div class="iconDiv">
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/green_check.png')}"
+																rendered="{!AND(bsWrapper.active, isNetSuiteConnected, isNetSuiteObjectSyncConfigDone, NOT(isAnySubsidiaryNotConfigured))}"
+															/>
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/red_check.png')}"
+																rendered="{!OR(NOT(bsWrapper.active), NOT(isNetSuiteObjectSyncConfigDone))}"
+															/>
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/yellow_check.png')}"
+																rendered="{!AND(bsWrapper.active, isNetSuiteConnected, isNetSuiteObjectSyncConfigDone, isAnySubsidiaryNotConfigured)}"
+															/>
+														</div>
+													</td>
+													<td>
+														<div class="last-col-content">
+															<apex:outputPanel layout="block"
+																rendered="{!AND(bsWrapper.active, isBreadwinnerAdministrator, isNetSuiteConnected)}"
+															>
+																<apex:commandButton rendered="{!!isNetSuiteObjectSyncConfigDone}"
+																	value="NetSuite Object Sync"
+																	action="{!initializeNetSuiteObjectSyncConfiguration}"
+																	reRender="NSObjectSyncConfig"
+																	oncomplete="initNsObjectSync();showHideModal('setupNSObjectCofigModal','NSObjectCofigModalBackdrop');message();reRenderModalCloseIcon();"
+																	styleClass="slds-button slds-button_brand slds-p-horizontal_x-small"
+																	id="NSObjConfigBtn"
+																	status="action-status"
+																/>
+																<apex:outputText rendered="{!AND(isAnySubsidiaryNotConfigured,isNetSuiteObjectSyncConfigDone)}"
+																>
+																	<apex:commandLink rel="noopener noreferrer"
+																		id="FewSubsidiariesNotConfigured"
+																		action="{!initializeNetSuiteObjectSyncConfiguration}"
+																		styleClass="accountMatch slds-text-body_small"
+																		value="There are few Object sync settings to be configured at Subsidiary level"
+																		reRender="NSObjectSyncConfig"
+																		oncomplete="initNsObjectSync();showHideModal('setupNSObjectCofigModal','NSObjectCofigModalBackdrop');message();reRenderModalCloseIcon();"
+																		status="action-status"
+																	/>
+																</apex:outputText>
+																<apex:outputText rendered="{!AND(isNetSuiteObjectSyncConfigDone,NOT(isAnySubsidiaryNotConfigured))}"
+																>
+																	<apex:commandLink rel="noopener noreferrer"
+																		id="SubsidiariesReConfiguration"
+																		action="{!initializeNetSuiteObjectSyncConfiguration}"
+																		styleClass="slds-text-body_small GrayLinks"
+																		value="Modify NetSuite Object Sync Settings"
+																		reRender="NSObjectSyncConfig"
+																		oncomplete="initNsObjectSync();showHideModal('setupNSObjectCofigModal','NSObjectCofigModalBackdrop');message();reRenderModalCloseIcon();"
+																		status="action-status"
+																	/>
+																</apex:outputText>
+															</apex:outputPanel>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="slds-text-heading_medium">
+															Initial NetSuite Objects Sync to Salesforce
+														</div>
+													</td>
+													<td>
+														<div class="iconDiv">
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/green_check.png')}"
+																rendered="{!AND(bsWrapper.active, isNetSuiteConnected,isInitialSyncStarted)}"
+															/>
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/red_check.png')}"
+																rendered="{!OR(NOT(bsWrapper.active),NOT(isNetSuiteConnected),NOT(isInitialSyncStarted))}"
+															/>
+														</div>
+													</td>
+													<td>
+														<div class="last-col-content">
+															<apex:outputPanel layout="block"
+																rendered="{!AND(bsWrapper.active, isBreadwinnerAdministrator, isNetSuiteConnected, isNetSuiteObjectSyncConfigDone)}"
+															>
+																<apex:commandButton rendered="{!NOT(isInitialSyncStarted)}"
+																	value="Start Syncing NetSuite Objects"
+																	action="{!restartInitialSync}"
+																	styleClass="slds-button slds-button_brand slds-p-horizontal_x-small"
+																	id="IntialSyncBtn"
+																	status="action-status"
+																/>
+															</apex:outputPanel>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="slds-text-heading_medium">
+															Match NetSuite Companies to Salesforce Accounts
+														</div>
+													</td>
+													<td>
+														<div class="iconDiv">
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/green_check.png')}"
+																rendered="{!AND(bsWrapper.active, isNetSuiteConnected, acWrapper.IsCustomerMatchCompleted, NOT(isAnyCustomerUnmatched), isNetSuiteObjectSyncConfigDone)}"
+															/>
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/red_check.png')}"
+																rendered="{!OR(NOT(bsWrapper.active), NOT(acWrapper.IsCustomerMatchCompleted), NOT(isNetSuiteObjectSyncConfigDone))}"
+															/>
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/yellow_check.png')}"
+																rendered="{!AND(bsWrapper.active, isNetSuiteConnected, acWrapper.IsCustomerMatchCompleted, isAnyCustomerUnmatched,isNetSuiteObjectSyncConfigDone)}"
+															/>
+														</div>
+													</td>
+													<td>
+														<div class="slds-text-heading_small last-col-content">
+															<apex:outputPanel layout="block"
+																rendered="{!AND(bsWrapper.active, canPerformBreadwinnerOperations, isNetSuiteConnected, isNetSuiteObjectSyncConfigDone)}"
+															>
+																<apex:outputText rendered="{!NOT(acWrapper.IsCustomerMatchCompleted)}">
+																	<a
+																		rel="noopener noreferrer"
+																		href="{!$Page.CompanyOperations}"
+																		target="_parent"
+																		style="font-size: 15px"
+																		id="PreviewAccountMatch"
+																		class="accountMatch"
+																		>Preview Account Match for Companies</a
+																	>
+																</apex:outputText>
+																<apex:outputText rendered="{!AND(acWrapper.IsCustomerMatchCompleted,isAnyCustomerUnmatched)}"
+																>
+																	<a
+																		rel="noopener noreferrer"
+																		href="{!$Page.CompanyOperations}"
+																		target="_parent"
+																		id="FewUnmatchedAccountMatch"
+																		class="accountMatch slds-text-body_small"
+																		>There are a few unmatched Companies</a
+																	>
+																</apex:outputText>
+															</apex:outputPanel>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<div class="slds-text-heading_medium">Subscribe to Breadwinner</div>
+													</td>
+													<td>
+														<apex:outputPanel layout="block"
+															rendered="{!NOT(OR(SFOrg.IsSandbox, SFOrg.OrganizationType=='Developer Edition'))}"
+															styleClass="iconDiv"
+														>
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/green_check.png')}"
+																rendered="{!bsWrapper.status == 'subscribed'}"
+															/>
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/yellow_check.png')}"
+																rendered="{!bsWrapper.status=='trial'}"
+															/>
+															<apex:image styleClass="crossIcon"
+																value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/red_check.png')}"
+																rendered="{!bsWrapper.status == 'expired'}"
+															/>
+														</apex:outputPanel>
+													</td>
+													<td></td>
+												</tr>
+												<tr>
+													<td style="border: none" class="slds-text-body_small slds-m-top_none" colspan="3">
+														<apex:actionFunction name="pushPaymentClickLog"
+															action="{!pushSubscribeToBWClickLog}"
+															reRender="nothing"
+														/>
+														<apex:outputPanel rendered="{!bsWrapper.status == 'subscribed'}">
+															Your subscription to Breadwinner is Active.
+														</apex:outputPanel>
+
+														<apex:outputPanel rendered="{!bsWrapper.status=='trial'}">
+															<apex:outputPanel rendered="{!AND(NOT(SFOrg.IsSandbox), SFOrg.OrganizationType!='Developer Edition')}"
+															>
+																To guarantee continued access, subscribe to Breadwinner before <br /> your
+																trial expires in <apex:outputText value=" {!noOfDaysLeft} " /> days. We will
+																email you with more information.<br />To Subscribe,
+																please&nbsp;<apex:outputLink rel="noopener noreferrer"
+																	onclick="OpenContactSupportTab();"
+																	value="javascript:void(0);"
+																	styleClass="GrayLinks"
+																	>contact Breadwinner Support</apex:outputLink>
+																<!-- <a rel="noopener noreferrer" href="{!BW_API_BaseURL}/payment/{!$Organization.Id}" target="_blank" onclick="pushPaymentClickLog();" id="SubscribeBreadwinnerInTrail" class="GrayLinks">Click here to Subscribe to Breadwinner</a> -->
+															</apex:outputPanel>
+															<apex:outputPanel rendered="{!SFOrg.IsSandbox}">
+																This is running in a Sandbox. Because payment is tied to the instance where
+																Breadwinner is installed, you can only pay for Breadwinner from a Production
+																org, not a Sandbox.<br />
+																If this was a Salesforce Production org, you would be given the option to
+																pay here.
+																<br /> <br /> If you need to extend your free trial, which will expire in
+																<apex:outputText value=" {!noOfDaysLeft} " /> days, please click Contact
+																Support to the left and file a case requesting a 2 week extension of your
+																Sandbox trial.
+															</apex:outputPanel>
+														</apex:outputPanel>
+
+														<apex:outputPanel rendered="{!SFOrg.OrganizationType=='Developer Edition'}">
+															You cannot subscribe on a Developer Org.<br /> However, you can request an
+															extension of your free trial{!IF(HTMLENCODE(bsWrapper.status) =='expired','',',
+															which expires in '+HTMLENCODE(Text(noOfDaysLeft))+'
+															days,')}&nbsp;by&nbsp;<apex:outputLink rel="noopener noreferrer"
+																onclick="OpenContactSupportTab();"
+																value="javascript:void(0);"
+																id="ContactSupportForExtension"
+																styleClass="GrayLinks"
+																>contacting Breadwinner Support</apex:outputLink>
+															<br />Please mention that your Org ID is
+															<apex:outputText value=" {!$Organization.Id}" />
+														</apex:outputPanel>
+
+														<apex:outputPanel rendered="{!bsWrapper.status == 'expired'}">
+															<apex:outputPanel rendered="{!AND(NOT(SFOrg.IsSandbox), SFOrg.OrganizationType!='Developer Edition')}"
+															>
+																You don't have an active subscription to Breadwinner.
+																<br /><br />To Subscribe, please&nbsp;<apex:outputLink rel="noopener noreferrer"
+																	onclick="OpenContactSupportTab();"
+																	value="javascript:void(0);"
+																	styleClass="GrayLinks"
+																	>contact Breadwinner Support</apex:outputLink>
+																<!-- <a href="{!BW_API_BaseURL}/payment/{!$Organization.Id}" target="_blank" onclick="pushPaymentClickLog();" id="SubscribeBreadwinnerForActivation" class="GrayLinks">Click here to Subscribe to Breadwinner</a> -->
+															</apex:outputPanel>
+															<apex:outputPanel rendered="{!SFOrg.IsSandbox}">
+																This is a Sandbox Salesforce org, and you cannot pay for Breadwinner in a
+																Sandbox, only in a Production Org.
+																<br />
+																However, if you need to extend your free trial, please file a case using the
+																Contact Support section on the left, requesting a trial extension, and
+																please quote Org ID <b><apex:outputText value=" {!$Organization.Id}" /></b>.
+															</apex:outputPanel>
+														</apex:outputPanel>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="slds-grid slds-wrap slds-m-top_medium">
+											<div class="slds-col"></div>
+											<div class="slds-col" align="right">
+												<apex:commandLink rel="noopener noreferrer"
+													action="{!showEndpointUrlEditor}"
+													status="action-status"
+													reRender="availableURLs"
+													rendered="{!NOT(isNetSuiteConnected)}"
+													id="showUrlEditorBtn"
+													styleClass="GrayLinks"
+													oncomplete="createRemoteSiteMetadata();"
+													>.</apex:commandLink>
+												<apex:outputPanel id="availableURLs" layout="block">
+													<apex:outputPanel layout="block"
+														styleClass="slds-box slds-float_right"
+														rendered="{!showEndpointURLSetting}"
+													>
+														<div class="slds-form-element">
+															<label class="slds-form-element__label">Endpoint URL</label>
+															<div class="slds-form-element__control">
+																<div class="slds-select_container">
+																	<apex:selectList value="{!bsWrapper.endpointURL}"
+																		size="1"
+																		styleClass="slds-select"
+																	>
+																		<apex:selectOptions value="{!AvailableEndpointURLs}" />
+																	</apex:selectList>
+																</div>
+															</div>
+														</div>
+														<div class="slds-m-top_small">
+															<apex:commandButton value="Cancel"
+																action="{!hideEndpointUrlEditor}"
+																reRender="availableURLs"
+																status="action-status"
+																styleClass="slds-button slds-button_neutral slds-m-right_small"
+																id="CancelUrlEditorBtn"
+															/>
+															<apex:commandButton value="Save"
+																action="{!updateEndpointUrl}"
+																styleClass="slds-button slds-button_brand"
+																status="action-status"
+																id="saveEndpointURLBtn"
+															/>
+														</div>
+													</apex:outputPanel>
+												</apex:outputPanel>
+											</div>
+										</div>
+										<div style="display: none">
+											<apex:inputField value="{!dummyInvoice.breadwinner_ns__TranDate__c}" />
+										</div>
+
+										<!-- Connect to NetSuite Modal Starts-->
+										<apex:outputPanel layout="block" id="connectToNSModal" styleClass="connectToNSModal">
+											<div
+												class="slds-modal slds-modal_x-small"
+												aria-hidden="false"
+												role="dialog"
+												id="connectToNetSuiteModal"
+											>
+												<div class="slds-modal__container">
+													<div class="slds-modal__header slds-theme_alt-inverse">
+														<h2 class="slds-text-heading_medium">Connect to NetSuite</h2>
+													</div>
+													<div class="slds-modal__content slds-p-around_large slds-is-relative">
+														<apex:actionStatus id="modal-status" layout="block">
+															<apex:facet name="start">
+																<div class="slds-spinner_container">
+																	<div
+																		class="slds-spinner_brand slds-spinner slds-spinner_medium"
+																		role="alert"
+																	>
+																		<span class="slds-assistive-text">Loading</span>
+																		<div class="slds-spinner__dot-a"></div>
+																		<div class="slds-spinner__dot-b"></div>
+																	</div>
+																</div>
+															</apex:facet>
+														</apex:actionStatus>
+														<apex:outputPanel id="modalBody" layout="block" rendered="{!isConnectOrReconnect}">
+															<apex:outputPanel id="successMessage"
+																layout="block"
+																rendered="{!isOAuthSuccess}"
+															>
+																<div class="slds-p-around_medium slds-align_absolute-center">
+																	<i class="slds-text-heading_medium"
+																		>Breadwinner is now connected to NetSuite</i
+																	>
+																</div>
+																<apex:commandButton styleClass="slds-button slds-button_brand slds-m-top_small slds-align_absolute-center executeOnEscape"
+																	value="OK"
+																	onclick="showHideModal('connectToNetSuiteModal','connectBackdrop')"
+																	action="{!updateAppConfigWrapper}"
+																	reRender="setup-content,connectToNSModal,troubleshooting-content,connectiontabcontent"
+																	status="action-status"
+																	oncomplete="showHideConfigTab();"
+																	id="ConnectModalOkBtn"
+																/>
+															</apex:outputPanel>
+															<apex:outputPanel layout="block" rendered="{!NOT(isOAuthSuccess)}">
+																<apex:outputPanel layout="block" rendered="{!isError}">
+																	<apex:pageMessages escape="true" />
+																</apex:outputPanel>
+																<div
+																	class="slds-form slds-form_stacked slds-p-right_small"
+																	id="ConnectForm"
+																>
+																	<div class="slds-grid slds-gutters_small">
+																		<div
+																			class="slds-col slds-form-element slds-size_1-of-2 slds-m-right_x-small"
+																			aria-labelledby="consumerKey"
+																			role="listitem"
+																		>
+																			<abbr class="slds-required" title="required">* </abbr>
+																			<label class="slds-form-element__label" for="consumerKey"
+																				>Consumer Key</label
+																			>
+																			<div class="slds-form-element__control">
+																				<apex:inputText id="consumerKey"
+																					styleClass="slds-input"
+																					value="{!acForConnect.ConsumerKey}"
+																				/>
+																				<div
+																					class="slds-form-element__help blank-error slds-hide"
+																					id="form-error-01"
+																				>
+																					This field is required
+																				</div>
+																				<div class="slds-form-element__help length-error slds-hide">
+																					The value entered is not 64 characters
+																				</div>
+																			</div>
+																		</div>
+																		<div
+																			class="slds-col slds-form-element slds-size_1-of-2"
+																			role="listitem"
+																		>
+																			<abbr class="slds-required" title="required">* </abbr>
+																			<label class="slds-form-element__label" for="consumerSecret"
+																				>Consumer Secret</label
+																			>
+																			<div
+																				class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right slds-is-relative"
+																				id="secret1"
+																			>
+																				<apex:inputText id="consumerSecret"
+																					styleClass="slds-input Secret"
+																					value="{!acForConnect.ConsumerSecret}"
+																				/>
+																				<button
+																					class="slds-is-absolute slds-button slds-button_icon slds-input__icon slds-input__icon_right showSecret"
+																					onclick="showHideSecretKey(this);return false;"
+																					title="show Consumer Secret"
+																				>
+																					<img
+																						src="{!URLFOR($Resource.Breadwinner_for_NetSuite, 'Breadwinner/Images/preview.png')}"
+																						height="15px"
+																						width="15px"
+																					/>
+																				</button>
+																				<button
+																					class="slds-is-absolute slds-button slds-button_icon slds-input__icon slds-input__icon_right slds-hide hideSecret"
+																					onclick="showHideSecretKey(this);return false;"
+																					title="hide Consumer Secret"
+																				>
+																					<img
+																						src="{!URLFOR($Resource.Breadwinner_for_NetSuite, 'Breadwinner/Images/hide.png')}"
+																						height="15px"
+																						width="15px"
+																					/>
+																				</button>
+																				<div class="slds-form-element__help blank-error slds-hide">
+																					This field is required
+																				</div>
+																				<div class="slds-form-element__help length-error slds-hide">
+																					The value entered is not 64 characters
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="slds-grid slds-gutters_small">
+																		<div
+																			class="slds-col slds-form-element slds-size_1-of-2 slds-m-right_x-small"
+																			role="listitem"
+																		>
+																			<abbr class="slds-required" title="required">* </abbr>
+																			<label class="slds-form-element__label" for="tokenID"
+																				>Token ID</label
+																			>
+																			<div class="slds-form-element__control">
+																				<apex:inputText id="tokenID"
+																					styleClass="slds-input"
+																					value="{!acForConnect.TokenId}"
+																				/>
+																				<div class="slds-form-element__help blank-error slds-hide">
+																					This field is required
+																				</div>
+																				<div class="slds-form-element__help length-error slds-hide">
+																					The value entered is not 64 characters
+																				</div>
+																			</div>
+																		</div>
+																		<div
+																			class="slds-col slds-form-element slds-size_1-of-2"
+																			role="listitem"
+																		>
+																			<abbr class="slds-required" title="required">* </abbr>
+																			<label class="slds-form-element__label" for="tokenSecret"
+																				>Token Secret</label
+																			>
+																			<div
+																				class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right slds-is-relative"
+																				id="secret2"
+																			>
+																				<apex:inputText id="tokenSecret"
+																					styleClass="slds-input Secret"
+																					value="{!acForConnect.TokenSecret}"
+																				/>
+																				<button
+																					class="slds-is-absolute slds-button slds-button_icon slds-input__icon slds-input__icon_right showSecret"
+																					onclick="showHideSecretKey(this);return false;"
+																					title="show Token Secret"
+																				>
+																					<img
+																						src="{!URLFOR($Resource.Breadwinner_for_NetSuite, 'Breadwinner/Images/preview.png')}"
+																						height="15px"
+																						width="15px"
+																					/>
+																				</button>
+																				<button
+																					class="slds-is-absolute slds-button slds-button_icon slds-input__icon slds-input__icon_right slds-hide hideSecret"
+																					onclick="showHideSecretKey(this);return false;"
+																					title="hide Token Secret"
+																				>
+																					<img
+																						src="{!URLFOR($Resource.Breadwinner_for_NetSuite, 'Breadwinner/Images/hide.png')}"
+																						height="15px"
+																						width="15px"
+																					/>
+																				</button>
+																				<div class="slds-form-element__help blank-error slds-hide">
+																					This field is required
+																				</div>
+																				<div class="slds-form-element__help length-error slds-hide">
+																					The value entered is not 64 characters
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="slds-grid slds-gutters_small">
+																		<div class="slds-col slds-form-element slds-size_1-of-2">
+																			<abbr class="slds-required" title="required">* </abbr>
+																			<label class="slds-form-element__label" for="accountID"
+																				>Account ID</label
+																			>
+																			<div class="slds-form-element__control">
+																				<apex:inputText id="accountID"
+																					styleClass="slds-input"
+																					value="{!acForConnect.NetSuiteAccountId}"
+																				/>
+																				<div class="slds-form-element__help blank-error slds-hide">
+																					This field is required
+																				</div>
+																			</div>
+																		</div>
+																		<div class="slds-col slds-m-left_x-small"></div>
+																	</div>
+																</div>
+															</apex:outputPanel>
+														</apex:outputPanel>
+													</div>
+													<apex:outputPanel id="buttons" layout="block">
+														<apex:actionFunction name="restartAllHistoricalSyncs"
+															action="{!restartPostAuthSyncs}"
+															reRender="nothing"
+														/>
+														<apex:outputPanel layout="block"
+															styleClass="slds-modal__footer"
+															rendered="{!NOT(isOAuthSuccess)}"
+														>
+															<apex:outputLink rel="noopener noreferrer"
+																id="connectToNSHelpLink"
+																value="https://docs.breadwinner.com/netsuite/app-installation"
+																target="_blank"
+																styleClass="slds-m-top_x-small slds-float_left connectToNSHelpLinkclass"
+																style="text-decoration: underline"
+																>Need help in Connecting to NetSuite?</apex:outputLink>
+															<apex:commandButton styleClass="slds-button slds-button_neutral modal-button slds-m-left_small executeOnEscape"
+																value="Cancel"
+																onclick="showHideModal('connectToNetSuiteModal','connectBackdrop')"
+																action="{!updateAppConfigWrapper}"
+																reRender="modalBody,buttons"
+																id="cancelBtn"
+															/>
+															<apex:commandButton styleClass="slds-button slds-button_brand modal-button"
+																id="connectBtn"
+																value="Connect"
+																action="{!connectToNetSuite}"
+																onclick="disableButtons();"
+																reRender="modalBody,buttons,ConnectionTabSection"
+																oncomplete="{!IF(isOAuthSuccess,'restartAllHistoricalSyncs();','checkFieldBlankErrors();enableButtons();secretStyleHide();message();')}"
+																status="modal-status"
+															/>
+														</apex:outputPanel>
+													</apex:outputPanel>
+												</div>
+											</div>
+											<div class="slds-backdrop" id="connectBackdrop"></div>
+										</apex:outputPanel>
+										<!-- Connect to NetSuite Modal End-->
+
+										<script type="text/javascript">
+											function showHideModal(modalId,backdropId){
+												if(j$('#'+ modalId).hasClass('slds-fade-in-open')){
+													j$('#'+ modalId).removeClass('slds-fade-in-open');
+													j$('#'+ backdropId).removeClass('slds-backdrop_open');
+												}
+												else{
+													j$('#'+ backdropId).addClass('slds-backdrop_open');
+													j$('#'+ modalId).addClass('slds-fade-in-open');
+												}
+											}
+
+
+											// checks the "All" subsidiary checkbox if all the subsidiaries are checked
+											// unchecks the "All" subsidiary checkbox if any of the subsidiaries are unchecked
+											function checkAllSubsidiariesCheckBox(){
+												// for All Subsidiaries CheckBox
+												const checkedChildCheckBoxes = j$('#SubsidiaryWideConfigTable tr td.allSyncClass').children().children('input:checked').length;
+												const allCheckBoxes = j$('#SubsidiaryWideConfigTable tr td.allSyncClass').children().children('input').length;
+												let val = false;
+												if (checkedChildCheckBoxes == allCheckBoxes) {
+													val = true;
+												}
+												j$('#SubsidiaryWideConfigTable tr th.subsidiaryHeader').children().children('input').prop('checked', val);
+											}
+
+											function secretStyleHide(){
+												j$(".Secret").attr("type","password");
+											}
+											function showHideSecretKey(sib){
+												const pid = j$(sib).parent().attr("id");
+												j$(sib).addClass("slds-hide").removeClass("slds-show");
+												j$(sib).siblings(".slds-button").addClass("slds-show").removeClass("slds-hide");
+												if(j$(sib).hasClass("hideSecret")){
+													j$("#"+pid+" .Secret").attr("type","password");
+												}
+												else j$("#"+pid+" .Secret").attr("type","text");
+											}
+											function disableButtons(){
+												j$(".modal-button").prop('disabled', true);
+												j$(".connectToNSHelpLinkclass").css('display','none');
+											}
+											function enableButtons(){
+												j$(".modal-button").prop('disabled', false);
+											}
+											function checkFieldBlankErrors(){
+												j$(".slds-input").each(function(){
+													const inputTextValue = j$(this).val().trim();
+													const inputLength = inputTextValue.length;
+													const inputId = j$(this).attr('id');
+													if(inputLength === 0){
+														j$(this).closest('div[class^="slds-form-element"]').addClass("slds-has-error");
+														j$(this).siblings('div[class^="slds-form-element__help blank-error"]').addClass("slds-show").removeClass("slds-hide");
+													}
+													else if ((inputLength != 64 ) && !inputId.endsWith('accountID')) {
+														j$(this).closest('div[class^="slds-form-element"]').addClass("slds-has-error");
+														j$(this).siblings('div[class^="slds-form-element__help length-error"]').addClass("slds-show").removeClass("slds-hide");
+													}
+												}
+											);}
+											function validateInput(value,name,elementid,type,maxlength){
+												const inputValue =  value;
+												if((isNaN(inputValue) && type=='Number')) {
+													document.getElementById('' + elementid).style.borderColor = 'Red';
+													const text = type=='Number' ? 'Please enter a valid ' : 'You have exceeded the max characters ('+maxlength+') of ';
+													j$("#alert_popup p").text(text + name);
+													showHideModal('alert_popup','alert_backdrop');
+												}
+												else{
+													document.getElementById('' + elementid).style.borderColor = '';
+												}
+											}
+
+											function showHideConfigTab(){
+												if({!JSENCODE(IF(isNetSuiteConnected,"true", "false")) == 'true'}){
+													j$("#ConfigTabSection").addClass("slds-show").removeClass("slds-hide");
+													j$("#SubsidiaryTabSection").addClass("slds-show").removeClass("slds-hide");
+													j$("#CurrencyTabSection").addClass("slds-show").removeClass("slds-hide");
+													j$("#ProductMatchSection").addClass("slds-show").removeClass("slds-hide");
+													j$("#ProgressTab").addClass("slds-show").removeClass("slds-hide");
+													j$("#ReportBuilderTab").addClass("slds-show").removeClass("slds-hide");
+													j$("#ApexGenerator").addClass("slds-show").removeClass("slds-hide");
+													j$("#CustomFieldsTab").addClass("slds-show").removeClass("slds-hide");
+													j$("#NetSuiteObjectTab").addClass("slds-show").removeClass("slds-hide");
+													j$(".hideOnDisconnect").addClass("slds-show").removeClass("slds-hide");
+												}
+												else{
+													j$("#ConfigTabSection").addClass("slds-hide").removeClass("slds-show");
+													j$("#SubsidiaryTabSection").addClass("slds-hide").removeClass("slds-show");
+													j$("#CurrencyTabSection").addClass("slds-hide").removeClass("slds-show");
+													j$("#ProductMatchSection").addClass("slds-hide").removeClass("slds-show");
+													j$("#ProgressTab").addClass("slds-hide").removeClass("slds-show");
+													j$("#ReportBuilderTab").addClass("slds-hide").removeClass("slds-show");
+													j$("#ApexGenerator").addClass("slds-hide").removeClass("slds-show");
+													j$("#CustomFieldsTab").addClass("slds-hide").removeClass("slds-show");
+													j$("#NetSuiteObjectTab").addClass("slds-hide").removeClass("slds-show");
+													j$(".hideOnDisconnect").addClass("slds-hide").removeClass("slds-show");
+												}
+											}
+										</script>
+									</apex:outputPanel>
+								</apex:outputPanel>
+								<!-- Disconnect to NetSuite Modal Starts -->
+								<div>
+									<div class="slds-modal slds-modal_x-small" aria-hidden="false" role="dialog" id="disconnectmodal">
+										<div class="slds-modal__container">
+											<div class="slds-modal__header">
+												<button
+													id="disconnectModalCanBtn"
+													class="slds-button slds-button_icon-inverse slds-modal__close"
+													type="button"
+													onclick="showHideModal('disconnectmodal','discBackdrop');"
+												>
+													<svg aria-hidden="true" class="slds-button__icon slds-button__icon_large">
+														<use
+															xmlns:xlink="http://www.w3.org/1999/xlink"
+															rel="noopener noreferrer"
+															xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/action-sprite/svg/symbols.svg#close')}"
+														></use>
+													</svg>
+													<span class="slds-assistive-text">Close</span>
+												</button>
+												<h2 class="slds-text-heading_medium">Disconnect NetSuite Org</h2>
+											</div>
+											<div class="slds-modal__content slds-p-around_medium">
+												<div>
+													Clicking Disconnect would delete the connection with this NetSuite Org. Do you really
+													want to disconnect this NetSuite Org?
+												</div>
+												<div align="right" class="slds-m-top_medium">
+													<apex:commandButton id="cancelbutton"
+														styleClass="slds-button slds-button_neutral slds-m-right_xx-small executeOnEscape"
+														value="Cancel"
+														onclick="showHideModal('disconnectmodal','discBackdrop');"
+														reRender="nothing"
+													>
+													</apex:commandButton>
+													<apex:commandButton id="okaybutton"
+														styleClass="slds-button slds-button_brand"
+														value="OK"
+														onclick="showHideModal('disconnectmodal','discBackdrop');"
+														action="{!disconnectOrg}"
+														reRender="setup-content,connectToNSModal,troubleshooting-content,connectiontabcontent"
+														status="action-status"
+														oncomplete="showHideConfigTab();message();"
+													>
+													</apex:commandButton>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="slds-backdrop" id="discBackdrop"></div>
+								</div>
+								<!-- End of Disconnect to NetSuite Modal -->
+								<div style="overflow: auto">
+									<div
+										role="dialog"
+										tabindex="-1"
+										aria-labelledby="modal-heading-01"
+										aria-modal="true"
+										aria-describedby="modal-content-id-1"
+										class="slds-modal"
+										id="DifferenceSection"
+									>
+										<div class="slds-modal__container" style="max-width: 50%">
+											<div class="slds-modal__header">
+												<button
+													class="slds-button slds-button_icon-inverse slds-modal__close executeOnEscape"
+													type="button"
+													onclick="showHideModal('DifferenceSection','diffBackdrop');"
+												>
+													<svg aria-hidden="true" class="slds-button__icon slds-button__icon_large">
+														<use
+															xmlns:xlink="http://www.w3.org/1999/xlink"
+															rel="noopener noreferrer"
+															xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/action-sprite/svg/symbols.svg#close')}"
+														></use>
+													</svg>
+													<span class="slds-assistive-text">Close</span>
+												</button>
+												<h2 class="slds-text-heading_medium slds-hyphenate slds-m-top_x-small">
+													<b>What’s the difference between Read Only and Active Mode?</b>
+												</h2>
+											</div>
+											<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+												<p class="slds-p-bottom_small" align="left">
+													In Read Only Mode, no matter what you do with Breadwinner, nothing will change in
+													NetSuite. Breadwinner reads from NetSuite and updates back to Salesforce, but
+													Breadwinner does not edit, create, or delete anything in NetSuite.
+												</p>
+												<table
+													class="slds-table slds-table_bordered slds-table_col-bordered slds-table_fixed-layout diff-table"
+												>
+													<thead class="slds-text-title_caps">
+														<tr scope="col">
+															<th></th>
+															<th style="color: rgb(75, 202, 129)"><b>Read Only Mode</b></th>
+															<th style="color: rgba(27, 82, 151, 1)"><b>Active Mode</b></th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td><b>Clicking “New Sales Order” in Breadwinner</b></td>
+															<td>No Sales Order will be created in NetSuite.</td>
+															<td>
+																After confirming data to be created, Sales Order will be created in
+																NetSuite.
+															</td>
+														</tr>
+														<tr>
+															<td><b>Clicking “Create a new NetSuite Customer</b></td>
+															<td>No Customer will be created in NetSuite.</td>
+															<td>After confirming data, new Customer will be created in NetSuite.</td>
+														</tr>
+														<tr>
+															<td><b>Clicking “Edit NetSuite Customer</b></td>
+															<td>The NetSuite Customer will not be edited.</td>
+															<td>The NetSuite Customer will be edited.</td>
+														</tr>
+														<tr>
+															<td><b>Adding or Editing an Sales Order directly in NetSuite</b></td>
+															<td colspan="2">
+																That Sales Order will be replicated over to Salesforce / Breadwinner within
+																the hour.
+															</td>
+														</tr>
+														<tr>
+															<td><b>Adding a NetSuite Customer directly in NetSuite</b></td>
+															<td colspan="2">
+																Breadwinner will attempt to match the new NetSuite Customer to a Salesforce
+																Account, but if Breadwinner cannot match one, it will create a new
+																Salesforce Account.
+															</td>
+														</tr>
+														<tr>
+															<td><b>Editing a NetSuite Customer directly in NetSuite</b></td>
+															<td colspan="2">
+																Breadwinner updates the NetSuite Customer record in Breadwinner within the
+																hour, but no changes will be made to the Salesforce Account.
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									<div class="slds-backdrop" id="diffBackdrop"></div>
+								</div>
+							</div>
+							<!-- Setup Section End -->
+
+							<!-- NetSuite Object Sync Modal Starts -->
+							<apex:outputPanel layout="block" id="NSObjectSyncConfig">
+								<div class="slds-modal slds-modal_large" aria-hidden="false" role="dialog" id="setupNSObjectCofigModal">
+									<div class="slds-modal__container" style="width: 100%; padding: 2rem">
+										<div class="slds-modal__header">
+											<button
+												id="setupNSObjectCofigModalCanBtn"
+												class="slds-button slds-button_icon-inverse slds-modal__close Icon"
+												type="button"
+												onclick="showHideModal('setupNSObjectCofigModal','NSObjectCofigModalBackdrop');"
+											>
+												<svg aria-hidden="true" class="slds-button__icon slds-button__icon_large">
+													<use
+														xmlns:xlink="http://www.w3.org/1999/xlink"
+														rel="noopener noreferrer"
+														xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/action-sprite/svg/symbols.svg#close')}"
+													></use>
+												</svg>
+												<span class="slds-assistive-text">Close</span>
+											</button>
+											<h2 class="slds-text-heading_medium">NetSuite Object Sync Configuration</h2>
+										</div>
+										<div class="slds-modal__content slds-p-around_medium" id="setupNSObjectCofigModalContent">
+											<apex:outputPanel id="orgWideSection" layout="block" rendered="{!orgSubsidiaryWrapper!=NULL}">
+												<h3 class="slds-section-title_divider slds-m-bottom_small">
+													NetSuite Org Wide Configuration
+												</h3>
+												<apex:outputPanel layout="block" styleClass="slds-scrollable_x" id="OrgWideConfigTableSection">
+													<table
+														class="slds-table slds-no-row-hover slds-table_bordered slds-border_bottom slds-max-medium-table_stacked-horizontal slds-table_col-bordered"
+														id="OrgWideConfigTable"
+														style="width: auto"
+													>
+														<thead>
+															<tr>
+																<th rowspan="2" style="width: 8%">
+																	<apex:outputText style="font-size: 1rem" value="NetSuite Org" />
+																</th>
+																<th
+																	colspan="3"
+																	class="topRowHeaderClass"
+																	style="display:{!IF(isSubsidiaryDisabledInNetSuite,'','none')}"
+																>
+																	Auto-Create Salesforce Records
+																</th>
+																<th
+																	rowspan="2"
+																	class="topRowHeaderClass picklistHeaderClass"
+																	style="display:{!IF(isSubsidiaryDisabledInNetSuite,'none','')}"
+																>
+																	<p>Auto-Create and Auto-Sync Salesforce Products</p>
+																	<p>from NetSuite Items?</p>
+																</th>
+																<th colspan="{!orgSyncObjects.size+1}" class="topRowHeaderClass">
+																	Replicate into Salesforce these NetSuite Objects
+																</th>
+															</tr>
+															<tr class="border-class">
+																<th
+																	class="picklistHeaderClass"
+																	style="display:{!IF(isSubsidiaryDisabledInNetSuite,'','none')}"
+																>
+																	Auto-Match NetSuite Companies to Salesforce Accounts?
+																</th>
+																<th
+																	class="picklistHeaderClass"
+																	style="display:{!IF(isSubsidiaryDisabledInNetSuite,'','none')}"
+																>
+																	Auto-Create Salesforce Accounts from New NetSuite Companies?
+																</th>
+																<th
+																	class="picklistHeaderClass"
+																	style="display:{!IF(isSubsidiaryDisabledInNetSuite,'','none')}"
+																>
+																	<p>Auto-Create and Auto-Sync Salesforce Products</p>
+																	<p>from NetSuite Items?</p>
+																</th>
+																<apex:repeat var="obj" value="{!orgSyncObjects}">
+																	<th class="checkboxColumnHeaderClass">
+																		<apex:outputText value="{!CASE(obj,
+																				'Price Level','Prices & Price Levels',
+																				'Return Authorization','RMA',
+																				'Invoice','Accounts Receivable',
+																				'Vendor Bill','Accounts Payable',
+																				'Item Fulfillment','Fulfillments & Packages',
+																				'Sales Order','Estimates & Sales Orders',
+																				'Subscription','Suite Billing',
+																				obj+'s')}"
+																		/>
+																		<apex:outputPanel layout="block"
+																			rendered="{!OR(
+																				obj=='Price Level',
+																				obj=='Contact',
+																				obj=='Invoice',
+																				obj=='Vendor Bill',
+																				obj=='Subscription'
+																				)}"
+																			styleClass="slds-p-left_xx-small"
+																		>
+																			<apex:image value="/img/s.gif"
+																				styleClass="helpIcon"
+																				title="{!CASE(obj,
+																					'Price Level','Includes Item Prices and Price Overrides',
+																					'Contact','Includes all types of Contacts (even without an associated Company)',
+																					'Invoice','This includes Invoices, Customer Payments, Credit Memos, Cash Sales and Cash Refunds',
+																					'Vendor Bill','This includes Vendor Bills, Credits and Payments (Payee can be Vendor or Employee)',
+																					'Subscription','This includes objects that pertain to Suite Billing. NOTE: This is only available at the Org Wide Configuration',
+																					'')}"
+																				style="cursor: pointer"
+																			/>
+																		</apex:outputPanel>
+																		<br />
+																		<apex:outputPanel layout="block" rendered="{!NOT(isNetSuiteObjectSyncConfigDone)}">
+																			<apex:outputText rendered="{!AND(NOT(obj=='Inventory Location'), NOT(obj=='Subscription'))}" 
+																			style="font-weight:400;" 
+																			value="({!orgObjectAndRecordCount[SUBSTITUTE(obj,' ','')]})"
+																		/>
+																		</apex:outputPanel>
+																	</th>
+																</apex:repeat>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>
+																	<apex:outputText value="{!orgSubsidiaryWrapper.name}"
+																		style="display: inline-block; vertical-align: middle"
+																	/>
+																</td>
+																<td
+																	class="Org-Customer-sync-match accMatchConfigClass"
+																	style="display:{!IF(isSubsidiaryDisabledInNetSuite,'','none')}"
+																	id="Org-Customer-Match-Picklist"
+																>
+																	<apex:outputPanel layout="block"
+																		styleClass="slds-select_container"
+																		style="min-width: max-content"
+																	>
+																		<apex:selectList styleClass="slds-select selectedSFAccountMatchConfig"
+																			id="selectedOrgSFAccountMatchConfig"
+																			value="{!orgSubsidiaryWrapper.sfAccountMatchConfig}"
+																			size="1"
+																			disabled="{!IF(NOT(OR(orgSubsidiaryWrapper.ObjectToSyncMap['Customer'],orgSubsidiaryWrapper.ObjectToSyncMap['Vendor'])),'TRUE','FALSE')}"
+																			onchange="autoMatchOnchange(this,true);"
+																			html-data-id="Org-AutoMatch-Picklist"
+																		>
+																			<apex:selectOption itemvalue="" itemLabel="" />
+																			<apex:selectOption itemvalue="Auto Match (Active Companies Only)"
+																				itemLabel="Active Companies"
+																			/>
+																			<apex:selectOption itemvalue="Auto Match (Active and Inactive Companies)"
+																				itemLabel="All Companies"
+																			/>
+																			<apex:selectOption itemvalue="Auto Match (Active Customers Only)"
+																				itemLabel="Only Active Customers"
+																			/>
+																			<apex:selectOption itemvalue="Auto Match (Active and Inactive Customers)"
+																				itemLabel="Only Customers"
+																			/>
+																			<apex:selectOption itemvalue="Auto Match (Active Vendors Only)"
+																				itemLabel="Only Active Vendors"
+																			/>
+																			<apex:selectOption itemvalue="Auto Match (Active and Inactive Vendors)"
+																				itemLabel="Only Vendors"
+																			/>
+																			<apex:selectOption itemvalue="Do Not Match"
+																				itemLabel="Do Not Match Accounts"
+																			/>
+																		</apex:selectList>
+																	</apex:outputPanel>
+																</td>
+																<td
+																	class="Org-Customer-sync accConfigClass"
+																	style="display:{!IF(isSubsidiaryDisabledInNetSuite,'','none')}"
+																	id="Org-Customer-Picklist"
+																>
+																	<apex:outputPanel layout="block"
+																		styleClass="slds-select_container"
+																		style="min-width: max-content"
+																	>
+																		<apex:selectList styleClass="slds-select selectedSFAccountConfig"
+																			id="selectedOrgSFAccountConfig"
+																			value="{!orgSubsidiaryWrapper.sfAccountConfig}"
+																			size="1"
+																			disabled="{!IF(NOT(OR(orgSubsidiaryWrapper.ObjectToSyncMap['Customer'],orgSubsidiaryWrapper.ObjectToSyncMap['Vendor'])),'TRUE','FALSE')}"
+																			html-data-id="Org-AutoCreate-Picklist"
+																		>
+																			<apex:selectOption itemvalue="" itemLabel="" />
+																			<apex:selectOption itemvalue="Auto Create (Active Companies Only)"
+																				itemLabel="Active Companies"
+																			/>
+																			<apex:selectOption itemvalue="Auto Create (Active and Inactive Companies)"
+																				itemLabel="All Companies"
+																			/>
+																			<apex:selectOption itemvalue="Auto Create (Active Customers Only)"
+																				itemLabel="Only Active Customers"
+																			/>
+																			<apex:selectOption itemvalue="Auto Create (Active and Inactive Customers)"
+																				itemLabel="Only Customers"
+																			/>
+																			<apex:selectOption itemvalue="Auto Create (Active Vendors Only)"
+																				itemLabel="Only Active Vendors"
+																			/>
+																			<apex:selectOption itemvalue="Auto Create (Active and Inactive Vendors)"
+																				itemLabel="Only Vendors"
+																			/>
+																			<apex:selectOption itemvalue="Do Not Create"
+																				itemLabel="Do Not Create Accounts"
+																			/>
+																		</apex:selectList>
+																	</apex:outputPanel>
+																</td>
+																<td
+																	class="Org-Item-sync {!IF(NOT(orgSubsidiaryWrapper.ObjectToSyncMap['Item']),'sparent-disabled','sparent-enabled')}"
+																	id="Org-Item-Picklist"
+																>
+																	<apex:outputPanel layout="block"
+																		styleClass="slds-select_container"
+																		style="min-width: max-content"
+																	>
+																		<apex:selectList styleClass="slds-select selectedOrgSFProductConfig"
+																			id="selectedSFProductConfig"
+																			value="{!orgSubsidiaryWrapper.sfProductConfig}"
+																			size="1"
+																			html-data-id="Org-ProductSync-Picklist"
+																		>
+																			<apex:selectOption itemvalue="" itemLabel="" />
+																			<apex:selectOption itemvalue="Auto Create (Active Items Only)"
+																				itemLabel="Active Items"
+																			/>
+																			<apex:selectOption itemvalue="Auto Create (Active and Inactive Items)"
+																				itemLabel="All Items"
+																			/>
+																			<apex:selectOption itemvalue="Do Not Create"
+																				itemLabel="Do Not Create"
+																			/>
+																		</apex:selectList>
+																	</apex:outputPanel>
+																</td>
+																<apex:repeat var="obj" value="{!orgSyncObjects}">
+																	<td id="Org-{!SUBSTITUTE(obj,' ','')}-sync">
+																		<apex:inputCheckbox value="{!orgSubsidiaryWrapper.ObjectToSyncMap[SUBSTITUTE(obj,' ','')]}"
+																			rendered="{!AND(obj!='Customer Payment',obj!='Credit Memo')}"
+																			styleClass="slds-align_absolute-center"
+																			onchange="disableRecordCountsBtn();handleOrgLevelActions(this,'{!SUBSTITUTE(obj,' ','')}');"
+																			html-data-id="Org-{!SUBSTITUTE(obj,' ','')}-sync"
+																		/>
+																	</td>
+																</apex:repeat>
+															</tr>
+														</tbody>
+													</table>
+												</apex:outputPanel>
+											</apex:outputPanel>
+											<apex:outputPanel id="SubsidiarySection"
+												layout="block"
+												rendered="{!AND(NOT(isSubsidiaryDisabledInNetSuite),orgSubsidiaryWrapper!=NULL)}"
+											>
+												<h3 class="slds-section-title_divider slds-m-bottom_small slds-m-top_large">
+													Subsidiary Wide Configuration
+												</h3>
+												<apex:outputPanel layout="block"
+													id="SubsidiaryTableSection"
+													styleClass="slds-p-top_medium slds-p-around_small"
+												>
+													<apex:outputPanel rendered="{!AND(subsidiaryListWrapper.size==0,NOT(isSubsidiaryDisabledInNetSuite))}"
+													>
+														<apex:pageMessage severity="INFO"
+															strength="2"
+															summary="<b>NetSuite Subsidiaries haven't synced to Salesforce yet. Please check in a few minutes. If you still don't see the subsidiaries, it's possible that the NetSuite User does not have permission in NetSuite. Please see this<a href='https://docs.breadwinner.com/netsuite/netsuite-permissions'>document</a><b/>"
+															escape="false"
+														>
+														</apex:pageMessage>
+													</apex:outputPanel>
+													<apex:outputPanel rendered="{!subsidiaryListWrapper.size>0}"
+														layout="block"
+														styleClass="slds-scrollable_x"
+													>
+														<table
+															class="slds-table slds-no-row-hover slds-table_bordered slds-border_bottom slds-max-medium-table_stacked-horizontal slds-table_col-bordered"
+															style="width: auto"
+															id="SubsidiaryWideConfigTable"
+														>
+															<thead>
+																<tr>
+																	<th rowspan="2" style="width: 8%" class="subsidiaryHeader">
+																		<apex:outputPanel layout="block">
+																			<apex:inputCheckbox styleClass="syncAllSub"
+																				onchange="disableRecordCountsBtn();toggleAllSubsidiaries(this);"
+																				title="All Subsidiaries"
+																			/>
+																			<apex:outputText style="font-size: 1rem"
+																				styleClass="slds-p-left_small"
+																				value="Subsidiary"
+																			/>
+																		</apex:outputPanel>
+																	</th>
+																	<th rowspan="2" class="picklistHeaderClass topRowHeaderClass">
+																		Auto-Match NetSuite Companies to Salesforce Accounts?
+																	</th>
+																	<th rowspan="2" class="picklistHeaderClass topRowHeaderClass">
+																		Auto-Create Salesforce Accounts from New NetSuite Companies?
+																	</th>
+																	<th colspan="{!syncObjects.size+1}" class="topRowHeaderClass">
+																		Replicate into Salesforce these NetSuite Objects
+																	</th>
+																</tr>
+																<tr class="border-class">
+																	<apex:repeat var="obj" value="{!syncObjects}">
+																		<th class="{!SUBSTITUTE(obj,' ','')} checkboxColumnHeaderClass">
+																			<apex:outputText value="{!CASE(obj,
+																					'Return Authorization','RMA',
+																					'Invoice','Accounts Receivable',
+																					'Vendor Bill','Accounts Payable',
+																					'Item Fulfillment','Fulfillments & Packages',
+																					'Sales Order','Estimates & Sales Orders',
+																					'Subscription','Suite Billing',
+																					obj+'s')}"
+																			/>
+																		</th>
+																	</apex:repeat>
+																</tr>
+															</thead>
+															<tbody>
+																<apex:repeat value="{!subsidiaryListWrapper}" var="sub">
+																	<tr>
+																		<td class="allSyncClass">
+																			<apex:outputPanel styleClass="slds-p-right_small"
+																				style="display: inline-block; vertical-align: middle"
+																			>
+																				<apex:inputCheckbox value="{!sub.isChecked}"
+																					onchange="disableRecordCountsBtn();toggleSubsidarySpecificFields(this);"
+																					title="All Objects"
+																					html-data-id="{!sub.sfId}-Level-Checkbox"
+																				/>
+																			</apex:outputPanel>
+																			<apex:repeat var="d" value="{!sub.depth}">
+																				<apex:outputText styleClass="circleClass" />
+																			</apex:repeat>
+																			<apex:outputText value="{!sub.name} {!IF(sub.isInactive,'(Inactive)','')}"
+																				style="display: inline-block; vertical-align: middle"
+																			/>
+																		</td>
+																		<td id="Customer-Match-Picklist" >
+																			<apex:outputPanel layout="block"
+																				styleClass="slds-select_container"
+																				style="min-width: max-content"
+																			>
+																				<apex:selectList styleClass="slds-select selectedSFAccountMatchConfig"
+																					value="{!sub.sfAccountMatchConfig}"
+																					size="1"
+																					disabled="{!IF(NOT(OR(sub.ObjectToSyncMap['Customer'],sub.ObjectToSyncMap['Vendor'])),'TRUE','FALSE')}"
+																					onchange="autoMatchOnchange(this,true);"
+																					html-data-id="{!sub.sfId}-AutoMatch-Picklist"
+																				>
+																					<apex:selectOption itemvalue="" itemLabel="" />
+																					<apex:selectOption itemvalue="Auto Match (Active Companies Only)"
+																						itemLabel="Active Companies"
+																					/>
+																					<apex:selectOption itemvalue="Auto Match (Active and Inactive Companies)"
+																						itemLabel="All Companies"
+																					/>
+																					<apex:selectOption itemvalue="Auto Match (Active Customers Only)"
+																						itemLabel="Only Active Customers"
+																					/>
+																					<apex:selectOption itemvalue="Auto Match (Active and Inactive Customers)"
+																						itemLabel="Only Customers"
+																					/>
+																					<apex:selectOption itemvalue="Auto Match (Active Vendors Only)"
+																						itemLabel="Only Active Vendors"
+																					/>
+																					<apex:selectOption itemvalue="Auto Match (Active and Inactive Vendors)"
+																						itemLabel="Only Vendors"
+																					/>
+																					<apex:selectOption itemvalue="Do Not Match"
+																						itemLabel="Do Not Match Accounts"
+																					/>
+																				</apex:selectList>
+																			</apex:outputPanel>
+																		</td>
+																		<td id="Customer-Picklist" >
+																			<apex:outputPanel id="companyMatchPicklistId"
+																				layout="block"
+																				styleClass="slds-select_container"
+																				style="min-width: max-content"
+																			>
+																				<apex:selectList styleClass="slds-select selectedSFAccountConfig"
+																					value="{!sub.sfAccountConfig}"
+																					size="1"
+																					disabled="{!IF(NOT(OR(sub.ObjectToSyncMap['Customer'],sub.ObjectToSyncMap['Vendor'])),'TRUE','FALSE')}"
+																					html-data-id="{!sub.sfId}-AutoCreate-Picklist"
+																				>
+																					<apex:selectOption itemvalue="" itemLabel="" />
+																					<apex:selectOption itemvalue="Auto Create (Active Companies Only)"
+																						itemLabel="Active Companies"
+																					/>
+																					<apex:selectOption itemvalue="Auto Create (Active and Inactive Companies)"
+																						itemLabel="All Companies"
+																					/>
+																					<apex:selectOption itemvalue="Auto Create (Active Customers Only)"
+																						itemLabel="Only Active Customers"
+																					/>
+																					<apex:selectOption itemvalue="Auto Create (Active and Inactive Customers)"
+																						itemLabel="Only Customers"
+																					/>
+																					<apex:selectOption itemvalue="Auto Create (Active Vendors Only)"
+																						itemLabel="Only Active Vendors"
+																					/>
+																					<apex:selectOption itemvalue="Auto Create (Active and Inactive Vendors)"
+																						itemLabel="Only Vendors"
+																					/>
+																					<apex:selectOption itemvalue="Do Not Create"
+																						itemLabel="Do Not Create Accounts"
+																					/>
+																				</apex:selectList>
+																			</apex:outputPanel>
+																		</td>
+																		<apex:repeat var="obj" value="{!syncObjects}">
+																			<td id="{!SUBSTITUTE(obj,' ','')}-sync">
+																				<apex:inputCheckbox value="{!sub.ObjectToSyncMap[SUBSTITUTE(obj,' ','')]}"
+																					styleClass="slds-align_absolute-center"
+																					onchange="disableRecordCountsBtn();syncSpecificObjects(this,'{!SUBSTITUTE(obj,' ','')}');"
+																					title="{!IF(NOT(orgSubsidiaryWrapper.ObjectToSyncMap[SUBSTITUTE(obj,' ','')]),'Enable Parent','')}"
+																					html-data-id="{!sub.sfId}-{!SUBSTITUTE(obj,' ','')}-sync"
+																				>
+																				</apex:inputCheckbox>
+																			</td>
+																		</apex:repeat>
+																	</tr>
+																</apex:repeat>
+															</tbody>
+														</table>
+													</apex:outputPanel>
+												</apex:outputPanel>
+											</apex:outputPanel>
+											<script>
+												const OBJ_CUST = 'Customer';
+												const OBJ_VEND = 'Vendor';
+												const OBJ_ITEM = 'Item';
+												const PL_AM = 'AutoMatch';
+												const PL_AC = 'AutoCreate';
+												const PL_VAL_DNC = 'Do Not Create';
+												const PL_VAL_DNM = 'Do Not Match';
+												const PL_VAL_ACT_COMP = 'Active Companies';
+												const PL_VAL_ALL_COMP = 'Active and Inactive Companies';
+												const PL_VAL_ACT_CUST = 'Active Customers Only';
+												const PL_VAL_CUST = 'Active and Inactive Customers';
+												const PL_VAL_ACT_VEND = 'Active Vendors Only';
+												const PL_VAL_VEND = 'Active and Inactive Vendors';
+
+												// There are some thing we don't want to do during the initial load.
+												// This is a flag to control that.
+												let initNsObjectSyncRunning = false;
+
+												function initNsObjectSync() {
+													initNsObjectSyncRunning = true;
+													// Loop through all the Org Level checkboxes and set the correct state
+													let checkboxList = Array.from(document.querySelectorAll('input[data-id^="Org-"]'));
+													checkboxList.forEach((checkbox) => {
+														handleOrgLevelActions(checkbox, getObjectName(checkbox.dataset.id));
+													});
+
+													// Loop through all the Subsidiary Level checkboxes and set the correct state
+													checkboxList = Array.from(
+														document.querySelectorAll('input[data-id$="Level-Checkbox"]')
+													);
+													checkboxList.forEach((checkbox) => {
+														toggleSubsidaryFieldsOnInitialLoad(checkbox);
+													});
+													checkAllSubsidiariesCheckBox();
+													initNsObjectSyncRunning = false;
+												}
+
+												// This will show/hide the AutoMatch or AutoCreate picklist values when a customer or vendor
+												// checkbox is selected or deselected
+												function handleCustomerVendorPickListChanges(hide, custOrVend, picklistToUpdate) {
+													const picklist = document.querySelector('[data-id="' + picklistToUpdate + '"]');
+													const options = picklist.options;
+													// we know the exact location of the ones we want to show/hide
+
+													const autoMatchPicklist = document.querySelector('[data-id="' + picklistToUpdate.replace(PL_AC,PL_AM) + '"]');
+
+													if (custOrVend === OBJ_CUST) {
+														options[3].style.display = hide ? 'none' : 'block';
+														options[4].style.display = hide ? 'none' : 'block';
+														// set to 'Do Not Match if this is a AutoMatch picklist or the AutoMatch value is this is an AutoCreate picklist
+														if (hide && picklist.value.includes(OBJ_CUST)) {
+															if (picklist.dataset.id.includes(PL_AM)) {
+																picklist.value = PL_VAL_DNM;
+															} else if (picklist.dataset.id.includes(PL_AC)) {
+																picklist.value = autoMatchPicklist.value.replace('Auto Match','Auto Create');
+															}
+														}
+													} else if (custOrVend === OBJ_VEND) {
+														options[5].style.display = hide ? 'none' : 'block';
+														options[6].style.display = hide ? 'none' : 'block';
+														// set to 'Do Not Match if this is a AutoMatch picklist or the AutoMatch value is this is an AutoCreate picklist
+														if (hide && picklist.value.includes(OBJ_VEND)) {
+															if (picklist.dataset.id.includes(PL_AM)) {
+																picklist.value = PL_VAL_DNM;
+															} else if (picklist.dataset.id.includes(PL_AC)) {
+																picklist.value = autoMatchPicklist.value.replace('Auto Match','Auto Create');
+															}
+														}
+													}
+												}
+
+												// Convenience function for splitting this out into a separate object specific functions
+												function handleOrgLevelActions(ele, objName) {
+													let disableAccountPicklists;
+													if (objName === OBJ_CUST) {
+														const vendorCheckbox = document.querySelector('[data-id="Org-Vendor-sync"]');
+														disableAccountPicklists = !ele.checked && !vendorCheckbox.checked;
+														handleOrgLevelCustomerActions(ele);
+													} else if (objName === OBJ_VEND) {
+														const customerCheckbox = document.querySelector('[data-id="Org-Customer-sync"]');
+														disableAccountPicklists = !ele.checked && !customerCheckbox.checked;
+														handleOrgLevelVendorActions(ele);
+													} else if (objName === OBJ_ITEM) {
+														handleOrgLevelItemActions(ele);
+													} else {
+														toggleOrgLevelCheckBoxes(null, ele, objName);
+													}
+
+													// Customer or Vendor value changed.
+													// We may need to show/hide AutoMatch & AutoCreate picklist fields
+													if (disableAccountPicklists !== undefined) {
+														const autoMatchPicklist = Array.from(
+															document.querySelectorAll('select[data-id$="AutoMatch-Picklist"]')
+														);
+														const autoCreatePicklist = Array.from(
+															document.querySelectorAll('select[data-id$="AutoCreate-Picklist"]')
+														);
+														if (disableAccountPicklists) {
+															autoMatchPicklist.forEach((pickList) => {
+																pickList.disabled = true;
+																pickList.value = '';
+															});
+															autoCreatePicklist.forEach((pickList) => {
+																pickList.disabled = true;
+																pickList.value = '';
+															});
+														} else {
+															autoMatchPicklist.forEach((pickList) => {
+																if (pickList.dataset.id.includes('Org-')) {
+																	return;
+																}
+																const subsId = getSubsidiaryId(pickList.dataset.id);
+																const subsCheckbox = document.querySelector(
+																	'input[data-id="' + subsId + '-Level-Checkbox"]'
+																);
+																if (subsCheckbox.checked) {
+																	pickList.disabled = false;
+																	if (pickList.value === '') {
+																		pickList.value = PL_VAL_DNM;
+																	}
+																}
+															});
+															autoCreatePicklist.forEach((pickList) => {
+																if (pickList.dataset.id.includes('Org-')) {
+																	return;
+																}
+																const subsId = getSubsidiaryId(pickList.dataset.id);
+																const subsCheckbox = document.querySelector(
+																	'input[data-id="' + subsId + '-Level-Checkbox"]'
+																);
+																if (subsCheckbox.checked) {
+																	pickList.disabled = false;
+																	if (pickList.value === '') {
+																		pickList.value = PL_VAL_DNC;
+																	}
+																}
+															});
+														}
+													}
+												}
+
+												// When org level customer checkbox is checked/unchecked
+												function handleOrgLevelCustomerActions(ele) {
+													// Add/remove AutoMatch & AutoCreate picklist values
+													handleAutoMatchAutoCreatePickLists(ele);
+
+													// Turn on/off customer subsidiary level checkboxes
+													toggleSubsidiaryLevelCheckBoxes(OBJ_CUST, ele.checked);
+
+													// Enable/disable Sales Orders, RMA, AR, and Customer Deposits
+													let elementToUpdate = document.querySelector('[data-id="Org-SalesOrder-sync"]');
+													toggleOrgLevelCheckBoxes(ele.checked, elementToUpdate, 'SalesOrder');
+
+													elementToUpdate = document.querySelector('[data-id="Org-ReturnAuthorization-sync"]');
+													toggleOrgLevelCheckBoxes(ele.checked, elementToUpdate, 'ReturnAuthorization');
+
+													elementToUpdate = document.querySelector('[data-id="Org-Invoice-sync"]');
+													toggleOrgLevelCheckBoxes(ele.checked, elementToUpdate, 'Invoice');
+
+													elementToUpdate = document.querySelector('[data-id="Org-CustomerDeposit-sync"]');
+													if(elementToUpdate !== null){
+														toggleOrgLevelCheckBoxes(ele.checked, elementToUpdate, 'CustomerDeposit');
+													}
+
+													elementToUpdate = document.querySelector('[data-id="Org-Subscription-sync"]');
+													if (elementToUpdate !== null){
+														toggleOrgLevelCheckBoxes(ele.checked, elementToUpdate, 'Subscription');
+													}
+												}
+
+												// When org level vendor checkbox is checked/unchecked
+												function handleOrgLevelVendorActions(ele) {
+													// Add/remove AutoMatch & AutoCreate picklist values
+													handleAutoMatchAutoCreatePickLists(ele);
+
+													// Turn on/off vendor subsidiary level checkboxes
+													toggleSubsidiaryLevelCheckBoxes(OBJ_VEND, ele.checked);
+
+													// Enable/disable POs & AP
+													let elementToUpdate = document.querySelector('[data-id="Org-PurchaseOrder-sync"]');
+													toggleOrgLevelCheckBoxes(ele.checked, elementToUpdate, 'PurchaseOrder');
+
+													elementToUpdate = document.querySelector('[data-id="Org-VendorBill-sync"]');
+													toggleOrgLevelCheckBoxes(ele.checked, elementToUpdate, 'VendorBill');
+												}
+
+												// When org level item checkbox is checked/unchecked
+												function handleOrgLevelItemActions(ele) {
+													// Enable/disable Price/Price Levels & Inventory Location checkboxes
+													const priceElememt = document.querySelector('[data-id="Org-PriceLevel-sync"]');
+													const invLocElememt = document.querySelector('[data-id="Org-InventoryLocation-sync"]');
+													priceElememt.disabled = !ele.checked;
+													invLocElememt.disabled = !ele.checked;
+
+													// uncheck price & location if item is unchecked but do not recheck if item is turned back on.
+													if (!ele.checked) {
+														priceElememt.checked = false;
+														invLocElememt.checked = false;
+													}
+
+													// Enable/disable Product Sync picklist
+													const procSyncPicklist = document.querySelector('[data-id="Org-ProductSync-Picklist"]');
+													procSyncPicklist.disabled = !ele.checked;
+													if (!ele.checked) {
+														procSyncPicklist.value = '';
+													} else if (procSyncPicklist.value === '') {
+														procSyncPicklist.value = PL_VAL_DNC;
+													}
+												}
+
+												// When any other org level checkbox is checked/unchecked
+												function toggleOrgLevelCheckBoxes(groupElementChecked, ele, objName) {
+													// If "isChecked" is NOT null then it's coming from a 'group' element (Customer, Vendor, or Item)
+													// that turns off multiple objects
+													if (groupElementChecked !== null) {
+														// turn on/off access to the checkbox
+														ele.disabled = !groupElementChecked;
+														// only need to do this if the checkbox is being disabled
+														if (!groupElementChecked) {
+															ele.checked = groupElementChecked;
+															// now turn off subsidiary level checkboxes
+															toggleSubsidiaryLevelCheckBoxes(objName, false);
+														}
+													} else {
+														// If "isChecked" is null then it's coming from a 'single' element (Sales Order, RMA, AR, etc.)
+														// These should turn on/off the Subsidirary level checkboxes
+														toggleSubsidiaryLevelCheckBoxes(objName, ele.checked);
+													}
+												}
+
+												// This will show/hide the subsidiary level checkboxes when one of the Org level checkboxes is acted on
+												// Basically, top level checkboxes turn on/off subsidiary level checkboxes
+												function toggleSubsidiaryLevelCheckBoxes(objName, isChecked) {
+													// Get all the subsidiary level checkboxes for the passed in object
+													const subLevelCheckBoxes = Array.from(
+														document.querySelectorAll('input[data-id$="' + objName + '-sync"]')
+													);
+													subLevelCheckBoxes.forEach((checkbox) => {
+														const checkboxId = checkbox.dataset.id;
+														const subsId = getSubsidiaryId(checkboxId);
+														const subsCheckbox = document.querySelector(
+															'input[data-id="' + subsId + '-Level-Checkbox"]'
+														);
+														// This array will also have the Org level checkboxes so we need to skip that one
+														if (!checkboxId.startsWith('Org-') && subsCheckbox.checked) {
+															// turn on/off access to the checkbox
+															checkbox.disabled = !isChecked;
+															if (!initNsObjectSyncRunning){
+																checkbox.checked = isChecked;
+															}
+														}
+													});
+												}
+
+												// Query the Auto-Match and Auto-Create subsidiary picklists
+												// and add/remove Customer or Vendor picklist options
+												function handleAutoMatchAutoCreatePickLists(ele) {
+													const elementId = ele.dataset.id;
+													// We only care about Customer and Vendor
+													if (!elementId.includes(OBJ_CUST) && !elementId.includes(OBJ_VEND)) {
+														return;
+													}
+													const custOrVend = elementId.includes(OBJ_CUST) ? OBJ_CUST : OBJ_VEND;
+													// Query all the Auto-Match picklists
+													let picklists = document.querySelectorAll('.selectedSFAccountMatchConfig');
+													picklists.forEach((picklist) => {
+														if (picklist.dataset.id !== undefined) {
+															handleCustomerVendorPickListChanges(!ele.checked, custOrVend, picklist.dataset.id);
+														}
+													});
+
+													// Query all the Auto-Create picklists
+													picklists = document.querySelectorAll('.selectedSFAccountConfig');
+													picklists.forEach((picklist) => {
+														if (picklist.dataset.id !== undefined) {
+															handleCustomerVendorPickListChanges(!ele.checked, custOrVend, picklist.dataset.id);
+														}
+													});
+												}
+
+												function disableRecordCountsBtn() {
+													document.getElementById('page:formId:updateRecordsCount').disabled = true;
+												}
+
+												// enable/disable the subsidiary level checkboxes when
+												// the 'All' subsidiary checkbox is checked/unchecked
+												function toggleAllSubsidiaries(ele) {
+													if (ele.checked) {
+														// turn on all subsidiaries and cooresponding object specific stuff
+														const checkboxList = Array.from(
+															document.querySelectorAll('input[data-id$="Level-Checkbox"]')
+														);
+														checkboxList.forEach((checkbox) => {
+															checkbox.disabled = false;
+															checkbox.checked = true;
+															toggleSubsidarySpecificFields(checkbox);
+														});
+													} else {
+														// disable the subsidiary level checkboxes, picklist & object checkboxes
+														const checkboxList = Array.from(
+															document.querySelectorAll('input[data-id$="Level-Checkbox"]:checked')
+														);
+														checkboxList.forEach((checkbox) => {
+															checkbox.checked = false;
+															toggleSubsidarySpecificFields(checkbox);
+														});
+													}
+												}
+
+												// enable/disable Auto-Match and Auto-Create picklists + object checkboxes
+												// when a specific subsidiary checkbox is checked/unchecked
+												function toggleSubsidarySpecificFields(ele) {
+													const subs = getSubsidiaryId(ele.dataset.id);
+													if (ele.checked) {
+														// get all subsidiary level checkboxes
+														const checkboxList = Array.from(
+															document.querySelectorAll('input[data-id^="' + subs + '-"]')
+														);
+														checkboxList.forEach((checkbox) => {
+															const objName = getObjectName(checkbox.dataset.id);
+															if (objName === 'Level' || objName === 'Org') {
+																return;
+															}
+															const orgLevelChecked = document.querySelector(
+																'input[data-id="Org-' + objName + '-sync"]'
+															).checked;
+
+															if (orgLevelChecked) {
+																checkbox.disabled = false;
+																if (!initNsObjectSyncRunning){
+																	checkbox.checked = true;
+																}
+															} else {
+																checkbox.disabled = true;
+																checkbox.checked = false;
+															}
+														});
+														// if Customer or Vendor is checked, enable the AutoMatch & AutoCreate picklists
+														const orgLevelCustomerChecked = document.querySelector(
+															'input[data-id="Org-Customer-sync"]'
+														).checked;
+														const orgLevelVendorChecked =
+															document.querySelector('input[data-id="Org-Vendor-sync"]').checked;
+														if (orgLevelCustomerChecked || orgLevelVendorChecked) {
+															const autoMatchPicklist = document.querySelector(
+																'[data-id="' + subs + '-AutoMatch-Picklist"]'
+															);
+															const autoCreatePicklist = document.querySelector(
+																'[data-id="' + subs + '-AutoCreate-Picklist"]'
+															);
+															autoMatchPicklist.disabled = false;
+															autoCreatePicklist.disabled = false;
+															if (autoMatchPicklist.value === '' ) {
+																// if this is blank and we are turning on the subsidiary level checkbox
+																// then set to default values and picklist options
+																autoMatchPicklist.value = PL_VAL_DNM;
+
+																// set the autoMatch picklist options
+																autoMatchPicklist.options[1].style.display = 'block'; // Active Companies
+																autoMatchPicklist.options[2].style.display = 'block'; // All Companies
+																autoMatchPicklist.options[3].style.display = orgLevelCustomerChecked ? 'block' : 'none'; // Only Active Customers
+																autoMatchPicklist.options[4].style.display = orgLevelCustomerChecked ? 'block' : 'none'; // Only Customers
+																autoMatchPicklist.options[5].style.display = orgLevelVendorChecked ? 'block' : 'none'; // Only Active Vendors
+																autoMatchPicklist.options[6].style.display = orgLevelVendorChecked ? 'block' : 'none'; // Only Vendors
+																console.log('orgLevelCustomerChecked: ' + orgLevelCustomerChecked, ' : ',);
+
+																// only option for autoCreate is 'Do Not Create'
+																autoCreatePicklist.value = PL_VAL_DNC;
+																autoCreatePicklist.options[1].style.display = 'none'; // Active Companies
+																autoCreatePicklist.options[2].style.display = 'none'; // All Companies
+																autoCreatePicklist.options[3].style.display = 'none'; // Only Active Customers
+																autoCreatePicklist.options[4].style.display = 'none'; // Only Customers
+																autoCreatePicklist.options[5].style.display = 'none'; // Only Active Vendors
+																autoCreatePicklist.options[6].style.display = 'none'; // Only Vendors
+															}
+															if (autoCreatePicklist.value === '' ) {
+																autoCreatePicklist.value = PL_VAL_DNC;
+															}
+														}
+													} else {
+														// get all currently subsidiary level checkboxes and uncheck them
+														const checkboxList = Array.from(
+															document.querySelectorAll('input[data-id^="' + subs + '-"]')
+														);
+														checkboxList.forEach((checkbox) => {
+															const objName = getObjectName(checkbox.dataset.id);
+															if (objName === 'Level' || objName === 'Org') {
+																return;
+															}
+															checkbox.checked = false;
+															checkbox.disabled = true;
+														});
+
+														disableAutoMatchAutoCreatePicklists(subs);
+													}
+													checkAllSubsidiariesCheckBox();
+												}
+
+												// When a specific object checkbox at the subsidairy level is checked/unchecked
+												function syncSpecificObjects(ele, objname) {
+													const elementId = ele.dataset.id;
+													const subsId = elementId.split('-')[0];
+													// There's a bunch of subsidiary specific stuff we need to do if customer or vendor was click
+													// Note: Org level will start with 'Org-'. That is handled elsewhere so exclude that one
+													if (
+														(objname === OBJ_CUST || objname === OBJ_VEND) &&
+														!elementId.startsWith('Org-')
+													) {
+														// update the AutoMatch & AutoCreate picklists
+														const custOrVend = objname === OBJ_CUST ? OBJ_CUST : OBJ_VEND;
+														handleCustomerVendorPickListChanges(
+															!ele.checked,
+															custOrVend,
+															subsId + '-AutoMatch-Picklist'
+														);
+														handleCustomerVendorPickListChanges(
+															!ele.checked,
+															custOrVend,
+															subsId + '-AutoCreate-Picklist'
+														);
+														//check to see if both are unchecked. If so, disable the picklists
+														const otherCheckBox = custOrVend === OBJ_CUST ? OBJ_VEND : OBJ_CUST;
+														const otherCheckBoxId = subsId + '-' + otherCheckBox + '-sync';
+														const otherCheckBoxElement = document.querySelector(
+															'[data-id="' + otherCheckBoxId + '"]'
+														);
+														const disablePicklists = !ele.checked && !otherCheckBoxElement.checked;
+
+														const autoMatchPicklist = document.querySelector(
+															'[data-id="' + subsId + '-AutoMatch-Picklist"]'
+														);
+														const autoCreatPicklist = document.querySelector(
+															'[data-id="' + subsId + '-AutoCreate-Picklist"]'
+														);
+														autoMatchPicklist.disabled = disablePicklists;
+														autoCreatPicklist.disabled = disablePicklists;
+														if (disablePicklists) {
+															autoMatchPicklist.value = '';
+															autoCreatPicklist.value = '';
+														} else if (autoMatchPicklist.value === '' && autoCreatPicklist.value === '') {
+															autoMatchPicklist.value = PL_VAL_DNM;
+															autoCreatPicklist.value = PL_VAL_DNC;
+														} else {
+															autoCreatPicklist.value = autoMatchPicklist.value.replace('Match','Create');;
+														}
+
+														if (!ele.checked) {
+															// Uncheck and disable other objects if customer or vendor was unchecked.
+															if (custOrVend === OBJ_CUST) {
+																// uncheck and disable Sales Orders, RMA, AR, Suite Billing, and Customer Deposits
+																updateObjectCheckboxes(subsId, 'SalesOrder',false,true);
+																updateObjectCheckboxes(subsId, 'ReturnAuthorization',false,true);
+																updateObjectCheckboxes(subsId, 'Invoice',false,true);
+																updateObjectCheckboxes(subsId, 'CustomerDeposit',false,true);
+// TODO: Add when SuiteBilling is subsidary specific			updateObjectCheckboxes(subsId, 'Subscription',false,true);
+															} else if (custOrVend === OBJ_VEND) {
+																// uncheck and disable POs & AP
+																updateObjectCheckboxes(subsId, 'PurchaseOrder',false,true);
+																updateObjectCheckboxes(subsId, 'VendorBill',false,true);
+															}
+														} else {
+															// Re-enable but leave the box unchecked when customer or vendor is turned back on
+															if (custOrVend === OBJ_CUST) {
+																// re-enable Sales Orders, RMA, AR, and Suite Billing
+																updateObjectCheckboxes(subsId, 'SalesOrder',false,false);
+																updateObjectCheckboxes(subsId, 'ReturnAuthorization',false,false);
+																updateObjectCheckboxes(subsId, 'Invoice',false,false);
+																updateObjectCheckboxes(subsId, 'CustomerDeposit',false,false);
+// TODO: Add when SuiteBilling is subsidary specific			updateObjectCheckboxes(subsId, 'Subscription',false,false);
+															} else if (custOrVend === OBJ_VEND) {
+																// re-enable POs & AP
+																updateObjectCheckboxes(subsId, 'PurchaseOrder',false,false);
+																updateObjectCheckboxes(subsId, 'VendorBill',false,false);
+															}
+															autoMatchOnchange(ele,false);
+														}
+													}
+													if (!ele.checked) {
+														// if the object is unchecked then see if all object level checkboxes are unchecked.
+														// if so, uncheck the subsidiary level checkbox
+														const subLevelCheckBoxes = Array.from(document.querySelectorAll('input[data-id^="' + subsId + '-"]'));
+														const allUnchecked = subLevelCheckBoxes.every((checkbox) => {
+															const objName = getObjectName(checkbox.dataset.id);
+															if (objName === 'Level' || objName === 'Org') {
+																return true;
+															}
+															return !checkbox.checked;
+														});
+														if (allUnchecked) {
+															const subsCheckbox = document.querySelector(
+																'input[data-id="' + subsId + '-Level-Checkbox"]'
+															);
+															subsCheckbox.checked = false;
+															toggleSubsidarySpecificFields(subsCheckbox);
+														}
+													}
+												}
+
+												// When Auto-Match picklist is changed then update the Auto-Create picklist
+												function autoMatchOnchange(ele, updateAutoCreateValue) {
+													const elementId = ele.dataset.id;
+													const subsId = getSubsidiaryId(elementId);
+													//Get the Auto-Match picklist
+													const autoMatchPicklist = document.querySelector(
+														'[data-id="' + subsId + '-AutoMatch-Picklist"]'
+													);
+													//Get the Auto-Create picklist
+													const autoCreatPicklist = document.querySelector(
+														'[data-id="' + subsId + '-AutoCreate-Picklist"]'
+													);
+
+													// Get selected value from Auto-Match picklist
+													const autoMatchVal = autoMatchPicklist.value;
+
+													// show/hide the auto-create option based on the auto-match value
+													if (autoMatchVal.includes(PL_VAL_ACT_COMP)) {
+														autoCreatPicklist.options[1].style.display = 'block'; // Active Companies
+														autoCreatPicklist.options[2].style.display = 'none'; // All Companies
+														autoCreatPicklist.options[3].style.display = 'block'; // Only Active Customers
+														autoCreatPicklist.options[4].style.display = 'none'; // Only Customers
+														autoCreatPicklist.options[5].style.display = 'block'; // Only Active Vendors
+														autoCreatPicklist.options[6].style.display = 'none'; // Only Vendors
+													} else if (autoMatchVal.includes(PL_VAL_ALL_COMP)) {
+														autoCreatPicklist.options[1].style.display = 'block'; // Active Companies
+														autoCreatPicklist.options[2].style.display = 'block'; // All Companies
+														autoCreatPicklist.options[3].style.display = 'block'; // Only Active Customers
+														autoCreatPicklist.options[4].style.display = 'block'; // Only Customers
+														autoCreatPicklist.options[5].style.display = 'block'; // Only Active Vendors
+														autoCreatPicklist.options[6].style.display = 'block'; // Only Vendors
+													} else if (autoMatchVal.includes(PL_VAL_ACT_CUST)) {
+														autoCreatPicklist.options[1].style.display = 'none'; // Active Companies
+														autoCreatPicklist.options[2].style.display = 'none'; // All Companies
+														autoCreatPicklist.options[3].style.display = 'block'; // Only Active Customers
+														autoCreatPicklist.options[4].style.display = 'none'; // Only Customers
+														autoCreatPicklist.options[5].style.display = 'none'; // Only Active Vendors
+														autoCreatPicklist.options[6].style.display = 'none'; // Only Vendors
+													} else if (autoMatchVal.includes(PL_VAL_CUST)) {
+														autoCreatPicklist.options[1].style.display = 'none'; // Active Companies
+														autoCreatPicklist.options[2].style.display = 'none'; // All Companies
+														autoCreatPicklist.options[3].style.display = 'block'; // Only Active Customers
+														autoCreatPicklist.options[4].style.display = 'block'; // Only Customers
+														autoCreatPicklist.options[5].style.display = 'none'; // Only Active Vendors
+														autoCreatPicklist.options[6].style.display = 'none'; // Only Vendors
+													} else if (autoMatchVal.includes(PL_VAL_ACT_VEND)) {
+														autoCreatPicklist.options[1].style.display = 'none'; // Active Companies
+														autoCreatPicklist.options[2].style.display = 'none'; // All Companies
+														autoCreatPicklist.options[3].style.display = 'none'; // Only Active Customers
+														autoCreatPicklist.options[4].style.display = 'none'; // Only Customers
+														autoCreatPicklist.options[5].style.display = 'block'; // Only Active Vendors
+														autoCreatPicklist.options[6].style.display = 'none'; // Only Vendors
+													} else if (autoMatchVal.includes(PL_VAL_VEND)) {
+														autoCreatPicklist.options[1].style.display = 'none'; // Active Companies
+														autoCreatPicklist.options[2].style.display = 'none'; // All Companies
+														autoCreatPicklist.options[3].style.display = 'none'; // Only Active Customers
+														autoCreatPicklist.options[4].style.display = 'none'; // Only Customers
+														autoCreatPicklist.options[5].style.display = 'block'; // Only Active Vendors
+														autoCreatPicklist.options[6].style.display = 'block'; // Only Vendors
+													}
+													else if (autoMatchVal.includes(PL_VAL_DNM)) {
+														autoCreatPicklist.options[1].style.display = 'none'; // Active Companies
+														autoCreatPicklist.options[2].style.display = 'none'; // All Companies
+														autoCreatPicklist.options[3].style.display = 'none'; // Only Active Customers
+														autoCreatPicklist.options[4].style.display = 'none'; // Only Customers
+														autoCreatPicklist.options[5].style.display = 'none'; // Only Active Vendors
+														autoCreatPicklist.options[6].style.display = 'none'; // Only Vendors
+													}
+
+													// Change the autoCreate value to the autoMatch value
+													// but not during the page load process as that could be different.
+													if (updateAutoCreateValue === true) {
+														autoCreatPicklist.value = autoMatchVal.replace('Match','Create');;
+													}
+												}
+
+												// We have control over the ids so know the Object will be the 2nd part of the elementId
+												function getObjectName(elementId) {
+													const elementIdParts = elementId.split('-');
+													return elementId.split('-')[1];
+												}
+
+												// We have control over the ids so know the Subsidiary will be the first part of the elementId
+												function getSubsidiaryId(elementId) {
+													return elementId.split('-')[0];
+												}
+
+												function updateObjectCheckboxes(subsId, objName, isChecked, isDisabled) {
+													const elementToUpdate = document.querySelector('[data-id="' + subsId + '-' + objName + '-sync"]');
+													elementToUpdate.checked = isChecked;
+													enableDisableObjectCheckboxes(subsId, objName, isDisabled);
+												}
+
+												function enableDisableObjectCheckboxes(subsId, objName, isDisabled) {
+													const elementToUpdate = document.querySelector('[data-id="' + subsId + '-' + objName + '-sync"]');
+													if (isDisabled){
+														// Disable the checkbox if true
+														elementToUpdate.disabled = isDisabled;
+													} else {
+														// Only re-enable if the org level is also checked
+														const orgLevelCheckBox = Array.from(
+															document.querySelectorAll('input[data-id="Org-' + objName + '-sync"]')
+														);
+														if (!orgLevelCheckBox.disabled && !initNsObjectSyncRunning){
+															elementToUpdate.disabled = isDisabled;
+														}
+													}
+												}
+
+												// This sets the Picklist and checkbox values for a specific subsidiary when the page is loaded
+												// It is similar to syncSpecificObjects but different enough that I didn't want to mess with the existing "click" actions.
+												function toggleSubsidaryFieldsOnInitialLoad(subLevelCheckbox) {
+													// If the checkbox is unchecked then uncheck everything.
+													if (!subLevelCheckbox.checked){
+														toggleSubsidarySpecificFields(subLevelCheckbox);
+														return;
+													}
+													const subsId = getSubsidiaryId(subLevelCheckbox.dataset.id);
+
+													// Query the Subsidiary level Customer checkbox and set the correct state
+													// for the Auto-Match and Auto-Create picklists & object level checkboxes
+													const custCheckBox = document.querySelector('[data-id="' + subsId + '-Customer-sync"]');
+													if (custCheckBox.checked){
+														// If checked then enable the other child checkboxes.
+														// Setting checkbox value is handled elsewhere
+														enableDisableObjectCheckboxes(subsId, 'SalesOrder',false);
+														enableDisableObjectCheckboxes(subsId, 'ReturnAuthorization',false);
+														enableDisableObjectCheckboxes(subsId, 'Invoice',false);
+														enableDisableObjectCheckboxes(subsId, 'CustomerDeposit',false);
+// TODO: Add when SuiteBilling is subsidary specific	enableDisableObjectCheckboxes(subsId, 'Subscription',false);
+													} else {
+														// If unchecked then disable the other child checkboxes.
+														enableDisableObjectCheckboxes(subsId, 'SalesOrder',true);
+														enableDisableObjectCheckboxes(subsId, 'ReturnAuthorization',true);
+														enableDisableObjectCheckboxes(subsId, 'Invoice',true);
+														enableDisableObjectCheckboxes(subsId, 'CustomerDeposit',true);
+// TODO: Add when SuiteBilling is subsidary specific	enableDisableObjectCheckboxes(subsId, 'Subscription',true);
+													}
+
+													// Query the Subsidiary level Vendor checkbox and set the correct state
+													// for the Auto-Match and Auto-Create picklists & object level checkboxes
+													const vendCheckBox = document.querySelector('[data-id="' + subsId + '-Vendor-sync"]');
+													if (vendCheckBox.checked){
+														// If checked then enable the other child checkboxes.
+														// Setting checkbox value is handled elsewhere
+														enableDisableObjectCheckboxes(subsId, 'PurchaseOrder',false);
+														enableDisableObjectCheckboxes(subsId, 'VendorBill',false);
+													} else {
+														// If unchecked then disable the other child checkboxes.
+														enableDisableObjectCheckboxes(subsId, 'PurchaseOrder',true);
+														enableDisableObjectCheckboxes(subsId, 'VendorBill',true);
+													}
+
+													// If neither are checked then disable the AutoMatch & AutoCreate picklists
+													if (!custCheckBox.checked && !vendCheckBox.checked){
+														disableAutoMatchAutoCreatePicklists(subsId);
+													} else {
+														// update the Customer AutoMatch & AutoCreate picklists
+														handleCustomerVendorPickListChanges(
+															!custCheckBox.checked,
+															OBJ_CUST,
+															subsId + '-AutoMatch-Picklist'
+														);
+														handleCustomerVendorPickListChanges(
+															!custCheckBox.checked,
+															OBJ_CUST,
+															subsId + '-AutoCreate-Picklist'
+														);
+
+														// update the Vendor AutoMatch & AutoCreate picklists
+														handleCustomerVendorPickListChanges(
+															!vendCheckBox.checked,
+															OBJ_VEND,
+															subsId + '-AutoMatch-Picklist'
+														);
+														handleCustomerVendorPickListChanges(
+															!vendCheckBox.checked,
+															OBJ_VEND,
+															subsId + '-AutoCreate-Picklist'
+														);
+													}
+
+													// Query all the Auto-Match picklists and set the Auto-Create picklist values correctly
+													const autoMatchPicklist = Array.from(
+														document.querySelectorAll('select[data-id$="AutoMatch-Picklist"]')
+													);
+													autoMatchPicklist.forEach((pickList) => {
+														const autoMatchPicklist = document.querySelector('[data-id="' + pickList.dataset.id + '"]');
+														autoMatchOnchange(autoMatchPicklist,false);
+													});
+												}
+
+												function disableAutoMatchAutoCreatePicklists(subsId) {
+													const autoMatchPicklist = document.querySelector('[data-id="' + subsId + '-AutoMatch-Picklist"]');
+
+													autoMatchPicklist.options[3].style.display = 'none'; // Only Active Customers
+													autoMatchPicklist.options[4].style.display = 'none'; // Only Customers
+													autoMatchPicklist.options[5].style.display = 'none'; // Only Active Vendors
+													autoMatchPicklist.options[6].style.display = 'none'; // Only Vendors
+													autoMatchPicklist.disabled = true;
+													autoMatchPicklist.value = '';
+
+													const autoCreatPicklist = document.querySelector('[data-id="' + subsId + '-AutoCreate-Picklist"]');
+													autoCreatPicklist.options[3].style.display = 'none'; // Only Active Customers
+													autoCreatPicklist.options[4].style.display = 'none'; // Only Customers
+													autoCreatPicklist.options[5].style.display = 'none'; // Only Active Vendors
+													autoCreatPicklist.options[6].style.display = 'none'; // Only Vendors
+													autoCreatPicklist.disabled = true;
+													autoCreatPicklist.value = '';
+												}
+											</script>
+										</div>
+										<apex:outputPanel layout="block" styleClass="slds-modal__footer">
+											<div align="center">
+												<apex:commandButton id="subsidiaryCancelBtn"
+													styleClass="slds-button slds-button_neutral modal-button slds-m-left_small executeOnEscape"
+													value="Cancel"
+													onclick="showHideModal('setupNSObjectCofigModal','NSObjectCofigModalBackdrop');"
+													reRender="nothing"
+												>
+												</apex:commandButton>
+												<apex:commandButton id="updateRecordsCount"
+													styleClass="slds-button slds-button_neutral modal-button"
+													value="Update Record Counts"
+													reRender="orgWideObjectStatus"
+													status="action-status"
+													oncomplete="updateItemsCount();"
+												>
+												</apex:commandButton>
+												<apex:commandButton id="subsidiarySaveBtn"
+													disabled="{!!$ObjectType.breadwinner_ns__BW_NetSuite_Object__c.Createable}"
+													action="{!updateNetSuiteObjectsSyncSettings}"
+													styleClass="slds-button slds-button_brand modal-button"
+													value="Save"
+													onclick="showHideModal('setupNSObjectCofigModal','NSObjectCofigModalBackdrop');"
+													reRender="orgWideObjectStatus,setup-content,connectiontabcontent"
+													status="action-status"
+												>
+												</apex:commandButton>
+											</div>
+										</apex:outputPanel>
+
+										<apex:actionFunction name="updateItemsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="updateRecordsCount"
+											status="count-action-status"
+											oncomplete="updateCustomersCount();"
+										>
+											<apex:param name="object" value="item" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateCustomersCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateVendorsCount();"
+										>
+											<apex:param name="object" value="customer" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateVendorsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateContactsCount();"
+										>
+											<apex:param name="object" value="vendor" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateContactsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateEstimatesCount();"
+										>
+											<apex:param name="object" value="contact" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateEstimatesCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateSalesOrdersCount();"
+										>
+											<apex:param name="object" value="estimate" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateSalesOrdersCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updatePOsCount();"
+										>
+											<apex:param name="object" value="salesOrder" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updatePOsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateVendorBillsCount();"
+										>
+											<apex:param name="object" value="purchaseOrder" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateVendorBillsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateVendorPaymentsCount();"
+										>
+											<apex:param name="object" value="vendorBill" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateVendorPaymentsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateVendorCreditsCount();"
+										>
+											<apex:param name="object" value="vendorPayment" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateVendorCreditsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateCashSalesCount();"
+										>
+											<apex:param name="object" value="vendorCredit" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateCashSalesCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateInvoicesCount();"
+										>
+											<apex:param name="object" value="cashSale" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateInvoicesCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateRMAsCount();"
+										>
+											<apex:param name="object" value="invoice" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateRMAsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateCreditMemoSCount();"
+										>
+											<apex:param name="object" value="returnAuthorization" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateCreditMemoSCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateCashRefundsCount();"
+										>
+											<apex:param name="object" value="creditMemo" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateCashRefundsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateChecksCount();"
+										>
+											<apex:param name="object" value="cashRefund" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateChecksCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateCustomerDepositsCount();"
+										>
+											<apex:param name="object" value="check" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateCustomerDepositsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateDepositApplicationsCount();"
+										>
+											<apex:param name="object" value="customerDeposit" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateDepositApplicationsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateCustomerPaymentsCount();"
+										>
+											<apex:param name="object" value="depositApplication" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateCustomerPaymentsCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="updateItemfulfillmentCount();"
+										>
+											<apex:param name="object" value="customerPayment" />
+										</apex:actionFunction>
+										<apex:actionFunction name="updateItemfulfillmentCount"
+											action="{!updateTotalRecordsCount}"
+											reRender="nothing"
+											status="count-action-status"
+											oncomplete="disableRecordCountsBtn();"
+										>
+											<apex:param name="object" value="itemFulfillment" />
+										</apex:actionFunction>
+									</div>
+								</div>
+								<div class="slds-backdrop" id="NSObjectCofigModalBackdrop"></div>
+							</apex:outputPanel>
+							<!-- NetSuite Object Sync Modal Ends -->
+						</apex:form>
+
+						<apex:outputPanel id="dynamicPage">
+							<apex:include pageName="{!dynamicPageName}" id="menuComponents" />
+						</apex:outputPanel>
+
+						<!-- contact support moved to setup menu container page -->
+
+						<!-- Knowledge Base moved to setup menu container page -->
+
+						<!-- Billing Section moved to setup menu container page -->
+
+						<!-- Troubleshoot Section moved to setup menu container page -->
+
+						<!-- Import Progress Section moved to setup menu container page -->
+
+						<!-- Status Logs Section moved to setup menu container page -->
+
+						<!-- General Configuration -->
+
+						<!-- Company Configuration -->
+
+						<!-- Primary Contact Configuration -->
+
+						<!-- PDF Configuration -->
+
+						<!-- Subsidiary -->
+
+						<!-- NetSuite Object -->
+
+						<!-- NetSuite Field -->
+
+						<!-- Employee Sync -->
+
+						<!-- Employee Match -->
+
+						<!-- Currency Section -->
+
+						<!-- Sync Settings Section -->
+
+						<!-- Product Match Section -->
+
+						<!-- Expense Report Section -->
+
+						<!-- Expense Report Approval Section -->
+
+						<!-- Purchase Request Section -->
+
+						<!-- Approve Purchase Request Section -->
+
+						<!-- report buider -->
+
+						<!-- permission set -->
+
+						<!-- apex generator -->
+					</div>
+					<!--  Right Section Ends -->
+				</div>
+			</div>
+
+			<apex:outputPanel id="leftMenuMethods">
+				<script type="text/javascript">
+					function handleLeftMenuClick(element) {
+						if( element.id != 'Setup' && {!IF(isMenuContainerPageSet, 'false', 'true')}) {
+							loadDynamicPageAF(element.id);
+						} else {
+							setSelectedSubMenu(element.id);
+						}
+					}
+
+					function showTabAndRefresh(element) {
+						const initiatingElement = element ? element : document.getElementById('{!JSENCODE(selectedSubMenu)}');
+						const elementId = initiatingElement.id;
+						selectTab(initiatingElement);
+
+						switch(elementId) {
+							case 'Setup':
+								initializeApp();
+								break;
+							case 'GeneralConfig':
+								refreshGeneralConfigContent();
+								break;
+							case 'CompanyConfig':
+								refreshCompanyConfigContent();
+								break;
+							case 'PrimaryContactConfig':
+								refreshPrimaryContactConfigContent();
+								break;
+							case 'PDFsConfig':
+								refreshPDFsConfigContent();
+								break;
+							case 'Subsidiary':
+								initializeSubsidiaries();
+								break;
+							case 'Currency':
+								initializeCurrencies();
+								break;
+							case 'SyncSettings':
+								refreshSyncSettings();
+								break;
+							case 'ProductMatch':
+								performProductMatch('Products');
+								break;
+							case 'PriceBook':
+								performProductMatch('PriceBooks');
+								break;
+							case 'PriceBookEntry':
+								performProductMatch('PriceBookEntries');
+								break;
+							case 'NetSuiteObjects':
+								refreshNetSuiteObjectsContent();
+								break;
+							case 'CustomFields':
+								refreshCustomFieldsContent();
+								break;
+							case 'EmployeeMatch':
+								refreshEmpMatchData();
+								break;
+							case 'Troubleshooting':
+								refreshTSContent();
+								break;
+							case 'Progress':
+								checkImportProgress();
+								break;
+							case 'ApexGenerator':
+								loadApexGenerator();
+								break;
+							case 'ReportBuilder':
+								refreshReportBuilderSection();
+								break;
+							case 'ExpenseReport':
+								refreshExpenseReportContent();
+								break;
+							case 'ContactSupport':
+								loadIframesfun(
+									'Contact_SupportPage',
+									'{!JSENCODE(BW_SupportPortalURL)}?{!JSENCODE(contactSupportParameters)}'
+								);
+								break;
+							case 'KnowledgeBase':
+								loadIframesfun(
+									'Knowledge_BasePage',
+									'{!JSENCODE(BW_SupportArticleURL)}/support/home?embed=true'
+								);
+								break;
+							case 'Billing':
+								refreshBillingData();
+								break;
+							case 'cURLGenerator':
+								refreshCURLGenerator();
+								break;
+						}
+					}
+				</script>
+			</apex:outputPanel>
+		</body>
+		<script type="text/javascript">
+
+			const j$ = jQuery.noConflict();
+			j$(function(){
+				initializeApp();
+				addallstyles();
+				if(document.getElementsByTagName("title") && document.getElementsByTagName("title")[0]){
+					document.getElementsByTagName("title")[0].innerHTML="Breadwinner for NetSuite";
+				}
+				const x = window.matchMedia("(min-width: 480px)");
+				if(x.matches){
+					j$("#Setup").parent("li").addClass("slds-is-active");
+				}
+
+				// Creating Metadata Remote Site
+				createRemoteSiteMetadata();
+			});
+
+			// to avoid duplicate refreshing of the data on compoent load
+			// we will first check whether component exist
+			function refreshEmpMatchData(){
+				// let empVFCmpLoaded = j$("span[id*='employeeMatchVFCmp:mapInitDefaultActionScript']").length>0;
+				// if(empVFCmpLoaded){
+				//     console.log('empVFCmpLoaded:',empVFCmpLoaded);
+				//     initializeEmployeeMatchData();
+				// }
+				// else{
+				//     console.log('empVFCmpLoaded:',empVFCmpLoaded);
+				//     refreshEmployeeMatchAF();
+				// }
+				refreshEmployeeMatchAF();
+			}
+
+			function message() {
+				j$(".infoM6, .infoM4, .infoM3, .infoM2, .infoS1").addClass("slds-notify slds-notify_alert slds-theme_inverse-text  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px","background-color":"rgba(84,105,141,.95)","border-color":"rgba(84,105,141,.95)"});
+				j$(".errorM6, .errorM4, .errorM3, .errorM2, .errorS1").addClass("slds-notify slds-notify_alert slds-theme_error  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css({"font-weight":"500","line-height":"1.4","word-spacing":"1px","display":"block","border-radius":"5px"});
+				j$(".warningM6, .warningM4, .warningM3, .warningM2, .warningS1").addClass("slds-notify slds-notify_alert slds-theme_warning  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+				j$(".confirmM6, .confirmM4, .confirmM3, .confirmM2, .confirmS1").addClass("slds-notify slds-notify_alert slds-theme_success slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+
+				j$("div .messageText h4").css( "color", "white" );
+				j$("div[class*='warning'] div.messageText h4").css( "color", "black" );
+				j$("table.messageTable td").css({"color" : "white"});
+				j$("div[class*='warning'] table.messageTable td").css( "color", "black" );
+			}
+
+			function selectTab(elmnt){
+				j$("#Breadwinner-Left-Menu ul").children(".slds-is-active").removeClass("slds-is-active");
+
+				j$(elmnt).parent("li").addClass("slds-is-active");
+
+				j$("#breadwinner-right-content div.slds-show").addClass("slds-hide");
+				j$("#breadwinner-right-content div.slds-show").removeClass("slds-show");
+
+				let elementId = elmnt.id;
+
+				if(elementId == 'PriceBook' || elementId == 'PriceBookEntry') {
+					// This needs to be done because these sections are contained in single div with id = ProductMatch.
+					elementId = 'ProductMatch';
+				}
+
+				j$("div[aria-labelledby='"+elementId+"']").removeClass("slds-hide");
+				j$("div[aria-labelledby='"+elementId+"']").addClass("slds-show");
+
+				if(elementId == "Permissions"){
+					permissionSetSelectTab(j$("div[aria-labelledby='"+elementId+"']").children("div").children("ul").children("li").children("a[aria-controls='overview']"));
+					queryPSAssignedUsers('Overview');
+				}
+				if(elementId == "Troubleshooting"){
+				j$("#TroubleshootingOverviewContentSection__item").parent().parent().find('.slds-tabs--default__link,.slds-tabs--scoped__link').attr('tabindex','-1');
+				j$("#TroubleshootingOverviewContentSection__item").attr('tabindex','0');
+				j$("#TroubleshootingOverviewContentSection__item").parent().addClass('slds-active').siblings().removeClass('slds-active');
+				j$("#TroubleshootingOverviewContentSection__item").parent().parent().parent().find('.'+j$("#TroubleshootingOverviewContentSection__item").parent().parent().parent().find('.slds-tabs--default__content,.slds-tabs--scoped__content')[0].classList[0]).removeClass('slds-show').addClass('slds-hide');
+				j$("#TroubleshootingOverviewContentSection__item").parent().parent().parent().find('#'+j$("#TroubleshootingOverviewContentSection__item").attr('aria-controls')).removeClass('slds-hide').addClass('slds-show');
+				}
+
+				//for mobile view
+				j$("#Menu").addClass("slds-show_small");
+				j$("#breadwinner-right-content").removeClass("slds-show_small");
+				j$(".rowsIcon").addClass("slds-hide_small").removeClass("slds-hide");
+				j$(".slds-path").show();
+			}
+
+			function showHideNestedMenu(elmnt){
+				if(j$(elmnt).parent("li").hasClass("slds-section slds-is-open")){
+					j$(elmnt).parent("li").removeClass("slds-section slds-is-open slds-m-vertical_none");
+					j$(elmnt).parent("li").children("ul.slds-is-nested.slds-show").removeClass("slds-show").addClass("slds-hide");
+				}
+				else{
+					j$(elmnt).parent("li").addClass("slds-section slds-is-open slds-m-vertical_none");
+					j$(elmnt).parent("li").children("ul.slds-is-nested").removeClass("slds-hide").addClass("slds-show");
+				}
+			}
+
+			function loadIframesfun(iframeSectionId,iframeURL){
+				showspinner();
+				// to clear div before we insert iframe
+				j$("#"+iframeSectionId).empty();
+
+				// to create iframe element
+				const para = document.createElement("iframe");
+				para.setAttribute("src", iframeURL);
+				para.setAttribute("height","650px");
+				para.setAttribute("width","100%");
+				para.setAttribute("frameborder","0");
+				para.setAttribute("onload","hidespinner();");
+
+				// injecting iframe to referenced div
+				document.getElementById(iframeSectionId).appendChild(para);
+			}
+
+			function OpenContactSupportTab(){
+				const contactSupportLink = document.getElementById('ContactSupport');
+				contactSupportLink.click();
+			}
+
+			function showspinner(){
+				j$('#spinnerId').addClass('slds-show').removeClass('slds-hide');
+			}
+
+			function hidespinner(){
+				j$('#spinnerId').addClass('slds-hide').removeClass('slds-show');
+			}
+
+			function displayMenu(){
+				j$("#Menu").css({"z-index":"1"});
+				j$("#Menu").removeClass("slds-show_small").addClass("slds-is-fixed").addClass("slds-scrollable_y");
+				j$("#Menu").show();
+
+				j$(".rowsIcon").removeClass("slds-hide_small").addClass("slds-hide");
+				j$("#close").addClass("slds-hide_small").removeClass("slds-hide");
+				j$("#container").removeClass("slds-wrap");
+				j$(".slds-path").hide();
+			}
+
+			function closeMenu(){
+				j$("#Menu").hide();
+				j$(".rowsIcon").addClass("slds-hide_small").removeClass("slds-hide");
+				j$(".slds-path").show();
+			}
+
+			function showHideChildSubsidiaries(elmnt){
+				const sectiondiv = j$(elmnt).closest('.slds-section').attr("id");
+				const imagediv = j$(elmnt).children("img").attr("id");
+				if(j$("#"+ sectiondiv).hasClass("slds-is-open")){
+					j$("#"+ sectiondiv + ","+"#"+ sectiondiv +" .slds-section").removeClass("slds-is-open");
+					j$("#"+ sectiondiv+ " .slds-button img").attr("src","{!URLFOR($Resource.Breadwinner_for_NetSuite, 'Breadwinner/Images/chevronright.png')}");
+					j$("#"+ sectiondiv+ " .slds-is-nested").addClass("slds-hide").removeClass("slds-show");
+				}
+				else{
+					j$("#"+ sectiondiv).addClass("slds-is-open");
+					j$("#"+ sectiondiv).children(".slds-is-nested").addClass("slds-show").removeClass("slds-hide");
+					j$("#"+ imagediv).attr("src","{!URLFOR($Resource.Breadwinner_for_NetSuite, 'Breadwinner/Images/chevrondown.png')}");
+				}
+			}
+
+			j$(document).keydown (
+				function(event){
+					const code = event.keyCode || event.which;
+					if (code == 13) {
+						event.preventDefault();
+					}
+					else if (code == 27) {
+						j$('.slds-modal.slds-fade-in-open').find('.executeOnEscape').click();
+					}
+				});
+
+			/* Product Match Script Stars here */
+			function addallstyles(){
+				j$(".lookupInput a").removeClass("slds-input");
+				j$('.msgIcon').hide();
+				message();
+			}
+
+			function scrollWinToTop(){
+				window.scrollTo(0,0);
+			}
+
+			/* Product Match Script Ends here */
+			function createRemoteSiteMetadata(){
+				try{
+					let binding = new XMLHttpRequest();
+					const host = "{!LEFT($Api.Enterprise_Server_URL_330, FIND('/services',$Api.Enterprise_Server_URL_330))}";
+					const request =
+						'<?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><env:Header><SessionHeader xmlns="http://soap.sforce.com/2006/04/metadata"><sessionId>{!$Api.Session_ID}</sessionId></SessionHeader></env:Header><env:Body><upsertMetadata xmlns="http://soap.sforce.com/2006/04/metadata"><metadata xsi:type="RemoteSiteSetting"><fullName>Breadwinner_NetSuite_MyServer</fullName><description>Required to use Metadata API, created by Breadwinner</description><disableProtocolSecurity>false</disableProtocolSecurity><isActive>true</isActive><url>'+host+'</url></metadata></upsertMetadata></env:Body></env:Envelope>';
+
+					binding.open('POST', host+'services/Soap/m/33.0');
+					binding.setRequestHeader('SOAPAction','""');
+					binding.setRequestHeader('Content-Type', 'text/xml');
+					binding.onreadystatechange =
+						function() {
+						if(this.readyState==4) {
+							const parser = new DOMParser();
+							const doc  = parser.parseFromString(this.response, 'application/xml');
+							const errors = doc.getElementsByTagName('errors');
+							console.log(errors);
+						}
+					}
+					console.log({!JSENCODE(IF(isAdministrator,'true','false'))});
+					if({!JSENCODE(IF(isAdministrator,'true','false'))}==true) {
+						binding.send(request);
+					}
+				}
+				catch(error){
+					console.log(error);
+				}
+			}
+			function initSelect2(){
+				j$('.select2').select2();
+			}
+		</script>
+	</html>
+</apex:page>

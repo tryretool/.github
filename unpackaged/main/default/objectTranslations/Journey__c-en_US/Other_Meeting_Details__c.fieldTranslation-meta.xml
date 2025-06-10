@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Text field used for recording additional context if the Journey Subcategory is classified as &apos;Other Meeting&apos; --></help>
+        <label><!-- Other Meeting Details --></label>
+        <name>Other_Meeting_Details__c</name>
+    </CustomFieldTranslation>

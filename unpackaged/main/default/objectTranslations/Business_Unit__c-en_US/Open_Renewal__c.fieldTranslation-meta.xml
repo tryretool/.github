@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Open Renewal --></label>
+        <lookupFilter>
+            <errorMessage><!-- Opportunity not related to this BU --></errorMessage>
+        </lookupFilter>
+        <name>Open_Renewal__c</name>
+        <relationshipLabel><!-- Business Units (Open Renewal) --></relationshipLabel>
+    </CustomFieldTranslation>

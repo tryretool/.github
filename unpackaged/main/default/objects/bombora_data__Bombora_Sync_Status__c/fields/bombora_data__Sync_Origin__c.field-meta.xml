@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bombora_data__Sync_Origin__c</fullName>
+    <deprecated>false</deprecated>
+    <description>How the sync operation was triggered.</description>
+    <externalId>false</externalId>
+    <label>Sync Origin</label>
+    <length>60</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

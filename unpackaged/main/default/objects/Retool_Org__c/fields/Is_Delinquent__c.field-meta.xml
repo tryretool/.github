@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Delinquent__c</fullName>
+    <formula>CASE(Stripe_State__c,
+ &quot;unpaid&quot;,1,
+ &quot;incomplete&quot;,1,
+ &quot;incomplete_expired&quot;,1,
+ 0
+) == 1</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True if the Stripe subscription state is unpaid, incomplete or incomplete_expired</inlineHelpText>
+    <label>Is Delinquent?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

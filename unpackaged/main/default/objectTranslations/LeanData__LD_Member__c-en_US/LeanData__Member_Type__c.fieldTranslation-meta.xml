@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Member Type --></label>
+        <name>LeanData__Member_Type__c</name>
+        <picklistValues>
+            <masterLabel>Queue__c</masterLabel>
+            <translation><!-- Queue__c --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User__c</masterLabel>
+            <translation><!-- User__c --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

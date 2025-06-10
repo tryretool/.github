@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Marketplace_Buyer_Contract_Mismatch__c</fullName>
+    <formula>ISPICKVAL(Role,&quot;Marketplace Buyer&quot;) &amp;&amp;
+Opportunity.Contract.Marketplace_Terms_Buyer_Email__c != Contact.Email</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Marketplace Buyer: Contract Mismatch?</label>
+    <type>Checkbox</type>
+</CustomField>

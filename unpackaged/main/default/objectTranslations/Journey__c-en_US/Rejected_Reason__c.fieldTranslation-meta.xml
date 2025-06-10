@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Rejected Reason --></label>
+        <name>Rejected_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Already in sales conversation</masterLabel>
+            <translation><!-- Already in sales conversation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bad Data - Junk Data</masterLabel>
+            <translation><!-- Bad Data - Junk Data --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bad Data - Moved to correct account</masterLabel>
+            <translation><!-- Bad Data - Moved to correct account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bad Data - Not worthwhile target company</masterLabel>
+            <translation><!-- Bad Data - Not worthwhile target company --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bad Data - Not worthwhile target individual</masterLabel>
+            <translation><!-- Bad Data - Not worthwhile target individual --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor</masterLabel>
+            <translation><!-- Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consultancy/Agency</masterLabel>
+            <translation><!-- Consultancy/Agency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal - Country Restriction</masterLabel>
+            <translation><!-- Legal - Country Restriction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal - Entity Restriction</masterLabel>
+            <translation><!-- Legal - Entity Restriction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opted Out</masterLabel>
+            <translation><!-- Opted Out --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retool Internal</masterLabel>
+            <translation><!-- Retool Internal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Student</masterLabel>
+            <translation><!-- Student --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

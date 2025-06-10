@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Comparator --></label>
+        <name>legaldeskapp__Comparator__c</name>
+        <picklistValues>
+            <masterLabel>!==</masterLabel>
+            <translation><!-- !== --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&lt;</masterLabel>
+            <translation><!-- &lt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&lt;=</masterLabel>
+            <translation><!-- &lt;= --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>===</masterLabel>
+            <translation><!-- === --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&gt;</masterLabel>
+            <translation><!-- &gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&gt;=</masterLabel>
+            <translation><!-- &gt;= --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>after</masterLabel>
+            <translation><!-- after --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>before</masterLabel>
+            <translation><!-- before --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>between</masterLabel>
+            <translation><!-- between --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>includes</masterLabel>
+            <translation><!-- includes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>includesNot</masterLabel>
+            <translation><!-- includesNot --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>is</masterLabel>
+            <translation><!-- is --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>isNot</masterLabel>
+            <translation><!-- isNot --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

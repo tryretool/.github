@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>AWS Marketplace</fullName>
+        <default>false</default>
+        <label>AWS Marketplace</label>
+    </customValue>
+    <customValue>
+        <fullName>Google Could Marketplace</fullName>
+        <default>false</default>
+        <label>Google Could Marketplace</label>
+    </customValue>
+    <customValue>
+        <fullName>Azure Marketplace</fullName>
+        <default>false</default>
+        <label>Azure Marketplace</label>
+    </customValue>
+    <masterLabel>Partner Marketplace Names</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

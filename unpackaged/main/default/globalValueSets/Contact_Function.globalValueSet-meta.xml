@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Sales Operations</fullName>
+        <default>false</default>
+        <label>Sales Operations</label>
+    </customValue>
+    <customValue>
+        <fullName>Marketing Operations</fullName>
+        <default>false</default>
+        <label>Marketing Operations</label>
+    </customValue>
+    <customValue>
+        <fullName>Information Technology</fullName>
+        <default>false</default>
+        <label>Information Technology</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales/Business Development</fullName>
+        <default>false</default>
+        <label>Sales/Business Development</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales</fullName>
+        <default>false</default>
+        <label>Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>Marketing</fullName>
+        <default>false</default>
+        <label>Marketing</label>
+    </customValue>
+    <customValue>
+        <fullName>Finance</fullName>
+        <default>false</default>
+        <label>Finance</label>
+    </customValue>
+    <customValue>
+        <fullName>Executive</fullName>
+        <default>false</default>
+        <label>Executive</label>
+    </customValue>
+    <customValue>
+        <fullName>Human Resources</fullName>
+        <default>false</default>
+        <label>Human Resources</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer Success</fullName>
+        <default>false</default>
+        <label>Customer Success</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer Support</fullName>
+        <default>false</default>
+        <label>Customer Support</label>
+    </customValue>
+    <customValue>
+        <fullName>Product</fullName>
+        <default>false</default>
+        <label>Product</label>
+    </customValue>
+    <customValue>
+        <fullName>Engineering</fullName>
+        <default>false</default>
+        <label>Engineering</label>
+    </customValue>
+    <customValue>
+        <fullName>Design</fullName>
+        <default>false</default>
+        <label>Design</label>
+    </customValue>
+    <customValue>
+        <fullName>Operations</fullName>
+        <default>false</default>
+        <label>Operations</label>
+    </customValue>
+    <customValue>
+        <fullName>Data</fullName>
+        <default>false</default>
+        <label>Data</label>
+    </customValue>
+    <customValue>
+        <fullName>HR</fullName>
+        <default>false</default>
+        <label>HR</label>
+    </customValue>
+    <customValue>
+        <fullName>Strategy and Operations</fullName>
+        <default>false</default>
+        <label>Strategy and Operations</label>
+    </customValue>
+    <customValue>
+        <fullName>Support</fullName>
+        <default>false</default>
+        <label>Support</label>
+    </customValue>
+    <customValue>
+        <fullName>Technical Leadership</fullName>
+        <default>false</default>
+        <label>Technical Leadership</label>
+    </customValue>
+    <customValue>
+        <fullName>Post Sales Engineering</fullName>
+        <default>false</default>
+        <label>Post Sales Engineering</label>
+    </customValue>
+    <customValue>
+        <fullName>Legal and Compliance</fullName>
+        <default>false</default>
+        <label>Legal and Compliance</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <masterLabel>Contact: Function</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

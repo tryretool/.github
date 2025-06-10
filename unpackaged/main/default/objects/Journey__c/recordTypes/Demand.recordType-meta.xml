@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Demand</fullName>
+    <active>true</active>
+    <label>Demand</label>
+    <picklistValues>
+        <picklist>Ended_Reason__c</picklist>
+        <values>
+            <fullName>Auto-Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bad Contact Info</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Converted Other Journey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Do Not Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email Objection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meeting Not Progressing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Passed to Docs%2FCommunity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Passed to Partnerships</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Passed to ProServ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Passed to Support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to Other Contact</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requested Later Follow-up</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Fast_Pass_Reason__c</picklist>
+        <values>
+            <fullName>Director%2B invited to meeting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engineering Manager%2B invited to meeting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instructed to by sales leadership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meeting booked by Director%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meeting booked by Engineering Manager%2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>First_Call_Run_By__c</picklist>
+        <values>
+            <fullName>AE only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDR and AE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDR only</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Journey_Subcategory__c</picklist>
+        <values>
+            <fullName>AE Re-Engagement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Champify</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact Engineering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contact Sales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Content</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Demo Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Demo Request %28Non-MQL%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Koala</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Live Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meeting Maker %28Incentivized Demo%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Journey</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Meeting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outbound Sequence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Action</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Signup</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospect Re-Engagement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regie%2Eai</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SDR Re-Engagement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Support Handoff</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webinar</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Meeting_Disposition__c</picklist>
+        <values>
+            <fullName>No Show</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Qualified - Authority</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Qualified - Budget</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Qualified - Need</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Qualified - Timing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pricing %26 Packaging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Limitation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qualified</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self Serve Meets Needs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unsure What To Pick</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Owner_Department__c</picklist>
+        <values>
+            <fullName>EPD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leadership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Success</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Support</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Owner_Level__c</picklist>
+        <values>
+            <fullName>Head</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lead</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Staff</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Owner_Region__c</picklist>
+        <values>
+            <fullName>AMER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>APAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMEA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XXXX</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Owner_Segment__c</picklist>
+        <values>
+            <fullName>ENT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MMK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STR</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Owner_Sourcing_Category__c</picklist>
+        <values>
+            <fullName>Customer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inbound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Outbound</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referral</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Owner_Subregion__c</picklist>
+        <values>
+            <fullName>ANZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>China</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DACH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eastern Europe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greater APAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Greater Africa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>India</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Japan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LATAM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>METNA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NAMER</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Northern Europe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Southeast Asia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Southern Europe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>UKI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Western Europe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XXXXX</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Owner_Subteam__c</picklist>
+        <values>
+            <fullName>ASE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BDR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DED</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DIG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EDU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ENT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ESC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GOV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GRW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IND</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LEG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MMK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SCL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SPO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>STR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>XXX</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Owner_Team__c</picklist>
+        <values>
+            <fullName>Account Executives</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Accounting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>All</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Business Operations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Community Support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Data</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enterprise Support Engineering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escalation Engineering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FP%26A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leadership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marketing Demand Gen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partnerships</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Marketing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Professional Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Revenue Enablement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Revenue Operations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Account Management</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Development</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Engineering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security Engineering</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical Account Management</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Owner_Territory__c</picklist>
+        <values>
+            <fullName>APAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EMEA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EUR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Global</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ROW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>US All</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>US East</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>US Late</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>US Remote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>US Verticals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>US West</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Qual_Budget__c</picklist>
+        <values>
+            <fullName>Expressed Budget</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Funded Company Budget</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Budget</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Company Budget</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Qual_Largest_Need_Identified__c</picklist>
+        <values>
+            <fullName>Business Initiative</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Centralized Governance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Developer Productivity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Economics of Software</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Good Software by Default</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scoped Use Case</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Qual_Next_Step__c</picklist>
+        <values>
+            <fullName>Additional Discovery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Build with them on SS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Demo</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Qual_Timeline__c</picklist>
+        <values>
+            <fullName>Latent Demand %2F Exploratory</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Urgent %28ASAP%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Within 3 Months</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Within 6 Months</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Within 9 Months</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Rejected_Reason__c</picklist>
+        <values>
+            <fullName>Already in sales conversation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bad Data - Junk Data</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bad Data - Moved to correct account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bad Data - Not worthwhile target company</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bad Data - Not worthwhile target individual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consultancy%2FAgency</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal - Country Restriction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal - Entity Restriction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Opted Out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retool Internal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Student</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Rest_For_Days__c</picklist>
+        <values>
+            <fullName>180</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>30</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>60</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>90</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Stage__c</picklist>
+        <values>
+            <fullName>Accepted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Approached</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Converted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ended</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Engaged</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Identified</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meeting Booked</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejected</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>DQed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Open</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stopped</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Won</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Paper_Process__c</fullName>
+    <description>&lt;a href=&quot;https://retoolconfluence.atlassian.net/wiki/spaces/SAL/pages/45842590/MEDDPICC+sales+methodology&quot; target=&quot;_blank&quot;&gt;Learn more about MEDDPICC&lt;/a&gt;</description>
+    <inlineHelpText>What are the steps/actions that are required to finalize the terms and signature of the contract?</inlineHelpText>
+    <label>[P] Paper Process</label>
+    <length>131072</length>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

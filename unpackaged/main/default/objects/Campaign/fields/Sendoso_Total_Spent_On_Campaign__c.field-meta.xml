@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sendoso_Total_Spent_On_Campaign__c</fullName>
+    <description>Total $ amount spent on Campaign through Sendoso.
+
+In System Use: None
+
+External Systems Utilization: Sendoso</description>
+    <inlineHelpText>Total $ amount spent on Campaign through Sendoso.</inlineHelpText>
+    <label>Sendoso: Total $ Spent On Campaign</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <securityClassification>Caution</securityClassification>
+    <type>Currency</type>
+</CustomField>

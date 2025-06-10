@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Critical_Event_Type__c</fullName>
+    <label>Critical Event Type</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>AE Outreach to Committed Customer</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>AE Outreach to Committed Customer</label>
+            </value>
+            <value>
+                <fullName>Champify</fullName>
+                <default>false</default>
+                <label>Champify</label>
+            </value>
+            <value>
+                <fullName>Cold AE Outbound</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cold AE Outbound</label>
+            </value>
+            <value>
+                <fullName>Cold SDR Outbound</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cold SDR Outbound</label>
+            </value>
+            <value>
+                <fullName>Content</fullName>
+                <default>false</default>
+                <label>Content</label>
+            </value>
+            <value>
+                <fullName>Demo Request</fullName>
+                <default>false</default>
+                <label>Demo Request</label>
+            </value>
+            <value>
+                <fullName>Event</fullName>
+                <default>false</default>
+                <label>Event</label>
+            </value>
+            <value>
+                <fullName>Gated Content</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Gated Content</label>
+            </value>
+            <value>
+                <fullName>Hosted Event</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Hosted Event</label>
+            </value>
+            <value>
+                <fullName>Intercom Chat</fullName>
+                <default>false</default>
+                <label>Intercom Chat</label>
+            </value>
+            <value>
+                <fullName>Koala</fullName>
+                <default>false</default>
+                <label>Koala</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Outbound Sequence</fullName>
+                <default>false</default>
+                <label>Outbound Sequence</label>
+            </value>
+            <value>
+                <fullName>Partner Lead</fullName>
+                <default>false</default>
+                <label>Partner Lead</label>
+            </value>
+            <value>
+                <fullName>Product Action</fullName>
+                <default>false</default>
+                <label>Product Action</label>
+            </value>
+            <value>
+                <fullName>Product Signup</fullName>
+                <default>false</default>
+                <label>Product Signup</label>
+            </value>
+            <value>
+                <fullName>Re-engagement</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Re-engagement</label>
+            </value>
+            <value>
+                <fullName>Re-engagment (Inbound)</fullName>
+                <default>false</default>
+                <label>Re-engagment (Inbound)</label>
+            </value>
+            <value>
+                <fullName>Re-engagment (Outbound)</fullName>
+                <default>false</default>
+                <label>Re-engagment (Outbound)</label>
+            </value>
+            <value>
+                <fullName>Referral</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Referral</label>
+            </value>
+            <value>
+                <fullName>SDR Outreach to Committed Customer</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>SDR Outreach to Committed Customer</label>
+            </value>
+            <value>
+                <fullName>Tradeshow</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Tradeshow</label>
+            </value>
+            <value>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+                <label>Unknown</label>
+            </value>
+            <value>
+                <fullName>Webinar</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Webinar</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

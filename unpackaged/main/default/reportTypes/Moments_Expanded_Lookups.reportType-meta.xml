@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Moment__c</baseObject>
+    <category>campaigns</category>
+    <deployed>true</deployed>
+    <description>Reporting on Moments with fields pulled in from related records</description>
+    <label>Moments (Expanded Lookups)</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account</displayNameOverride>
+            <field>Account__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Campaign</displayNameOverride>
+            <field>Campaign__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Campaign Member ID</displayNameOverride>
+            <field>Campaign_Member_ID__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Campaign Member Status at Moment</displayNameOverride>
+            <field>Campaign_Member_Status_at_Moment__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Check MQL</displayNameOverride>
+            <field>Check_MQL__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact</displayNameOverride>
+            <field>Contact__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created By</displayNameOverride>
+            <field>CreatedBy</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created Date</displayNameOverride>
+            <field>CreatedDate</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created From</displayNameOverride>
+            <field>Created_From__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Created From Detail</displayNameOverride>
+            <field>Created_From_Detail__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email at Moment</displayNameOverride>
+            <field>Email_at_Moment__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Journey</displayNameOverride>
+            <field>Journey__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Journey Relationship</displayNameOverride>
+            <field>Journey_Relationship__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified By</displayNameOverride>
+            <field>LastModifiedBy</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Last Modified Date</displayNameOverride>
+            <field>LastModifiedDate</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead</displayNameOverride>
+            <field>Lead__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment Context</displayNameOverride>
+            <field>Moment_Context__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment Date</displayNameOverride>
+            <field>Moment_Date__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment Description</displayNameOverride>
+            <field>Moment_Description__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment Half</displayNameOverride>
+            <field>Moment_Half__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment ID</displayNameOverride>
+            <field>Id</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment Month</displayNameOverride>
+            <field>Moment_Month__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <displayNameOverride>Moment Number</displayNameOverride>
+            <field>Name</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment Occurred At</displayNameOverride>
+            <field>Moment_Occurred_At__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment Quarter</displayNameOverride>
+            <field>Moment_Quarter__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment Type</displayNameOverride>
+            <field>Moment_Type__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment Week</displayNameOverride>
+            <field>Moment_Week__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MQL Check At</displayNameOverride>
+            <field>MQL_Check_At__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MQL Check Results</displayNameOverride>
+            <field>MQL_Check_Results__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Name at Moment</displayNameOverride>
+            <field>Name_at_Moment__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Ops Notes</displayNameOverride>
+            <field>Ops_Notes__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Owner</displayNameOverride>
+            <field>Owner</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Retool User</displayNameOverride>
+            <field>Retool_User__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Retool UserID</displayNameOverride>
+            <field>Retool_UserID__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Title at Moment</displayNameOverride>
+            <field>Title_at_Moment__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Trigger</displayNameOverride>
+            <field>Trigger__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>zOLD UTM Campaign</displayNameOverride>
+            <field>UTM_Campaign__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>zOLD UTM Content</displayNameOverride>
+            <field>UTM_Content__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>zOLD UTM Medium</displayNameOverride>
+            <field>UTM_Medium__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>zOLD UTM Source</displayNameOverride>
+            <field>UTM_Source__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>zOLD UTM Term</displayNameOverride>
+            <field>UTM_Term__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name at Moment</displayNameOverride>
+            <field>Account_Name_at_Moment__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Is MQL</displayNameOverride>
+            <field>Is_MQL__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Account Status (Committed)</displayNameOverride>
+            <field>Account__c.Account_Status_Committed__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Account Status (Overall)</displayNameOverride>
+            <field>Account__c.Account_Status__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Account Status (Self Service)</displayNameOverride>
+            <field>Account__c.Account_Status_Self_Service__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : # Open Committed Opportunities</displayNameOverride>
+            <field>Account__c.Num_Open_Opportunities__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Account Team</displayNameOverride>
+            <field>Account__c.Account_Team__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Account Segment</displayNameOverride>
+            <field>Account__c.Segment__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Account Owner</displayNameOverride>
+            <field>Account__c.Account_Owner__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Account ID</displayNameOverride>
+            <field>Account__c.Id</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Contact Status</displayNameOverride>
+            <field>Contact__c.Contact_Status__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : Lead Status</displayNameOverride>
+            <field>Lead__c.Status</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : Converted</displayNameOverride>
+            <field>Lead__c.IsConverted</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : Converted Date</displayNameOverride>
+            <field>Lead__c.ConvertedDate</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : Converted Contact</displayNameOverride>
+            <field>Lead__c.ConvertedContact</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : Converted Account</displayNameOverride>
+            <field>Lead__c.ConvertedAccount</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Context Processed</displayNameOverride>
+            <field>Context_Processed__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Meeting Page Source</displayNameOverride>
+            <field>Meeting_Page_Source__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Employees</displayNameOverride>
+            <field>Account__c.NumberOfEmployees</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Email</displayNameOverride>
+            <field>Contact__c.Email</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : Email</displayNameOverride>
+            <field>Lead__c.Email</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : No. of Employees</displayNameOverride>
+            <field>Lead__c.NumberOfEmployees</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MQL Status</displayNameOverride>
+            <field>MQL_Status__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Event Notes</displayNameOverride>
+            <field>Event_Notes__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Campaign : Campaign ID</displayNameOverride>
+            <field>Campaign__c.Id</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Contact ID</displayNameOverride>
+            <field>Contact__c.Id</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : Lead ID</displayNameOverride>
+            <field>Lead__c.Id</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Email (Formula)</displayNameOverride>
+            <field>Email_Formula__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : Lead ID (case safe)</displayNameOverride>
+            <field>Lead__c.Lead_ID_case_safe__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : Lead Owner</displayNameOverride>
+            <field>Lead__c.Owner</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : Company</displayNameOverride>
+            <field>Lead__c.Company</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PS Comments</displayNameOverride>
+            <field>PS_Comments__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>PS Closed</displayNameOverride>
+            <field>PS_Closed__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : LinkedIn (Person)</displayNameOverride>
+            <field>Contact__c.LinkedIn_Manual_Entry__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Title</displayNameOverride>
+            <field>Contact__c.Title</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Account Owner : Subteam</displayNameOverride>
+            <field>Account__c.Owner.Subteam__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Lead Source (Formula)</displayNameOverride>
+            <field>Lead_Source_Formula__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment Type (Reporting)</displayNameOverride>
+            <field>Moment_Type_Reporting__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Source Category</displayNameOverride>
+            <field>Source_Category__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Contact Implied Subteam</displayNameOverride>
+            <field>Contact__c.Contact_Implied_Subteam__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Implied Subteam (Formula)</displayNameOverride>
+            <field>Implied_Subteam_Formula__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Contact Owner</displayNameOverride>
+            <field>Contact__c.Owner</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Contact Owner Name</displayNameOverride>
+            <field>Contact__c.Contact_Owner_Name__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Last Activity</displayNameOverride>
+            <field>Contact__c.LastActivityDate</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Most Recent SDR Activity</displayNameOverride>
+            <field>Account__c.Most_Recent_SDR_Activity__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Most Recent Sales Activity</displayNameOverride>
+            <field>Account__c.Most_Recent_Sales_Activity__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Owner (Formula)</displayNameOverride>
+            <field>Account_Owner_Formula__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Shipping Country</displayNameOverride>
+            <field>Account__c.ShippingCountry</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Outreach Status</displayNameOverride>
+            <field>Contact__c.Outreach_Status__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Current Open Journey</displayNameOverride>
+            <field>Contact__c.Current_Open_Journey__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Suppression Reason</displayNameOverride>
+            <field>Contact__c.Suppression_Reason__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Shipping Region</displayNameOverride>
+            <field>Account__c.Shipping_Region__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Shipping Subregion</displayNameOverride>
+            <field>Account__c.Shipping_Subregion__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Shipping Territory</displayNameOverride>
+            <field>Account__c.Shipping_Territory__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Shipping Intermediate Region</displayNameOverride>
+            <field>Account__c.Shipping_Intermediate_Region__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Contacts</displayNameOverride>
+            <field>Contact__c.Contacts__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Needs Enrichment?</displayNameOverride>
+            <field>Contact__c.Needs_Enrichment__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Lead : Needs Enrichment?</displayNameOverride>
+            <field>Lead__c.Needs_Enrichment__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Tags</displayNameOverride>
+            <field>Account__c.Tags__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Retool User : Is Admin?</displayNameOverride>
+            <field>Retool_User__c.Is_Admin__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Retool User : Is Editor?</displayNameOverride>
+            <field>Retool_User__c.Is_Editor__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MQL Eligible</displayNameOverride>
+            <field>MQL_Eligible__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Target Account?</displayNameOverride>
+            <field>Account__c.Target_Account__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Ultimate Parent Account</displayNameOverride>
+            <field>Account__c.Ultimate_Parent_Account__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Ultimate Parent Account ID (case safe)</displayNameOverride>
+            <field>Account__c.Ultimate_Parent_Account_ID_case_safe__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Sales Development Representative</displayNameOverride>
+            <field>Account__c.Sales_Development_Representative__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Journey : Stage</displayNameOverride>
+            <field>Journey__c.Stage__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Journey : Owner</displayNameOverride>
+            <field>Journey__c.Owner__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Campaign : Start Date</displayNameOverride>
+            <field>Campaign__c.StartDate</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MK Product Score</displayNameOverride>
+            <field>MK_Product_Score__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>MK Lead Score (Formula)</displayNameOverride>
+            <field>MK_Lead_Score_Formula__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Department</displayNameOverride>
+            <field>Contact__c.Department</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Seniority</displayNameOverride>
+            <field>Contact__c.Seniority__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : ZoomInfo Enrich Status</displayNameOverride>
+            <field>Contact__c.DOZISF__ZoomInfo_Enrich_Status__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : ZoomInfo Company Website</displayNameOverride>
+            <field>Contact__c.ZoomInfo_Company_Website__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : ZoomInfo Company Name</displayNameOverride>
+            <field>Contact__c.ZoomInfo_Company_Name__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : ZoomInfo Last Updated</displayNameOverride>
+            <field>Contact__c.DOZISF__ZoomInfo_Last_Updated__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : ZoomInfo Non-Matched Reason</displayNameOverride>
+            <field>Contact__c.DOZISF__ZoomInfo_Non_Matched_Reason__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : ZoomInfo Company Employees</displayNameOverride>
+            <field>Contact__c.ZoomInfo_Company_Employees__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Journey : Journey Subtype</displayNameOverride>
+            <field>Journey__c.Journey_Subtype__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Email Domain</displayNameOverride>
+            <field>Contact__c.Email_Domain__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Email Domain Account Mismatch?</displayNameOverride>
+            <field>Contact__c.Email_Domain_Account_Mismatch__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Email Domain Type</displayNameOverride>
+            <field>Contact__c.Email_Domain_Type__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Contact Account Mismatch</displayNameOverride>
+            <field>Contact_Account_Mismatch__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Opt Out (Sales)</displayNameOverride>
+            <field>Contact__c.Opt_Out_Sales__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Most Recent Retool Signup At</displayNameOverride>
+            <field>Contact__c.Most_Recent_Retool_Signup_At__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Type</displayNameOverride>
+            <field>Account__c.Type</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Email Opt Out</displayNameOverride>
+            <field>Contact__c.HasOptedOutOfEmail</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Committed Customer Since</displayNameOverride>
+            <field>Account__c.Customer_Since__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment Priority</displayNameOverride>
+            <field>Moment_Priority__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Website</displayNameOverride>
+            <field>Account__c.Website</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Website (Clean)</displayNameOverride>
+            <field>Account__c.Website_Clean__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Case</displayNameOverride>
+            <field>Case__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : LG: Invalidated Reason</displayNameOverride>
+            <field>Contact__c.LG_Invalidated_Reason__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : LG: Last Updated</displayNameOverride>
+            <field>Contact__c.LG_Last_Updated__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>rcid</displayNameOverride>
+            <field>rcid__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Contact ID (case safe)</displayNameOverride>
+            <field>Contact__c.Contact_ID_case_safe__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Current Open Journey : Stage</displayNameOverride>
+            <field>Contact__c.Current_Open_Journey__c.Stage__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Current Open Journey : Rest Until</displayNameOverride>
+            <field>Contact__c.Current_Open_Journey__c.Rest_Until__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Current Open Journey : Rejected Reason</displayNameOverride>
+            <field>Contact__c.Current_Open_Journey__c.Rejected_Reason__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Current Open Journey : Ended Reason</displayNameOverride>
+            <field>Contact__c.Current_Open_Journey__c.Ended_Reason__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Current Open Journey : Closed Type</displayNameOverride>
+            <field>Contact__c.Current_Open_Journey__c.Closed_Type__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Account ID (case safe)</displayNameOverride>
+            <field>Account__c.Account_ID_case_safe__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : Industry</displayNameOverride>
+            <field>Account__c.Industry</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : ZoomInfo Primary Industry</displayNameOverride>
+            <field>Account__c.ZoomInfo_Primary_Industry__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : ZoomInfo Sub Industries</displayNameOverride>
+            <field>Account__c.ZoomInfo_Sub_Industries__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Created by Champify</displayNameOverride>
+            <field>Contact__c.ChampifyIo__IsCreatedByChampify__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Lead Source</displayNameOverride>
+            <field>Contact__c.LeadSource</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Lead Source Detail</displayNameOverride>
+            <field>Contact__c.Lead_Source_Detail__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Account : ROE Territory</displayNameOverride>
+            <field>Account__c.ROE_Territory__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Invalid Contact Owner</displayNameOverride>
+            <field>Contact__c.Invalid_Contact_Owner__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Current Sequence Name</displayNameOverride>
+            <field>Contact__c.Outreach_Current_Sequence_Name__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Current Sequence Status</displayNameOverride>
+            <field>Contact__c.Outreach_Current_Sequence_Status__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Current Sequence Step Number</displayNameOverride>
+            <field>Contact__c.Outreach_Current_Sequence_Step_Number__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Current Sequence Step Type</displayNameOverride>
+            <field>Contact__c.Outreach_Current_Sequence_Step_Type__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Moment : Contact : Current Sequence Task Due Date</displayNameOverride>
+            <field>Contact__c.Outreach_Current_Sequence_Task_Due_Date__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c.Num_Active_Self_Service_Orgs__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>First_Touch_At__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>First_Touch_Channel__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>First_Touch_Channel_Group__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>First_Touch_Source__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Last_Touch_At__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Last_Touch_Channel__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Last_Touch_Channel_Group__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Last_Touch_Source__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Partner_Lead__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contact__c.Reason_for_Demo__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>MK_Product_Score_Level__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Engagement_Score__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Engagement_Score_Details__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Engagement_Decay__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Engagement_Score_Updated_At__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Rolling_Engagement_Score__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contact__c.Person_Grade__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contact__c.Person_Grade_Details__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contact__c.Person_Grade_Updated_At__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c.Account_Potential_Total_Spend__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Campaign__c.Channel__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Moment_ID_case_safe__c</field>
+            <table>Moment__c</table>
+        </columns>
+        <masterLabel>Moments</masterLabel>
+    </sections>
+</ReportType>

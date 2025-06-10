@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ultimate_Parent_Account__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Returns the Account at the highest level of the parent/child hierarchy. Value is NULL if there are no associated Parent Account records.</description>
+    <inlineHelpText>Returns the Account at the highest level of the parent/child hierarchy. Value is NULL if there are no associated Parent Account records.</inlineHelpText>
+    <label>Ultimate Parent Account</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Accounts</relationshipLabel>
+    <relationshipName>Accounts</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

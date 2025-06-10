@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Indicates if ZoomInfo recognizes a first name input value as a known first name using multiple sources including the uS Census. --></help>
+        <label><!-- Known First Name --></label>
+        <name>DOZISF__Known_First_Name__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Status__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>The current overall status of this Account across all business lines.</description>
+    <externalId>false</externalId>
+    <formula>IF(  Account_Status_Committed__c = &quot;Disqualified&quot; || Account_Status_Self_Service__c = &quot;Disqualified&quot;,  &quot;Disqualified&quot;,  IF(   Account_Status_Committed__c = &quot;Delinquent&quot; || Account_Status_Self_Service__c = &quot;Delinquent&quot;,   &quot;Delinquent&quot;,   IF(    Account_Status_Committed__c = &quot;Active Customer&quot; || Account_Status_Self_Service__c = &quot;Active Customer&quot;,    &quot;Active Customer&quot;,    IF(     Account_Status_Committed__c = &quot;Former Customer&quot; || Account_Status_Self_Service__c = &quot;Former Customer&quot;,     &quot;Former Customer&quot;,     &quot;Prospect&quot;    )   )  ) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The current overall status of this Account across all business lines.</inlineHelpText>
+    <label>Account Status (Overall)</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

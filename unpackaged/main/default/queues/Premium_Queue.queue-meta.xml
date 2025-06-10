@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>jay@retool.com</email>
+    <name>Premium Queue</name>
+    <queueMembers>
+        <roles>
+            <role>Enterprise_Support_Lead</role>
+            <role>Head_of_Support</role>
+            <role>Support_Engineering_Manager_US_East</role>
+            <role>Support_Engineering_Manager_US_West</role>
+        </roles>
+        <users>
+            <user>alice@retool.com</user>
+            <user>becca@retool.com</user>
+            <user>blake@retool.com</user>
+            <user>cperea@retool.com</user>
+            <user>milly@retool.com</user>
+            <user>taylor.musolf@retool.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

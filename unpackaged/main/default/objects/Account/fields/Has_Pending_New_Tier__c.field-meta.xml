@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Pending_New_Tier__c</fullName>
+    <description>TRUE if the `New Customer Success Tier` is different than the current `Customer Success Tier` value.</description>
+    <formula>NOT(ISPICKVAL(New_Customer_Success_Tier__c,&quot;&quot;)) &amp;&amp; TEXT(New_Customer_Success_Tier__c) != TEXT(Customer_Success_Tier__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>TRUE if the `New Customer Success Tier` is different than the current `Customer Success Tier` value.</inlineHelpText>
+    <label>Has Pending New Tier?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

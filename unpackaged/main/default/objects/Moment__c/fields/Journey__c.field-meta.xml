@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Journey__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The Journey related to the Moment.
+
+In System Use: &#39;Autolaunch: Check MQL&#39;; &#39;Moment: After Save Automations&#39;
+
+External Systems Utilization: None</description>
+    <label>Journey</label>
+    <referenceTo>Journey__c</referenceTo>
+    <relationshipLabel>Moments</relationshipLabel>
+    <relationshipName>Moments</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

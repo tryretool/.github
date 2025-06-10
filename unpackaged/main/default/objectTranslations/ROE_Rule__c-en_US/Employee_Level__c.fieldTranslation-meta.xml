@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Employee Level --></label>
+        <name>Employee_Level__c</name>
+        <picklistValues>
+            <masterLabel>RL1</masterLabel>
+            <translation><!-- RL1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RL2</masterLabel>
+            <translation><!-- RL2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RL3</masterLabel>
+            <translation><!-- RL3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RL4</masterLabel>
+            <translation><!-- RL4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RL5</masterLabel>
+            <translation><!-- RL5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RL6</masterLabel>
+            <translation><!-- RL6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RL7</masterLabel>
+            <translation><!-- RL7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RL8</masterLabel>
+            <translation><!-- RL8 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RM1</masterLabel>
+            <translation><!-- RM1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RM2</masterLabel>
+            <translation><!-- RM2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RM3</masterLabel>
+            <translation><!-- RM3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RM4</masterLabel>
+            <translation><!-- RM4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RM5</masterLabel>
+            <translation><!-- RM5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Staff</masterLabel>
+            <translation><!-- Staff --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

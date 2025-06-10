@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Most_Recent_SQL_Date__c</fullName>
+    <description>NEEDS UPDATE
+
+Rollup of the most recent Opportunity S1 timestamp at the Account.</description>
+    <inlineHelpText>Rollup of the most recent Opportunity S1 timestamp at the Account.</inlineHelpText>
+    <label>Most Recent SQL Date</label>
+    <securityClassification>Safe</securityClassification>
+    <summarizedField>Opportunity.Qualification_Meeting_Set_At__c</summarizedField>
+    <summaryForeignKey>Opportunity.AccountId</summaryForeignKey>
+    <summaryOperation>max</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

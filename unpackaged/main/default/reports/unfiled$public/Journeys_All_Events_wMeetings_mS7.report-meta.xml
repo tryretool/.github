@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Journey__c$Name</field>
+    </columns>
+    <columns>
+        <field>Journey__c$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Created_From_Moment__c.Campaign__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Stage__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Journey__c$Is_Meeting_Booked__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Meeting_Booked_At__c</field>
+    </columns>
+    <description>[Journeys] All Events, w/Meetings</description>
+    <filter>
+        <criteriaItems>
+            <column>Journey__c$Created_From_Moment__c.Campaign__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>tradeshow,event,web</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c$Meeting_Booked_At__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>[Journeys] All Events, w/Meetings</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Journeys_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Journey__c$Meeting_Booked_At__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Journey__c$Created_From_Moment__c.Campaign__c.StartDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

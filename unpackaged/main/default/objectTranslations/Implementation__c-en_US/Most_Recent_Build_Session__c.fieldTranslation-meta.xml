@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Displays the date/time of the most recent build session. --></help>
+        <label><!-- Most Recent Build Session --></label>
+        <name>Most_Recent_Build_Session__c</name>
+    </CustomFieldTranslation>

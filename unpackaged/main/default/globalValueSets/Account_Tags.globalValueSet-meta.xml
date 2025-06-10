@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Fortune 500 (2022)</fullName>
+        <default>false</default>
+        <label>Fortune 500 (2022)</label>
+    </customValue>
+    <customValue>
+        <fullName>S&amp;P 500 (2022)</fullName>
+        <default>false</default>
+        <label>S&amp;P 500 (2022)</label>
+    </customValue>
+    <customValue>
+        <fullName>FTSE 100 (Sept. 2022)</fullName>
+        <default>false</default>
+        <label>FTSE 100 (Sept. 2022)</label>
+    </customValue>
+    <customValue>
+        <fullName>Russell 1000 (June 2022)</fullName>
+        <default>false</default>
+        <label>Russell 1000 (June 2022)</label>
+    </customValue>
+    <customValue>
+        <fullName>Russell 2000 (June 2022)</fullName>
+        <default>false</default>
+        <label>Russell 2000 (June 2022)</label>
+    </customValue>
+    <customValue>
+        <fullName>Russell 3000 (June 2022)</fullName>
+        <default>false</default>
+        <label>Russell 3000 (June 2022)</label>
+    </customValue>
+    <customValue>
+        <fullName>US ABM (2022)</fullName>
+        <default>false</default>
+        <label>US ABM (2022)</label>
+    </customValue>
+    <customValue>
+        <fullName>Target EMEA Accounts (2022)</fullName>
+        <default>false</default>
+        <label>Target EMEA Accounts (2022)</label>
+    </customValue>
+    <customValue>
+        <fullName>EMEA ABM (2022)</fullName>
+        <default>false</default>
+        <label>EMEA ABM (2022)</label>
+    </customValue>
+    <customValue>
+        <fullName>NYC ENT ABM (2022)</fullName>
+        <default>false</default>
+        <label>NYC ENT ABM (2022)</label>
+    </customValue>
+    <customValue>
+        <fullName>Forbes Global 2000 (2022)</fullName>
+        <default>false</default>
+        <label>Forbes Global 2000 (2022)</label>
+    </customValue>
+    <customValue>
+        <fullName>ABM (Q1 2023)</fullName>
+        <default>false</default>
+        <label>ABM (Q1 2023)</label>
+    </customValue>
+    <customValue>
+        <fullName>ABM (Q1 2023 v2)</fullName>
+        <default>false</default>
+        <label>ABM (Q1 2023 v2)</label>
+    </customValue>
+    <customValue>
+        <fullName>FY24 Target Account</fullName>
+        <default>false</default>
+        <label>FY24 Target Account</label>
+    </customValue>
+    <customValue>
+        <fullName>24TA Finance</fullName>
+        <default>false</default>
+        <label>24TA Finance</label>
+    </customValue>
+    <customValue>
+        <fullName>24TA Manufacturing</fullName>
+        <default>false</default>
+        <label>24TA Manufacturing</label>
+    </customValue>
+    <customValue>
+        <fullName>24TA Operations</fullName>
+        <default>false</default>
+        <label>24TA Operations</label>
+    </customValue>
+    <customValue>
+        <fullName>AWS CPG 2024-05</fullName>
+        <default>false</default>
+        <label>AWS CPG 2024-05</label>
+    </customValue>
+    <customValue>
+        <fullName>24TA AI AWS</fullName>
+        <default>false</default>
+        <label>24TA AI AWS</label>
+    </customValue>
+    <customValue>
+        <fullName>High Priority Accounts Q2-2024 TCX OKR</fullName>
+        <default>false</default>
+        <label>High Priority Accounts Q2-2024 TCX OKR</label>
+    </customValue>
+    <customValue>
+        <fullName>[2024-H2] Vertical Experiment</fullName>
+        <default>false</default>
+        <label>[2024-H2] Vertical Experiment</label>
+    </customValue>
+    <customValue>
+        <fullName>TAP LinkedIn Unreached 2024-08</fullName>
+        <default>false</default>
+        <label>TAP LinkedIn Unreached 2024-08</label>
+    </customValue>
+    <customValue>
+        <fullName>[2024-H2] Vertical Control</fullName>
+        <default>false</default>
+        <label>[2024-H2] Vertical Control</label>
+    </customValue>
+    <customValue>
+        <fullName>24TA AI AWS MMK Holdback</fullName>
+        <default>false</default>
+        <label>24TA AI AWS MMK Holdback</label>
+    </customValue>
+    <customValue>
+        <fullName>24TA AI AWS MMK Target</fullName>
+        <default>false</default>
+        <label>24TA AI AWS MMK Target</label>
+    </customValue>
+    <customValue>
+        <fullName>24TA AI AWS ENT Target</fullName>
+        <default>false</default>
+        <label>24TA AI AWS ENT Target</label>
+    </customValue>
+    <customValue>
+        <fullName>ABM/AWS LinkedIn Engaged Accounts 2024-10</fullName>
+        <default>false</default>
+        <label>ABM/AWS LinkedIn Engaged Accounts 2024-10</label>
+    </customValue>
+    <customValue>
+        <fullName>2024 TAP</fullName>
+        <default>false</default>
+        <label>2024 TAP</label>
+    </customValue>
+    <customValue>
+        <fullName>FY25 Target Account</fullName>
+        <default>false</default>
+        <label>FY25 Target Account</label>
+    </customValue>
+    <customValue>
+        <fullName>FY25 TAP B17</fullName>
+        <default>false</default>
+        <label>FY25 TAP B17</label>
+    </customValue>
+    <customValue>
+        <fullName>FY25 TAP B20</fullName>
+        <default>false</default>
+        <label>FY25 TAP B20</label>
+    </customValue>
+    <customValue>
+        <fullName>FY25 TAP B21</fullName>
+        <default>false</default>
+        <label>FY25 TAP B21</label>
+    </customValue>
+    <customValue>
+        <fullName>FY25 TAP B22</fullName>
+        <default>false</default>
+        <label>FY25 TAP B22</label>
+    </customValue>
+    <customValue>
+        <fullName>FY25 TAP M18</fullName>
+        <default>false</default>
+        <label>FY25 TAP M18</label>
+    </customValue>
+    <customValue>
+        <fullName>FY25 TAP M19</fullName>
+        <default>false</default>
+        <label>FY25 TAP M19</label>
+    </customValue>
+    <customValue>
+        <fullName>FY25 AINLCo</fullName>
+        <default>false</default>
+        <label>FY25 AINLCo</label>
+    </customValue>
+    <customValue>
+        <fullName>FY25 AINLLo</fullName>
+        <default>false</default>
+        <label>FY25 AINLLo</label>
+    </customValue>
+    <customValue>
+        <fullName>FY25 AINLHi</fullName>
+        <default>false</default>
+        <label>FY25 AINLHi</label>
+    </customValue>
+    <customValue>
+        <fullName>2025 Databricks Summit</fullName>
+        <default>false</default>
+        <label>2025 Databricks Summit</label>
+    </customValue>
+    <customValue>
+        <fullName>2025 Snowflake Summit</fullName>
+        <default>false</default>
+        <label>2025 Snowflake Summit</label>
+    </customValue>
+    <customValue>
+        <fullName>FY25 JC</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>FY25 JC</label>
+    </customValue>
+    <masterLabel>Account Tags</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

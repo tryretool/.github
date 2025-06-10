@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Company__c</fullName>
+    <description>Formula that uses the Account from the Contact if available. If the contact account is unavailable, the value will reflect the Company from the lead.
+
+Used in - Layout: Campaign Member Page Layout, Report Type: Campaigns_with_Campaign_Members_and_Other 
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <formula>IF( ISBLANK( Contact.Account.Name) , Lead.Company ,Contact.Account.Name )</formula>
+    <inlineHelpText>Formula that uses the Account from the Contact if available. If the account is unavailable from the contact the value will reflect the Company from the lead.</inlineHelpText>
+    <label>Account / Company</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

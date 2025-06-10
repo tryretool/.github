@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_Since_Last_AE_Activity__c</fullName>
+    <description>Days between today and the `Most Recent AE Activity` date stamp, or the number of days the Account has been owned if there hasn&#39;t been any activity yet.</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Most_Recent_AE_Activity__c),Owned_Days__c,TODAY()-Most_Recent_AE_Activity__c)</formula>
+    <inlineHelpText>Days between today and the `Most Recent AE Activity` date stamp, or the number of days the Account has been owned if there hasn&#39;t been any activity yet.</inlineHelpText>
+    <label>Days Since Last AE Activity</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

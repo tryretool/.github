@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MQL_Eligible__c</fullName>
+    <description>Formula that indicates that the Moment is MQL Eligible if it is NOT a Champify Alert, Endgame Alert or Koala Alert.
+
+In System Use: &#39;Autolaunch: Check MQL&#39;
+
+External Systems Utilization: None</description>
+    <formula>IF(CASE( Moment_Type__c,
+&quot;Champify Alert&quot;, 0,
+&quot;Endgame Alert&quot;, 0,
+&quot;Koala Intent Signal&quot;, 0,
+1)=1, TRUE, FALSE)</formula>
+    <inlineHelpText>Formula that indicates that the Moment is MQL Eligible if it is NOT a Champify Alert, Endgame Alert or Koala Alert.</inlineHelpText>
+    <label>MQL Eligible</label>
+    <securityClassification>Caution</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

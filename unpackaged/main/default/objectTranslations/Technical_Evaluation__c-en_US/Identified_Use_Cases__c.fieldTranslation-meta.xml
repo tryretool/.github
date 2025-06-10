@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The use cases/apps the team is planning to roll out, and their priority, primary builders, teams, and end user details. Include links to relevant Gong calls or app specs/details. --></help>
+        <label><!-- Identified Use Cases --></label>
+        <name>Identified_Use_Cases__c</name>
+    </CustomFieldTranslation>

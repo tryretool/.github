@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Unique identifier for ultimate parent company that has acquired requested company. --></help>
+        <label><!-- Ultimate Parent Company ZoomInfo ID --></label>
+        <name>DOZISF__Ultimate_Parent_Company_ZoomInfo_ID__c</name>
+    </CustomFieldTranslation>

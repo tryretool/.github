@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Num_Opportunities__c</fullName>
+    <description>Total number of Opportunities of any kind related to the Account.</description>
+    <inlineHelpText>Total number of Opportunities of any kind related to the Account.</inlineHelpText>
+    <label># Opportunities</label>
+    <securityClassification>Safe</securityClassification>
+    <summaryForeignKey>Opportunity.AccountId</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <fieldSets>
+        <label><!-- Account Related Calls Additional Fields --></label>
+        <name>Gong__Account_Related_Calls</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Contact Participated Calls Additional Fields --></label>
+        <name>Gong__Contact_Participated_Calls</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Lead Participated Calls Additional Fields --></label>
+        <name>Gong__Lead_Participated_Calls</name>
+    </fieldSets>
+    <fieldSets>
+        <label><!-- Opportunity Related Calls Additional Fields --></label>
+        <name>Gong__Opp_Related_Calls</name>
+    </fieldSets>
+    <layouts>
+        <layout>Gong Call Layout</layout>
+        <sections>
+            <label><!-- Call Details --></label>
+            <section>Call Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Opportunity State (at time of call) --></label>
+            <section>Opportunity State (at time of call)</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- View_Call_Button --></label>
+        <name>Gong__View_Call_Button</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Call_link --></label>
+        <name>Gong__View_Call_link</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Transcript_button --></label>
+        <name>Gong__View_Transcript_button</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Transcript_link --></label>
+        <name>Gong__View_Transcript_link</name>
+    </webLinks>
+</CustomObjectTranslation>

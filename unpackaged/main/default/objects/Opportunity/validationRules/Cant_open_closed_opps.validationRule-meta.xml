@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cant_open_closed_opps</fullName>
+    <active>true</active>
+    <errorConditionFormula>IsClosed = FALSE &amp;&amp;
+PRIORVALUE(IsClosed) = TRUE &amp;&amp;
+NOT(ISCHANGED(Reopen_Reason__c)) &amp;&amp;
+NOT(ISCHANGED(Permission_Check__c))</errorConditionFormula>
+    <errorMessage>Please use the Reopen button in the Salesforce UI to reopen this opportunity. If the Reopen button is not visible, then you may not reopen this opportunity and you should create a new one.</errorMessage>
+</ValidationRule>

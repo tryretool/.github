@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <assignments>
+        <name>Clear_value</name>
+        <label>Clear value</label>
+        <locationX>1320</locationX>
+        <locationY>69</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Activation_Escalation_Status__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <targetReference>Updated</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_complete_stage_1</name>
+        <label>Set complete stage 1</label>
+        <locationX>1336</locationX>
+        <locationY>283</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Activation_Escalation_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Complete - Reply at Stage 1</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Updated</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_complete_stage_2</name>
+        <label>Set complete stage 2</label>
+        <locationX>1341</locationX>
+        <locationY>420</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Activation_Escalation_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Complete - Reply at Stage 2</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Updated</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_trigger</name>
+        <label>Update trigger</label>
+        <locationX>650</locationX>
+        <locationY>695</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Activation_Escalation_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue> Triggered</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_record</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Activation_Escalation_Status</name>
+        <label>Activation Escalation Status is</label>
+        <locationX>632</locationX>
+        <locationY>274</locationY>
+        <defaultConnector>
+            <targetReference>launch_email_drip_screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Running</defaultConnectorLabel>
+        <rules>
+            <name>Complete</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Activation_Escalation_Status__c</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_Complete</targetReference>
+            </connector>
+            <label>Complete</label>
+        </rules>
+        <rules>
+            <name>Running</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Activation_Escalation_Status__c</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>Escalation</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Activation_Escalation_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Triggered</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_Escalation_Already_Runnin</targetReference>
+            </connector>
+            <label>Running</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Current_status</name>
+        <label>Current status</label>
+        <locationX>999</locationX>
+        <locationY>327</locationY>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>Escalation_1_Sent</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Activation_Escalation_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Escalation 1 Sent</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_complete_stage_1</targetReference>
+            </connector>
+            <label>Escalation 1 Sent</label>
+        </rules>
+        <rules>
+            <name>Escalation_2_Sent</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Activation_Escalation_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Escalation 2 Sent</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_complete_stage_2</targetReference>
+            </connector>
+            <label>Escalation 2 Sent</label>
+        </rules>
+        <rules>
+            <name>Triggered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Activation_Escalation_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Triggered</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Clear_value</targetReference>
+            </connector>
+            <label>Triggered</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Implementation - Escalation Activation Button {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Implementation - Escalation Activation Button</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Update_record</name>
+        <label>Update record</label>
+        <locationX>648</locationX>
+        <locationY>853</locationY>
+        <inputReference>recordId</inputReference>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Error_Complete</name>
+        <label>Error - Complete</label>
+        <locationX>898</locationX>
+        <locationY>385</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Error_already_running_0</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Error:&lt;/strong&gt; You cannot start the activation escalation sequence because the sequence has already completed.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Error_Escalation_Already_Runnin</name>
+        <label>Error - Escalation Already Running</label>
+        <locationX>902</locationX>
+        <locationY>187</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Current_status</targetReference>
+        </connector>
+        <fields>
+            <name>Error_already_running</name>
+            <fieldText>&lt;p&gt;&lt;b&gt;This customer has already been enrolled in the activation escalation sequence&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Current Status:&lt;/strong&gt; {!recordId.Activation_Escalation_Status__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Would you like to terminate the sequence?&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>Yes - Terminate sequence</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>launch_email_drip_screen</name>
+        <label>Launch Activation Escalation Sequence</label>
+        <locationX>643</locationX>
+        <locationY>528</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Update_trigger</targetReference>
+        </connector>
+        <fields>
+            <name>launch_poc_header</name>
+            <fieldText>&lt;p&gt;Click &lt;strong&gt;Finish&lt;/strong&gt; and the activation escalation email sequence will be sent to the following customer contact (update if needed):&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>recordId.Launch_Point_of_Contact__c</objectFieldReference>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Updated</name>
+        <label>Updated</label>
+        <locationX>1613</locationX>
+        <locationY>302</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Complete_header</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Success:&lt;/strong&gt; Sequence has been stopped.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>514</locationX>
+        <locationY>62</locationY>
+        <connector>
+            <targetReference>Activation_Escalation_Status</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Implementation__c</objectType>
+    </variables>
+</Flow>

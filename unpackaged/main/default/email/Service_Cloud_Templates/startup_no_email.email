@@ -1,0 +1,7 @@
+Hi, {!Contact.FirstName}!
+
+<p>Thank you for reaching out. I just took a look through our system and could not find any account registered with an email with <email>. You will have to register for a Free account before we set you up with your Startup Credits. You can sign up for a free cloud account here: <a href="https://login.retool.com/auth/signup" target="_blank">https://login.retool.com/auth/signup</a>.</p>
+
+<p>After you have already done so, can you tell me what the subdomain of the Retool account is? Alternatively, is this for a Self-Hosted instance of Retool?</p>
+
+<p>Let me know so we can get you started!</p>

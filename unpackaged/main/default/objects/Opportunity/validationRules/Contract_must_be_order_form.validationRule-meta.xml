@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contract_must_be_order_form</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISBLANK( ContractId )) &amp;&amp; 
+Contract.RecordType.Name != &quot;Order Form&quot;</errorConditionFormula>
+    <errorDisplayField>ContractId</errorDisplayField>
+    <errorMessage>Contract must be of record type &quot;Order Form&quot;</errorMessage>
+</ValidationRule>

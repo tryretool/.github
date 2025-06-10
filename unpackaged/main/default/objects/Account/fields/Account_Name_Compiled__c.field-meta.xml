@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Name_Compiled__c</fullName>
+    <description>Returns the Account Name (Short), if it exists, otherwise returns the Account&#39;s name. Mapped to the `Natural Company Name` field in Outreach.
+
+External Systems Utilization: Outreach</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Account_Name_Short__c),Name,Account_Name_Short__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Returns the Account Name (Short), if it exists, otherwise returns the Account&#39;s name.</inlineHelpText>
+    <label>Account Name (Compiled)</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

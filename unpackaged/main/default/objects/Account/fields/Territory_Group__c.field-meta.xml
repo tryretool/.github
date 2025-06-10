@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Territory_Group__c</fullName>
+    <description>Territory group (ENT-1, ENT-2) assigned to the Account. Used internally for Account planning.
+
+External Systems Utilization: MadKudu</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Territory group (ENT-1, ENT-2) assigned to the Account. Used internally for Account planning.</inlineHelpText>
+    <label>Territory Group</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

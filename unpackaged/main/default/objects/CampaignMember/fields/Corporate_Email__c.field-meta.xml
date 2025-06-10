@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Corporate_Email__c</fullName>
+    <description>Formula where the checkbox is marked True if the email domain is not Gmail.
+
+In Systems Use: Page layout
+Deprecating since a more accurate way to track the info will be a formula that checks the domain type.
+
+External Systems Use: None</description>
+    <formula>Not(CONTAINS(Email,&quot;@gmail&quot;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Formula where the checkbox is marked True if the email domain is not Gmail.</inlineHelpText>
+    <label>zOLDCorporate Email?</label>
+    <securityClassification>Ignore</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Support_Tier__c</fullName>
+    <externalId>false</externalId>
+    <formula>/* If in the Billing Aggregation Account, then committed     */
+IF( Account.Account_ID_case_safe__c = &quot;001Qo00000tQHtcIAG&quot;, &quot;3; Committed&quot;,
+
+/* If it&#39;s a support record type and entitlement is populated     */
+IF( AND( NOT(ISBLANK( EntitlementId )),  RecordType.Name = &quot;Support&quot;), 
+
+CASE(  Entitlement.Tier__c ,
+&quot;Custom&quot;, &quot;1; Custom&quot;,
+&quot;Premium&quot;, &quot;2; Premium&quot;,
+&quot;Enterprise&quot;, &quot;3; Committed&quot;,
+&quot;Enterprise [Legacy]&quot;, &quot;3; Committed&quot;,
+&quot;Basic&quot;, &quot;3; Committed&quot;,
+&quot;Basic [Legacy]&quot;, &quot;3; Committed&quot;,
+&quot;4; Self Service&quot;),
+
+/* Otherwise just use stuff from the account if anything&#39;s there */
+
+IF( NOT(ISBLANK( Account.Support_SLA__c)),
+
+CASE(   Account.Support_SLA__r.Tier__c  ,
+&quot;Custom&quot;, &quot;1; Custom&quot;,
+&quot;Premium&quot;, &quot;2; Premium&quot;,
+&quot;Enterprise&quot;, &quot;3; Committed&quot;,
+&quot;Enterprise [Legacy]&quot;, &quot;3; Committed&quot;,
+&quot;Basic&quot;, &quot;3; Committed&quot;,
+&quot;Basic [Legacy]&quot;, &quot;3; Committed&quot;,
+&quot;4; Self Service&quot;)
+
+/* Otherwise self service fits */
+
+, &quot;4; Self Service&quot;)))</formula>
+    <label>Support Tier</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

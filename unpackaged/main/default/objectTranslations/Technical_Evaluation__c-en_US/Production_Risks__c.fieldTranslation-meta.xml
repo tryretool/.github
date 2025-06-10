@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Any blockers or risks to productionized deployment and use case implementation (e.g., no direct access to IT team, migration to new idP, complex resource auth or connection issues, low skill builders, etc.) --></help>
+        <label><!-- Production Risks --></label>
+        <name>Production_Risks__c</name>
+    </CustomFieldTranslation>

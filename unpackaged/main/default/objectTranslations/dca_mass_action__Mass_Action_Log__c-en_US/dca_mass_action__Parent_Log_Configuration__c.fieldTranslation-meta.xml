@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Populated only when the log record type is &quot;Parent Log&quot;, otherwise it is null. --></help>
+        <label><!-- Parent Log Configuration --></label>
+        <name>dca_mass_action__Parent_Log_Configuration__c</name>
+        <relationshipLabel><!-- Mass Action Logs --></relationshipLabel>
+    </CustomFieldTranslation>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto response for Committed customers who emailed in.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Auto-Reply: Committed Email</name>
+    <style>none</style>
+    <subject>We&#39;ve received your message</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

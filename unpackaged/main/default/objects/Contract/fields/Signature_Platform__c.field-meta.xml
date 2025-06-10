@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Signature_Platform__c</fullName>
+    <description>disabled - not signed
+docusign - signed via Docusign
+revops - signed via RevOps.io
+third party - signed via e-signature software that is not Docusign or RevOps.io</description>
+    <externalId>false</externalId>
+    <inlineHelpText>disabled - not signed
+docusign - signed via Docusign
+revops - signed via RevOps.io
+third party - signed via e-signature software that is not Docusign or RevOps.io</inlineHelpText>
+    <label>Signature Platform</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>adroll__KeywordIntent_VeryHighIntentKeywords7D__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Keywords with very high intent in the last seven days, comma separated</description>
+    <label>Very High Intent Keywords (last 7 days)</label>
+    <length>131072</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>2</visibleLines>
+</CustomField>

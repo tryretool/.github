@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The status of the Campaign Member at the time the Moment was created. --></help>
+        <label><!-- Campaign Member Status at Moment --></label>
+        <name>Campaign_Member_Status_at_Moment__c</name>
+    </CustomFieldTranslation>

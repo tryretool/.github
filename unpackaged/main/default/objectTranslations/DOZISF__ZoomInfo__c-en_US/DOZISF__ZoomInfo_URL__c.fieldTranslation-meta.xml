@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- A link to person profile on the zoominfo website. --></help>
+        <label><!-- ZoomInfo URL --></label>
+        <name>DOZISF__ZoomInfo_URL__c</name>
+    </CustomFieldTranslation>

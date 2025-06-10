@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Is This For Marketplace --></label>
+        <name>clazar__is_this_for_marketplace__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Moment__c$Name</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Moment_Type_Reporting__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    AND(
+        CONTAINS(Moment__c.Moment_Type_Reporting__c, &quot;Content&quot;),
+        CONTAINS(Moment__c.Moment_Type_Reporting__c, &quot;Marketing Event&quot;)
+    ),
+    &quot;True&quot;,
+    &quot;False&quot;
+)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Both</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>Contacts that have both a Content and Event Moment</description>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Moment_Type_Reporting__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Marketing Event,Content</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Moment__c$Contact__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Content AND Event Moments</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

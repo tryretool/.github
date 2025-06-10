@@ -1,0 +1,10 @@
+Hey there, thanks for reaching out. I have some initial questions here to gain a better understanding around how you're deployed. Please answer all of these questions (reach out to a member of your infra team if you don't have access to your Retool infra/deployment) as workflows deployment issues need a lot of context to be able to understand what's going wrong:​
+
+> What version of Retool are you on? 
+> Is this a new setup or did a previously functioning workflows deployment stop working?
+> If this was previously working, what changes did you make (if any) which caused this to break? (e.g upgrading versions - if so, from which version?)
+> What Cloud Provider are you using? (AWS, GCP, Azure)
+> What deployment type are you using? (docker-compose on VM, k8s/helm, ECS on EC2/Fargate, etc. if helm, what version of helm chart?)
+> Could you share the relevant deployment files for the deployment type above? (e.g for helm that would be your values.yml or for docker, that would be docker-compose.yml and docker.env
+> How is Temporal configured? (Retool-managed, self-hosted, etc.)
+> Could you share your container logs from your workflows containers? (that'll be workflow-worker, workflow-backend , code-executor (if enabled) and temporal (if using a local cluster))​

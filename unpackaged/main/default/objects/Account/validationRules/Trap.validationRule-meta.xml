@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trap</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISCHANGED(Shipping_Intermediate_Region__c)  &amp;&amp;
+ISPICKVAL(Shipping_Intermediate_Region__c,&quot;&quot;) &amp;&amp;
+Account_ID_case_safe__c = &quot;0015A00002OdZY2QAN&quot;</errorConditionFormula>
+    <errorMessage>TRAP</errorMessage>
+</ValidationRule>

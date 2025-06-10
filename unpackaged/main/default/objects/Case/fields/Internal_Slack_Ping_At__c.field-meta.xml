@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Internal_Slack_Ping_At__c</fullName>
+    <description>Timestamp for when an internal notification was sent to an internal customer channel to alert account teams when a new case is created by one of their customers</description>
+    <label>Internal Slack Ping At</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

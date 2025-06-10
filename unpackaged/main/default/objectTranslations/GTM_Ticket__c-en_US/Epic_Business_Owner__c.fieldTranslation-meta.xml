@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Used to assign a &apos;Business Owner&apos; to Epics. --></help>
+        <label><!-- Epic: Business Owner --></label>
+        <name>Epic_Business_Owner__c</name>
+        <relationshipLabel><!-- GTM Tickets (Epic: Business Owner) --></relationshipLabel>
+    </CustomFieldTranslation>

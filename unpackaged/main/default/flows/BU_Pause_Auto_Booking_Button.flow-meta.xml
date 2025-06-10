@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <formulas>
+        <name>Default_pause_date</name>
+        <dataType>Date</dataType>
+        <expression>{!$Flow.CurrentDate}</expression>
+    </formulas>
+    <formulas>
+        <name>future_past</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ {!Pause_automatic_bookings_starting_date} &lt;= {!$Flow.CurrentDate},
+ &quot;manually paused automatic bookings&quot;,
+ &quot;scheduled automatic bookings to be paused on &quot;&amp;TEXT(MONTH({!Resume_automatic_bookings_on}))&amp;&quot;/&quot;&amp;TEXT(DAY({!Resume_automatic_bookings_on}))&amp;&quot;/&quot;&amp;TEXT(YEAR({!Resume_automatic_bookings_on}))
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Text_resume_bookings</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ {!Require_manual_resume},
+ &quot;Automatic bookings set to remain off until manually enabled.&quot;,
+ IF(
+  ISBLANK({!Resume_automatic_bookings_on}),
+  &quot;&quot;,
+ &quot;Resume on: &quot;&amp;TEXT(MONTH({!Resume_automatic_bookings_on}))&amp;&quot;/&quot;&amp;TEXT(DAY({!Resume_automatic_bookings_on}))&amp;&quot;/&quot;&amp;TEXT(YEAR({!Resume_automatic_bookings_on}))
+ )
+)</expression>
+    </formulas>
+    <interviewLabel>BU - Pause Auto Booking Button {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>BU - Pause Automatic Bookings Button</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Pause_Automatic_Bookings</name>
+        <label>Pause Automatic Bookings</label>
+        <locationX>175</locationX>
+        <locationY>213</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Execute_pause</targetReference>
+        </connector>
+        <fields>
+            <name>Pause_Automatic_Bookings_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Pause_Automatic_Bookings_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Configure_header</name>
+                    <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 14px;&quot;&gt;Configure automatic bookings pause&lt;/b&gt;&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <fields>
+                    <name>Pause_automatic_bookings_starting_date</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>Default_pause_date</elementReference>
+                    </defaultValue>
+                    <fieldText>Pause automatic bookings starting on:</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;Pause date must be set to today or a future date&lt;/p&gt;</errorMessage>
+                        <formulaExpression>{!Pause_automatic_bookings_starting_date} &gt;= TODAY()</formulaExpression>
+                    </validationRule>
+                </fields>
+                <fields>
+                    <name>Enter_the_reason_why</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>recordId.Pause_Automatic_Bookings_Reason__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Enter the reason why we are pausing automatic bookings:</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <fields>
+            <name>Pause_Automatic_Bookings_Section2</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Pause_Automatic_Bookings_Section2_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>addl_options_header</name>
+                    <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 14px;&quot;&gt;Additional options:&lt;/b&gt;&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <fields>
+                    <name>Require_manual_resume</name>
+                    <dataType>Boolean</dataType>
+                    <defaultValue>
+                        <elementReference>recordId.Require_manual_resume_of_auto_bookings__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Require manual resume of automatic bookings</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <helpText>&lt;p&gt;If selected, automatic bookings will not automatically resume as part of any future scheduled action (e.g., following a renewal event or close of a committed expansion).&lt;/p&gt;</helpText>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>12</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <fields>
+            <name>Pause_Automatic_Bookings_Section3</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Pause_Automatic_Bookings_Section3_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Resume_automatic_bookings_on</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>recordId.Resume_Automatic_Bookings_On__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Schedule automatic bookings to resume on:</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>false</isRequired>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;Resume date must be later than pause date&lt;/p&gt;</errorMessage>
+                        <formulaExpression>{!Resume_automatic_bookings_on} &gt; {!Pause_automatic_bookings_starting_date}</formulaExpression>
+                    </validationRule>
+                    <visibilityRule>
+                        <conditionLogic>and</conditionLogic>
+                        <conditions>
+                            <leftValueReference>Require_manual_resume</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <booleanValue>false</booleanValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Pause_Automatic_Bookings_Section3_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Dont_resume_bookings_form</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>recordId.Dont_Resume_Automatic_Bookings_Before__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Don&#39;t resume automatic bookings before:</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>false</isRequired>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;Don&#39;t resume before date must be after pause date&lt;/p&gt;</errorMessage>
+                        <formulaExpression>{!Dont_resume_bookings_form} &gt; {!Pause_automatic_bookings_starting_date}</formulaExpression>
+                    </validationRule>
+                    <visibilityRule>
+                        <conditionLogic>and</conditionLogic>
+                        <conditions>
+                            <leftValueReference>Require_manual_resume</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <booleanValue>false</booleanValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>49</locationX>
+        <locationY>57</locationY>
+        <connector>
+            <targetReference>Pause_Automatic_Bookings</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Execute_pause</name>
+        <label>Execute pause</label>
+        <locationX>370</locationX>
+        <locationY>217</locationY>
+        <flowName>BU_Execute_Automatic_Bookings_Pause</flowName>
+        <inputAssignments>
+            <name>bu_id</name>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>dont_resume_before_date</name>
+            <value>
+                <elementReference>Dont_resume_bookings_form</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>pause_date</name>
+            <value>
+                <elementReference>Pause_automatic_bookings_starting_date</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>pause_reason</name>
+            <value>
+                <elementReference>Enter_the_reason_why</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>require_manual_resume</name>
+            <value>
+                <elementReference>Require_manual_resume</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>resume_date</name>
+            <value>
+                <elementReference>Resume_automatic_bookings_on</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <textTemplates>
+        <name>Chatter_post</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Flow.CurrentDateTime}: {!$User.FirstName} {!$User.LastName} {!future_past} for {!recordId.Name}.
+Pause Reason: {!Enter_the_reason_why}
+{!Text_resume_bookings}</text>
+    </textTemplates>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Business_Unit__c</objectType>
+    </variables>
+</Flow>

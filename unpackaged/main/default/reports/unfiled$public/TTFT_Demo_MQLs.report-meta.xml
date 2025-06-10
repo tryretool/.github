@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Journey__c$Journey_ID_case_safe__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Contact__c.Email</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Account__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Stage__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$First_Outbound_Email__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Meeting_Booked_At__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Name</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Rejected_Reason__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <aggregateTypes>Median</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Days_To_Action__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>Journey__c.First_Outbound_Email__c - Journey__c.CreatedDate</calculatedFormula>
+        <dataType>Double</dataType>
+        <description>Days to First Email</description>
+        <developerName>CDF1</developerName>
+        <label>Days to First Email</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>TTFT Demo MQLs</description>
+    <filter>
+        <criteriaItems>
+            <column>Journey__c$Journey_Subtype__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Demo Request</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <aggregateType>RowCount</aggregateType>
+        <dateGranularity>Day</dateGranularity>
+        <field>Journey__c$Owner</field>
+        <sortByName>RowCount</sortByName>
+        <sortOrder>Desc</sortOrder>
+        <sortType>Aggregate</sortType>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>Journey__c$CreatedDate</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>TTFT Demo MQLs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Journeys_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Journey__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURPREV1</interval>
+    </timeFrameFilter>
+</Report>

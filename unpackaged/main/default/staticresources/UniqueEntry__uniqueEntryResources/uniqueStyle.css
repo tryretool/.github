@@ -1,0 +1,162 @@
+
+        textarea{
+            width:70%;
+	    height:100px;
+        }
+        .dupeDiv{
+        	font-family:arial,helvetica;
+            font-size:11pt;
+            border: 3px solid rgb(175,30,45);
+            background-color: rgb(255,230,230);
+            border-radius: 4px;
+            padding: 5px 1px 2px 8px;
+            margin: 0 0 13px 0;
+        }
+        .dupeTitle{
+            font-weight:bold;
+            font-size: 14pt;
+            color: rgb(175,30,45);
+            margin-bottom: 6px;
+        }
+        .dupeTable{
+            font-size:9pt;
+            width:99%;
+            margin: 4px 8px 5px 9px;
+            padding:2px;
+        }
+        .dupeTable td{
+        	padding:1px 0px 1px 2px;
+        	vertical-align:middle;
+        }
+        .dupeTable th div {
+            margin-right: 7px;
+        }
+        .dupeMoreLink{
+        	width:95%;
+        	text-align:right;
+        	font-size:8pt;
+        	font-style:italic;
+        	margin: -6px 0 5px 0;
+        }
+        .messageTable{
+            font-size:9pt;
+            width:98%;
+            margin: 0 8px 5px 9px;
+            padding:2px;
+        }
+        .messageTable td{
+        	padding:1px 2px 1px 2px;
+        	vertical-align:middle;
+        }
+        .littleIcons{
+        	margin-left: 3px;
+        }
+    	.accountMatchBox{
+    		margin:0 0 10px 0;
+    	}
+        .optionGrid{
+            width:100%;
+        }
+        .labelColumn{
+            font-size:10pt;
+            font-weight:bold;
+            width:27%;
+            text-align:left;
+            color:rgb(100,100,100);
+            padding-bottom:10px;
+            padding-top:0;
+        }
+        .multiSelectLabel{
+        	padding:27px 0 0 0;
+        }
+        .otherLabel{
+        	font-size:10pt;
+            color:rgb(100,100,100);
+        }
+        .fieldColumn{
+            width:73%;
+            padding:0 0 10px 20px;
+        }
+        
+        #overlay {
+            visibility: hidden;
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width:100%;
+            height:100%;
+            text-align:center;
+            z-index: 1000;
+            background-color: #000000;
+            filter:alpha(opacity=30);
+            opacity:0.3;
+        }
+         #helpMessagePop{
+            visibility: hidden;
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width:100%;
+            height:100%;
+            text-align:center;
+            z-index: 1010;
+        }
+        #helpMessagePop div{
+            width:250px;
+            margin: 200px auto;
+            background-color: #FFFFFF;
+            border:3px solid rgb(100,100,100);
+            border-radius:10px;
+            padding:30px;
+            text-align:center;
+            font-size:13pt;
+            color:black;
+        }       
+        #messagePop{
+            visibility: hidden;
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width:100%;
+            height:100%;
+            text-align:center;
+            z-index: 1010;
+        }
+        #messagePop div{
+            width:250px;
+            margin: 200px auto;
+            background-color: #FFFFFF;
+            border:3px solid rgb(100,100,100);
+            border-radius:10px;
+            padding:30px;
+            text-align:center;
+            font-size:13pt;
+            color:black;
+        }
+		.messagePopStyle{
+            visibility: hidden;
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width:100%;
+            height:100%;
+            text-align:center;
+            z-index: 1010;
+        }
+        .messagePopStyle div{
+            width:250px;
+            margin: 200px auto;
+            background-color: #FFFFFF;
+            border:3px solid rgb(100,100,100);
+            border-radius:10px;
+            padding:30px;
+            text-align:center;
+            font-size:13pt;
+            color:black;
+        }
+        .presetConfiguration td {
+            vertical-align: middle !important;
+        }
+	.secret{
+	    visibility: hidden;
+	}

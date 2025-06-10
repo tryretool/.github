@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unassigned_SQOs_to_Review</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>SQO_Review_Priority__c</columns>
+    <columns>First_Contact_Role__c</columns>
+    <columns>SQO_Reviewed_By__c</columns>
+    <columns>SQO_Reviewed_At__c</columns>
+    <columns>Critical_Event_Type__c</columns>
+    <columns>Critical_Event_Link__c</columns>
+    <columns>Critical_Event_Comments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SQO_Reviewed_By__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Enterprise</value>
+    </filters>
+    <filters>
+        <field>SQO_Review_Priority__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>First_Contact_Role__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Critical_Event_Type__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Unassigned SQOs to Review</label>
+</ListView>

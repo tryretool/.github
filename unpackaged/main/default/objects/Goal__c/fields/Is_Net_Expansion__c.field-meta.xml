@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Net_Expansion__c</fullName>
+    <formula>(ISPICKVAL(Type__c,&quot;Company&quot;) || ISPICKVAL(Type__c,&quot;Team&quot;)) 
+&amp;&amp; (ISPICKVAL(Booking_Channel__c,&quot;Expansion&quot;) || ISPICKVAL(Booking_Channel__c,&quot;Contraction&quot;) || ISPICKVAL(Booking_Channel__c,&quot;Churn&quot;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Net Expansion?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

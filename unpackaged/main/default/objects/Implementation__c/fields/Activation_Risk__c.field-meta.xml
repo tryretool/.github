@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activation_Risk__c</fullName>
+    <description>The reason why a customer is at risk to activate.</description>
+    <label>Activation Risk</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Low priority</fullName>
+                <default>false</default>
+                <label>Low priority</label>
+            </value>
+            <value>
+                <fullName>External technical dependency</fullName>
+                <default>false</default>
+                <label>External technical dependency</label>
+            </value>
+            <value>
+                <fullName>Financial difficulties / RIF</fullName>
+                <default>false</default>
+                <label>Financial difficulties / RIF</label>
+            </value>
+            <value>
+                <fullName>Product / performance / stability issues</fullName>
+                <default>false</default>
+                <label>Product / performance / stability issues</label>
+            </value>
+            <value>
+                <fullName>Builder capacity / skills</fullName>
+                <default>false</default>
+                <label>Builder capacity / skills</label>
+            </value>
+            <value>
+                <fullName>Pricing</fullName>
+                <default>false</default>
+                <label>Pricing</label>
+            </value>
+            <value>
+                <fullName>Poor stakeholder support</fullName>
+                <default>false</default>
+                <label>Poor stakeholder support</label>
+            </value>
+            <value>
+                <fullName>Monolithic use case</fullName>
+                <default>false</default>
+                <label>Monolithic use case</label>
+            </value>
+            <value>
+                <fullName>No issue identified</fullName>
+                <default>false</default>
+                <label>No issue identified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

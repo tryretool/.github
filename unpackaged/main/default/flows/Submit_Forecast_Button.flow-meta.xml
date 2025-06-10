@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>58.0</apiVersion>
+    <choices>
+        <name>Next_Quarter</name>
+        <choiceText>Next Quarter</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Next Quarter</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>This_Quarter</name>
+        <choiceText>This Quarter</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>This Quarter</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>User_s_role_team_is</name>
+        <label>User&#39;s role/team is</label>
+        <locationX>407</locationX>
+        <locationY>225</locationY>
+        <defaultConnector>
+            <targetReference>Error_Invalid_User</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Invalid User</defaultConnectorLabel>
+        <rules>
+            <name>Sales_Leads</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$UserRole.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Enterprise Sales Lead, Midmarket Sales Lead, Growth Sales Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Configure_Opp_Selections</targetReference>
+            </connector>
+            <label>Sales Leads</label>
+        </rules>
+        <rules>
+            <name>SalesExecutive</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$UserRole.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>CRO, Head of Sales &amp; Success, Head of Sales, New Business Sales Lead</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Configure_Opp_Selections</targetReference>
+            </connector>
+            <label>Sales Executive</label>
+        </rules>
+        <rules>
+            <name>Revenue_Operations</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$User.Team__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Revenue Operations</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Configure_Opp_Selections</targetReference>
+            </connector>
+            <label>Revenue Operations</label>
+        </rules>
+    </decisions>
+    <dynamicChoiceSets>
+        <name>subteam_selection</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Subteam__c</picklistField>
+        <picklistObject>User</picklistObject>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <formulas>
+        <name>current_quarter_end_date</name>
+        <dataType>Date</dataType>
+        <expression>DATE(
+    YEAR(DATE(
+        YEAR(TODAY()),
+        CASE(
+            MONTH(TODAY()),
+            1, 1,
+            2, 4,
+            3, 7,
+            4, 10,
+            1
+        ),
+        1
+    )),
+    MONTH(DATE(
+        YEAR(TODAY()),
+        CASE(
+            MONTH(TODAY()),
+            1, 1,
+            2, 4,
+            3, 7,
+            4, 10,
+            1
+        ),
+        1
+    )) + 2,
+    0
+) - 1</expression>
+    </formulas>
+    <formulas>
+        <name>current_quarter_start_date</name>
+        <dataType>Date</dataType>
+        <expression>DATE(
+    YEAR(TODAY()),
+    CASE(
+        MONTH(TODAY()),
+        1, 1,
+        2, 4,
+        3, 7,
+        4, 10,
+        1
+    ),
+    1
+)</expression>
+    </formulas>
+    <formulas>
+        <name>ManagerFullName</name>
+        <dataType>String</dataType>
+        <expression>{!$User.FirstName} + &quot; &quot; +  {!$User.LastName}</expression>
+    </formulas>
+    <interviewLabel>Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Submit Forecast Button [WIP]</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Opps</name>
+        <label>Get Opps</label>
+        <locationX>413</locationX>
+        <locationY>694</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Sales_Manager__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.FirstName</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Booking_Date__c</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <elementReference>Booking_Date_Start</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Booking_Date__c</field>
+            <operator>LessThanOrEqualTo</operator>
+            <value>
+                <elementReference>Booking_Date_End</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Booking_Channel_Annualized_Revenue__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>New, Expansion, Upsell</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <name>Configure_Opp_Selections</name>
+        <label>Configure Opp Selections</label>
+        <locationX>413</locationX>
+        <locationY>492</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Get_Opps</targetReference>
+        </connector>
+        <fields>
+            <name>Select_Quarter</name>
+            <choiceReferences>This_Quarter</choiceReferences>
+            <choiceReferences>Next_Quarter</choiceReferences>
+            <dataType>String</dataType>
+            <defaultSelectedChoiceReference>This_Quarter</defaultSelectedChoiceReference>
+            <fieldText>Select Quarter</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Subteam</name>
+            <choiceReferences>subteam_selection</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Subteam</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>ManagerFullName</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Jasmine Mireshghi</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>booking_date_instructions</name>
+            <fieldText>&lt;p&gt;Default date range is set to the selected quarter. You can adjust the booking range if there are opportunities with a booking date outside of this range that you would like to include in your forecast.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Booking_Date_Start</name>
+            <dataType>Date</dataType>
+            <defaultValue>
+                <elementReference>current_quarter_start_date</elementReference>
+            </defaultValue>
+            <fieldText>Booking Date Start</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Booking_Date_End</name>
+            <dataType>Date</dataType>
+            <defaultValue>
+                <elementReference>current_quarter_end_date</elementReference>
+            </defaultValue>
+            <fieldText>Booking Date End</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Error_Invalid_User</name>
+        <label>Error: Invalid User</label>
+        <locationX>680</locationX>
+        <locationY>222</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>error_not_sales_leadership</name>
+            <fieldText>&lt;p&gt;Current user must be one of the following to submit a manager forecast call:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Sales Lead (&lt;em&gt;Enterprise, Midmarket, Growth, EMEA&lt;/em&gt;)&lt;/li&gt;&lt;li&gt;Sales Executive (&lt;em&gt;CRO, Head of Sales &amp;amp; Success, Head of Sales)&lt;/em&gt;&lt;/li&gt;&lt;li&gt;Revenue Operations team member&lt;/li&gt;&lt;/ul&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>289</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>User_s_role_team_is</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+</Flow>

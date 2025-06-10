@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fulfilment_Method__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Contract.Marketplace_Terms_Included__c,TEXT(Contract.Marketplace_Terms_Marketplace_Name__c),&quot;Direct&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Fulfilment Method</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

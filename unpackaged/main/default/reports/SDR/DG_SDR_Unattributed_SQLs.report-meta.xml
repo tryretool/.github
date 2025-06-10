@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_OPP_STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$Opportunity.Sourced_By__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Opportunity.Sales_Qualified_By__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    DATEVALUE(Journey__c.First_Outbound_Email__c) &lt; FK_Opportunity.Qualification_Meeting_Set_At__c,
+    &quot;Before&quot;,
+    IF(
+        DATEVALUE(Journey__c.First_Outbound_Email__c) &gt; FK_Opportunity.Qualification_Meeting_Set_At__c,
+        &quot;After&quot;,
+        &quot;Same&quot;
+    )
+)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>SDR Prior Activity?</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>Unattributed SQLs with SDR Activity</description>
+    <filter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR (6 AND 7))</booleanFilter>
+        <criteriaItems>
+            <column>FK_$Opportunity.Sourced_By_Subteam__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>ASE,BDR</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Opportunity.Subtype__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New Commitment - Annual,New Commitment - Monthly,New Commitment - Other,New Commitment - Quarterly,New Subsidiary - Annual,Unqualified - Sales</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_OWNER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>ASE,BDR,Inbound,Outbound</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_$Opportunity.SQL_At_S1__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_MONTH</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c.Approached_At__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c.Moment_Type_Reporting__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Demo Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c.Closed_At__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CUST_OWNER_ROLE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CUST_OWNER_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>[DG] SDR Unattributed SQLs</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Journey__c@Journey__c.Opportunity__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Journey__c.Accepted_At__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

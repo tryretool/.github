@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Forecast Risks --></label>
+        <name>Forecast_Risks__c</name>
+        <picklistValues>
+            <masterLabel>Competition/Incumbent</masterLabel>
+            <translation><!-- Competition/Incumbent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Champion</masterLabel>
+            <translation><!-- No Champion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Compelling Event</masterLabel>
+            <translation><!-- No Compelling Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No EB Access</masterLabel>
+            <translation><!-- No EB Access --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No MAP</masterLabel>
+            <translation><!-- No MAP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No PBOs</masterLabel>
+            <translation><!-- No PBOs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Pain</masterLabel>
+            <translation><!-- No Pain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Fit</masterLabel>
+            <translation><!-- Product Fit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single-threaded</masterLabel>
+            <translation><!-- Single-threaded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Timelines</masterLabel>
+            <translation><!-- Timelines --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

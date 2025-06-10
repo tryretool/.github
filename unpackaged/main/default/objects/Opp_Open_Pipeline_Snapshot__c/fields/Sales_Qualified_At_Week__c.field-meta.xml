@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Qualified_At_Week__c</fullName>
+    <formula>CASE(MOD(Sales_Qualified_At__c - DATE(1900, 1, 6), 7),
+0,Sales_Qualified_At__c + 0,
+1,Sales_Qualified_At__c + 6,
+2,Sales_Qualified_At__c + 5,
+3,Sales_Qualified_At__c + 4,
+4,Sales_Qualified_At__c + 3,
+5,Sales_Qualified_At__c + 2,
+6,Sales_Qualified_At__c + 1,
+TODAY())</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Sales Qualified At Week</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Response Body Format --></label>
+        <name>d_wh__Response_Body_Format__c</name>
+        <picklistValues>
+            <masterLabel>Form Encoded (application/x-www-form-urlencoded)</masterLabel>
+            <translation><!-- Form Encoded (application/x-www-form-urlencoded) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JSON (application/json)</masterLabel>
+            <translation><!-- JSON (application/json) --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

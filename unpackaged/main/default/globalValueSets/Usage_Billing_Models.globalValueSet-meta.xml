@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Overage</fullName>
+        <default>false</default>
+        <label>Overage</label>
+    </customValue>
+    <customValue>
+        <fullName>Block</fullName>
+        <default>false</default>
+        <label>Block</label>
+    </customValue>
+    <customValue>
+        <fullName>Unlimited</fullName>
+        <default>false</default>
+        <label>Unlimited</label>
+    </customValue>
+    <customValue>
+        <fullName>Custom</fullName>
+        <default>false</default>
+        <label>Custom</label>
+    </customValue>
+    <masterLabel>Usage Billing Models</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

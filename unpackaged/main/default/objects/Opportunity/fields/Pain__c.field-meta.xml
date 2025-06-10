@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pain__c</fullName>
+    <description>&lt;a href=&quot;https://retoolconfluence.atlassian.net/wiki/spaces/SAL/pages/45842590/MEDDPICC+sales+methodology&quot; target=&quot;_blank&quot;&gt;Learn more about MEDDPICC&lt;/a&gt;</description>
+    <inlineHelpText>What pain is the prospect experiencing? What are the implications of the pain?</inlineHelpText>
+    <label>[I] Implied Pain</label>
+    <length>131072</length>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

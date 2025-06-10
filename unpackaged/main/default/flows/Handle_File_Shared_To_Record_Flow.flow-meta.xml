@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <assignments>
+        <name>Update_opp</name>
+        <label>Update opp</label>
+        <locationX>2030</locationX>
+        <locationY>454</locationY>
+        <assignmentItems>
+            <assignToReference>GetRelatedOpp.Link_to_Contract__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>file_link</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_opp_commit</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_tech_asset</name>
+        <label>Update tech asset</label>
+        <locationX>1872</locationX>
+        <locationY>152</locationY>
+        <assignmentItems>
+            <assignToReference>Get_Technical_Asset.Link__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>file_link</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Technical_Asset.Medium__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>File</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_tech_asset_a</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Content_Doc_Link_Provided</name>
+        <label>Content Doc Link Provided?</label>
+        <locationX>774</locationX>
+        <locationY>266</locationY>
+        <defaultConnector>
+            <targetReference>Get_document_link</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varContentDocumentLinkId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Shared_to_contract</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Contract_record_type</name>
+        <label>Contract record type</label>
+        <locationX>1489</locationX>
+        <locationY>452</locationY>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>Order_Form</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_contract.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Order Form</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetRelatedOpp</targetReference>
+            </connector>
+            <label>Order Form</label>
+        </rules>
+        <rules>
+            <name>Reseller_Agreement</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_contract.RecordType.Name</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Reseller Agreement</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Reseller Agreement</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Found_document_link</name>
+        <label>Found document link?</label>
+        <locationX>961</locationX>
+        <locationY>75</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_found_link</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varContentDocumentLinkId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Shared_to_contract</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Shared_to_contract</name>
+        <label>Shared to</label>
+        <locationX>1120</locationX>
+        <locationY>264</locationY>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>Contract</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varRecordId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>800</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_contract</targetReference>
+            </connector>
+            <label>Contract</label>
+        </rules>
+        <rules>
+            <name>Technical_Asset</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varRecordId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>a2J</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Technical_Asset</targetReference>
+            </connector>
+            <label>Technical Asset</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Shared_to_contract_0</name>
+        <label>Shared to</label>
+        <locationX>478</locationX>
+        <locationY>265</locationY>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>Contract_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varRecordId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>800</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Content_Doc_Link_Provided</targetReference>
+            </connector>
+            <label>Contract</label>
+        </rules>
+        <rules>
+            <name>Technical_Asset_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varRecordId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>a2J</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Content_Doc_Link_Provided</targetReference>
+            </connector>
+            <label>Technical Asset</label>
+        </rules>
+    </decisions>
+    <description>Adding path for Technical Assets</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>file_link</name>
+        <dataType>String</dataType>
+        <expression>&quot;https://retool.lightning.force.com/sfc/servlet.shepherd/document/download/&quot;&amp;{!varContentDocumentId}</expression>
+    </formulas>
+    <formulas>
+        <name>flow_user_full_name</name>
+        <dataType>String</dataType>
+        <expression>{!$User.FirstName}&amp;&quot; &quot;&amp;{!$User.LastName}</expression>
+    </formulas>
+    <formulas>
+        <name>opp_contract_file_name</name>
+        <dataType>String</dataType>
+        <expression>{!GetRelatedOpp.Name_Entity_Prefix__c}&amp;&quot; (&quot;&amp;
+CASE({!GetRelatedOpp.Subtype__c},
+ &quot;Expansion - Committed&quot;,&quot;Expansion&quot;,
+ &quot;Conversion - Non-Annual to Annual&quot;,&quot;New Commitment&quot;,
+ &quot;Conversion - Self-Service to Annual&quot;,&quot;New Commitment&quot;,
+ &quot;New Commitment - Annual&quot;,&quot;New Commitment&quot;,
+ &quot;New Commitment - Quarterly&quot;,&quot;New Commitment&quot;,
+ &quot;New Commitment - Monthly&quot;,&quot;New Commitment&quot;,
+ &quot;New Commitment - Other&quot;,&quot;New Commitment&quot;,
+ &quot;New Subsidiary - Annual&quot;,&quot;New Commitment&quot;,
+ &quot;Partnership&quot;,&quot;Partnership&quot;,
+ &quot;Professional Services&quot;,&quot;Professional Services&quot;,
+ &quot;Pilot - Paid&quot;,&quot;Pilot&quot;,
+ &quot;Renewal - Annual&quot;,&quot;Renewal&quot;,
+ &quot;Renewal - Quarterly&quot;,&quot;Renewal&quot;,
+ &quot;Renewal - Bi-Monthly&quot;,&quot;Renewal&quot;,
+ &quot;Renewal - Semi-Annual&quot;,&quot;Renewal&quot;,
+ &quot;Renewal - Bridge&quot;,&quot;Bridge Renewal&quot;,
+ &quot;Renewal - Monthly&quot;,&quot;Renewal&quot;,
+ &quot;Renewal - Pilot Conversion&quot;,&quot;Pilot Conversion&quot;,
+ &quot;Renewal - Pilot Extension&quot;,&quot;Pilot Extension&quot;,
+ &quot;&quot;
+)
+&amp;&quot;) &quot;&amp; TEXT(MONTH({!GetRelatedOpp.Term_Start_Date__c}))&amp;&quot;/&quot;&amp;TEXT(YEAR({!GetRelatedOpp.Term_Start_Date__c}))&amp; &quot; - Fully Executed&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>tech_asset_filename</name>
+        <dataType>String</dataType>
+        <expression>{!Get_Technical_Asset.Name}</expression>
+    </formulas>
+    <interviewLabel>Handle File Shared To Record Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Handle File Shared To Record Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_contract</name>
+        <label>Get contract</label>
+        <locationX>1306</locationX>
+        <locationY>455</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contract_record_type</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varRecordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contract</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_document_link</name>
+        <label>Get document link</label>
+        <locationX>787</locationX>
+        <locationY>77</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_document_link</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>LinkedEntityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varRecordId</elementReference>
+            </value>
+        </filters>
+        <object>ContentDocumentLink</object>
+        <outputAssignments>
+            <assignToReference>varContentDocumentId</assignToReference>
+            <field>ContentDocumentId</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>varContentDocumentLinkId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Technical_Asset</name>
+        <label>Get Technical Asset</label>
+        <locationX>1485</locationX>
+        <locationY>139</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_file_name_0</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varRecordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Technical_Asset__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetRelatedOpp</name>
+        <label>Get Related Opp</label>
+        <locationX>1737</locationX>
+        <locationY>452</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_file_name</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ContractId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varRecordId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Has_controlling_contract__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_contract</name>
+        <label>Update contract</label>
+        <locationX>2332</locationX>
+        <locationY>450</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GetRelatedOpp.ContractId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Agreement_Upload_Method__c</field>
+            <value>
+                <elementReference>flow_user_full_name</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contract</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_file_name</name>
+        <label>Update file name</label>
+        <locationX>1885</locationX>
+        <locationY>452</locationY>
+        <connector>
+            <targetReference>Update_opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varContentDocumentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Title</field>
+            <value>
+                <elementReference>opp_contract_file_name</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ContentDocument</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_file_name_0</name>
+        <label>Update file name</label>
+        <locationX>1670</locationX>
+        <locationY>140</locationY>
+        <connector>
+            <targetReference>Update_tech_asset</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varContentDocumentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Title</field>
+            <value>
+                <elementReference>tech_asset_filename</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ContentDocument</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_opp_commit</name>
+        <label>Update opp</label>
+        <locationX>2175</locationX>
+        <locationY>452</locationY>
+        <connector>
+            <targetReference>Update_contract</targetReference>
+        </connector>
+        <inputReference>GetRelatedOpp</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_tech_asset_a</name>
+        <label>Update tech asset</label>
+        <locationX>2046</locationX>
+        <locationY>147</locationY>
+        <inputReference>Get_Technical_Asset</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>239</locationY>
+        <connector>
+            <targetReference>Shared_to_contract_0</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>chatter_test</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>varContentDocumentLinkId: {!varContentDocumentLinkId}
+varContentDocumentId: {!varContentDocumentId}
+varRecordId: {!varRecordId}
+varContentVersionId: {!varContentVersionId}</text>
+    </textTemplates>
+    <variables>
+        <name>currentItem_Filter_for_contract_links_0</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>ContentDocumentLink</objectType>
+    </variables>
+    <variables>
+        <description>https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_contentdocument.htm</description>
+        <name>varContentDocumentId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_contentdocumentlink.htm</description>
+        <name>varContentDocumentLinkId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_objects_contentversion.htm</description>
+        <name>varContentVersionId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>ID of the record that the file was shared to. Can include Chatter users, groups, records (any that support Chatter feed tracking including custom objects), and Salesforce CRM Content libraries.</description>
+        <name>varRecordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

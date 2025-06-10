@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Global Picklist to determine which embeddings will be used to answer questions. By default embeddings are globally available. Restrict access to users with User Topic Access, each user will have access to embeddings based on this pairing. --></help>
+        <label><!-- Topic Access --></label>
+        <name>Centro__Topic_Access__c</name>
+    </CustomFieldTranslation>

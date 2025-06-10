@@ -1,0 +1,9 @@
+Hi there, thanks for reaching out. ​
+
+<p>If you're setting up 2FA initially, can you try a different 2FA app (e.g. Duo, Google Authenticator, Microsoft Authenticator, etc.)? Also if you're using an Android device, we've seen the time on the device cause this issue that's resolved by <a href="https://coinspot.zendesk.com/hc/en-us/articles/115000115593-2FA-Token-not-working-" target="_blank">syncing the time</a>. </p>
+
+<p>If you need a 2FA reset, as a security best practice, I’m not able to reset 2FA from the Retool side. Someone with Admin permissions within your org can follow this documentation to <a href="https://docs.retool.com/org-users/guides/two-factor-authentication#reset-2fa-for-individual-users" target="_blank">reset 2fa for individual users.</a> <p>
+
+Please let me know if you’re still blocked after an Admin tries those steps. 
+
+<br><br>Thanks!

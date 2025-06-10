@@ -1,0 +1,20 @@
+<p>If you want to set up a self-hosted instance you will need to set up a new account for that self-hosted instance through this portal here. This will be a whole new account you have to pay for in addition to your cloud account. From a high level, the process of migrating from a cloud-hosted account to a self-hosted account looks like this:</p>
+<ul>
+<li>sign up for a self-hosted account on my.retool.com (the portal mentioned earlier)</li>
+
+<li>spin up a self-hosted instance with the license key provided when you sign up on my.retool.com</li>
+
+<li>configure your self-hosted instance as needed</li>
+
+<li>manually migrate your resources from your cloud account to your self-hosted account. You'll need to make your resources with the exact same names in your self-hosted instance as in your cloud account for the queries in your migrated apps to work correctly.</li>
+
+<li>export and import your apps from your cloud account to your self-hosted account. You can export your apps by clicking the 3 dots in the top right corner of the app > Export to JSON. Then, you can import this JSON file by clicking Create new (home page) > From JSON!</li>
+</ul>
+<p><img src="https://downloads.intercomcdn.com/i/o/322432767/d0433dd2a9678da7da8002a6/image.png?expires=1727113500&signature=f6c4d44c14c8ef3cd91a79ba4dbdba63353188d1d1c453b636d4bd613ed65a7f&req=dyIlEsp8modYFb4f3HP0gONeatBzOmgHGWIXCcCu9anO%0A" alt="Export to JSON" style="width:1000px;"> </p>
+<p><img src="https://downloads.intercomcdn.com/i/o/535217284/d96fc6faa362eeb452308517/Screen+Shot+2022-06-23+at+9.38.18+AM.png?expires=1727113500&signature=362290fe3f10de3163d726124f42bf8a19fde71ad9b90d416461f9d4a7b44f66&req=cSMiFMh5n4lbFb4f3HP0gJ9lMstI44uzV0C3ouZOguGe%0A" 
+alt="From JSON" style="width:1000px;"></p>
+<ul>
+<li>Invite any users to your self-hosted instance</li>
+</ul>
+
+<p>Something to note is that our on-premise versions trail our cloud versions by 2-4 weeks, so you may lose some functionality when migrating your apps from the cloud to an on-premise instance.</p>

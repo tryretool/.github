@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Indicates if Backlog/Up Next tickets are groomed and ready to be claimed from the &apos;Shared Backlog&apos; pool of tickets.
+&apos;Groomed&apos; tickets must include complete details for: Problem/Context (aka Description), Points, and Priority. --></help>
+        <label><!-- Is Groomed? --></label>
+        <name>Is_Groomed__c</name>
+    </CustomFieldTranslation>

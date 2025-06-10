@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outreach_Mailing_ID__c</fullName>
+    <description>Identifies the mailing ID used for the communication.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Identifies the mailing ID used for the communication.</inlineHelpText>
+    <label>Outreach Mailing ID</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

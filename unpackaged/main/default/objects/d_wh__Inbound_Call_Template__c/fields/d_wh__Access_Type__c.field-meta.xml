@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>d_wh__Access_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Access Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Public</fullName>
+                <default>false</default>
+                <label>With Public URL</label>
+            </value>
+            <value>
+                <fullName>Authenticated</fullName>
+                <default>false</default>
+                <label>Authenticated with REST API</label>
+            </value>
+            <value>
+                <fullName>SHA-256 Signed Body</fullName>
+                <default>false</default>
+                <label>SHA-256 Signed Body</label>
+            </value>
+            <value>
+                <fullName>Bearer Token</fullName>
+                <default>false</default>
+                <label>Bearer Token</label>
+            </value>
+            <value>
+                <fullName>API Key</fullName>
+                <default>false</default>
+                <label>API Key</label>
+            </value>
+            <value>
+                <fullName>Basic</fullName>
+                <default>false</default>
+                <label>Basic (Username and Password)</label>
+            </value>
+            <value>
+                <fullName>Apex</fullName>
+                <default>false</default>
+                <label>Use Apex Class To Verify Authentication</label>
+            </value>
+            <value>
+                <fullName>SHA-256 Signed URL + Body</fullName>
+                <default>false</default>
+                <label>SHA-256 Signed URL + Body</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

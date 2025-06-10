@@ -1,0 +1,18 @@
+<p>If you want to set up a cloud instance you will need to set up a new account for that cloud instance by signing up <a href="https://login.retool.com/auth/signup?plan=free" target="_blank">here</a> (to start on the Free Plan) or <a href="https://login.retool.com/auth/signup?plan=business" target="_blank">here</a> to try out our Business Plan for free for 30 days. This will be a whole new account separate from your self-hosted account. From a high level, the process of migrating from a self-hosted account to a cloud account looks like this:</p>
+
+<ul><li>sign up for a cloud account at one of the two above links</li>
+
+<li>configure the new cloud account as needed</li>
+
+<li>manually migrate your resources from your self-hosted account to your cloud account. You'll need to make your resources with the exact same names in your cloud instance as in your self-hosted account for the queries in your migrated apps to work correctly.</li>
+
+<li>export and import your apps from your self-hosted account to your cloud account. You can export your apps by clicking the 3 dots in the top right corner of the app > Export to JSON. Then, you can import this JSON file by clicking Create new (home page) > From JSON!</li></ul>
+
+<p><img src="https://downloads.intercomcdn.com/i/o/322432767/d0433dd2a9678da7da8002a6/image.png?expires=1739207700&signature=bdfac309f00219f30ade0dee8d0292446552027fccf912d74104bc4ed613721f&req=dyIlEsp8modYFb4f3HP0gONfZNNyPmoHGWIXCcCu9alt%0A" width="900"></p>
+<p><img src="https://downloads.intercomcdn.com/i/o/535217284/d96fc6faa362eeb452308517/Screen+Shot+2022-06-23+at+9.38.18+AM.png?expires=1739207700&signature=f063c0d7f12756a979455214d3265e4f7f52c33448416be90acbc6bc0aa06825&req=cSMiFMh5n4lbFb4f3HP0gJ9kPMhJ54mzV0C3ouZOguEf%0A" width="800"></p>
+
+<ul><li>Invite any users to your cloud instance</li>
+
+<li>Finally, you can cancel the subscription for your self-hosted license at my.retool.com if you'd like to sunset your self-hosted account.</li></ul>
+
+<p>Something to note is that our on-premise versions trail our cloud versions by 2-4 weeks, so you may see some newer functionality when migrating your apps from the self-hosted instance to your cloud instance.</p>

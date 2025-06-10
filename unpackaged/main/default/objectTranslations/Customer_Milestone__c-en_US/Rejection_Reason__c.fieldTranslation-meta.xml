@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Rejection Reason --></label>
+        <name>Rejection_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Customer ineligible</masterLabel>
+            <translation><!-- Customer ineligible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insufficient need</masterLabel>
+            <translation><!-- Insufficient need --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No capacity</masterLabel>
+            <translation><!-- No capacity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

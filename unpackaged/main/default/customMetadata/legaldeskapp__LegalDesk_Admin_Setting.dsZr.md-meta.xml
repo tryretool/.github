@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>LD_Rule_Record_nIxp</label>
+    <protected>false</protected>
+    <values>
+        <field>legaldeskapp__Auth_Token__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Email_Address__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Hours_Auth_Token_Will_Expire_In__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Last_Sync_Date__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Mass_Create_Object__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Object_API_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Old_Rule_Custom_Metadata_Records__c</field>
+        <value xsi:type="xsd:string">m0yQo00000HIF5FIAX,m11Qo000011P67iIAC,m10Qo000008Xf6TIAS,m10Qo000008Xf6iIAC,m0yQo00000HIF5GIAX,m11Qo000011P67nIAC,m10Qo000008Xf6LIAS,m10Qo000008Xf6QIAS,m10Qo000008Xf6WIAS,m10Qo000008Xf6bIAC,m10Qo000008Xf6cIAC,m0yQo00000HIF5HIAX,m11Qo000011P67dIAC,m11Qo000011P67jIAC,m10Qo000008Xf6DIAS,m10Qo000008Xf6EIAS,m10Qo000008Xf6HIAS,m10Qo000008Xf6KIAS,m10Qo000008Xf6YIAS,m0yQo00000HIF5IIAX,m11Qo000011P67aIAC,m11Qo000011P67mIAC,m10Qo000008Xf6JIAS,m10Qo000008Xf6SIAS,m10Qo000008Xf6ZIAS,m10Qo000008Xf6aIAC,m10Qo000008Xf6gIAC,m0yQo00000HIF5JIAX,m11Qo000011P67hIAC,m10Qo000008Xf6MIAS,m10Qo000008Xf6VIAS,m10Qo000008Xf6eIAC,m10Qo000008Xf6kIAC,m0yQo00000HIF5KIAX,m11Qo000011P67gIAC,m10Qo000008Xf6PIAS,m10Qo000008Xf6dIAC,m0yQo00000HIF5LIAX,m11Qo000011P67kIAC,m11Qo000011P67lIAC,m10Qo000008Xf6IIAS,m10Qo000008Xf6hIAC,m0yQo00000HIF5MIAX,m11Qo000011P67fIAC,m10Qo000008Xf6FIAS,m10Qo000008Xf6XIAS,m10Qo000008Xf6jIAC,m0yQo00000HIF5NIAX,m11Qo000011P67cIAC,m11Qo000011P67eIAC,m10Qo000008Xf6NIAS,m10Qo000008Xf6OIAS,m0yQo00000HIF5OIAX,m11Qo000011P67pIAC,m10Qo000008Xf6GIAS,m0yQo00000HIF5PIAX,m11Qo000011P67oIAC,m10Qo000008Xf6RIAS,m0yQo00000HIF5QIAX,m11Qo000011P67bIAC,m10Qo000008Xf6UIAS,m10Qo000008Xf6fIAC</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Request_Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Run_Trigger__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>legaldeskapp__StreamLineAIURL__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Timestamp__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Type__c</field>
+        <value xsi:type="xsd:string">Old Rule Ids</value>
+    </values>
+</CustomMetadata>

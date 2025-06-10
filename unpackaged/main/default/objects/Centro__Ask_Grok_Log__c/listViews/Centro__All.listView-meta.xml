@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Centro__All</fullName>
+    <columns>NAME</columns>
+    <columns>Centro__SessionId__c</columns>
+    <columns>Centro__Case__c</columns>
+    <columns>Centro__Answer__c</columns>
+    <columns>Centro__Question__c</columns>
+    <columns>Centro__Salesforce_User_Id__c</columns>
+    <columns>Centro__Slack_User_Id__c</columns>
+    <columns>Centro__Model_Name__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

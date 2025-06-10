@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Initial_Collections_Risk__c</fullName>
+    <description>Initial &#39;Collections Risk&#39; value that is populated the first time &#39;Collections Risk&#39; is set.</description>
+    <inlineHelpText>Initial &#39;Collections Risk&#39; value that is populated the first time &#39;Collections Risk&#39; is set.</inlineHelpText>
+    <label>Initial Collections Risk</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>No Risk</fullName>
+                <default>false</default>
+                <label>No Risk</label>
+            </value>
+            <value>
+                <fullName>Low Risk</fullName>
+                <default>false</default>
+                <label>Low Risk</label>
+            </value>
+            <value>
+                <fullName>Medium Risk</fullName>
+                <default>false</default>
+                <label>Medium Risk</label>
+            </value>
+            <value>
+                <fullName>High Risk</fullName>
+                <default>false</default>
+                <label>High Risk</label>
+            </value>
+            <value>
+                <fullName>Certain</fullName>
+                <default>false</default>
+                <label>Certain</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

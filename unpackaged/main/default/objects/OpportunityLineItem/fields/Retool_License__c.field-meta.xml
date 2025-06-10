@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retool_License__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <inlineHelpText>The Retool License to which this product gets provisioned</inlineHelpText>
+    <label>Retool License</label>
+    <referenceTo>Retool_License__c</referenceTo>
+    <relationshipLabel>Opportunity Product</relationshipLabel>
+    <relationshipName>Opportunity_Product</relationshipName>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <type>Lookup</type>
+</CustomField>

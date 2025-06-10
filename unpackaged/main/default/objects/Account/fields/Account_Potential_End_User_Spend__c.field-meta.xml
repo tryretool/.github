@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Potential_End_User_Spend__c</fullName>
+    <description>Potential revenue equivalent based on the number of potential Retool End Users at the Account.</description>
+    <inlineHelpText>Potential revenue equivalent based on the number of potential Retool End Users at the Account.</inlineHelpText>
+    <label>Account Potential: End User Spend</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

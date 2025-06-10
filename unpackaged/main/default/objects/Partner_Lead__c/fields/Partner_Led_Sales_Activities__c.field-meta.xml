@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_Led_Sales_Activities__c</fullName>
+    <label>Partner Led Sales Activities</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>initial_discussions</fullName>
+                <default>false</default>
+                <label>Initial discussions with customer</label>
+            </value>
+            <value>
+                <fullName>customer_demonstrated_interest</fullName>
+                <default>false</default>
+                <label>Customer has shown interest in Retool</label>
+            </value>
+            <value>
+                <fullName>conducted_demo</fullName>
+                <default>false</default>
+                <label>Conducted POC / demo</label>
+            </value>
+            <value>
+                <fullName>evaluation_stage</fullName>
+                <default>false</default>
+                <label>Evaluation / planning stage</label>
+            </value>
+            <value>
+                <fullName>agreed_on_solution</fullName>
+                <default>false</default>
+                <label>Agreed on solution to business problem</label>
+            </value>
+            <value>
+                <fullName>finalized_deployment</fullName>
+                <default>false</default>
+                <label>Finalized deployment need</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

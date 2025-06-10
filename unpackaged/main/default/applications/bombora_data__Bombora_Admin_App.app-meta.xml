@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>bombora_data__Bombora_Logo</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Bombora for Salesforce app guides system administrations to configure and update Bombora&#39;s Intent data with Salesforce. Intent data tells you which businesses are researching the products and services that you and your competitors sell.</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Bombora Admin App</label>
+    <navType>Standard</navType>
+    <tabs>bombora_data__Bombora_Admin</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>bombora_data__Bombora_Admin_App_UtilityBar</utilityBar>
+</CustomApplication>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Estimated Sprint of the given Project/Task. Sprint values are added as they come up. --></help>
+        <label><!-- Estimated Sprint --></label>
+        <name>Estimated_Sprint__c</name>
+    </CustomFieldTranslation>

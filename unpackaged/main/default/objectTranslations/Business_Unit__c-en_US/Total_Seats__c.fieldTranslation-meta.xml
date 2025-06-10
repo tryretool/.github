@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Sum of the Seats Sold field on the Opportunity chain. This is equivalent to the total billed seats for this Business Unit (not MAUs). --></help>
+        <label><!-- Total Users (Standard) --></label>
+        <name>Total_Seats__c</name>
+    </CustomFieldTranslation>

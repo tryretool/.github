@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StartDate</fullName>
+    <description>The date the campaign started or the date when the campaign occurred.
+
+In System Use: Flow - &quot;Campaign - Create Campaign Button&quot;
+
+External Systems Utilization: None</description>
+    <inlineHelpText>The date the campaign started or the date when the campaign occurred.</inlineHelpText>
+    <securityClassification>Safe</securityClassification>
+</CustomField>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Checked TRUE if the related Contact was a Retool User at an active Self Service Retool Org. --></help>
+        <label><!-- Is Self Service? --></label>
+        <name>Is_Self_Service__c</name>
+    </CustomFieldTranslation>

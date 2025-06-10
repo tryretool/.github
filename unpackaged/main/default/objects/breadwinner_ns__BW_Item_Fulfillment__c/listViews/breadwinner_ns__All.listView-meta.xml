@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__All</fullName>
+    <columns>NAME</columns>
+    <columns>breadwinner_ns__ShipStatus__c</columns>
+    <columns>breadwinner_ns__TranDate__c</columns>
+    <columns>breadwinner_ns__Entity_Company__c</columns>
+    <columns>breadwinner_ns__CreatedFrom__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

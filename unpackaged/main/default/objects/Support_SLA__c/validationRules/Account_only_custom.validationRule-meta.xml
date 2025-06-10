@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_only_custom</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISPICKVAL(Tier__c,&quot;Custom&quot;)) &amp;&amp; NOT(ISBLANK(Account__c))</errorConditionFormula>
+    <errorMessage>Account cannot be assigned to standard tier SLA</errorMessage>
+</ValidationRule>

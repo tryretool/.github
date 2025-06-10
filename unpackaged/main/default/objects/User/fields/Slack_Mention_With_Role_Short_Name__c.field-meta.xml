@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Slack_Mention_With_Role_Short_Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(IsActive = FALSE,
+ FirstName&amp;&quot; &quot;&amp;LastName&amp;&quot; (Inactive User)&quot;,
+ IF(
+  ISBLANK(Slack_ID__c),
+  FirstName&amp;&quot; &quot;&amp;LastName&amp;IF(ISBLANK(User_Role_Short_Name__c),NULL,&quot; (&quot;&amp;User_Role_Short_Name__c&amp;&quot;)&quot;),
+  &quot;&lt;@&quot;&amp;Slack_ID__c&amp;&quot;&gt;&quot;&amp;IF(ISBLANK(User_Role_Short_Name__c),NULL,&quot; (&quot;&amp;User_Role_Short_Name__c&amp;&quot;)&quot;)
+ )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Slack Mention: With Role Short Name</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,14 @@
+.slds-truncate {
+    max-width: 100%;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.slds-input__icon {
+    pointer-events:all;
+    cursor: pointer;
+}
+
+.custom-table-dropdown .slds-scrollable_x, .slds-scrollable--x, .slds-scrollable_y, .slds-scrollable--y {
+    overflow: visible;
+}

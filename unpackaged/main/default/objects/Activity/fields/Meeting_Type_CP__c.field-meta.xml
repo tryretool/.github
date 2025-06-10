@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Meeting_Type_CP__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Meeting type (via Chili Piper)</inlineHelpText>
+    <label>Meeting Type</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

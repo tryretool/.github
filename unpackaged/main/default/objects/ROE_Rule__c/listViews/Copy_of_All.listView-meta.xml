@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_All</fullName>
+    <columns>User_Role__c</columns>
+    <columns>NAME</columns>
+    <columns>Can_Own_Accounts__c</columns>
+    <columns>CP_Standard_Queues__c</columns>
+    <columns>CP_Licenses__c</columns>
+    <columns>Update_active_users__c</columns>
+    <columns>Role_Family__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <filters>
+        <field>Team__c</field>
+        <operation>equals</operation>
+        <value>Account Executives,Leadership,Revenue Operations,Sales Account Management,Sales Development</value>
+    </filters>
+    <filters>
+        <field>User_Role__c</field>
+        <operation>notEqual</operation>
+        <value>CEO,CFO,CMO,Commercial Counsel,CRO,GTM Strategy,Head of Engineering,Head of Finance,Support Operations,Variable Compensation Lead,General Counsel,Head of Technical Experience</value>
+    </filters>
+    <label>Chili Piper</label>
+    <sharedTo />
+</ListView>

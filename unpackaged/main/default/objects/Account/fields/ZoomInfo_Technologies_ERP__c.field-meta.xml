@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZoomInfo_Technologies_ERP__c</fullName>
+    <description>List of ERP technologies used by the company, provided by ZoomInfo.
+
+External Systems Utilization: ZoomInfo</description>
+    <inlineHelpText>List of ERP technologies used by the company, provided by ZoomInfo.</inlineHelpText>
+    <label>ZoomInfo Technologies: ERP</label>
+    <length>32768</length>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

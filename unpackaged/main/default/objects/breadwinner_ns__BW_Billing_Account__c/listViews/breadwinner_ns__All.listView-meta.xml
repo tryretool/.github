@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__All</fullName>
+    <columns>NAME</columns>
+    <columns>breadwinner_ns__IdNumber__c</columns>
+    <columns>breadwinner_ns__Frequency__c</columns>
+    <columns>breadwinner_ns__BillingScheduleName__c</columns>
+    <columns>breadwinner_ns__Customer__c</columns>
+    <columns>breadwinner_ns__CustomerDefault__c</columns>
+    <columns>breadwinner_ns__StartDate__c</columns>
+    <columns>breadwinner_ns__NextBillCycleDate__c</columns>
+    <columns>breadwinner_ns__CurrencyName__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

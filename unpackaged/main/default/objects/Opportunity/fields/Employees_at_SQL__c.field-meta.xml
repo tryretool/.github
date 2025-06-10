@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Employees_at_SQL__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The number of employees recorded on the associated account on the day when this opportunity was marked as Sales Accepted Lead (SAL). This is the same day as when the opportunity entered stage 1 or the day the qualification meeting was set.</inlineHelpText>
+    <label>Employees at SQL (S1)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

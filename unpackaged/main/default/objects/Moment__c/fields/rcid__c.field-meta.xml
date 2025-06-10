@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>rcid__c</fullName>
+    <description>Retool Campaign ID. Intended to be a hidden field used on our Demo Form, which is populated by our website. The Retool Campaign ID is tied to SFDC Campaigns.
+
+In Systems Use: &#39;Moment: Before Save Automations&#39;; &#39;Task - After Save Automations&#39;
+
+
+External Systems Utilization: Hubspot</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Retool Campaign ID. Intended to be a hidden field used on our Demo Form, which is populated by our website. The Retool Campaign ID is tied to SFDC Campaigns.</inlineHelpText>
+    <label>rcid</label>
+    <length>18</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

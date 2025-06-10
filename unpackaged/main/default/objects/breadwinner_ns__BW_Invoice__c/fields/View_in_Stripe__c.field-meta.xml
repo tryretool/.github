@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>View_in_Stripe__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISBLANK(Stripe_Invoice_ID_Compiled__c),
+  &quot;Not found&quot;,
+  IF(
+    ISBLANK(ncf_body_mhi_stripe_invoicenum__c),
+    HYPERLINK(&quot;https://dashboard.stripe.com/invoices/&quot;&amp;Stripe_Invoice_ID_Compiled__c,&quot;Link&quot;,&quot;_blank&quot;),
+    HYPERLINK(&quot;https://dashboard.stripe.com/invoices/&quot;&amp;Stripe_Invoice_ID_Compiled__c,ncf_body_mhi_stripe_invoicenum__c,&quot;_blank&quot;)
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>View in Stripe</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

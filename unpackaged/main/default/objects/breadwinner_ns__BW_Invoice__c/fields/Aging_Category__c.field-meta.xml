@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Aging_Category__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(breadwinner_ns__Status__c,
+  &quot;Paid In Full&quot;,&quot;Paid In Full&quot;,
+  &quot;Open&quot;,
+    IF(
+      Days_Past_Due__c = 0,
+      &quot;Due&quot;,
+      IF(  
+        Days_Past_Due__c &lt;= 30,
+        &quot;Overdue (1-30 days)&quot;,
+        IF(
+          Days_Past_Due__c &lt;= 60,
+          &quot;Overdue (31-60 days)&quot;,
+          IF(
+            Days_Past_Due__c &lt;= 90,
+            &quot;Overdue (61-90 days)&quot;,
+            IF(
+              Days_Past_Due__c &lt;= 120,
+              &quot;Overdue (91-120 days)&quot;,
+              &quot;Overdue (121+ days)&quot;
+            )
+          )
+        )
+      )
+    ),
+  breadwinner_ns__Status__c
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Aging Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

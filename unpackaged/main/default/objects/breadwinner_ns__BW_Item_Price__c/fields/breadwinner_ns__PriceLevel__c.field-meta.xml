@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__PriceLevel__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Price Level</label>
+    <referenceTo>breadwinner_ns__BW_Price_Level__c</referenceTo>
+    <relationshipLabel>NetSuite Item Prices</relationshipLabel>
+    <relationshipName>BWItemPrices</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

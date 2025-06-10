@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- zOLD Account: # of Active Committed BUs --></label>
+        <name>Account_Num_of_Active_Committed_BUs__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Sales Qualification Meeting Set At --></label>
+        <name>Sales_Qualification_Meeting_Set_At__c</name>
+    </CustomFieldTranslation>

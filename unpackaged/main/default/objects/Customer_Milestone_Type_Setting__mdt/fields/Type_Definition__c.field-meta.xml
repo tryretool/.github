@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_Definition__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Type Definition</label>
+    <referenceTo>Customer_Milestone_Type_Definition__mdt</referenceTo>
+    <relationshipLabel>Customer Milestone Type Settings</relationshipLabel>
+    <relationshipName>Customer_Milestone_Type_Settings</relationshipName>
+    <required>false</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

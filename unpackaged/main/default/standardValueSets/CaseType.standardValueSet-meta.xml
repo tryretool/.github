@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Retool Product Enablement</fullName>
+        <default>false</default>
+        <label>Retool Product Enablement</label>
+    </standardValue>
+    <standardValue>
+        <fullName>General Technical Enablement</fullName>
+        <default>false</default>
+        <label>General Technical Enablement</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Account Administration</fullName>
+        <default>false</default>
+        <label>Account Administration</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Setup and Initial Config</fullName>
+        <default>false</default>
+        <label>Setup and Initial Config</label>
+    </standardValue>
+    <standardValue>
+        <fullName>System Architecture</fullName>
+        <default>false</default>
+        <label>System Architecture</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Feedback</fullName>
+        <default>false</default>
+        <label>Feedback</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Security</fullName>
+        <default>false</default>
+        <label>Security</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Question</fullName>
+        <default>false</default>
+        <label>Question</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Problem</fullName>
+        <default>false</default>
+        <label>Problem</label>
+    </standardValue>
+</StandardValueSet>

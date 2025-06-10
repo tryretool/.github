@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>LD_Record_NsCu</label>
+    <protected>false</protected>
+    <values>
+        <field>legaldeskapp__Bidirectional_Type__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Custom_Form_Constant_Id__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Custom_Form_FormOrder__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Custom_Form_UpdatedAt__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Custom_Form_Version_Id__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Custom_Form__c</field>
+        <value xsi:type="xsd:string">Deal Support</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Data_Type__c</field>
+        <value xsi:type="xsd:string">Text</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Display__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Field_API_Name__c</field>
+        <value xsi:type="xsd:string">platform_type__c</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Field_Description__c</field>
+        <value xsi:type="xsd:string">The way the customer intends to deploy Retool</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Form_Label__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__IsActiveField__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Is_Editable_By_Core_Only__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>legaldeskapp__LegalDesk_Field_Id__c</field>
+        <value xsi:type="xsd:string">67feb306a5285fb8e222682c</value>
+    </values>
+    <values>
+        <field>legaldeskapp__LegalDesk_Field__c</field>
+        <value xsi:type="xsd:string">11</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Object_API_Name__c</field>
+        <value xsi:type="xsd:string">opportunity</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Question__c</field>
+        <value xsi:type="xsd:string">Hosting Style</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Record_Type_Developer_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Relationship_Field_API_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>legaldeskapp__Required__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Template_Question__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Type__c</field>
+        <value xsi:type="xsd:string">Custom Form</value>
+    </values>
+</CustomMetadata>

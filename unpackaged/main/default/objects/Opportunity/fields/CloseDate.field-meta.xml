@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CloseDate</fullName>
+    <description>The date the deal is projected to exit or actually exits the Sales pipeline. &lt;a href=&quot;https://retoolconfluence.atlassian.net/wiki/spaces/SAL/pages/121077975/Booking+and+Contract+Dates&quot; target=&quot;_blank&quot;&gt;Learn more about Opportunity date fields&lt;/a&gt;</description>
+    <inlineHelpText>The date the deal is projected to exit or actually exits the Sales pipeline.</inlineHelpText>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>true</trackTrending>
+</CustomField>

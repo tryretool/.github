@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The date when the Engagement Score was updated. --></help>
+        <label><!-- Engagement Score Updated At --></label>
+        <name>Engagement_Score_Updated_At__c</name>
+    </CustomFieldTranslation>

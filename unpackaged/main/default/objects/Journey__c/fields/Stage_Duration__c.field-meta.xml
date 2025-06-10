@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stage_Duration__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE( Stage__c ,
+ &quot;Identified&quot;, TODAY() -Identified_Date__c, 
+ &quot;Accepted&quot;, TODAY() -  Accepted_Date__c,
+ &quot;Approached&quot;, TODAY() - DATEVALUE(Approached_At__c), 
+ &quot;Engaged&quot;, TODAY() - Engaged_Date__c,
+ &quot;Meeting Booked&quot;, TODAY() -  DATEVALUE(Meeting_Booked_At__c),
+ NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Stage Duration</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

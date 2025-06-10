@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pw_ccpro__UseAdvancedQuery__c</fullName>
+    <defaultValue>true</defaultValue>
+    <deprecated>false</deprecated>
+    <inlineHelpText>Enabling this option will yield more precise address matching providing your data can support it</inlineHelpText>
+    <label>Address is always in correct fields</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

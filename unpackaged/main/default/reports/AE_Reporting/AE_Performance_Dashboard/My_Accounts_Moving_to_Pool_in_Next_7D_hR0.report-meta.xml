@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Owned_Days__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Num_Open_Opportunities__c</field>
+    </columns>
+    <columns>
+        <field>Account.Moves_back_to_pool_at__c</field>
+    </columns>
+    <format>Tabular</format>
+    <name>My Accounts Moving to Pool in Next 7D</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account.Moves_back_to_pool_at__c</dateColumn>
+        <interval>INTERVAL_NEXT7</interval>
+    </timeFrameFilter>
+</Report>

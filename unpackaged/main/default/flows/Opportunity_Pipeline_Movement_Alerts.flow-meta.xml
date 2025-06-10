@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Post_to_churn_and_contraction_movements</name>
+        <label>Post to churn and contraction movements</label>
+        <locationX>1725</locationX>
+        <locationY>263</locationY>
+        <actionName>Centro__NotifyFlow</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>{!cc_channelid}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>InterviewGuid</name>
+            <value>
+                <stringValue>{!$Flow.InterviewGuid}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <stringValue>{!alert_churn_contraction}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>pinMessage</name>
+            <value>
+                <stringValue>false</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>showCompactLayout</name>
+            <value>
+                <stringValue>false</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Centro__NotifyFlow</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Post_to_pipeline_movements_boulder</name>
+        <label>Post to #pipeline-movements (boulder)</label>
+        <locationX>1024</locationX>
+        <locationY>915</locationY>
+        <actionName>Centro__NotifyFlow</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>SQOed_today</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>{!channelId}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>InterviewGuid</name>
+            <value>
+                <stringValue>{!$Flow.InterviewGuid}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <stringValue>{!alert_new_boulder}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>pinMessage</name>
+            <value>
+                <stringValue>false</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>showCompactLayout</name>
+            <value>
+                <stringValue>false</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Centro__NotifyFlow</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Post_to_pipeline_movements_date_change</name>
+        <label>Post to #pipeline-movements (date change)</label>
+        <locationX>1891</locationX>
+        <locationY>1052</locationY>
+        <actionName>Centro__NotifyFlow</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Size_change</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>{!channelId}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>InterviewGuid</name>
+            <value>
+                <stringValue>{!$Flow.InterviewGuid}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <stringValue>{!alert_date_change}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>pinMessage</name>
+            <value>
+                <stringValue>false</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>showCompactLayout</name>
+            <value>
+                <stringValue>false</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Centro__NotifyFlow</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Post_to_pipeline_movements_money_change_0</name>
+        <label>Post to #pipeline-movements ($ change)</label>
+        <locationX>2062</locationX>
+        <locationY>975</locationY>
+        <actionName>Centro__NotifyFlow</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>channelId</name>
+            <value>
+                <stringValue>{!channelId}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>InterviewGuid</name>
+            <value>
+                <stringValue>{!$Flow.InterviewGuid}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>message</name>
+            <value>
+                <stringValue>{!alert_big_change}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>pinMessage</name>
+            <value>
+                <stringValue>false</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>showCompactLayout</name>
+            <value>
+                <stringValue>false</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>Centro__NotifyFlow</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>54.0</apiVersion>
+    <assignments>
+        <name>set_c_c_type_improved</name>
+        <label>set c/c type (improved)</label>
+        <locationX>1433</locationX>
+        <locationY>341</locationY>
+        <assignmentItems>
+            <assignToReference>churn_contraction_type_text</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Churn/Contraction Improved</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Post_to_churn_and_contraction_movements</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>set_c_c_type_mitigated</name>
+        <label>set c/c type (mitigated)</label>
+        <locationX>1434</locationX>
+        <locationY>186</locationY>
+        <assignmentItems>
+            <assignToReference>churn_contraction_type_text</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Churn/Contraction Mitigated</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Post_to_churn_and_contraction_movements</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>set_c_c_type_new</name>
+        <label>set c/c type (new)</label>
+        <locationX>1435</locationX>
+        <locationY>50</locationY>
+        <assignmentItems>
+            <assignToReference>churn_contraction_type_text</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>New Churn/Contraction</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Post_to_churn_and_contraction_movements</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>set_c_c_type_worsened</name>
+        <label>set c/c type (worsened)</label>
+        <locationX>1432</locationX>
+        <locationY>481</locationY>
+        <assignmentItems>
+            <assignToReference>churn_contraction_type_text</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Churn/Contraction Worsened</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Post_to_churn_and_contraction_movements</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>set_push_type_month</name>
+        <label>set push type (month)</label>
+        <locationX>1609</locationX>
+        <locationY>969</locationY>
+        <assignmentItems>
+            <assignToReference>push_type_text</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>this month</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Post_to_pipeline_movements_date_change</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>set_push_type_qtr</name>
+        <label>set push type (quarter)</label>
+        <locationX>1800</locationX>
+        <locationY>875</locationY>
+        <assignmentItems>
+            <assignToReference>push_type_text</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>this quarter</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Post_to_pipeline_movements_date_change</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Big_rock</name>
+        <label>Big rock?</label>
+        <locationX>1020</locationX>
+        <locationY>655</locationY>
+        <defaultConnector>
+            <targetReference>SQOed_today</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Does not meet</defaultConnectorLabel>
+        <rules>
+            <name>Meets_materiality_for_segment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Forecast_New_AR__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Business_Automation_Metadata.Material_Deal_Size__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Forecast_New_AR__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference>Get_Business_Automation_Metadata.Material_Deal_Size__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Post_to_pipeline_movements_boulder</targetReference>
+            </connector>
+            <label>Meets materiality for segment?</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Booking_date_change</name>
+        <label>Booking date change?</label>
+        <locationX>1599</locationX>
+        <locationY>662</locationY>
+        <defaultConnector>
+            <targetReference>Size_change</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No material change</defaultConnectorLabel>
+        <rules>
+            <name>Booking_quarter_change</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Booking_Quarter__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.Booking_Quarter__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Booking_Quarter__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>current_quarter</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Booking_Quarter__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>current_quarter</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>set_push_type_qtr</targetReference>
+            </connector>
+            <label>Booking quarter change</label>
+        </rules>
+        <rules>
+            <name>Booking_month_change</name>
+            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Booking_Month__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.Booking_Month__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Booking_Month__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>current_month</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Booking_Month__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>current_month</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>set_push_type_month</targetReference>
+            </connector>
+            <label>Booking month change</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_for_Won_Expansions_Today</name>
+        <label>Check for Won Expansions Today</label>
+        <locationX>807</locationX>
+        <locationY>53</locationY>
+        <defaultConnectorLabel>Expansion Won Today</defaultConnectorLabel>
+        <rules>
+            <name>No_Won_Expansions_Today</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Won_Expansions_Today.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Churn_Contraction_Type</targetReference>
+            </connector>
+            <label>No Won Expansions Today</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Churn_Contraction_Type</name>
+        <label>Churn/Contraction Type?</label>
+        <locationX>1074</locationX>
+        <locationY>257</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>New_Churn_Contraction</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Forecast_New_AR__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Forecast_New_AR__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>set_c_c_type_new</targetReference>
+            </connector>
+            <label>New Churn/Contraction</label>
+        </rules>
+        <rules>
+            <name>Mitigated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Forecast_New_AR__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Forecast_New_AR__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>set_c_c_type_mitigated</targetReference>
+            </connector>
+            <label>Mitigated</label>
+        </rules>
+        <rules>
+            <name>Improved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Forecast_New_AR__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Forecast_New_AR__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>Prior_Forecast_New_AR</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>set_c_c_type_improved</targetReference>
+            </connector>
+            <label>Improved</label>
+        </rules>
+        <rules>
+            <name>Worsened</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Forecast_New_AR__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Forecast_New_AR__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference>Prior_Forecast_New_AR</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>set_c_c_type_worsened</targetReference>
+            </connector>
+            <label>Worsened</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Global_materiality_threshold</name>
+        <label>Global materiality threshold</label>
+        <locationX>803</locationX>
+        <locationY>653</locationY>
+        <defaultConnectorLabel>Ignore</defaultConnectorLabel>
+        <rules>
+            <name>X12k</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Forecast_New_AR__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>12000.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Forecast_New_AR__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>12000.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Big_rock</targetReference>
+            </connector>
+            <label>12k+</label>
+        </rules>
+        <rules>
+            <name>Renewal</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity_Record_Type_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Renewal</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Renewal</label>
+        </rules>
+        <rules>
+            <name>Renewal_Under_12k</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity_Record_Type_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Renewal</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Forecast_New_AR__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>12000.0</numberValue>
+                </rightValue>
+            </conditions>
+            <label>Renewal Under 12k</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Org_is</name>
+        <label>Org is</label>
+        <locationX>427</locationX>
+        <locationY>654</locationY>
+        <defaultConnector>
+            <targetReference>Get_Business_Automation_Metadata</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Production</defaultConnectorLabel>
+        <rules>
+            <name>Sandbox</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_organization.IsSandbox</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Sandbox</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Size_change</name>
+        <label>Size change?</label>
+        <locationX>2009</locationX>
+        <locationY>652</locationY>
+        <defaultConnectorLabel>Does not meet threshold</defaultConnectorLabel>
+        <rules>
+            <name>Meets_threshold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>new_ar_change_pct_abs</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Business_Automation_Metadata.Material_Deal_Change__c</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Post_to_pipeline_movements_money_change_0</targetReference>
+            </connector>
+            <label>Meets threshold</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>SQOed_today</name>
+        <label>SQOed today?</label>
+        <locationX>1353</locationX>
+        <locationY>663</locationY>
+        <defaultConnector>
+            <targetReference>Booking_date_change</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Sales_Qualified_At__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Removed churn/contraction movement alerts.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>age_since_sqo</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ {!$Record.RecordType.Name} = &quot;Enterprise&quot;,
+ &quot;*Age since SQO:* &quot;&amp;TEXT({!$Record.Age_from_SQO__c})&amp;&quot; days&quot;&amp;BR(),
+ NULL
+)</expression>
+    </formulas>
+    <formulas>
+        <name>ar_change_lang</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ {!new_ar_change}&gt;0,
+ &quot;:chart_with_upwards_trend: *Big Move Up (+&quot;&amp;TEXT({!new_ar_change_pct_abs})&amp;&quot;%)&quot;,
+ &quot;:chart_with_downwards_trend: *Big Move Down (-&quot;&amp;TEXT({!new_ar_change_pct_abs})&amp;&quot;%)&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>ar_change_type</name>
+        <dataType>String</dataType>
+        <expression>IF({!new_ar_change}&lt;0,&quot;decrease&quot;,&quot;increase&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>booking_date_change_days</name>
+        <dataType>Number</dataType>
+        <expression>{!$Record.Booking_Date__c}-{!$Record__Prior.Booking_Date__c}</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>booking_date_change_icon</name>
+        <dataType>String</dataType>
+        <expression>IF({!booking_date_change_days}&lt;0,&quot;:arrow_left:&quot;,&quot;:arrow_right:&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>booking_date_change_language</name>
+        <dataType>String</dataType>
+        <expression>IF({!booking_date_change_days}&lt;0,&quot;Pulled in to &quot;&amp;{!push_type_text},&quot;Pushed out of &quot;&amp;{!push_type_text})</expression>
+    </formulas>
+    <formulas>
+        <name>booking_date_formatted</name>
+        <dataType>String</dataType>
+        <expression>TEXT(MONTH({!$Record.Booking_Date__c}))&amp;&quot;/&quot;&amp;TEXT(DAY({!$Record.Booking_Date__c}))&amp;&quot;/&quot;&amp;TEXT(YEAR({!$Record.Booking_Date__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>cc_change_lang</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ {!new_ar_change}&gt;0,
+ &quot;:chart_with_upwards_trend: *&quot;&amp;{!churn_contraction_type_text}&amp;&quot; (+&quot;&amp;TEXT({!new_ar_change_pct_abs})&amp;&quot;%)&quot;,
+ &quot;:chart_with_downwards_trend: *&quot;&amp;{!churn_contraction_type_text}&amp;&quot;  (-&quot;&amp;TEXT({!new_ar_change_pct_abs})&amp;&quot;%)&quot;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>current_month</name>
+        <dataType>Date</dataType>
+        <expression>DATE(YEAR({!$Flow.CurrentDate}),MONTH({!$Flow.CurrentDate}),1)</expression>
+    </formulas>
+    <formulas>
+        <name>current_quarter</name>
+        <dataType>String</dataType>
+        <expression>TEXT(YEAR({!$Flow.CurrentDate}))
+&amp; &quot;-&quot;&amp;
+CASE(Month({!$Flow.CurrentDate}),
+1, &quot;Q1&quot; ,
+2, &quot;Q1&quot;,
+3, &quot;Q1&quot;,
+4, &quot;Q2&quot;,
+5, &quot;Q2&quot;,
+6, &quot;Q2&quot;,
+7, &quot;Q3&quot;,
+8, &quot;Q3&quot;,
+9, &quot;Q3&quot;,
+10, &quot;Q4&quot;,
+11, &quot;Q4&quot;,
+12, &quot;Q4&quot;,
+&quot;None&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>manager_slack</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ ISBLANK({!$Record.Owner.ManagerId}) || ISBLANK({!$Record.Owner.Manager.Slack_ID__c}),
+ NULL,
+ IF(
+  {!$Record.Owner.Manager.IsActive} = FALSE,
+  &quot;*Sales Manager:* &quot;&amp;{!$Record.Owner.Manager.FirstName}&amp;&quot; &quot;&amp;{!$Record.Owner.Manager.LastName}&amp;BR(),
+  &quot;*Sales Manager:* &lt;@&quot;&amp;{!$Record.Owner.Manager.Slack_ID__c}&amp;&quot;&gt;&quot;&amp;BR()
+ )
+)</expression>
+    </formulas>
+    <formulas>
+        <name>new_ar_change</name>
+        <dataType>Currency</dataType>
+        <expression>{!$Record.Forecast_New_AR__c}-{!$Record__Prior.Forecast_New_AR__c}</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>new_ar_change_pct_abs</name>
+        <dataType>Number</dataType>
+        <expression>ABS(({!new_ar_change}/{!$Record__Prior.Forecast_New_AR__c})*100)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>out_of_segment</name>
+        <dataType>String</dataType>
+        <expression>IF(
+ TEXT({!$Record.Owner.Opportunity_Segment__c}) != TEXT({!$Record.Segment__c}) &amp;&amp; NOT(ISPICKVAL({!$Record.Owner.Opportunity_Segment__c},&quot;&quot;)),
+ &quot;_Deal segment (&quot;&amp;TEXT({!$Record.Owner.Opportunity_Segment__c})&amp;&quot;) does not match rep segment (&quot;&amp;TEXT({!$Record.Segment__c})&amp;&quot;)_&quot;&amp;BR(),
+ NULL
+)</expression>
+    </formulas>
+    <formulas>
+        <name>prior_booking_date_formatted</name>
+        <dataType>String</dataType>
+        <expression>TEXT(MONTH({!$Record__Prior.Booking_Date__c}))&amp;&quot;/&quot;&amp;TEXT(DAY({!$Record__Prior.Booking_Date__c}))&amp;&quot;/&quot;&amp;TEXT(YEAR({!$Record__Prior.Booking_Date__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>renewal_date_formatted</name>
+        <dataType>String</dataType>
+        <expression>TEXT(MONTH({!$Record.Renewal_Target_Close_Date__c}))&amp;&quot;/&quot;&amp;TEXT(DAY({!$Record.Renewal_Target_Close_Date__c}))&amp;&quot;/&quot;&amp;TEXT(YEAR({!$Record.Renewal_Target_Close_Date__c}))</expression>
+    </formulas>
+    <interviewLabel>Opportunity - {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - Pipeline Movement Alerts</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Business_Automation_Metadata</name>
+        <label>Get Business Automation Metadata</label>
+        <locationX>617</locationX>
+        <locationY>651</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Global_materiality_threshold</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Segment__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Owner.Opportunity_Segment__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Business_Automations__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_organization</name>
+        <label>Get organization</label>
+        <locationX>435</locationX>
+        <locationY>493</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Org_is</targetReference>
+        </connector>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Organization</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Won_Expansions_Today</name>
+        <label>Get Won Expansions Today</label>
+        <locationX>645</locationX>
+        <locationY>202</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_for_Won_Expansions_Today</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CloseDate</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Booking_Channel_Annualized_Revenue__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Expansion</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>StageName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Opportunity_Record_Type_Name__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Renewal</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <sortField>CloseDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>8</locationX>
+        <locationY>228</locationY>
+        <connector>
+            <targetReference>Get_organization</targetReference>
+        </connector>
+        <filterLogic>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND (7 OR 8)</filterLogic>
+        <filters>
+            <field>Business_Line__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Committed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Type</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Unqualified</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subtype__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Expansion - Uncommitted</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subtype__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Contraction - Uncommitted</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>AccountId</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>0016e00002i7Mf8AAE</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Forecast_Total_AR__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CloseDate</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Opportunity</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>alert_big_change</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!ar_change_lang}: *&lt;https://retool.lightning.force.com/{!$Record.Id}|{!$Record.Name}&gt; (${!$Record.Forecast_New_AR__c})*
+*Owner:* {!$Record.Owner.FirstName} {!$Record.Owner.LastName} ({!$Record.Owner.Subteam__c})
+*Previous New Annualized Revenue:* ${!$Record__Prior.Forecast_New_AR__c} 
+*New Annualized Revenue Change:* {!new_ar_change}
+*Booking Date:* {!booking_date_formatted}
+*Stage*: {!$Record.StageName}
+*Next Step:* {!$Record.NextStep}
+{!age_since_sqo}
+{!manager_slack}
+{!out_of_segment}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>alert_churn_contraction</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!cc_change_lang}: *&lt;https://retool.lightning.force.com/{!$Record.Id}|{!$Record.Name}&gt;*
+*Forecast New Annualized Revenue:* ${!$Record.Forecast_New_AR__c}
+*Forecast Method*: {!$Record.Forecast_Method__c}
+*Previous New Annualized Revenue:* ${!$Record__Prior.Forecast_New_AR__c} 
+*New Annualized Revenue Change:* {!new_ar_change}
+*Owner:* {!$Record.Owner.FirstName} {!$Record.Owner.LastName} ({!$Record.Owner.Subteam__c})
+*Renewal Manager*: {!$Record.Renewal_Manager__r.FirstName} {!$Record.Renewal_Manager__r.LastName}
+*Target Renewal Close Date:* {!renewal_date_formatted}
+*Booking Date:* {!booking_date_formatted}
+*Stage*: {!$Record.StageName}
+*Churn/Contraction Reason*: {!$Record.Churn_Reason__c}
+*Churn/Contraction Reason Details*: {!$Record.Churn_Reason_Details__c}
+*Next Step:* {!$Record.NextStep}
+{!manager_slack}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>alert_date_change</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>:calendar:{!booking_date_change_icon} *{!booking_date_change_language}: &lt;https://retool.lightning.force.com/{!$Record.Id}|{!$Record.Name}&gt; (${!$Record.Forecast_New_AR__c})* :calendar:{!booking_date_change_icon}
+*Owner:* {!$Record.Owner.FirstName} {!$Record.Owner.LastName} ({!$Record.Owner.Subteam__c})
+*New Annualized Revenue:* ${!$Record.Forecast_New_AR__c}
+*New Booking Date:* {!booking_date_formatted} (previously {!prior_booking_date_formatted})
+*Booking Date Change:* {!booking_date_change_days} days
+*Stage*: {!$Record.StageName}
+*Next Step:* {!$Record.NextStep}
+{!age_since_sqo}
+{!manager_slack}
+{!out_of_segment}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>alert_new_boulder</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>:rock: *New Boulder: &lt;https://retool.lightning.force.com/{!$Record.Id}|{!$Record.Name}&gt; (${!$Record.Forecast_New_AR__c})* :rock:
+*Owner:* {!$Record.Owner.FirstName} {!$Record.Owner.LastName} ({!$Record.Owner.Subteam__c})
+*Previous New Annualized Revenue:* ${!$Record__Prior.Forecast_New_AR__c}
+*New Annualized Revenue Change:* {!new_ar_change}
+*Booking Date:* {!booking_date_formatted}
+*Stage*: {!$Record.StageName}
+*Next Step:* {!$Record.NextStep}
+{!age_since_sqo}
+{!manager_slack}
+{!out_of_segment}</text>
+    </textTemplates>
+    <triggerOrder>20</triggerOrder>
+    <variables>
+        <name>cc_channelid</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>C061QF34T9V</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>channelId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>C03AA3R1K9D</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>churn_contraction_type_text</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>Prior_Forecast_New_AR</name>
+        <dataType>Currency</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <scale>2</scale>
+        <value>
+            <elementReference>$Record__Prior.Forecast_New_AR__c</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>push_type_text</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Segment For the RollWorks Object Type --></help>
+        <label><!-- RollWorks Segment --></label>
+        <name>adroll__AdRollSegment__c</name>
+        <relationshipLabel><!-- RollWorks Segment Objects --></relationshipLabel>
+    </CustomFieldTranslation>

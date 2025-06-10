@@ -1,0 +1,1506 @@
+<apex:page sidebar="false" standardController="breadwinner_ns__BW_Return_Authorization__c" extensions="breadwinner_ns.CreateTransactionExtension" tabStyle="breadwinner_ns__BW_Return_Authorization__c" applyHtmlTag="true" title="New Return Authorization">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <title>Breadwinner Return Authorization Record</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <apex:slds />
+            <apex:variable value="{!OR($User.UIThemeDisplayed == 'Theme4d', $User.UIThemeDisplayed == 'Theme4t')}" var="isLightning" />
+            <apex:variable value="{!$User.UIThemeDisplayed == 'Theme4t'}" var="isSalesforce1" />
+            <apex:includeScript value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Scripts/jquery-3.5.1.min.js')}" />
+            <apex:includeScript value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Scripts/select2.full.min.js')}" />
+            <link href="{!URLFOR($Resource.Breadwinner_for_NetSuite, 'Breadwinner/Styles/select2.min.css')}" rel="stylesheet" />
+            <script type="text/javascript">
+            var j$ = jQuery.noConflict();
+            j$(function(){
+                message();
+                setPageTitle();
+                initSelect2();
+                DatepickerOnfocusToOnclick();
+                setClassicItemTableLayout();
+            });
+            function message(){
+                j$(".infoM6, .infoM4, .infoM3, .infoM2, .infoS1").addClass("slds-notify slds-notify_alert slds-theme_inverse-text  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px","background-color":"rgba(84,105,141,.95)","border-color":"rgba(84,105,141,.95)"});
+                j$(".errorM6, .errorM4, .errorM3, .errorM2, .errorS1").addClass("slds-notify slds-notify_alert slds-theme_error  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css({"font-weight":"500","line-height":"1.4","word-spacing":"1px","display":"block","border-radius":"5px"});
+                j$(".warningM6, .warningM4, .warningM3, .warningM2, .warningS1").addClass("slds-notify slds-notify_alert slds-theme_warning  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+                j$(".confirmM6, .confirmM4, .confirmM3, .confirmM2, .confirmS1").addClass("slds-notify slds-notify_alert slds-theme_success slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+
+                j$("div .messageText h4").css( "color", "white" );
+                j$("div[class*='warning'] div.messageText h4").css( "color", "black" );
+                j$("table.messageTable td").css({"color" : "white"});
+                j$("div[class*='warning'] table.messageTable td").css( "color", "black" );
+            }
+            function reRenderCheckIcons(pathIds){
+                for(var id in pathIds){
+                    var pathID = pathIds[id];
+                    var imageURL = '{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}';
+                    var SVG = j$('<svg/>', {class: 'slds-icon slds-icon_x-small',});
+                    var SVGUse = j$('<use/>');
+                    SVGUse.attr('xlink:href',imageURL);
+                    j$(pathID).prepend(SVG.append(SVGUse));
+                    j$(pathID).html(j$(pathID).html());
+                }
+            }
+            function reRenderRMASVG(){
+                var imageURL = '{!URLFOR($Asset.SLDS,'assets/icons/custom-sprite/svg/symbols.svg#custom41')}';
+                var SVG = j$('<svg/>', {
+                    class: 'slds-icon slds-page-header__icon',
+                });
+
+                var SVGUse = j$('<use/>');
+                SVGUse.attr('xlink:href',imageURL);
+                j$('.rmaIcon').prepend(SVG.append(SVGUse));
+                j$('.rmaIcon' ).html(j$('.rmaIcon').html());
+            }
+            function reRenderCompanySVG(){
+                console.log('I am inside the reRenderCompanySVG');
+                var imageURL = '{!URLFOR($Asset.SLDS,'assets/icons/standard-sprite/svg/symbols.svg#account')}';
+                var SVG = j$('<svg/>', {
+                    class: 'slds-icon slds-page-header__icon',
+                });
+
+                var SVGUse = j$('<use/>');
+                SVGUse.attr('xlink:href',imageURL);
+                j$('#companyIcon').prepend(SVG.append(SVGUse));
+                j$('#companyIcon' ).html(j$('#companyIcon').html());
+            }
+            function identifyfield(elementt, helptext, TopMinusparam,LeftMinusParam) {
+                var x = j$(elementt).offset();
+                var islightningparam='{!isLightning}';
+                if(islightningparam=='true'){
+                    LeftMinusParam=LeftMinusParam-20;
+                    TopMinusparam=TopMinusparam-110;
+                }
+                var ToSetleft = x.left - LeftMinusParam;
+                j$("#help p").text(helptext);
+                var ToSetheight = x.top - TopMinusparam;
+                var heptextdiv = document.getElementById("help");
+                j$(heptextdiv).css({
+                    top: ToSetheight + 'px',
+                    left: ToSetleft + 'px',
+                    display: ""
+                })
+            }
+            function mouseoutclose() {
+                var heptextdiv = document.getElementById("help");
+                j$(heptextdiv).css({
+                    top: "0px",
+                    left: "0px",
+                    display: "none"
+                });
+            }
+            function DatepickerOnfocusToOnclick(){
+                j$("input[onfocus*='DatePicker.pickDate']").each(function( index ) {
+                    var getfocusmethod=j$( this ).attr("onfocus");
+                    j$( this ).attr("onclick",getfocusmethod).removeAttr("onfocus");
+                });
+                j$(".datePicker").css({"display" : "none"});
+            }
+            function initSelect2(){
+                j$('.select2').select2();
+            }
+            function setClassicItemTableLayout(){
+                if({!JSENCODE(IF(isLightning,"true", "false")) == 'false'} && {!JSENCODE(IF(isCustomURL,"true", "false")) == 'true'}){
+                    var x = j$('#itemTableDiv').width();
+                    console.log(x);
+                    j$('#itemTableDiv .slds-table').css("table-layout", "unset");
+                    j$('#itemTableDiv').width(x);
+                }
+            }
+            j$(document).keydown(
+                function(event){
+                    var code = event.keyCode || event.which;
+                    var targetElement = event.target;
+                    if (code == 13 && targetElement != '[object HTMLTextAreaElement]') {
+                        event.preventDefault();
+                    }
+                    else if (code == 27) {
+                        j$('.slds-modal.slds-fade-in-open').removeClass('slds-fade-in-open');
+                        j$('.slds-backdrop.slds-backdrop_open').removeClass('slds-backdrop_open');
+                    }
+                });
+            function showspinner(){
+                j$('#spinnerId').addClass('slds-show').removeClass('slds-hide');
+            }
+            function hidespinner(){
+                j$('#spinnerId').addClass('slds-hide').removeClass('slds-show');
+            }
+            function scrollWin(){
+                window.scrollTo(0,0);
+            }
+            </script>
+            <style>
+                .arrow {
+                font-size: 25px;
+                color: #42B7F4;
+                }
+                .arrowLink{
+                text-decoration:none !important;
+                }
+                .message {
+                margin-left: 0px !important; margin-right: 0px !important;
+                background-color: inherit;
+                border-style: none;
+                padding: initial;
+                margin-top: 0px !important;
+                }
+                .messageCell {
+                width: 100%;
+                }
+                .message .messageText h4 {
+                font-weight: inherit;
+                display: initial;
+                }
+                .select2-dropdown{
+                border: 1px solid #d8dde6;
+                }
+                .select2-container--default .select2-search--dropdown .select2-search__field {
+                border: 1px solid #d8dde6;
+                border-radius: 4px;
+                }
+                .select2-results__option {
+                margin-left:0;
+                line-height: 18px !important;
+                }
+                li.select2-results__option{
+                margin-left: 0px;
+                }
+                .select2-results__options {
+                list-style: inherit;
+                }
+                .select2-results__option:first-child{
+                min-height:24px !important;
+                }
+                .select2-container .select2-selection--single {
+                height: 23px !important;
+                padding: 15px;
+                }
+                .companyColumnWidth {
+                max-width: inherit !important;
+                width: 15%;
+                }
+                .transactionPanelDetailWidth {
+                max-width: 20% !important;
+                }
+                .select2-container--default .select2-selection--single .select2-selection__rendered {
+                line-height: 23px !important;
+                margin: -11px;
+                margin-right: 1.1rem;
+                }
+                .select2-container .select2-selection--single .select2-selection__rendered {
+                padding-right:0px !important;
+                text-overflow: inherit;
+                }
+                .select2-container--default .select2-selection--single {
+                border: 1px solid #d8dde6;
+                }
+                .select2-container--default .select2-selection--single .select2-selection__arrow b {
+                border-color: black transparent transparent;
+                transform: rotate(180deg);
+                margin-left: -3px;
+                border-width: 5px 3px 1px 3px;
+                top: 29%;
+                }
+                .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+                border-color: transparent transparent black transparent;
+                transform: rotate(0deg);
+                margin-left: -3px;
+                border-width: 5px 3px 5px 3px;
+                top: 15%;
+                }
+                /* Arrow Path styles Start */
+                .slds-scope .slds-path__nav .slds-is-complete, .slds-scope .slds-path__nav .slds-is-complete:before, .slds-scope .slds-path__nav .slds-is-complete:after {
+                background: rgb(75, 202, 129);
+                }
+                .slds-scope .slds-path__nav .slds-is-active, .slds-scope .slds-path__nav .slds-is-active:before, .slds-scope .slds-path__nav .slds-is-active:after {
+                background: rgba(27, 82, 151, 1);
+                }
+                .slds-scope .slds-path__nav .slds-is-incomplete, .slds-scope .slds-path__nav .slds-is-incomplete:before, .slds-scope .slds-path__nav .slds-is-incomplete:after {
+                background: rgb(236, 235, 234);
+                }
+                .slds-scope .slds-path__nav .slds-is-complete:hover, .slds-scope .slds-path__nav .slds-is-complete:hover:before, .slds-scope .slds-path__nav .slds-is-complete:hover:after{
+                background: rgb(4, 132, 75);
+                }
+                .slds-scope .slds-path__nav .slds-is-active:hover, .slds-scope .slds-path__nav .slds-is-active:hover:before, .slds-scope .slds-path__nav .slds-is-active:hover:after{
+                background: rgba(0, 68, 135, 1);
+                }
+                .slds-scope .slds-path__nav .slds-is-incomplete:hover, .slds-scope .slds-path__nav .slds-is-incomplete:hover:before, .slds-scope .slds-path__nav .slds-is-incomplete:hover:after {
+                background: rgb(221, 219, 218);
+                }
+                .slds-scope .slds-path__nav a:hover{
+                cursor: default !important;
+                }
+                .slds-path__title{
+                font-size: medium;
+                }
+                /* Arrow Path styles End */
+                .slds-scope .slds-radio .slds-form-element__label {
+                font-size: 1.15em;
+                }
+                .slds-table td>img {
+                max-width: 24px !important;
+                height: 24px !important;
+                width: 24px !important;
+                }
+                .slds-table th {
+                background-color: white !important;
+                font-weight: normal !important;
+                text-align: center;
+                text-transform: uppercase;
+                }
+                .slds-scope .slds-table thead th {
+                padding: .5rem 0.25rem !important;
+                }
+                .amountColumnClassEx .slds-input{
+                width: fit-content;
+                }
+                .descriptionColumnClassEx{
+                min-width: 500px;
+                }
+                .quantityColumnClassEx{
+                min-width: 100px;
+                }
+                .rateColumnClassEx, .amountColumnClassEx{
+                min-width: 150px;
+                }
+                .itemColumnClassEx {
+                min-width: 250px;
+                white-space: normal !important;
+                }
+                .extraColumn{
+                min-width: 150px;
+                }
+                .extraColumn.dateTimeClass{
+                min-width: 220px;
+                }
+                .extraColumn.numericClass{
+                min-width: 100px;
+                }
+                .extraColumn.dateTimeClass .slds-input, .extraColumn.numericClass .slds-input{
+                width: auto;
+                }
+                .quantityColumnClass{
+                width: 5%;
+                }
+                .rateColumnClass, .amountColumnClass{
+                width: 12%;
+                }
+                .DeleteColumnClass {
+                width: 4%;
+                }
+                .itemColumnClass{
+                width: 20%;
+                }
+                .slds-scope .slds-spinner_container{
+                z-index: 9999;
+                position: fixed;
+                }
+                .spinnerText{
+                transform: none !important;
+                left: 0px !important;
+                font-size: 1.4em;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="slds-scope slds-is-relative" style="background:white">
+                <apex:form id="theForm">
+                    <apex:actionFunction name="getCompanyItems" action="{!getCompanyItems}" status="action-status" reRender="testingPageSection" oncomplete="message();"/>
+                    <apex:actionStatus id="action-status" layout="block">
+                        <apex:facet name="start">
+                            <div class="slds-spinner_container">
+                                <div class="slds-spinner slds-spinner_brand slds-spinner_medium" aria-hidden="false" role="alert">
+                                    <span class="slds-assistive-text">Loading</span>
+                                    <div class="slds-spinner__dot-a"></div>
+                                    <div class="slds-spinner__dot-b"></div>
+                                </div>
+                            </div>
+                        </apex:facet>
+                    </apex:actionStatus>
+                    <div id="spinnerId" class="slds-spinner_container slds-hide">
+                        <div class="slds-spinner_brand slds-spinner slds-spinner_medium" aria-hidden="false" role="alert">
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                        <div class="spinnerText slds-spinner_brand slds-spinner slds-m-top_large slds-p-top_medium slds-is-relative slds-p_left_none" style="text-align: center">
+                            Breadwinner is creating this record in NetSuite. Upon successful creation, we will replicate the NetSuite Record back to Salesforce and show that record in Salesforce.
+                        </div>
+                    </div>
+                    <!-- Adding SLDS Modal for popup box -->
+                    <div >
+                        <div class="slds-modal slds-modal_xxx-small" aria-hidden="false" role="dialog" id="alert_popup">
+                            <div class="slds-modal__container">
+                                <header class="slds-modal__header slds-modal__header_empty">
+                                    <button id="alert_popupCanBtn" class="slds-button slds-button_icon-inverse slds-modal__close" type="button" onclick="showHideModal('alert_popup','alert_backdrop');">
+                                        <svg aria-hidden="true" class="slds-button__icon slds-button__icon_large" >
+                                            <use rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/action-sprite/svg/symbols.svg#close')}" ></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                </header>
+                                <div class="slds-modal__content slds-p-around_medium">
+                                    <div>
+                                        <p>Dynamic Popup Text will come here</p>
+                                    </div>
+                                    <div align="right" class="slds-m-top_medium">
+                                        <apex:commandLink rel="noopener noreferrer" id="okaybutton" styleClass="slds-button slds-button_brand" value="OK" onclick="showHideModal('alert_popup','alert_backdrop')" reRender="nothing"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-backdrop" id="alert_backdrop"></div>
+                    </div>
+                    <apex:outputPanel layout="block" styleClass="{!IF(isLightning,'slds-p-around_small','')}" id="OverallPage">
+                        <apex:outputPanel layout="block" id="messagesPanel" rendered="{!OR(NOT(isActiveOrganization),NOT(initialized),notInitializedWithAccount)}">
+                            <apex:pageMessages escape="false" rendered="{!NOT(showTestingPagePanel)}"></apex:pageMessages>
+                            <apex:pageMessage rendered="{!NOT(isActiveOrganization)}" summary="Your trial/subscription has expired" detail="You must have a valid subscription to Breadwinner to create and sync Return Authorizations. Please Contact Breadwinner Support." severity="Warning" strength="3" />
+                            <apex:pageMessage rendered="{!AND(notInitializedWithAccount,NOT(isCustomURL))}" summary="Please go to the Account from which you want to create this new Return Authorization." detail="If that Account doesn't exist yet, please create it first." severity="Warning" strength="3" />
+                        </apex:outputPanel>
+
+                        <div id="help" class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left" role="tooltip" aria-live="polite" style="display:none;position:absolute;top:0px;left:0px;">
+                            <div class="slds-popover__body slds-text-longform">
+                                <p>Help text will come here dynamically</p>
+                            </div>
+                        </div>
+
+                        <apex:outputPanel layout="block" rendered="{!OR(initialized,showTestingPagePanel)}" >
+                            <!-- Page Header Start -->
+                            <apex:outputPanel layout="block" rendered="{!showNewTransactionPanel}">
+                                <div class="slds-page-header" role="banner">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-has-flexi-truncate">
+                                            <div class="slds-media slds-media_center">
+                                                <div class="slds-media__figure">
+                                                    <span class="slds-icon_container slds-icon-custom-custom41 rmaIcon">
+                                                        <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS,'assets/icons/custom-sprite/svg/symbols.svg#custom41')}" />
+                                                        </svg>
+                                                        <span class="slds-assistive-text"></span>
+                                                    </span>
+                                                </div>
+                                                <div class="slds-media__body">
+                                                    <p class="slds-page-header__title slds-truncate" title="New Breadwinner NetSuite Return Authorization">New NetSuite Return Authorization</p>
+                                                    <p class="slds-text-body_small">Breadwinner • NetSuite </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="block" rendered="{!showCreateTransactionPanel}">
+                                <div class="slds-page-header" role="banner">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-has-flexi-truncate">
+                                            <div class="slds-media slds-media_center">
+                                                <div class="slds-media__figure">
+                                                    <span class="slds-icon_container slds-icon-custom-custom41 rmaIcon">
+                                                        <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS,'assets/icons/custom-sprite/svg/symbols.svg#custom41')}" />
+                                                        </svg>
+                                                        <span class="slds-assistive-text"></span>
+                                                    </span>
+                                                </div>
+                                                <div class="slds-media__body">
+                                                    <p class="slds-text-heading_label slds-truncate" title="New Breadwinner NetSuite Return Authorization">New NetSuite Return Authorization For</p>
+                                                    <p class="slds-page-header__title slds-m-right_small slds-truncate slds-align-middle">
+                                                        <apex:outputText value="{!selectedNSCompany.breadwinner_ns__CompanyName__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible}"/>
+                                                        <apex:outputText value="{!selectedNSCompany.Name}" rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.Name.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible,AND(ISNULL(selectedNSCompany.breadwinner_ns__CompanyName__c),ISNULL(selectedNSCompany.breadwinner_ns__FirstName__c)))}" />
+                                                        <apex:outputPanel rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__IsPerson__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,selectedNSCompany.breadwinner_ns__IsPerson__c,ISNULL(selectedNSCompany.breadwinner_ns__CompanyName__c))}">
+                                                            <apex:outputText value="{!selectedNSCompany.breadwinner_ns__Salutation__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Salutation__c.Accessible}"/>
+                                                            <apex:outputText value="{!selectedNSCompany.breadwinner_ns__FirstName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible}"/>
+                                                            <apex:outputText value="{!selectedNSCompany.breadwinner_ns__MiddleName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__MiddleName__c.Accessible}"/>
+                                                            <apex:outputText value="{!selectedNSCompany.breadwinner_ns__LastName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__LastName__c.Accessible}"/>
+                                                        </apex:outputPanel>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="slds-grid  slds-page-header__detail-row">
+                                        <li class="slds-page-header__detail-block transactionPanelDetailWidth">
+                                            <p class="slds-text-heading_label-normal slds-truncate slds-m-bottom_xx-small">{!selectedNSCompany.breadwinner_ns__Stage__c} Information</p>
+                                            <div class="slds-text-body_regular slds-truncate">
+                                                <apex:outputPanel rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.Name.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible,AND(ISNULL(selectedNSCompany.breadwinner_ns__CompanyName__c),ISNULL(selectedNSCompany.breadwinner_ns__FirstName__c)))}">
+                                                    {!selectedNSCompany.Name}
+                                                    <br/>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{AND($ObjectType.BW_Company__c.fields.IsPerson__c.Accessible,selectedNSCompany.IsPerson__c)}">
+                                                    <apex:outputText value="{!selectedNSCompany.breadwinner_ns__Salutation__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Salutation__c.Accessible}"/>
+                                                    <apex:outputText value="{!selectedNSCompany.breadwinner_ns__FirstName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible}"/>
+                                                    <apex:outputText value="{!selectedNSCompany.breadwinner_ns__MiddleName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__MiddleName__c.Accessible}"/>
+                                                    <apex:outputText value="{!selectedNSCompany.breadwinner_ns__LastName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__LastName__c.Accessible}"/>
+                                                    <br/>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,NOT(ISNULL(selectedNSCompany.breadwinner_ns__CompanyName__c)))}">
+                                                    {!selectedNSCompany.breadwinner_ns__CompanyName__c}
+                                                    <br/>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!OR(AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__BillingAddr1__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingAddr1__c.Accessible),AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__BillingAddr2__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingAddr2__c.Accessible))}">
+                                                        {!selectedNSCompany.BillingAddr1__c}&nbsp;{!selectedNSCompany.BillingAddr2__c}
+                                                    <br/>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!OR(AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__BillingCity__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingCity__c.Accessible),AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__BillingState__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingState__c.Accessible),AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__BillingZip__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingZip__c.Accessible))}">
+                                                        {!selectedNSCompany.BillingCity__c}&nbsp;{!selectedNSCompany.BillingState__c}&nbsp;{!selectedNSCompany.BillingZip__c}
+                                                    <br/>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__BillingCountry__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingCountry__c.Accessible)}">
+                                                    {!selectedNSCompany.breadwinner_ns__BillingCountry__c}
+                                                </apex:outputPanel>
+                                            </div>
+                                        </li>
+                                        <li class="slds-page-header__detail-block transactionPanelDetailWidth">
+                                            <p class="slds-text-heading_label-normal slds-truncate slds-m-bottom_xx-small">{!selectedNSCompany.breadwinner_ns__Stage__c} Contact Info</p>
+                                            <div class="slds-text-body_regular slds-truncate">
+                                                <apex:outputPanel rendered="{!AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__BillingAttention__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingAttention__c.Accessible)}" >
+                                                    {!selectedNSCompany.breadwinner_ns__BillingAttention__c} <BR/>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__Email__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Email__c.Accessible)}">
+                                                    {!selectedNSCompany.breadwinner_ns__Email__c} <BR/>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__Phone__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Phone__c.Accessible)}">
+                                                    {!selectedNSCompany.breadwinner_ns__Phone__c} <BR/>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </li>
+                                        <li class="slds-page-header__detail-block transactionPanelDetailWidth" style="display: {!IF(isSubsidiaryDisabledInNetSuite, 'none', 'block')}">
+                                            <p class="slds-text-heading_label-normal slds-truncate slds-m-bottom_xx-small">Primary Subsidiary</p>
+                                            <div class="slds-text-body_regular slds-truncate">
+                                                <apex:outputField value="{!selectedNSCompany.Subsidiary__r.Name}" rendered="{!AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__Subsidiary__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Subsidiary__c.Accessible)}"/>
+                                            </div>
+                                        </li>
+                                        <li class="slds-page-header__detail-block transactionPanelDetailWidth">
+                                            <p class="slds-text-heading_label-normal slds-truncate slds-m-bottom_xx-small">Primary Currency</p>
+                                            <div class="slds-text-body_regular slds-truncate">
+                                                <apex:outputField value="{!selectedNSCompany.Currency__r.Name}" rendered="{!AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__Currency__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Currency__c.Accessible)}"/>
+                                            </div>
+                                        </li>
+                                        <li class="slds-page-header__detail-block transactionPanelDetailWidth" style="{!IF(showPriceLevels, '', 'display:none')}">
+                                            <p class="slds-text-heading_label-normal slds-truncate slds-m-bottom_xx-small">Price Level</p>
+                                            <div class="slds-text-body_regular slds-truncate">
+                                                <apex:outputField value="{!selectedNSCompany.PriceLevel__r.Name}" rendered="{!AND(NOT(ISBLANK(selectedNSCompany.breadwinner_ns__PriceLevel__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__PriceLevel__c.Accessible)}"/>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="block" rendered="{!showCreateOrEditCompanyPanel}">
+                                <div class="slds-page-header" role="banner">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-has-flexi-truncate">
+                                            <div class="slds-media slds-media_center">
+                                                <div class="slds-media__figure">
+                                                    <span class="slds-icon_container slds-icon-standard-user" id="companyIcon">
+                                                        <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/standard-sprite/svg/symbols.svg#account')}" />
+                                                        </svg>
+                                                        <span class="slds-assistive-text"></span>
+                                                    </span>
+                                                </div>
+                                                <div class="slds-media__body">
+                                                    <p class="slds-page-header__title slds-truncate" title="{!IF(isEditCompany,'Edit NetSuite '+createOrEditCompany.breadwinner_ns__Stage__c,'Create a NetSuite Customer')}"><apex:outputText value="{!IF(isEditCompany,'Edit NetSuite '+createOrEditCompany.breadwinner_ns__Stage__c,'Create a NetSuite Customer')}"/></p>
+                                                    <p class="slds-text-body_small">Breadwinner • NetSuite </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="block" rendered="{!AND(isCustomURL,showTestingPagePanel)}">
+                                <div class="slds-page-header slds-m-bottom_small slds-p-vertical_medium" role="banner">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-has-flexi-truncate">
+                                            <div class="slds-media slds-media_center">
+                                                <div class="slds-media__figure">
+                                                    <span class="slds-icon_container slds-icon-standard-screen" id="screenIcon">
+                                                        <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/standard-sprite/svg/symbols.svg#screen')}" />
+                                                        </svg>
+                                                        <span class="slds-assistive-text"></span>
+                                                    </span>
+                                                </div>
+                                                <div class="slds-media__body">
+                                                    <p class="slds-page-header__title slds-truncate" title="Return Authorization Parameters Testing Page"><apex:outputText value="Return Authorization Parameters Testing Page"/></p>
+                                                    <p class="slds-text-body_small">Breadwinner • NetSuite </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                            <!-- Page Header End -->
+
+                            <!-- Arrow Path Starts -->
+                            <apex:outputPanel styleClass="slds-path slds-m-vertical_small" id="pathPanel" layout="block" rendered="{!NOT(showTestingPagePanel)}">
+                                <div class="slds-path__track">
+                                    <div class="slds-path__scroller-container">
+                                        <div class="slds-path__scroller" role="application">
+                                            <div class="slds-path__scroller_inner">
+                                                <ul class="slds-path__nav" role="listbox" aria-orientation="horizontal">
+                                                    <li class="slds-path__item slds-is-complete" role="presentation">
+                                                        <a aria-selected="false" class="slds-path__link" rel="noopener noreferrer" href="javascript:void(0);" role="option" tabindex="-1">
+                                                            <span class="slds-path__stage" id="stage1">
+                                                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                                                    <use rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}" />
+                                                                </svg>
+                                                                <span class="slds-assistive-text">Chosen {!IF(NOT(ISBLANK(originatingObjLabel)),originatingObjLabel,IF(NOT(ISBLANK(oppId)),'Opportunity','Account'))}</span>
+                                                            </span>
+                                                            <span class="slds-path__title">Chosen {!IF(NOT(ISBLANK(originatingObjLabel)),originatingObjLabel,IF(NOT(ISBLANK(oppId)),'Opportunity','Account'))}</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="slds-path__item {!IF(showNewTransactionPanel,'slds-is-active','slds-is-complete')}" role="presentation">
+                                                        <a aria-selected="false" class="slds-path__link" rel="noopener noreferrer" href="javascript:void(0);" role="option" tabindex="-1">
+                                                            <span class="slds-path__stage" id="stage2">
+                                                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                                                    <use rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}" />
+                                                                </svg>
+                                                                <span class="slds-assistive-text">Select NetSuite Company</span>
+                                                            </span>
+                                                            <span class="slds-path__title">Select NetSuite Company</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="slds-path__item {!IF(showCreateOrEditCompanyPanel,'slds-is-active',IF(showCreateTransactionPanel,'slds-is-complete','slds-is-incomplete'))}" role="presentation" style="display:{!IF(OR(selectedCompanyOption=='createNewNSCompany',isEditCompany),'','none')}">
+                                                        <a aria-selected="false" class="slds-path__link" rel="noopener noreferrer" href="javascript:void(0);" role="option" tabindex="-1">
+                                                            <span class="slds-path__stage" id="stage3">
+                                                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                                                    <use rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}" />
+                                                                </svg>
+                                                                <apex:outputText styleClass="slds-assistive-text" value="{!IF(isEditCompany,'Edit NetSuite '+createOrEditCompany.breadwinner_ns__Stage__c,'Create a NetSuite Customer')}"/>
+                                                            </span>
+                                                            <apex:outputText styleClass="slds-path__title" value="{!IF(isEditCompany,'Edit NetSuite '+createOrEditCompany.breadwinner_ns__Stage__c,'Create a NetSuite Customer')}"/>
+                                                        </a>
+                                                    </li>
+                                                    <li class="slds-path__item {!IF(showCreateTransactionPanel,'slds-is-active','slds-is-incomplete')}" role="presentation">
+                                                        <a aria-selected="false" class="slds-path__link" rel="noopener noreferrer" href="javascript:void(0);" role="option" tabindex="-1">
+                                                            <span class="slds-path__stage" id="stage4">
+                                                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                                                    <use rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}" />
+                                                                </svg>
+                                                                <span class="slds-assistive-text">Create a NetSuite Return Authorization</span>
+                                                            </span>
+                                                            <span class="slds-path__title">Create a NetSuite Return Authorization</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                            <!-- Arrow Path End -->
+
+                            <apex:pageMessage severity="info" rendered="{!AND(isReadOnlyMode,NOT(showTestingPagePanel),NOT(showNewTransactionPanel),IF(showCreateOrEditCompanyPanel,IF(isEditCompany,$ObjectType.breadwinner_ns__BW_Company__c.Updateable,$ObjectType.breadwinner_ns__BW_Company__c.Createable),$ObjectType.breadwinner_ns__BW_Return_Authorization__c.Createable))}" summary="You are using Breadwinner in NetSuite Read Only Mode. While Breadwinner reads data from NetSuite, no changes will be made to NetSuite. NetSuite is in Read-Only mode and will not be altered in any way."></apex:pageMessage>
+                            <apex:pageMessage severity="info" rendered="{!AND(selectedCompanyOption == 'createNewNSCompany',showTestingPagePanel,selectedAccount.Name!='')}" summary="There is No Affiliated NetSuite Company for this selected Salesforce Account ({!selectedAccount.Name}), if you want to see the Line Items please create or affiliate a NetSuite Customer to this Salesforce Account." />
+
+                            <apex:pageMessages escape="false" rendered="{!!isTransactionSyncNotActive}"></apex:pageMessages>
+                            <apex:outputPanel layout="block" id="tranSyncStatusMsg">
+                                <apex:pageMessage severity="Warning" rendered="{!isTransactionSyncNotActive}" summary="You can not create Return Authorization as its sync is not active for the respective Subsidiary. If you wish to create Return Authorization in NetSuite, please change the configuration at the subsidiary level from Configure NetSuite Objects Sync to Salesforce step in the Breadwinner for NetSuite tab."></apex:pageMessage>
+                            </apex:outputPanel>
+
+                            <!-- New Return Authorization Section Start -->
+                            <apex:outputPanel layout="block" id="NewRMAPanel" rendered="{!AND(showNewTransactionPanel,$ObjectType.breadwinner_ns__BW_Return_Authorization__c.Createable)}">
+                                <apex:outputPanel layout="block" id="main-content">
+                                    <apex:outputPanel layout="block" styleClass="slds-m-bottom_large" rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.accessible}">
+                                        <div class="slds-section slds-is-open slds-m-top_none">
+                                            <h3 class="slds-section__title slds-theme_shade">
+                                                <span class="slds-truncate slds-p-horizontal_small" title="Select the NetSuite Company for this Return Authorization">Select the NetSuite Company for this Return Authorization</span>
+                                            </h3>
+                                            <div aria-hidden="false" class="slds-section__content slds-p-around_small">
+                                                <fieldset class="slds-form-element slds-p-top_x-small">
+                                                    <div class="slds-form-element__control">
+                                                        <label class="slds-radio">
+                                                        <input type="radio" name="NSCompany" id="createNewNSCompany" onchange="pushselectedCompanyOption('createNewNSCompany');" value="createNewNSCompany"/>
+                                                        <span class="slds-radio_faux"></span>
+                                                        <span class="slds-form-element__label">Create a new NetSuite Customer</span>
+                                                        </label>
+                                                        <div style="padding-left: 31px;padding-top: 0.75rem;" class="slds-text-body_small">You can have multiple NetSuite Companies associated with a single Salesforce Account. This might happen if you have different departments, branches, or offices of the same company.</div>
+                                                        <apex:repeat value="{!selectedAccount.BWCompanies__r}" var="nsc">
+                                                            <label class="slds-radio slds-m-top_medium">
+                                                                <input type="radio" name="NSCompany" id="{!nsc.Id}" onchange="pushselectedCompanyOption('{!JSENCODE(nsc.Id)}');" value="{!nsc.Id}"/>
+                                                                <span class="slds-radio_faux"></span>
+                                                                <span class="slds-form-element__label">Use Existing NetSuite {!nsc.Stage__c}:&nbsp;
+                                                                    <b>
+                                                                        <apex:outputText value="{!nsc.breadwinner_ns__CompanyName__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible}"/>
+                                                                        <apex:outputText value="{!nsc.Name}" rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.Name.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible,AND(ISNULL(nsc.breadwinner_ns__CompanyName__c),ISNULL(nsc.breadwinner_ns__FirstName__c)))}" />
+                                                                        <apex:outputPanel rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__IsPerson__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,nsc.breadwinner_ns__IsPerson__c,ISNULL(nsc.breadwinner_ns__CompanyName__c))}">
+                                                                            <apex:outputText value="{!nsc.breadwinner_ns__Salutation__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Salutation__c.Accessible}"/>
+                                                                            <apex:outputText value="{!nsc.breadwinner_ns__FirstName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible}"/>
+                                                                            <apex:outputText value="{!nsc.breadwinner_ns__MiddleName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__MiddleName__c.Accessible}"/>
+                                                                            <apex:outputText value="{!nsc.breadwinner_ns__LastName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__LastName__c.Accessible}"/>
+                                                                        </apex:outputPanel>
+                                                                    </b>
+                                                                </span>
+                                                                <span>
+                                                                    <apex:commandLink rel="noopener noreferrer" value="Edit NetSuite {!nsc.breadwinner_ns__Stage__c} before Creating the Return Authorization" status="action-status" action="{!updateEditNSCompanySection}" styleClass="slds-text-body_small" style="text-decoration: underline;" reRender="OverallPage" oncomplete="setPageTitle();message();window.scrollTo(0,0);reRenderCheckIcons(['#stage1','#stage2']);reRenderCompanySVG();">
+                                                                        <apex:param name="selectedCompanyOption" value="{!nsc.Id}" assignTo="{!selectedCompanyOption}"/>
+                                                                    </apex:commandLink>
+                                                                </span>
+                                                            </label>
+
+                                                            <div class="slds-grid slds-m-top_small">
+                                                                <div class="slds-m-left_x-large slds-page-header__detail-block companyColumnWidth">
+                                                                    <p class="slds-truncate slds-m-bottom_xx-small"><b>{!nsc.breadwinner_ns__Stage__c} Information:</b></p>
+                                                                    <div class="slds-text-body_regular slds-truncate">
+                                                                        <apex:outputPanel rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.Name.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible,AND(ISNULL(nsc.breadwinner_ns__CompanyName__c),ISNULL(nsc.breadwinner_ns__FirstName__c)))}">
+                                                                            {!nsc.Name}
+                                                                            <br/>
+                                                                        </apex:outputPanel>
+                                                                        <apex:outputPanel rendered="{AND($ObjectType.BW_Company__c.fields.IsPerson__c.Accessible,nsc.IsPerson__c)}">
+                                                                            <apex:outputText value="{!nsc.breadwinner_ns__Salutation__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Salutation__c.Accessible}"/>
+                                                                            <apex:outputText value="{!nsc.breadwinner_ns__FirstName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible}"/>
+                                                                            <apex:outputText value="{!nsc.breadwinner_ns__MiddleName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__MiddleName__c.Accessible}"/>
+                                                                            <apex:outputText value="{!nsc.breadwinner_ns__LastName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__LastName__c.Accessible}"/>
+                                                                            <br/>
+                                                                        </apex:outputPanel>
+                                                                        <apex:outputPanel rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,NOT(ISNULL(nsc.breadwinner_ns__CompanyName__c)))}">
+                                                                            {!nsc.breadwinner_ns__CompanyName__c}
+                                                                            <br/>
+                                                                        </apex:outputPanel>
+                                                                        <apex:outputPanel rendered="{!OR(AND(NOT(ISBLANK(nsc.breadwinner_ns__BillingAddr1__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingAddr1__c.Accessible),AND(NOT(ISBLANK(nsc.breadwinner_ns__BillingAddr2__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingAddr2__c.Accessible))}">
+                                                                                {!nsc.BillingAddr1__c}&nbsp;{!nsc.BillingAddr2__c}
+                                                                            <br/>
+                                                                        </apex:outputPanel>
+                                                                        <apex:outputPanel rendered="{!OR(AND(NOT(ISBLANK(nsc.breadwinner_ns__BillingCity__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingCity__c.Accessible),AND(NOT(ISBLANK(nsc.breadwinner_ns__BillingState__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingState__c.Accessible),AND(NOT(ISBLANK(nsc.breadwinner_ns__BillingZip__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingZip__c.Accessible))}">
+                                                                                {!nsc.BillingCity__c}&nbsp;{!nsc.BillingState__c}&nbsp;{!nsc.BillingZip__c}
+                                                                            <br/>
+                                                                        </apex:outputPanel>
+                                                                        <apex:outputPanel rendered="{!AND(NOT(ISBLANK(nsc.breadwinner_ns__BillingCountry__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingCountry__c.Accessible)}">
+                                                                            {!nsc.breadwinner_ns__BillingCountry__c}
+                                                                        </apex:outputPanel>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="slds-page-header__detail-block companyColumnWidth">
+                                                                    <p class="slds-truncate slds-m-bottom_xx-small"><b>{!nsc.breadwinner_ns__Stage__c} Contact Info:</b></p>
+                                                                    <div class="slds-text-body_regular slds-truncate">
+                                                                        <apex:outputPanel rendered="{!AND(NOT(ISBLANK(nsc.breadwinner_ns__BillingAttention__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__BillingAttention__c.Accessible)}" >
+                                                                            {!nsc.breadwinner_ns__BillingAttention__c} <BR/>
+                                                                        </apex:outputPanel>
+                                                                        <apex:outputPanel rendered="{!AND(NOT(ISBLANK(nsc.breadwinner_ns__Email__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Email__c.Accessible)}">
+                                                                            {!nsc.breadwinner_ns__Email__c} <BR/>
+                                                                        </apex:outputPanel>
+                                                                        <apex:outputPanel rendered="{!AND(NOT(ISBLANK(nsc.breadwinner_ns__Phone__c)),$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Phone__c.Accessible)}">
+                                                                            {!nsc.breadwinner_ns__Phone__c} <BR/>
+                                                                        </apex:outputPanel>
+                                                                    </div>
+                                                                </div>
+                                                                <apex:outputPanel layout="block" rendered="{!NOT(isSubsidiaryDisabledInNetSuite)}" styleClass="slds-page-header__detail-block">
+                                                                    <p class="slds-truncate slds-m-bottom_xx-small"><b>Primary Subsidiary:</b></p>
+                                                                    <div class="slds-text-body_regular slds-truncate">
+                                                                        <apex:outputField value="{!nsc.Subsidiary__r.Name}" rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Subsidiary__c.Accessible}"/>
+                                                                    </div>
+                                                                </apex:outputPanel>
+                                                                <div class="slds-page-header__detail-block">
+                                                                    <p class="slds-truncate slds-m-bottom_xx-small"><b>Primary Currency:</b></p>
+                                                                    <div class="slds-text-body_regular slds-truncate">
+                                                                        <apex:outputField value="{!nsc.Currency__r.Name}" rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Currency__c.Accessible}"/>
+                                                                    </div>
+                                                                </div>
+                                                                <apex:outputPanel layout="block" styleClass="slds-page-header__detail-block" rendered="{!showPriceLevels}">
+                                                                    <p class="slds-truncate slds-m-bottom_xx-small"><b>Price Level:</b></p>
+                                                                    <div class="slds-text-body_regular slds-truncate">
+                                                                        <apex:outputField value="{!nsc.PriceLevel__r.Name}" rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__PriceLevel__c.Accessible}"/>
+                                                                    </div>
+                                                                </apex:outputPanel>
+                                                            </div>
+                                                        </apex:repeat>
+                                                    </div>
+                                                </fieldset>
+                                                <script type="text/javascript">
+                                                    document.getElementById('{!JSENCODE(selectedCompanyOption)}').checked = true;
+                                                    function pushselectedCompanyOption(refId) {
+                                                        document.getElementById('{!JSENCODE($Component.theForm.selectedCompanyOption)}').value = refId;
+                                                        refreshpathInfo();
+                                                    }
+                                                </script>
+                                                <apex:actionFunction name="refreshpathInfo" rerender="pathPanel" oncomplete="reRenderCheckIcons(['#stage1','#stage2']);"/>
+                                            </div>
+                                        </div>
+                                        <div class="slds-text-align_center slds-m-top_large">
+											<apex:commandButton value="Cancel" action="{!goToOriginatingObject}" styleClass="slds-button slds-button_neutral slds-m-right_small" id="cancelButton" />
+                                            <apex:commandButton value="Next" action="{!next}" status="action-status" styleClass="slds-button slds-button_brand" disabled="{!NOT($ObjectType.breadwinner_ns__BW_Return_Authorization__c.Createable)}" id="nextButton" reRender="OverallPage" oncomplete="setPageTitle();message();window.scrollTo(0,0);initSelect2();reRenderCheckIcons(['#stage1','#stage2']);{!IF(showCreateOrEditCompanyPanel,'reRenderCompanySVG();','reRenderRMASVG();DatepickerOnfocusToOnclick();setClassicItemTableLayout();')}"/>
+                                        </div>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                            <apex:pageMessage severity="Warning" rendered="{!NOT($ObjectType.breadwinner_ns__BW_Return_Authorization__c.Createable)}" summary="You do not have permission to Create Return Authorization. Please contact your System Administrator."></apex:pageMessage>
+                            <!-- New Return Authorization Section End -->
+
+                            <apex:inputHidden id="selectedCompanyOption" value="{!selectedCompanyOption}" />
+
+                            <!-- Create or Edit Company Section Start -->
+                            <apex:outputPanel layout="block" id="CreateOrEditNSCompanyPanel" rendered="{!AND(showCreateOrEditCompanyPanel,IF(isEditCompany,$ObjectType.breadwinner_ns__BW_Company__c.Updateable,$ObjectType.breadwinner_ns__BW_Company__c.Createable))}">
+                                <apex:outputPanel layout="block" styleClass="slds-scope">
+									<apex:actionFunction name="assignCreatedCompanyId" action="{!assignCreatedCompanyId}" status="action-status" reRender="OverallPage" oncomplete="setPageTitle();message();window.scrollTo(0,0);initSelect2();reRenderCheckIcons(['#stage1','#stage2','#stage3']);reRenderRMASVG();DatepickerOnfocusToOnclick();setClassicItemTableLayout();">
+										<apex:param name="selectedCompanyOption" value="" assignTo="{!selectedCompanyOption}"/>
+									</apex:actionFunction>
+									<apex:actionFunction name="goToNewTransactionPanel" action="{!goToNewTransactionPanel}" status="action-status" reRender="OverallPage" oncomplete="setPageTitle();message();reRenderCheckIcons(['#stage1']);reRenderRMASVG();window.scrollTo(0,0);"/>
+									<div id="CreateCompanyComponentid" />
+									<div id="CreateCompanyComponentid-spin">
+										<div style="height: 3rem;position:relative;">
+											<div role="status" class="slds-spinner slds-spinner_small slds-spinner_brand">
+												<span class="slds-assistive-text">Loading</span>
+												<div class="slds-spinner__dot-a"></div>
+												<div class="slds-spinner__dot-b"></div>
+											</div>
+										</div>
+									</div>
+									<apex:includeLightning />
+									<apex:variable var="cmpNamespacePrefix" value="{!getCompNamespacePrefix}" />
+									<script>
+										// Function to handle messages from the LWC
+										function handleMessage(event) {
+											if (!event.data) return;
+
+											const { type, recordId } = event.data;
+
+											switch (type) {
+												case 'CLOSE_AND_PASS_RECORD_ID':
+													if (recordId) {
+														console.log(`Received Record ID: ${recordId}`);
+														try {
+															assignCreatedCompanyId(recordId);
+														} catch (error) {
+															console.error('Error assigning company ID:', error);
+														}
+													}
+													hideLWCComponent();
+													break;
+												case 'CLOSE':
+													goToNewTransactionPanel();
+													hideLWCComponent();
+													break;
+												default:
+													console.warn('Unhandled message type:', type);
+											}
+										}
+
+										function hideLWCComponent() {
+											const lwcContainer = document.getElementById('CreateCompanyComponentid');
+											if (lwcContainer) {
+												lwcContainer.style.display = 'none'; // Hide the LWC
+												console.log('LWC component hidden');
+											}
+										}
+
+										window.addEventListener('message', handleMessage);
+
+										const attributes = {
+											currentPage: '{!$page.CreateReturnAuthorization}'
+										};
+										const selectedCompany = '{!selectedCompanyOption}';
+										if (selectedCompany === 'createNewNSCompany') {
+											attributes.lookupId = '{!selectedAccount.Id}';
+										} else { // Edit Customer
+											attributes.recordId = selectedCompany;
+										}
+										console.log(attributes);
+
+										$Lightning.use("{!JSENCODE(cmpNamespacePrefix)}:lightningOutUnstyled", () => {
+											$Lightning.createComponent(
+												"{!JSENCODE(cmpNamespacePrefix)}:netsuiteCompany",
+												attributes,
+												"CreateCompanyComponentid",
+												(cmp) => {
+													const spinner = document.getElementById('CreateCompanyComponentid-spin');
+													if (spinner) spinner.style.display = "none";
+													console.log('LWC component created successfully');
+												}
+											);
+										});
+									</script>
+								</apex:outputPanel>
+                            </apex:outputPanel>
+                            <apex:pageMessage severity="Warning" rendered="{!AND(showCreateOrEditCompanyPanel,NOT(IF(isEditCompany,$ObjectType.breadwinner_ns__BW_Company__c.Updateable,$ObjectType.breadwinner_ns__BW_Company__c.Createable)))}" summary="You do not have permission to {!IF(isEditCompany,'Update','Create')} Customer. Please contact your System Administrator."></apex:pageMessage>
+                            <!-- Create or Edit Company Section End -->
+
+                            <!-- Create RMA Section Start -->
+                            <apex:outputPanel layout="block" id="CreateRMAPanel" rendered="{!showCreateTransactionPanel}">
+                                <div class="slds-section slds-is-open slds-m-vertical_none">
+                                    <h3 class="slds-section__title slds-theme_shade">
+                                        <span class="slds-truncate slds-p-horizontal_small" title="Select the NetSuite Customer for this Return Authorization">Return Authorization Details</span>
+                                    </h3>
+                                    <div aria-hidden="false" class="slds-section__content slds-p-top_none">
+                                        <apex:outputPanel layout="block" styleClass="slds-grid slds-wrap slds-size_1-of-1">
+                                            <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small slds-large-order_2" id="rmaCurrency">
+                                                <div class="slds-form-element slds-large-size_1-of-2">
+                                                    <span class="slds-form-element__label">Currency</span>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:outputPanel styleClass="slds-select_container" layout="block" rendered="{!NOT(isCustomURL)}">
+                                                            <apex:selectList styleClass="slds-select" id="Currency" value="{!currencyInternalId}" size="1" disabled="{!disableCurrencyPicklist}">
+                                                                <apex:selectOptions value="{!currencyList}"></apex:selectOptions>
+                                                            </apex:selectList>
+                                                        </apex:outputPanel>
+                                                        <apex:outputtext value="{!currencyDisplayName}" rendered="{!isCustomURL}"/>
+                                                        <apex:outputText value="You can't change the Currency once line items are added" styleClass="slds-text-color_error" rendered="{!AND(disableCurrencyPicklist,NOT(isCustomURL))}"/>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small slds-large-order_1" rendered="{!tranCustomFormInternalId!=''}">
+                                                <div class="slds-form-element slds-large-size_1-of-2">
+                                                    <span class="slds-form-element__label">Custom Form</span>
+                                                    <!--<div class="slds-form-element__icon">
+                                                        <a rel="noopener noreferrer" href="javascript:void(0);" tabindex="-1">
+                                                            <apex:image style="height:15px;width:15px;" value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/InfoLightning.png')}" onmouseover="identifyfield(this,'If you are using Custom Forms, please provide the NetSuite Internal Id of the Custom Form that can be found in NetSuite.','190','37')" onmouseout="mouseoutclose();" />
+                                                            <span class="slds-assistive-text">Help</span>
+                                                        </a>
+                                                    </div>-->
+                                                    <div class="slds-form-element__control">
+                                                        <apex:outputText id="customFormInternalId" label="Custom Form Id" value="{!tranCustomFormInternalId}" html-autofocus="false"/>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small slds-large-order_4" rendered="{!$ObjectType.breadwinner_ns__BW_Return_Authorization__c.fields.breadwinner_ns__OtherRefNum__c.createable}">
+                                                <div class="slds-form-element slds-large-size_1-of-2">
+                                                    <span class="slds-form-element__label">PO #</span>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputField id="referencePO" value="{!sfRMA.breadwinner_ns__OtherRefNum__c}" styleClass="slds-input" onblur="validateInput(this.value,'PO #',this.id,'String',45);"/>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small {!IF(tranCustomFormInternalId=='','slds-large-order_1','slds-large-order_3')}">
+                                                <div class="slds-form-element slds-large-size_1-of-1">
+                                                    <span class="slds-form-element__label">RTN. AUTH. #</span>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:outputPanel styleClass="slds-grid" layout="block" id="tranNumberSection">
+                                                            <apex:outputPanel styleClass="slds-size_1-of-2">
+                                                                <div class="slds-select_container">
+                                                                    <apex:selectList styleClass="slds-select" id="tranNumberSelection" value="{!transNumber}" size="1">
+                                                                        <apex:selectOptions value="{!transNumberAction}"></apex:selectOptions>
+                                                                        <apex:actionSupport event="onchange" reRender="tranNumberSection" oncomplete="RefreshtranNumberSection();"/>
+                                                                    </apex:selectList>
+                                                                </div>
+                                                            </apex:outputPanel>
+                                                            <apex:outputPanel styleClass="slds-size_1-of-5 slds-p-left_small" rendered="{!IF(transNumber=='custom','TRUE','FALSE')}">
+                                                                <apex:inputField value="{!sfRMA.Name}" id="tranNumberField" styleClass="slds-input" html-autofocus="false"/>
+                                                            </apex:outputPanel>
+                                                            <script type="text/javascript">
+                                                                function RefreshtranNumberSection(){
+                                                                    document.getElementById('{!JSENCODE($Component.theForm.tranNumberField)}').value='';
+                                                                    document.getElementById('{!JSENCODE($Component.theForm.tranNumberField)}').focus();
+                                                                }
+                                                            </script>
+                                                        </apex:outputPanel>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small slds-large-order_6" rendered="{!$ObjectType.breadwinner_ns__BW_Return_Authorization__c.fields.breadwinner_ns__Memo__c.createable}">
+                                                <div class="slds-form-element slds-large-size_1-of-2">
+                                                    <span class="slds-form-element__label">Memo</span>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputField id="memo" value="{!sfRMA.breadwinner_ns__Memo__c}" styleClass="slds-input"></apex:inputField>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small {!IF(tranCustomFormInternalId=='','slds-large-order_3','slds-large-order_5')}" rendered="{!$ObjectType.breadwinner_ns__BW_Return_Authorization__c.fields.breadwinner_ns__TranDate__c.createable}">
+                                                <div class="slds-form-element slds-large-size_1-of-2">
+                                                    <span class="slds-form-element__label">Date</span>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputField id="tranDate" label="Date" value="{!sfRMA.breadwinner_ns__TranDate__c}" styleClass="slds-input" html-autofocus="false"/>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small slds-large-order_7" rendered="{!$ObjectType.breadwinner_ns__BW_Return_Authorization__c.fields.breadwinner_ns__ExternalId__c.createable}">
+                                                <div class="slds-form-element slds-large-size_1-of-2">
+                                                    <span class="slds-form-element__label">External Id</span>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputField id="externalId" value="{!sfRMA.breadwinner_ns__ExternalId__c}" styleClass="slds-input"></apex:inputField>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="slds-section slds-is-open slds-m-vertical_none slds-p-top_large">
+                                            <h3 class="slds-section__title slds-theme_shade">
+                                                <span class="slds-truncate slds-p-horizontal_small" title="Classification">Classification</span>
+                                            </h3>
+                                            <div aria-hidden="false" class="slds-section__content slds-p-top_none">
+                                                <apex:outputPanel layout="block" styleClass="slds-grid slds-wrap slds-size_1-of-1">
+                                                    <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small slds-large-order_1" rendered="{!NOT(isSubsidiaryDisabledInNetSuite)}">
+                                                        <div class="slds-form-element slds-large-size_1-of-2">
+                                                            <span class="slds-form-element__label">Subsidiary</span>
+                                                            <div class="slds-form-element__control">
+                                                                <apex:outputPanel rendered="{!OR(ISBLANK(tranSubsidiaryName), ISBLANK(tranSubsidiaryInternalId))}">
+																	<apex:outputtext value="{!selectedNSCompany.Subsidiary__r.Name}"/>
+																	<apex:outputtext value="{!IF(selectedNSCompany.Subsidiary__r.breadwinner_ns__IsInactive__c,' (Inactive)','')}" style="color:red;"/>
+																</apex:outputPanel>
+																<apex:outputPanel rendered="{!NOT(ISBLANK(tranSubsidiaryName))}">
+																	<apex:outputtext value="{!tranSubsidiaryName}"/>
+																</apex:outputPanel>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small slds-large-order_2" rendered="{!AND(NOT(ISNULL(cuClass)),isCustomURL)}">
+                                                        <div class="slds-form-element slds-large-size_1-of-2">
+                                                            <span class="slds-form-element__label">Class</span>
+                                                            <div class="slds-form-element__control">
+                                                                <div class="slds-select_container">
+                                                                    <apex:selectList styleClass="slds-select" id="rmaClass" value="{!tranClassInternalId}" size="1">
+                                                                            <apex:selectOption itemLabel="" itemValue=""></apex:selectOption>
+                                                                            <apex:selectOptions value="{!nsClasses}"></apex:selectOptions>
+                                                                     </apex:selectList>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small slds-large-order_3" rendered="{!AND(NOT(ISNULL(cuDepartment)),isCustomURL)}">
+                                                        <div class="slds-form-element slds-large-size_1-of-2">
+                                                            <span class="slds-form-element__label">Department</span>
+                                                            <div class="slds-form-element__control">
+                                                                <div class="slds-select_container">
+                                                                    <apex:selectList styleClass="slds-select" id="rmaDepartment" value="{!tranDepartmentInternalId}" size="1">
+                                                                            <apex:selectOption itemLabel="" itemValue=""></apex:selectOption>
+                                                                            <apex:selectOptions value="{!nsDepartments}"></apex:selectOptions>
+                                                                     </apex:selectList>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small slds-large-order_4">
+                                                        <div class="slds-form-element slds-large-size_1-of-2">
+                                                            <span class="slds-form-element__label">Location</span>
+                                                            <div class="slds-form-element__control">
+                                                                <!--apex:inputText id="soLocation" label="Location" value="{!tranLocationInternalId}" styleClass="slds-input" html-autofocus="false"/-->
+                                                                <div class="slds-select_container">
+                                                                    <apex:selectList styleClass="slds-select" id="poLocation" value="{!tranLocationInternalId}" size="1">
+                                                                        <apex:selectOption itemLabel="" itemValue=""></apex:selectOption>
+                                                                        <apex:selectOptions value="{!nsLocations}"></apex:selectOptions>
+                                                                    </apex:selectList>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="slds-section slds-is-open slds-m-vertical_none slds-p-top_large" rendered="{!NOT(ISNULL(cuSalesRep))}">
+                                            <h3 class="slds-section__title slds-theme_shade">
+                                                <span class="slds-truncate slds-p-horizontal_small" title="Sales Information">Sales Information</span>
+                                            </h3>
+                                            <div aria-hidden="false" class="slds-section__content slds-p-top_none">
+                                                <apex:outputPanel layout="block" styleClass="slds-grid slds-wrap slds-size_1-of-1">
+                                                    <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small slds-large-order_1" rendered="{!AND(NOT(ISNULL(cuSalesRep)),isCustomURL)}">
+                                                        <div class="slds-form-element slds-large-size_1-of-2">
+                                                            <span class="slds-form-element__label">Sales Rep</span>
+                                                            <div class="slds-form-element__control">
+                                                                <apex:inputText id="soSalesRep" label="Class" value="{!tranSalesRepInternalId}" styleClass="slds-input" html-autofocus="false"/>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="slds-section slds-is-open slds-m-vertical_none slds-p-top_large" rendered="{!AND(tranCustomFieldKeyset.size>0,isCustomURL)}">
+                                            <h3 class="slds-section__title slds-theme_shade">
+                                                <span class="slds-truncate slds-p-horizontal_small" title="Select the NetSuite Customer for this Return Authorization">Return Authorization Custom Fields</span>
+                                            </h3>
+                                            <div aria-hidden="false" class="slds-section__content slds-p-top_none">
+                                                <apex:outputPanel layout="block" styleClass="slds-grid slds-wrap slds-size_1-of-1">
+                                                    <apex:repeat value="{!tranCustomFieldKeyset}" var="custom">
+                                                        <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small">
+                                                            <div class="slds-form-element slds-large-size_1-of-2">
+                                                                <span class="slds-form-element__label"><apex:outputText value="{!tranCustomFieldNameAndLabel[custom]}" style="text-transform: capitalize;"/></span>
+                                                                <div class="slds-form-element__control">
+                                                                    <apex:inputText id="tranCustBody" rendered="{!AND(tranCustomFieldNameAndType[custom]!='boolean',tranCustomFieldNameAndType[custom]!='checkbox',tranCustomFieldNameAndType[custom]!='longtextarea',tranCustomFieldNameAndType[custom]!='textarea')}" value="{!tranCustomFieldNameAndValue[custom]}" styleClass="slds-input" onfocus="{!IF(OR(tranCustomFieldNameAndType[custom]=='date',tranCustomFieldNameAndType[custom]=='datetime'),'DatePicker.pickDate(false, this , false);','')}"/>
+                                                                    <apex:inputCheckbox id="tranCustBodyCheckbox" rendered="{!OR(tranCustomFieldNameAndType[custom]=='boolean',tranCustomFieldNameAndType[custom]=='checkbox')}" value="{!tranCustomFieldNameAndValue[custom]}" />
+                                                                    <apex:inputTextarea styleClass="slds-input" rows="4" value="{!tranCustomFieldNameAndValue[custom]}" rendered="{!OR(tranCustomFieldNameAndType[custom]=='longtextarea',tranCustomFieldNameAndType[custom]=='textarea')}"  />
+                                                                </div>
+                                                            </div>
+                                                        </apex:outputPanel>
+                                                    </apex:repeat>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </apex:outputPanel>
+                                        <h3 class="slds-section__title slds-theme_shade slds-large-size_1-of-1 slds-m-top_large">
+                                            <span class="slds-truncate slds-p-horizontal_small" title="Return Authorization Items">Return Authorization Items</span>
+                                        </h3>
+                                        <apex:outputPanel layout="block" styleClass="slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-grid slds-wrap" rendered="{!nsdiscountItems.size>1}">
+                                            <apex:outputPanel layout="block" styleClass="slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2 slds-m-top_small">
+                                                <div class="slds-form-element">
+                                                    <span class="slds-form-element__label">Discount Item</span>
+                                                    <div class="slds-form-element__control">
+                                                        <div class="slds-select_container">
+                                                            <apex:selectList styleClass="slds-select" id="discountItem" value="{!discountItem}" size="1">
+                                                                <apex:selectOptions value="{!nsdiscountItems}"></apex:selectOptions>
+                                                                <apex:actionSupport event="onchange" action="{!mapDiscountItemWithRate}" status="action-status" reRender="discountRate" oncomplete="refreshTotalAmounts();"/>
+                                                            </apex:selectList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel layout="block" styleClass="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-5 slds-m-top_small" >
+                                                <div class="slds-form-element">
+                                                    <span class="slds-form-element__label">Rate</span>
+                                                    <div class="slds-form-element__icon">
+                                                        <a rel="noopener noreferrer" href="javascript:void(0);" tabindex="-1">
+                                                            <apex:image style="height:15px;width:15px;" id="discountRateInfo" value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/InfoLightning.png')}" onmouseover="identifyfield(this,'To have the discount subtracted from your total, enter a negative currency amount (for example -10.00) or a negative percentage (for example -10%).','205','35')" onmouseout="mouseoutclose();" />
+                                                            <span class="slds-assistive-text">Help</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputText id="discountRate" label="Rate" value="{!discountRate}" styleClass="slds-input" html-autofocus="false" onblur="validateInput(this.value,'Discount Rate',this.id,'number',0);">
+                                                            <apex:actionSupport event="onchange" reRender="nothing" oncomplete="refreshTotalAmounts();"/>
+                                                        </apex:inputText>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                            <apex:actionFunction name="refreshTotalAmounts" id="refreshTotalAmounts" status="action-status" reRender="totaldiscountColumn,totalColumn"/>
+                                        </apex:outputPanel>
+                                        <div class="slds-p-horizontal_small slds-p-top_large slds-size_1-of-1">
+                                            <div>
+                                                <apex:outputLabel style="font-style:italic;font-weight:bold;font-size:16px" rendered="{!isNSItemsMore}">Note: During evaluation, the NetSuite Items available on this page are limited to the first 1000 Items.</apex:outputLabel>
+                                            </div>
+                                            <!-- Line Item section Starts -->
+                                            <apex:variable var="list" value="{!''}{!extraLiFieldAndFieldReferenceMap}" rendered="{!isCustomURL}"/>
+                                            <div class="slds-scrollable_x slds-m-bottom_small" style="position: relative;" id="itemTableDiv">
+                                            <apex:dataTable value="{!nsLineItems}" var="nsli" id="itemTable" styleClass="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal slds-table_col-bordered slds-border_right slds-border_left slds-m-bottom_small" style="{!IF(AND(NOT(isLightning),isCustomURL),'table-layout:fixed;','')}">
+                                                <apex:column id="itemColumn" styleClass="{!IF(AND(isCustomURL,hasExtraLiFields),'itemColumnClassEx','itemColumnClass')}" headervalue="NetSuite Item" html-data-label="NetSuite Item">
+                                                    <apex:outputPanel layout="block" styleClass="slds-form-element__control" rendered="{!NOT(isCustomURL)}">
+                                                        <div class="slds-select_container">
+                                                            <apex:selectList styleClass="slds-select select2" id="itemcode" value="{!nsli.itemInternalId}" size="1">
+                                                                <apex:selectOptions value="{!nsitems}"></apex:selectOptions>
+                                                                <apex:actionSupport event="onchange" reRender="quantity,rate,description,amount,subtotalColumn,totaldiscountColumn,totalColumn,rmaCurrency,itemGrpText" action="{!refreshItemRow}">
+                                                                    <apex:param name="srNo" value="{!nsli.liSrNo}" assignTo="{!srNo}" />
+                                                                </apex:actionSupport>
+                                                            </apex:selectList>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputField value="{!nsli.Item.breadwinner_ns__Item__c}" rendered="{!isCustomURL}" styleClass="itemLinkClass"/>
+                                                </apex:column>
+                                                <apex:column id="descriptionColumn" headervalue="Description" html-data-label="Description" styleClass="{!IF(AND(isCustomURL,hasExtraLiFields),'descriptionColumnClassEx','')}" >
+                                                    <apex:inputTextArea id="description" rows="1" onfocus="this.rows=3;" onblur="this.rows=1;" value="{!nsli.description}" styleClass="slds-input" />
+                                                </apex:column>
+                                                <apex:column id="quantityColumn" styleClass="{!IF(AND(isCustomURL,hasExtraLiFields),'quantityColumnClassEx','quantityColumnClass')}" headervalue="Quantity" html-data-label="Quantity" >
+                                                    <apex:inputText value="{!nsli.quantity}" id="quantity" styleClass="slds-input slds-text-align_right" style="padding: 0 0.3rem 0 0.3rem;" rendered="{!NOT(OR(nsli.itemType=='Discount Item',nsli.itemType=='Description Item',nsli.itemType=='Markup Item'))}" onblur="validateInput(this.value,'Quantity',this.id,'number',0);">
+                                                        <apex:actionSupport event="onchange" reRender="amount,subtotalColumn,totaldiscountColumn,totalTaxColumn,totalColumn"/>
+                                                    </apex:inputText>
+                                                </apex:column>
+                                                <apex:column id="rateColumn" styleClass="{!IF(AND(isCustomURL,hasExtraLiFields),'rateColumnClassEx','rateColumnClass')}" headervalue="Rate" html-data-label="Rate">
+                                                    <apex:inputText value="{!nsli.rate}" id="rate" rendered="{!IF(NOT(OR(nsli.itemType=='Description Item',nsli.itemType=='Item Group')), TRUE, FALSE)}" styleClass="slds-input slds-text-align_right" style="padding: 0 0.3rem 0 0.3rem;" onblur="validateInput(this.value,'Rate',this.id,'number',0);">
+                                                        <apex:actionSupport event="onchange" reRender="amount,subtotalColumn,totaldiscountColumn,totalTaxColumn,totalColumn"/>
+                                                    </apex:inputText>
+                                                </apex:column>
+                                                <apex:column id="amountColumn" style="text-align:right;" styleClass="{!IF(AND(isCustomURL,hasExtraLiFields),'amountColumnClassEx','amountColumnClass')}" headervalue="Amount" html-data-label="Amount">
+                                                    <apex:outputText id="amount" value="{0, number, ###,###,###,##0.00}">
+														<apex:param value="{!IF(NOT(ISNULL(nsli.amount)),nsli.amount,'')}"/>
+													</apex:outputText>
+                                                </apex:column>
+                                                <apex:column id="classColumn" styleClass="extraColumn" style="text-align:right;" headervalue="Class" html-data-label="Class" rendered="{!AND(isCustomURL,contains(list, 'co_class'))}">
+                                                    <div class="slds-select_container">
+                                                        <apex:selectList id="classification" styleClass="slds-select" value="{!nsli.classInternalId}" size="1">
+                                                            <apex:selectOption itemLabel="" itemValue=""></apex:selectOption>
+                                                            <apex:selectOptions value="{!nsClasses}"></apex:selectOptions>
+                                                        </apex:selectList>
+                                                    </div>
+                                                </apex:column>
+                                                <apex:column id="departmentColumn" styleClass="extraColumn" style="text-align:right;" headervalue="Department" html-data-label="Department" rendered="{!AND(isCustomURL,contains(list, 'co_department'))}">
+                                                    <div class="slds-select_container">
+                                                        <apex:selectList id="department" styleClass="slds-select" value="{!nsli.departmentInternalId}" size="1">
+                                                            <apex:selectOption itemLabel="" itemValue=""></apex:selectOption>
+                                                            <apex:selectOptions value="{!nsDepartments}"></apex:selectOptions>
+                                                        </apex:selectList>
+                                                    </div>
+                                                </apex:column>
+                                                <apex:column id="locationColumn" styleClass="extraColumn" style="text-align:right;" headervalue="Location" html-data-label="Location" rendered="{!AND(isCustomURL,contains(list, 'co_location_id'))}">
+                                                    <div class="slds-select_container">
+                                                        <apex:selectList id="location" styleClass="slds-select" value="{!nsli.locationInternalId}" size="1">
+                                                            <apex:selectOption itemLabel="" itemValue=""></apex:selectOption>
+                                                            <apex:selectOptions value="{!nsLocations}"></apex:selectOptions>
+                                                        </apex:selectList>
+                                                    </div>
+                                                </apex:column>
+                                                <apex:column id="revRecScheduleColumn" styleClass="extraColumn" style="text-align:right;" headervalue="Rev. Rec. Schedule" html-data-label="Rev. Rec. Schedule" rendered="{!AND(isCustomURL,contains(list, 'co_rev_rec_schedule'))}">
+                                                    <apex:inputText id="revRecSchedule" value="{!nsli.revRecScheduleInternalId}" styleClass="slds-input"/>
+                                                </apex:column>
+                                                <apex:column id="revRecStartDateColumn" styleClass="extraColumn" style="text-align:right;" headervalue="Rev. Rec. Start Date" html-data-label="Rev. Rec. Start Date" rendered="{!AND(isCustomURL,contains(list, 'co_rev_rec_start_date'))}">
+                                                    <apex:inputText id="revRecStartDate" value="{!nsli.revRecStartDate}" styleClass="slds-input" onfocus="DatePicker.pickDate(false, this , false);"/>
+                                                </apex:column>
+                                                <apex:column id="revRecEndDateColumn" styleClass="extraColumn" style="text-align:right;" headervalue="Rev. Rec. End Date" html-data-label="Rev. Rec. End Date" rendered="{!AND(isCustomURL,contains(list, 'co_rev_rec_end_date'))}">
+                                                    <apex:inputText id="revRecEndDate" value="{!nsli.revRecEndDate}" styleClass="slds-input" onfocus="DatePicker.pickDate(false, this , false);"/>
+                                                </apex:column>
+                                                <apex:repeat value="{!liCustomFieldKeyset}" var="cust" rendered="{!AND(isCustomURL,liCustomFieldKeyset.size>0)}">
+                                                    <apex:column styleClass="extraColumn {!IF(liCustomFieldNameAndType[cust]=='datetime','dateTimeClass',IF(OR(liCustomFieldNameAndType[cust]=='long',liCustomFieldNameAndType[cust]=='double',liCustomFieldNameAndType[cust]=='integer',liCustomFieldNameAndType[cust]=='number'),'numericClass',''))}">
+                                                        <apex:facet name="header"><apex:outputText value="{!liCustomFieldNameAndLabel[cust]}"/></apex:facet>
+                                                        <apex:inputText id="customCol" rendered="{!AND(liCustomFieldNameAndType[cust]!='boolean', liCustomFieldNameAndType[cust]!='checkbox')}" value="{!nsli.customFieldNameAndValue[cust]}" styleClass="slds-input" onfocus="{!IF(liCustomFieldNameAndType[cust]=='date','DatePicker.pickDate(false, this , false);',IF(liCustomFieldNameAndType[cust]=='datetime','DatePicker.pickDate(false, this , true);',''))}"/>
+														<apex:inputCheckbox id="liCustColCheckbox" rendered="{!OR(liCustomFieldNameAndType[cust]=='boolean', liCustomFieldNameAndType[cust]=='checkbox')}" value="{!nsli.customFieldNameAndValue[cust]}" style="min-width:130px" />
+                                                    </apex:column>
+                                                </apex:repeat>
+                                                <apex:column headervalue="" style="text-align:center" styleClass="DeleteColumnClass" rendered="{!NOT(hideRemoveLineItemButton)}">
+                                                    <apex:image id="removeItem" value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/delete.png')}" style="cursor: pointer;" onclick="removeItem({!nsli.liSrNo});"/>
+                                                </apex:column>
+                                            </apex:dataTable></div>
+                                            <apex:actionFunction name="removeItem" action="{!removeLineItemFromList}" status="action-status" rerender="itemTable,subtotalColumn,totaldiscountColumn,totalTaxColumn,totalColumn,rmaCurrency,itemGrpText" oncomplete="initSelect2();">
+                                                <apex:param name="srNo" value="" assignTo="{!srNo}" />
+                                            </apex:actionFunction>
+                                            <!--<div class="slds-m-top_medium">
+                                                <apex:commandLink rel="noopener noreferrer" id="addMoreLineItems" tabindex="-1" value="Add more lines" style="text-decoration: underline;" action="{!addMoreLineItems}" reRender="itemTable"/>
+                                            </div>-->
+                                            <!-- Line Item section Ends -->
+                                            <div class="slds-grid slds-grid_reverse">
+                                                <div class="slds-grid slds-grid_vertical slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_3-of-12 slds-float_right" style="width:28%">
+                                                    <apex:outputPanel id="subtotalColumn" styleClass="slds-col slds-text-align_right slds-grid">
+                                                        <label class="slds-form-element__label slds-size_4-of-6 slds-p-top_none" ><apex:outputText value="*" rendered="{!isItemGroupExist}"/>Subtotal:</label>
+                                                        <apex:outputText id="subtotalColumnIn" styleClass="slds-size_2-of-6" value="{0, number, ###,###,###,##0.00}">
+															<apex:param value="{!transactionSubTotal}"/>
+														</apex:outputText>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel id="totaldiscountColumn" styleClass="slds-col slds-text-align_right slds-p-top_small slds-size_1-of-1 slds-grid" rendered="{!nsdiscountItems.size>1}">
+                                                        <label class="slds-form-element__label slds-size_4-of-6 slds-p-top_none" >Discount Total:</label>
+                                                        <apex:outputText id="totaldiscountColumnIn" styleClass="slds-size_2-of-6" value="{0, number, ###,###,###,##0.00}">
+															<apex:param value="{!transactionTotalDiscount}"/>
+														</apex:outputText>
+                                                    </apex:outputPanel>
+													<apex:outputPanel id="totalTaxColumn" styleClass="slds-col slds-text-align_right slds-p-top_small slds-size_1-of-1 slds-grid">
+                                                        <label class="slds-form-element__label slds-size_4-of-6 slds-p-top_none" >Taxes, if any, will be calculated by NetSuite:</label>
+                                                        <apex:outputText id="totalTaxColumnIn" styleClass="slds-size_2-of-6" value="---"></apex:outputText>
+                                                    </apex:outputPanel>
+                                                    <div styleClass="slds-col slds-size_1-of-1" align="right">
+                                                    <hr style="width: 70%;margin-top: 5px;margin-bottom: 5px;background-color: black;"/>
+                                                    </div>
+                                                    <apex:outputPanel id="totalColumn" styleClass="slds-col slds-text-align_right slds-size_1-of-1 slds-grid"  style="font-weight:500">
+                                                        <label class="slds-form-element__label slds-size_3-of-6" style="font-size:1.25rem;"><apex:outputText value="*" rendered="{!isItemGroupExist}"/>Total:</label>
+                                                        <apex:outputText id="totalColumnIn" styleClass="slds-form-element__label slds-size_3-of-6  slds-p-right_none" value="{0, number, ###,###,###,##0.00}" style="font-size:1.25rem;">
+															<apex:param value="{!transactionTotal}"/>
+														</apex:outputText>
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                            <apex:outputPanel id="itemGrpText">
+                                                <div align="right"  class="slds-m-bottom_x-small slds-m-top_medium" style="{!IF(isItemGroupExist,'','display:none;')}">
+                                                    *Item Group items are not part of the total and subtotal calculation.
+                                                </div>
+                                            </apex:outputPanel>
+                                            <div align="right" class="slds-m-bottom_medium slds-m-top_large">
+                                                <apex:commandButton id="CreateTransaction" value="Create Return Authorization in NetSuite" onclick="showspinner();createRMA(); this.disabled=true; this.value='Creating...'; return false;" disabled="{!OR(isReadOnlyMode,disableCreateTransaction)}" rendered="{!$ObjectType.breadwinner_ns__BW_Return_Authorization__c.createable}" styleClass="slds-button slds-button_brand"/>
+                                            </div>
+                                            <div align="right">
+                                                <apex:outputLabel style="font-style:italic;font-weight:bold;font-size:16px" rendered="{!isReadOnlyMode}">You are using Breadwinner in NetSuite Read Only Mode. While Breadwinner reads data from NetSuite, no changes will be made to NetSuite. NetSuite is in Read-Only mode and will not be altered in any way.</apex:outputLabel>
+                                            </div>
+                                            <apex:actionFunction name="createRMA" action="{!createNetSuiteReturnAuthorization}" reRender="OverallPage" oncomplete="hidespinner();reRenderRMASVG();message();scrollWin();DatepickerOnfocusToOnclick();initSelect2();setClassicItemTableLayout();reRenderCheckIcons(['#stage1','#stage2','#stage3']);"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                            <!-- Create RMA Section End -->
+
+                            <!-- Parameters Testing page  section start -->
+                            <apex:pageMessage rendered="{!AND(isCustomURL,showTestingPagePanel,isInvalidFieldMappingExist)}" summary="The mapped Custom Button URL fields were not found on the object level. Please review the fields that are highlighted in yellow and change the Custom Button URL." severity="Error"/>
+                            <apex:outputPanel layout="block" id="testingPageSection" styleClass="slds-m-around_small" style="font-size:14px;" rendered="{!AND(isCustomURL,showTestingPagePanel)}">
+                                <apex:outputPanel layout="block" styleClass="slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1 slds-m-bottom_small">
+                                    <div class="slds-size_1-of-1 slds-medium-size_2-of-3 slds-large-size_1-of-3 slds-p-left_x-small">
+                                        <apex:outputPanel layout="block" styleClass="slds-form-element" rendered="{!companyCountForSelectedAccount > 1}" >
+                                            <span class="slds-form-element__label">Select NetSuite Company<abbr class="slds-required" title="required"> *</abbr></span>
+                                            <div class="slds-form-element__control">
+                                                <apex:outputPanel layout="block" styleClass="slds-select_container">
+                                                    <apex:selectList styleClass="slds-select" id="selectedCompany" onchange="getCompanyItems();" value="{!selectedCompanyOption}" size="1">
+                                                        <apex:selectOptions value="{!companies}"></apex:selectOptions>
+                                                    </apex:selectList>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="block" styleClass="slds-form-element" rendered="{!companyCountForSelectedAccount == 1}" >
+                                            <span class="slds-form-element__label">NetSuite Company<abbr class="slds-required" title="required"> *</abbr></span>
+                                            <div class="slds-form-element__control">
+                                                <apex:outputText value="{!selectedAccount.BWCompanies__r[0].CompanyName__c}" rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,NOT(ISNULL(selectedAccount.BWCompanies__r[0].CompanyName__c)))}"/>
+                                                <apex:outputText value="{!selectedAccount.BWCompanies__r[0].Name}" rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.Name.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible,AND(ISNULL(selectedAccount.BWCompanies__r[0].CompanyName__c),ISNULL(selectedAccount.BWCompanies__r[0].FirstName__c)))}"/>
+                                                <apex:outputPanel layout="block" rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__IsPerson__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,selectedAccount.BWCompanies__r[0].IsPerson__c,ISNULL(selectedAccount.BWCompanies__r[0].CompanyName__c))}">
+                                                    <apex:outputText value="{!selectedAccount.BWCompanies__r[0].Salutation__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Salutation__c.Accessible}"/>
+                                                    <apex:outputText value="{!selectedAccount.BWCompanies__r[0].FirstName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible}"/>
+                                                    <apex:outputText value="{!selectedAccount.BWCompanies__r[0].MiddleName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__MiddleName__c.Accessible}"/>
+                                                    <apex:outputText value="{!selectedAccount.BWCompanies__r[0].LastName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__LastName__c.Accessible}"/>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </apex:outputPanel>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:pageMessage severity="info" rendered="{!AND(companyCountForSelectedAccount > 0, nsLineItems.size == 0 ,NOT(isSubsidiaryDisabledInNetSuite))}" summary="No Line Item has matched with selected Customer's Subsidiary."/>
+								<apex:variable var="transFieldNames" value="{!''}{!tranFieldParamKeyset}"/>
+                                <apex:variable var="invalidFieldNames" value="{!''}{!invalidFieldsSet}"/>
+                                <table class="slds-table slds-no-row-hover">
+                                    <tr>
+                                        <td><apex:outputlabel ><b>Breadwinner Field / Param</b></apex:outputlabel></td>
+                                        <td><apex:outputlabel ><b>Param Value / Salesforce Field Name (API)</b></apex:outputlabel></td>
+                                        <td><apex:outputlabel ><b>Value</b></apex:outputlabel></td>
+                                    </tr>
+                                    <tr>
+                                        <td><apex:outputText >Originating Object <abbr class="slds-required" title="required"> *</abbr></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'OriginatingObjName'),'','color:Red;')}">{!IF(CONTAINS(transFieldNames, 'OriginatingObjName'), transFieldNameAndFieldReferenceMap['OriginatingObjName'], 'Not Specified (Required)')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!IF(CONTAINS(transFieldNames, 'originatingObjectValue'),TRUE,FALSE)}">{!transFieldNameAndFieldReferenceMap['originatingObjectValue']}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(NOT(isLineItemURL),'','display:none')} {!IF(CONTAINS(invalidFieldNames, 'ChildRelationshipName'),'background:yellow;','')}">
+                                        <td><apex:outputText >Child Object Relationship Name<abbr class="slds-required" title="required"> *</abbr></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'ChildRelationshipName'),'','color:Red;')}">{!IF(CONTAINS(transFieldNames, 'ChildRelationshipName'), transFieldNameAndFieldReferenceMap['ChildRelationshipName'], 'Not Specified (Required)')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!IF(CONTAINS(transFieldNames, 'ChildObjectLabel'),TRUE,FALSE)}">{!transFieldNameAndFieldReferenceMap['ChildObjectLabel']}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'ParentAccount'),'background:yellow;','')}">
+                                        <td><apex:outputText >Parent Account<abbr class="slds-required" title="required"> *</abbr></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'ParentAccount'),'','color:Red;')}">{!IF(CONTAINS(transFieldNames, 'ParentAccount'), transFieldNameAndFieldReferenceMap['ParentAccount'],'Not Specified (Required)')}</apex:outputlabel></td>
+                                        <td>
+                                            <apex:outputlabel rendered="{!NOT(ISBLANK(selectedAccount.Name))}">{!selectedAccount.Name}</apex:outputlabel>
+                                            <apex:outputlabel style="color:red;" rendered="{!AND(ISBLANK(selectedAccount.Name),NOT(ISBLANK(transFieldNameAndFieldReferenceMap['ParentAccount'])))}">(Required Value)</apex:outputlabel>
+                                        </td>
+                                    </tr>
+                                    <tr style="{!IF(companyCountForSelectedAccount == 0, 'display:none;','')} {!IF(CONTAINS(invalidFieldNames, 'Currency'),'background:yellow;','')}'">
+                                        <td><apex:outputText >Currency</apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'Currency'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'Currency'), transFieldNameAndFieldReferenceMap['Currency'],'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'Currency'),NOT(ISNULL(currencyInternalId)))}">{!currencyInternalId}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'CustomForm'),'background:yellow;','')}">
+                                        <td><apex:outputText value="Custom Form"></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'CustomForm'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'CustomForm'), transFieldNameAndFieldReferenceMap['CustomForm'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'CustomForm'),NOT(ISNULL(tranCustomFormInternalId)))}">{!tranCustomFormInternalId}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'TranDate'),'background:yellow;','')}">
+                                        <td><apex:outputText value="Date"></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'TranDate'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'TranDate'), transFieldNameAndFieldReferenceMap['TranDate'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputField rendered="{!AND(CONTAINS(transFieldNames, 'TranDate'),NOT(ISNULL(sfRMA.breadwinner_ns__TranDate__c)))}" value="{!sfRMA.breadwinner_ns__TranDate__c}" /></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'PO'),'background:yellow;','')}">
+                                        <td><apex:outputText value="PO #"></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'PO'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'PO'), transFieldNameAndFieldReferenceMap['PO'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'PO'),NOT(ISNULL(sfRMA.breadwinner_ns__OtherRefNum__c)))}">{!sfRMA.breadwinner_ns__OtherRefNum__c}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'Memo'),'background:yellow;','')}">
+                                        <td><apex:outputText value="Memo" ></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'Memo'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'Memo'), transFieldNameAndFieldReferenceMap['Memo'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'Memo'),NOT(ISNULL(sfRMA.breadwinner_ns__Memo__c)))}">{!sfRMA.breadwinner_ns__Memo__c}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'ExternalId'),'background:yellow;','')}">
+                                        <td><apex:outputText value="ExternalId" ></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'ExternalId'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'ExternalId'), transFieldNameAndFieldReferenceMap['ExternalId'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'ExternalId'),NOT(ISNULL(sfRMA.breadwinner_ns__ExternalId__c)))}">{!sfRMA.breadwinner_ns__ExternalId__c}</apex:outputlabel></td>
+                                    </tr>
+									<tr style="{!IF(CONTAINS(invalidFieldNames, 'Subsidiary'),'background:yellow;','')}">
+                                        <td><apex:outputText value="Subsidiary"></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'Subsidiary'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'Subsidiary'), transFieldNameAndFieldReferenceMap['Subsidiary'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'Subsidiary'),NOT(ISBLANK(tranSubsidiaryInternalId)))}">{!tranSubsidiaryInternalId}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'SalesRep'),'background:yellow;','')}">
+                                        <td><apex:outputText value="Sales Rep" ></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'SalesRep'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'SalesRep'), transFieldNameAndFieldReferenceMap['SalesRep'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'SalesRep'),NOT(ISNULL(tranSalesRepInternalId)))}">{!tranSalesRepInternalId}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'Location'),'background:yellow;','')}">
+                                        <td><apex:outputText value="Location"></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'Location'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'Location'), transFieldNameAndFieldReferenceMap['Location'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'Location'),NOT(ISNULL(tranLocationInternalId)))}">{!tranLocationInternalId}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'Class'),'background:yellow;','')}">
+                                        <td><apex:outputText value="Class"></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'Class'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'Class'), transFieldNameAndFieldReferenceMap['Class'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'Class'),NOT(ISNULL(tranClassInternalId)))}">{!tranClassInternalId}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'Department'),'background:yellow;','')}">
+                                        <td><apex:outputText value="Department"></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'Department'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'Department'), transFieldNameAndFieldReferenceMap['Department'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'Department'),NOT(ISNULL(tranDepartmentInternalId)))}">{!tranDepartmentInternalId}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'DiscountItem'),'background:yellow;','')}">
+                                        <td><apex:outputText value="Discount Item"></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'DiscountItem'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'DiscountItem'), transFieldNameAndFieldReferenceMap['DiscountItem'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'DiscountItem'))}">{!discountItem}</apex:outputlabel></td>
+                                    </tr>
+                                    <tr style="{!IF(CONTAINS(invalidFieldNames, 'DiscountRate'),'background:yellow;','')}">
+                                        <td><apex:outputText value="Discount Rate"></apex:outputText></td>
+                                        <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'DiscountRate'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'DiscountRate'), transFieldNameAndFieldReferenceMap['DiscountRate'], 'Not Specified')}</apex:outputlabel></td>
+                                        <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames, 'DiscountRate'))}">{!discountRate}</apex:outputlabel></td>
+                                    </tr>
+                                    <apex:repeat value="{!tranCustomFieldsWrapperList}" var="cust">
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, cust.ParamName),'background:yellow;','')}">
+                                            <td><apex:outputText rendered="{!NOT(ISBLANK(cust.FieldName))}">{!cust.FieldName}</apex:outputText></td>
+                                            <td><apex:outputlabel rendered="{!NOT(ISBLANK(cust.FieldReference))}">{!cust.FieldReference}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!NOT(ISBLANK(cust.FieldValue))}">{!cust.FieldValue}</apex:outputlabel></td>
+                                        </tr>
+                                    </apex:repeat>
+                                    <!--Line Item Section Starts -->
+                                    <apex:variable var="liFieldReference" value="{!''}{!extraLiFieldAndFieldReferenceMap}"/>
+                                    <apex:variable var="liParamNameAndValue" value="{!''}{!lineItemParamNameAndValueMap}"/>
+                                    <apex:repeat value="{!nsLineItems}" var="lineItem" rendered="{!NOT(isLineItemURL)}">
+                                        <tr><td class="slds-p-top_small slds-p-bottom_small"><apex:outputpanel rendered="{!CONTAINS(transFieldNames,'ChildRelationshipName')}"><b>Line Item #{!lineItem.liSrNo}</b></apex:outputpanel></td><td></td><td></td></tr>
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, 'co_netsuite_item'),'background:yellow;','')}">
+                                            <td><apex:outputText >NetSuite Item<abbr class="slds-required" title="required"> *</abbr></apex:outputText></td>
+                                            <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'NetSuiteItem'),'','color:Red;')}">{!IF(CONTAINS(transFieldNames, 'NetSuiteItem'), transFieldNameAndFieldReferenceMap['NetSuiteItem'], 'Not Specified (Required)')}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames,'NetSuiteItem'),NOT(ISNULL(lineItem.itemName)))}">{!lineItem.itemName}</apex:outputlabel></td>
+                                        </tr>
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, 'co_description'),'background:yellow;','')}">
+                                            <td><apex:outputText value="Description" ></apex:outputText></td>
+                                            <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'Description'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'Description'), transFieldNameAndFieldReferenceMap['Description'], 'Not Specified')}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames,'Description'),NOT(ISNULL(lineItem.description)))}">{!lineItem.description}</apex:outputlabel></td>
+                                        </tr>
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, 'co_quantity'),'background:yellow;','')}">
+                                            <td><apex:outputText value="Quantity" ></apex:outputText></td>
+                                            <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'LIQuantity'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'LIQuantity'), transFieldNameAndFieldReferenceMap['LIQuantity'], 'Not Specified')}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames,'LIQuantity'),NOT(ISNULL(lineItem.Quantity)))}">{!lineItem.Quantity}</apex:outputlabel></td>
+                                        </tr>
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, 'co_rate'),'background:yellow;','')}">
+                                            <td><apex:outputText value="Rate" ></apex:outputText></td>
+                                            <td><apex:outputlabel style="{!IF(CONTAINS(transFieldNames, 'LIRate'),'','color:#cca200;')}">{!IF(CONTAINS(transFieldNames, 'LIRate'), transFieldNameAndFieldReferenceMap['LIRate'], 'Not Specified')}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!AND(CONTAINS(transFieldNames,'LIRate'),NOT(ISNULL(lineItem.rate)))}">{!lineItem.rate}</apex:outputlabel></td>
+                                        </tr>
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, 'co_location_id'),'background:yellow;','')}">
+                                            <td><apex:outputText value="Location" ></apex:outputText></td>
+                                            <td><apex:outputlabel style="{!IF(CONTAINS(liFieldReference,'co_location_id'),'','color:#cca200;')}">{!IF(CONTAINS(liFieldReference,'co_location_id'), extraLiFieldAndFieldReferenceMap['co_location_id'], 'Not Specified')}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!AND(CONTAINS(liFieldReference,'co_location_id'),NOT(ISNULL(lineItem.locationInternalId)))}">{!lineItem.locationInternalId}</apex:outputlabel></td>
+                                        </tr>
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, 'co_department'),'background:yellow;','')}">
+                                            <td><apex:outputText value="Department" ></apex:outputText></td>
+                                            <td><apex:outputlabel style="{!IF(CONTAINS(liFieldReference,'co_department'),'','color:#cca200;')}">{!IF(CONTAINS(liFieldReference,'co_department'), extraLiFieldAndFieldReferenceMap['co_department'], 'Not Specified')}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!AND(CONTAINS(liFieldReference,'co_department'),NOT(ISNULL(lineItem.departmentInternalId)))}">{!lineItem.departmentInternalId}</apex:outputlabel></td>
+                                        </tr>
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, 'co_class'),'background:yellow;','')}">
+                                            <td><apex:outputText value="Class" ></apex:outputText></td>
+                                            <td><apex:outputlabel style="{!IF(CONTAINS(liFieldReference,'co_class'),'','color:#cca200;')}">{!IF(CONTAINS(liFieldReference,'co_class'), extraLiFieldAndFieldReferenceMap['co_class'], 'Not Specified')}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!AND(CONTAINS(liFieldReference,'co_class'),NOT(ISNULL(lineItem.classInternalId)))}">{!lineItem.classInternalId}</apex:outputlabel></td>
+                                        </tr>
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, 'co_rev_rec_schedule'),'background:yellow;','')}">
+                                            <td><apex:outputText value="Rev. Rec. Schedule"></apex:outputText></td>
+                                            <td><apex:outputlabel style="{!IF(CONTAINS(liFieldReference, 'co_rev_rec_schedule'),'','color:#cca200;')}">{!IF(CONTAINS(liFieldReference, 'co_rev_rec_schedule'), extraLiFieldAndFieldReferenceMap['co_rev_rec_schedule'], 'Not Specified')}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!AND(CONTAINS(liFieldReference, 'co_rev_rec_schedule'),NOT(ISNULL(lineItem.revRecScheduleInternalId)))}">{!lineItem.revRecScheduleInternalId}</apex:outputlabel></td>
+                                        </tr>
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, 'co_rev_rec_start_date'),'background:yellow;','')}">
+                                            <td><apex:outputText value="Rev. Rec. Start Date"></apex:outputText></td>
+                                            <td><apex:outputlabel style="{!IF(CONTAINS(liFieldReference, 'co_rev_rec_start_date'),'','color:#cca200;')}">{!IF(CONTAINS(liFieldReference, 'co_rev_rec_start_date'), extraLiFieldAndFieldReferenceMap['co_rev_rec_start_date'], 'Not Specified')}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!AND(CONTAINS(liFieldReference, 'co_rev_rec_start_date'),NOT(ISNULL(lineItem.revRecStartDate)))}">{!lineItem.revRecStartDate}</apex:outputlabel></td>
+                                        </tr>
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, 'co_rev_rec_end_date'),'background:yellow;','')}">
+                                            <td><apex:outputText value="Rev. Rec. End Date"></apex:outputText></td>
+                                            <td><apex:outputlabel style="{!IF(CONTAINS(liFieldReference, 'co_rev_rec_end_date'),'','color:#cca200;')}">{!IF(CONTAINS(liFieldReference, 'co_rev_rec_end_date'), extraLiFieldAndFieldReferenceMap['co_rev_rec_end_date'], 'Not Specified')}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!AND(CONTAINS(liFieldReference, 'co_rev_rec_end_date'),NOT(ISNULL(lineItem.revRecEndDate)))}">{!lineItem.revRecEndDate}</apex:outputlabel></td>
+                                        </tr>
+                                        <tr style="{!IF(CONTAINS(invalidFieldNames, 'co_sort_by'),'background:yellow;','')}">
+                                            <td><apex:outputText value="Sort By"></apex:outputText></td>
+                                            <td><apex:outputlabel style="{!IF(CONTAINS(liFieldReference, 'co_sort_by'),'','color:#cca200;')}">{!IF(CONTAINS(liFieldReference, 'co_sort_by'), extraLiFieldAndFieldReferenceMap['co_sort_by'], 'Not Specified')}</apex:outputlabel></td>
+                                            <td><apex:outputlabel rendered="{!AND(CONTAINS(liFieldReference,'co_sort_by'),NOT(ISNULL(lineItem.sortBy)))}">{!lineItem.sortBy}</apex:outputlabel></td>
+                                        </tr>
+                                        <apex:repeat value="{!tranLiCustomFieldsWrapperList}" var="cust">
+                                            <apex:outputPanel rendered="{!cust.srNO==lineItem.liSrNo}">
+                                                <tr style="{!IF(CONTAINS(invalidFieldNames, cust.ParamName),'background:yellow;','')}">
+                                                    <td><apex:outputText rendered="{!NOT(ISBLANK(cust.FieldName))}">{!cust.FieldName}</apex:outputText></td>
+                                                    <td><apex:outputlabel rendered="{!NOT(ISBLANK(cust.FieldReference))}">{!cust.FieldReference}</apex:outputlabel></td>
+                                                    <td><apex:outputlabel rendered="{!NOT(ISBLANK(cust.FieldValue))}">{!cust.FieldValue}</apex:outputlabel></td>
+                                                </tr>
+                                            </apex:outputPanel>
+                                        </apex:repeat>
+                                    </apex:repeat>
+                                        <apex:repeat value="{!nsLineItems}" var="lineItem" rendered="{!isLineItemURL}" >
+                                            <tr><td class="slds-p-top_small slds-p-bottom_small"><apex:outputpanel ><b>Line Item #{!lineItem.liSrNo}</b></apex:outputpanel></td><td></td><td></td></tr>
+                                            <tr style="{!IF(CONTAINS(invalidFieldNames, 'line'+TEXT(lineItem.liSrNo)+'_netsuite_item'),'background:yellow;','')}">
+                                                <td><apex:outputText >NetSuite Item<abbr class="slds-required" title="required"> *</abbr></apex:outputText></td>
+                                                <td><apex:outputlabel style="{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_netsuite_item'),'','color:Red;')}">{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_netsuite_item'), lineItemParamNameAndValueMap['line'+TEXT(lineItem.liSrNo)+'_netsuite_item'], 'Not Specified (Required)')}</apex:outputlabel></td>
+                                                <td><apex:outputlabel rendered="{!AND(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_netsuite_item'),NOT(ISNULL(lineItem.itemName)))}">{!lineItem.itemName}</apex:outputlabel></td>
+                                            </tr>
+                                            <tr style="{!IF(CONTAINS(invalidFieldNames, 'line'+TEXT(lineItem.liSrNo)+'_description'),'background:yellow;','')}">
+                                                <td><apex:outputText value="Description" ></apex:outputText></td>
+                                                <td><apex:outputlabel style="{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_description'),'','color:#cca200;')}">{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_description'), lineItemParamNameAndValueMap['line'+TEXT(lineItem.liSrNo)+'_description'], 'Not Specified')}</apex:outputlabel></td>
+                                                <td><apex:outputlabel rendered="{!AND(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_description'),NOT(ISNULL(lineItem.description)))}">{!lineItem.description}</apex:outputlabel></td>
+                                            </tr>
+                                            <tr style="{!IF(CONTAINS(invalidFieldNames, 'line'+TEXT(lineItem.liSrNo)+'_quantity'),'background:yellow;','')}">
+                                                <td><apex:outputText value="Quantity" ></apex:outputText></td>
+                                                <td><apex:outputlabel style="{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_quantity'),'','color:#cca200;')}">{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_quantity'), lineItemParamNameAndValueMap['line'+TEXT(lineItem.liSrNo)+'_quantity'], 'Not Specified')}</apex:outputlabel></td>
+                                                <td><apex:outputlabel rendered="{!AND(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_quantity'),NOT(ISNULL(lineItem.Quantity)))}">{!lineItem.Quantity}</apex:outputlabel></td>
+                                            </tr>
+                                            <tr style="{!IF(CONTAINS(invalidFieldNames, 'line'+TEXT(lineItem.liSrNo)+'_rate'),'background:yellow;','')}">
+                                                <td><apex:outputText value="Rate" ></apex:outputText></td>
+                                                <td><apex:outputlabel style="{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_rate'),'','color:#cca200;')}">{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_rate'), lineItemParamNameAndValueMap['line'+TEXT(lineItem.liSrNo)+'_rate'], 'Not Specified')}</apex:outputlabel></td>
+                                                <td><apex:outputlabel rendered="{!AND(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_rate'),NOT(ISNULL(lineItem.rate)))}">{!lineItem.rate}</apex:outputlabel></td>
+                                            </tr>
+                                            <tr style="{!IF(CONTAINS(invalidFieldNames, 'line'+TEXT(lineItem.liSrNo)+'_location_id'),'background:yellow;','')}">
+                                                <td><apex:outputText value="Location" ></apex:outputText></td>
+                                                <td><apex:outputlabel style="{!IF(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_location_id'),'','color:#cca200;')}">{!IF(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_location_id'), lineItemParamNameAndValueMap['line'+TEXT(lineItem.liSrNo)+'_location_id'], 'Not Specified')}</apex:outputlabel></td>
+                                                <td><apex:outputlabel rendered="{!AND(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_location_id'),NOT(ISNULL(lineItem.locationInternalId)))}">{!lineItem.locationInternalId}</apex:outputlabel></td>
+                                            </tr>
+                                            <tr style="{!IF(CONTAINS(invalidFieldNames, 'line'+TEXT(lineItem.liSrNo)+'_class'),'background:yellow;','')}">
+                                                <td><apex:outputText value="Class" ></apex:outputText></td>
+                                                <td><apex:outputlabel style="{!IF(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_class'),'','color:#cca200;')}">{!IF(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_class'), lineItemParamNameAndValueMap['line'+TEXT(lineItem.liSrNo)+'_class'], 'Not Specified')}</apex:outputlabel></td>
+                                                <td><apex:outputlabel rendered="{!AND(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_class'),NOT(ISNULL(lineItem.classInternalId)))}">{!lineItem.classInternalId}</apex:outputlabel></td>
+                                            </tr>
+                                            <tr style="{!IF(CONTAINS(invalidFieldNames, 'line'+TEXT(lineItem.liSrNo)+'_department'),'background:yellow;','')}">
+                                                <td><apex:outputText value="Department" ></apex:outputText></td>
+                                                <td><apex:outputlabel style="{!IF(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_department'),'','color:#cca200;')}">{!IF(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_department'), lineItemParamNameAndValueMap['line'+TEXT(lineItem.liSrNo)+'_department'], 'Not Specified')}</apex:outputlabel></td>
+                                                <td><apex:outputlabel rendered="{!AND(CONTAINS(liParamNameAndValue,'line'+TEXT(lineItem.liSrNo)+'_department'),NOT(ISNULL(lineItem.departmentInternalId)))}">{!lineItem.departmentInternalId}</apex:outputlabel></td>
+                                            </tr>
+                                            <tr style="{!IF(CONTAINS(invalidFieldNames, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_schedule'),'background:yellow;','')}">
+                                                <td><apex:outputText value="Rev. Rec. Schedule" ></apex:outputText></td>
+                                                <td><apex:outputlabel style="{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_schedule'),'','color:#cca200;')}">{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_schedule'), lineItemParamNameAndValueMap['line'+TEXT(lineItem.liSrNo)+'_rev_rec_schedule'], 'Not Specified')}</apex:outputlabel></td>
+                                                <td><apex:outputlabel rendered="{!AND(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_schedule'),NOT(ISNULL(lineItem.revRecScheduleInternalId)))}">{!lineItem.revRecScheduleInternalId}</apex:outputlabel></td>
+                                            </tr>
+                                            <tr style="{!IF(CONTAINS(invalidFieldNames, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_start_date'),'background:yellow;','')}">
+                                                <td><apex:outputText value="Rev. Rec. Start Date"></apex:outputText></td>
+                                                <td><apex:outputlabel style="{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_start_date'),'','color:#cca200;')}">{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_start_date'), lineItemParamNameAndValueMap['line'+TEXT(lineItem.liSrNo)+'_rev_rec_start_date'], 'Not Specified')}</apex:outputlabel></td>
+                                                <td><apex:outputlabel rendered="{!AND(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_start_date'),NOT(ISNULL(lineItem.revRecStartDate)))}">{!lineItem.revRecStartDate}</apex:outputlabel></td>
+                                            </tr>
+                                            <tr style="{!IF(CONTAINS(invalidFieldNames, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_end_date'),'background:yellow;','')}">
+                                                <td><apex:outputText value="Rev. Rec. End Date"></apex:outputText></td>
+                                                <td><apex:outputlabel style="{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_end_date'),'','color:#cca200;')}">{!IF(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_end_date'), lineItemParamNameAndValueMap['line'+TEXT(lineItem.liSrNo)+'_rev_rec_end_date'], 'Not Specified')}</apex:outputlabel></td>
+                                                <td><apex:outputlabel rendered="{!AND(CONTAINS(liParamNameAndValue, 'line'+TEXT(lineItem.liSrNo)+'_rev_rec_end_date'),NOT(ISNULL(lineItem.revRecEndDate)))}">{!lineItem.revRecEndDate}</apex:outputlabel></td>
+                                            </tr>
+                                            <apex:repeat value="{!tranLiCustomFieldsWrapperList}" var="cust">
+                                                <apex:outputPanel rendered="{!cust.srNO==lineItem.liSrNo}">
+                                                    <tr style="{!IF(CONTAINS(invalidFieldNames, cust.ParamName),'background:yellow;','')}">
+                                                        <td><apex:outputText rendered="{!NOT(ISBLANK(cust.FieldName))}">{!cust.FieldName}</apex:outputText></td>
+                                                        <td><apex:outputlabel rendered="{!NOT(ISBLANK(cust.FieldReference))}">{!cust.FieldReference}</apex:outputlabel></td>
+                                                        <td><apex:outputlabel rendered="{!NOT(ISBLANK(cust.FieldValue))}">{!cust.FieldValue}</apex:outputlabel></td>
+                                                    </tr>
+                                                </apex:outputPanel>
+                                            </apex:repeat>
+                                    </apex:repeat>
+                                    <!--Line Item Section Ends -->
+                                </table>
+                                <div align="center" class="slds-m-vertical_medium">
+                                    <apex:outputPanel layout="block" styleClass="slds-text-body_small slds-p-vertical_small">
+                                        <apex:outputText rendered="{!AND(initialized,OR(companyCountForSelectedAccount == 0, AND(companyCountForSelectedAccount > 0, nsLineItems.size == 0 ,NOT(isSubsidiaryDisabledInNetSuite))))}" value="You can still click Next button to create a NetSuite Return Authorization with a new NetSuite Customer"/>
+                                    </apex:outputPanel>
+									<apex:commandButton value="Cancel" action="{!goToOriginatingObject}" styleClass="slds-button slds-button_neutral slds-m-right_small" id="testingCancelButton" />
+                                    <apex:commandButton styleClass="slds-button slds-button_brand" value="Next" action="{!goToNewTransactionPanel}" status="action-status" reRender="OverallPage" id="goToNewTransactionPanelBtn" oncomplete="setPageTitle();message();reRenderCheckIcons(['#stage1']);reRenderRMASVG();window.scrollTo(0,0);" disabled="{!OR(NOT(initialized),NOT($ObjectType.breadwinner_ns__BW_Return_Authorization__c.Createable),isInvalidFieldMappingExist)}"/>
+                                </div>
+                            </apex:outputPanel>
+                            <!-- Parameters Testing page section end -->
+                        </apex:outputPanel>
+                        <script type="text/javascript">
+                        function setPageTitle(){
+                            if(document.getElementsByTagName("title") && document.getElementsByTagName("title")[0]){
+                                var tabName = '';
+                                if({!JSENCODE(IF(showCreateTransactionPanel,"true", "false")) == 'true'}) tabName = 'Create Return Authorization';
+                                else if({!JSENCODE(IF(showCreateOrEditCompanyPanel,"true", "false")) == 'true'}){
+                                    if({!JSENCODE(IF(isEditCompany,"true", "false")) == 'true'}) tabName = 'Edit Customer';
+                                    else tabName = 'Create Customer';
+                                }
+                                else tabName = 'New Return Authorization';
+                                document.getElementsByTagName("title")[0].innerHTML = tabName;
+                            }
+                        }
+                        function refreshDiscountItemSection(){
+                            document.getElementById('{!JSENCODE($Component.theForm.discountRate)}').value='';
+                            document.getElementById('{!JSENCODE($Component.theForm.discountRate)}').style.borderColor = '';
+                            refreshTotalAmounts();
+                        }
+                        function validateInput(value,name,elementid,type,maxlength){
+                            var inputValue =  value;
+                            if(name=='Discount Rate'){
+                                inputValue = value.endsWith('%') ? value.replace('%','') : value;
+                            }
+                            if(((type=='long' || type=='integer') && inputValue.includes(".") && !isNaN(inputValue)) || (isNaN(inputValue) && (type=='number' || type=='double' || type=='long' || type=='integer')) || (type=='String'&& inputValue.length > maxlength)){
+                                document.getElementById('' + elementid).style.borderColor = 'Red';
+                                var text = (type=='number' || type=='long'|| type=='double' || type=='integer') ? 'Please enter a valid ' : 'You have exceeded the max characters ('+maxlength+') of ';
+                                j$("#alert_popup p").text(text + name);
+                                showHideModal('alert_popup','alert_backdrop');
+                            }
+                            else{
+                                document.getElementById('' + elementid).style.borderColor = '';
+                            }
+                        }
+                        function showHideModal(modalId,backdropId){
+                            if(j$('#'+ modalId).hasClass('slds-fade-in-open')){
+                                j$('#'+ modalId).removeClass('slds-fade-in-open');
+                                j$('#'+ backdropId).removeClass('slds-backdrop_open');
+                            }
+                            else{
+                                j$('#'+ backdropId).addClass('slds-backdrop_open');
+                                j$('#'+ modalId).addClass('slds-fade-in-open');
+                            }
+                        }
+                        </script>
+                    </apex:outputPanel>
+                </apex:form>
+            </div>
+        </body>
+    </html>
+</apex:page>

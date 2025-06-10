@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activity_Category__c</fullName>
+    <label>Activity Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Gifting Campaign</fullName>
+                <default>false</default>
+                <label>Gifting Campaign</label>
+            </value>
+            <value>
+                <fullName>VIP Access/Experience</fullName>
+                <default>false</default>
+                <label>VIP Access/Experience</label>
+            </value>
+            <value>
+                <fullName>Hackathon</fullName>
+                <default>false</default>
+                <label>Hackathon</label>
+            </value>
+            <value>
+                <fullName>Brand Spotlight</fullName>
+                <default>false</default>
+                <label>Brand Spotlight</label>
+            </value>
+            <value>
+                <fullName>Event or Webinar Speaker</fullName>
+                <default>false</default>
+                <label>Event or Webinar Speaker</label>
+            </value>
+            <value>
+                <fullName>PR/AR</fullName>
+                <default>false</default>
+                <label>PR/AR</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Opportunity Support</fullName>
+                <default>false</default>
+                <label>Opportunity Support</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

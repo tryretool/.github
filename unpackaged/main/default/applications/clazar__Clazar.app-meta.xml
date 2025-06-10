@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>clazar__Azure_Co_Sell_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>clazar__AzureCoSellOpportunity__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>clazar__Azure_Co_Sell_Opportunity_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>clazar__AzureCoSellOpportunity__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>clazar__Clazar_Co_Sell_Opportunity_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>clazar__CoSellOpportunity__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>clazar__Clazar_Co_Sell_Opportunity_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>clazar__CoSellOpportunity__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>clazar__Clazar_Reseller_Offer_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>clazar__ResellerOffer__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>clazar__Clazar_Reseller_Offer_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>clazar__ResellerOffer__c</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#3E50B8</headerColor>
+        <logo>clazar__Clazar_icon_128x128x4</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Modern way to sell SaaS software</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Clazar</label>
+    <navType>Standard</navType>
+    <tabs>clazar__Setup</tabs>
+    <tabs>clazar__AWSCoSellOpportunity__c</tabs>
+    <tabs>clazar__AzureCoSellOpportunity__c</tabs>
+    <tabs>clazar__GCPCoSellOpportunity__c</tabs>
+    <tabs>clazar__CoSellOpportunity__c</tabs>
+    <tabs>clazar__Listing__c</tabs>
+    <tabs>clazar__Offer__c</tabs>
+    <tabs>clazar__ResellerOffer__c</tabs>
+    <tabs>clazar__Contract__c</tabs>
+    <tabs>clazar__Buyer__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>clazar__Clazar_UtilityBar</utilityBar>
+</CustomApplication>

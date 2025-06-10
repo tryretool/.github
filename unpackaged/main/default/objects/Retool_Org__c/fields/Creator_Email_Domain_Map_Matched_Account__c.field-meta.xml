@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Creator_Email_Domain_Map_Matched_Account__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Related Account found by matching the `Creator Email Domain Clean` value against existing `Domain Map` records and returning the `Matched Account` record ID.</description>
+    <inlineHelpText>Related Account found by matching the `Creator Email Domain Clean` value against existing `Domain Map` records and returning the `Matched Account` record ID.</inlineHelpText>
+    <label>Creator Email Domain Map Matched Account</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Retool Orgs (Creator Email Domain Map Matched Account)</relationshipLabel>
+    <relationshipName>Retool_Orgs1</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

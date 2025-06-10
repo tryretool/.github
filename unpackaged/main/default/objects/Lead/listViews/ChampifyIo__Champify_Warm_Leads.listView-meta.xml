@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChampifyIo__Champify_Warm_Leads</fullName>
+    <columns>LEAD.COMPANY</columns>
+    <columns>ChampifyIo__Champify_LinkedIn_URL__c</columns>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.TITLE</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>ChampifyIo__Previous_Relationship__c</columns>
+    <columns>ChampifyIo__Champify_Job_Started_Date__c</columns>
+    <columns>ChampifyIo__Past_Account__c</columns>
+    <columns>ChampifyIo__Past_Contact__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>ChampifyIo__Is_a_Champify__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>My Champify Arrivals (leads)</label>
+</ListView>

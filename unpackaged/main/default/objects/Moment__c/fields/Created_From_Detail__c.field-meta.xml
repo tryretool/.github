@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Created_From_Detail__c</fullName>
+    <description>References the event from which the Moment was created. This is typically an automatically inserted value listing the flow that created the Moment.
+
+In System Use: Campaign Member: After Save Automations; &#39;Case - Handoff Button&#39;; &#39;Contact - After Save Automations&#39;; &#39;Koala Intent Signal - After Save Automations&#39;; &#39;Retool User - After Save Automations&#39;; &#39;Task - After Save Automations&#39;	
+
+External Systems Utilization: Koala</description>
+    <externalId>false</externalId>
+    <inlineHelpText>References the event from which the Moment was created. This is typically an automatically inserted value listing the flow that created the Moment.</inlineHelpText>
+    <label>Created From Detail</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

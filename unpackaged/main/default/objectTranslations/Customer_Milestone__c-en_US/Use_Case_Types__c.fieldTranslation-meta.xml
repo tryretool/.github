@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Use Case Types --></label>
+        <name>Use_Case_Types__c</name>
+        <picklistValues>
+            <masterLabel>Existing use cases</masterLabel>
+            <translation><!-- Existing use cases --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New use cases</masterLabel>
+            <translation><!-- New use cases --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

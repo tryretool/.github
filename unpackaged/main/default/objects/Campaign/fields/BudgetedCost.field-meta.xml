@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BudgetedCost</fullName>
+    <description>The campaign budget.
+
+In System Use: None
+
+External Systems Utilization: None</description>
+    <inlineHelpText>The campaign budget.</inlineHelpText>
+    <securityClassification>Ignore</securityClassification>
+</CustomField>

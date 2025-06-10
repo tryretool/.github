@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Default_CSR_Entitlement__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This should only be true for one entitlement at a time and identifies the entitlement to be used as the fallback for Billing and CSR SLAs.</description>
+    <label>Default CSR Entitlement</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

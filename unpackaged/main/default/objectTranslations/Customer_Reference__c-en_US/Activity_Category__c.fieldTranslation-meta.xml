@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Activity Category --></label>
+        <name>Activity_Category__c</name>
+        <picklistValues>
+            <masterLabel>Brand Spotlight</masterLabel>
+            <translation><!-- Brand Spotlight --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event or Webinar Speaker</masterLabel>
+            <translation><!-- Event or Webinar Speaker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gifting Campaign</masterLabel>
+            <translation><!-- Gifting Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hackathon</masterLabel>
+            <translation><!-- Hackathon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Support</masterLabel>
+            <translation><!-- Opportunity Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PR/AR</masterLabel>
+            <translation><!-- PR/AR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIP Access/Experience</masterLabel>
+            <translation><!-- VIP Access/Experience --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

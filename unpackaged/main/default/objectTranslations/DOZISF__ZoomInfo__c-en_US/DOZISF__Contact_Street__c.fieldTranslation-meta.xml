@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- A person&apos;s street address based on their personal location. --></help>
+        <label><!-- Contact Street --></label>
+        <name>DOZISF__Contact_Street__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Open_Journey__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup relationship to the currently open (or resting) Journey record. Changing this value triggers LeanData automations.
+
+External Systems Utilization: LeanData</description>
+    <inlineHelpText>Lookup relationship to the currently open (or resting) Journey record.</inlineHelpText>
+    <label>Current Open Journey</label>
+    <referenceTo>Journey__c</referenceTo>
+    <relationshipLabel>Contacts</relationshipLabel>
+    <relationshipName>Contacts</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Lookup</type>
+</CustomField>

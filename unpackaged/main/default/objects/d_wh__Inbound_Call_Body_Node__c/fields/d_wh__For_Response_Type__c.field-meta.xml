@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>d_wh__For_Response_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>For Response Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>2XX</fullName>
+                <default>false</default>
+                <label>2XX</label>
+            </value>
+            <value>
+                <fullName>4XX</fullName>
+                <default>false</default>
+                <label>4XX</label>
+            </value>
+            <value>
+                <fullName>5XX</fullName>
+                <default>false</default>
+                <label>5XX</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

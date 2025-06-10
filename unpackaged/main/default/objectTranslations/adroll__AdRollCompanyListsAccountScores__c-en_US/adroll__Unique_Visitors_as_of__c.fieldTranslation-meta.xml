@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Date When the Unique Visitors was last updated --></help>
+        <label><!-- Unique Visitors as of --></label>
+        <name>adroll__Unique_Visitors_as_of__c</name>
+    </CustomFieldTranslation>

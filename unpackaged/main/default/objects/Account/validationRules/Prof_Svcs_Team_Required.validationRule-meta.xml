@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prof_Svcs_Team_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>Num_Open_Services_Opportunities__c &gt; 0 &amp;&amp;
+ISBLANK(Professional_Services__c )</errorConditionFormula>
+    <errorMessage>Cannot clear Professional Services team member with open Services opportunities</errorMessage>
+</ValidationRule>

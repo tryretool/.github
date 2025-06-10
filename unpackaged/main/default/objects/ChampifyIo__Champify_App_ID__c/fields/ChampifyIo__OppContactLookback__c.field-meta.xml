@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChampifyIo__OppContactLookback__c</fullName>
+    <defaultValue>30</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Backfill lookback window in days used by the opp contact assignment job when running a manual backfill to assign contacts to opportunities greater than 30 days old. This does not affect the lookback window of the daily scheduled opp contact assignment job.</description>
+    <externalId>false</externalId>
+    <label>OppContact Lookback</label>
+    <precision>5</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

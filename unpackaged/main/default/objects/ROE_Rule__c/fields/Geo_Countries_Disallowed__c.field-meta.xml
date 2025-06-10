@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Geo_Countries_Disallowed__c</fullName>
+    <label>Geo: Countries (Disallowed)</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Countries</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

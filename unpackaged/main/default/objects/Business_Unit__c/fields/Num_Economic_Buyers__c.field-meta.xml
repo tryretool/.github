@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Num_Economic_Buyers__c</fullName>
+    <label># Economic Buyers</label>
+    <summaryFilterItems>
+        <field>Business_Unit_Contact_Role__c.Role__c</field>
+        <operation>equals</operation>
+        <value>Economic Buyer</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Business_Unit_Contact_Role__c.Business_Unit__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Journey__c$Name</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Created_Date__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Journey__c$Is_SAL__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Journey__c$Is_Meeting_Booked__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Journey__c$Is_SQL__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Journey__c$Is_SQO__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Journey__c$Opportunity__c.Qualified_Pipeline_AR__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Rejected_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Ended_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Ended_Reason_Details__c</field>
+    </columns>
+    <description>[JC] Signup Journey Template</description>
+    <filter>
+        <criteriaItems>
+            <column>Journey__c$CreatedDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>4/1/2024 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c$Journey_Category__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Sales Prospecting</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c$Journey_Subtype__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Product Activity</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>Journey__c$CreatedDate</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>[JC] Signup Journey Template</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Journeys_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Journey__c$Created_From_Moment__c.Campaign__c.StartDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

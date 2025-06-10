@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lost_Reason__c</fullName>
+    <label>Lost Reason</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Project discontinued</fullName>
+                <default>false</default>
+                <label>Project discontinued</label>
+            </value>
+            <value>
+                <fullName>Product gap</fullName>
+                <default>false</default>
+                <label>Product gap</label>
+            </value>
+            <value>
+                <fullName>Student / personal project</fullName>
+                <default>false</default>
+                <label>Student / personal project</label>
+            </value>
+            <value>
+                <fullName>Customer support inquiry</fullName>
+                <default>false</default>
+                <label>Customer support inquiry</label>
+            </value>
+            <value>
+                <fullName>No Committed plan needs</fullName>
+                <default>false</default>
+                <label>No Committed plan needs</label>
+            </value>
+            <value>
+                <fullName>No show to first meeting</fullName>
+                <default>false</default>
+                <label>No show to first meeting</label>
+            </value>
+            <value>
+                <fullName>Poor use case</fullName>
+                <default>false</default>
+                <label>Poor use case</label>
+            </value>
+            <value>
+                <fullName>Price</fullName>
+                <default>false</default>
+                <label>Price</label>
+            </value>
+            <value>
+                <fullName>No development resources</fullName>
+                <default>false</default>
+                <label>No development resources</label>
+            </value>
+            <value>
+                <fullName>Partnership / reseller inquiry</fullName>
+                <default>false</default>
+                <label>Partnership / reseller inquiry</label>
+            </value>
+            <value>
+                <fullName>Unresponsive</fullName>
+                <default>false</default>
+                <label>Unresponsive</label>
+            </value>
+            <value>
+                <fullName>Superseded by another opportunity</fullName>
+                <default>false</default>
+                <label>Superseded by another opportunity</label>
+            </value>
+            <value>
+                <fullName>Company defunct / out of business</fullName>
+                <default>false</default>
+                <label>Company defunct / out of business</label>
+            </value>
+            <value>
+                <fullName>Timing</fullName>
+                <default>false</default>
+                <label>Timing</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Administrative</fullName>
+                <default>false</default>
+                <label>Administrative</label>
+            </value>
+            <value>
+                <fullName>Adding add&#39;l seats (existing agreement)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Adding add&#39;l seats (existing agreement)</label>
+            </value>
+            <value>
+                <fullName>Self-serve (Cloud)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Self-serve (Cloud)</label>
+            </value>
+            <value>
+                <fullName>Self-serve (On-prem)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Self-serve (On-prem)</label>
+            </value>
+            <value>
+                <fullName>Unqualified</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unqualified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

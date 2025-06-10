@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Middle Africa</fullName>
+        <default>false</default>
+        <label>Middle Africa</label>
+    </customValue>
+    <customValue>
+        <fullName>Caribbean</fullName>
+        <default>false</default>
+        <label>Caribbean</label>
+    </customValue>
+    <customValue>
+        <fullName>South America</fullName>
+        <default>false</default>
+        <label>South America</label>
+    </customValue>
+    <customValue>
+        <fullName>Central America</fullName>
+        <default>false</default>
+        <label>Central America</label>
+    </customValue>
+    <customValue>
+        <fullName>Western Africa</fullName>
+        <default>false</default>
+        <label>Western Africa</label>
+    </customValue>
+    <customValue>
+        <fullName>Southern Africa</fullName>
+        <default>false</default>
+        <label>Southern Africa</label>
+    </customValue>
+    <customValue>
+        <fullName>Eastern Africa</fullName>
+        <default>false</default>
+        <label>Eastern Africa</label>
+    </customValue>
+    <customValue>
+        <fullName>Channel Islands</fullName>
+        <default>false</default>
+        <label>Channel Islands</label>
+    </customValue>
+    <customValue>
+        <fullName>Antarctica</fullName>
+        <default>false</default>
+        <label>Antarctica</label>
+    </customValue>
+    <customValue>
+        <fullName>Eastern Asia</fullName>
+        <default>false</default>
+        <label>Eastern Asia</label>
+    </customValue>
+    <customValue>
+        <fullName>Southern Asia</fullName>
+        <default>false</default>
+        <label>Southern Asia</label>
+    </customValue>
+    <customValue>
+        <fullName>Polynesia</fullName>
+        <default>false</default>
+        <label>Polynesia</label>
+    </customValue>
+    <customValue>
+        <fullName>Western Asia</fullName>
+        <default>false</default>
+        <label>Western Asia</label>
+    </customValue>
+    <customValue>
+        <fullName>Melanesia</fullName>
+        <default>false</default>
+        <label>Melanesia</label>
+    </customValue>
+    <customValue>
+        <fullName>Micronesia</fullName>
+        <default>false</default>
+        <label>Micronesia</label>
+    </customValue>
+    <customValue>
+        <fullName>Central Asia</fullName>
+        <default>false</default>
+        <label>Central Asia</label>
+    </customValue>
+    <customValue>
+        <fullName>US East</fullName>
+        <default>false</default>
+        <label>US East</label>
+    </customValue>
+    <customValue>
+        <fullName>US West</fullName>
+        <default>false</default>
+        <label>US West</label>
+    </customValue>
+    <customValue>
+        <fullName>US Other</fullName>
+        <default>false</default>
+        <label>US Other</label>
+    </customValue>
+    <masterLabel>Geo: Intermediate Region</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,1400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Get_Delighter_User</name>
+        <label>Get Delighter User</label>
+        <locationX>321</locationX>
+        <locationY>518</locationY>
+        <actionName>MakeHTTPCall</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Is_Delighted_User</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>Body</name>
+            <value>
+                <elementReference>Contact_email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Endpoint</name>
+            <value>
+                <elementReference>DelightedUserSearchURL</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Headers</name>
+            <value>
+                <stringValue>[{&quot;key&quot;:&quot;Accept&quot;,&quot;value&quot;:&quot;application/json&quot;,&quot;order&quot;:0},{&quot;key&quot;:&quot;Content-Type&quot;,&quot;value&quot;:&quot;application/json&quot;,&quot;order&quot;:1},{&quot;key&quot;:&quot;Authorization&quot;,&quot;value&quot;:&quot;Basic NUlkSmMwY0tqZENNODdvakdtdHdoTzRzeFFNdFpOeUc=&quot;,&quot;order&quot;:2}]</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Method</name>
+            <value>
+                <stringValue>GET</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>MakeHTTPCall</nameSegment>
+        <offset>0</offset>
+        <outputParameters>
+            <assignToReference>DelighterUser</assignToReference>
+            <name>Body</name>
+        </outputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_CSAT_Email</name>
+        <label>Send CSAT Email</label>
+        <locationX>459</locationX>
+        <locationY>945</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Update_Case_CSAT_Sent</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>Get_Case.ContactEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>no-reply@retool.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>ReplySubject</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>CSATBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>Get_Case.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>Get_Case.ContactId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>addThreadingTokenToBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Delighted_CSAT_Survey</name>
+        <label>Send Delighted CSAT Survey</label>
+        <locationX>598</locationX>
+        <locationY>584</locationY>
+        <actionName>Case.Trigger_Delighted_CSAT</actionName>
+        <actionType>outboundMessage</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>Case.Trigger_Delighted_CSAT</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <decisions>
+        <name>Is_Contact_Valid</name>
+        <label>Is Contact Valid?</label>
+        <locationX>188</locationX>
+        <locationY>381</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Has_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Contact_Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Last_Case_Message</targetReference>
+            </connector>
+            <label>Has Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Delighted_User</name>
+        <label>Is Delighted User?</label>
+        <locationX>296</locationX>
+        <locationY>680</locationY>
+        <defaultConnector>
+            <targetReference>Send_CSAT_Email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Not_Delighted_User</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>DelighterUser</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_CSAT_Email</targetReference>
+            </connector>
+            <label>Not Delighted User</label>
+        </rules>
+    </decisions>
+    <description>Adding Suppress Automations</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>DelightedUserSearchURL</name>
+        <dataType>String</dataType>
+        <expression>&quot;https://api.delighted.com/v1/people?email=&quot;&amp;{!recordId.ContactEmail}</expression>
+    </formulas>
+    <formulas>
+        <name>ReplySubject</name>
+        <dataType>String</dataType>
+        <expression>{!Get_Last_Case_Message.Subject}</expression>
+    </formulas>
+    <interviewLabel>Case - Trigger Delighted CSAT {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Trigger Email Delighted CSAT</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Case</name>
+        <label>Get Case</label>
+        <locationX>209</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_Contact_Valid</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Last_Case_Message</name>
+        <label>Get Last Case Message</label>
+        <locationX>439</locationX>
+        <locationY>372</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Delighter_User</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ParentId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Case.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>EmailMessage</object>
+        <sortField>MessageDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Case_CSAT_Sent</name>
+        <label>Update Case CSAT Sent</label>
+        <locationX>494</locationX>
+        <locationY>1124</locationY>
+        <inputAssignments>
+            <field>Slack_CSAT_Sent__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>460</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Get_Case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012Qo000006wk1ZIAQ</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Solved</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Origin</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Email</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>First_Retool_Reply_At__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Re_Opens__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Slack_CSAT_Sent__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Suppress_Automations__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>CSATBody</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+  &lt;head&gt;
+    &lt;!-- Copyright �� 2013-2024 Delighted, LLC All rights reserved. --&gt;
+    &lt;meta content=&quot;text/html; charset=utf-8&quot; http-equiv=&quot;Content-Type&quot; /&gt;
+    &lt;meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot; /&gt;
+    &lt;meta content=&quot;address=no&quot; name=&quot;format-detection&quot; /&gt;
+    &lt;title&gt;Retool Support&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+      * {
+        text-rendering: optimizelegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale
+      }
+
+      .b-nps .b1-nps td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      .b-general .b1-general td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      .b-stars-five .b1-stars-five td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      .b-csat .b1-csat td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      .b-csat3 .b1-csat3 td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      .b-ces .b1-ces td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      .b-ces7 .b1-ces7 td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      .b-smileys .b1-smileys td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      .b-thumbs .b1-thumbs td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      .b-enps .b1-enps td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      .b-pmf .b1-pmf td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      .b-csat .b1-csat td:active {
+        background: #e3e3e3 !important;
+        border-top-width: 3px !important;
+        border-bottom-width: 1px !important;
+        border-bottom-color: #cccccc !important;
+        border-top-color: #cccccc !important;
+        box-shadow: rgba(255, 255, 255, 0.9) 0 1px 0 0 !important
+      }
+
+      #outlook a {
+        padding: 0
+      }
+
+      .ExternalClass {
+        width: 100%
+      }
+
+      .ExternalClass,
+      .ExternalClass p,
+      .ExternalClass span,
+      .ExternalClass font,
+      .ExternalClass td,
+      .ExternalClass div {
+        line-height: 24px
+      }
+
+      @media screen and (max-width:480px) {
+        .i-nps {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-general {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-stars-five {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-csat {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-csat3 {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-ces {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-ces7 {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-smileys {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-thumbs {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-enps {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-pmf {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-csat {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .l12 {
+          width: 242px !important;
+          height: 47px !important
+        }
+
+        .q {
+          padding-left: 10px !important;
+          padding-right: 10px !important
+        }
+
+        .n1 {
+          padding-left: 20px !important;
+          padding-right: 20px !important
+        }
+
+        .n2 {
+          font-size: 16px !important
+        }
+
+        .q1 {
+          width: 100% !important
+        }
+
+        .q11 {
+          font-size: 18px !important;
+          line-height: 26px !important;
+          font-weight: bold !important
+        }
+
+        .h {
+          display: none !important
+        }
+
+        .b-nps {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-nps {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-general {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-general {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-stars-five {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-stars-five {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-csat {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-csat {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-csat3 {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-csat3 {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-ces {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-ces {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-ces7 {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-ces7 {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-smileys {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-smileys {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-thumbs {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-thumbs {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-enps {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-enps {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-pmf {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-pmf {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-csat {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-csat {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b2 {
+          display: none !important;
+          height: 0 !important;
+          position: absolute !important;
+          left: -9999px !important
+        }
+
+        .bl {
+          display: inherit !important;
+          visibility: inherit !important;
+          overflow: inherit !important;
+          line-height: inherit !important;
+          font-size: inherit !important
+        }
+
+        .f1 {
+          padding-left: 10px !important
+        }
+
+        .f2 {
+          padding-right: 10px !important
+        }
+
+        .b-nps .b1-nps td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-general .b1-general td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-stars-five .b1-stars-five td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-csat .b1-csat td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-csat3 .b1-csat3 td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-ces .b1-ces td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-ces7 .b1-ces7 td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-smileys .b1-smileys td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-thumbs .b1-thumbs td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-enps .b1-enps td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-pmf .b1-pmf td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-csat .b1-csat td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        #wrapper,
+        .w {
+          min-width: 100vw !important
+        }
+
+        .y {
+          font-size: 0 !important;
+          width: 0 !important;
+          overflow: hidden !important;
+          white-space: normal !important
+        }
+      }
+    &lt;/style&gt;
+    &lt;!--[if gte mso 9]&gt;
+		&lt;style type=&#39;text/css&#39;&gt;table,tbody,tr,td{border-collapse:collapse !important;mso-table-lspace:0 !important;mso-table-rspace:0 !important}.b2{width:3px !important}.b1-nps{width:101px !important}.b2{width:3px !important}.b1-general{width:101px !important}.b2{width:3px !important}.b1-stars-five{width:101px !important}.b2{width:3px !important}.b1-csat{width:101px !important}.b2{width:3px !important}.b1-csat3{width:101px !important}.b2{width:3px !important}.b1-ces{width:101px !important}.b2{width:3px !important}.b1-ces7{width:101px !important}.b2{width:3px !important}.b1-smileys{width:101px !important}.b2{width:3px !important}.b1-thumbs{width:101px !important}.b2{width:3px !important}.b1-enps{width:101px !important}.b2{width:3px !important}.b1-pmf{width:101px !important}.b2{width:3px !important}.b1-csat{width:101px !important}&lt;/style&gt;
+		&lt;![endif]--&gt;
+  &lt;/head&gt;
+  &lt;body style=&quot;width:100% !important;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;margin:0;padding:0&quot;&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+      @media screen yahoo and (max-width:480px) {
+        .i-nps {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-general {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-stars-five {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-csat {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-csat3 {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-ces {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-ces7 {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-smileys {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-thumbs {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-enps {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-pmf {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .i-csat {
+          width: 100% !important;
+          min-width: 0 !important;
+          margin: 0 !important
+        }
+
+        .l12 {
+          width: 242px !important;
+          height: 47px !important
+        }
+
+        .q {
+          padding-left: 10px !important;
+          padding-right: 10px !important
+        }
+
+        .n1 {
+          padding-left: 20px !important;
+          padding-right: 20px !important
+        }
+
+        .n2 {
+          font-size: 16px !important
+        }
+
+        .q1 {
+          width: 100% !important
+        }
+
+        .q11 {
+          font-size: 18px !important;
+          line-height: 26px !important;
+          font-weight: bold !important
+        }
+
+        .h {
+          display: none !important
+        }
+
+        .b-nps {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-nps {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-general {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-general {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-stars-five {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-stars-five {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-csat {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-csat {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-csat3 {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-csat3 {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-ces {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-ces {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-ces7 {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-ces7 {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-smileys {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-smileys {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-thumbs {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-thumbs {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-enps {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-enps {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-pmf {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-pmf {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b-csat {
+          padding-left: 10px !important;
+          padding-bottom: 4px !important;
+          padding-right: 10px !important
+        }
+
+        .b1-csat {
+          width: 100% !important;
+          padding-bottom: 6px !important
+        }
+
+        .b2 {
+          display: none !important;
+          height: 0 !important;
+          position: absolute !important;
+          left: -9999px !important
+        }
+
+        .bl {
+          display: inherit !important;
+          visibility: inherit !important;
+          overflow: inherit !important;
+          line-height: inherit !important;
+          font-size: inherit !important
+        }
+
+        .f1 {
+          padding-left: 10px !important
+        }
+
+        .f2 {
+          padding-right: 10px !important
+        }
+
+        .b-nps .b1-nps td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-general .b1-general td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-stars-five .b1-stars-five td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-csat .b1-csat td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-csat3 .b1-csat3 td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-ces .b1-ces td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-ces7 .b1-ces7 td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-smileys .b1-smileys td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-thumbs .b1-thumbs td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-enps .b1-enps td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-pmf .b1-pmf td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        .b-csat .b1-csat td:active {
+          background-color: #ffffff !important;
+          border-top-width: 1px !important;
+          border-bottom-width: 3px !important;
+          box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px 0 !important
+        }
+
+        #wrapper,
+        .w {
+          min-width: 100vw !important
+        }
+
+        .y {
+          font-size: 0 !important;
+          width: 0 !important;
+          overflow: hidden !important;
+          white-space: normal !important
+        }
+      }
+    &lt;/style&gt;
+    &lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;w&quot; role=&quot;presentation&quot; style=&quot;width:100% !important;line-height:24px !important;margin:0;padding:0&quot; width=&quot;100%&quot;&gt;
+      &lt;tr&gt;
+        &lt;td align=&quot;center&quot; class=&quot;l1&quot; dir=&quot;ltr&quot; valign=&quot;middle&quot; style=&quot;border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#e3e3e3;border-top-width:6px;border-top-style:solid;border-top-color:#151515;background-color:#ffffff;height:46px;padding:19px 0&quot; bgcolor=&quot;#ffffff&quot; height=&quot;46&quot;&gt;
+          &lt;img alt=&quot;Retool Support&quot; class=&quot;l12&quot; height=&quot;39&quot; src=&quot;https://dcx14qs33eg2z.cloudfront.net/uploads/production/logos/58dd58a2-f7bb-41b6-9bc6-5548b4e64558/resized_Logo-Dark.png&quot; width=&quot;200&quot; style=&quot;outline:0;text-decoration:none;-ms-interpolation-mode:bicubic;display:block;line-height:40px;font-size:24px;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;font-weight:bold;color:#151515;text-align:center&quot; /&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td align=&quot;center&quot; class=&quot;l2&quot; style=&quot;background-color:#f6f6f6&quot; bgcolor=&quot;#f6f6f6&quot;&gt;
+          &lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;i-csat&quot; role=&quot;presentation&quot; style=&quot;width:530px;min-width:530px;margin:0 23px&quot; width=&quot;530&quot;&gt;
+            &lt;tr&gt;
+              &lt;td align=&quot;center&quot; class=&quot;q&quot; style=&quot;padding:18px 0&quot;&gt;
+                &lt;table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;q1&quot; role=&quot;presentation&quot; style=&quot;width:374px&quot; width=&quot;374&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td align=&quot;center&quot; class=&quot;q11&quot; dir=&quot;ltr&quot; style=&quot;font-size:22px;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;font-weight:normal;line-height:30px;color:#111111;text-align:center&quot;&gt;How satisfied were you with Retool Support?&lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td&gt;
+                &lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;hp&quot; role=&quot;presentation&quot; style=&quot;width:100%;height:1px&quot; width=&quot;100%&quot; height=&quot;1&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;
+                      &lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;hp1&quot; role=&quot;presentation&quot; style=&quot;width:1px;height:1px&quot; width=&quot;1&quot; height=&quot;1&quot;&gt;
+                        &lt;tr&gt;
+                          &lt;td&gt;
+                            &lt;a tabindex=&quot;-1&quot; aria-hidden=&quot;true&quot; href=&quot;&quot;&gt;
+                              &lt;img alt=&quot;&quot; src=&quot;https://dcx14qs33eg2z.cloudfront.net/assets/email/1px-8bfc005fda670f2b6bce4396fdfa4350b241a6f17c53ff554b987b09a0e2bc7d.gif&quot; style=&quot;outline:0;text-decoration:none;-ms-interpolation-mode:bicubic;display:none;width:1px;height:1px;position:absolute;left:-9999px;border:0&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;
+                            &lt;/a&gt;
+                          &lt;/td&gt;
+                        &lt;/tr&gt;
+                      &lt;/table&gt;
+                    &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td align=&quot;center&quot; class=&quot;b-csat&quot;&gt;
+                &lt;table align=&quot;right&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;b1-csat&quot; role=&quot;presentation&quot; style=&quot;width:102px;height:44px&quot; width=&quot;102&quot; height=&quot;44&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td align=&quot;center&quot; class=&quot;b01&quot; valign=&quot;middle&quot; style=&quot;width:100px;background-color:#ffffff;height:40px;border-radius:6px;box-shadow:rgba(0, 0, 0, 0.06) 0 2px 4px 0;border-color:#cccccc #cccccc #cccccc;border-style:solid;border-width:1px 1px 3px&quot; bgcolor=&quot;#ffffff&quot; width=&quot;100&quot; height=&quot;40&quot;&gt;
+                      &lt;a aria-label=&quot;5, Very satisfied&quot; rel=&quot;nofollow&quot; href=&quot;https://delighted.com/t/Nna37jlu/v/retool-support?embed=true&amp;email={!Contact_email}&amp;score=5&amp;CaseId={!Case_Id}&amp;Contact%20Id={!Contact_Id}&quot; style=&quot;display:block;line-height:40px;text-decoration:none;font-size:18px;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;font-weight:bold&quot;&gt;
+                        &lt;span dir=&quot;ltr&quot; style=&quot;color:#151515&quot;&gt;5 &lt;span class=&quot;bl&quot; style=&quot;color:#151515;display:none;visibility:hidden;overflow:hidden;line-height:0;font-size:0&quot;&gt; – Very satisfied&lt;/span&gt;
+                        &lt;/span&gt;
+                      &lt;/a&gt;
+                    &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+                &lt;table align=&quot;right&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;b2&quot; role=&quot;presentation&quot; style=&quot;width:5px;height:44px&quot; width=&quot;5&quot; height=&quot;44&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;width:5px;height:44px;line-height:0;font-size:0&quot; width=&quot;5&quot; height=&quot;44&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+                &lt;table align=&quot;right&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;b1-csat&quot; role=&quot;presentation&quot; style=&quot;width:102px;height:44px&quot; width=&quot;102&quot; height=&quot;44&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td align=&quot;center&quot; class=&quot;b01&quot; valign=&quot;middle&quot; style=&quot;width:100px;background-color:#ffffff;height:40px;border-radius:6px;box-shadow:rgba(0, 0, 0, 0.06) 0 2px 4px 0;border-color:#cccccc #cccccc #cccccc;border-style:solid;border-width:1px 1px 3px&quot; bgcolor=&quot;#ffffff&quot; width=&quot;100&quot; height=&quot;40&quot;&gt;
+                      &lt;a aria-label=&quot;4&quot; rel=&quot;nofollow&quot; href=&quot;https://delighted.com/t/Nna37jlu/v/retool-support?embed=true&amp;email={!Contact_email}&amp;score=4&amp;CaseId={!Case_Id}&amp;Contact%20Id={!Contact_Id}&quot; style=&quot;display:block;line-height:40px;text-decoration:none;font-size:18px;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;font-weight:bold&quot;&gt;
+                        &lt;span style=&quot;color:#151515&quot;&gt;4&lt;/span&gt;
+                      &lt;/a&gt;
+                    &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+                &lt;table align=&quot;right&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;b2&quot; role=&quot;presentation&quot; style=&quot;width:5px;height:44px&quot; width=&quot;5&quot; height=&quot;44&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;width:5px;height:44px;line-height:0;font-size:0&quot; width=&quot;5&quot; height=&quot;44&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+                &lt;table align=&quot;right&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;b1-csat&quot; role=&quot;presentation&quot; style=&quot;width:102px;height:44px&quot; width=&quot;102&quot; height=&quot;44&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td align=&quot;center&quot; class=&quot;b01&quot; valign=&quot;middle&quot; style=&quot;width:100px;background-color:#ffffff;height:40px;border-radius:6px;box-shadow:rgba(0, 0, 0, 0.06) 0 2px 4px 0;border-color:#cccccc #cccccc #cccccc;border-style:solid;border-width:1px 1px 3px&quot; bgcolor=&quot;#ffffff&quot; width=&quot;100&quot; height=&quot;40&quot;&gt;
+                      &lt;a aria-label=&quot;3&quot; rel=&quot;nofollow&quot; href=&quot;https://delighted.com/t/Nna37jlu/v/retool-support?embed=true&amp;email={!Contact_email}&amp;score=3&amp;CaseId={!Case_Id}&amp;Contact%20Id={!Contact_Id}&quot; style=&quot;display:block;line-height:40px;text-decoration:none;font-size:18px;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;font-weight:bold&quot;&gt;
+                        &lt;span style=&quot;color:#151515&quot;&gt;3&lt;/span&gt;
+                      &lt;/a&gt;
+                    &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+                &lt;table align=&quot;right&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;b2&quot; role=&quot;presentation&quot; style=&quot;width:5px;height:44px&quot; width=&quot;5&quot; height=&quot;44&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;width:5px;height:44px;line-height:0;font-size:0&quot; width=&quot;5&quot; height=&quot;44&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+                &lt;table align=&quot;right&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;b1-csat&quot; role=&quot;presentation&quot; style=&quot;width:102px;height:44px&quot; width=&quot;102&quot; height=&quot;44&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td align=&quot;center&quot; class=&quot;b01&quot; valign=&quot;middle&quot; style=&quot;width:100px;background-color:#ffffff;height:40px;border-radius:6px;box-shadow:rgba(0, 0, 0, 0.06) 0 2px 4px 0;border-color:#cccccc #cccccc #cccccc;border-style:solid;border-width:1px 1px 3px&quot; bgcolor=&quot;#ffffff&quot; width=&quot;100&quot; height=&quot;40&quot;&gt;
+                      &lt;a aria-label=&quot;2&quot; rel=&quot;nofollow&quot; href=&quot;https://delighted.com/t/Nna37jlu/v/retool-support?embed=true&amp;email={!Contact_email}&amp;score=2&amp;CaseId={!Case_Id}&amp;Contact%20Id={!Contact_Id}&quot; style=&quot;display:block;line-height:40px;text-decoration:none;font-size:18px;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;font-weight:bold&quot;&gt;
+                        &lt;span style=&quot;color:#151515&quot;&gt;2&lt;/span&gt;
+                      &lt;/a&gt;
+                    &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+                &lt;table align=&quot;right&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;b2&quot; role=&quot;presentation&quot; style=&quot;width:5px;height:44px&quot; width=&quot;5&quot; height=&quot;44&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td style=&quot;width:5px;height:44px;line-height:0;font-size:0&quot; width=&quot;5&quot; height=&quot;44&quot;&gt;&amp;nbsp;&lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+                &lt;table align=&quot;right&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;b1-csat&quot; role=&quot;presentation&quot; style=&quot;width:102px;height:44px&quot; width=&quot;102&quot; height=&quot;44&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td align=&quot;center&quot; class=&quot;b01&quot; valign=&quot;middle&quot; style=&quot;width:100px;background-color:#ffffff;height:40px;border-radius:6px;box-shadow:rgba(0, 0, 0, 0.06) 0 2px 4px 0;border-color:#cccccc #cccccc #cccccc;border-style:solid;border-width:1px 1px 3px&quot; bgcolor=&quot;#ffffff&quot; width=&quot;100&quot; height=&quot;40&quot;&gt;
+                      &lt;a aria-label=&quot;1, Very dissatisfied&quot; rel=&quot;nofollow&quot; href=&quot;https://delighted.com/t/Nna37jlu/v/retool-support?embed=true&amp;email={!Contact_email}&amp;score=1&amp;CaseId={!Case_Id}&amp;Contact%20Id={!Contact_Id}&quot; style=&quot;display:block;line-height:40px;text-decoration:none;font-size:18px;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;font-weight:bold&quot;&gt;
+                        &lt;span dir=&quot;ltr&quot; style=&quot;color:#151515&quot;&gt;1 &lt;span class=&quot;bl&quot; style=&quot;color:#151515;display:none;visibility:hidden;overflow:hidden;line-height:0;font-size:0&quot;&gt; – Very dissatisfied&lt;/span&gt;
+                        &lt;/span&gt;
+                      &lt;/a&gt;
+                    &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td class=&quot;h&quot; style=&quot;padding:18px 0&quot;&gt;
+                &lt;table aria-hidden=&quot;true&quot; border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width:100%&quot; width=&quot;100%&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td align=&quot;left&quot; class=&quot;h1&quot; style=&quot;font-size:18px;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;color:#777777;width:50%;text-align:left&quot; width=&quot;50%&quot;&gt;Very dissatisfied&lt;/td&gt;
+                    &lt;td align=&quot;right&quot; class=&quot;h2&quot; style=&quot;font-size:18px;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;color:#777777;width:50%;text-align:right&quot; width=&quot;50%&quot;&gt;Very satisfied&lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/table&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td align=&quot;center&quot; class=&quot;f&quot; style=&quot;border-top-width:1px;border-top-style:solid;border-top-color:#e3e3e3;height:46px;background-color:#ffffff&quot; bgcolor=&quot;#ffffff&quot; height=&quot;46&quot;&gt;
+          &lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;i-csat&quot; role=&quot;presentation&quot; style=&quot;width:530px;min-width:530px;margin:0 23px&quot; width=&quot;530&quot;&gt;
+            &lt;tr&gt;
+              &lt;td align=&quot;left&quot; class=&quot;f1&quot; dir=&quot;ltr&quot; valign=&quot;middle&quot; style=&quot;height:48px;font-size:14px;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;color:#cccccc;width:40%;text-align:left&quot; width=&quot;40%&quot; height=&quot;48&quot;&gt;
+                &lt;a rel=&quot;nofollow&quot; href=&quot;INSERT_UNSUBSCRIBE_URL&quot; style=&quot;color:#cccccc&quot;&gt;Unsubscribe&lt;/a&gt;
+              &lt;/td&gt;
+              &lt;td align=&quot;right&quot; class=&quot;f2&quot; dir=&quot;ltr&quot; valign=&quot;middle&quot; style=&quot;height:48px;font-size:14px;font-family:&#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;color:#cccccc;width:60%;text-align:right&quot; width=&quot;60%&quot; height=&quot;48&quot;&gt;Powered by&amp;nbsp; &lt;a rel=&quot;nofollow&quot; href=&quot;https://delighted.com/&quot; style=&quot;color:#cccccc&quot;&gt;Delighted&lt;/a&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/table&gt;
+          &lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;hp&quot; role=&quot;presentation&quot; style=&quot;width:100%;height:1px&quot; width=&quot;100%&quot; height=&quot;1&quot;&gt;
+            &lt;tr&gt;
+              &lt;td&gt;
+                &lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;hp1&quot; role=&quot;presentation&quot; style=&quot;width:1px;height:1px&quot; width=&quot;1&quot; height=&quot;1&quot;&gt;
+                  &lt;tr&gt;
+                    &lt;td&gt;
+                      &lt;a tabindex=&quot;-1&quot; aria-hidden=&quot;true&quot; href=&quot;&quot; style=&quot;color:#cccccc&quot;&gt;
+                        &lt;img alt=&quot;&quot; src=&quot;https://dcx14qs33eg2z.cloudfront.net/assets/email/1px-8bfc005fda670f2b6bce4396fdfa4350b241a6f17c53ff554b987b09a0e2bc7d.gif&quot; style=&quot;outline:0;text-decoration:none;-ms-interpolation-mode:bicubic;display:none;width:1px;height:1px;position:absolute;left:-9999px;border:0&quot; width=&quot;1&quot; height=&quot;1&quot; /&gt;
+                      &lt;/a&gt;
+                    &lt;/td&gt;
+                  &lt;/tr&gt;
+                &lt;/table&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/table&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;div style=&quot;display:none;white-space:nowrap;font:15px courier;line-height:0&quot; class=&quot;y&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>Case_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>Get_Case.Id</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>Contact_email</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Record.ContactEmail</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>Contact_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>Get_Case.ContactId</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>DelighterUser</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+</Flow>

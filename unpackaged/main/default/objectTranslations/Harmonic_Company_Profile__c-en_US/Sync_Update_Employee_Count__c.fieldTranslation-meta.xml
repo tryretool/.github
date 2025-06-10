@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Checked TRUE if `Do Not Update Employee Count` is FALSE and the Account Employee count does not equal the Harmonic Company Profile Headcount. --></help>
+        <label><!-- Sync: Update Employee Count? --></label>
+        <name>Sync_Update_Employee_Count__c</name>
+    </CustomFieldTranslation>

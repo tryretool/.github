@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UniqueEntry__SalesforceServer__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This is the server on which your org resides, captured and stored in case Unique Entry must function in a Salesforce Community context.  This should not be manually edited unless advised by RingLead support.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This is the server on which your org resides, captured and stored in case Unique Entry must function in a Salesforce Community context.  This should not be manually edited unless advised by RingLead support.</inlineHelpText>
+    <label>Salesforce Server</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

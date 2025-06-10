@@ -1,0 +1,89 @@
+<apex:page sidebar="false" standardController="breadwinner_ns__BW_Subscription__c" extensions="breadwinner_ns.CreateTransactionExtension" tabStyle="breadwinner_ns__BW_Subscription__c" applyHtmlTag="true" title="New Subscription">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <title>Breadwinner Subscription Record</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <apex:slds />
+            <apex:includeLightning />
+            <apex:variable value="{!OR($User.UIThemeDisplayed == 'Theme4d', $User.UIThemeDisplayed == 'Theme4t')}" var="isLightning" />
+            <apex:includeScript value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Scripts/jquery-3.5.1.min.js')}" />
+			<script type="text/javascript">
+                var j$ = jQuery.noConflict();
+                j$(function(){
+                    message();
+                });
+                function message(){
+                    j$(".infoM6, .infoM4, .infoM3, .infoM2, .infoS1").addClass("slds-notify slds-notify_alert slds-theme_inverse-text  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px","background-color":"rgba(84,105,141,.95)","border-color":"rgba(84,105,141,.95)"});
+                    j$(".errorM6, .errorM4, .errorM3, .errorM2, .errorS1").addClass("slds-notify slds-notify_alert slds-theme_error  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css({"font-weight":"500","line-height":"1.4","word-spacing":"1px","display":"block","border-radius":"5px"});
+                    j$(".warningM6, .warningM4, .warningM3, .warningM2, .warningS1").addClass("slds-notify slds-notify_alert slds-theme_warning  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+                    j$(".confirmM6, .confirmM4, .confirmM3, .confirmM2, .confirmS1").addClass("slds-notify slds-notify_alert slds-theme_success slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+
+                    j$("div .messageText h4").css( "color", "white" );
+                    j$("div[class*='warning'] div.messageText h4").css( "color", "black" );
+                    j$("table.messageTable td").css({"color" : "white"});
+                    j$("div[class*='warning'] table.messageTable td").css( "color", "black" );
+                }
+			</script>
+            <style>
+                .cardStyles .slds-card__header{
+                    padding :0px !important;
+                    margin: 0px !important;
+                }
+                .cardStyles .slds-card__body{
+                	margin-top :0px !important;
+                }
+				.message {
+                	margin-left: 0px !important; margin-right: 0px !important;
+					background-color: inherit;
+					border-style: none;
+					padding: initial;
+					margin-top: 0px !important;
+                }
+                .messageCell {
+               		width: 100%;
+                }
+                .message .messageText h4 {
+					font-weight: inherit;
+					display: initial;
+                }
+            </style>
+        </head>
+        <body style="{!HTMLENCODE(IF(isLightning, 'background: rgba(176, 196, 223, 1);',''))}">
+            <div class="slds-scope slds-is-relative">
+                <apex:form id="formId">
+                    <apex:outputPanel layout="block" rendered="{!initialized}" id="CreateSubscriptionSection" styleClass="{!IF(isLightning,'slds-p-around_small slds-brand-band slds-brand-band_cover slds-brand-band_medium','')}">
+                        <div id="CreateSubscriptionDivId" />
+                        <apex:variable var="cmpNamespace" value="{!getCompNamespacePrefix}" />
+                        <script>
+                            try{
+                                var cmp_name = "{!JSENCODE(cmpNamespace)}:lightningOutUnstyled";
+                                var child_cmp = "{!JSENCODE(cmpNamespace)}:createTransaction";
+                                $Lightning.use(cmp_name, function() {
+                                    $Lightning.createComponent(child_cmp,
+                                        {
+                                        customURLParamsObj : '{!JSENCODE(customURLParamsObjJSONStr)}',
+                                        transactionType: 'Subscription',
+                                    },
+                                    "CreateSubscriptionDivId",
+                                        function(cmp) {
+                                            console.log('Component created');
+                                        });
+                                });
+                            }
+                            catch(ex){
+                                console.log('Exception while loading the Component :::: ',ex.message);
+                            }
+                        </script>
+                    </apex:outputPanel>
+					<apex:outputPanel layout="block" styleClass="{!IF(isLightning,'slds-p-around_small','')}" id="OverallPage">
+                        <apex:outputPanel layout="block" id="messagesPanel" rendered="true">
+							<apex:pageMessage rendered="{!NOT(initialized)}" summary="Please go to the NetSuite Customer from which you want to create this new Subscription record." detail="However, Breadwinner does not support NetSuite Subscription Plan creation from within Salesforce." severity="Warning" strength="3" />
+                        </apex:outputPanel>
+					</apex:outputPanel>
+                </apex:form>
+            </div>
+        </body>
+    </html>
+</apex:page>

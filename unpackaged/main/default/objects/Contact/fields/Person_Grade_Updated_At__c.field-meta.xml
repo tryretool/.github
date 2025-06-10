@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Person_Grade_Updated_At__c</fullName>
+    <description>Date when the Person Grade is entered on the contact.
+
+External Systems Utilization: Polytomic</description>
+    <inlineHelpText>Date when the Person Grade is entered on the contact.</inlineHelpText>
+    <label>Person Grade Updated At</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

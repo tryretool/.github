@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>LD_Action_Record_JnPe</label>
+    <protected>false</protected>
+    <values>
+        <field>legaldeskapp__Action_Field_Id__c</field>
+        <value xsi:type="xsd:string">67feb306a5285fb8e2226850</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Action__c</field>
+        <value xsi:type="xsd:string">show</value>
+    </values>
+    <values>
+        <field>legaldeskapp__Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>legaldeskapp__LegalDesk_Action_Id__c</field>
+        <value xsi:type="xsd:string">683fc76e25f3c81c65617b8b</value>
+    </values>
+    <values>
+        <field>legaldeskapp__LegalDesk_Form_Rule__c</field>
+        <value xsi:type="xsd:string">fTke</value>
+    </values>
+</CustomMetadata>

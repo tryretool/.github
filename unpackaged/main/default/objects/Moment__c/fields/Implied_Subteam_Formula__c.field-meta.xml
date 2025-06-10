@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Implied_Subteam_Formula__c</fullName>
+    <description>Formula that displays the Implied Subteam from the related Contact or Lead.
+
+In System Use: Reports
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <formula>BLANKVALUE( Contact__r.Contact_Implied_Subteam__c , Lead__r.Lead_Implied_Segment__c )</formula>
+    <inlineHelpText>Formula that displays the Implied Subteam from the related Contact or Lead.</inlineHelpText>
+    <label>Implied Subteam (Formula)</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

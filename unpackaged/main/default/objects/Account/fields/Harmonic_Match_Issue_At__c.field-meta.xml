@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Harmonic_Match_Issue_At__c</fullName>
+    <description>Timestamp of when the Harmonic Match issue was reported.</description>
+    <inlineHelpText>Timestamp of when the Harmonic Match issue was reported.</inlineHelpText>
+    <label>Harmonic Match Issue At</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

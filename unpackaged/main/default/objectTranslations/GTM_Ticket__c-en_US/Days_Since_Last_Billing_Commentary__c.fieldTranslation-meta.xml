@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Number of days between today and the date of the last Billing Commentary update. --></help>
+        <label><!-- Days Since Last Billing Commentary --></label>
+        <name>Days_Since_Last_Billing_Commentary__c</name>
+    </CustomFieldTranslation>

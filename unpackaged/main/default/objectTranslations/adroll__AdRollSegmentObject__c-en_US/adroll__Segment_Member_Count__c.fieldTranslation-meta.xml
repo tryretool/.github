@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- This is auto populated by the batch --></help>
+        <label><!-- Segment Member Total Count --></label>
+        <name>adroll__Segment_Member_Count__c</name>
+    </CustomFieldTranslation>

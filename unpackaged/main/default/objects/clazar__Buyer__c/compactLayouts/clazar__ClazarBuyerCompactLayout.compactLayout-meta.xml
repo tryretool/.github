@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clazar__ClazarBuyerCompactLayout</fullName>
+    <fields>clazar__cloud__c</fields>
+    <fields>clazar__domain__c</fields>
+    <fields>clazar__cloud_account_id__c</fields>
+    <fields>clazar__status__c</fields>
+    <label>Clazar Buyer Compact Layout</label>
+</CompactLayout>

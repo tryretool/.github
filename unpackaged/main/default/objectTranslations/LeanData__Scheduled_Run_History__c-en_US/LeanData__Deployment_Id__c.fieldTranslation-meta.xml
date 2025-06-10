@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Deployment Id --></label>
+        <name>LeanData__Deployment_Id__c</name>
+        <relationshipLabel><!-- Deployment Ids --></relationshipLabel>
+    </CustomFieldTranslation>

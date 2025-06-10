@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HierarchyExpectedRevenue</fullName>
+    <description>Displays the total revenue associated with the parent campaign.
+
+In System Use: None
+
+External Systems Use: None</description>
+    <inlineHelpText>Displays the total revenue associated with the parent campaign.</inlineHelpText>
+    <securityClassification>Ignore</securityClassification>
+</CustomField>

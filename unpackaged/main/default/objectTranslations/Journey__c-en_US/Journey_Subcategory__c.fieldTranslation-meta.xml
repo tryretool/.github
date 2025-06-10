@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Journey Subcategory derived from associated Moment, or Outbound Sequence flag. Formerly Journey Subtype formula field. --></help>
+        <label><!-- Journey Subcategory --></label>
+        <name>Journey_Subcategory__c</name>
+        <picklistValues>
+            <masterLabel>AE Re-Engagement</masterLabel>
+            <translation><!-- AE Re-Engagement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Champify</masterLabel>
+            <translation><!-- Champify --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Engineering</masterLabel>
+            <translation><!-- Contact Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact Sales</masterLabel>
+            <translation><!-- Contact Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Content</masterLabel>
+            <translation><!-- Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Demo Request</masterLabel>
+            <translation><!-- Demo Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Demo Request (Non-MQL)</masterLabel>
+            <translation><!-- Demo Request (Non-MQL) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Koala</masterLabel>
+            <translation><!-- Koala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Live Event</masterLabel>
+            <translation><!-- Live Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meeting Maker (Incentivized Demo)</masterLabel>
+            <translation><!-- Meeting Maker (Incentivized Demo) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Journey</masterLabel>
+            <translation><!-- Other Journey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Meeting</masterLabel>
+            <translation><!-- Other Meeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound Sequence</masterLabel>
+            <translation><!-- Outbound Sequence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Referral</masterLabel>
+            <translation><!-- Partner Referral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Action</masterLabel>
+            <translation><!-- Product Action --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Signup</masterLabel>
+            <translation><!-- Product Signup --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prospect Re-Engagement</masterLabel>
+            <translation><!-- Prospect Re-Engagement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regie.ai</masterLabel>
+            <translation><!-- Regie.ai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SDR Re-Engagement</masterLabel>
+            <translation><!-- SDR Re-Engagement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Support Handoff</masterLabel>
+            <translation><!-- Support Handoff --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinar</masterLabel>
+            <translation><!-- Webinar --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

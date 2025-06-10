@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- HoS New ARR Override --></label>
+        <name>HoS_New_ARR_Override__c</name>
+    </CustomFieldTranslation>

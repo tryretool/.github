@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Is this message just informational, a success event, or an error event. --></help>
+        <label><!-- Message Type --></label>
+        <name>dca_mass_action__Message_Type__c</name>
+        <picklistValues>
+            <masterLabel>ℹ️ Informational</masterLabel>
+            <translation><!-- ℹ️ Informational --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>✅ Success</masterLabel>
+            <translation><!-- ✅ Success --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>🚫 Error</masterLabel>
+            <translation><!-- 🚫 Error --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

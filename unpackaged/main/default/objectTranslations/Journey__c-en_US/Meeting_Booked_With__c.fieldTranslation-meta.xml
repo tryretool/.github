@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Qual Meeting Booked With --></label>
+        <name>Meeting_Booked_With__c</name>
+        <relationshipLabel><!-- Journeys (Qual Meeting Booked With) --></relationshipLabel>
+    </CustomFieldTranslation>

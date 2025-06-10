@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Pending_New_SDR__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>TRUE if the `New SDR` is different than the current `Sales Development Representative` value.</description>
+    <inlineHelpText>TRUE if the `New SDR` is different than the current `Sales Development Representative` value.</inlineHelpText>
+    <label>Has Pending New SDR?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

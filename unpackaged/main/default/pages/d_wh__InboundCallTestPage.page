@@ -1,0 +1,229 @@
+<apex:page standardController="d_wh__Inbound_Call_Template__c" extensions="d_wh.InboundCallTestPage">
+
+    <apex:slds />
+
+    <div class="slds-scope" style="padding: 20px;">
+
+        <apex:form id="mainForm">
+
+            <apex:actionStatus id="actionStatus">
+                <apex:facet name="start">
+                    <div style="width: 100%; height: 100%; position: fixed; z-index: 10000; background-color: rgba(255, 255, 255, 0.5);">
+                        <div role="status" class="slds-spinner slds-spinner_medium">
+                            <span class="slds-assistive-text">{!$Label.Loading}</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionStatus>
+            
+
+            <apex:outputPanel layout="none" rendered="{!step == 1}">
+
+                <div class="slds-page-header slds-page-header_record-home">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <div class="slds-page-header__name">
+                                        <div class="slds-page-header__name-title">
+                                            <h1>
+                                                <span>
+                                                    <apex:outputLabel value="{!$Label.d_wh__Test_Inbound_Call_Template}" />: <b>{!callout.Name}</b>
+                                                </span>
+                                                <apex:outputPanel layout="none" rendered="{!callout.d_wh__Request_Body_Format__c == 'application/x-www-form-urlencoded'}">
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.d_wh__Enter_Request_Body}">{!$Label.d_wh__Enter_Request_Body}</span>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel layout="none" rendered="{!callout.d_wh__Request_Body_Format__c != 'application/x-www-form-urlencoded'}">
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.d_wh__Enter_Test_JSON}">{!$Label.d_wh__Enter_Test_JSON}</span>
+                                                </apex:outputPanel>
+                                                <br />
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__col-actions">
+                            <div class="slds-page-header__controls">
+                                <div class="slds-page-header__control">
+                                    <ul class="slds-button-group-list">
+                                        <li>
+                                            <apex:commandButton action="{!BackToTemplate}" value="{!$Label.d_wh__Cancel}" styleClass="slds-button slds-button_neutral" rerender="mainForm" status="actionStatus" />
+                                        </li>
+                                        <li>
+                                            <input class="btn slds-button slds-button_destructive" onclick="if (confirm('{!$Label.Inbound_Call_Test_Page_Confirmation}')) MakeCall();" value="{!$Label.Continue}" type="button" />
+                                            <apex:actionFunction action="{!MakeCall}" name="MakeCall" rerender="mainForm" status="actionStatus" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                        <div class="slds-page-header__col-details">
+
+                            <br />
+                            <apex:pageMessages />
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label">
+                                    <apex:outputText value="{!$Label.d_wh__Enter_URL_Parameters}" />
+                                </label>
+                                <div class="slds-form-element__control">
+                                    https://....../?<apex:inputText value="{!testURL}" styleClass="slds-input" style="width: 500px;" html-placeholder="param1=value1&param2=value2" />
+                                </div>
+                            </div>
+                            <br />
+                            
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label">
+                                    <apex:outputText value="{!$Label.d_wh__Enter_Headers}" />
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <table style="width: auto;">
+                                        <apex:repeat value="{!testHeaders}" var="header">
+                                            <tr>
+                                                <td>
+                                                    <apex:inputText value="{!header.name}" styleClass="slds-input" style="width: 200px;" html-placeholder="Content-Type" />
+                                                </td>
+                                                <td>&nbsp;:&nbsp;</td>
+                                                <td>
+                                                    <apex:inputText value="{!header.value}" styleClass="slds-input" style="width: 200px;" html-placeholder="application/json" />
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </table>
+                                    <apex:commandButton action="{!AddHeader}" value="{!$Label.d_wh__Add_Header}" styleClass="slds-button slds-button_brand" rerender="mainForm" status="actionStatus" />
+                                </div>
+                            </div>
+                            <br />
+                            
+                            <apex:outputPanel layout="none" rendered="{!callout.d_wh__Method__c != 'GET'}">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label">
+                                        <abbr class="slds-required" title="required">* </abbr>
+                                        
+                                        <apex:outputText rendered="{!callout.d_wh__Request_Body_Format__c == 'application/x-www-form-urlencoded'}" value="{!$Label.d_wh__Enter_Form_Encoded_Body_to_Test_With}" />
+                                        <apex:outputText rendered="{!callout.d_wh__Request_Body_Format__c != 'application/x-www-form-urlencoded'}" value="{!$Label.d_wh__Enter_JSON_to_Test_With}" />
+                                    </label>
+                                    <div class="slds-form-element__control">
+                                        <apex:inputTextArea value="{!testJSON}" styleClass="slds-input" style="height: 300px; line-height: normal;" />
+                                    </div>
+                                </div>
+                                <br />
+                            </apex:outputPanel>
+
+                        </div>
+                    </div>
+                </div>
+
+            </apex:outputPanel>
+
+            <apex:outputPanel layout="none" rendered="{!step == 2}">
+
+                <div class="slds-page-header slds-page-header_record-home">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <div class="slds-page-header__name">
+                                        <div class="slds-page-header__name-title">
+                                            <h1>
+                                                <span>
+                                                    <apex:outputLabel value="{!$Label.d_wh__Test_Inbound_Call_Template}" />: <b>{!callout.Name}</b>
+                                                </span>
+                                                <span class="slds-page-header__title slds-truncate" title="{!$Label.Inbound_Call_Results}">{!$Label.Inbound_Call_Results}</span>
+                                                <br />
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__col-actions">
+                            <div class="slds-page-header__controls">
+                                <div class="slds-page-header__control">
+                                    <ul class="slds-button-group-list">
+                                        <li>
+                                            <apex:commandButton action="{!BackToTemplate}" value="{!$Label.d_wh__Back_to_Template}" styleClass="slds-button slds-button_brand" rerender="mainForm" status="actionStatus" />
+                                        </li>
+                                        <apex:outputPanel layout="none" rendered="{!calloutReq.logId != null}">
+                                            <li>
+                                                <apex:commandButton action="{!GoToLog}" value="{!$Label.d_wh__View_Inbound_Call_Log_Record}" styleClass="slds-button slds-button_brand" rerender="mainForm" status="actionStatus" />
+                                            </li>
+                                        </apex:outputPanel>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                        <div class="slds-page-header__col-details">
+
+                            <br />
+                            <apex:pageMessages />
+
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col slds-size_1-of-1">
+                                    
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">
+                                            <b>{!$Label.Response_Code}</b>
+                                        </label>
+                                        <div class="slds-form-element__control">
+                                            {!calloutReq.ResponseCode}&nbsp;
+                                        </div>
+                                    </div>
+                                    <br />
+        
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">
+                                            <b>{!$Label.Response_Body}</b>
+                                        </label>
+                                        <div class="slds-form-element__control">
+                                            <div style="background-color: rgb(250, 250, 250); border: solid 1px lightgray; padding: 20px;">
+                                                <pre>
+                                                    <apex:outputText value="{!calloutReq.ResponseBody}" /> 
+                                                </pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+                                    
+                                </div>
+                            </div>
+
+                            <br />
+                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="" scope="col">
+                                            <div class="slds-truncate" title="{!$Label.Created_Updates_Records}">{!$Label.Created_Updates_Records}</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!updatedRecords}" var="updRec">
+                                        <tr class="slds-hint-parent">
+                                            <td>
+                                                <a target="_blank" href="{!updRec.link}">{!updRec.type} : {!updRec.name}</a>
+                                            </td>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                            <br />
+
+                        </div>
+                    </div>
+                </div>
+
+            </apex:outputPanel>
+
+        </apex:form>
+
+    </div>
+
+</apex:page>

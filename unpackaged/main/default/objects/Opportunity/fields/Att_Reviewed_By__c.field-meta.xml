@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Att_Reviewed_By__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Att: Reviewed By</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>AttributedOpportunities</relationshipName>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

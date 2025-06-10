@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_locked</fullName>
+    <active>false</active>
+    <errorConditionFormula>(
+ ISPICKVAL(Opportunity.Booking_Status__c,&quot;Locked&quot;)
+)
+&amp;&amp;
+(
+ ISCHANGED(Unit_Overage_Rate__c) ||
+ ISCHANGED(Business_Unit__c) ||
+ ISCHANGED(Booking_Status__c) ||
+ ISCHANGED(ServiceDate) ||
+ ISCHANGED(End_Date__c) ||
+ ISCHANGED(Included_Units__c) ||
+ ISCHANGED(Included_Unit_Type__c) ||
+ ISCHANGED(ListPrice) ||
+ ISCHANGED(Manual_Dates__c) ||
+ ISCHANGED(Manual_Term__c) ||
+ ISCHANGED(Quantity) ||
+ ISCHANGED(Revenue_Type__c) ||
+ ISCHANGED(UnitPrice) ||
+ ISCHANGED(Term_mo__c) ||
+ ISCHANGED(Usage_Billing_Frequency__c) ||
+ ISCHANGED(Usage_Billing_Method__c) ||
+ ISCHANGED(Usage_Max_Apps_Per_Month__c) ||
+ ISCHANGED(Usage_Pause_Billing_Months__c) 
+)</errorConditionFormula>
+    <errorMessage>This booking is locked and cannot be edited</errorMessage>
+</ValidationRule>

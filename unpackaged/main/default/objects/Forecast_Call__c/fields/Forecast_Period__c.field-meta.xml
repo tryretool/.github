@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Forecast_Period__c</fullName>
+    <description>Date that indicates the current forecast period. Used in tandem with the `Forecast Period Type` field. 
+example 1: Forecast Period Type = &#39;Quarter&#39; | Forecast Period = 2024-01-01, representing a Q1 quarter call.
+example 2: Forecast Period Type = &#39;Month&#39; | Forecast Period = 2024-01-01, representing a January monthly call.</description>
+    <label>Forecast Period</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

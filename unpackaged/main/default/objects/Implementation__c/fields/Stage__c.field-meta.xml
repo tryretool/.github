@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stage__c</fullName>
+    <defaultValue>&quot;Unassigned&quot;</defaultValue>
+    <inlineHelpText>What is the current lifecycle stage of the customer?</inlineHelpText>
+    <label>Stage</label>
+    <required>true</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+                <label>Inactive</label>
+            </value>
+            <value>
+                <fullName>Unassigned</fullName>
+                <default>true</default>
+                <label>Unassigned</label>
+            </value>
+            <value>
+                <fullName>New</fullName>
+                <default>false</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>Onboarding - Deploy</fullName>
+                <default>false</default>
+                <label>Onboarding - Deploy</label>
+            </value>
+            <value>
+                <fullName>Onboarding - Train</fullName>
+                <default>false</default>
+                <label>Onboarding - Train</label>
+            </value>
+            <value>
+                <fullName>Onboarding - Build</fullName>
+                <default>false</default>
+                <label>Onboarding - Build</label>
+            </value>
+            <value>
+                <fullName>Activated</fullName>
+                <default>false</default>
+                <label>Activated</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

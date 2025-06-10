@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Stated stage (e.g., &quot;Series A&quot;) of the last external funding round --></help>
+        <label><!-- Funding: Stage --></label>
+        <name>Funding_Stage__c</name>
+    </CustomFieldTranslation>

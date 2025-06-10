@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_8706428</developerName>
+        <masterLabel>Days Overdue</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Journey__c$Days_Action_Overdue__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>0</to>
+            </sourceValues>
+            <value>0</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>0</from>
+                <to>1</to>
+            </sourceValues>
+            <value>1</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>1</from>
+                <to>2</to>
+            </sourceValues>
+            <value>2</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>2</from>
+            </sourceValues>
+            <value>3+</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_45575707</developerName>
+        <masterLabel>Stage Bucket</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Journey__c$Stage__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Rejected</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Converted</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ended</sourceValue>
+            </sourceValues>
+            <value>Closed</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Identified</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Accepted</sourceValue>
+            </sourceValues>
+            <value>Pre-Outreach</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Engaged</sourceValue>
+            </sourceValues>
+            <value>Engaged</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Meeting Booked</sourceValue>
+            </sourceValues>
+            <value>Meeting</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>BucketField_45575707</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Owner_Subteam__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Owner</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Action_Required__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Name</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Days_Action_Overdue__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Journey__c$Age__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Journey_ID_case_safe__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Journey_Subtype__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Stage__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Created_At__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF( AND( OR(Journey__c.Journey_Subtype__c = &#39;Demo Request&#39;, Journey__c.Journey_Subtype__c = &#39;Demo Request (Non-MQL)&#39;), OR( TEXT(Journey__c.Stage__c) = &#39;Identified&#39;, TEXT(Journey__c.Stage__c) = &#39;Accepted&#39;))
+, &quot;P0 Unworked Demo Requests&quot;, 
+
+IF(TEXT(Journey__c.Stage__c) = &#39;Meeting Booked&#39;, &quot;P1 Overdue Meetings req. disposition&quot;, 
+
+IF(AND (TEXT(Journey__c.Stage__c) = &#39;Engaged&#39;, Journey__c.Most_Recent_Outbound_Email__c &lt; Journey__c.Most_Recent_Inbound_Email__c), &quot;P2 No Response to Engaged Journey&quot;,
+
+IF(AND(OR( TEXT(Journey__c.Stage__c) = &#39;Identified&#39;, TEXT(Journey__c.Stage__c) = &#39;Accepted&#39;), Journey__c.Journey_Subtype__c = &#39;Event&#39;), &quot;P2 Unworked Event Lead&quot;, 
+
+IF(AND(OR( TEXT(Journey__c.Stage__c) = &#39;Identified&#39;, TEXT(Journey__c.Stage__c) = &#39;Accepted&#39;), OR(Journey__c.Journey_Subtype__c = &#39;Product Action&#39;, Journey__c.Journey_Subtype__c = &#39;Product Signup&#39;)), &quot;P3 Unworked Product Lead&quot;, 
+
+IF(OR( TEXT(Journey__c.Stage__c) = &#39;Identified&#39;, TEXT(Journey__c.Stage__c) = &#39;Accepted&#39;), &quot;P3 Unworked Other Lead&quot;, 
+
+IF(TEXT(Journey__c.Stage__c)=&#39;Engaged&#39;, &quot;P4 Engaged Non-Responsive Prospect&quot; ,
+
+&quot;P9 Other&quot;
+
+)))))))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Action Required Category</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Journey__c$Action_Required__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c$Days_Action_Overdue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c$Owner_Team__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Sales Development</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c$Age__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_8706428</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Action Required SDR Journeys</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Journeys_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Journey__c$Accepted_At__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

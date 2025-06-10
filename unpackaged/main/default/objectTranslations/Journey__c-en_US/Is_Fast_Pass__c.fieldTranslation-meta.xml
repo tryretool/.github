@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Indicates whether or not the initial Qualification was Fast Passed to an Account Executive --></help>
+        <label><!-- Is Fast Pass? --></label>
+        <name>Is_Fast_Pass__c</name>
+    </CustomFieldTranslation>

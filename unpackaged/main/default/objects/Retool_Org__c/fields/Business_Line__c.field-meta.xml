@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Line__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(Status__c,
+  &quot;Partner&quot;,&quot;Partner&quot;,
+  &quot;Internal&quot;,&quot;Internal&quot;,
+  &quot;Invalid&quot;,&quot;Internal&quot;,
+  CASE(Retool_License__r.Key_Type__c,
+    &quot;Self-hosted&quot;,&quot;Committed&quot;,
+    IF(
+      Business_Unit__r.Business_Line__c = &quot;Committed&quot; &amp;&amp; (Business_Unit__r.BU_Status__c = &quot;Active&quot; || Business_Unit__r.BU_Status__c = &quot;Pilot&quot;),
+      &quot;Committed&quot;,
+      IF(
+        NOT(ISBLANK(Self_Service_Stripe_Customer_ID__c)),
+        &quot;Self Service&quot;,
+        &quot;Unknown&quot;
+      )
+    )
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Business Line</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

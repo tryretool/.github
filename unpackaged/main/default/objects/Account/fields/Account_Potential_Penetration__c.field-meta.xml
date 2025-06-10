@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Potential_Penetration__c</fullName>
+    <description>ARR / Account Potential Total Spend.
+
+External Systems Utilization: MadKudu</description>
+    <formula>IF(Account_Potential_Total_Spend__c = 0 || ISBLANK(Account_Potential_Total_Spend__c),NULL,ARR__c/Account_Potential_Total_Spend__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>ARR / Account Potential Total Spend</inlineHelpText>
+    <label>Account Potential: Penetration</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

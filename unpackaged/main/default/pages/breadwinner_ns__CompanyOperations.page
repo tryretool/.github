@@ -1,0 +1,758 @@
+<apex:page sidebar="false" controller="breadwinner_ns.CompanyOperationsController" tabStyle="BreadwinnerForNetSuite__tab" title="Breadwinner Company Operations">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>
+            <apex:includeScript value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Scripts/jquery-3.5.1.min.js')}" />
+            <apex:slds />
+            <apex:variable value="{!OR($User.UIThemeDisplayed == 'Theme4d', $User.UIThemeDisplayed == 'Theme4t')}" var="isLightning" />
+            <meta charset="utf-8" />
+            <style>
+                .arrow {
+                font-size: 37px;
+                color: #42B7F4;
+                }
+                .NSAccountMatch{
+                background: #f4f6f9;
+                line-height: 22px;
+                padding: 10px;
+                text-align: left;
+                word-wrap: break-word;
+                }
+                dt{
+                font-weight: normal;
+                color: #54698d;
+                font-size:.75rem;
+                }
+                .lookupInput a{
+                border: none !important;
+                min-height: 1rem !important;
+                padding:0px !important;
+                }
+                .slds-scope .slds-spinner_container{
+                position: fixed;
+                z-index: 9999;
+                }
+                .message{
+                margin-left: 0px;
+                margin-right: 0px;
+                }
+                .messageText br{
+                display: none;
+                }
+                .message .messageTable .messageCell {
+                width: 100%;
+                }
+                .radioButton{
+                margin-top: 3px;
+                }
+                .slds-clearfix{
+                display: inline-flex;
+                }
+                .otherOptions{
+                display:block !important;
+                }
+                @media only screen and (max-width: 768px){
+                    .arrowCell {
+                    transform: rotateZ(90deg);
+                    }
+                }
+                .slds-scope .restartLink:hover, .slds-scope .restartLink:active, .slds-scope .restartLink:focus{
+                text-decoration: underline !important;
+                }
+                .slds-scope .slds-table thead th{
+                    background-color : white !important;
+                }
+            </style>
+            <apex:outputPanel id="mapInitDefaultActionScript">
+                <script type="text/javascript">
+                var mapNSAcctIdAndAction = new Object();
+                </script>
+            </apex:outputPanel>
+            <script>
+            var j$ = jQuery.noConflict();
+            function setFocusOnLoad(){}
+            function addallstyles(){
+                j$(".lookupInput a").removeClass("slds-input");
+                j$('.msgIcon').hide();
+                message();
+            }
+
+            j$(function(){
+                addallstyles();
+                if(document.getElementsByTagName("title") && document.getElementsByTagName("title")[0]){
+                    document.getElementsByTagName("title")[0].innerHTML="Breadwinner Company Operations";
+                }
+            });
+
+            function message(){
+                j$(".infoM6, .infoM4, .infoM3, .infoM2, .infoS1").addClass("slds-notify slds-notify_alert slds-theme_inverse-text  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px","background-color":"rgba(84,105,141,.95)","border-color":"rgba(84,105,141,.95)"});
+                j$(".errorM6, .errorM4, .errorM3, .errorM2, .errorS1").addClass("slds-notify slds-notify_alert slds-theme_error  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css({"font-weight":"500","line-height":"1.4","word-spacing":"1px","display":"block","border-radius":"5px"});
+                j$(".warningM6, .warningM4, .warningM3, .warningM2, .warningS1").addClass("slds-notify slds-notify_alert slds-theme_warning  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+                j$(".confirmM6, .confirmM4, .confirmM3, .confirmM2, .confirmS1").addClass("slds-notify slds-notify_alert slds-theme_success slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+                
+                j$("div .messageText h4").css( "color", "white" );
+                j$("div[class*='warning'] div.messageText h4").css( "color", "black" );
+                j$("table.messageTable td").css({"color" : "white"});
+                j$("div[class*='warning'] table.messageTable td").css( "color", "black" );
+            }
+
+            function redirectToBWPage(){
+                var pageURL = '{!JSENCODE(URLFOR($Page.breadwinner_ns__BreadwinnerForNetSuite))}';
+                var namespace = '{!JSENCODE(bwNamespace)}';
+                var url = '';
+                if({!JSENCODE(IF(isLightning,"true", "false")) == 'true'}){
+                    if(namespace.length > 0) {
+                        url = '' + pageURL.split("/apex/").reverse().pop() + '/lightning/n/'+namespace+'__'+ pageURL.split("/apex/").pop().split("?").reverse().pop();
+                    }
+                    else {
+                        url = '' + pageURL.split("/apex/").reverse().pop() + '/lightning/n/' + pageURL.split("/apex/").pop().split("?").reverse().pop();
+                    }
+                }
+                else{
+                    url = pageURL;
+                }
+                console.log(url);
+                window.open(url,"_parent");
+            }
+
+            function checkErrorMsg(){
+                console.log('$$$$Within CheckErrorMsg Method'+'+++'+j$('.errorMsg'));
+                var errorDiv = j$('.errorMsg');
+                if(typeof errorDiv != "undefined" && typeof j$('.errorMsg')[0] != "undefined"){
+                    console.log('$$$$$Error Meggase==>'+j$('.errorMsg')[0].innerHTML);
+                    var position = j$('.errorMsg').position();
+                    window.scroll(position.left,position.top) ;
+                }
+                else{
+                    console.log('Error Not Found everything is OK');
+                    submitAndNextJS();
+                    finalSubmitANDNext();
+                }
+            }
+
+            function submitAndNextJS(){
+                var jsonActions = JSON.stringify(mapNSAcctIdAndAction);
+                console.log('######'+jsonActions);
+                document.getElementById('{!JSENCODE($Component.formId.jsonOfActionsId)}').value = jsonActions;
+            }
+
+            function checkRadioButtonForManualMatch(manualMatchRadioButtonId){
+                document.getElementById(manualMatchRadioButtonId).checked = true;
+            }
+
+            function pushToMapNSAcctIdAndAction(key, value){
+                mapNSAcctIdAndAction[key] = value;
+                console.log(''+value);
+                UpdateInfo();
+            }
+
+            function clearManualMatchOnSelectingOther(key){
+                var mappingSpanId = key+'-mm-lookup';
+                try{
+                    var mappingSpanEle = document.getElementById(mappingSpanId);
+                    if(mapNSAcctIdAndAction[key]==='manualMatch'){
+                        console.log(mappingSpanEle.getElementsByClassName("lookupInput")[0].children[0].value);
+                        mappingSpanEle.getElementsByClassName("lookupInput")[0].children[0].value = '';
+                        try{
+                            mappingSpanEle.getElementsByClassName("errorMsg")[0].remove();
+                            console.log('mappingSpanId :::'+ mappingSpanId);
+                            console.log(document.getElementById(mappingSpanId).parentElement.id);
+                            var parentId = document.getElementById(mappingSpanId).parentElement.id;
+                            console.log('parentId :::'+ parentId);
+                            var accLKP = parentId.replace("lookupPanel", "accountLookup");
+                            var accLKPLKOLD = parentId.replace("lookupPanel", "accountLookup_lkold");
+                            document.getElementById(accLKP).value = '';
+                            document.getElementById(accLKPLKOLD).value = '';                            
+                        }
+                        catch(Error){
+                            console.log('Exception ::: '+Error);
+                        }
+                    }
+                }
+                catch(Error){
+                    console.log(Error);
+                }
+            }
+
+            function scrollWin(){
+                window.scrollTo(0,0);
+            }
+
+            function displayData(key){
+                var mappingdivId = key+'-qc';
+                j$("."+mappingdivId).addClass('slds-show').removeClass('slds-hide');
+            }
+
+            function hideData(key){
+                var mappingdivId = key+'-qc';
+                j$("."+mappingdivId).addClass('slds-hide').removeClass('slds-show'); 
+            }
+            j$(document).keydown (
+                function(event){
+                    var code = event.keyCode || event.which;
+                    if (code == 13) {
+                        event.preventDefault();
+                    }
+                    else if (code == 27) {
+                        redToBWPage();
+                    }
+                });
+            </script>
+        </head>
+        <body>
+            <apex:form id="formId">
+                <apex:actionStatus id="action-status" layout="block">
+                    <apex:facet name="start">
+                        <div class="slds-spinner_container">
+                            <div class="slds-spinner_brand slds-spinner slds-spinner_medium" aria-hidden="false" role="alert">
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                    </apex:facet>
+                </apex:actionStatus>
+                <div class="slds-scope">
+                    <div id="accountMatchContent">
+                        <!-- ..........................Page Header Start ........................... -->
+                        <div id="thePageHeader" class="slds-page-header slds-m-bottom_medium" role="banner" style="background-color: #f7f9fb">
+                            <div class="slds-media slds-media_center">
+                                <div class="slds-media__figure">
+                                    <svg aria-hidden="true" class="slds-icon slds-icon-standard-user">
+                                        <use rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#rotate')}"></use>
+                                    </svg>
+                                </div>
+                                <div class="slds-media__body">
+                                    <p class="slds-page-header__title slds-truncate"><apex:outputText value="Breadwinner Account Match for Companies"/></p>
+                                    <p class="slds-text-body_small">Breadwinner • NetSuite </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ............................. Page Header END ............................. -->
+                        <apex:actionFunction name="redToBWPage" action="{!redirectToBWPage}" reRender="nothing"/>
+                        <apex:pagemessages id="pm" rendered="{!NOT(noRecordsInSF)}"/>
+                        <apex:outputPanel id="infoMessage">
+                            <apex:outputPanel layout="block" rendered="{!AND(NOT(isAccountMatchComplete),NSAcctIdList.size > 0, NOT(showMassUpdateSection))}">
+                                <p class="slds-m-bottom_medium slds-m-horizontal_medium">
+                                    <apex:outputText value="Each NetSuite Company has to be matched with one Salesforce Account. " />
+                                    <apex:outputText value="Based on the Company's name, phone, and address, we have tried to auto-match some NetSuite Companies. If we have not been able to match it, you can select a Salesforce Account through the lookup box. You can also create a new Account in Salesforce based on the NetSuite Company." />
+                                </p>
+                                <apex:outputPanel rendered="{!AND(NOT(ISBLANK(fieldEncryptedMessage)), LEN(fieldEncryptedMessage)>0)}"> 
+                                    <apex:pageMessage severity="INFO"
+                                        strength="2"
+                                        summary="{!fieldEncryptedMessage}"
+                                        escape="false"
+                                    ></apex:pageMessage>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="block" id="messagesSection" rendered="{!showMessages}">
+                            <apex:pagemessages rendered="{!NOT(isBackgroundjobRunning)}"/>
+                            <apex:outputPanel rendered="{!isBackgroundjobRunning}">
+                                <apex:pageMessage severity="INFO" strength="2" summary="<b>NetSuite Companies import is in progress<b/>" escape="false" >
+                                    <p>&nbsp; <apex:outputText value="It appears that a background job to import your NetSuite Companies is in progress, please try again later." />
+                                    </p>
+                                </apex:pageMessage>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="block" rendered="{!noRecordsInSF}">
+                                <apex:pageMessage severity="INFO" strength="2" summary="<b>Import NetSuite Companies into Salesforce<b/>" escape="false" >
+                                    <p>&nbsp; <apex:outputText value="There are no NetSuite Companies in Salesforce. It appears that your Import NetSuite Companies background jobs has failed. Please"/><apex:commandLink rel="noopener noreferrer" styleClass="restartLink" value=" restart the NetSuite Companies Sync" action="{!restartHistoricalCustomerSync}" reRender="messagesSection" status="action-status" oncomplete="message();" id="restartSync" title="Includes Customers and Vendors"/>.</p>
+                                    <!--This is fine - you can create NetSuite Customers from Salesforce Accounts.
+                                    <br/>
+                                    To do so, once Breadwinner is fully setup, click "New Invoice" from the Invoice's' related list on an Account or Opportunity. That will create a NetSuite Customer associated with the relevant Account. -->
+                                </apex:pageMessage>
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+
+                        <!-- Account Match Mass Update Start -->
+                        <apex:inputHidden id="massUpdateFilterConditionValue0" value="{!filtersList[0].value}" />
+                        <apex:inputHidden id="massUpdateFilterConditionValue1" value="{!filtersList[1].value}" />
+                        <apex:inputHidden id="massUpdateFilterConditionValue2" value="{!filtersList[2].value}" />
+                        <apex:inputHidden id="isFilterChanged" value="{!isFilterChanged}" />
+                        <apex:outputPanel id="massUpdateLink">
+                            <apex:commandLink rel="noopener noreferrer" value="Click here for a mass update option" style="text-decoration:underline;" rendered="{!AND(NOT(isAccountMatchComplete),NSAcctIdList.size > 0,NOT(showMassUpdateSection))}" action="{!showMassUpdateSection}" styleClass="slds-p-left_medium" status="action-status" reRender="massAccountMatch, AccountListPanel,AccountFetchCompleteScript,mapInitDefaultActionScript,accountMatchContent,pm,buttonSection,infoblock,infoMessage,massUpdateLink,CompanyListPanel,goBackLink"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel id="goBackLink">
+                            <apex:commandLink rel="noopener noreferrer" value="Go back to the Account Match Section" style="text-decoration:underline;" rendered="{!showMassUpdateSection}" action="{!showAccountMatchSection}" styleClass="slds-p-left_medium" status="action-status" reRender="massAccountMatch, AccountListPanel,AccountFetchCompleteScript,mapInitDefaultActionScript,accountMatchContent,pm,buttonSection,infoblock,infoMessage,massUpdateLink,CompanyListPanel,goBackLink"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel id="massAccountMatch">
+                            <apex:outputPanel rendered="{!showMassUpdateSection}">
+                                <apex:outputPanel layout="block" id="filterFields" styleClass="slds-grid slds-wrap slds-p-horizontal_small slds-m-top_x-small">
+                                    <apex:dataTable value="{!filtersList}" var="filter" styleClass="slds-table slds-no-row-hover">
+                                        <apex:column id="fieldColumn" headerValue="Select a field to filter on">
+                                            <div class="slds-form-element">
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-select_container">
+                                                        <apex:selectList styleClass="slds-select" id="companyFieldsList" size="1" value="{!filter.fieldName}">
+                                                            <apex:selectOptions value="{!listOfCompanyFields}"></apex:selectOptions>
+                                                            <apex:actionSupport event="onchange" action="{!getCompanyObjectFieldType}" status="action-status" oncomplete="isFilterChanged(true);" reRender="valueColumnForString,valueColumnForBoolean,conditionColumnValues,massUpdateProcessButtonSection"/>
+                                                        </apex:selectList>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </apex:column><apex:column id="conditionColumn" headerValue="Condition">
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-select_container">
+                                                    <apex:outputPanel id="conditionColumnValues">
+                                                        <apex:selectList styleClass="slds-select" size="1" value="{!filter.condition}" rendered="{!OR(filter.fieldType == 'string', filter.fieldType == '')}" onchange="isFilterChanged(true);" >
+                                                            <apex:selectOption itemValue="" itemLabel="-- Select --"/>
+                                                            <apex:selectOption itemValue="equals" itemLabel="equals"/>
+                                                            <apex:selectOption itemValue="doesnotequal" itemLabel="does not equal"/>
+                                                            <apex:selectOption itemValue="startswith" itemLabel="starts with"/>
+                                                            <apex:selectOption itemValue="endswith" itemLabel="ends with"/>
+                                                            <apex:selectOption itemValue="contains" itemLabel="contains"/>
+                                                            <apex:selectOption itemValue="doesnotcontain" itemLabel="does not contain"/>
+                                                        </apex:selectList>
+                                                        <apex:selectList styleClass="slds-select" size="1" value="{!filter.condition}" rendered="{!filter.fieldType == 'boolean'}">
+                                                            <apex:selectOption itemValue="equals" itemLabel="equals"/>
+                                                        </apex:selectList>
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </apex:column><apex:column id="valueColumn" headerValue="Value">
+                                            <apex:outputPanel id="valueColumnForString">
+                                                <apex:inputText styleClass="slds-input" value="{!filter.value}" id="filterValue" rendered="{!OR(filter.fieldType == 'string', filter.fieldType == '')}" onchange="isFilterChanged(true);"/>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel id="valueColumnForBoolean">
+                                                <apex:outputPanel rendered="{!filter.fieldType == 'boolean'}">
+                                                    <fieldset class="slds-form-element">
+                                                        <div class="slds-form-element__control">
+                                                            <div class="slds-grid slds-wrap">
+                                                                <div class="slds-col slds-size_1-of-3">
+                                                                    <span class="slds-radio">
+                                                                        <input type="radio" id="{!filter.id}true" onclick="FilterConditionValue({!filter.id}+'-true');" name="{!filter.id}default" onchange="isFilterChanged(true);"/>
+                                                                        <label class="slds-radio__label" for="{!filter.id}true">
+                                                                        <span class="slds-radio_faux"></span>
+                                                                        <span class="slds-form-element__label">True</span>
+                                                                        </label>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="slds-col slds-size_1-of-3">
+                                                                    <span class="slds-radio">
+                                                                        <input type="radio" id="{!filter.id}false" onclick="FilterConditionValue({!filter.id}+'-false');" name="{!filter.id}default" checked="true" onchange="isFilterChanged(true);"/>
+                                                                        <label class="slds-radio__label" for="{!filter.id}false">
+                                                                        <span class="slds-radio_faux"></span>
+                                                                        <span class="slds-form-element__label">False</span>
+                                                                        </label>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="slds-col slds-size_1-of-3"></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </apex:outputPanel>
+                                            </apex:outputPanel>
+                                        </apex:column>
+                                    </apex:dataTable>
+                                    <div class="slds-col_padded slds-m-top_medium slds-size_1-of-3 slds-medium-size_1-of-3 slds-large-size_1-of-3">
+                                        <div class="slds-form-element">
+                                            <span class="slds-form-element__label">Select Action</span>
+                                            <fieldset class="slds-form-element">
+                                                <div class="slds-form-element__control">
+                                                    <span class="slds-radio">
+                                                        <input type="radio" id="NotAssociatedSFAccount" value="{!massUpdateAction}" name="NotAssociatedSFAccount" checked="true" />
+                                                        <label class="slds-radio__label" for="NotAssociatedSFAccount">
+                                                        <span class="slds-radio_faux"></span>
+                                                        <span class="slds-form-element__label">No Associated SF Account</span>
+                                                        </label>
+                                                    </span>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <div align="center" class="slds-m-top_medium">
+                                    <apex:commandButton styleClass="slds-button slds-button_brand" value="Preview" status="action-status" action="{!previewMassAccoutMatch}" reRender="massUpdateProcessButton,AccountListPanel,filterWhereCondition,buttonSection,infoblock,CompanyListPanel,AccountFetchCompleteScript,mapInitDefaultActionScript,accountMatchContent,pm"/>
+                                    <apex:outputPanel >
+                                        <apex:commandButton styleClass="slds-button slds-button_brand slds-m-left_small" value="Process" id="massUpdateProcessButton" disabled="{!OR(showMassUpdateProcessButton == FALSE, isFilterChanged == TRUE)}" action="{!processMassAccountMatch}" status="action-status" reRender="massUpdateProcessButton,AccountListPanel,filterWhereCondition,filterFields,buttonSection,infoblockAccountFetchCompleteScript,mapInitDefaultActionScript,accountMatchContent,pm,CompanyListPanel" oncomplete="message();"/>
+                                    </apex:outputPanel>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel id="filterWhereCondition" layout="block" styleClass="slds-m-horizontal_xx-large">
+                                <apex:outputPanel layout="block" rendered="{!AND(showMassUpdateSection, whereCondition != NULL)}" styleClass="slds-p-vertical_large slds-p-horizontal_xx-large slds-m-horizontal_xx-large">
+                                    <apex:outputPanel layout="block" style="text-align: center" styleClass="slds-p-bottom_small slds-text-body_large" rendered="{!(customersCount > 0)}">{!if(customersCount > 10000, 10000, customersCount)} out of {!customersCount} records will be updated</apex:outputPanel>
+                                    <apex:outputPanel layout="block" style="text-align: center" styleClass="slds-p-bottom_small slds-text-body_large" rendered="{!(customersCount == 0)}">No records found</apex:outputPanel>
+                                    <div class="slds-box">
+                                        {!whereCondition}
+                                    </div>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                            <apex:outputPanel layout="block" id="CompanyListPanel">
+                                <div>
+                                    <div class="slds-m-top_small slds-p-horizontal_xx-large slds-m-horizontal_medium">
+                                        <apex:DataTable value="{!filteredCompaniesList}" var="company" rendered="{!AND(NOT(isAccountMatchComplete),filteredCompaniesList.size > 0,showMassUpdateProcessButton)}" styleclass="slds-table slds-no-row-hover slds-table_bordered slds-table_col-bordered slds-border_right slds-border_bottom slds-border_left myTableRow slds-max-medium-table_stacked-horizontal">
+                                            <apex:column headerValue="Company Id" html-data-label="Id" styleClass="slds-cell-wrap">
+                                                <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(company.id)}" target="_blank">{!company.Name}</apex:outputLink>
+                                            </apex:column>
+                                            <apex:column headerValue="Is Person" html-data-label="Is Person" styleClass="slds-cell-wrap" value="{!company.breadwinner_ns__IsPerson__c}" />
+                                            <apex:column headerValue="Company Name" html-data-label="Company Name" styleClass="slds-cell-wrap" value="{!company.breadwinner_ns__CompanyName__c}" />
+                                            <apex:column headerValue="First Name" html-data-label="First Name" styleClass="slds-cell-wrap" value="{!company.breadwinner_ns__FirstName__c}" />
+                                            <apex:column headerValue="Last Name" html-data-label="Last Name" styleClass="slds-cell-wrap" value="{!company.breadwinner_ns__LastName__c}" />
+                                            <apex:column headerValue="Type" html-data-label="Type" styleClass="slds-cell-wrap" value="{!company.breadwinner_ns__Entity_Type__c}" />
+                                            <apex:repeat value="{!filtersList}" var="filter">
+                                                <apex:column rendered="{!if(filter.fieldName == '', false, if(filter.dupFieldName, false, true))}">
+                                                    <apex:facet name="header"><apex:outputText value="{!filter.fieldLabel}"/></apex:facet>
+                                                    <apex:outputText id="customCol" value="{!company[filter.fieldName]}"/>
+                                                </apex:column>
+                                            </apex:repeat>
+                                        </apex:DataTable>
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:actionFunction name="rerenderProcessButtonSection" reRender="massUpdateProcessButtonSection" />
+                            <script>
+                                function FilterConditionValue(inputvalue){
+                                    var indexNumber = inputvalue.split('-')[0];
+                                    var filterCondition = inputvalue.split('-')[1];
+                                    if(indexNumber == 0)
+                                        document.getElementById('{!JSENCODE($Component.formId.massUpdateFilterConditionValue0)}').value = filterCondition;
+                                    else if(indexNumber == 1)
+                                        document.getElementById('{!JSENCODE($Component.formId.massUpdateFilterConditionValue1)}').value = filterCondition;
+                                    else if(indexNumber == 2)
+                                        document.getElementById('{!JSENCODE($Component.formId.massUpdateFilterConditionValue2)}').value = filterCondition;
+                                }
+                                function isFilterChanged(inputvalue){
+                                    j$("[id$=massUpdateProcessButton]").attr("disabled", "disabled").removeClass("btn").addClass("btnDisabled");
+                                    document.getElementById('{!JSENCODE($Component.formId.isFilterChanged)}').value = inputvalue;
+                                    rerenderProcessButtonSection();
+                                }
+                            </script>
+                        </apex:outputPanel>
+                        <!-- Account Match Mass Update End -->
+
+                        <apex:outputPanel layout="block" id="AccountListPanel">
+                            <apex:pageMessage summary="" detail="{!exceptionMessage}" rendered="{!AND(NOT(ISBLANK(exceptionMessage)), LEN(exceptionMessage)>5)}"  severity="ERROR" strength="3"/>
+                            <div class="slds-m-horizontal_medium">
+                                <apex:outputPanel rendered="{!AND(NOT(isAccountMatchComplete),NSAcctIdList.size > 0,NOT(showMassUpdateSection))}">
+                                    <div class="slds-grid slds-wrap ">
+                                        <div class="slds-m-top_large slds-size_1-of-1 slds-medium-size_3-of-7 slds-large-size_6-of-13 slds-text-align_center"> 
+                                            <div class="slds-text-heading_medium"> <apex:outputText value="Companies Details in NetSuite" /> </div>
+                                        </div>
+
+                                        <div class="slds-m-top_large slds-size_1-of-1 slds-medium-size_3-of-7 slds-large-size_6-of-13 slds-col_bump-left slds-text-align_center"> 
+                                            <div class="slds-text-heading_medium"> <apex:outputText value="Companies Details in Salesforce" /> </div>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <div class="slds-m-top_small">
+                                    <apex:repeat value="{!NSAcctIdList}" var="refId" rendered="{!AND(NOT(isAccountMatchComplete),NSAcctIdList.size > 0,NOT(showMassUpdateSection))}">
+                                        <apex:variable var="NSCompany" value="{!mapNSAcctIdAndAccount[refId]}"/>
+                                        <apex:variable var="actionByDefault" value="{!mapNSAcctIdAndDefaultAction[refId]}"/>
+                                        <apex:variable var="sfAccount" value="{!mapNSIdAndSfAccount[refId]}"/>
+                                        <div class="slds-grid slds-wrap slds-has-dividers_around-space slds-grid_vertical-stretch">
+                                            <div valign="top" class="slds-col slds-grid slds-wrap slds-box slds-m-top_small slds-size_1-of-1 slds-medium-size_3-of-7 slds-large-size_6-of-13">
+                                                <div class="slds-col slds-p-bottom_medium slds-tile slds-size_1-of-1 slds-p-horizontal_medium">
+                                                    <ul class="slds-has-dividers_bottom-space slds-m-top_x-small">
+                                                        <li class="slds-item"><span class="slds-text-heading_medium"><apex:outputText value="{!IF(AND(IsBlank(NSCompany.Name),IsBlank(NSCompany.CompanyName)),NSCompany.CompanyId,IF(NSCompany.isPerson,NSCompany.Name,NSCompany.CompanyName))}" /></span></li>
+                                                    </ul>
+                                                    <apex:outputPanel layout="block">
+                                                        <div class="NSAccountMatch slds-tile__detail">
+                                                            <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!NSCompany.isPerson}">
+                                                                <dt class="slds-item_label">Name:</dt>
+                                                                <dd class="slds-item_detail"><apex:outputText value="{!NSCompany.salutation} {!NSCompany.Name}" /></dd>
+                                                            </apex:outputPanel>
+                                                            <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" >
+                                                                <dt class="slds-item_label" style="white-space: nowrap;">Company Name:</dt>
+                                                                <dd class="slds-item_detail"><apex:outputText value="{!NSCompany.CompanyName}" /></dd>
+                                                            </apex:outputPanel>
+                                                            <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!NSCompany.isPerson}">
+                                                                <dt class="slds-item_label">Job Title:</dt>
+                                                                <dd class="slds-item_detail"><apex:outputText value="{!NSCompany.title}" /></dd>
+                                                            </apex:outputPanel>
+                                                            <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!NOT(NSCompany.isPerson)}">
+                                                                <dt class="slds-item_label">Website:</dt>
+                                                                <dd class="slds-item_detail"><apex:outputText value="{!NSCompany.Website}" /></dd>
+                                                            </apex:outputPanel>
+                                                            <apex:outputPanel styleClass="slds-list_horizontal slds-wrap">
+                                                                <dt class="slds-item_label">Phone:</dt>
+                                                                <dd class="slds-item_detail "><apex:outputText value="{!NSCompany.Phone}"/></dd>
+                                                            </apex:outputPanel>
+                                                            <apex:outputPanel styleClass="slds-list_horizontal slds-wrap">
+                                                                <dt class="slds-item_label">Email:</dt>
+                                                                <dd class="slds-item_detail "><apex:outputText value="{!NSCompany.EmailAddress}" /></dd>
+                                                            </apex:outputPanel>
+                                                            <apex:outputPanel styleClass="slds-list_horizontal slds-wrap">
+                                                                <dt class="slds-item_label">Address:</dt>
+                                                                <dd class="slds-item_detail">
+                                                                    <apex:outputPanel layout="block" rendered="{!NOT(ISBLANK(NSCompany.BillingStreet))}"><apex:outputText value="{!SUBSTITUTE(NSCompany.BillingStreet,'%%',', ')} "/></apex:outputPanel>
+                                                                    <apex:outputPanel layout="block" rendered="{!NOT(ISBLANK(NSCompany.BillingCity))}"><apex:outputText value="{!NSCompany.BillingCity} "/></apex:outputPanel>
+                                                                    <apex:outputPanel layout="block" rendered="{!NOT(ISBLANK(NSCompany.BillingState))}"><apex:outputText value="{!NSCompany.BillingState} "/></apex:outputPanel>
+                                                                    <apex:outputPanel layout="block" rendered="{!NOT(ISBLANK(NSCompany.BillingCountry))}">
+                                                                        <apex:outputText value="{!NSCompany.BillingCountry} "/></apex:outputPanel>
+                                                                    <apex:outputPanel layout="block" rendered="{!NOT(ISBLANK(NSCompany.BillingPostalCode))}"><apex:outputText value="{!NSCompany.BillingPostalCode} "/></apex:outputPanel>
+                                                                </dd>
+                                                            </apex:outputPanel>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                </div>
+                                                <div class="slds-col slds-align-bottom slds-size_1-of-1 slds-p-top_medium">
+                                                    <img src="{!URLFOR($Resource.Breadwinner_for_NetSuite, 'Breadwinner/Images/netsuite_logo_30px.png')}" />
+                                                    &nbsp; <apex:outputText value="NetSuite {!IF(NSCompany.isPerson,'Person',' ')} {!IF(NSCompany.isSubCompany,'Sub','')} {!IF(NSCompany.entityType=='Customer',NSCompany.Stage,NSCompany.entityType)}"/>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-p-top_small slds-size_1-of-1 slds-medium-size_1-of-7 slds-large-size_1-of-13 slds-align-middle">
+                                                <div class="arrowCell slds-text-align_center" width="10%">
+                                                    <span class="arrow">&#10140;</span>
+                                                </div>
+                                            </div>
+                                            <div valign="top" class="slds-col slds-grid slds-wrap slds-box slds-m-top_small slds-size_1-of-1 slds-medium-size_3-of-7 slds-large-size_6-of-13">
+                                                <!--  options -->
+                                                <div class="slds-m-horizontal_medium slds-p-bottom_small slds-col slds-size_1-of-1">
+                                                    <!-- Suggested Match -->
+                                                    <apex:outputPanel rendered="{!IF(actionByDefault == 'suggestedMatch', true, false)}">
+                                                        <div class="slds-m-top_xx-small">
+                                                            <table style="width: 100%;">
+                                                                <tr>
+                                                                    <td valign="center" style="width: 3%;padding-right: 10px;">
+                                                                        <input type="radio" name="{!JSENCODE(refId)}" id="{!JSENCODE(refId)}-sm" onChange="clearManualMatchOnSelectingOther('{!JSENCODE(refId)}');pushToMapNSAcctIdAndAction('{!JSENCODE(refId)}', 'suggestedMatch');hideData('{!JSENCODE(refId)}');"/>
+                                                                    </td>
+                                                                    <td valign="top" style="width: 97%;">
+                                                                        <span class="slds-radio">
+                                                                            <span class=" slds-form-element__label slds-p-top_none otherOptions">Suggested Match to Existing Salesforce Account</span>
+                                                                        </span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>
+                                                                        <apex:variable var="list" value="{!''}{!ContactsList2}"/>
+                                                                        <apex:variable var="isContactEmailmatched" value="{!if(contains(list, refId),true,false)}">
+                                                                            <apex:variable var="list2" value="{!''}{!ContactsList2[refId][0]}" rendered="{!isContactEmailmatched}" />
+                                                                            <div class="slds-m-horizontal_medium slds-tile">
+                                                                                <ul class="slds-has-dividers_bottom-space slds-m-top_x-small">
+                                                                                    <li class="slds-item"><span class="slds-text-heading_medium"><apex:outputText value="{!if(isContactEmailmatched,AccountsNameInfo[list2].account.name,sfAccount.Name)}"/></span> </li>
+                                                                                </ul>
+                                                                                <apex:outputPanel layout="block">
+                                                                                    <div class="NSAccountMatch slds-tile__detail">
+                                                                                        <dl class="slds-list_horizontal slds-wrap">
+                                                                                            <dt class="slds-item_label">Name:</dt>
+                                                                                            <dd class="slds-item_detail"><apex:outputText value="{!if(isContactEmailmatched,AccountsNameInfo[list2].account.name,sfAccount.Name)}"/></dd>
+                                                                                            <dt class="slds-item_label" >Website:</dt>
+                                                                                            <dd class="slds-item_detail" ><apex:outputText value="{!if(isContactEmailmatched,AccountsNameInfo[list2].account.website,sfAccount.website)}"/></dd>
+                                                                                            <dt class="slds-item_label">Phone:</dt>
+                                                                                            <dd class="slds-item_detail"><apex:outputText value="{!if(isContactEmailmatched,AccountsNameInfo[list2].account.phone,sfAccount.phone)}"/></dd>
+                                                                                            
+                                                                                            <dt class="slds-item_label">Address:</dt>
+                                                                                            <dd class="slds-item_detail">
+                                                                                                <apex:outputPanel layout="block" rendered="{!if(isContactEmailmatched,NOT(ISBLANK(AccountsNameInfo[list2].account.BillingStreet)),NOT(ISBLANK(sfAccount.BillingStreet)))}"><apex:outputText value="{!if(isContactEmailmatched,AccountsNameInfo[list2].account.BillingStreet,sfAccount.BillingStreet)}"/></apex:outputPanel>
+                                                                                                <apex:outputPanel layout="block" rendered="{!if(isContactEmailmatched,NOT(ISBLANK(AccountsNameInfo[list2].account.BillingCity)),NOT(ISBLANK(sfAccount.BillingCity)))}"><apex:outputText value="{!if(isContactEmailmatched,AccountsNameInfo[list2].account.BillingCity,sfAccount.BillingCity)} "/></apex:outputPanel>
+                                                                                                <apex:outputPanel layout="block" rendered="{!if(isContactEmailmatched,NOT(ISBLANK(AccountsNameInfo[list2].account.BillingState)),NOT(ISBLANK(sfAccount.BillingState)))}"><apex:outputText value="{!if(isContactEmailmatched,AccountsNameInfo[list2].account.BillingState,sfAccount.BillingState)} "/></apex:outputPanel>
+                                                                                                <apex:outputPanel layout="block" rendered="{!if(isContactEmailmatched,NOT(ISBLANK(AccountsNameInfo[list2].account.BillingCountry)),NOT(ISBLANK(sfAccount.BillingCountry)))}"><apex:outputText value="{!if(isContactEmailmatched,AccountsNameInfo[list2].account.BillingCountry,sfAccount.BillingCountry)} "/></apex:outputPanel>
+                                                                                                <apex:outputPanel layout="block" rendered="{!if(isContactEmailmatched,NOT(ISBLANK(AccountsNameInfo[list2].account.BillingPostalCode)),NOT(ISBLANK(sfAccount.BillingPostalCode)))}"><apex:outputText value="{!if(isContactEmailmatched,AccountsNameInfo[list2].account.BillingPostalCode,sfAccount.BillingPostalCode)}"/></apex:outputPanel>
+                                                                                            </dd>
+                                                                                        </dl>
+                                                                                        <!-- Mapping based on contact Email-->
+                                                                                        <apex:outputpanel styleclass="slds-m-top_medium slds-p-around_large" style="background-color: ivory;"  layout="block" rendered="{!isContactEmailmatched}">
+                                                                                            <div class="slds-tile slds-text-heading_small "> Matched SF Contacts</div>
+                                                                                            <apex:repeat value="{!ContactsList2[refId]}" var="sfContact2">
+                                                                                                <div class="slds-m-top_small slds-tile__detail">
+                                                                                                    <dl class="slds-list_horizontal slds-wrap">
+                                                                                                        <dt class="slds-item_label">Contact Name:</dt>
+                                                                                                        <dd class="slds-item_detail"><apex:outputText value="{!sfContact2.Name}"/></dd>
+                                                                                                        <dt class="slds-item_label" >Contact Email:</dt>
+                                                                                                        <dd class="slds-item_detail " ><apex:outputText value="{!sfContact2.Email}"/></dd>
+                                                                                                    </dl>
+                                                                                                </div>
+                                                                                            </apex:repeat>
+                                                                                        </apex:outputpanel>
+                                                                                    </div>
+                                                                                </apex:outputPanel>
+                                                                            </div>
+                                                                        </apex:variable>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <!-- Create New -->
+                                                    <div class="slds-m-top_x-small">
+                                                        <div class="slds-clearfix">
+                                                            <div class="slds-float_left radioButton">
+                                                                <input type="radio" name="{!JSENCODE(refId)}" id="{!JSENCODE(refId)}-cn" onChange="clearManualMatchOnSelectingOther('{!JSENCODE(refId)}');displayData('{!JSENCODE(refId)}');pushToMapNSAcctIdAndAction('{!JSENCODE(refId)}', 'createNew');"/>
+                                                            </div>
+                                                            <div class="slds-float_left">
+                                                                <span class="slds-radio">
+                                                                    <span class=" slds-form-element__label slds-m-left_small slds-p-top_none otherOptions">Create New Salesforce {!IF(AND(isPersonAccountEnabled,NSCompany.isPerson),'Person','')} Account with details from NetSuite {!IF(AND(isPersonAccountEnabled,NSCompany.isPerson),'Individual','')} Company</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Manual Match -->
+                                                    <div class="slds-m-top_x-small">
+                                                        <div class="slds-clearfix">
+                                                            <div class="slds-float_left radioButton">
+                                                                <input type="radio" name="{!JSENCODE(refId)}"  id="{!JSENCODE(refId)}-mm" onChange="pushToMapNSAcctIdAndAction('{!JSENCODE(refId)}', 'manualMatch');hideData('{!JSENCODE(refId)}');" />
+                                                            </div>
+                                                            <div class="slds-float_left">
+                                                                <span class="slds-radio">
+                                                                    <span class=" slds-form-element__label slds-m-left_small slds-p-top_none otherOptions">Manual Match to an existing Salesforce Account you select</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <apex:outputPanel id="lookupPanel">
+                                                        <apex:actionRegion >
+                                                            <div class="lookup slds-form-element__control slds-p-around_none slds-m-top_x-small" id="{!JSENCODE(refId)}-mm-lookup" style="margin-left: 2.25rem;">
+                                                                <apex:inputField value="{!mapNSRefIdManualMatchLookupSelector[refId].Salesforce_Account__c}" id="accountLookup" styleClass="slds-size_1-of-2 slds-input" >
+                                                                    <apex:actionSupport event="onchange" oncomplete="checkRadioButtonForManualMatch('{!JSENCODE(refId)}-mm');pushToMapNSAcctIdAndAction('{!JSENCODE(refId)}', 'manualMatch');addallstyles();" reRender="lookupPanel"/>
+                                                                </apex:inputField>
+                                                            </div>
+                                                        </apex:actionRegion>
+                                                    </apex:outputPanel>  
+                                                    <!-- Do Not Associate -->
+                                                    <div class="slds-m-top_x-small">
+                                                        <div class="slds-clearfix">
+                                                            <div class="slds-float_left radioButton">
+                                                                <input type="radio" name="{!JSENCODE(refId)}" id="{!JSENCODE(refId)}-dn" onChange="clearManualMatchOnSelectingOther('{!JSENCODE(refId)}');pushToMapNSAcctIdAndAction('{!JSENCODE(refId)}', 'doNotImport');hideData('{!JSENCODE(refId)}');" />
+                                                            </div>
+                                                            <div class="slds-float_left">
+                                                                <span class="slds-radio">
+                                                                    <span class=" slds-form-element__label slds-m-left_small slds-p-top_none otherOptions">Do Not Associate with any Salesforce Account</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <apex:outputPanel layout="block" styleClass="slds-m-horizontal_medium slds-p-top_small" rendered="{!NSCompany.isUnableToCreateAccount}">
+                                                        <div class="errorM3">    
+                                                            <p>Breadwinner was unable to create this Account </p>
+                                                            <p>{!NSCompany.errorMessage}</p>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                </div>
+                                                <div class="slds-col slds-align-bottom slds-size_1-of-1">
+                                                    <img src="{!URLFOR($Resource.Breadwinner_for_NetSuite, 'Breadwinner/Images/sf_logo_30px.png')}" />
+                                                    &nbsp; Salesforce Account
+                                                </div>
+                                                <script>
+                                                if('{!JSENCODE(actionByDefault)}' == 'createNew'){
+                                                    mapNSAcctIdAndAction['{!JSENCODE(refId)}'] =  'createNew';
+                                                    document.getElementById('{!JSENCODE(refId)}-cn').checked = true;
+                                                }
+                                                else if('{!JSENCODE(actionByDefault)}' == 'suggestedMatch'){
+                                                    mapNSAcctIdAndAction['{!JSENCODE(refId)}'] =  'suggestedMatch';
+                                                    document.getElementById('{!JSENCODE(refId)}-sm').checked = true;
+                                                }
+                                                </script>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-1">
+                                                <apex:outputPanel styleClass="slds-hide {!refId}-qc" layout="block" >
+                                                    <apex:outputPanel styleClass="slds-m-horizontal_medium slds-m-top_small slds-m-bottom_none" style="font-size:14px;" rendered="{!AND(isThereDataQualityIssue, OR(AND(NOT(ISBLANK(NSCompany.BillingStreet)),LEN(NSCompany.BillingStreet)>255),AND(NOT(ISBLANK(NSCompany.BillingCity)),LEN(NSCompany.BillingCity)>40),AND(NOT(ISBLANK(NSCompany.BillingState)),LEN(NSCompany.BillingState)>20),AND(NOT(ISBLANK(NSCompany.BillingPostalCode)),LEN(NSCompany.BillingPostalCode)>20),AND(NOT(ISBLANK(NSCompany.BillingCountry)),LEN(NSCompany.BillingCountry)>40)))}" layout="block">
+                                                        <div class="warningM3 slds-m-bottom_none slds-p-around_small" style="display:block;">
+                                                            <b> Warning - Potential Data Quality Issue </b>
+                                                            <p>Salesforce Address Fields have field length limitations, and this address exceeds them. If you are Matching this NetSuite Company to a Salesforce Account, either by suggested match or manual match, then this is not an issue. However, if you are creating a Salesforce Account from this NetSuite Company record, please be aware that one or more values are too long, and when being imported into Salesforce, those fields will be truncated.
+                                                                <br/>Alternatively, you may edit the record in NetSuite and reduce the field length, and then refresh this page.</p>
+                                                            <p>
+                                                                <apex:outputLabel rendered="{!AND(NOT(ISBLANK(NSCompany.BillingStreet)),LEN(NSCompany.BillingStreet)>255)}"> <b>Street: </b><apex:outputText value="'{!NSCompany.BillingStreet}' is {!LEN(NSCompany.BillingStreet)} characters long, but Salesforce Street fields are only 255 characters long. "/><br/> If you create this record, the Street field will be imported as <apex:outputText value=" '{!LEFT(NSCompany.BillingStreet , 255)}'." /> <br/><br/> </apex:outputLabel>
+                                                                <apex:outputLabel rendered="{!AND(NOT(ISBLANK(NSCompany.BillingCity)),LEN(NSCompany.BillingCity)>40)}" > <b>City: </b><apex:outputText value="'{!NSCompany.BillingCity}' is {!LEN(NSCompany.BillingCity)} characters long, but Salesforce City fields are only 40 characters long. "/><br/> If you create this record, the City field will be imported as <apex:outputText value=" '{!LEFT(NSCompany.BillingCity, 40)}'." /> <br/><br/> </apex:outputLabel>
+                                                                <apex:outputLabel rendered="{!AND(NOT(ISBLANK(NSCompany.BillingState)),LEN(NSCompany.BillingState)>20)}"> <b>State: </b><apex:outputText value="'{!NSCompany.BillingState}' is {!LEN(NSCompany.BillingState)} characters long, but Salesforce State fields are only 20 characters long. "/><br/> If you create this record, the State field will be imported as <apex:outputText value=" '{!LEFT(NSCompany.BillingState , 20)}'." /> <br/><br/> </apex:outputLabel>
+                                                                <apex:outputLabel rendered="{!AND(NOT(ISBLANK(NSCompany.BillingPostalCode)),LEN(NSCompany.BillingPostalCode)>20)}"> <b>PostalCode: </b><apex:outputText value="'{!NSCompany.BillingPostalCode}' is {!LEN(NSCompany.BillingPostalCode)} characters long, but Salesforce PostalCode fields are only 20 characters long. "/> <br/>If you create this record, the PostalCode field will be imported as <apex:outputText value=" '{!LEFT(NSCompany.BillingPostalCode, 20)}'." /> <br/><br/> </apex:outputLabel>
+                                                                <apex:outputLabel rendered="{!AND(NOT(ISBLANK(NSCompany.BillingCountry)),LEN(NSCompany.BillingCountry)>40)}"> <b>Country: </b><apex:outputText value="'{!NSCompany.BillingCountry}' is {!LEN(NSCompany.BillingCountry)} characters long, but Salesforce Country fields are only 20 characters long. "/><br/>If you create this record, the Country field will be imported as <apex:outputText value=" '{!LEFT(NSCompany.BillingCountry, 40)}'." /> <br/> </apex:outputLabel>
+                                                            </p>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </div>
+                                    </apex:repeat>
+                                </div>
+                            </div>
+                        </apex:outputPanel>
+                    </div>
+                    <apex:outputPanel id="infoblock" >
+                        <apex:outputPanel styleClass="slds-p-top_medium slds-text-align_center" layout="block" style="font-size:13px;" rendered="{!NOT(OR(isAccountMatchComplete, NOT(canPerformBreadwinnerOperations),NSAcctIdList.size == 0))}">
+                            <div id="info" style="color:red;"></div><br/>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    <script type="text/javascript">
+                    function UpdateInfo(){
+                        try {
+                            console.log('UpdateInfo');
+                            var newAccounts = 0;
+                            var matchAccounts = 0;
+                            var doNotImportAccounts = 0;
+                            for(key in mapNSAcctIdAndAction){
+                                var type = mapNSAcctIdAndAction[key];
+                                if(type=='createNew'){
+                                    newAccounts++;
+                                }
+                                else if(type=='doNotImport'){
+                                    doNotImportAccounts++;
+                                }
+                                    else if(type!='hardMatch'){
+                                        matchAccounts++;
+                                    }
+                            }
+                            var infoMessage = document.getElementById('info');
+                            if(newAccounts>0 || matchAccounts >0 || doNotImportAccounts >0){
+                                var infoMessageText = 'Clicking Next will create '+newAccounts+' new Salesforce '+(newAccounts >1 ? 'Accounts from NetSuite Companies' : 'Account from NetSuite Company') +', and will match '+matchAccounts+(matchAccounts >1 ?  ' NetSuite Companies to existing Salesforce Accounts' : ' NetSuite Company to existing Salesforce Account');
+                                if(doNotImportAccounts > 0){
+                                    infoMessageText = infoMessageText+', and will not associate '+doNotImportAccounts+(doNotImportAccounts >1 ? ' NetSuite Companies to Salesforce Accounts' : ' NetSuite Company to any Salesforce Account');
+                                }
+                                infoMessage.innerHTML = infoMessageText+'.';
+                            }
+                        }
+                        catch(err) {
+                            console.log('UpdateInfo Error:'+err.message);
+                        }
+                    }
+                    UpdateInfo();
+                    </script>
+                    <apex:outputPanel layout="block" id="buttonSection" styleClass="slds-m-bottom_large slds-align_absolute-center">
+                        <apex:commandButton id="theNextButton" value="Next" styleClass="slds-button slds-button_brand" oncomplete="checkErrorMsg();" status="action-status" rendered="{!AND(NSAcctIdList.size>0,NOT(isBackgroundjobRunning),NOT(noRecordsInSF),NOT(showMassUpdateSection))}"/>
+                        <apex:inputHidden id="jsonOfActionsId" value="{!jsonUserSelectedActions}"/>
+                        <apex:actionFunction name="finalSubmitANDNext" action="{!submitAndNext}" reRender="AccountListPanel,AccountFetchCompleteScript,mapInitDefaultActionScript,accountMatchContent,pm" status="action-status" oncomplete="accountFetchComplete();scrollWin();UpdateInfo();addallstyles();"/>
+                    </apex:outputPanel>
+					<apex:outputPanel layout="block" id="quickMatch" styleClass="slds-m-bottom_large slds-align_absolute-left slds-p-left_medium">
+						<div>
+							<apex:commandLink action="{!updateCustomerMatchStatus}" status="action-status" reRender="nothing" id="updateCustomerMatchStatus" styleClass="GrayLinks" oncomplete="redirectToBWPage();">.</apex:commandLink>
+						</div>
+					</apex:outputPanel>
+                    <!-- Adding SLDS Modal for popup box -->
+                    <div>
+                        <div class="slds-modal slds-modal_x-small" aria-hidden="false" role="dialog" id="showModalAftercompletion">
+                            <div class="slds-modal__container">
+                                <div class="slds-modal__header">
+                                    <button id="modalCloseButton" class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick="redirectToBWPage();return false;">
+                                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                            <use rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#close')}"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                    <h2 class="slds-text-heading_medium">Account match completed successfully</h2>
+                                </div>
+                                <div class="slds-modal__content slds-p-around_medium">
+                                    <apex:outputText value="Breadwinner has successfully matched all of your NetSuite Companies with Salesforce Accounts." />
+                                </div>
+                                <div class="slds-modal__footer">
+                                    <apex:commandLink rel="noopener noreferrer" id="okaybutton" styleClass="slds-button slds-button_brand" value="OK" onclick="redirectToBWPage();" reRender="nothing"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-backdrop" id="backdrop"></div>
+                    </div>
+                    <!-- End of Modal -->
+                </div>
+            </apex:form>
+            <apex:outputPanel id="AccountFetchCompleteScript">
+                <script>
+                function accountFetchComplete(){
+                    if({!JSENCODE(IF(isAccountMatchComplete,"true", "false")) == 'true'} || {!JSENCODE(IF(noRecordsInSF,"true", "false")) == 'true'}){
+                        var elementHeaderText = document.getElementById('accountMatchContent');
+                        elementHeaderText.style.display = 'none';
+                        
+                        var elementPageHeader = document.getElementById('thePageHeader');
+                        elementPageHeader.style.display = 'none';
+                        
+                        var elementInfo = document.getElementById('info');
+                        if(elementInfo){elementInfo.style.display = 'none';}
+                        
+                        var elementNextButton = document.getElementById('{!JSENCODE($Component.formId.theNextButton)}');
+                        elementNextButton.style.display = 'none';
+                        
+                        j$('#backdrop').addClass('slds-backdrop_open');
+                        j$('#showModalAftercompletion').addClass('slds-fade-in-open');
+                    }
+                }
+                </script>
+            </apex:outputPanel>
+        </body>
+    </html>
+</apex:page>

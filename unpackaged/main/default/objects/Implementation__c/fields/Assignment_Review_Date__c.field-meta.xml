@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Assignment_Review_Date__c</fullName>
+    <description>Date that we want to review and evaluate the DE/CSM assignment. Used for cases where we want to temporarily assign resources for a specific time period (e.g. 30 days, 90 days).</description>
+    <label>Assignment Review Date</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

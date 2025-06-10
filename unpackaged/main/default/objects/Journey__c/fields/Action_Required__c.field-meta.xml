@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Action_Required__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( TEXT( Stage__c )= &quot;Identified&quot; ,
+&quot;In Identified; Accept or Reject Journey (Days Overdue: &quot;&amp;TEXT(TODAY()- Identified_Date__c)&amp;&quot;)&quot;,
+
+IF( AND( TEXT( Stage__c )= &quot;Accepted&quot; , ISBLANK( Contact__r.Outreach_Current_Sequence_Name__c ) ),
+&quot;In Accepted; Add to Sequence (Days Overdue: &quot;&amp;TEXT(TODAY()- Accepted_Date__c)&amp;&quot;)&quot;,
+
+IF( AND( TEXT( Stage__c ) = &quot;Accepted&quot;, (TODAY() - Accepted_Date__c) &gt;= 7),
+&quot;Stuck in Accepted; Check Outreach Status for Issues (Days Overdue: &quot;&amp;TEXT(TODAY() - Accepted_Date__c - 6)&amp;&quot;)&quot;,
+
+IF( AND( TEXT( Stage__c ) = &quot;Meeting Booked&quot;, Meeting_Date__c &lt; TODAY(), Days_Since_Most_Recent_Outbound_Email__c &gt;=3),
+&quot;Past Meeting is Stale; Disposition, Pass to AE, Update Meeting Date, or Email Prospect (Days Overdue: &quot;&amp;TEXT(MAX(Days_Since_Most_Recent_Outbound_Email__c - 2, (TODAY() - Meeting_Date__c)))&amp;&quot;)&quot;,
+
+IF( AND( TEXT( Stage__c ) = &quot;Engaged&quot;,  Days_Since_Most_Recent_Outbound_Email__c &gt;= 5,  Num_Outbound_Touches__c &lt; 5  ),
+   &quot;Response but not enough Outbound touches (&quot;&amp;TEXT( 5 - Num_Outbound_Touches__c )&amp;&quot; of 5 required); Continue Outbound? (Days Overdue: &quot;&amp;TEXT(Days_Since_Most_Recent_Outbound_Email__c - 4)&amp;&quot;)&quot;,
+
+IF( AND( TEXT( Stage__c ) = &quot;Engaged&quot;,  Days_Since_Most_Recent_Inbound_Email__c &gt;= 7 ),
+   &quot;Response but no Recent Inbound Email after being worked; Close Journey? (Days Overdue: &quot;&amp;TEXT(Days_Since_Most_Recent_Inbound_Email__c - 6)&amp;&quot;)&quot;, 
+
+&quot;&quot;
+
+))))))</formula>
+    <label>Action Required</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

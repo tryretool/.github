@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lifecycle</fullName>
+    <active>true</active>
+    <label>Lifecycle</label>
+    <picklistValues>
+        <picklist>Activation_Date_Set_Method__c</picklist>
+        <values>
+            <fullName>Manual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Modeled</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Activation_Escalation_Status__c</picklist>
+        <values>
+            <fullName>Complete - No Reply</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Complete - Reply at Stage 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Complete - Reply at Stage 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escalation 1 Sent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escalation 2 Sent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Triggered</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Activation_Pacing__c</picklist>
+        <values>
+            <fullName>Behind</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Track</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Activation_Risk__c</picklist>
+        <values>
+            <fullName>Builder capacity %2F skills</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>External technical dependency</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financial difficulties %2F RIF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low priority</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monolithic use case</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No issue identified</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poor stakeholder support</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pricing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product %2F performance %2F stability issues</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Customer_POV__c</picklist>
+        <values>
+            <fullName>Platform</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Point Solution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prototype</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Deployment_Type_Workflows__c</picklist>
+        <values>
+            <fullName>Local Temporal cluster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not used</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Retool-managed Temporal cluster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self-managed Temporal cluster</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Deployment_Type__c</picklist>
+        <values>
+            <fullName>Container orchestration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Container orchestration%3A serverless</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Docker%3A multiple compute resources</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Docker%3A single compute resource</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kubernetes%3A Retool Helm chart</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kubernetes%3A custom configuration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Applicable</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mode_Set_Method__c</picklist>
+        <values>
+            <fullName>Manual</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Modeled</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mode__c</picklist>
+        <values>
+            <fullName>Driving adoption</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Expanding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recovery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Steady state</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Onboarding_Health__c</picklist>
+        <values>
+            <fullName>Green</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Red</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yellow</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Primary_Builder_Time_Zone__c</picklist>
+        <values>
+            <fullName>Central</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Central European Time %28CET%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eastern</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GMT %28UK%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IST %28India%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mountain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pacific</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Production_Hosting_Provider__c</picklist>
+        <values>
+            <fullName>AWS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Azure</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GCP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Production_Hosting_Style__c</picklist>
+        <values>
+            <fullName>Air-gapped</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cloud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Managed Cloud</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Self-hosted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SSO_Protocol__c</picklist>
+        <values>
+            <fullName>OIDC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SAML</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SCIM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Username%2Fpassword</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SSO_Provider__c</picklist>
+        <values>
+            <fullName>Active Directory</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Auth0</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Okta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sentiment__c</picklist>
+        <values>
+            <fullName>Green</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Red</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yellow</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Skill_Level__c</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Source_Control_Provider__c</picklist>
+        <values>
+            <fullName>AWS CodeCommit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Azure Repos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bitbucket</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Github</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Github Enterprise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gitlab %28Cloud%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gitlab %28Self-managed%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Stage__c</picklist>
+        <values>
+            <fullName>Activated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inactive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarding - Build</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarding - Deploy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Onboarding - Train</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unassigned</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>

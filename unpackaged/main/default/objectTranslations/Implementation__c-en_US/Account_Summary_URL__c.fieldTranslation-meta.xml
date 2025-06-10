@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- External Link to the account summary doc. --></help>
+        <label><!-- Account Summary URL --></label>
+        <name>Account_Summary_URL__c</name>
+    </CustomFieldTranslation>

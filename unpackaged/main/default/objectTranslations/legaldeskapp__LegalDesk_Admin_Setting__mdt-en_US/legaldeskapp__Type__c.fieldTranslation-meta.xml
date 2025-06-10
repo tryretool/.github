@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Type --></label>
+        <name>legaldeskapp__Type__c</name>
+        <picklistValues>
+            <masterLabel>Account Trigger</masterLabel>
+            <translation><!-- Account Trigger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auth Token</masterLabel>
+            <translation><!-- Auth Token --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bidirectional Trigger</masterLabel>
+            <translation><!-- Bidirectional Trigger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign Trigger</masterLabel>
+            <translation><!-- Campaign Trigger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deployment Trigger</masterLabel>
+            <translation><!-- Deployment Trigger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email Address</masterLabel>
+            <translation><!-- Email Address --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Object</masterLabel>
+            <translation><!-- Object --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Old Rule Ids</masterLabel>
+            <translation><!-- Old Rule Ids --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Trigger</masterLabel>
+            <translation><!-- Opportunity Trigger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scheduled Mass Create</masterLabel>
+            <translation><!-- Scheduled Mass Create --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OwnerId</fullName>
+    <description>This value often defaults to the person who created the campaign, but should be updated to the person that is responsible for the campaign.
+
+In System Use: Flow - &quot;Campaign - Create Campaign Button&quot;
+
+External Systems Utilization: None</description>
+    <inlineHelpText>This value often defaults to the person who created the campaign, but should be updated to the person that is responsible for the campaign.</inlineHelpText>
+    <securityClassification>Safe</securityClassification>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,14 @@
+It looks like this user is already in your org, but their account has been disabled. 
+
+<p>To re-enable users (see <a href="https://docs.retool.com/org-users/guides/disable-users#enable-users" target="_blank">this doc</a>): </p>
+
+<ol>
+<li>Please visit the settings page (as an admin)</li>
+
+<li>Find the user in question from the list (make sure to unselect "Hide Disabled users"—you should NOT see a check mark)</li>
+
+<li>Click the three dots button on the right side of the user row and select "Enable user"</li> </ol>
+
+<p><img src="https://downloads.intercomcdn.com/i/o/665716338/8f1790252cab627c693455d6/Screenshot+2023-02-03+at+11.54.54+AM.png?expires=1736872200&signature=a8187298b01b333954ca60d014d0f1c69f3ddafc99f2e26469c53af4bc3c95d2&req=ciYiEch4noJXFb4f3HP0gLyagyWxcQIaj1kcq5X8qT7G%0A" alt="Hide Disabled User"></p>
+
+<p><img src="https://downloads.intercomcdn.com/i/o/348064971/6cc89c6402d3100e2f8a2102/image.png?expires=1736872200&signature=b349e79f3a83c899b69f7d499580099ef8d9be442c2aacecd327e2ea55d4d1db&req=dyQvFs96lIZeFb4f3HP0gNSA6nzmpnM1Z2beSJmd8NNk%0A" alt="Enable User"></p>

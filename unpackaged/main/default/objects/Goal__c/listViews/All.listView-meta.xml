@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Assignee__c</columns>
+    <columns>Assignee_Role__c</columns>
+    <columns>Is_Ramp_Period__c</columns>
+    <columns>Ramp_Pct__c</columns>
+    <columns>SQO_Goal__c</columns>
+    <columns>New_Annualized_Revenue_Goal__c</columns>
+    <columns>Period_End__c</columns>
+    <columns>Team__c</columns>
+    <columns>Type__c</columns>
+    <columns>Segment__c</columns>
+    <columns>Subteam__c</columns>
+    <columns>Level__c</columns>
+    <columns>Renewal_Rate_Goal_QTD__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Type__c</field>
+        <operation>equals</operation>
+        <value>Team,Company</value>
+    </filters>
+    <filters>
+        <field>Team__c</field>
+        <operation>equals</operation>
+        <value>Technical Account Management</value>
+    </filters>
+    <filters>
+        <field>Period_Year__c</field>
+        <operation>equals</operation>
+        <value>2025</value>
+    </filters>
+    <label>All</label>
+</ListView>

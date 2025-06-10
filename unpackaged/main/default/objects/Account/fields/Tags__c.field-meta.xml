@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tags__c</fullName>
+    <description>List of Tags assigned to the Account record.
+
+External Systems Utilization: DLRS; MadKudu</description>
+    <inlineHelpText>List of Tags assigned to the Account record.</inlineHelpText>
+    <label>Tags</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Account_Tags</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

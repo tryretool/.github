@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BotVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+        <fullName>v1</fullName>
+        <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+        <botDialogs>
+            <botSteps>
+                <botMessages>
+                    <message>Hi! I&#39;m Agentforce, an AI assistant. I can do things like search your Salesforce data or the internet, edit your Salesforce records, and draft or revise emails and fields. Ask me &quot;What else can you do?&quot; to see how I can help simplify your work day.</message>
+                    <messageIdentifier>bf32f4c1-2a7f-49f9-99d6-3e8d02e8cf09</messageIdentifier>
+                </botMessages>
+                <stepIdentifier>5df2574a-51fc-4af5-bf40-833a041a8536</stepIdentifier>
+                <type>Message</type>
+            </botSteps>
+            <botSteps>
+                <stepIdentifier>cd30a8bb-044a-4120-9e25-ed82d1afe45c</stepIdentifier>
+                <type>Wait</type>
+            </botSteps>
+            <developerName>Welcome</developerName>
+            <isPlaceholderDialog>false</isPlaceholderDialog>
+            <label>Welcome</label>
+            <showInFooterMenu>false</showInFooterMenu>
+        </botDialogs>
+        <botDialogs>
+            <botSteps>
+                <botMessages>
+                    <message>Something went wrong. Try again.</message>
+                    <messageIdentifier>3cb5c1c5-5c44-47aa-b367-45be7e230c6d</messageIdentifier>
+                </botMessages>
+                <stepIdentifier>9dc2deac-3802-490c-a9f5-0c1f6aa82999</stepIdentifier>
+                <type>Message</type>
+            </botSteps>
+            <botSteps>
+                <stepIdentifier>d0527951-16ed-4ca4-8d2e-80a8a2ed3e1a</stepIdentifier>
+                <type>Wait</type>
+            </botSteps>
+            <developerName>Rich_Content_Error_Handling</developerName>
+            <isPlaceholderDialog>false</isPlaceholderDialog>
+            <label>Error Handler</label>
+            <showInFooterMenu>false</showInFooterMenu>
+        </botDialogs>
+        <citationsEnabled>false</citationsEnabled>
+        <conversationDefinitionPlanners>
+            <genAiPlannerName>EmployeeCopilotPlanner</genAiPlannerName>
+        </conversationDefinitionPlanners>
+        <conversationSystemDialogs>
+            <dialog>Rich_Content_Error_Handling</dialog>
+            <type>ErrorHandling</type>
+        </conversationSystemDialogs>
+        <conversationVariables>
+            <dataType>Text</dataType>
+            <developerName>currentObjectApiName</developerName>
+            <label>Current Object Api Name</label>
+        </conversationVariables>
+        <conversationVariables>
+            <dataType>Text</dataType>
+            <developerName>currentAppName</developerName>
+            <label>Current App Name</label>
+        </conversationVariables>
+        <conversationVariables>
+            <dataType>Text</dataType>
+            <developerName>currentRecordId</developerName>
+            <label>Current Record Id</label>
+        </conversationVariables>
+        <conversationVariables>
+            <dataType>Text</dataType>
+            <developerName>currentPageType</developerName>
+            <label>Current Page Type</label>
+        </conversationVariables>
+        <entryDialog>Welcome</entryDialog>
+        <intentDisambiguationEnabled>false</intentDisambiguationEnabled>
+        <intentV3Enabled>false</intentV3Enabled>
+        <knowledgeActionEnabled>false</knowledgeActionEnabled>
+        <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+        <smallTalkEnabled>false</smallTalkEnabled>
+    </BotVersion>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type</fullName>
+    <description>&lt;a href=&quot;https://docs.google.com/spreadsheets/d/1tsKZYdDf99UVnJHWhEJtZOKp3x7svnCvOM-DPHcEhrY/edit#gid=1870438679&quot; target=&quot;_blank&quot;&gt;See Retool Bookings Taxonomy&lt;/a&gt;</description>
+    <inlineHelpText>The top-level booking classification.</inlineHelpText>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+</CustomField>

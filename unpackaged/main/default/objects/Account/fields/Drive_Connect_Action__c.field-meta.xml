@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Drive_Connect_Action__c</fullName>
+    <description>Used to &#39;Create account plan&#39; or &#39;Replace account plan&#39;.</description>
+    <inlineHelpText>Used to &#39;Create account plan&#39; or &#39;Replace account plan&#39;.</inlineHelpText>
+    <label>Drive Connect Action</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Create account plan</fullName>
+                <default>false</default>
+                <label>Create account plan</label>
+            </value>
+            <value>
+                <fullName>Replace account plan</fullName>
+                <default>false</default>
+                <label>Replace account plan</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

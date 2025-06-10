@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Request</fullName>
+        <default>false</default>
+        <label>Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Self Assign</fullName>
+        <default>false</default>
+        <label>Self Assign</label>
+    </customValue>
+    <customValue>
+        <fullName>Manager</fullName>
+        <default>false</default>
+        <label>Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Mapped</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Mapped</label>
+    </customValue>
+    <masterLabel>SE Assignment Methods</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

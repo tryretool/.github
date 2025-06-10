@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sendoso_Send_Date__c</fullName>
+    <description>Date that the gift was sent through Sendoso.</description>
+    <inlineHelpText>Date that the gift was sent through Sendoso.</inlineHelpText>
+    <label>Sendoso: Send Date</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <type>Date</type>
+</CustomField>

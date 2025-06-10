@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>ZoomInfo Company</layout>
+        <sections>
+            <label><!-- Company Details --></label>
+            <section>Company Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>ZoomInfo Contact</layout>
+        <sections>
+            <label><!-- Company Details --></label>
+            <section>Company Details</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Details --></label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label><!-- Quality Metrics --></label>
+            <section>Quality Metrics</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>ZoomInfo Layout</layout>
+        <sections>
+            <label><!-- Company Details --></label>
+            <section>Company Details</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Details --></label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label><!-- Quality Metrics --></label>
+            <section>Quality Metrics</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description><!-- Use for ZoomInfo Company records --></description>
+        <label><!-- Company --></label>
+        <name>DOZISF__Company</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Use for ZoomInfo Contact records --></description>
+        <label><!-- Contact --></label>
+        <name>DOZISF__Contact</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Use for ZoomInfo records --></description>
+        <label><!-- ZoomInfo --></label>
+        <name>DOZISF__ZoomInfo</name>
+    </recordTypes>
+</CustomObjectTranslation>

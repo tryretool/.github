@@ -1,0 +1,8 @@
+Hey there! ​
+
+To set expectations here, critical issues are reserved for production outages. This is so that our on-call team can immediately react and put out any fires which may be occurring which are preventing some, or all of your users from accessing your apps, or workflows in production.​
+
+Some examples of a production outage are:
+> Some or all apps cannot be opened on the production instance
+> Workflows have stopped working on the production instance
+> Users are not able to log into the production instance

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Slack_Notifications_GTM_Tickets__c</fullName>
+    <defaultValue>&quot;Watched Tickets&quot;</defaultValue>
+    <inlineHelpText>Controls Slack notifications related to GTM Tickets</inlineHelpText>
+    <label>Slack Notifications: GTM Tickets</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Slack_GTM_Ticket_Notifications</valueSetName>
+    </valueSet>
+</CustomField>

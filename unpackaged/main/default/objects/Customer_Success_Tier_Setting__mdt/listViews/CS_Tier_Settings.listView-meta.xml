@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CS_Tier_Settings</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>NamespacePrefix</columns>
+    <columns>Activation_Set_Method__c</columns>
+    <columns>Expected_Days_to_Activation__c</columns>
+    <columns>Mode_Set_Method__c</columns>
+    <columns>DE_Assignment_SLA_Comment__c</columns>
+    <columns>Enroll_in_Launch_POC_Email__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>CS Tier Settings</label>
+    <language>en_US</language>
+</ListView>

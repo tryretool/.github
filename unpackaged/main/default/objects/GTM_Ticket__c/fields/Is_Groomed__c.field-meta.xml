@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Groomed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates if Backlog/Up Next tickets are groomed and ready to be claimed from the &#39;Shared Backlog&#39; pool of tickets.
+&#39;Groomed&#39; tickets must include complete details for: Problem/Context (aka Description), Points, and Priority.</description>
+    <inlineHelpText>Indicates if Backlog/Up Next tickets are groomed and ready to be claimed from the &#39;Shared Backlog&#39; pool of tickets.
+&#39;Groomed&#39; tickets must include complete details for: Problem/Context (aka Description), Points, and Priority.</inlineHelpText>
+    <label>Is Groomed?</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__Flag__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF(CONTAINS($User.UIThemeDisplayed, &#39;Theme4&#39;), 
+IF(breadwinner_ns__Status__c= &#39;Pending Approval&#39;, 
+IMAGE(&#39;/resource/breadwinner_ns__Breadwinner_for_NetSuite/Breadwinner/Images/pencil.png&#39;, &#39;Pending Approval&#39;), 
+IF(OR(breadwinner_ns__Status__c = &#39;Cancelled&#39;,breadwinner_ns__Status__c =&#39;Closed&#39;,breadwinner_ns__Status__c=&#39;Deleted&#39;),IMAGE(&#39;/resource/breadwinner_ns__Breadwinner_for_NetSuite/Breadwinner/Images/x-ltng.png&#39;, &#39;Cancelled/Closed&#39;),
+IF(breadwinner_ns__Status__c = &#39;Billed&#39;,IMAGE(&#39;/resource/breadwinner_ns__Breadwinner_for_NetSuite/Breadwinner/Images/Flags/green-flag.png&#39;, &#39;Billed&#39;),IMAGE(&#39;/resource/breadwinner_ns__Breadwinner_for_NetSuite/Breadwinner/Images/Flags/yellow-flag.png&#39;, &#39;Partially/Pending&#39;)))), 
+
+IF(breadwinner_ns__Status__c = &#39;Pending Approval&#39;, 
+IMAGE(&#39;/resource/breadwinner_ns__Breadwinner_for_NetSuite/Breadwinner/Images/pencil.png&#39;, &#39;Pending Approval&#39;, 16, 16), 
+IF(OR(breadwinner_ns__Status__c  = &#39;Cancelled&#39;,breadwinner_ns__Status__c  =&#39;Closed&#39;,breadwinner_ns__Status__c=&#39;Deleted&#39;),IMAGE(&#39;/resource/breadwinner_ns__Breadwinner_for_NetSuite/Breadwinner/Images/x-cls.png&#39;, &#39;Cancelled/Closed&#39;,16,16),
+IF(breadwinner_ns__Status__c  = &#39;Billed&#39;,IMAGE(&quot;/img/samples/flag_green.gif&quot;, &quot;Billed&quot;,16,16),IMAGE(&quot;/img/samples/flag_yellow.gif&quot;, &quot;Partially/Pending&quot;,16,16)))))</formula>
+    <label>Flag</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

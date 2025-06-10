@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>adroll__AdActivity_AdSpend60D__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Ad expenses in the last 60 days</description>
+    <externalId>false</externalId>
+    <label>Ad Spend in the last 60 days</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Calculates the success percentage of the batch job&apos;s executions. --></help>
+        <label><!-- Batch Success % --></label>
+        <name>dca_mass_action__Batch_Success_Percentage__c</name>
+    </CustomFieldTranslation>

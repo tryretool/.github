@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Subscription Plan Line Internal Id --></label>
+        <name>breadwinner_ns__SubscriptionPlanLineInternalId__c</name>
+    </CustomFieldTranslation>

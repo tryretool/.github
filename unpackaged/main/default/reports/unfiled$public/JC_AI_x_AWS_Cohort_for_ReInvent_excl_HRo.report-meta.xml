@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Account_Status__c</field>
+    </columns>
+    <columns>
+        <field>Account.Account_Status_Committed__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EMPLOYEES</field>
+    </columns>
+    <columns>
+        <field>Account.Account_Status_Self_Service__c</field>
+    </columns>
+    <columns>
+        <field>Account.Segment__c</field>
+    </columns>
+    <columns>
+        <field>Account.AWS_Marketplace_Propensity_to_Buy__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Tags__c</field>
+    </columns>
+    <columns>
+        <field>Account.LinkedIn_Company_Page__c</field>
+    </columns>
+    <description>[JC] AI x AWS Cohort for Re:Invent excl.</description>
+    <filter>
+        <booleanFilter>(1 AND 2 AND 3 AND 4) OR (1 AND 2 AND 3 AND 5)</booleanFilter>
+        <criteriaItems>
+            <column>Account.Tags__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>24TA AI AWS</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Segment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ENT</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.AWS_Marketplace_Propensity_to_Buy__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>High,Very High</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Account_Status_Committed__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Active Customer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Num_Open_Opportunities__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>[JC] AI x AWS Cohort for Re:Invent excl.</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>USERS.NAME</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

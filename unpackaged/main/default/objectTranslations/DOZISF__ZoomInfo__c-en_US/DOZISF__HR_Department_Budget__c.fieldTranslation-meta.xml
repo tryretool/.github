@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Approximate budget of the company&apos;s HR department. --></help>
+        <label><!-- HR Department Budget --></label>
+        <name>DOZISF__HR_Department_Budget__c</name>
+    </CustomFieldTranslation>

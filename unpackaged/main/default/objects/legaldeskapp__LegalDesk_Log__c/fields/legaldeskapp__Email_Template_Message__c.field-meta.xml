@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>legaldeskapp__Email_Template_Message__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF(legaldeskapp__Status__c = &#39;OK&#39;, &#39;Your request has been successfully created in Streamline AI. See link to view your request in Streamline AI - &#39; &amp; legaldeskapp__StreamLineAIURL__c &amp; &#39;requests/&#39; &amp;  legaldeskapp__LegalDesk_Task_Id__c, &#39;Your request could not be created. Please contact your system administrator.&#39;)</formula>
+    <label>Email Template Message</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

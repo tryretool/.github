@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Needs_Enrichment__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates whether the Contact record needs to be enriched for routing.
+
+External Systems Utilization: ZoomInfo; LeadGenius</description>
+    <inlineHelpText>Indicates whether the Contact record needs to be enriched for routing.</inlineHelpText>
+    <label>Needs Enrichment?</label>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

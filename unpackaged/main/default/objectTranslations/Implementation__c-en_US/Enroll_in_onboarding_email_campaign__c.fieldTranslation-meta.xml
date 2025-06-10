@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Enroll in onboarding email campaign? --></label>
+        <name>Enroll_in_onboarding_email_campaign__c</name>
+    </CustomFieldTranslation>

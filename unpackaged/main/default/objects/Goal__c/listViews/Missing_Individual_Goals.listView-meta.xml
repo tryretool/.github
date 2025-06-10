@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Missing_Individual_Goals</fullName>
+    <columns>NAME</columns>
+    <columns>Assignee__c</columns>
+    <columns>Assignee_Role__c</columns>
+    <columns>Period_Start__c</columns>
+    <columns>Ramp_Pct__c</columns>
+    <columns>SQO_Goal__c</columns>
+    <columns>New_Annualized_Revenue_Goal__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Team__c</field>
+        <operation>equals</operation>
+        <value>Account Executives,Sales Engineering,Sales Development</value>
+    </filters>
+    <filters>
+        <field>Period_Year__c</field>
+        <operation>equals</operation>
+        <value>2022</value>
+    </filters>
+    <filters>
+        <field>Type__c</field>
+        <operation>equals</operation>
+        <value>Individual</value>
+    </filters>
+    <filters>
+        <field>New_Annualized_Revenue_Goal__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>SQO_Goal__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>Missing Individual Goals</label>
+</ListView>

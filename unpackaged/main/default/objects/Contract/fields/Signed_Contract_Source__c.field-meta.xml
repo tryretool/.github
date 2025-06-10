@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Signed_Contract_Source__c</fullName>
+    <description>docusign - signed via Docusign integration
+none - not signed
+outsideOfRevOps - signed outside of docusign/RevOps.io integration
+partiallyOutsideOfRevOps - ammended document that was previously signed by a customer
+revopsEsignature - signed via RevOps e-signature</description>
+    <externalId>false</externalId>
+    <inlineHelpText>docusign - signed via Docusign integration
+none - not signed
+outsideOfRevOps - signed outside of docusign/RevOps.io integration
+partiallyOutsideOfRevOps - ammended document that was previously signed by a customer
+revopsEsignature - signed via RevOps e-signature</inlineHelpText>
+    <label>Signed Contract Source</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

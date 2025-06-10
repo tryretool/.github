@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_Slack_External__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Slack_Channel_External__c),&quot;Missing ID&quot;,HYPERLINK(&quot;https://retool.slack.com/archives/&quot;&amp;Slack_Channel_External__c, IF(ISBLANK(Slack_Channel_Name_External__c),&quot;Link&quot;, Slack_Channel_Name_External__c),&quot;_blank&quot;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Open Slack (External)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

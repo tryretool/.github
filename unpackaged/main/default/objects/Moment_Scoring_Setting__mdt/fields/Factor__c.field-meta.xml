@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Factor__c</fullName>
+    <description>The expected value (e.g., &quot;Yes&quot;, &quot;Director&quot;, &quot;Tradeshow&quot;)</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>The expected value (e.g., &quot;Yes&quot;, &quot;Director&quot;, &quot;Tradeshow&quot;)</inlineHelpText>
+    <label>Factor</label>
+    <length>150</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

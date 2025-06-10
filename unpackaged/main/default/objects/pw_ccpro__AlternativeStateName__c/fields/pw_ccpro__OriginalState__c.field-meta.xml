@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pw_ccpro__OriginalState__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Original State</label>
+    <referenceTo>pw_ccpro__State__c</referenceTo>
+    <relationshipLabel>Alternative State Names</relationshipLabel>
+    <relationshipName>AlternativeStateNames</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

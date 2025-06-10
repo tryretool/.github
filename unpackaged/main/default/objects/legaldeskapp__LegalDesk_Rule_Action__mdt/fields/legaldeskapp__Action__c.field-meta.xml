@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>legaldeskapp__Action__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Custom field to store the action attribute value for a Streamline AI Rule Action.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Action</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>require</fullName>
+                <default>true</default>
+                <label>require</label>
+            </value>
+            <value>
+                <fullName>notrequire</fullName>
+                <default>false</default>
+                <label>notrequire</label>
+            </value>
+            <value>
+                <fullName>hide</fullName>
+                <default>false</default>
+                <label>hide</label>
+            </value>
+            <value>
+                <fullName>show</fullName>
+                <default>false</default>
+                <label>show</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

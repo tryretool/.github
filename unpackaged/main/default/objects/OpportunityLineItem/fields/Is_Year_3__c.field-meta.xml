@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Year_3__c</fullName>
+    <formula>IF(
+ End_Date__c &gt;= ADDMONTHS(Opportunity.Term_Start_Date__c,24),
+ TRUE,
+ FALSE
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Year 3?</label>
+    <securityClassification>Safe</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

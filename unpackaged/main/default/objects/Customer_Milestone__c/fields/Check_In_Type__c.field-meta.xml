@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_In_Type__c</fullName>
+    <label>Check-In Type</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>45 days</fullName>
+                <default>false</default>
+                <label>45 days</label>
+            </value>
+            <value>
+                <fullName>90 days</fullName>
+                <default>false</default>
+                <label>90 days</label>
+            </value>
+            <value>
+                <fullName>180 days</fullName>
+                <default>false</default>
+                <label>180 days</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Kick-off</controllingFieldValue>
+            <controllingFieldValue>Success Plan</controllingFieldValue>
+            <controllingFieldValue>Hackathon</controllingFieldValue>
+            <controllingFieldValue>Technical Enablement</controllingFieldValue>
+            <controllingFieldValue>Business Review</controllingFieldValue>
+            <valueName>45 days</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Kick-off</controllingFieldValue>
+            <controllingFieldValue>Success Plan</controllingFieldValue>
+            <controllingFieldValue>Hackathon</controllingFieldValue>
+            <controllingFieldValue>Technical Enablement</controllingFieldValue>
+            <controllingFieldValue>Business Review</controllingFieldValue>
+            <valueName>90 days</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Kick-off</controllingFieldValue>
+            <controllingFieldValue>Success Plan</controllingFieldValue>
+            <controllingFieldValue>Hackathon</controllingFieldValue>
+            <controllingFieldValue>Technical Enablement</controllingFieldValue>
+            <controllingFieldValue>Business Review</controllingFieldValue>
+            <valueName>180 days</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Most_Recent_Activity_At__c</fullName>
+    <description>Most recent timestamp of the most recent Task or Event.</description>
+    <formula>IF(Most_Recent_Task_At__c &gt;= Most_Recent_Event_At__c || ISBLANK(Most_Recent_Event_At__c),Most_Recent_Task_At__c,Most_Recent_Event_At__c)</formula>
+    <inlineHelpText>Most recent timestamp of the most recent Task or Event.</inlineHelpText>
+    <label>Most Recent Activity At</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Digital</label>
+    <protected>false</protected>
+    <values>
+        <field>Activation_Set_Method__c</field>
+        <value xsi:type="xsd:string">Modeled</value>
+    </values>
+    <values>
+        <field>DE_Assignment_SLA_Comment__c</field>
+        <value xsi:type="xsd:string">No TAM will be assigned.</value>
+    </values>
+    <values>
+        <field>Enroll_in_Launch_POC_Email__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Expected_Days_to_Activation__c</field>
+        <value xsi:type="xsd:double">45.0</value>
+    </values>
+    <values>
+        <field>Mode_Set_Method__c</field>
+        <value xsi:type="xsd:string">Modeled</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NumberOfLeads</fullName>
+    <description>The number of leads associated with the campaign.
+
+In System Use: None
+
+External Systems Utilization: None</description>
+    <inlineHelpText>The number of leads associated with the campaign</inlineHelpText>
+    <securityClassification>Caution</securityClassification>
+</CustomField>

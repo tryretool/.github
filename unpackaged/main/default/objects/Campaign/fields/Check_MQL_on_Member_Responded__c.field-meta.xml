@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_MQL_on_Member_Responded__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>RevOps Use Only. Triggers creation of a moment and SDR follow-up
+
+In System Use: Flows - &#39;Campaign - After Save Automations&#39;, &#39;Campaign Member: After Save Automations&#39;, Campaign - After Save Automations&#39;, ReportType - Campaigns_with_Campaign_Members_and_Other
+
+External Systems Utilization: None</description>
+    <inlineHelpText>RevOps Use Only</inlineHelpText>
+    <label>Check MQL on Member Responded</label>
+    <securityClassification>Caution</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

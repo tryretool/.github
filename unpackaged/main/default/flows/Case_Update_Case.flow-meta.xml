@@ -1,0 +1,1290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>61.0</apiVersion>
+    <assignments>
+        <name>Assign_Billing_Status</name>
+        <label>Assign Billing Status</label>
+        <locationX>278</locationX>
+        <locationY>398</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Billing_Change_Case_Status</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Decision_2</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Deescalation</name>
+        <label>Assign Deescalation</label>
+        <locationX>668</locationX>
+        <locationY>814</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Deescalation_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Select_Deescalation_Reason</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Deescalation_Reason_Details__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Deescalation_Reason_Details_Collection</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_Support_Status_and_Prio</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Snoozed_Until</name>
+        <label>Assign Snoozed Until</label>
+        <locationX>1172</locationX>
+        <locationY>1950</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Snoozed_Until__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>snooze_until_date_select</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Case</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Support_Fields</name>
+        <label>Assign Support Detail Fields</label>
+        <locationX>1016</locationX>
+        <locationY>1098</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Outcome__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Select_Outcome</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Effort__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Select_Effort</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Assist__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Set_Assist.selectedChoiceValues</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Product_Area__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Product_Area_Subarea.topValue</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Product_Subarea__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Product_Area_Subarea.middleValue</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Validate_picklists</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Support_Status_and_Prio</name>
+        <label>Assign Support Status and Prio</label>
+        <locationX>848</locationX>
+        <locationY>823</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Support_Change_Status</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Priority</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Change_Priority</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Collect_Case_Details</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Billing_Assignment</name>
+        <label>Assign Billing Category</label>
+        <locationX>146</locationX>
+        <locationY>722</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Product_Subarea__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Select_Billing_Category</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Case</targetReference>
+        </connector>
+    </assignments>
+    <choices>
+        <name>Account_Administration</name>
+        <choiceText>Account Administration</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Account Administration	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Administration_pricing_usage_observability_etc</name>
+        <choiceText>Administration (pricing, usage, observability, etc)</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Administration (pricing, usage, observability, etc)</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Audit_Logs</name>
+        <choiceText>Audit Logs</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Audit Logs</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Authentication_to_Retool</name>
+        <choiceText>Authentication to Retool</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Authentication to Retool</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Billing</name>
+        <choiceText>Billing</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Billing</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Billing_Detail</name>
+        <choiceText>Billing Detail</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Billing Detail</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Billing_Detail_Updates</name>
+        <choiceText>Billing Detail Updates</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Billing Detail Updates</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Deployment</name>
+        <choiceText>Deployment</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Deployment</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Discount_Programs</name>
+        <choiceText>Discount Programs</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Discount Programs</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Environments</name>
+        <choiceText>Environments</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Environments</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>fdfdkfjdf</name>
+        <choiceText>fdfdkfjdf</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>fdfdkfjdf</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Feedback</name>
+        <choiceText>Feedback</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Feedback</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>General_Technical_Enablement</name>
+        <choiceText>General Technical Enablement</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>General Technical Enablement	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>IDE_state_event_handlers_debug_tools_etc</name>
+        <choiceText>IDE (state, event handlers, debug tools, etc)</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>IDE (state, event handlers, debug tools, etc)</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Invites_and_archives</name>
+        <choiceText>Invites and archives</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Invites and archives</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Invoice_Inquiry</name>
+        <choiceText>Invoice Inquiry</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Invoice Inquiry</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Logic_code_editing_transformers_JS_queries</name>
+        <choiceText>Logic (code editing, transformers, JS queries)</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Logic (code editing, transformers, JS queries)</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Navigation</name>
+        <choiceText>Navigation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Navigation</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>No</name>
+        <choiceText>No</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>No</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>On_Hold</name>
+        <choiceText>On Hold</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>On Hold</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Open</name>
+        <choiceText>Open</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Open</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Other</name>
+        <choiceText>Other</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Other</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Payment_Remittance</name>
+        <choiceText>Payment Remittance</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Payment Remittance</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Permissions</name>
+        <choiceText>Permissions</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Permissions</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Platform_runtime_history_import_etc</name>
+        <choiceText>Platform (runtime, history, import, etc)</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Platform (runtime, history, import, etc)</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Public_Apps</name>
+        <choiceText>Public Apps</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Public Apps</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Purchase_Orders</name>
+        <choiceText>Purchase Orders</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Purchase Orders</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Query_Library</name>
+        <choiceText>Query Library</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Query Library</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Retool_Embed</name>
+        <choiceText>Retool Embed</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Retool Embed</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Retool_Portals</name>
+        <choiceText>Retool Portals</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Retool Portals</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Retool_Product_Enablement</name>
+        <choiceText>Retool Product Enablement</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Retool Product Enablement	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>RetoolDB_Administration</name>
+        <choiceText>RetoolDB - Administration</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>RetoolDB - Administration	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>RetoolDB_Building</name>
+        <choiceText>RetoolDB - Building</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>RetoolDB - Building</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>RetoolDB_Deployment</name>
+        <choiceText>RetoolDB - Deployment</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>RetoolDB - Deployment</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Security</name>
+        <choiceText>Security</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Security</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Setup_and_Initial_Config</name>
+        <choiceText>Setup and Initial Config</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Setup and Initial Config	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Solved</name>
+        <choiceText>Solved</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Solved</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Source_Control</name>
+        <choiceText>Source Control</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Source Control</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Spam</name>
+        <choiceText>Spam</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Spam</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Stripe</name>
+        <choiceText>Stripe</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Stripe</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>System_Architecture</name>
+        <choiceText>System Architecture</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>System Architecture	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Tax</name>
+        <choiceText>Tax</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Tax</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Templates</name>
+        <choiceText>Templates</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Templates</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Themes</name>
+        <choiceText>Themes</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Themes</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Toolscript</name>
+        <choiceText>Toolscript</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Toolscript</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Tutorials</name>
+        <choiceText>Tutorials</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Tutorials</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>UI_components_app_settings_modules_etc</name>
+        <choiceText>UI (components, app settings, modules, etc)</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>UI (components, app settings, modules, etc)</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Vendor_Portal</name>
+        <choiceText>Vendor Portal</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Vendor Portal</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Waiting_for_Customer</name>
+        <choiceText>Waiting for Customer</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Waiting for Customer</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Workflow_Building</name>
+        <choiceText>Workflow Building</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Workflow Building</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Yes</name>
+        <choiceText>Yes</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Yes</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>Decision_2</name>
+        <label>Is Billing Case Solved?</label>
+        <locationX>278</locationX>
+        <locationY>506</locationY>
+        <defaultConnector>
+            <targetReference>Update_Case</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Billing Not Solved</defaultConnectorLabel>
+        <rules>
+            <name>BillingSolved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Billing_Change_Case_Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Solved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Billing_Category</targetReference>
+            </connector>
+            <label>Billing Solved</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_De_escalation</name>
+        <label>Is De-escalation</label>
+        <locationX>806</locationX>
+        <locationY>506</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Support_Status_and_Prio</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not de-escalation</defaultConnectorLabel>
+        <rules>
+            <name>De_escalation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Priority</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Critical</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Change_Priority</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Critical</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Deescalation_Reason</targetReference>
+            </connector>
+            <label>De-escalation</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Status_is_a</name>
+        <label>Status is</label>
+        <locationX>997</locationX>
+        <locationY>1519</locationY>
+        <defaultConnector>
+            <targetReference>Update_Case</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>On_Hold_f</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Waiting for Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Select_Snooze_Until_Date</targetReference>
+            </connector>
+            <label>On Hold / Waiting</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Update_Case_Billing_or_Support</name>
+        <label>Update Case - Billing or Support</label>
+        <locationX>542</locationX>
+        <locationY>182</locationY>
+        <defaultConnector>
+            <targetReference>Support_Update_Case</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Support Product Area</defaultConnectorLabel>
+        <rules>
+            <name>Billing_Product_Area</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Product_Area__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Billing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Billing_Update_Ticket</targetReference>
+            </connector>
+            <label>Billing Product Area</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Validate_picklists</name>
+        <label>Validate picklists</label>
+        <locationX>1203</locationX>
+        <locationY>1109</locationY>
+        <defaultConnector>
+            <targetReference>Status_is_a</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Pass</defaultConnectorLabel>
+        <rules>
+            <name>Fail</name>
+            <conditionLogic>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7)</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Solved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Effort__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Type</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Outcome__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Product_Area__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Product_Subarea__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Type</leftValueReference>
+                <operator>EqualTo</operator>
+            </conditions>
+            <connector>
+                <targetReference>Information_Required</targetReference>
+            </connector>
+            <label>Fail</label>
+        </rules>
+    </decisions>
+    <description>Cleaning up support case path / reducing redundancy / fixing bugs</description>
+    <dynamicChoiceSets>
+        <name>AssistSelect</name>
+        <dataType>String</dataType>
+        <displayField>Name</displayField>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Department__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Support</stringValue>
+            </value>
+        </filters>
+        <object>User</object>
+        <sortField>FirstName</sortField>
+        <sortOrder>Asc</sortOrder>
+        <valueField>Id</valueField>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>choice_product_subareas</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Product_Subarea__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>choice_types</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Type</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>DeescalationReasonPicklist</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Deescalation_Reason__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>Effort_Picklist</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Effort__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>Issue_Type_Picklist</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Type</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>Outcome_Picklist</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Outcome__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>PriorityPicklist</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Priority</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>product_subcategory_picklist</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Product_Subarea__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>StatusSelect</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Status</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>Subcategory_Picklist</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Product_Subarea__c</picklistField>
+        <picklistObject>Case</picklistObject>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <formulas>
+        <name>Default_Reopen_Date</name>
+        <dataType>Date</dataType>
+        <expression>CASE( MOD( DATEVALUE({!$Flow.CurrentDateTime}) - DATE( 1900, 1, 7 ), 7 ),
+  0, {!$Flow.CurrentDateTime} + 1 + 0, /* Sun: {!$Flow.CurrentDateTime} + 1 wknd day + 0 days */
+  4, {!$Flow.CurrentDateTime} + 1, /* Thurs: {!$Flow.CurrentDateTime} + 1 days */
+  5, {!$Flow.CurrentDateTime} + 2 + 1, /* Fri: {!$Flow.CurrentDateTime} + 2 wknd days + 1 days */
+  6, {!$Flow.CurrentDateTime} + 1 + 1, /* Sat: {!$Flow.CurrentDateTime} + 1 wknd days + 1 days */
+  {!$Flow.CurrentDateTime} + 1 /* Default (Mon/Tue/Wed): {!$Flow.CurrentDateTime} + 2 days */
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Default_Reopen_Value</name>
+        <dataType>DateTime</dataType>
+        <expression>CASE( MOD( DATEVALUE({!$Flow.CurrentDateTime}) - DATE( 1900, 1, 7 ), 7 ),
+  0, {!$Flow.CurrentDateTime} + 1 + 0, /* Sun: {!$Flow.CurrentDateTime} + 1 wknd day + 0 days */
+  4, {!$Flow.CurrentDateTime} + 1, /* Thurs: {!$Flow.CurrentDateTime} + 1 days */
+  5, {!$Flow.CurrentDateTime} + 2 + 1, /* Fri: {!$Flow.CurrentDateTime} + 2 wknd days + 1 days */
+  6, {!$Flow.CurrentDateTime} + 1 + 1, /* Sat: {!$Flow.CurrentDateTime} + 1 wknd days + 1 days */
+  {!$Flow.CurrentDateTime} + 1 /* Default (Mon/Tue/Wed): {!$Flow.CurrentDateTime} + 2 days */
+)</expression>
+    </formulas>
+    <formulas>
+        <name>is_assist_set</name>
+        <dataType>String</dataType>
+        <expression>IF(NOT(ISNULL({!recordId.Assist__c})), &quot;Yes&quot;, &quot;&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>varAssisted</name>
+        <dataType>String</dataType>
+        <expression>IF(ISBLANK({!varCaseAssist}), &quot;No&quot;, &quot;Yes&quot;)</expression>
+    </formulas>
+    <interviewLabel>Case - Update Case {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Update Case</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Update_Case</name>
+        <label>Update Case</label>
+        <locationX>866</locationX>
+        <locationY>2024</locationY>
+        <inputReference>recordId</inputReference>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Billing_Update_Ticket</name>
+        <label>Billing - Update Ticket</label>
+        <locationX>278</locationX>
+        <locationY>290</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Assign_Billing_Status</targetReference>
+        </connector>
+        <fields>
+            <name>billing_status_change_prompt</name>
+            <fieldText>&lt;p&gt;Please select the new Status of the case.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Billing_Change_Case_Status</name>
+            <choiceReferences>Open</choiceReferences>
+            <choiceReferences>On_Hold</choiceReferences>
+            <choiceReferences>Waiting_for_Customer</choiceReferences>
+            <choiceReferences>Solved</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Change Case Status</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Collect_Case_Details</name>
+        <label>Collect Case Details</label>
+        <locationX>841</locationX>
+        <locationY>1077</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Assign_Support_Fields</targetReference>
+        </connector>
+        <fields>
+            <name>Case_Detail_Collection_Description</name>
+            <fieldText>&lt;p&gt;Please share the following details about the Case:&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>required_flag</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;&lt;em&gt;&lt;u&gt;Case is solved. All fields are required.&lt;/u&gt;&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>recordId.Status</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Solved</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>Did_a_teammate_Assist_on_this_Case</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>varAssisted</elementReference>
+            </defaultValue>
+            <fieldText>Did a teammate Assist on this Case?</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Set_Assist</name>
+            <choiceReferences>AssistSelect</choiceReferences>
+            <defaultValue>
+                <elementReference>recordId.Assist__c</elementReference>
+            </defaultValue>
+            <extensionName>flowruntime:choiceLookup</extensionName>
+            <fieldText>Who Assisted?</fieldText>
+            <fieldType>ComponentChoice</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Did_a_teammate_Assist_on_this_Case</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <elementReference>Yes</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>Select_Outcome</name>
+            <choiceReferences>Outcome_Picklist</choiceReferences>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>recordId.Outcome__c</elementReference>
+            </defaultValue>
+            <fieldText>Outcome</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>recordId.Type</objectFieldReference>
+        </fields>
+        <fields>
+            <name>Select_Effort</name>
+            <choiceReferences>Effort_Picklist</choiceReferences>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>recordId.Effort__c</elementReference>
+            </defaultValue>
+            <fieldText>Effort</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Product_Area_Subarea</name>
+            <extensionName>flowruntime:dependentPicklists</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>dependencyWrapperApiName</name>
+                <value>
+                    <stringValue>Case</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>topPicklistApiName</name>
+                <value>
+                    <stringValue>Product_Area__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>middlePicklistApiName</name>
+                <value>
+                    <stringValue>Product_Subarea__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>topLabel</name>
+                <value>
+                    <stringValue>Product Area</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>topRequired</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>topValue</name>
+                <value>
+                    <elementReference>recordId.Product_Area__c</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>middleLabel</name>
+                <value>
+                    <stringValue>Product Subarea</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>middleRequired</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>middleValue</name>
+                <value>
+                    <elementReference>recordId.Product_Subarea__c</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Deescalation_Reason</name>
+        <label>Deescalation Reason</label>
+        <locationX>674</locationX>
+        <locationY>614</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Assign_Deescalation</targetReference>
+        </connector>
+        <fields>
+            <name>Deescalation_Reason_Description</name>
+            <fieldText>&lt;p&gt;You&#39;re de-escalating a Case down from Critical. Was the critical issue mitigated or was this falsely marked as a Critical by our systems?&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://retoolconfluence.atlassian.net/wiki/spaces/SUP/pages/596475911/Support+Priority+Definitions+Channels&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Prio definitions in Confluence&lt;/a&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Select_Deescalation_Reason</name>
+            <choiceReferences>DeescalationReasonPicklist</choiceReferences>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>recordId.Deescalation_Reason__c</elementReference>
+            </defaultValue>
+            <fieldText>Select Deescalation Reason</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Deescalation_Reason_Details_Collection</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>recordId.Deescalation_Reason_Details__c</elementReference>
+            </defaultValue>
+            <fieldText>Please share any additional context for the deescalation reason that seems relevant.</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <visibilityRule>
+                <conditionLogic>or</conditionLogic>
+                <conditions>
+                    <leftValueReference>Select_Deescalation_Reason</leftValueReference>
+                    <operator>NotEqualTo</operator>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Information_Required</name>
+        <label>Information Required</label>
+        <locationX>1431</locationX>
+        <locationY>1115</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <backButtonLabel>Go back and fill in</backButtonLabel>
+        <fields>
+            <name>error</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Error:&lt;/strong&gt; Solved case requires all fields to be populated.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Select_Snooze_Until_Date</name>
+        <label>Select Snooze Until Date</label>
+        <locationX>1278</locationX>
+        <locationY>1735</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Assign_Snoozed_Until</targetReference>
+        </connector>
+        <fields>
+            <name>snooze_until_date_select</name>
+            <dataType>Date</dataType>
+            <defaultValue>
+                <elementReference>Default_Reopen_Date</elementReference>
+            </defaultValue>
+            <fieldText>Choose the date you want to snooze case until</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Set_Billing_Category</name>
+        <label>Set Billing Category</label>
+        <locationX>146</locationX>
+        <locationY>614</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Billing_Assignment</targetReference>
+        </connector>
+        <fields>
+            <name>Billing_Category_Prompt</name>
+            <fieldText>&lt;p&gt;Please set the category for this case.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Select_Billing_Category</name>
+            <choiceReferences>Invoice_Inquiry</choiceReferences>
+            <choiceReferences>Stripe</choiceReferences>
+            <choiceReferences>Billing_Detail_Updates</choiceReferences>
+            <choiceReferences>Payment_Remittance</choiceReferences>
+            <choiceReferences>Purchase_Orders</choiceReferences>
+            <choiceReferences>Vendor_Portal</choiceReferences>
+            <choiceReferences>Tax</choiceReferences>
+            <choiceReferences>Spam</choiceReferences>
+            <choiceReferences>Other</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Select Billing Category</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Support_Update_Case</name>
+        <label>Support - Update Case</label>
+        <locationX>839</locationX>
+        <locationY>259</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Is_De_escalation</targetReference>
+        </connector>
+        <fields>
+            <name>SupportUpdatePrompt</name>
+            <fieldText>&lt;p&gt;Please use the fields below to update the Priority and Status of the Case&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Change_Priority</name>
+            <choiceReferences>PriorityPicklist</choiceReferences>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>recordId.Priority</elementReference>
+            </defaultValue>
+            <fieldText>Change Priority</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Support_Change_Status</name>
+            <choiceReferences>Open</choiceReferences>
+            <choiceReferences>On_Hold</choiceReferences>
+            <choiceReferences>Waiting_for_Customer</choiceReferences>
+            <choiceReferences>Solved</choiceReferences>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>recordId.Status</elementReference>
+            </defaultValue>
+            <fieldText>Change Status</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>416</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Update_Case_Billing_or_Support</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <name>varCaseAssist</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>recordId.Assist__c</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>varCaseType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>recordId.Type</elementReference>
+        </value>
+    </variables>
+</Flow>

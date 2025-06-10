@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Domain_Account_Mismatch__c</fullName>
+    <description>Flags non-public Email domains that are associated with Domain Map records at another Account.</description>
+    <formula>AccountId != Email_Domain_Map__r.Matched_Account__c 
+&amp;&amp; Email_Domain_Map__r.Matched_Account__c != NULL
+&amp;&amp; NOT(ISPICKVAL(Email_Domain_Type__c, &#39;Public&#39;))
+&amp;&amp; Email != NULL
+&amp;&amp; AccountId != &#39;001Qo00000tQHtcIAG&#39;</formula>
+    <label>Email Domain Account Mismatch?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

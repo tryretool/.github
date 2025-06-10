@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Include Name and Role of key technical stakeholders --></help>
+        <label><!-- Technical Stakeholders --></label>
+        <name>Technical_Stakeholders__c</name>
+    </CustomFieldTranslation>

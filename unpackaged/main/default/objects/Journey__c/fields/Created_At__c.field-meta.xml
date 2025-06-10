@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Created_At__c</fullName>
+    <description>Returns the starting timestamp of the Journey record. Outbound Jouneys start at &#39;Accepted At&#39;, while other Journeys start at &#39;Identified At&#39;</description>
+    <formula>IF(
+  ISBLANK(Identified_At__c),
+  IF(
+    ISBLANK(Accepted_At__c),
+    IF(
+      ISBLANK(Approached_At__c),
+      IF(
+        ISBLANK(Engaged_At__c),
+        IF(
+          ISBLANK(Meeting_Booked_At__c),
+          null,
+          Meeting_Booked_At__c
+        ),
+        Engaged_At__c
+      ),
+      Approached_At__c
+    ),
+    Accepted_At__c
+  ),
+  Identified_At__c
+)</formula>
+    <inlineHelpText>Returns the starting timestamp of the Journey record. Outbound Jouneys start at &#39;Accepted At&#39;, while other Journeys start at &#39;Identified At&#39;</inlineHelpText>
+    <label>Started At</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

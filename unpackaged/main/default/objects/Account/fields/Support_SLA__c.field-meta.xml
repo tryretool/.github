@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Support_SLA__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Link to related Support SLA record, which is indicative of the level of support provided to the customer.</description>
+    <inlineHelpText>Link to related Support SLA record, which is indicative of the level of support provided to the customer.</inlineHelpText>
+    <label>Support SLA</label>
+    <referenceTo>Support_SLA__c</referenceTo>
+    <relationshipLabel>Accounts</relationshipLabel>
+    <relationshipName>Accounts</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

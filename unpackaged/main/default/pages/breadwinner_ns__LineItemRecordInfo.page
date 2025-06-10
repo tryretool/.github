@@ -1,0 +1,922 @@
+<apex:page sidebar="false" standardController="breadwinner_ns__BW_Line_Item__c" extensions="breadwinner_ns.RecordInfoExtension" tabStyle="breadwinner_ns__BW_Line_Item__c" applyHtmlTag="true" title="{!IF(ISNULL(recordId),'New Line Item','Line Item: ')} {!lineItem.Name}">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <title>Breadwinner Line Item Record</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <apex:slds />
+            <apex:variable value="{!OR($User.UIThemeDisplayed == 'Theme4d', $User.UIThemeDisplayed == 'Theme4t')}" var="isLightning" />
+            <apex:variable value="{!$User.UIThemeDisplayed == 'Theme4t'}" var="isSalesforce1" />
+            <apex:includeScript value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Scripts/jquery-3.5.1.min.js')}" />
+            <script type="text/javascript">
+                var j$ = jQuery.noConflict();
+                j$(function(){
+                    message();
+                    if(document.getElementsByTagName("title") && document.getElementsByTagName("title")[0]){ 
+                        document.getElementsByTagName("title")[0].innerHTML = '{!JSENCODE(recordId)}' == '' ? "New Line Item" : "Line Item: {!JSENCODE(lineItem.Name)}";
+                    }
+                    checkText();
+                    setClassicItemTableLayout();
+                });
+                function message(){
+                    j$(".infoM6, .infoM4, .infoM3, .infoM2, .infoS1").addClass("slds-notify slds-notify_alert slds-theme_inverse-text  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px","background-color":"rgba(84,105,141,.95)","border-color":"rgba(84,105,141,.95)"});
+                    j$(".errorM6, .errorM4, .errorM3, .errorM2, .errorS1").addClass("slds-notify slds-notify_alert slds-theme_error  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css({"font-weight":"500","line-height":"1.4","word-spacing":"1px","display":"block","border-radius":"5px"});
+                    j$(".warningM6, .warningM4, .warningM3, .warningM2, .warningS1").addClass("slds-notify slds-notify_alert slds-theme_warning  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+                    j$(".confirmM6, .confirmM4, .confirmM3, .confirmM2, .confirmS1").addClass("slds-notify slds-notify_alert slds-theme_success slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+                    
+                    j$("div .messageText h4").css( "color", "white" );
+                    j$("div[class*='warning'] div.messageText h4").css( "color", "black" );
+                    j$("table.messageTable td").css({"color" : "white"});
+                    j$("div[class*='warning'] table.messageTable td").css( "color", "black" );
+                }
+                function checkText() {
+                    var $element = j$('#memo');
+                    var $main = j$('#MemoSection');
+                    var $copy = $element.clone().css({display: 'inline', width: 'auto', visibility: 'hidden'}).appendTo('body');
+                    if( $copy.width() > $element.width() ){
+                        // text was truncated.
+                        j$('#memo').css("max-width", $main.width()+"px"); 
+                        j$('#read').addClass('slds-show').removeClass('slds-hide');
+                    }
+                    else{
+                        j$('#read').addClass('slds-hide').removeClass('slds-show');
+                    }
+                    $copy.remove();
+                }
+                window.onresize = function(event) {
+                    checkText();
+                };
+                function openPopover(){
+                    j$('#help').addClass('slds-show').removeClass('slds-hide');
+                }
+                function closePopover(){
+                    j$('#help').addClass('slds-hide').removeClass('slds-show');   
+                }
+                function showHideSectionConent(sectionId,sectionContentId){
+                    var sectiondiv=document.getElementById(sectionId);
+                    j$("#"+sectionContentId).show();
+                    if(j$(sectiondiv).hasClass("slds-is-open")){
+                        j$(sectiondiv).removeClass("slds-is-open");
+                    }
+                    else{
+                        j$(sectiondiv).addClass("slds-is-open");
+                    }
+                }
+                function setClassicItemTableLayout(){
+                    if({!JSENCODE(IF(isLightning,"true", "false")) == 'false'}){
+                        var x = j$('#itemTableSection').width();
+                        console.log(x);
+                        j$('#itemTableSection .slds-table').css("table-layout", "unset");
+                        j$('#itemTableSection').width(x);
+                    }
+                }
+            </script>
+            <style>
+                .permission_warning_message br {
+                display: none;
+                }
+                .permission_warning_message {
+                padding-top: 10px !important;
+                }
+                .message {
+                margin-left: 0px !important; margin-right: 0px !important;
+                }
+                .messageCell {
+                width: 100%;
+                }
+                .slds-scope .slds-card__header {
+                padding: .75rem 1rem 0.75rem !important;
+                }
+                .defaultHeight{
+                min-height: 45px;
+                }
+                .slds-scope .slds-item_label {
+                font-size: 0.75rem;
+                text-align: left;
+                white-space: nowrap; 
+                }
+                .slds-scope .slds-tile+.slds-tile {
+                margin-top: 0px;
+                }
+                .slds-scope .slds-list_horizontal .slds-item_detail {
+                    width: 60%;
+                }
+                .slds-scope .slds-list_horizontal .slds-item_label {
+                    width: 40%;
+                }
+                .currencyLabel {
+                    width: 93% !important;
+                    font-weight: bold;
+                }
+                .currencyValue {
+                    width: 7% !important;
+                }
+                .slds-scope .slds-list_horizontal .slds-item_label, .slds-scope .slds-list_horizontal .slds-item_detail {
+                padding-bottom: 4px;
+                }
+                .slds-scope .slds-list_vertical .slds-item_label {
+                padding-bottom: 4px;
+                }
+                @media only screen and (min-width: 768px) and (max-width: 1023px) {
+                    .slds-scope .slds-item_label{
+                    text-align: left;
+                    }
+                    .currencyLabel {
+                        text-align: right !important;
+                    }
+                    .slds-scope .slds-list_horizontal .slds-item_label {
+                    width: 50%;
+                    }
+                    .slds-scope .slds-list_horizontal .slds-item_detail {
+                    width: 50%;
+                    }
+                    .lastColumnLabel {
+                        width: 25% !important;
+                    }
+                    .lastColumnDetail {
+                        width: 25% !important;
+                    }
+                    .slds-scope .slds-gutters .slds-col {
+                    padding: 0px;
+                    }
+                    .slds-scope .slds-list_vertical {
+                    border-top: 1px solid rgb(221, 219, 218);
+                    padding-top: 10px;
+                    margin-top: 4px;
+                    min-height: 3rem;
+                    min-height: 40px;
+                    }
+                    .panel{
+                    min-height: 40px;
+                    }
+                    .currencyLabel {
+                    width: 90% !important;
+                    }
+                    .currencyValue {
+                        width: 10% !important;
+                    }
+                }
+                @media only screen and (min-width: 1024px) {
+                    .slds-scope .slds-list_horizontal .slds-item_label{
+                    text-align: right;
+                    }
+                    .slds-scope .slds-gutters .firstCol{
+                    padding-left: 0px;
+                    }  
+                    .slds-scope .firstTile .slds-item_label {
+                    width: 160px;
+                    margin-right: 5px;
+                    padding-right: 0px;
+                    }
+                    .slds-scope .firstTile .slds-item_detail {
+                    width: calc(100% - 165px);
+                    padding-left: .5rem;
+                    }
+                }
+                @media only screen and (max-width: 768px) {
+                    @media only screen and (max-width: 767px){
+                        .slds-scope .xyz .slds-list_vertical {
+                        border-top: none;
+                        margin-top: 0px;
+                        padding-top: 0px;
+                        }
+                        .slds-scope .slds-list_horizontal .slds-item_detail,.slds-scope .xyz .slds-list_vertical .panel {
+                        width: 100% !important;
+                        border-bottom: 1px solid rgb(221, 219, 218);
+                        margin-bottom: 4px;
+                        min-height: 1.5rem;
+                        }
+                        .panel{
+                        padding-bottom:4px;
+                        }
+                        .slds-scope .slds-list_horizontal .slds-item_detail, .slds-scope .xyz .slds-list_vertical .panel {
+                        text-align: left;
+                        }
+                    }
+                    .slds-scope .slds-table_col-bordered td+td {
+                    border-left: none;
+                    }
+                    .slds-scope .slds-border_right {
+                    border-right: none;
+                    }
+                    .slds-scope .slds-border_left {
+                    border-left: none;
+                    }
+                    .slds-scope .slds-max-medium-table_stacked-horizontal tr {
+                    border: 2px solid rgb(221, 219, 218);
+                    }
+                    .slds-scope .slds-max-medium-table_stacked-horizontal tr>td:first-child {
+                    border-top: none; 
+                    }
+                }
+                .slds-scope .slds-section__title-action:hover, .slds-scope .slds-section__title-action:focus, .slds-scope .slds-section__title-action:active {
+                background: rgb(243, 242, 242); box-shadow: none;
+                }
+                .sections{
+                background: white;
+                }
+                .slds-item_detail , .panel{
+                white-space: normal;
+                overflow-wrap: break-word;
+                }
+                .slds-list_vertical .slds-item_label{
+                text-align: left;
+                }
+                .slds-scope .slds-brand-band:after{
+                height:0px;
+                }
+                .slds-scope .slds-table .slds-cell-wrap {
+                word-break: break-all;     
+                }
+                .grayText{
+                color:grey;  
+                }
+                .itemClass{
+                width: 250px;
+                /*white-space: normal !important;*/
+                }
+                .descriptionClass{
+                min-width: 300px;
+                }
+                .extraFieldsClass{
+                width: 150px;
+                white-space: normal !important;
+                }
+                .grayTextWithLinks{
+                font-size: 0.85rem;font-style: italic;color: gray;   
+                }
+                .grayLinks {
+                color: gray !important;
+                text-decoration: underline !important;
+                }
+                .slds-scope lightning-formatted-lookup.slds-form-element__static{
+                    color : rgb(1, 118, 211);
+                }
+                .slds-scope lightning-formatted-lookup.slds-form-element__static:hover{
+                	color : rgb(1, 68, 134);
+                	text-decoration : underline !important;
+                }
+                .yellowbackground{
+                    background :yellow;
+                }
+            </style>
+        </head>
+        <body style="{!IF(AND(isLightning,showBWLayout), 'background: rgba(176, 196, 223, 1);','')}">
+            <div class="slds-scope">
+                <apex:form id="theForm">
+                    <apex:variable var="txnNameApexVar" value="{!CASE(lineItem.breadwinner_ns__Transaction_Type__c,'SalesOrder','Sales Order','CreditMemo','Credit Memo','VendorCredit','Vendor Credit','CashSale','Cash Sale','CashRefund','Cash Refund','ReturnAuthorization','Return Authorization (RMA)','PurchaseOrder','Purchase Order','ItemFulfillment','Item Fulfillment','VendorBill','Vendor Bill','VendorPayment','Vendor Payment','VendorCredit','Vendor Credit',lineItem.breadwinner_ns__Transaction_Type__c)}"/>
+                    <apex:outputPanel rendered="{!ISNULL(recordId)}" layout="block">
+                        <apex:pageMessage severity="ERROR" strength="2" summary="Breadwinner does not support NetSuite Line Item creation from within Salesforce." escape="false" />
+                    </apex:outputPanel>
+                    <apex:outputPanel layout="block" rendered="{!NOT(showBWLayout)}">
+                        <div class="slds-box slds-align_absolute-center" style="height: 200px;">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="image" style="width: 200px;">
+                                        <apex:image url="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Images/breadwinner.png')}" />
+                                    </td>
+                                    <td class="content">
+                                        <div class="slds-text-align_center" style="font-size: 2.1em;">
+                                            <a id="LineItemLayout" rel="noopener noreferrer" href="{!$Page.LineItemRecordInfo}?id={!recordId}&showBWLayout=true" target="_parent" >View NetSuite Line Item in Dedicated Layout</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!AND(showBWLayout,ISNULL(lineItem.id),NOT(ISNULL(recordId)))}" layout="block" styleClass="{!IF(isLightning,'slds-p-around_small','')}">
+                        <apex:pageMessage severity="ERROR" strength="2" summary="<b>Record deleted<b/>" escape="false" rendered="{!showRecordDeletedMessage}">
+                            <p>The record you attempted to access has been deleted. The user who deleted this record may be able to recover it from the Recycle Bin. Deleted data is stored in the Recycle Bin for 15 days.</p>
+                        </apex:pageMessage>
+                        <apex:pageMessages id="beforeRecordFetch" rendered="{!!showRecordDeletedMessage}"/>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!AND(showBWLayout,NOT(ISNULL(lineItem.id)))}" layout="block" styleClass="{!IF(isLightning,'slds-p-around_small slds-brand-band slds-brand-band_cover slds-brand-band_medium','')}">
+                        <apex:outputPanel layout="block">
+                            <!-- Page Header Start -->
+                            <div class="slds-page-header slds-m-bottom_small" role="banner">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-has-flexi-truncate">
+                                        <div class="slds-media slds-media_center">
+                                            <div class="slds-media__figure">
+                                                <span class="slds-icon_container slds-icon-custom-custom93">
+                                                    <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                                        <use rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/custom-sprite/svg/symbols.svg#custom93')}"></use>
+                                                    </svg>
+                                                    <span class="slds-assistive-text"></span>
+                                                </span>
+                                            </div>
+                                            <div class="slds-media__body">
+                                                <p>NetSuite {!IF(AND($ObjectType.BW_Line_Item__c.fields.Line_Item_Type__c.Accessible,lineItem.Line_Item_Type__c == 'Expense'), 'Expense', If(lineItem.Line_Item_Type__c == 'Time', 'Billable Time', 'Line Item'))}</p>
+                                                <p class="slds-page-header__title slds-truncate"><apex:outputText value="{!lineItem.Name}" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.Name.Accessible}"/>&nbsp;
+                                                    <apex:outputText value="{!lineItem.ParentEntity__r.breadwinner_ns__CompanyName__c}" rendered="{!IF(AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,NOT(ISNULL(lineItem.breadwinner_ns__ParentEntity__c))),'TRUE','FALSE')}" styleClass="grayText"/>
+                                                    <apex:outputText value="{!lineItem.ParentEntity__r.Name}" rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.Name.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible,AND(ISNULL(lineItem.ParentEntity__r.breadwinner_ns__CompanyName__c),ISNULL(lineItem.ParentEntity__r.breadwinner_ns__FirstName__c)))}" styleClass="grayText"/>
+                                                    <apex:outputPanel rendered="{!IF(AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__IsPerson__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,lineItem.ParentEntity__r.breadwinner_ns__IsPerson__c,ISNULL(lineItem.ParentEntity__r.breadwinner_ns__CompanyName__c)),'TRUE','FALSE')}" styleClass="grayText">
+                                                        <apex:outputText value="{!lineItem.ParentEntity__r.breadwinner_ns__Salutation__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Salutation__c.Accessible}"/>
+                                                        <apex:outputText value="{!lineItem.ParentEntity__r.breadwinner_ns__FirstName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible}"/>
+                                                        <apex:outputText value="{!lineItem.ParentEntity__r.breadwinner_ns__MiddleName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__MiddleName__c.Accessible}"/>
+                                                        <apex:outputText value="{!lineItem.ParentEntity__r.breadwinner_ns__LastName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__LastName__c.Accessible}"/>
+                                                    </apex:outputPanel>&nbsp;
+                                                    <apex:outputText rendered="{!IF(lineItem.breadwinner_ns__Transaction_Type__c == 'Estimate',$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Estimate__c.Accessible,IF(lineItem.breadwinner_ns__Transaction_Type__c == 'SalesOrder',$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Sales_Order__c.Accessible,IF(OR(lineItem.breadwinner_ns__Transaction_Type__c =='Invoice',lineItem.breadwinner_ns__Transaction_Type__c =='CashSale'),$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Invoice__c.Accessible,IF(OR(lineItem.breadwinner_ns__Transaction_Type__c =='CreditMemo',lineItem.breadwinner_ns__Transaction_Type__c =='CashRefund'),$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Credit_Memo__c.Accessible,IF(lineItem.breadwinner_ns__Transaction_Type__c =='ItemFulfillment',$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Item_Fulfillment__c.Accessible,$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Return_Authorization__c.Accessible)))))}" value="{!CASE(lineItem.breadwinner_ns__Transaction_Type__c, 'Estimate',lineItem.Estimate__r.Name,'SalesOrder',lineItem.Sales_Order__r.Name,'Invoice',lineItem.Invoice__r.Name,'CashSale',lineItem.Invoice__r.Name,'CreditMemo',lineItem.Credit_Memo__r.Name,'CashRefund',lineItem.Credit_Memo__r.Name,'ReturnAuthorization',lineItem.Return_Authorization__r.Name,lineItem.Item_Fulfillment__r.Name)}" styleClass="grayText"/>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Page Header End -->
+                            <apex:pageMessages />
+                            <apex:pageMessage severity="Error" rendered="{!AND(ISBLANK(acWrapper.Name),$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__NetSuite_Org_Id__c.Accessible)}" summary="The NetSuite Org ID provided is not authorized with Breadwinner. Please connect to it from Breadwinner for NetSuite tab."/>
+                            <apex:pageMessage escape="false" severity="WARNING" summary="{!pageMessage}" rendered="{!LEN(pageMessage)>0}" />
+                            <apex:outputPanel styleClass="permission_warning_message" rendered="{!AND(NOT(isBWPermissionSetAssingedToCurrentUser),$ObjectType.PermissionSetAssignment.Accessible)}">
+                                <apex:pageMessage severity="Warning">
+                                    <apex:outputText value="You might not see all the fields on this page as no Breadwinner Permission Sets were assigned to you. You must at least have a Breadwinner Read Only Permission Set assigned, to see all the fields. "/>
+                                    <apex:outputText rendered="{!(isAdministrator)}">
+                                        You can add the Breadwinner Permission Set to one or more users by going to the Permissions tab on the
+                                        <a rel="noopener noreferrer" href="{!$Page.BreadwinnerForNetSuite}"> Breadwinner For NetSuite page.</a>
+                                    </apex:outputText>
+                                    <apex:outputText rendered="{!NOT(isAdministrator)}" value="Please ask your Salesforce Administrator to assign you appropriate Permissions."/>
+                                </apex:pageMessage>
+                            </apex:outputPanel>
+                            <div class="slds-card slds-grid slds-grid_vertical slds-m-bottom_small sections">
+                                <div class="slds-card__header slds-p-left_none slds-m-bottom_none">
+                                    <div class="slds-grid slds-gutters slds-wrap slds-p-right_small slds-p-left_small">
+                                        <div class="slds-col slds-tile slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 firstCol">
+                                            <div class="slds-tile__detail slds-wrap">
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Transaction_Type__c.Accessible}">
+                                                    <dt class="slds-item_label">Parent Record Type</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputText value="{!txnNameApexVar}"/>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Estimate__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c == 'Estimate')}">
+                                                    <dt class="slds-item_label">Estimate Name</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__Estimate__c)}" rendered="{!IF(NOT(ISNULL(lineItem.breadwinner_ns__Estimate__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedEstimate">{!lineItem.Estimate__r.Name}</apex:outputLink>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Sales_Order__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c == 'SalesOrder')}">
+                                                    <dt class="slds-item_label">Sales Order Name</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__Sales_Order__c)}" rendered="{!IF(NOT(ISNULL(lineItem.breadwinner_ns__Sales_Order__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedSalesOrder">{!lineItem.Sales_Order__r.Name}</apex:outputLink>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Invoice__c.Accessible,OR(lineItem.breadwinner_ns__Transaction_Type__c == 'Invoice',lineItem.breadwinner_ns__Transaction_Type__c == 'CashSale'))}">
+                                                    <dt class="slds-item_label"><apex:outputText value="{!IF(lineItem.breadwinner_ns__Transaction_Type__c=='CashSale','Cash Sale','Invoice')} Name"/></dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__Invoice__c)}" rendered="{!IF(NOT(ISNULL(lineItem.breadwinner_ns__Invoice__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedInvoice">{!lineItem.Invoice__r.Name}</apex:outputLink>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Credit_Memo__c.Accessible,OR(lineItem.breadwinner_ns__Transaction_Type__c == 'CreditMemo',lineItem.breadwinner_ns__Transaction_Type__c == 'CashRefund'))}">
+                                                    <dt class="slds-item_label"><apex:outputText value="{!IF(lineItem.breadwinner_ns__Transaction_Type__c=='CashRefund','Cash Refund','Credit Memo')} Name"/></dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__Credit_Memo__c)}" rendered="{!IF(NOT(ISNULL(lineItem.breadwinner_ns__Credit_Memo__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedCreditMemo">{!lineItem.Credit_Memo__r.Name}</apex:outputLink>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Item_Fulfillment__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c == 'ItemFulfillment')}">
+                                                    <dt class="slds-item_label">Item Fulfillment Name</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__Item_Fulfillment__c)}" rendered="{!IF(NOT(ISNULL(lineItem.breadwinner_ns__Item_Fulfillment__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedItemFulfillment">{!lineItem.Item_Fulfillment__r.Name}</apex:outputLink>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Return_Authorization__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c == 'ReturnAuthorization')}">
+                                                    <dt class="slds-item_label">RMA Name</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__Return_Authorization__c)}" rendered="{!IF(NOT(ISNULL(lineItem.breadwinner_ns__Return_Authorization__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedReturnAuthorization">{!lineItem.Return_Authorization__r.Name}</apex:outputLink>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Purchase_Order__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c == 'PurchaseOrder')}">
+                                                    <dt class="slds-item_label">Purchase Order Name</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__Purchase_Order__c)}" rendered="{!IF(NOT(ISNULL(lineItem.breadwinner_ns__Purchase_Order__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedPO">{!lineItem.Purchase_Order__r.Name}</apex:outputLink>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Bill__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c == 'VendorBill')}">
+                                                    <dt class="slds-item_label">Vendor Bill Name</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__Bill__c)}" rendered="{!IF(NOT(ISNULL(lineItem.breadwinner_ns__Bill__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedVB">{!lineItem.Bill__r.Name}</apex:outputLink>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Check__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c == 'Check')}">
+                                                    <dt class="slds-item_label">Check Name</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__Check__c)}" rendered="{!IF(NOT(ISNULL(lineItem.breadwinner_ns__Check__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedCheck">{!lineItem.Check__r.Name}</apex:outputLink>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentStatus__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c!='CashRefund')}">
+                                                    <dt class="slds-item_label">{!txnNameApexVar} Status</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputField value="{!lineItem.breadwinner_ns__ParentStatus__c}"/>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentTransDate__c.Accessible}">
+                                                    <dt class="slds-item_label">{!txnNameApexVar} Date</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputField value="{!lineItem.breadwinner_ns__ParentTransDate__c}"/>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentDueDate__c.Accessible, OR(lineItem.breadwinner_ns__Transaction_Type__c == 'Invoice',lineItem.breadwinner_ns__Transaction_Type__c == 'Estimate',lineItem.breadwinner_ns__Transaction_Type__c == 'PurchaseOrder',lineItem.breadwinner_ns__Transaction_Type__c == 'VendorBill'))}">
+                                                    <dt class="slds-item_label">{!CASE(lineItem.breadwinner_ns__Transaction_Type__c,'Estimate', 'Estimate Expires', 'Invoice', 'Invoice Due Date', 'PurchaseOrder', 'Purchase Order Receive By', 'Vendor Bill Due Date')}</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputField value="{!lineItem.breadwinner_ns__ParentDueDate__c}"/>
+                                                    </dd>
+                                                </apex:outputPanel>
+												<apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__BilledDate__c.Accessible,lineItem.breadwinner_ns__Line_Item_Type__c == 'Time')}">
+                                                    <dt class="slds-item_label">Billed Date</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputField value="{!lineItem.breadwinner_ns__BilledDate__c}"/>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentEntityStatus__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c == 'Estimate')}">
+                                                    <dt class="slds-item_label">Status</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputField value="{!lineItem.breadwinner_ns__ParentEntityStatus__c}"/>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentProbability__c.Accessible, lineItem.breadwinner_ns__Transaction_Type__c == 'Estimate')}">
+                                                    <dt class="slds-item_label">Estimate Probability</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputText value="{!lineItem.breadwinner_ns__ParentProbability__c}%" rendered="{!NOT(ISNULL(lineItem.breadwinner_ns__ParentProbability__c))}"/>
+                                                    </dd>
+                                                </apex:outputPanel>    
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentExpectedCloseDate__c.Accessible, lineItem.breadwinner_ns__Transaction_Type__c == 'Estimate')}">
+                                                    <dt class="slds-item_label">Estimate Exp. Close Date</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputField value="{!lineItem.breadwinner_ns__ParentExpectedCloseDate__c}"/>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentClassName__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c != 'ItemFulfillment')}">
+                                                    <dt class="slds-item_label">{!txnNameApexVar} Class</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputField value="{!lineItem.breadwinner_ns__ParentClassName__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentLocationName__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c != 'ItemFulfillment')}">
+                                                    <dt class="slds-item_label">{!txnNameApexVar} Location</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputField value="{!lineItem.breadwinner_ns__ParentLocationName__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap firstTile" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentDepartmentName__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c != 'ItemFulfillment')}">
+                                                    <dt class="slds-item_label">{!txnNameApexVar} Department</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputField value="{!lineItem.breadwinner_ns__ParentDepartmentName__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-tile slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                                            <div class="slds-tile__detail slds-wrap">
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__CategoryName__c.Accessible,$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Line_Item_Type__c.Accessible,lineItem.breadwinner_ns__Line_Item_Type__c == 'Expense')}">
+                                                    <dt class="slds-item_label">Category</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputField value="{!lineItem.breadwinner_ns__CategoryName__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ClassName__c.Accessible}">
+                                                    <dt class="slds-item_label">Class</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputField value="{!lineItem.breadwinner_ns__ClassName__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__DepartmentName__c.Accessible}">
+                                                    <dt class="slds-item_label">Department</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputField value="{!lineItem.breadwinner_ns__DepartmentName__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__LocationName__c.Accessible}">
+                                                    <dt class="slds-item_label">Location</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputField value="{!lineItem.breadwinner_ns__LocationName__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__TaxCodeName__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c != 'ItemFulfillment')}">
+                                                    <dt class="slds-item_label">Tax Code</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!lineItem.breadwinner_ns__TaxCodeName__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+												<apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__TaxRate1__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c != 'ItemFulfillment')}">
+                                                    <dt class="slds-item_label">Tax Rate 1</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!lineItem.breadwinner_ns__TaxRate1__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+												<apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__TaxRate2__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c != 'ItemFulfillment')}">
+                                                    <dt class="slds-item_label">Tax Rate 2</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!lineItem.breadwinner_ns__TaxRate2__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__BillingScheduleName__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c = 'SalesOrder')}">
+                                                    <dt class="slds-item_label" id="billingschedulename-lbl" data-id="billingschedulename-lbl">Billing Schedule</dt>
+                                                    <dd class="slds-item_detail" id="billingschedulename-op" data-id="billingschedulename-op">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!lineItem.breadwinner_ns__BillingScheduleName__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__TaxDetailsReference__c.Accessible,$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Line_Item_Type__c.Accessible,lineItem.breadwinner_ns__Line_Item_Type__c == 'Expense')}">
+                                                    <dt class="slds-item_label">Tax Details Reference</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputText value="{!lineItem.breadwinner_ns__TaxDetailsReference__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Memo__c.Accessible,$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Line_Item_Type__c.Accessible,lineItem.breadwinner_ns__Line_Item_Type__c == 'Expense')}">
+                                                    <dt class="slds-item_label">Memo</dt>
+                                                    <dd class="slds-item_detail">
+                                                        <apex:outputPanel layout="block" styleClass="slds-grid slds-truncate_container_85" id="MemoSection">
+                                                            <span class="slds-form-element__static slds-truncate" id="memo">{!lineItem.breadwinner_ns__Memo__c}</span>
+                                                            <span class="slds-no-flex slds-hide slds-is-relative" id="read">
+                                                                <a onclick="openPopover()" aria-describedby="help"> Read more</a>
+                                                                <div class="slds-popover slds-popover_small slds-hide slds-nubbin_bottom-right slds-is-absolute" role="tooltip" id="help" style="bottom: 36px; left: -160px;">
+                                                                    <button class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close" title="Close dialog" onclick="closePopover();return false;">
+                                                                        <svg class="slds-button__icon" aria-hidden="true">
+                                                                            <use rel="noopener noreferrer" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#close')}" />
+                                                                        </svg>
+                                                                        <span class="slds-assistive-text">Close dialog</span>
+                                                                    </button>
+                                                                    <div class="slds-popover__body">
+                                                                        <apex:outputField value="{!lineItem.breadwinner_ns__Memo__c}"/>
+                                                                    </div>
+                                                                </div>
+                                                            </span>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-tile slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-3">
+                                            <div class="slds-list_vertical slds-tile__detail slds-wrap xyz">
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentSalesforceAccount__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c != 'ItemFulfillment',lineItem.breadwinner_ns__Transaction_Type__c != 'Check')}">
+                                                    <dt class="slds-item_label lastColumnLabel">Salesforce Account</dt>
+                                                    <dd class="slds-item_detail lastColumnDetail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__ParentSalesforceAccount__c)}" rendered="{!IF(NOT(ISNULL(lineItem.breadwinner_ns__ParentSalesforceAccount__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedSFAccount">{!lineItem.ParentSalesforceAccount__r.Name}</apex:outputLink>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentSubsidiary__c.Accessible,NOT(isSubsidiaryDisabledInNetSuite),lineItem.breadwinner_ns__Transaction_Type__c != 'ItemFulfillment')}">
+                                                    <dt class="slds-item_label lastColumnLabel">NetSuite Subsidiary</dt>
+                                                    <dd class="slds-item_detail lastColumnDetail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__ParentSubsidiary__c)}" rendered="{!IF(NOT(ISNULL(lineItem.breadwinner_ns__ParentSubsidiary__c)),'TRUE','FALSE')}" target="_blank" id="AssociatedSubsidiary"><apex:outputText value="{!lineItem.ParentSubsidiary__r.Name}"/></apex:outputLink>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!And($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentEntity__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c != 'Check')}">
+                                                    <dt class="slds-item_label lastColumnLabel">
+                                                        <apex:variable var="isNSCompanyDataAvailable" value="{!AND(NOT(ISNULL(lineItem.breadwinner_ns__ParentEntity__c)),$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentEntity__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Entity_Type__c.Accessible)}"></apex:variable>
+                                                        <apex:outputPanel rendered="{!isNSCompanyDataAvailable}">
+                                                            NetSuite {!IF(lineItem.ParentEntity__r.breadwinner_ns__Entity_Type__c!='Vendor','Customer','Vendor')}
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{!NOT(isNSCompanyDataAvailable)}">
+                                                            Client Name
+                                                        </apex:outputPanel>                                                     
+                                                    </dt>
+                                                    <dd class="slds-item_detail lastColumnDetail">
+                                                        <apex:outputPanel layout="block" rendered="{!NOT(ISNULL(lineItem.breadwinner_ns__ParentEntity__c))}">
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__ParentEntity__c)}" rendered="{!IF(AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,NOT(ISNULL(lineItem.breadwinner_ns__ParentEntity__c))),'TRUE','FALSE')}" target="_blank">{!lineItem.ParentEntity__r.breadwinner_ns__CompanyName__c}</apex:outputLink>
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__ParentEntity__c)}" rendered="{!AND($ObjectType.breadwinner_ns__BW_Company__c.fields.Name.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__CompanyName__c.Accessible,$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible,NOT(ISNULL(lineItem.breadwinner_ns__ParentEntity__c)),AND(ISNULL(lineItem.ParentEntity__r.breadwinner_ns__CompanyName__c),ISNULL(lineItem.ParentEntity__r.breadwinner_ns__FirstName__c)))}" target="_blank">{!lineItem.ParentEntity__r.Name}</apex:outputLink>
+                                                            <apex:outputLink rel="noopener noreferrer" value="/{!URLFOR(lineItem.breadwinner_ns__ParentEntity__c)}" rendered="{!IF(AND($ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__IsPerson__c.Accessible,lineItem.ParentEntity__r.breadwinner_ns__IsPerson__c,NOT(ISNULL(lineItem.breadwinner_ns__ParentEntity__c)),ISNULL(lineItem.ParentEntity__r.breadwinner_ns__CompanyName__c)),'TRUE','FALSE')}" target="_blank">
+                                                                <apex:outputText value="{!lineItem.ParentEntity__r.breadwinner_ns__Salutation__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__Salutation__c.Accessible}"/>
+                                                                <apex:outputText value="{!lineItem.ParentEntity__r.breadwinner_ns__FirstName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__FirstName__c.Accessible}"/>
+                                                                <apex:outputText value="{!lineItem.ParentEntity__r.breadwinner_ns__MiddleName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__MiddleName__c.Accessible}"/>
+                                                                <apex:outputText value="{!lineItem.ParentEntity__r.breadwinner_ns__LastName__c}" rendered="{!$ObjectType.breadwinner_ns__BW_Company__c.fields.breadwinner_ns__LastName__c.Accessible}"/>
+                                                            </apex:outputLink>      
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel layout="block" rendered="{!ISNULL(lineItem.breadwinner_ns__ParentEntity__c)}">
+                                                            <apex:outputText value="{!lineItem.breadwinner_ns__ParentCompanyName__c} " rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentCompanyName__c.Accessible}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentSalesRepName__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c != 'ItemFulfillment',lineItem.breadwinner_ns__Transaction_Type__c != 'PurchaseOrder',lineItem.breadwinner_ns__Transaction_Type__c != 'Check')}">
+                                                    <dt class="slds-item_label lastColumnLabel">NetSuite Sales Rep</dt>
+                                                    <dd class="slds-item_detail lastColumnDetail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputField value="{!lineItem.breadwinner_ns__ParentSalesRepName__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__RevRecEndDate__c.Accessible,OR(lineItem.breadwinner_ns__Transaction_Type__c == 'Invoice',lineItem.breadwinner_ns__Transaction_Type__c == 'CashSale',lineItem.breadwinner_ns__Transaction_Type__c == 'SalesOrder',lineItem.breadwinner_ns__Transaction_Type__c == 'ReturnAuthorization'))}">
+                                                    <dt class="slds-item_label lastColumnLabel">Rev Rec Start Date</dt>
+                                                    <dd class="slds-item_detail lastColumnDetail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputField value="{!lineItem.breadwinner_ns__RevRecStartDate__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__RevRecEndDate__c.Accessible,OR(lineItem.breadwinner_ns__Transaction_Type__c == 'Invoice',lineItem.breadwinner_ns__Transaction_Type__c == 'CashSale',lineItem.breadwinner_ns__Transaction_Type__c == 'SalesOrder',lineItem.breadwinner_ns__Transaction_Type__c == 'ReturnAuthorization'))}">
+                                                    <dt class="slds-item_label lastColumnLabel">Rev Rec End Date</dt>
+                                                    <dd class="slds-item_detail lastColumnDetail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputField value="{!lineItem.breadwinner_ns__RevRecEndDate__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel styleClass="slds-list_horizontal slds-wrap" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__RevRecEndDate__c.Accessible,OR(lineItem.breadwinner_ns__Transaction_Type__c == 'Invoice',lineItem.breadwinner_ns__Transaction_Type__c == 'CashSale',lineItem.breadwinner_ns__Transaction_Type__c == 'SalesOrder',lineItem.breadwinner_ns__Transaction_Type__c == 'ReturnAuthorization'))}">
+                                                    <dt class="slds-item_label lastColumnLabel">Rev Rec Schedule</dt>
+                                                    <dd class="slds-item_detail lastColumnDetail">
+                                                        <apex:outputPanel layout="block">
+                                                            <apex:outputField value="{!lineItem.breadwinner_ns__RevRecScheduleName__c}"/>
+                                                        </apex:outputPanel>
+                                                    </dd>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <apex:outputPanel styleClass="slds-grid slds-gutters slds-wrap slds-p-right_small slds-p-left_small" rendered="{!AND($ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__ParentCurrencyName__c.Accessible,lineItem.breadwinner_ns__Transaction_Type__c != 'ItemFulfillment')}">
+                                        <div class="slds-col slds-tile">
+                                            <div class="slds-tile__detail slds-list_horizontal slds-wrap">
+                                                <span class="slds-item_label currencyLabel">Currency</span>
+                                                <dd class="slds-item_detail slds-text-align_right currencyValue">
+                                                    <apex:outputPanel layout="block">
+                                                        <apex:outputField value="{!lineItem.breadwinner_ns__ParentCurrencyName__c}"/>
+                                                    </apex:outputPanel>
+                                                </dd>
+                                            </div> 
+                                        </div>
+                                    </apex:outputPanel>
+                                    <c:customRelatedListSingle cmpUniqueId="itemLineItems"
+                                                realtedLineItemType="{!CASE(lineItem.breadwinner_ns__Line_Item_Type__c,'Expense','Expense', 'Time', 'Time','Item')}"
+                                                relatedListTitle="LineItemInfo"
+                                                showTableHeader=""                                    
+                                                parentRecordId="{!$CurrentPage.parameters.Id}"
+                                                relatedChildObjectAPIName="BW_Line_Item__c"
+                                                relatedLookupFieldAPIName="{!CASE(lineItem.breadwinner_ns__Transaction_Type__c,'VendorBill','Bill__c','Check','Check__c','SalesOrder','Sales_Order__c','CreditMemo','Credit_Memo__c','CashSale','Invoice__c','Invoice','Invoice__c','CashRefund','Credit_Memo__c','VendorCredit','Credit_Memo__c','ItemFulfillment','Item_Fulfillment__c','ReturnAuthorization','Return_Authorization__c','PurchaseOrder','Purchase_Order__c','Estimate__c')}"
+                                                relatedListIconName="custom:custom93"
+                                                hideNameColumn="TRUE"
+                                                hideCmpOnNodata="TRUE"  
+                                                rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.Accessible}"
+                                                relatedIconClass="slds-icon_container slds-icon-custom-custom93"
+                                                relatedIconSize="medium"
+                                    >
+                                    </c:customRelatedListSingle> 
+                                </div>
+                            </div>
+                            <div class="slds-card slds-p-top_x-small slds-p-bottom_none slds-m-top_none sections">
+                                <div class="slds-card__body">
+                                    <!-- NetSuite Custom Fields SECTION START -->
+                                    <apex:includeLightning />    
+                                    <div id="NetsuiteCustomFieldsComponentid" />
+                                    <div id="NetsuiteCustomFieldsComponentid-spin">
+                                        <div style="height: 3rem;position:relative;">
+                                            <div role="status" class="slds-spinner slds-spinner_small slds-spinner_brand">
+                                                <span class="slds-assistive-text">Loading</span>
+                                                <div class="slds-spinner__dot-a"></div>
+                                                <div class="slds-spinner__dot-b"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <apex:variable var="cmpNamespacePrefix" value="{!getCompNamespacePrefix}" />
+                                    <script>
+                                        $Lightning.use("{!JSENCODE(cmpNamespacePrefix)}:lightningOutUnstyled", function() {
+                                            $Lightning.createComponent("{!JSENCODE(cmpNamespacePrefix)}:recordFieldsDisplay",
+                                                                       { 
+                                                                           recordId : '{!recordId}',
+                                                                           isFromBreadwinner : true ,
+                                                                           sectionType : "NetSuite's Custom Fields"
+                                                                           
+                                                                       },
+                                                                       "NetsuiteCustomFieldsComponentid", 
+                                                                       function(cmp) {
+                                                                           setTimeout(function(){document.getElementById('NetsuiteCustomFieldsComponentid-spin').style.display="none";},3000);
+                                                                       });
+                                        });
+                                    </script>
+									<apex:outputPanel rendered="{!AND(isAdministrator,NOT(isAccessToAllCustomFields))}">
+										<div class="slds-border_bottom slds-m-bottom_small slds-p-bottom_small slds-m-horizontal_medium">
+											<div class="slds-inline_icon_text slds-text-heading_small slds-grid slds-inline_icon_text--warning">
+												<svg aria-hidden="true" class="slds-icon slds-icon-text-warning slds-icon--small slds-m-left--small slds-m-right--small slds-col slds-no-flex" style="fill: #FEA22E;">
+													<use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+												</svg>
+												<div class="slds-col slds-align-middle">
+													<p style="color: #FEA22E;" >
+														There are certain custom fields that are currently not visible on this page. To enable the visibility of the custom fields on this page, please grant the necessary permissions. It is recommended to use a single permission set, such as 'Breadwinner for NetSuite Custom Fields Permission Set' or a similar option for all the custom fields.
+													</p>
+												</div>
+											</div>
+										</div>
+									</apex:outputPanel>
+                                    <!-- NetSuite Custom Fields SECTION END -->
+                                    <!-- Salesforce Custom Fields SECTION START -->
+                                    <div id="SfCustomFieldsComponentid" />
+                                    <div id="SfCustomFieldsComponentid-spin">
+                                        <div style="height: 3rem;position:relative;">
+                                            <div role="status" class="slds-spinner slds-spinner_small slds-spinner_brand">
+                                                <span class="slds-assistive-text">Loading</span>
+                                                <div class="slds-spinner__dot-a"></div>
+                                                <div class="slds-spinner__dot-b"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        $Lightning.use("{!JSENCODE(cmpNamespacePrefix)}:lightningOutUnstyled", function() {
+                                            $Lightning.createComponent("{!JSENCODE(cmpNamespacePrefix)}:recordFieldsDisplay",
+                                                                       { 
+                                                                           recordId : '{!recordId}',
+                                                                           isFromBreadwinner : true ,
+                                                                           sectionType : "Your Company's Custom Fields"
+                                                                           
+                                                                       },
+                                                                       "SfCustomFieldsComponentid", 
+                                                                       function(cmp) {
+                                                                           setTimeout(function(){document.getElementById('SfCustomFieldsComponentid-spin').style.display="none";},3000);
+                                                                       });
+                                        });
+                                    </script>
+                                    <!-- Salesforce Custom Fields SECTION END -->                                    
+                                    <div class="slds-panel__section slds-p-bottom_none slds-p-top_none">
+                                        <div class="slds-section" id="SectionHeader">
+                                            <h3 class="slds-section__title slds-theme_shade">
+                                                <button class="slds-button slds-section__title-action" type="button" onclick="showHideSectionConent('SectionHeader','addSection');">
+                                                    <svg aria-hidden="true" class="slds-section__title-action-icon slds-button__icon slds-button__icon_left">
+                                                        <use rel="noopener noreferrer" xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#switch')}"></use>
+                                                    </svg>Additional Information</button>
+                                            </h3>
+                                            <div class="slds-section__content slds-p-around_small slds-p-top_none" id="addSection">
+                                                <div class="slds-grid slds-gutters_large slds-has-flexi-truncate slds-wrap slds-p-top_x-small">
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_1" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.OwnerId.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Owner</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.OwnerId}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_2" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__Line__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Line</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.breadwinner_ns__Line__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_2" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__PercentComplete__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Percent Complete</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.breadwinner_ns__PercentComplete__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_2" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__QuantityAvailable__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Quantity Available</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.breadwinner_ns__QuantityAvailable__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_2" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__QuantityBackOrdered__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Quantity Back Ordered</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.breadwinner_ns__QuantityBackOrdered__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_2" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__QuantityBilled__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Quantity Billed</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.breadwinner_ns__QuantityBilled__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_2" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__QuantityCommitted__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Quantity Committed</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.breadwinner_ns__QuantityCommitted__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_2" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__QuantityFulfilled__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Quantity Fulfilled</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.breadwinner_ns__QuantityFulfilled__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_2" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__OnHand__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Quantity On Hand</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.breadwinner_ns__OnHand__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_2" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__QuantityPacked__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Quantity Packed</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.breadwinner_ns__QuantityPacked__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_2" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__QuantityPicked__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Quantity Picked</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.breadwinner_ns__QuantityPicked__c}"/>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_3" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.breadwinner_ns__NetSuite_Org_Id__c.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">NetSuite Org Id</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.breadwinner_ns__NetSuite_Org_Id__c}" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel layout="block" styleClass="slds-col slds-large-size_1-of-3 slds-medium-size_1-of-2 slds-size_1-of-1 slds-order_4" rendered="{!$ObjectType.breadwinner_ns__BW_Line_Item__c.fields.LastModifiedDate.Accessible}">
+                                                        <div class="slds-form-element slds-border_bottom defaultHeight">
+                                                            <label class="slds-form-element__label">Last Modified Date in Salesforce</label>
+                                                            <div class="slds-form-element__control">
+                                                                <span class="slds-form-element__static">
+                                                                    <apex:outputField value="{!lineItem.LastModifiedDate}" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                </apex:form>
+            </div>
+        </body>
+    </html>
+</apex:page>

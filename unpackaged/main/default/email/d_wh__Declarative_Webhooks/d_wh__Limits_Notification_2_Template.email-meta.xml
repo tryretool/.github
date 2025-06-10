@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Declarative Webhooks: Notification for usage limits reached</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Limits Notification 2 Template</name>
+    <style>none</style>
+    <subject>ATTENTION NEEDED: Declarative Webhooks Calls Limit Reached</subject>
+    <textOnly>Hi!
+
+
+We&#39;re thrilled you&#39;re getting such great use out of Declarative Webhooks, but must inform you that you have hit your monthly calls limit.
+
+
+Due to this, you will not be able to make/receive any additional calls until next month.
+
+
+We understand that this may cause inconvenience, and we apologize for any disruption this may cause to your integration. However, we offer upgrade options to higher tier plans that can cater to your needs.
+
+
+If you have any questions or concerns, please don&#39;t hesitate to reach out to our customer support team, and we will be happy to assist you.
+
+
+Thank you for choosing Declarative Webhooks for your Salesforce integration needs!
+
+
+The Declarative Webhooks Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

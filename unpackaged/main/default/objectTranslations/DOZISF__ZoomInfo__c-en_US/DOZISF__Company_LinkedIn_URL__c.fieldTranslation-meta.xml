@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- URL of the company profile within LinkedIn. --></help>
+        <label><!-- Company LinkedIn URL --></label>
+        <name>DOZISF__Company_LinkedIn_URL__c</name>
+    </CustomFieldTranslation>

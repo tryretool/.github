@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booked_By__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <inlineHelpText>The user who booked the meeting (via Chili Piper)</inlineHelpText>
+    <label>Booked By</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Activities</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Lookup</type>
+</CustomField>

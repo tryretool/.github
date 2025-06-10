@@ -1,0 +1,7 @@
+.cs-lookup-dropdown{
+    max-height: 5rem;
+}
+
+.required {
+    color: var(--lwc-colorTextError);
+}

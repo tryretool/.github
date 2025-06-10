@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Taxonomy_Version__c</fullName>
+    <label>Taxonomy Version</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>LinkedIn_Industry_Taxonomy_Version</valueSetName>
+    </valueSet>
+</CustomField>

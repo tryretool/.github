@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Automatic_forecast_check</fullName>
+    <active>true</active>
+    <errorConditionFormula>IsClosed = FALSE &amp;&amp;
+ISPICKVAL(Forecast_Method__c, &quot;Automatic&quot;) &amp;&amp;
+HasOpportunityLineItem = FALSE &amp;&amp;
+(
+ RecordType.Name != &quot;Renewal&quot; ||
+ ISPICKVAL(Type,&quot;Pilot&quot;) ||
+ ISPICKVAL(Subtype__c,&quot;Conversion - Non-Annual to Annual&quot;) 
+)</errorConditionFormula>
+    <errorMessage>This type of opportunity may not be automatically forecast</errorMessage>
+</ValidationRule>

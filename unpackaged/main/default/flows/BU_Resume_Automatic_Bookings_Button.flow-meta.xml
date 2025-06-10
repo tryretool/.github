@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <interviewLabel>BU - Resume Automatic Bookings Button {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>BU - Resume Automatic Bookings Button</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Resume_automatic_bookings</name>
+        <label>Resume automatic bookings</label>
+        <locationX>176</locationX>
+        <locationY>265</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Execute_resume_bookings</targetReference>
+        </connector>
+        <fields>
+            <name>auto_bookings_header</name>
+            <fieldText>&lt;p&gt;Automatic bookings were paused on {!recordId.Pause_Automatic_Bookings_On__c} for the following reason:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;i&gt;{!recordId.Pause_Automatic_Bookings_Reason__c}&lt;/i&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Warning_dont_resume</name>
+            <fieldText>&lt;p&gt;&lt;b style=&quot;color: rgb(255, 0, 0);&quot;&gt;&lt;i&gt;WARNING&lt;/i&gt;&lt;/b&gt;&lt;i style=&quot;color: rgb(255, 0, 0);&quot;&gt;: This BU is configured  prevent automatic bookings from resuming unitl at least {!recordId.Dont_Resume_Automatic_Bookings_Before__c}. &lt;/i&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>recordId.Dont_Resume_Automatic_Bookings_Before__c</leftValueReference>
+                    <operator>GreaterThan</operator>
+                    <rightValue>
+                        <elementReference>$Flow.CurrentDate</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>On_what_date_should_automatic_bookings_resume</name>
+            <dataType>Date</dataType>
+            <defaultValue>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </defaultValue>
+            <fieldText>On what date should automatic bookings resume?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;Resume date must be today or a future date&lt;/p&gt;</errorMessage>
+                <formulaExpression>{!On_what_date_should_automatic_bookings_resume}&gt;= {!$Flow.CurrentDate}</formulaExpression>
+            </validationRule>
+        </fields>
+        <fields>
+            <name>Reason_for_manually_resuming_automatic_bookings</name>
+            <dataType>String</dataType>
+            <fieldText>Reason for manually resuming automatic bookings:</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Resume_automatic_bookings</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Execute_resume_bookings</name>
+        <label>Execute resume bookings</label>
+        <locationX>352</locationX>
+        <locationY>275</locationY>
+        <flowName>BU_Execute_Resume_Automatic_Bookings</flowName>
+        <inputAssignments>
+            <name>bu_id</name>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>resume_date</name>
+            <value>
+                <elementReference>On_what_date_should_automatic_bookings_resume</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>resume_reason</name>
+            <value>
+                <elementReference>Reason_for_manually_resuming_automatic_bookings</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Business_Unit__c</objectType>
+    </variables>
+</Flow>

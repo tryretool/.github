@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Track_Campaign_Members__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>RevOps use only. If checked the Campaign Members list is available on the page layout.
+
+In System Use: Flow: Campaign - Create Campaign Button
+
+External Systems Utilization: None</description>
+    <inlineHelpText>RevOps use only. Indicates if the campaign will be used for tracking campaign members.</inlineHelpText>
+    <label>Track Campaign Members</label>
+    <securityClassification>Caution</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>legaldeskapp__LegalDesk_Task_Id__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Id return from in the HTTP Response</description>
+    <externalId>false</externalId>
+    <label>Streamline AI Task Id</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

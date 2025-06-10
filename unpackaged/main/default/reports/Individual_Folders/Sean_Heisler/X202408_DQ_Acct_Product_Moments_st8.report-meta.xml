@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Moment__c$Name</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Moment_Description__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Moment_Occurred_At__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c.Account_Status_Committed__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Contact__c.Most_Recent_Retool_Signup_At__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c.Customer_Since__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Id</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(Moment__c.Account__c.Customer_Since__c &lt; DATEVALUE(Moment__c.Moment_Occurred_At__c), 1, 0)</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Customer before moment?</label>
+        <scale>0</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Moment_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Product Action</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Account__c.Account_Status_Committed__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Disqualified</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>2024-08 DQ Acct Product Moments</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Moment__c$Moment_Occurred_At__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

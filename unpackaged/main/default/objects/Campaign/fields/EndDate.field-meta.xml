@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EndDate</fullName>
+    <description>Helps to prevent mistakenly adding data to outdated or irrelevant campaigns, ensuring cleaner data, reporting accuracy, and maintaining a clear view of active campaigns for ongoing marketing efforts.
+
+In System Use: Flow - Campaign - Create Campaign Button
+
+External Systems Utilization: None</description>
+    <inlineHelpText>Helps to prevent mistakenly adding data to outdated or irrelevant campaigns, ensuring cleaner data, reporting accuracy, and maintaining a clear view of active campaigns for ongoing marketing efforts.</inlineHelpText>
+    <securityClassification>Safe</securityClassification>
+</CustomField>

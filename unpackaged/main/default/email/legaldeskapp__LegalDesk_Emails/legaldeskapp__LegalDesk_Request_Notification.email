@@ -1,0 +1,6 @@
+Hello {!User.FirstName},
+
+{!legaldeskapp__LegalDesk_Log__c.legaldeskapp__Email_Template_Message__c}
+
+Thanks!
+Streamline Team

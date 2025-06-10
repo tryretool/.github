@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Trial Signup</fullName>
+        <default>false</default>
+        <label>Trial Signup</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Inbound - Chat</fullName>
+        <default>false</default>
+        <label>Inbound - Chat</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Inbound Email</fullName>
+        <default>false</default>
+        <label>Inbound Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Outbound</fullName>
+        <default>false</default>
+        <label>Outbound</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Friend of Retool</fullName>
+        <default>false</default>
+        <label>Friend of Retool</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner</fullName>
+        <default>false</default>
+        <label>Partner</label>
+    </standardValue>
+    <standardValue>
+        <fullName>ProductHunt</fullName>
+        <default>false</default>
+        <label>ProductHunt</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Upsell</fullName>
+        <default>false</default>
+        <label>Upsell</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Trade Show</fullName>
+        <default>false</default>
+        <label>Trade Show/Event</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Customer Success</fullName>
+        <default>false</default>
+        <label>Customer Success</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Calendly Website Demo</fullName>
+        <default>false</default>
+        <label>Calendly Website Demo</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Weekly Office Hours</fullName>
+        <default>false</default>
+        <label>Weekly Office Hours</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Intercom Inbound Chat</fullName>
+        <default>false</default>
+        <label>Intercom Inbound Chat</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Google Paid</fullName>
+        <default>false</default>
+        <label>Google Paid</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Organic Social</fullName>
+        <default>false</default>
+        <label>Organic Social</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Paid Social</fullName>
+        <default>false</default>
+        <label>Paid Social</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Direct</fullName>
+        <default>false</default>
+        <label>Direct</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Organic Search</fullName>
+        <default>false</default>
+        <label>Organic Search</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Referral</fullName>
+        <default>false</default>
+        <label>Referral</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sponsorship</fullName>
+        <default>false</default>
+        <label>Sponsorship</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner Referral</fullName>
+        <default>false</default>
+        <label>Referral Traffic</label>
+    </standardValue>
+    <standardValue>
+        <fullName>CPC</fullName>
+        <default>false</default>
+        <label>CPC</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Pilot conversion</fullName>
+        <default>false</default>
+        <label>Pilot conversion</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Existing customer</fullName>
+        <default>false</default>
+        <label>Existing customer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Hosted Event</fullName>
+        <default>false</default>
+        <label>Hosted Event</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Website demo request</fullName>
+        <default>false</default>
+        <label>Website demo request</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Bing Paid</fullName>
+        <default>false</default>
+        <label>Bing Paid</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Champify</fullName>
+        <default>false</default>
+        <label>Champify</label>
+    </standardValue>
+    <standardValue>
+        <fullName>ZoomInfo</fullName>
+        <default>false</default>
+        <label>ZoomInfo</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Champify - Calendar Sync</fullName>
+        <default>false</default>
+        <label>Champify - Calendar Sync</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Cognism</fullName>
+        <default>false</default>
+        <label>Cognism</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Support Portal</fullName>
+        <default>false</default>
+        <label>Support Portal</label>
+    </standardValue>
+</StandardValueSet>

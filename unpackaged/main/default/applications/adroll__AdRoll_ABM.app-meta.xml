@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>adroll__AdRoll_Settings</defaultLandingTab>
+    <description>RollWorks Account-Based Platform</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>RollWorks ABM</label>
+    <logo>adroll__AdRoll/adroll__RollWorks_Logo.png</logo>
+    <tabs>adroll__AdRoll_Settings</tabs>
+    <tabs>adroll__AdRoll_Ad_Personalization_Manager</tabs>
+    <tabs>adroll__AdRoll_Audience_Manager</tabs>
+    <tabs>adroll__AdRollTrackingData__c</tabs>
+    <tabs>adroll__RollWorks_Analytics</tabs>
+    <tabs>adroll__RollWorksSalesInsightsDashboard</tabs>
+</CustomApplication>

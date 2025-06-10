@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Total number of cloud Retool Orgs related to this Business Unit --></help>
+        <label><!-- # Retool Cloud Orgs --></label>
+        <name>Num_Retool_Cloud_Orgs__c</name>
+    </CustomFieldTranslation>

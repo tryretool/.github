@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_Locked</fullName>
+    <active>true</active>
+    <errorConditionFormula>Booking_Status__c = &quot;Locked&quot; &amp;&amp;
+NOT(ISCHANGED(Permission_Check__c)) &amp;&amp;
+(
+ ISCHANGED(SplitAmountCalculated) ||
+ ISCHANGED(SplitPercentage) ||
+ ISCHANGED(Owner_Role__c) || 
+ ISCHANGED(Owner_Department__c) || 
+ ISCHANGED(Owner_Team__c) || 
+ ISCHANGED(Owner_Subteam__c) || 
+ ISCHANGED(Owner_Level__c) || 
+ ISCHANGED(Owner_Territory__c) ||  
+ ISCHANGED(Owner_Region__c) ||  
+ ISCHANGED(Owner_Territory__c) 
+)</errorConditionFormula>
+    <errorMessage>This booking is locked and may not be edited</errorMessage>
+</ValidationRule>

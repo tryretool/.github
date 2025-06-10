@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- This is the server on which your org resides, captured and stored in case Unique Entry must function in a Salesforce Community context.  This should not be manually edited unless advised by RingLead support. --></help>
+        <label><!-- Salesforce Server --></label>
+        <name>UniqueEntry__SalesforceServer__c</name>
+    </CustomFieldTranslation>

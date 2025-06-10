@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- # Target Accounts in Territory --></label>
+        <name>Num_Target_Accounts_in_Territory__c</name>
+    </CustomFieldTranslation>

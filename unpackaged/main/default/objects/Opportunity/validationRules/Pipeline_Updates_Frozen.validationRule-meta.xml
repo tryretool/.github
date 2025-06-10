@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pipeline_Updates_Frozen</fullName>
+    <active>true</active>
+    <errorConditionFormula>$CustomMetadata.Global_Permission__mdt.Freeze_Pipeline_Updates.Is_Enabled__c = TRUE &amp;&amp;
+NOT(ISPICKVAL($User.Team__c,&quot;Revenue Operations&quot;)) &amp;&amp;
+$User.Is_integration_user__c = FALSE &amp;&amp;
+IsClosed = FALSE &amp;&amp;
+(
+  ISCHANGED(Amount)
+)</errorConditionFormula>
+    <errorMessage>Updates to sales pipeline is currently frozen. Please try again later.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Campaign_Engaged_Date__c</fullName>
+    <description>Indicates the date that the campaign member participated in the campaign activity. The field must be set on import of contacts or leads. If the date value is not set, the date will default to the date of the import.
+
+In Systems Use - Flow: Campaign Member - Before Save Automations
+
+External Systems Utilization: None</description>
+    <inlineHelpText>Indicates the date that the campaign member participated in the campaign activity.</inlineHelpText>
+    <label>Campaign Engaged Date</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>DateTime</type>
+</CustomField>

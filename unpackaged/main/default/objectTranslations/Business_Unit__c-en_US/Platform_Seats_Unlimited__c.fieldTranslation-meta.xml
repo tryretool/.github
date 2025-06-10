@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- A flag to track customers who have unlimited platform seats on their license. Helpful to track adoption. --></help>
+        <label><!-- Platform Seats Unlimited? --></label>
+        <name>Platform_Seats_Unlimited__c</name>
+    </CustomFieldTranslation>

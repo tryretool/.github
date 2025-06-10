@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Subscription / Subscription Plan --></label>
+        <name>breadwinner_ns__Subscription__c</name>
+        <relationshipLabel><!-- NetSuite Subscription Lines --></relationshipLabel>
+    </CustomFieldTranslation>

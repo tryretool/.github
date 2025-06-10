@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InternalDataConnector xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alias>Home</alias>
+    <dataConnectionStatus>Connected</dataConnectionStatus>
+    <dataConnectorType>SalesforceDotCom</dataConnectorType>
+    <dataPlatform>Salesforce_Sales_and_Service_Cloud</dataPlatform>
+    <dataSourceTenant>SalesforceDotCom_Home</dataSourceTenant>
+    <externalRecordId>00D5A0000015VIl</externalRecordId>
+    <masterLabel>Salesforce Connector Retool Home</masterLabel>
+</InternalDataConnector>

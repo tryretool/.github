@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Prospect_Account__c</columns>
+    <columns>Partner_Account__c</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>Referred_by_Email__c</columns>
+    <columns>Referred_by_Name__c</columns>
+    <columns>Trigger__c</columns>
+    <columns>Partner_Led_Sales_Activities__c</columns>
+    <columns>Partner_Led_Sales_Activities_Single__c</columns>
+    <columns>Partner_Lead_External_ID__c</columns>
+    <columns>Partner_Lead_External_UUID__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Partner_Lead_Status__c</field>
+        <operation>equals</operation>
+        <value>Approved</value>
+    </filters>
+    <label>All</label>
+</ListView>

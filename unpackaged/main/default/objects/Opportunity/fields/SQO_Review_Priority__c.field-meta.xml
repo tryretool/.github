@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SQO_Review_Priority__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( OR( Booking_Channel_Annualized_Revenue__c = &quot;New&quot;, Booking_Channel_Annualized_Revenue__c = &quot;Upsell&quot;), 
+IF( OR(ISBLANK( Sales_Qualified_At__c ), Sales_Qualified_At__c &lt; DATE(2024,07,01)), NULL, 
+
+  IF( ISPICKVAL( Account.Segment__c, &quot;GRW&quot;) ,
+
+     IF( IsWon = TRUE, 6, IF( Sales_Qualified_At__c &gt;= DATE(2024,08,01), 7, 8 ))
+
+     , 
+
+     IF( IsWon = TRUE, 1, 
+     IF( Sales_Qualified_At__c &gt;= DATE(2024,08,01), CASE( Account.Segment__c, &quot;ENT&quot;, 2, &quot;STR&quot;, 2, 3), CASE( Account.Segment__c, &quot;ENT&quot;, 4, &quot;STR&quot;, 4, 5)
+     ))
+
+
+)), NULL)</formula>
+    <label>SQO Review Priority</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

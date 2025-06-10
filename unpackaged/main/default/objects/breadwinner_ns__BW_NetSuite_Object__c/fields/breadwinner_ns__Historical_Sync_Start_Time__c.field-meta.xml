@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__Historical_Sync_Start_Time__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Field is used to store the date/time when the sync was started for the Historical sync.</description>
+    <label>Historical Sync Start Time</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

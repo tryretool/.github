@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Evaluation_Winner__c</fullName>
+    <inlineHelpText>If we lost the technical evaluation, what solution will be used instead?</inlineHelpText>
+    <label>Evaluation Winner</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Competitors</valueSetName>
+    </valueSet>
+</CustomField>

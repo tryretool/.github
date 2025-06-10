@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Needs_BU_Reparenting__c</fullName>
+    <formula>NOT(ISBLANK(Retool_License__c)) &amp;&amp;
+NOT(ISBLANK(Retool_License__r.Business_Unit__c)) &amp;&amp;
+Business_Unit__c != Retool_License__r.Business_Unit__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True if the Retool Org&#39;s BU does not match the associated Retool License&#39;s BU</inlineHelpText>
+    <label>Needs BU Reparenting?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

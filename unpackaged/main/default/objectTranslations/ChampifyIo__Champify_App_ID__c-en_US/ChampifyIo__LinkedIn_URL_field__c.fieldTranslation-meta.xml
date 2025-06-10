@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- LinkedIn URL field --></label>
+        <name>ChampifyIo__LinkedIn_URL_field__c</name>
+    </CustomFieldTranslation>

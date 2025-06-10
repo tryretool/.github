@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InternalDataConnector xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <alias xsi:nil="true"/>
+    <dataConnectionStatus>Connected</dataConnectionStatus>
+    <dataConnectorType>S3Arn</dataConnectorType>
+    <dataPlatform>S3Arn</dataPlatform>
+    <dataSourceTenant>AI_Platform_00D5A0000015VIl</dataSourceTenant>
+    <externalRecordId>00D5A0000015VIl</externalRecordId>
+    <masterLabel>S3Arn</masterLabel>
+</InternalDataConnector>

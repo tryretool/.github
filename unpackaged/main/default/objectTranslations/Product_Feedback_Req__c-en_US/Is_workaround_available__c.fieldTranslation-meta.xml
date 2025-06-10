@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Check if a reasonable workaround exists to address the request while we prioritize it. --></help>
+        <label><!-- Is workaround available? --></label>
+        <name>Is_workaround_available__c</name>
+    </CustomFieldTranslation>

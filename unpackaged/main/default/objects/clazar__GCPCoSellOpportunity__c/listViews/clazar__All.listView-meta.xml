@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clazar__All</fullName>
+    <columns>NAME</columns>
+    <columns>clazar__stage__c</columns>
+    <columns>clazar__state__c</columns>
+    <columns>clazar__display_name__c</columns>
+    <columns>clazar__owner__c</columns>
+    <columns>clazar__deal_size__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

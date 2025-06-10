@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Discovery_before_scoping</fullName>
+    <active>true</active>
+    <errorConditionFormula>Discovery_Start_Date__c &gt; Scoping_Start_Date__c</errorConditionFormula>
+    <errorMessage>Discovery date must be before scoping date</errorMessage>
+</ValidationRule>

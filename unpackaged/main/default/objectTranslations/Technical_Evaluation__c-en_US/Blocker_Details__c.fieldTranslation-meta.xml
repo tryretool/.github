@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Details on the blockers and any steps we’re pursuing to remediate (e.g. product agrees to build a new feature, aligning PS support, etc.), and links to any relevant linear tickets for features/bugs --></help>
+        <label><!-- Blocker Details --></label>
+        <name>Blocker_Details__c</name>
+    </CustomFieldTranslation>

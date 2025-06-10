@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_RECORDTYPE</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Partner_Relationship__c.Agreement_URL__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Partner_Relationship__c.Partner_Is_Legal_Approved__c</field>
+    </columns>
+    <columns>
+        <field>Partner_Relationship__c.Agreement_Start_Date__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Partner_Relationship__c.Referral_Fee_Eligible__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Partner_Relationship__c.Referral_Fee_Pct__c</field>
+    </columns>
+    <columns>
+        <field>Partner_Relationship__c.Payment_Terms__c</field>
+    </columns>
+    <description>Identify which new Partner Relationships that are missing fields and need to be remedied</description>
+    <filter>
+        <criteriaItems>
+            <column>Partner_Relationship__c.Payment_Terms__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>New Partner Relationship Audit</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityAuditHistory$Partner_Relationship__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-01-01</startDate>
+    </timeFrameFilter>
+</Report>

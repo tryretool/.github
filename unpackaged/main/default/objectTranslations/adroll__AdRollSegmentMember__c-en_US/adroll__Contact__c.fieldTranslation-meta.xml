@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Contact that is the source for the Segment Member --></help>
+        <label><!-- Contact (Deprecated) --></label>
+        <name>adroll__Contact__c</name>
+        <relationshipLabel><!-- RollWorks Segment Members --></relationshipLabel>
+    </CustomFieldTranslation>

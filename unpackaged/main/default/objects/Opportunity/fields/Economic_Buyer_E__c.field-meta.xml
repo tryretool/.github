@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Economic_Buyer_E__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>&lt;a href=&quot;https://retoolconfluence.atlassian.net/wiki/spaces/SAL/pages/45842590/MEDDPICC+sales+methodology&quot; target=&quot;_blank&quot;&gt;Learn more about MEDDPICC&lt;/a&gt;</description>
+    <inlineHelpText>The individual who is required for the final &quot;yes&quot; to close the deal.</inlineHelpText>
+    <label>[E] Economic Buyer</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Opportunities (Economic Buyer [E])</relationshipLabel>
+    <relationshipName>Opportunities3</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

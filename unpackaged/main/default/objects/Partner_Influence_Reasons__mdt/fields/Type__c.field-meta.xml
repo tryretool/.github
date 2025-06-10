@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Type</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Marketplace</fullName>
+                <default>true</default>
+                <label>Marketplace</label>
+            </value>
+            <value>
+                <fullName>Cosell</fullName>
+                <default>false</default>
+                <label>Cosell</label>
+            </value>
+            <value>
+                <fullName>Service Delivery</fullName>
+                <default>false</default>
+                <label>Service Delivery</label>
+            </value>
+            <value>
+                <fullName>Reseller</fullName>
+                <default>false</default>
+                <label>Reseller</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

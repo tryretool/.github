@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Formula that displays the Retool User, Contact or Lead associated to the Moment. --></help>
+        <label><!-- Email (Formula) --></label>
+        <name>Email_Formula__c</name>
+    </CustomFieldTranslation>

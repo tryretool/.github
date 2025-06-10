@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- List any products that are being actively evaluated --></help>
+        <label><!-- Products/Solutions Evaluated --></label>
+        <name>Products_Evaluated__c</name>
+        <picklistValues>
+            <masterLabel>AI</masterLabel>
+            <translation><!-- AI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Apps</masterLabel>
+            <translation><!-- Apps --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Database</masterLabel>
+            <translation><!-- Database --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise Plan Features</masterLabel>
+            <translation><!-- Enterprise Plan Features --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External</masterLabel>
+            <translation><!-- External --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile</masterLabel>
+            <translation><!-- Mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workflows</masterLabel>
+            <translation><!-- Workflows --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

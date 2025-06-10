@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- List any evaluation types leveraged. More information about each can be found in the Evaluation Playbook. --></help>
+        <label><!-- Evaluation Types --></label>
+        <name>Evaluation_Types__c</name>
+        <picklistValues>
+            <masterLabel>Architecture Design/Review</masterLabel>
+            <translation><!-- Architecture Design/Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comprehensive Demo</masterLabel>
+            <translation><!-- Comprehensive Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Custom Demo</masterLabel>
+            <translation><!-- Custom Demo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High-Touch POC</masterLabel>
+            <translation><!-- High-Touch POC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low-Touch POC</masterLabel>
+            <translation><!-- Low-Touch POC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RFP</masterLabel>
+            <translation><!-- RFP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security Review</masterLabel>
+            <translation><!-- Security Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self-led</masterLabel>
+            <translation><!-- Self-led --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workshop</masterLabel>
+            <translation><!-- Workshop --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

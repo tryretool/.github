@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Journey_Meeting_Booked_At_S0__c</fullName>
+    <description>The date an SDR booked a meeting in the Qualifying Journey. Mapped from the &#39;Pass to Opp&#39; Journey button flow..</description>
+    <inlineHelpText>The date an SDR booked a meeting in the Qualifying Journey.</inlineHelpText>
+    <label>Journey Meeting Booked At (S0)</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

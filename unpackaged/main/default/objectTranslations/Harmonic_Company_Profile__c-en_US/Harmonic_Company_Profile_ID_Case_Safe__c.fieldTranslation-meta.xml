@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- 18 digit case safe record ID. --></help>
+        <label><!-- Harmonic Company Profile ID (Case Safe) --></label>
+        <name>Harmonic_Company_Profile_ID_Case_Safe__c</name>
+    </CustomFieldTranslation>

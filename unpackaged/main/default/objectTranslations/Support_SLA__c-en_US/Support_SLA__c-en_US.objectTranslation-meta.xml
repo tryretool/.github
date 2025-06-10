@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Support SLA</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Support SLAs</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <quickActions>
+        <label><!-- Update Process Master ID --></label>
+        <name>Update_Process_Master_Id</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Account cannot be assigned to standard tier SLA --></errorMessage>
+        <name>Account_only_custom</name>
+    </validationRules>
+</CustomObjectTranslation>

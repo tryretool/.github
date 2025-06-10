@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Suppress_Automations__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Disables automatic updates on the Account record if checked TRUE.</description>
+    <inlineHelpText>Disables automatic updates on the Account record if checked TRUE.</inlineHelpText>
+    <label>Suppress Automations?</label>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

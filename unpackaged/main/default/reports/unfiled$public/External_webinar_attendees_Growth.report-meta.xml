@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Moment__c$Name</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Contact__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Contact__c.Title</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Moment_Description__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Moment_Description__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>24Q4 - Webinar - Live - Externalize your apps</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Account__c.Account_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>george,matt mcdonald,nadler,ellie,chelsea,tommy,ben,audrey</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Account__c.Segment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GRW</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Moment__c$Account__c.Account_Owner__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>External webinar attendees Growth</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

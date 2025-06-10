@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Status --></label>
+        <name>d_wh__Status__c</name>
+        <picklistValues>
+            <masterLabel>Call Failed</masterLabel>
+            <translation><!-- Call Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Call Successful</masterLabel>
+            <translation><!-- Call Successful --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Error</masterLabel>
+            <translation><!-- Other Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scheduled</masterLabel>
+            <translation><!-- Scheduled --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

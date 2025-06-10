@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- What prevents the evaluation from proceeding? --></help>
+        <label><!-- Blockers --></label>
+        <name>Blockers__c</name>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing - Business to Enterprise</masterLabel>
+            <translation><!-- Pricing - Business to Enterprise --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product - Bug</masterLabel>
+            <translation><!-- Product - Bug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product - Feature Request</masterLabel>
+            <translation><!-- Product - Feature Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scope Creep</masterLabel>
+            <translation><!-- Scope Creep --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Competency</masterLabel>
+            <translation><!-- Technical Competency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Feasibility</masterLabel>
+            <translation><!-- Technical Feasibility --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Resourcing</masterLabel>
+            <translation><!-- Technical Resourcing --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

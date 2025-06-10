@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>1 - Account Owner - Handoff</fullName>
+        <default>false</default>
+        <label>1 - Account Owner - Handoff</label>
+    </customValue>
+    <customValue>
+        <fullName>1a - ASE Account Owner</fullName>
+        <default>false</default>
+        <label>1a - ASE Account Owner</label>
+    </customValue>
+    <customValue>
+        <fullName>1a - ASE Account Owner No Floor</fullName>
+        <default>false</default>
+        <label>1a - ASE Account Owner No Floor</label>
+    </customValue>
+    <customValue>
+        <fullName>1b - BDR Account Owner</fullName>
+        <default>false</default>
+        <label>1b - BDR Account Owner</label>
+    </customValue>
+    <customValue>
+        <fullName>1c - Customer Account Owner no BDR</fullName>
+        <default>false</default>
+        <label>1c - Customer Account Owner no BDR</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR Discovery Call</fullName>
+        <default>false</default>
+        <label>SDR Discovery Call</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR Discovery Call No Floor</fullName>
+        <default>false</default>
+        <label>SDR Discovery Call No Floor</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR Discovery Call - EUR</fullName>
+        <default>false</default>
+        <label>SDR Discovery Call - EUR</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR Discovery Call No Floor - EUR</fullName>
+        <default>false</default>
+        <label>SDR Discovery Call No Floor - EUR</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR to AE Handoff - ENT</fullName>
+        <default>false</default>
+        <label>SDR to AE Handoff - ENT</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR to AE Handoff - GRW</fullName>
+        <default>false</default>
+        <label>SDR to AE Handoff - GRW</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR to AE Handoff - MMK</fullName>
+        <default>false</default>
+        <label>SDR to AE Handoff - MMK</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR to AE Handoff - APAC</fullName>
+        <default>false</default>
+        <label>SDR to AE Handoff - APAC</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR to AE Handoff - EUR - ENT</fullName>
+        <default>false</default>
+        <label>SDR to AE Handoff - EUR - ENT</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR to AE Handoff - EUR - MMK</fullName>
+        <default>false</default>
+        <label>SDR to AE Handoff - EUR - MMK</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR to AE Handoff - EUR - GRW</fullName>
+        <default>false</default>
+        <label>SDR to AE Handoff - EUR - GRW</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR to AE Handoff - APAC - ENT</fullName>
+        <default>false</default>
+        <label>SDR to AE Handoff - APAC - ENT</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR to AE Handoff - APAC - MMK</fullName>
+        <default>false</default>
+        <label>SDR to AE Handoff - APAC - MMK</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR to AE Handoff - APAC - GRW</fullName>
+        <default>false</default>
+        <label>SDR to AE Handoff - APAC - GRW</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR to AE Handoff - Verticals Experiment</fullName>
+        <default>false</default>
+        <label>SDR to AE Handoff - Verticals Experiment</label>
+    </customValue>
+    <customValue>
+        <fullName>2 - MMK AE RR - Handoff - Outbound</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2 - MMK AE RR - Handoff - Outbound</label>
+    </customValue>
+    <customValue>
+        <fullName>2 - ENT AE RR - Handoff - Outbound</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2 - ENT AE RR - Handoff - Outbound</label>
+    </customValue>
+    <customValue>
+        <fullName>2 - GRW AE RR - Handoff - Inbound</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2 - GRW AE RR - Handoff - Inbound</label>
+    </customValue>
+    <customValue>
+        <fullName>2 - MMK AE RR - Handoff - Inbound</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2 - MMK AE RR - Handoff - Inbound</label>
+    </customValue>
+    <customValue>
+        <fullName>2 - ENT AE RR - Handoff - Inbound</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2 - ENT AE RR - Handoff - Inbound</label>
+    </customValue>
+    <customValue>
+        <fullName>EUR - Handoff</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>EUR - Handoff</label>
+    </customValue>
+    <customValue>
+        <fullName>EUR - Concierge</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>EUR - Concierge</label>
+    </customValue>
+    <customValue>
+        <fullName>3 - Default Demo</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>3 - Default Demo</label>
+    </customValue>
+    <customValue>
+        <fullName>India SDR - Handoff</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>India SDR - Handoff</label>
+    </customValue>
+    <customValue>
+        <fullName>2b - GRW AE RR - Concierge</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2b - GRW AE RR - Concierge</label>
+    </customValue>
+    <customValue>
+        <fullName>2c - MMK AE RR - Concierge</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2c - MMK AE RR - Concierge</label>
+    </customValue>
+    <customValue>
+        <fullName>2a - ENT AE RR - Concierge</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2a - ENT AE RR - Concierge</label>
+    </customValue>
+    <customValue>
+        <fullName>APAC - Handoff</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>APAC - Handoff</label>
+    </customValue>
+    <customValue>
+        <fullName>1 - Account Owner - Concierge</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>1 - Account Owner - Concierge</label>
+    </customValue>
+    <customValue>
+        <fullName>APAC - Concierge</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>APAC - Concierge</label>
+    </customValue>
+    <customValue>
+        <fullName>3 - Misc - Over 100</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>3 - Misc - Over 100</label>
+    </customValue>
+    <customValue>
+        <fullName>2 - GRW AE RR - Handoff - Outbound</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>2 - GRW AE RR - Handoff - Outbound</label>
+    </customValue>
+    <masterLabel>CP: Queues</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

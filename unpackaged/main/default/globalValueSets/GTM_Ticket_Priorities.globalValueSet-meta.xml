@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>P0 (Critical)</fullName>
+        <default>false</default>
+        <label>P0 (Critical)</label>
+    </customValue>
+    <customValue>
+        <fullName>P1 (High)</fullName>
+        <default>false</default>
+        <label>P1 (High)</label>
+    </customValue>
+    <customValue>
+        <fullName>P2 (Medium)</fullName>
+        <default>false</default>
+        <label>P2 (Medium)</label>
+    </customValue>
+    <customValue>
+        <fullName>P3 (Low)</fullName>
+        <default>false</default>
+        <label>P3 (Low)</label>
+    </customValue>
+    <customValue>
+        <fullName>P4 (Backlog)</fullName>
+        <default>false</default>
+        <label>P4 (Backlog)</label>
+    </customValue>
+    <masterLabel>GTM Ticket: Priorities</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

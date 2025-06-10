@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>legaldeskapp__Custom_Form__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Name of the custom form from Streamline AI WebApp</description>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>If you selected &quot;Custom Form&quot; for Type, please enter the name of the custom form here.</inlineHelpText>
+    <label>Custom Form</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

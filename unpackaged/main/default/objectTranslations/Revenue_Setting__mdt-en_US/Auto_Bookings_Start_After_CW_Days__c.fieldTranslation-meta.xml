@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Auto Bookings: Start After CW (days) --></label>
+        <name>Auto_Bookings_Start_After_CW_Days__c</name>
+    </CustomFieldTranslation>

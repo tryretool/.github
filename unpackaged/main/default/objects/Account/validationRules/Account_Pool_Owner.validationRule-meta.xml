@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Pool_Owner</fullName>
+    <active>true</active>
+    <description>Owner cannot be changed to Account Pool because there are currently open opportunities at the Account.</description>
+    <errorConditionFormula>ISCHANGED( OwnerId ) &amp;&amp; 
+Owner.Is_Account_Pool__c  = TRUE &amp;&amp; 
+Num_Open_Opportunities__c &gt; 0</errorConditionFormula>
+    <errorMessage>Owner cannot be changed to Account Pool because there are currently open opportunities at the Account</errorMessage>
+</ValidationRule>

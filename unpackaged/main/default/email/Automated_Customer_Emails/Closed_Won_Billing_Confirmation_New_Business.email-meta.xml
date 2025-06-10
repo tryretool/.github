@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Retool_Standard_Letterhead</letterhead>
+    <name>Closed Won Billing Confirmation - New Business</name>
+    <style>formalLetter</style>
+    <subject>Retool: Thank you for your business</subject>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

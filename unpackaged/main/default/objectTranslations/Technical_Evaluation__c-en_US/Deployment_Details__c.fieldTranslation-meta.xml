@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Any relevant deployment configuration details (e.g. load balancing, custom certificates, air-gapped, IaC tools, etc.)  and links to any deployment diagrams/specs --></help>
+        <label><!-- Deployment Details --></label>
+        <name>Deployment_Details__c</name>
+    </CustomFieldTranslation>

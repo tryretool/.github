@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Centro__Topic_Access__c</fullName>
+    <deprecated>false</deprecated>
+    <inlineHelpText>Global Picklist to determine which embeddings will be used to answer questions. By default embeddings are globally available. Restrict access to users with User Topic Access, each user will have access to embeddings based on this pairing.</inlineHelpText>
+    <label>Topic Access</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Centro__Topics</valueSetName>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

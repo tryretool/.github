@@ -1,0 +1,1 @@
+<apex:page standardController="d_wh__Callout_Sequence_Item__c" extensions="d_wh.CalloutSequenceRedirects" action="{!RedirectToTemplatePage}"></apex:page>

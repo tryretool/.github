@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Meeting Disposition --></label>
+        <name>Meeting_Disposition__c</name>
+        <picklistValues>
+            <masterLabel>No Show</masterLabel>
+            <translation><!-- No Show --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Qualified - Authority</masterLabel>
+            <translation><!-- Not Qualified - Authority --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Qualified - Budget</masterLabel>
+            <translation><!-- Not Qualified - Budget --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Qualified - Need</masterLabel>
+            <translation><!-- Not Qualified - Need --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Qualified - Timing</masterLabel>
+            <translation><!-- Not Qualified - Timing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pricing &amp; Packaging</masterLabel>
+            <translation><!-- Pricing &amp; Packaging --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Limitation</masterLabel>
+            <translation><!-- Product Limitation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qualified</masterLabel>
+            <translation><!-- Qualified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rescheduled</masterLabel>
+            <translation><!-- Rescheduled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self Serve Meets Needs</masterLabel>
+            <translation><!-- Self Serve Meets Needs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unsure What To Pick</masterLabel>
+            <translation><!-- Unsure What To Pick --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

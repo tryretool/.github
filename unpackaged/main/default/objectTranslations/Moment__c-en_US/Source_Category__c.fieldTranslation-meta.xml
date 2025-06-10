@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Formula that uses the Lead source to display Earned or Paid. Bing, Google, Social, Sponsorship = Paid; Direct, Organic Search or Social, or Partner Referral = Earned --></help>
+        <label><!-- Source Category --></label>
+        <name>Source_Category__c</name>
+    </CustomFieldTranslation>

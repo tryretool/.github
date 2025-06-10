@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rebuild_account_team__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used to trigger our Account - After Save Automations to rebuild the current Account Team.</description>
+    <inlineHelpText>Used to trigger our Account - After Save Automations to rebuild the current Account Team.</inlineHelpText>
+    <label>Rebuild account team?</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

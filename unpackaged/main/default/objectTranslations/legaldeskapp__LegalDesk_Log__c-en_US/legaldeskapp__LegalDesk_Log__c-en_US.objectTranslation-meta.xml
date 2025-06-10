@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <validationRules>
+        <errorMessage><!-- Please ensure DeveloperName, MasterLabel and Type__c are populated in the custom metadata record. --></errorMessage>
+        <name>legaldeskapp__Null_Check_for_Admin_Records</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please ensure DeveloperName, MasterLabel, Type__c, Object_API_Name__c, Question__c and LegalDesk_Field__c are populated in the custom metadata record. --></errorMessage>
+        <name>legaldeskapp__Null_Check_for_Mapping_Records</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please ensure DeveloperName, MasterLabel and Value__c are populated in the custom metadata record. --></errorMessage>
+        <name>legaldeskapp__Null_Check_for_Option_Records</name>
+    </validationRules>
+</CustomObjectTranslation>

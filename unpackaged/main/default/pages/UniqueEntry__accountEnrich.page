@@ -1,0 +1,1023 @@
+<apex:page standardController="Account"></apex:page>
+<!-- &ndash;&gt;-->
+<!--<apex:page standardController="Account" extensions="UniqueEntry.uniqueAccountEnrich" >-->
+<!--  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>-->
+<!--  <apex:styleSheet value="{!URLFOR($Resource.bootstrap4, 'bootstrap-4.3.1-dist/css/bootstrap.min.css')}" />-->
+<!--  <apex:includeScript value="{!$Resource.jQuery3}" />-->
+
+<!--  <style>-->
+<!--        -->
+<!--        div.bhoechie-tab-container{-->
+<!--        z-index: 10;-->
+<!--        background-color: #ffffff;-->
+<!--        padding: 0 !important;-->
+<!--        -moz-border-radius: 4px;-->
+<!--        border-bottom: :1px solid #ddd;-->
+<!--        border-left: :1px solid #ddd;-->
+<!--        border-right :1px solid #ddd;-->
+<!--        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);-->
+<!--        box-shadow: 0 6px 12px rgba(0,0,0,.175);-->
+<!--        -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);-->
+<!--        background-clip: padding-box;-->
+<!--        opacity: 0.97;-->
+<!--        filter: alpha(opacity=97);-->
+<!--        width: 100%;-->
+<!--      }-->
+
+
+<!--      div.bhoechie-tab-menu{-->
+<!--        padding-right: 0;-->
+<!--        padding-left: 0;-->
+<!--        padding-bottom: 0;-->
+
+<!--      }-->
+<!--      .row{-->
+<!--        margin-left: 0px !important;-->
+<!--      }-->
+<!--      div.bhoechie-tab-menu div.list-group{-->
+<!--        margin-bottom: 0;-->
+<!--      }-->
+<!--      div.bhoechie-tab-menu div.list-group>a{-->
+<!--        margin-bottom: 0;-->
+<!--      }-->
+<!--      div.bhoechie-tab-menu div.list-group>a .glyphicon,-->
+<!--      div.bhoechie-tab-menu div.list-group>a .fa {-->
+<!--        color: #333132;-->
+<!--      }-->
+<!--      div.bhoechie-tab-menu div.list-group>a:first-child{-->
+<!--        border-top-right-radius: 0;-->
+<!--        -moz-border-top-right-radius: 0;-->
+<!--      }-->
+<!--      div.bhoechie-tab-menu div.list-group>a:last-child{-->
+<!--        border-bottom-right-radius: 0;-->
+<!--        -moz-border-bottom-right-radius: 0;-->
+
+<!--      }-->
+<!--      div.bhoechie-tab-menu div.list-group>a.activetab,-->
+<!--      div.bhoechie-tab-menu div.list-group>a.activetab .glyphicon,-->
+<!--      div.bhoechie-tab-menu div.list-group>a.activetab .fa{-->
+<!--        background: #ff4e00 !important;-->
+<!--        color: #ffffff;-->
+<!--      }-->
+<!--      div.bhoechie-tab-menu div.list-group>a.activetab:after{-->
+<!--        content: '';-->
+<!--        position: absolute;-->
+<!--        left: 100%;-->
+<!--        top: 50%;-->
+<!--        margin-top: -13px;-->
+<!--        border-left: 0;-->
+<!--        border-bottom: 13px solid transparent;-->
+<!--        border-top: 13px solid transparent;-->
+<!--        border-left: 10px solid #ff4e00;-->
+<!--      }-->
+
+<!--      div.bhoechie-tab-content{-->
+<!--        background-color: #ffffff;-->
+<!--        /* border: 1px solid #eeeeee; */-->
+<!--  -->
+<!--      }-->
+
+<!--      div.bhoechie-tab div.bhoechie-tab-content:not(.activetab){-->
+<!--        display: none;-->
+<!--        position: absolute;-->
+<!--        border-top: 5px ridge #ddd;-->
+<!--      -->
+<!--      }-->
+
+<!--      .container{-->
+<!--        width: 100% !important;-->
+<!--        height:  700px !important;-->
+<!--        display: inline-block;-->
+<!--  -->
+<!--     -->
+<!--      }-->
+<!--  -->
+
+<!--      .ringleadFont{-->
+<!--        width: 822px;-->
+<!--        height: 50px;-->
+<!--        font-family: Arial; -->
+<!--        font-size: 30px; -->
+<!--        font-style: normal; -->
+<!--        font-stretch: normal; -->
+<!--        line-height: normal; -->
+<!--        letter-spacing: normal; -->
+<!--        color: #000000; -->
+<!--        padding-left: 40px; -->
+<!--        position: absolute; -->
+<!--        margin-top: 10px-->
+<!--      }-->
+<!--      .enrichmentFont{-->
+<!--         width: 822px;-->
+<!--         height: 50px;-->
+<!--         font-family: Arial; -->
+<!--         font-size: 30px; -->
+<!--         font-weight: bold; -->
+<!--         font-style: normal; -->
+<!--         font-stretch: normal; -->
+<!--         line-height: normal; -->
+<!--         letter-spacing: normal; -->
+<!--         color: #ff4e00; -->
+<!--         position: absolute; -->
+<!--         margin-top: 10px; -->
+<!--         margin-left: 200px-->
+<!--      }-->
+
+<!--      #titlerow{-->
+<!--        height: 70px; z-index: 10;-->
+<!--        background-color: #ffffff;-->
+<!--        padding: 0 !important;-->
+<!--        -moz-border-radius: 4px;-->
+<!--        border-top: 1px solid #ddd;-->
+<!--        border-right: 1px solid #ddd;-->
+<!--        border-left: 1x solid #ddd;-->
+<!--        border-bottom: 1x solid #ddd;-->
+<!--        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);-->
+<!--        box-shadow: 0 6px 12px rgba(0,0,0,.175);-->
+<!--        -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);-->
+<!--        background-clip: padding-box;-->
+<!--        opacity: 0.97;-->
+<!--        filter: alpha(opacity=97);-->
+<!--      }-->
+<!--      span{-->
+<!--        display: block;-->
+<!--      }-->
+
+<!--      p{-->
+<!--        display: inline;-->
+<!--      }-->
+
+<!--    -->
+
+<!--      .displayText{-->
+
+<!--          font-family: Arial;-->
+<!--          font-size: 15px;-->
+<!--          font-weight: 2500;-->
+<!--          font-style: normal;-->
+<!--          font-stretch: normal;-->
+<!--          line-height: 1.6;-->
+<!--          letter-spacing: normal;-->
+<!--          color: #333132;-->
+<!--      }-->
+
+<!--      .titletext{-->
+
+<!--        font-weight: 600;-->
+<!--        font-size: 21px;-->
+<!--        color: #ff4e00;-->
+<!--      }-->
+
+<!--      .lowertitle{-->
+<!--        font-weight: 200;-->
+<!--        font-size: 21px;-->
+<!--        color: #ff4e00;-->
+<!--      }-->
+
+<!--      .list-group-item{-->
+<!--        background: radial-gradient(#F5F5F5,#F0F0F0 );-->
+<!--        color: #484848;-->
+
+<!--      }-->
+<!--      ::-webkit-scrollbar {-->
+<!--          width: 3px;-->
+<!--          height: 3px;-->
+<!--      }-->
+
+<!--      /* Track */-->
+<!--      ::-webkit-scrollbar-track {-->
+<!--          box-shadow: inset 0 0 5px #ff4e00; -->
+<!--          border-radius: 5px;-->
+<!--      }-->
+<!--       -->
+<!--      /* Handle */-->
+<!--      ::-webkit-scrollbar-thumb {-->
+<!--          background: #ff4e00; -->
+<!--  -->
+<!--      }-->
+
+<!--      /* Handle on hover */-->
+<!--      ::-webkit-scrollbar-thumb:hover {-->
+<!--          background: grey; -->
+<!--      }-->
+
+<!--      .row{-->
+<!--        margin-left: 0px !important;-->
+<!--      }-->
+
+<!--      .accordion {-->
+<!--          background-color: #ffffff !important;-->
+<!--          cursor: pointer;-->
+<!--          width: 100%;-->
+<!--          border: none;-->
+<!--          text-align: left;-->
+<!--          outline: none;-->
+<!--          font-size: 13px;-->
+<!--          transition: 0.4s;-->
+<!--          color: #ff4e00;-->
+<!--          active: true;-->
+<!--      }-->
+
+<!--      .active, .accordion:hover {-->
+<!--          background-color: #ffffff;-->
+<!--      }-->
+
+<!--      .accordion:after {-->
+<!--          content: '\002B';-->
+<!--          color: #ff4e00;-->
+<!--          font-weight: bold;-->
+<!--          float: right;-->
+<!--          margin-left: 5px;-->
+<!--      }-->
+
+<!--      .active:after {-->
+<!--          content: "\2212";-->
+<!--      }-->
+
+<!--      .panel {-->
+<!--          background-color: white;-->
+<!--          max-height: 0;-->
+<!--          overflow-y: auto;-->
+<!--          overflow-x: auto;-->
+<!--          transition: max-height 0.2s ease-out;-->
+<!--          border: none !important;-->
+<!--      }-->
+
+<!--      body button {-->
+
+<!--        border-radius: 0px !important; -->
+<!--        background: #ffffff;-->
+<!--      }-->
+<!--     -->
+<!--      .tableHeader{-->
+<!--          height: 20px;-->
+<!--          font-family: Arial;-->
+<!--          font-size: 13px;-->
+<!--          font-weight: 8px;-->
+<!--          font-style: normal;-->
+<!--          font-stretch: normal;-->
+<!--          line-height: normal;-->
+<!--          letter-spacing: normal;-->
+<!--         -->
+<!--      }-->
+
+<!--      .col-3{-->
+<!--        padding-left: 11px;-->
+<!--      }-->
+
+<!--  </style>-->
+<!--<apex:form id="form">-->
+
+
+<!--<apex:outputPanel id="display" rendered="{!isEnriched == false}">-->
+
+
+<!--  <div>-->
+
+<!--    <div style="width: 100%; height: 80px; ">-->
+<!--      <div style="position: absolute; top: 0; right: 100px; width: 90px; height: 30px; background-color: #ffffff; ">-->
+<!--          <apex:image url="https://www.ringlead.com/wp-content/uploads/2018/01/RIngLead-AMP-Logo.png" height="40" width="200"> </apex:image>-->
+<!--      </div>-->
+<!--      <div style ="text-align: center; border-bottom: #ff4e00; border-bottom-style: solid; ">-->
+<!--        <p style="width: 495px; height: 64px;  font-size: 50px; font-weight: 300; font-style: normal; font-stretch: normal; line-height: normal; letter-spacing: normal; color: #ff4e00; "> Let's Get Started </p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div style="padding-top: 50px; padding-left: 200px; padding-right: 200px; text-align: center"> -->
+<!--      <p style=" font-size: 30px; font-weight: 300; font-style: normal; font-stretch: normal;  color: #333132;"> You can select the <b> Enrich button </b> if you want your records to be enriched based upon the <b> DMS Enrichment Package </b> you have selected. </p> <br/><br/> <br/> -->
+<!--    </div>-->
+
+<!--    <div  style=" vertical-align:middle; text-align:center">-->
+<!--      <apex:image style="padding-top: 15px; padding-bottom: 20px;" url="https://www.ringlead.com/wp-content/uploads/2018/11/JhAaP2nA.png"/>-->
+<!--    </div>-->
+
+
+
+<!--    <div style="vertical-align:middle; text-align:center; padding-top: 20px;">-->
+<!--      <apex:actionStatus id="AddStatus">-->
+<!--        <apex:facet name="start">-->
+<!--            <apex:outputPanel >-->
+<!--              <img src="/img/loading32.gif" width="27" height="27" />-->
+<!--            <apex:outputLabel style="font-weight: 100px; font-size: 25px; color: red; padding-left: 20px;" value="Loading..."/>-->
+<!--        </apex:outputPanel> -->
+<!--        </apex:facet>-->
+<!--        <apex:facet name="stop">-->
+<!--        <apex:commandbutton image="https://www.ringlead.com/wp-content/uploads/2018/10/Enrich-Account-Button.png" id="updateSalesforceBtn"  action="{!enrichRecord}" status="AddStatus" reRender="form"/>-->
+<!--        </apex:facet>-->
+<!--      </apex:actionStatus>-->
+<!--     -->
+
+<!--    </div>-->
+<!--    </div>-->
+<!--  -->
+<!--</apex:outputPanel>-->
+
+<!--<apex:outputPanel id="enrichmentPanel" rendered="{!isEnriched == true}">-->
+<!--  <apex:outputPanel id="errorPanel" rendered="{!isError == true}">-->
+<!--    <div>-->
+<!--      <div style="width: 100%; height: 80px; background-color: #ff4e00">-->
+<!--        <div style="align-content: center;">-->
+<!--        <p style="width: 495px; height: 64px;  font-size: 50px; font-weight: 300; font-style: normal; font-stretch: normal; line-height: normal; letter-spacing: normal; color: #ffffff; padding-left: 480px;"> Let's Get Started </p>-->
+<!--        </div> -->
+
+<!--    </div>-->
+<!--   -->
+<!--    <div style="padding-left: 20px; padding-top: 30px; padding-right: 20px;">-->
+<!--      <apex:image title="Error" url="https://www.ringlead.com/wp-content/uploads/2018/11/outline-announcement-24px_OJ.png" width="35" height="35"/> &nbsp;-->
+<!--      <p style="font-size: 26px; font-weight: 300; font-style: normal; font-stretch: normal; line-height: 1.41; letter-spacing: normal;color: #333132;"> {!errorMessage} </p>-->
+<!--      <p style="font-size: 26px; font-weight: 300; font-style: normal; font-stretch: normal; line-height: 1.41; letter-spacing: normal;color: #333132;">Please contact RingLead support. Ask your RingLead admin to log in to RingLead or send an email to <a href="email:support@ringlead.com">support@ringlead.com</a></p>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </apex:outputPanel>-->
+
+
+
+<!--<apex:outputPanel id="detailsPanel" rendered="{!isError == false}">-->
+
+<!--  <div class="container-fluid" id="container" style="padding-top: 20px; padding-right: 0px;">-->
+<!--     -->
+<!--      <div class ="row" id ="titlerow">-->
+<!--        <p><span class="ringleadFont"> RINGLEAD </span>-->
+<!--        <span class="enrichmentFont"> ENRICHMENT </span>-->
+<!--      </p>-->
+<!--     -->
+<!--      </div>-->
+<!--    <div class= "row">-->
+<!--      <div class="col-12 bhoechie-tab-container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-1 bhoechie-tab-menu">-->
+<!--              <div class="list-group" style="height: 480px !important;">-->
+<!--                    <a href="#" class="list-group-item activetab text-center" style="height: 120px;">-->
+<!--                      <apex:image style="padding-top: 10px; margin-left: -5px" url="{!URLFOR($Resource.logos, 'logos/home.png')}"/><br/><span class="listFont" style="font-size: 13px; padding-top: 5px; margin-left: -10px;"> Overview </span>-->
+<!--                    </a>-->
+<!--                    <a href="#" class="list-group-item text-center" style="height: 120px;">-->
+<!--                      <apex:image style="padding-top: 10px; margin-left: -5px" url="{!URLFOR($Resource.logos, 'logos/business.png')}"/>-->
+<!--                      <br/> <span class="listFont" style="font-size: 13px; padding-top: 5px; margin-left: -10px; "> Company </span>-->
+<!--                    </a>-->
+<!--                -->
+<!--                    <a href="#" class="list-group-item text-center" style="height: 120px;">-->
+<!--                     <apex:image style="padding-top: 10px; margin-left: -3px" url="{!URLFOR($Resource.logos, 'logos/overview.png')}"/><br/> <span class="listFont" style="font-size: 13px;padding-top: 10px; text-align: center;"> News </span>-->
+<!--                  </a>-->
+<!--                   <a href="#" class="list-group-item text-center" style="height: 100px;">-->
+<!--                     <apex:image style="padding-top: 10px; margin-left: -3px" url="{!URLFOR($Resource.logos, 'logos/social.png')}"/>-->
+<!--                    <br/> <span class="listFont" style="font-size: 13px; padding-top: 10px; text-align: center; "> Social </span>-->
+<!--                  </a>-->
+<!--                  </div>-->
+<!--            </div>-->
+<!--            <div class="col-11 bhoechie-tab">-->
+<!--                  <div class="bhoechie-tab-content activetab">-->
+<!--                     -->
+<!--                     <div class="overviewdetails" id="overviewdetails" style="height: 500px; overflow-y: auto;">-->
+
+<!--                      <div style="display: inline-block; vertical-align: middle; width: 100%; padding-left: 70px; border-color: #f2f2f2; border-width: 8px; ">-->
+
+<!--                        <div style="height: 120px;">-->
+<!--                          <div style="float: left; padding-right: 20px; padding-left: 10px; ">-->
+<!--                            <apex:image url="{!URLFOR($Resource.logos, 'logos/companyIcon.png')}" width="98" height="98"/>-->
+<!--                          </div>-->
+<!--                          <div >-->
+<!--                            <span class="titletext" id="companyName" title ="Company Name"></span>-->
+<!--                            <span class="displayText" id="public" title="Public"> </span> -->
+<!--                            <span class="lowertitle" id="industryCo" title="Industry">  </span> -->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                        <br/>-->
+
+<!--                      <span> <apex:image url="{!URLFOR($Resource.logos, 'logos/revenue.png')}" width="21" height="21" title="Revenue"/> <p class="displayText" id="revenue" > &ensp; </p> </span>-->
+<!--                         <span> <apex:image url="{!URLFOR($Resource.logos, 'logos/employees.png')}" width="21" height="21" title="Number of Employees"/> <p class="displayText" id="employees"> &ensp;  </p> </span>-->
+<!--                         <span> <apex:image url="{!URLFOR($Resource.logos, 'logos/hphone.png')}" width="21" height="21" title="Phone"/> <p class="displayText" id="phoneco" > &ensp; </p> &nbsp;  <apex:image value="https://www.ringlead.com/wp-content/uploads/2018/10/verification-Verified.png" width="20" height="20" rendered="{!verificationMap['Phone1']=='Verified'}" title="Verified"/>  <apex:image value="https://www.ringlead.com/wp-content/uploads/2018/10/verification-Not-Verified.png" width="20" height="20" rendered="{!verificationMap['Phone1']=='Not Verified'}" title="Not Verified" /> </span>-->
+<!--                         <br/>-->
+<!--                         <span> <apex:image url="{!URLFOR($Resource.logos, 'logos/location.png')}" title="HeadQuarters" width="21" height="21"/> <p class="displayText" id="address"> &ensp;  </p>  &nbsp; <apex:image value="https://www.ringlead.com/wp-content/uploads/2018/10/verification-Verified.png" width="20" height="20" rendered="{!verificationMap['WorkAddress']=='Verified'}" title="Verified" />  <apex:image value="https://www.ringlead.com/wp-content/uploads/2018/10/verification-Not-Verified.png" width="20" height="20" rendered="{!verificationMap['WorkAddress']=='Not Verified'}" title="Not Verified"/> </span>-->
+<!--                         <span> <apex:image url="{!URLFOR($Resource.logos, 'logos/website.png')}" width="21" height="21"  title="Website"/> <p class="displayText" id="website"> &ensp;  </p> </span>-->
+<!--                         <span style="padding-top: 15px;"> <p class="displayText"> COMPANY DESCRIPTION </p> </span>-->
+<!--                         <span style=" opacity: 0.85; border-radius: 5px; box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.5); background-color: #eaeaea; border: solid 1px #cacaca; padding-left: 10px; padding-right: 10px; padding-bottom: 10px; padding-top: 10px; height: 100px; width: 830px; overflow: auto "> <p class="displayText" style="" id="description"> </p> </span> -->
+<!--                      </div>-->
+
+<!--                      <div class="col-12 text-center" style=" padding-top: 30px;">-->
+<!--                        <apex:actionStatus id="AddStatusEnrich">-->
+<!--                            <apex:facet name="start">-->
+<!--                            <apex:outputPanel >-->
+<!--                              <img src="/img/loading32.gif" width="27" height="27" />-->
+<!--                            <apex:outputLabel style="font-weight: 100px; font-size: 25px; color: red; padding-left: 20px;" value="Loading..."/>-->
+<!--                            </apex:outputPanel> -->
+<!--                            </apex:facet>-->
+<!--                            <apex:facet name="stop">-->
+<!--                            <apex:commandbutton image="https://www.ringlead.com/wp-content/uploads/2018/11/Re-Enrich-Button.png"  action="{!reEnrichRecord}" status="AddStatusEnrich" reRender="form" oncomplete="refreshPage();"/>-->
+<!--                            </apex:facet>-->
+<!--                        </apex:actionStatus>-->
+<!--                        -->
+<!--                      </div>-->
+<!--                   -->
+<!--                    </div>-->
+
+<!--                    </div>-->
+<!--                    <div class="bhoechie-tab-content" id="contactDetails" >-->
+<!--                        <div class = "row">-->
+<!--                         -->
+<!--                          <div class = "col-3" style="overflow: auto; height: 492px;">-->
+<!--                            <button type="button" class="accordion active" id="profile" > <apex:image url="{!URLFOR($Resource.logos, 'logos/contactProfile.png')}"/>   Company Basic </button>-->
+<!--                            <div class="panel" id="basicPanel"  style ="max-height: 100px;">-->
+<!--                  -->
+<!--                             -->
+<!--                            </div>-->
+<!--                            <button type="button" class="accordion active" id="contact" > <apex:image url="{!URLFOR($Resource.logos, 'logos/industry.png')}" width="21" height="21"/>  Firmographics </button>-->
+<!--                            <div class="panel" id="firmoPanel" style ="max-height: 100px;">-->
+<!--            -->
+
+<!--                            </div>-->
+<!--                            <button type="button" class="accordion active" id="employment" > <apex:image url="{!URLFOR($Resource.logos, 'logos/employment.png')}" width="21" height="21"/> Financial </button>-->
+<!--                            <div class="panel" id="financePanel" style ="max-height: 100px;">-->
+<!--                            </div>-->
+
+<!--                            <button type="button" class="accordion active" id="employment" > <apex:image url="{!URLFOR($Resource.logos, 'logos/employment.png')}" width="21" height="21"/> Firmographic Location </button>-->
+<!--                            <div class="panel" id="firmographicPanel" style ="max-height: 100px;">-->
+
+<!--                            </div>-->
+<!--                  -->
+<!--                          </div>-->
+
+
+
+
+<!--                           <div class = "col-9" style="box-shadow: 5px #888888; height: 500px; overflow: auto;-webkit-box-shadow: 3px 6px 32px -8px rgba(0,0,0,0.47); -moz-box-shadow: 3px 6px 32px -8px rgba(0,0,0,0.47); box-shadow: 3px 6px 32px -8px rgba(0,0,0,0.47);">-->
+<!--                              <div class="col-12" style="">    -->
+<!--                                  <table class="table table-striped" id = "fieldTable">-->
+<!--                                     <thead id="tablehead">-->
+<!--                                      <tr>-->
+<!--                                        <th class="tableHeader"> FIELD </th>-->
+<!--                                        <th class="tableHeader"> <apex:image url="{!URLFOR($Resource.logos, 'logos/salesforce@2x.png')}" width="55" height="45"/> &nbsp; BEFORE ENRICHMENT</th>-->
+<!--                                        <th class="tableHeader" style="color: #ff4e00; "> <apex:image url="{!URLFOR($Resource.logos, 'logos/ring.png')}" width="30" height="30"/> &nbsp; AFTER ENRICHMENT</th>-->
+<!--                                      </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody id="tablebody">-->
+<!--                                      <tr></tr>-->
+<!--                                    </tbody>-->
+<!--                                  </table> -->
+<!--                                    <div class="col-12 text-center" style="padding-top: 30px; padding-bottom: 30px;  ">-->
+<!--                                        <apex:commandbutton image="https://www.ringlead.com/wp-content/uploads/2018/11/Saveto-SF-Button.png" id="updateSalesforce" reRender="contactDetails" onclick="updateSalesforce();"  />-->
+<!--                                         <apex:actionFunction name="actionfunc" action="{!enrichButton}" oncomplete="refreshPage();">-->
+<!--                                             <apex:param value="" name="array" assignTo="{!stringArr}" />-->
+
+<!--                                         </apex:actionFunction>-->
+
+<!--                                    </div>-->
+<!--                              </div>-->
+<!--                           </div>-->
+<!--                         </div>-->
+<!--                        -->
+<!--                    </div>-->
+<!--        -->
+<!--                    <div class="bhoechie-tab-content">-->
+<!--                        <center style="padding-top: 50px;">-->
+<!--                          <h3> <apex:image url="{!URLFOR($Resource.logos, 'logos/overview@3x.png')}" />  </h3><br/><br/>-->
+<!--                          <h2 style="margin-top: 0;color:#333132">News Alerts</h2><br/>-->
+<!--                          <h3 style="margin-top: 0;color:#333132">Coming Soon</h3><br/>-->
+<!--                        </center>-->
+<!--                    </div>-->
+<!--                    <div class="bhoechie-tab-content">-->
+<!--                        <center style="padding-top: 50px;">-->
+<!--                          <h3><apex:image url="{!URLFOR($Resource.logos, 'logos/social@3x.png')}"/>  </h3><br/><br/>-->
+<!--                          <h2 style="margin-top: 0;color:#333132">Social Contacts</h2><br/>-->
+<!--                          <h2 style="margin-top: 0;color:#333132">Coming Soon</h2><br/>-->
+<!--                        </center>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div> -->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--      <div style="position: absolute; top: 0; right: 100px; height: 40px; background-color: #ffffff ">-->
+<!--        <apex:image value="{!$Resource.RingleadLogo1}" style="height:50px; width:160px; background-color: #ffffff" /> -->
+<!--      </div>-->
+<!--    -->
+<!--    -->
+<!--  </apex:outputPanel>-->
+
+<!--</apex:outputPanel>-->
+
+
+<!--<script type="text/javascript">-->
+
+<!--          var beforeEnrichment = JSON.parse('{!JSENCODE(beforeEnrichment)}') ;-->
+<!--          var afterEnrichment= JSON.parse('{!JSENCODE(afterEnrichment)}');-->
+<!--          var companyFirmoApiNames = JSON.parse('{!JSENCODE(companyFirmoApiNames)}');-->
+<!--          var companyBasicApiNames = JSON.parse('{!JSENCODE(companyBasicApiNames)}');-->
+<!--          var financialApiNames = JSON.parse('{!JSENCODE(financialApiNames)}');-->
+<!--          var firmLocationApiNames = JSON.parse('{!JSENCODE(firmLocationApiNames)}');-->
+<!--          var overviewContact = JSON.parse('{!JSENCODE(overviewContact)}');-->
+<!--          var overviewCompany = JSON.parse('{!JSENCODE(overviewCompany)}');-->
+<!--          var verificatonDetails = JSON.parse('{!JSENCODE(verificationDetails)}');-->
+<!--          var labelMap = JSON.parse('{!JSENCODE(sFLabelDetails)}');-->
+<!--          var apiNames = []; -->
+<!--          apiNames.push.apply(apiNames, companyFirmoApiNames);-->
+<!--          apiNames.push.apply(apiNames, companyBasicApiNames);-->
+<!--          apiNames.push.apply(apiNames, financialApiNames);-->
+<!--          apiNames.push.apply(apiNames, firmLocationApiNames);-->
+<!--          console.log('beforeEnrichment       ' + beforeEnrichment);-->
+<!--          console.log('afterEnrichment       ' + afterEnrichment);-->
+<!--          console.log('companyFirmoApiNames       ' + companyFirmoApiNames);-->
+<!--          console.log('companyBasicApiNames       ' + companyBasicApiNames);-->
+<!--          console.log('financialApiNames       ' + financialApiNames);-->
+<!--          console.log('firmLocationApiNames       ' + firmLocationApiNames);-->
+<!--          console.log('overviewContact       ' + overviewContact);-->
+<!--          console.log('overviewCompany       ' + overviewCompany);-->
+
+<!--      $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {-->
+<!--          e.preventDefault();-->
+<!--          $(this).siblings('a.activetab').removeClass("activetab");-->
+<!--          $(this).addClass("activetab");-->
+<!--          var index = $(this).index();-->
+<!--          $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("activetab");-->
+<!--          $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("activetab");-->
+<!--      });-->
+
+
+<!-- //var basicflag =0, firmoflag =0; financeflag =0, locationflag = 0; -->
+<!--  var acc = document.getElementsByClassName("accordion");-->
+<!--  var i;-->
+
+
+
+<!--  //adding company details-->
+<!--  var hqcity = (overviewCompany['HQCity'] != null) ? overviewCompany['HQCity'] : '-';-->
+<!--  console.log('hqcity ' +hqcity);-->
+<!--  var hqcountry = (overviewCompany['HQCountry'] != null) ? overviewCompany['HQCountry'] : '-' ;-->
+<!--  console.log('hqcountry ' +hqcountry);-->
+<!--  var hqstate = (overviewCompany['HQState'] != null) ? overviewCompany['HQState'] : '-';-->
+<!--  console.log('hqstate' +hqstate);-->
+<!--  var hqzip = (overviewCompany['HQZip'] != null) ? overviewCompany['HQZip'] : '-';-->
+<!--  console.log('hqzip ' +hqzip);-->
+<!--  var comRevenue =  overviewCompany['Revenue'];-->
+<!--  formattedRevenue = formatNumber(comRevenue);-->
+<!--  var emp = overviewCompany['Employees'];-->
+<!--  formattedEmp = formatNumber(emp);-->
+<!--  document.getElementById("companyName").innerHTML = (overviewCompany['CompanyName'] != null) ? overviewCompany['CompanyName'] : '-';-->
+<!--  document.getElementById("public").innerHTML = (overviewCompany['Public'] != null) ? overviewCompany['Public'] : '-' ;-->
+<!--  document.getElementById("industryCo").innerHTML = (overviewCompany['Industry'] != null) ? overviewCompany['Industry'] : '-' ;-->
+<!--  document.getElementById("revenue").innerHTML += (overviewCompany['Revenue'] != null) ? formattedRevenue : '-' ;-->
+<!--  document.getElementById("employees").innerHTML += (overviewCompany['Employees'] != null) ? formattedEmp + '  employees' : '-' ;-->
+<!--  document.getElementById("phoneco").innerHTML += (overviewCompany['Phone1'] != null) ? overviewCompany['Phone1'] : '-' ;-->
+<!--  document.getElementById("address").innerHTML += (overviewCompany['HQStreet1'] != null) ? overviewCompany['HQStreet1'] : '-';-->
+<!--  document.getElementById("address").innerHTML += '    ' + hqcity + '    ' + hqstate + '    '+ hqcountry + '    ' + hqzip;-->
+<!--  var token = (overviewCompany['Website'] != null) ? overviewCompany['Website'] : '-';-->
+<!--  document.getElementById("website").innerHTML += "<a href='"+ token +"' >"+ token +"</a>";-->
+<!-- // document.getElementById("website").innerHTML += (overviewCompany['Website'] != null) ? overviewCompany['Website'] : '-' ;-->
+<!--  document.getElementById("description").innerHTML = (overviewCompany['CompanyDescription'] != null) ? overviewCompany['CompanyDescription'] : '-' ;-->
+
+
+<!--  //automatically add all the fields -->
+<!--   var table = document.getElementById('fieldTable');-->
+<!--   console.log(fieldTable);-->
+<!--  //companyBasicApiNames-->
+
+<!--   for(var i=0; i<companyBasicApiNames.length; i++){-->
+<!--      var displayField = companyBasicApiNames[i];-->
+<!--      var rowCount = table.rows.length;-->
+<!--      console.log(rowCount);-->
+<!--      var row = table.insertRow(rowCount);-->
+<!--      var cell1 = row.insertCell(0);-->
+<!--      var element1 = document.createElement("label");-->
+<!--      element1.style = "font-weight: 400; font-size: 13px;";-->
+<!--      element1.innerHTML = labelMap[displayField];-->
+<!--      console.log(element1.innerHTML);-->
+<!--      cell1.appendChild(element1);-->
+<!--      var cell2 = row.insertCell(1);-->
+<!--      var element2 = document.createElement("label");-->
+<!--      element2.style = "font-weight: 400; font-size: 13px;";-->
+<!--      if(beforeEnrichment[displayField] === undefined){-->
+<!--          element2.innerHTML = '';-->
+<!--      }-->
+<!--      else{-->
+<!--          var beforeval = beforeEnrichment[displayField];-->
+<!--          try{-->
+<!--            // if(/^\d+$/.test(beforeval)){-->
+<!--            //   var test = formatNumber(beforeval);-->
+<!--            //   element2.innerHTML = test;-->
+<!--            // }-->
+<!--            //else{-->
+<!--              element2.innerHTML = beforeEnrichment[displayField];-->
+<!--            //}-->
+<!--          }-->
+<!--          catch(e){-->
+<!--            console.log('Exception:   ' + e);-->
+<!--          }-->
+<!--       -->
+<!--      }-->
+<!--          -->
+<!--      cell2.appendChild(element2);-->
+<!--      var cell3 = row.insertCell(2);-->
+<!--      var element3 = document.createElement("label");-->
+<!--      element3.style = "font-weight: 400; font-size: 13px;";-->
+<!--      var afterval = afterEnrichment[displayField];-->
+<!--      if(afterval == undefined){-->
+<!--          element3.innerHTML = '';-->
+<!--      }else{-->
+<!--        try{-->
+<!--          // if(/^\d+$/.test(afterval) ){-->
+<!--          //   var test = formatNumber(afterval);-->
+<!--          //   element3.innerHTML = test;-->
+<!--          // }-->
+<!--          // else{-->
+<!--              element3.innerHTML = afterEnrichment[displayField];-->
+<!--          // }-->
+<!--        }-->
+<!--        catch(e){-->
+<!--          console.log('Exception:: ' + e);-->
+<!--        }-->
+<!--      }-->
+<!--        -->
+<!--      cell3.appendChild(element3);-->
+<!--   }-->
+
+<!--//companyFirmoApiNames -->
+
+<!--   for(var i=0; i<companyFirmoApiNames.length; i++){-->
+<!--      var displayField = companyFirmoApiNames[i];-->
+<!--      var rowCount = table.rows.length;-->
+<!--      console.log(rowCount);-->
+<!--      var row = table.insertRow(rowCount);-->
+<!--      var cell1 = row.insertCell(0);-->
+<!--      var element1 = document.createElement("label");-->
+<!--      element1.style = "font-weight: 400; font-size: 13px;";-->
+<!--      element1.innerHTML = labelMap[displayField];-->
+<!--      console.log(element1.innerHTML);-->
+<!--      cell1.appendChild(element1);-->
+<!--      var cell2 = row.insertCell(1);-->
+<!--      var element2 = document.createElement("label");-->
+<!--      element2.style = "font-weight: 400; font-size: 13px;";-->
+<!--      if(beforeEnrichment[displayField] === undefined){-->
+<!--          element2.innerHTML = '';-->
+<!--      }-->
+<!--      else{-->
+<!--          element2.innerHTML = beforeEnrichment[displayField];-->
+<!--      }-->
+<!--          -->
+<!--      cell2.appendChild(element2);-->
+<!--      var cell3 = row.insertCell(2);-->
+<!--      var element3 = document.createElement("label");-->
+<!--      element3.style = "font-weight: 400; font-size: 13px;";-->
+<!--      element3.innerHTML =  afterEnrichment[displayField];-->
+<!--      cell3.appendChild(element3);-->
+<!--   }-->
+
+<!--//financialApiNames-->
+
+<!--    for(var i=0; i<financialApiNames.length; i++){-->
+<!--      var displayField = financialApiNames[i];-->
+<!--      var rowCount = table.rows.length;-->
+<!--      console.log(rowCount);-->
+<!--      var row = table.insertRow(rowCount);-->
+<!--      var cell1 = row.insertCell(0);-->
+<!--      var element1 = document.createElement("label");-->
+<!--      element1.style = "font-weight: 400; font-size: 13px;";-->
+<!--      element1.innerHTML = labelMap[displayField];-->
+<!--      console.log(element1.innerHTML);-->
+<!--      cell1.appendChild(element1);-->
+<!--      var cell2 = row.insertCell(1);-->
+<!--      var element2 = document.createElement("label");-->
+<!--      element2.style = "font-weight: 400; font-size: 13px;";-->
+<!--      if(beforeEnrichment[displayField] === undefined){-->
+<!--          element2.innerHTML = '';-->
+<!--      }-->
+<!--      else{-->
+<!--        try{-->
+<!--            var val = beforeEnrichment[displayField];-->
+<!--            var isnum = /^\d+$/.test(val);-->
+<!--            if(isnum){-->
+<!--              var test = formatNumber(val);-->
+<!--              console.log('Formatted Revenue:::    ' + test);-->
+<!--              element2.innerHTML = test;-->
+<!--            }-->
+
+<!--            else{-->
+<!--              element2.innerHTML = beforeEnrichment[displayField];-->
+<!--            }-->
+<!--        }-->
+<!--        catch(e){-->
+<!--            console.log('Exception::    ' + e);-->
+<!--        }-->
+<!--            -->
+<!--      }-->
+<!--          -->
+<!--      cell2.appendChild(element2);-->
+<!--      var cell3 = row.insertCell(2);-->
+<!--      var element3 = document.createElement("label");-->
+<!--      element3.style = "font-weight: 400; font-size: 13px;";-->
+<!--      var afterval =  afterEnrichment[displayField];-->
+<!--        try{-->
+<!--          if(/^\d+$/.test(afterval)){-->
+<!--              var test = formatNumber(afterval);-->
+<!--              console.log('Formatted Revenue:::    ' + test);-->
+<!--              element3.innerHTML = test;-->
+<!--          }-->
+<!--          else{-->
+<!--            element3.innerHTML =  afterEnrichment[displayField];-->
+<!--          }-->
+<!--        }-->
+<!--        catch(e){-->
+<!--          console.log('Exception:   ' +e);-->
+<!--        }-->
+<!--       -->
+<!--        -->
+<!--        cell3.appendChild(element3);-->
+<!--     }-->
+
+
+<!--//firmLocationApiNames-->
+
+<!--  for(var i=0; i<firmLocationApiNames.length; i++){-->
+<!--      var displayField = firmLocationApiNames[i];-->
+<!--      var rowCount = table.rows.length;-->
+<!--      console.log(rowCount);-->
+<!--      var row = table.insertRow(rowCount);-->
+<!--      var cell1 = row.insertCell(0);-->
+<!--      var element1 = document.createElement("label");-->
+<!--      element1.style = "font-weight: 400; font-size: 13px;";-->
+<!--      element1.innerHTML = labelMap[displayField];-->
+<!--      console.log(element1.innerHTML);-->
+<!--      cell1.appendChild(element1);-->
+<!--      var cell2 = row.insertCell(1);-->
+<!--      var element2 = document.createElement("label");-->
+<!--      element2.style = "font-weight: 400; font-size: 13px;";-->
+<!--      if(beforeEnrichment[displayField] === undefined){-->
+<!--          element2.innerHTML = '';-->
+<!--      }-->
+<!--      else{-->
+<!--          element2.innerHTML = beforeEnrichment[displayField];-->
+<!--      }-->
+<!--          -->
+<!--      cell2.appendChild(element2);-->
+<!--      var cell3 = row.insertCell(2);-->
+<!--      var element3 = document.createElement("label");-->
+<!--      element3.style = "font-weight: 400; font-size: 13px;";-->
+<!--      element3.innerHTML =  afterEnrichment[displayField];-->
+<!--      cell3.appendChild(element3);-->
+<!--   }-->
+
+<!--//adding to the panel:   -->
+
+<!--  for(var i=0; i<companyBasicApiNames.length; i++){-->
+<!--          var fieldname = companyBasicApiNames[i];-->
+<!--          //console.log(fieldname);-->
+<!--          var fieldLabel = labelMap[fieldname];-->
+<!--          var span = document.createElement('span');-->
+<!--          span.style = "  width: 200px;  font-family: Arial; font-weight: 400; font-size: 13px; font-style: normal;font-stretch: expanded;line-height: normal;letter-spacing: extra-expanded;color: #000000; padding-bottom: 2px; padding-top: 2px;";-->
+<!--          var v = document.createElement('input');-->
+<!--          v.className = 'checkmark';-->
+<!--          v.type="checkbox";-->
+<!--          v.value=fieldLabel;-->
+<!--          v.id = fieldLabel;-->
+<!--          v.checked = true;-->
+<!--          //handleCheckboxChange();-->
+<!--          v.onclick = handleCheckboxChange;-->
+<!--          // v.style = "input:checked ~ .checkmark {background-color: #2196F3;} "-->
+<!--          span.appendChild(v);-->
+<!--          span.appendChild(document.createTextNode('   ' + fieldLabel));-->
+<!--          document.getElementById('basicPanel').appendChild(span);-->
+<!--  }-->
+
+<!--  for(var i=0; i<companyFirmoApiNames.length; i++){-->
+<!--          var fieldname = companyFirmoApiNames[i];-->
+<!--          //console.log(fieldname);-->
+<!--          var fieldLabel = labelMap[fieldname];-->
+<!--          var span = document.createElement('span');-->
+<!--          span.style = "  width: 200px; font-family: Arial; font-weight: 400; font-size: 13px; font-style: normal;font-stretch: expanded;line-height: normal;letter-spacing: extra-expanded  ;color: #000000; padding-bottom: 2px; padding-top: 2px;";-->
+<!--          var v = document.createElement('input');-->
+<!--          v.className = 'checkmark';-->
+<!--          v.type="checkbox";-->
+<!--          // v.style = "input:checked ~ .checkmark {background-color: #2196F3;} "-->
+<!--          v.value=fieldLabel;-->
+<!--          v.id = fieldLabel;-->
+<!--          v.checked = true;-->
+<!--          //handleCheckboxChange();-->
+<!--          v.onclick = handleCheckboxChange;-->
+<!--          span.appendChild(v);-->
+<!--          span.appendChild(document.createTextNode('   ' + fieldLabel));-->
+<!--          document.getElementById('firmoPanel').appendChild(span);-->
+<!--  }-->
+
+<!--   for(var i=0; i<financialApiNames.length; i++){-->
+<!--          var fieldname = financialApiNames[i];-->
+<!--          //console.log(fieldname);-->
+<!--          var fieldLabel = labelMap[fieldname];-->
+<!--          var span = document.createElement('span');-->
+<!--          span.style = "  width: 200px;  font-family: Arial; font-weight: 400; font-size: 13px; font-style: normal;font-stretch: expanded;line-height: normal;letter-spacing: extra-expanded;color: #000000; padding-bottom: 2px; padding-top: 2px;";-->
+<!--          var v = document.createElement('input');-->
+<!--          v.className = 'checkmark';-->
+<!--          v.type="checkbox";-->
+<!--          v.value=fieldLabel;-->
+<!--          v.id = fieldLabel;-->
+<!--          v.checked = true;-->
+<!--          //handleCheckboxChange();-->
+<!--          v.onclick = handleCheckboxChange;-->
+<!--          // v.style = "background-color: #2196F3;"-->
+<!--          span.appendChild(v);-->
+<!--          span.appendChild(document.createTextNode('   ' + fieldLabel));-->
+<!--          document.getElementById('financePanel').appendChild(span);-->
+<!--    }-->
+
+<!--  for(var i=0; i<firmLocationApiNames.length; i++){-->
+<!--          var fieldname = firmLocationApiNames[i];-->
+<!--          //console.log(fieldname);-->
+<!--          var fieldLabel = labelMap[fieldname];-->
+<!--          var span = document.createElement('span');-->
+<!--          span.style = "  width: 200px;  font-family: Arial; font-weight: 400; font-size: 13px; font-style: normal;font-stretch: expanded;line-height: normal;letter-spacing: extra-expanded;color: #000000; padding-bottom: 2px; padding-top: 2px;";-->
+<!--          var v = document.createElement('input');-->
+<!--          v.className = 'checkmark';-->
+<!--          v.type="checkbox";-->
+<!--          v.value=fieldLabel;-->
+<!--          v.id = fieldLabel;-->
+<!--          v.checked = true;-->
+<!--          //handleCheckboxChange();-->
+<!--          v.onclick = handleCheckboxChange;-->
+<!--          // v.style = "background-color: #2196F3;"-->
+<!--          span.appendChild(v);-->
+<!--          span.appendChild(document.createTextNode('   ' + fieldLabel));-->
+<!--          document.getElementById('firmographicPanel').appendChild(span);-->
+<!--    }-->
+
+
+<!--  for (i = 0; i < acc.length; i++) {-->
+<!--    console.log('Accordion   ' + acc[i]);-->
+<!--    acc[i].addEventListener("click", function() {-->
+<!--      var id = document.querySelector('.accordion').id;-->
+<!--      //console.log(id);-->
+<!--      this.classList.toggle("active");-->
+<!--      var panel = this.nextElementSibling;-->
+<!--      //console.log(panel);-->
+<!--      if (panel.style.maxHeight){-->
+<!--        panel.style.maxHeight = null;-->
+<!--      } else {-->
+<!--        panel.style.maxHeight = panel.scrollHeight + "px";-->
+<!--      } -->
+<!--      -->
+<!--      var panelId = document.querySelector('.panel').id;-->
+<!--      -->
+
+<!--    });-->
+<!--  }-->
+
+
+<!--    function refreshPage(){-->
+
+<!--      console.log('Refreshing Page');-->
+<!--      var url = '{!url}';-->
+<!--      try{-->
+<!--        window.top.location = url;-->
+<!--      }catch(e){-->
+<!--        console.log(e);-->
+<!--      }-->
+<!--     -->
+<!--    }-->
+
+
+
+<!--    function updateSalesforce(){-->
+
+<!--      console.log('API NAMES:' + apiNames);-->
+
+<!--      if(apiNames.length == 0){-->
+<!--        alert ('Please select fields to Enrich');-->
+<!--      }-->
+
+<!--      else{-->
+<!--        var stingList = apiNames.toString();-->
+<!--        actionfunc(stingList);-->
+
+<!--        refreshPage();-->
+
+<!--      }-->
+<!--    }-->
+
+
+<!-- function formatNumber(num){-->
+<!--       var result;-->
+<!--      try{-->
+<!--        if(num != null){-->
+<!--           var strNum = num.toString();-->
+<!--                if(strNum.length <=3){-->
+<!--                    return strNum;-->
+<!--                }-->
+<!--                result = strNum.charAt(strNum.length-1);-->
+<!--                count = 1;-->
+<!--                for(var i=strNum.length-2; i>=0; i&#45;&#45;){-->
+<!--                    if(count == 3){-->
+<!--                        result = strNum.charAt(i)+',' + result;-->
+<!--                        count = 1;-->
+<!--                    }else{-->
+<!--                        result = strNum.charAt(i) + '' + result;-->
+<!--                        count++;-->
+<!--                    }-->
+<!--                }-->
+<!--        }-->
+<!--          -->
+<!--        return result;-->
+<!--      }-->
+<!--      catch(e){-->
+<!--        console.log(e);-->
+<!--        return null;-->
+<!--      }-->
+<!--    -->
+
+<!--    }-->
+<!--    function handleCheckboxChange(){-->
+<!--      console.log('Checkbox clicked');-->
+<!--      console.log(this.id);-->
+<!--      var id = this.id;-->
+<!--        const keyAPIName = Object.keys(labelMap).find(key => labelMap[key] === id);-->
+
+<!--        console.log(keyAPIName);-->
+
+<!--      //console.log(this.parent.id);-->
+<!--      if(document.getElementById(this.id).checked){-->
+<!--        apiNames.push(keyAPIName);-->
+<!--        console.log('checked');-->
+<!--        var table = document.getElementById('fieldTable');-->
+<!--        console.log(fieldTable);-->
+<!--        var rowCount = table.rows.length;-->
+<!--        console.log(rowCount);-->
+<!--        var row = table.insertRow(rowCount);-->
+<!--        var cell1 = row.insertCell(0);-->
+<!--        var element1 = document.createElement("label");-->
+<!--        element1.style = "font-weight: 400; font-size: 13px;";-->
+<!--        element1.innerHTML = id;-->
+<!--        console.log(element1.innerHTML);-->
+<!--        cell1.appendChild(element1);-->
+
+<!--        var cell2 = row.insertCell(1);-->
+<!--        var element2 = document.createElement("label");-->
+<!--        element2.style = "font-weight: 400; font-size: 13px;";-->
+<!--        if(beforeEnrichment[keyAPIName] === undefined){-->
+<!--          element2.innerHTML = '';-->
+<!--        }-->
+<!--        else{-->
+<!--          if(keyAPIName == 'NumberOfEmployees'|| keyAPIName == 'AnnualRevenue'){-->
+<!--              if(/^\d+$/.test(beforeEnrichment[keyAPIName])){-->
+<!--                  var test = formatNumber(beforeEnrichment[keyAPIName]);-->
+<!--                  console.log('Formatted Revenue:::    ' + test);-->
+<!--                  element2.innerHTML = test;-->
+<!--              }-->
+<!--            }-->
+<!--            else{-->
+<!--              element2.innerHTML = beforeEnrichment[keyAPIName];-->
+<!--            }-->
+
+<!--         // element2.innerHTML = beforeEnrichment[keyAPIName];-->
+<!--        }-->
+<!--        -->
+<!--        cell2.appendChild(element2);-->
+
+<!--        var cell3 = row.insertCell(2);-->
+<!--        var element3 = document.createElement("label");-->
+<!--        element3.style = "font-weight: 400; font-size: 13px;";-->
+<!--        if(keyAPIName == 'NumberOfEmployees'|| keyAPIName == 'AnnualRevenue'){-->
+<!--              if(/^\d+$/.test(afterEnrichment[keyAPIName])){-->
+<!--                  var test = formatNumber(afterEnrichment[keyAPIName]);-->
+<!--                  console.log('Formatted Revenue:::    ' + test);-->
+<!--                  element3.innerHTML = test;-->
+<!--              }-->
+<!--        }-->
+<!--        else{-->
+<!--              element3.innerHTML =  afterEnrichment[keyAPIName];-->
+<!--        }-->
+<!--        //element3.innerHTML =  afterEnrichment[keyAPIName];-->
+<!--        cell3.appendChild(element3);-->
+
+<!--      }-->
+
+<!--      else{-->
+
+<!--          console.log(apiNames);-->
+<!--          var index = apiNames.indexOf(keyAPIName);-->
+<!--          if (index > -1) {-->
+<!--            apiNames.splice(index, 1);-->
+<!--          }-->
+<!--          console.log(apiNames);-->
+<!--          console.log('unchecked');-->
+
+<!--          var table = document.getElementById('fieldTable');-->
+<!--          try{-->
+<!--          for (var i = 0, row; row = table.rows[i]; i++) {-->
+<!--            if(row.cells[0] == undefined){}-->
+<!--            else{-->
+<!--                console.log(row.cells[0].innerHTML);-->
+<!--                if((row.cells[0].innerHTML).includes(id)){-->
+<!--                    table.deleteRow(i);-->
+<!--                  }-->
+<!--              }-->
+
+<!--          }-->
+<!--          }catch(e){-->
+<!--            console.log('Exception:    ' + e);-->
+<!--          }-->
+
+<!--      }-->
+
+<!--    }-->
+<!--         -->
+
+<!--  </script>-->
+<!--  </apex:form>-->
+<!--</apex:page>-->

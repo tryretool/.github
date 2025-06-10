@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- 18 character case insensitive Salesforce ID for the record --></help>
+        <label><!-- Business Unit ID (case safe) --></label>
+        <name>Business_Unit_ID_case_safe__c</name>
+    </CustomFieldTranslation>

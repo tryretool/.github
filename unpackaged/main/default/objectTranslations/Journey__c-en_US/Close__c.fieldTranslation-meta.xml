@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Link that invokes &apos;Close Journey&apos; flow. Used in Journey List Views. --></help>
+        <label><!-- Close --></label>
+        <name>Close__c</name>
+    </CustomFieldTranslation>

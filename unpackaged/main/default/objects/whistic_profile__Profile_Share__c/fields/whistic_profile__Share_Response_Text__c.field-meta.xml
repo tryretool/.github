@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>whistic_profile__Share_Response_Text__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Stores the response information returned by the whistic api server for the original share</description>
+    <externalId>false</externalId>
+    <label>Share Response Text</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

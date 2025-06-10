@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Activity Subcategory --></label>
+        <name>Activity_Subcategory__c</name>
+        <picklistValues>
+            <masterLabel>3rd party event - co-presenter, co-marketer (booth)</masterLabel>
+            <translation><!-- 3rd party event - co-presenter, co-marketer (booth) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account Experience/Event</masterLabel>
+            <translation><!-- Account Experience/Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Analyst Report contributor - customer testimonial, quote, survey</masterLabel>
+            <translation><!-- Analyst Report contributor - customer testimonial, quote, survey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Advisory Board</masterLabel>
+            <translation><!-- Customer Advisory Board --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer Dinner</masterLabel>
+            <translation><!-- Customer Dinner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer quote (press announcement)</masterLabel>
+            <translation><!-- Customer quote (press announcement) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enterprise Customer Success Story</masterLabel>
+            <translation><!-- Enterprise Customer Success Story --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fireside chat - participant</masterLabel>
+            <translation><!-- Fireside chat - participant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Flagship Customer Film</masterLabel>
+            <translation><!-- Flagship Customer Film --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry roundup (press mentions/name drops for Mfg customers, for ex or Finserv)</masterLabel>
+            <translation><!-- Industry roundup (press mentions/name drops for Mfg customers, for ex or Finserv) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meetups -  sponsor or session leader</masterLabel>
+            <translation><!-- Meetups -  sponsor or session leader --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retool-included (marketing supported)</masterLabel>
+            <translation><!-- Retool-included (marketing supported) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retool-sponsored (marketing supported)</masterLabel>
+            <translation><!-- Retool-sponsored (marketing supported) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Roadshow - customer speaker / presenter</masterLabel>
+            <translation><!-- Roadshow - customer speaker / presenter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SME Panelist - virtual or live (webinar, roadshow, meetup event)</masterLabel>
+            <translation><!-- SME Panelist - virtual or live (webinar, roadshow, meetup event) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Target Account Swag Kit (Champion)</masterLabel>
+            <translation><!-- Target Account Swag Kit (Champion) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Target Account Swag Kit (Exec Buyer)</masterLabel>
+            <translation><!-- Target Account Swag Kit (Exec Buyer) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 1 Press (stand-alone press feature, focusing one one customer/story)</masterLabel>
+            <translation><!-- Tier 1 Press (stand-alone press feature, focusing one one customer/story) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User Meetup - content partner</masterLabel>
+            <translation><!-- User Meetup - content partner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User event - Featured Customer / Brand</masterLabel>
+            <translation><!-- User event - Featured Customer / Brand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User event - mainstage keynote speaker</masterLabel>
+            <translation><!-- User event - mainstage keynote speaker --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <assignments>
+        <name>Set_defaults</name>
+        <label>Set defaults</label>
+        <locationX>662</locationX>
+        <locationY>356</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>default_name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Productivity__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>productivity_calc</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.OwnerId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>0055A00000ApunnQAB</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Trigger__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>default_name</name>
+        <dataType>String</dataType>
+        <expression>TEXT({!$Record.Territory__c})&amp;&quot;: &quot;&amp;TEXT({!$Record.Date__c})</expression>
+    </formulas>
+    <formulas>
+        <name>productivity_calc</name>
+        <dataType>Number</dataType>
+        <expression>IF(
+ NOT(ISBLANK({!$Record.Productivity_Override__c})),
+ {!$Record.Productivity_Override__c},
+ IF(
+  WEEKDAY({!$Record.Date__c}) = 1 || WEEKDAY({!$Record.Date__c}) = 7,
+  0,
+  IF({!$Record.Is_Local_Holiday__c},{!Get_calendar_setting.Productivity_Local_Holiday__c} / 100,1) *
+  IF({!$Record.Is_Retool_Holiday__c},{!Get_calendar_setting.Productivity_Retool_Holiday__c} / 100,1) *
+  IF({!$Record.Is_Sales_Event__c},{!Get_calendar_setting.Productivity_Sales_Event__c} / 100 ,1) * 100 
+ )
+)</expression>
+        <scale>4</scale>
+    </formulas>
+    <interviewLabel>Business Calendar - Before Save Automations {!$Flow.CurrentDateTime} {!$Record.Name}</interviewLabel>
+    <label>Business Calendar - Before Save Automations</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_calendar_setting</name>
+        <label>Get calendar setting</label>
+        <locationX>463</locationX>
+        <locationY>355</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Set_defaults</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Territory__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Business_Calendar_Setting__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>252</locationX>
+        <locationY>25</locationY>
+        <connector>
+            <targetReference>Get_calendar_setting</targetReference>
+        </connector>
+        <object>Business_Calendar__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

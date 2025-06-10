@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Regie_ai_Exclusion__c</fullName>
+    <description>Used to exclude Accounts from being prospected by Regie.ai.
+
+External Systems Utilization: Regie.ai</description>
+    <formula>OR(
+    /* Account Status */
+    Account_Status__c = &#39;Active Customer&#39;,
+    Account_Status__c = &#39;Former Customer&#39;,
+    Account_Status__c = &#39;Disqualified&#39;,
+
+    /* Sales Development Representative */
+    ISBLANK(Sales_Development_Representative__c),
+
+    /* Sales Development Representative Subteam */
+    TEXT(Sales_Development_Representative__r.Subteam__c) = &#39;ASE&#39;,
+
+    /* Aggregation Account */
+    Is_Aggregation_Account__c = TRUE,
+
+    /* Open Committed Opportunities */
+    Num_Open_Opportunities__c &gt; 0,
+
+    /* Open Journeys */
+    Num_Open_Journeys__c &gt; 15,
+
+    /* Parent Account */
+    NOT(ISBLANK(ParentId)),
+
+    /* Subsegment */
+    OR(
+      Subsegment__c = &#39;STR&#39;,
+      Subsegment__c = &#39;ENT2&#39;
+    ),
+
+    /* Recent Lost Opportunity */
+    TODAY() - Most_Recent_Lost_Opportunity_Close_Date__c &lt;= 365,
+
+    /* Account Owner = Pool AND SDR is NULL */
+    AND(OwnerId  = &#39;0055A00000BExg9&#39;,ISBLANK(Sales_Development_Representative__c)),
+
+    /* Outbound Tier */
+    ISPICKVAL(Outbound_Tier__c, &#39;Tier 1&#39;)
+  )</formula>
+    <inlineHelpText>Used to exclude Accounts from being prospected by Regie.ai.</inlineHelpText>
+    <label>Regie.ai Exclusion?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Mature_SQO__c</fullName>
+    <description>Segment average age from SQO are GRW (30); MMK (45); ENT (75).</description>
+    <formula>IF(
+  Sales_Qualified_Opportunity__c &amp;&amp; RecordType.Name = &quot;Enterprise&quot;,
+  CASE(Segment__c,
+   &quot;STR&quot;,IF(Age_from_SQO__c &gt; 75 || IsClosed,1,0),
+   &quot;ENT&quot;,IF(Age_from_SQO__c &gt; 75 || IsClosed,1,0),
+   &quot;MMK&quot;,IF(Age_from_SQO__c &gt; 45 || IsClosed,1,0),
+   IF( Age_from_SQO__c &gt; 30 || IsClosed,1,0)
+ ) == 1,
+ FALSE
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True if the opportunity is closed or if the number of days since it was marked as sales qualified is greater than the segment&#39;s average age from SQO. Applies only to non-renewals marked as sales qualified.</inlineHelpText>
+    <label>Is Mature SQO?</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

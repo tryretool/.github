@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Flags domains for review if the length is greater than 40 characters or does not contain a period. --></help>
+        <label><!-- Is Suspect Domain? --></label>
+        <name>Is_Suspect_Domain__c</name>
+    </CustomFieldTranslation>

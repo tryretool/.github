@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ROE_Territory__c</fullName>
+    <description>Returns the current ROE Territory assigned to the Account. Used to ensure that reps are working Accounts that fall within their assigned territory.</description>
+    <externalId>false</externalId>
+    <formula>CASE(Shipping_Region__c,
+  &quot;AMER&quot;,&quot;ROW&quot;,
+  &quot;EMEA&quot;,&quot;EUR&quot;,
+  &quot;APAC&quot;,&quot;APAC&quot;,
+ &quot;ROW&quot;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Returns the current ROE Territory assigned to the Account.</inlineHelpText>
+    <label>ROE Territory</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

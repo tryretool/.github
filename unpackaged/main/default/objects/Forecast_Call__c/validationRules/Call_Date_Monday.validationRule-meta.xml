@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Date_Monday</fullName>
+    <active>false</active>
+    <errorConditionFormula>WEEKDAY(Call_Date__c)&lt;&gt;2 &amp;&amp; ISPICKVAL(Owner:User.Level__c, &#39;IC&#39;)</errorConditionFormula>
+    <errorDisplayField>Call_Date__c</errorDisplayField>
+    <errorMessage>Call date must be a Monday</errorMessage>
+</ValidationRule>

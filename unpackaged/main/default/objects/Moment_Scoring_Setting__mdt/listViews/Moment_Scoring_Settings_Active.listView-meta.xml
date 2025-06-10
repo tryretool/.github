@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moment_Scoring_Settings_Active</fullName>
+    <columns>Version__c</columns>
+    <columns>Active__c</columns>
+    <columns>Category__c</columns>
+    <columns>Type__c</columns>
+    <columns>Factor__c</columns>
+    <columns>Status__c</columns>
+    <columns>Score__c</columns>
+    <columns>Duration_Decay__c</columns>
+    <columns>Calculation__c</columns>
+    <columns>DeveloperName</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Active__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Moment Scoring Settings Active</label>
+    <language>en_US</language>
+</ListView>

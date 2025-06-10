@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>adroll__RollWorks_Scores__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field is to display the URL to RollWorks TAL Display, in case its Fit Score.</description>
+    <externalId>false</externalId>
+    <formula>CASE(adroll__Score_Type__c,&#39;Fit_Score&#39;, HYPERLINK(&#39;https://app.adroll.com/segments/target-accounts/&#39;&amp;adroll__TAL_EID__c&amp;&#39;?advertisable=&#39;&amp;adroll__Advertisable_EID__c,adroll__TAL_Name__c,&#39;_blank&#39;),adroll__Score_Type__c)</formula>
+    <label>RollWorks Scores</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

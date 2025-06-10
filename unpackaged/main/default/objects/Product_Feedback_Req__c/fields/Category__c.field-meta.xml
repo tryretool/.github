@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Category__c</fullName>
+    <label>Category</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Design</fullName>
+                <default>false</default>
+                <label>Design</label>
+            </value>
+            <value>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+                <label>Mobile</label>
+            </value>
+            <value>
+                <fullName>Bugs</fullName>
+                <default>false</default>
+                <label>Bugs</label>
+            </value>
+            <value>
+                <fullName>Onboarding &amp; Discovery</fullName>
+                <default>false</default>
+                <label>Onboarding &amp; Discovery</label>
+            </value>
+            <value>
+                <fullName>Dev Toolchain</fullName>
+                <default>false</default>
+                <label>Dev Toolchain</label>
+            </value>
+            <value>
+                <fullName>Grid</fullName>
+                <default>false</default>
+                <label>Grid</label>
+            </value>
+            <value>
+                <fullName>Security</fullName>
+                <default>false</default>
+                <label>Security</label>
+            </value>
+            <value>
+                <fullName>Unknown/needs triage</fullName>
+                <default>false</default>
+                <label>Unknown/needs triage</label>
+            </value>
+            <value>
+                <fullName>Docs</fullName>
+                <default>false</default>
+                <label>Docs</label>
+            </value>
+            <value>
+                <fullName>App Building</fullName>
+                <default>false</default>
+                <label>App Building</label>
+            </value>
+            <value>
+                <fullName>Infra</fullName>
+                <default>false</default>
+                <label>Infra</label>
+            </value>
+            <value>
+                <fullName>Org Admin</fullName>
+                <default>false</default>
+                <label>Org Admin</label>
+            </value>
+            <value>
+                <fullName>Workflows</fullName>
+                <default>false</default>
+                <label>Workflows</label>
+            </value>
+            <value>
+                <fullName>Resources (APIs, DBs, connectors)</fullName>
+                <default>false</default>
+                <label>Resources (APIs, DBs, connectors)</label>
+            </value>
+            <value>
+                <fullName>N/A</fullName>
+                <default>false</default>
+                <label>N/A</label>
+            </value>
+            <value>
+                <fullName>Services</fullName>
+                <default>false</default>
+                <label>Services</label>
+            </value>
+            <value>
+                <fullName>Documentation</fullName>
+                <default>false</default>
+                <label>Documentation</label>
+            </value>
+            <value>
+                <fullName>Application Building</fullName>
+                <default>false</default>
+                <label>Application Building</label>
+            </value>
+            <value>
+                <fullName>APIs in Retool</fullName>
+                <default>false</default>
+                <label>APIs in Retool</label>
+            </value>
+            <value>
+                <fullName>Resources (APIs, DBs, etc.)</fullName>
+                <default>false</default>
+                <label>Resources (APIs, DBs, etc.)</label>
+            </value>
+            <value>
+                <fullName>Managed DBs</fullName>
+                <default>false</default>
+                <label>Managed DBs</label>
+            </value>
+            <value>
+                <fullName>Deployment</fullName>
+                <default>false</default>
+                <label>Deployment</label>
+            </value>
+            <value>
+                <fullName>Permissions</fullName>
+                <default>false</default>
+                <label>Permissions</label>
+            </value>
+            <value>
+                <fullName>Authentication</fullName>
+                <default>false</default>
+                <label>Authentication</label>
+            </value>
+            <value>
+                <fullName>Flows/BPM</fullName>
+                <default>false</default>
+                <label>Flows/BPM</label>
+            </value>
+            <value>
+                <fullName>Cron Jobs</fullName>
+                <default>false</default>
+                <label>Cron Jobs</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Resource Auth</fullName>
+                <default>false</default>
+                <label>Resource Auth</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Bug</controllingFieldValue>
+            <valueName>Bugs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bug</controllingFieldValue>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Managed DBs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bug</controllingFieldValue>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Deployment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bug</controllingFieldValue>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Permissions</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bug</controllingFieldValue>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Authentication</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bug</controllingFieldValue>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Flows/BPM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bug</controllingFieldValue>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Cron Jobs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bug</controllingFieldValue>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bug</controllingFieldValue>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Resource Auth</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Design</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Mobile</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Onboarding &amp; Discovery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Dev Toolchain</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Grid</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Security</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Unknown/needs triage</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Docs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>App Building</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Infra</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Org Admin</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Workflows</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Resources (APIs, DBs, connectors)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>N/A</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Documentation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Application Building</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>APIs in Retool</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Feature Request</controllingFieldValue>
+            <controllingFieldValue>Enhancement</controllingFieldValue>
+            <controllingFieldValue>New Product</controllingFieldValue>
+            <controllingFieldValue>Escalation</controllingFieldValue>
+            <valueName>Resources (APIs, DBs, etc.)</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

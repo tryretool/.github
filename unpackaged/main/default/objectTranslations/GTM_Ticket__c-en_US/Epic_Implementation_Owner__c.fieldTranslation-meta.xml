@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Used to assign an &apos;Implementation Owner&apos; to Epics. --></help>
+        <label><!-- Epic: Implementation Owner --></label>
+        <name>Epic_Implementation_Owner__c</name>
+        <relationshipLabel><!-- GTM Tickets (Epic: Implementation Owner) --></relationshipLabel>
+    </CustomFieldTranslation>

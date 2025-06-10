@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Campaign_Category__c</fullName>
+    <description>No longer used as of 1/31/2025. Formula variant of the Campaign Type field that standardizes the category to a few select values for reporting.
+
+In System Use: Fields: First Campaign Category, Most Recent Campaign Category, Flow: &#39;Campaign - After Save Automations - V1&#39; (inactive)
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <formula>CASE(  Type,
+&quot;Email&quot;,&quot;Marketing - Outbound&quot;,
+&quot;Webinar - Live&quot;,&quot;Marketing - Event&quot;,
+&quot;Webinar - CS&quot;, &quot;Scale Customer Success&quot;,
+&quot;Programmatic Outreach&quot;, &quot;Scale Customer Success&quot;,
+&quot;Demo Request&quot;,&quot;Marketing - Demo Request&quot;,
+&quot;Inbound Chat&quot;,&quot;Product&quot;,
+&quot;Direct Inquiry&quot;,&quot;Marketing - Paid/Direct&quot;,
+&quot;Sponsored Podcast&quot;,&quot;Marketing - Paid/Direct&quot;,
+&quot;Live Event - Retool Hosted&quot;,&quot;Marketing - Event&quot;,
+&quot;Live Event - Tradeshow&quot;,&quot;Marketing - Event&quot;,
+&quot;Content Download&quot;,&quot;Marketing - Paid/Direct&quot;,
+&quot;Webinar - Recorded&quot;,&quot;Marketing - Event&quot;,
+&quot;Sign up&quot;,&quot;Product&quot;,
+&quot;Trial Sign up&quot;,&quot;Product&quot;,
+&quot;Trial Sign up - SSOP&quot;, &quot;Product&quot;,
+&quot;Product Non-Action&quot;, &quot;Product&quot;,	
+&quot;Product Action&quot;,&quot;Product&quot;,
+&quot;In-App Feature Gate&quot;,&quot;Product&quot;,
+&quot;Sales Outbound - SDR&quot;, &quot;Sales - SDR Outbound&quot;,
+&quot;Sales Outbound - AE&quot;, &quot;Sales - AE Outbound&quot;,
+&quot;Sales Outbound - CSM&quot;, &quot;Sales - Success Outbound&quot;,
+&quot;Referral - Current Retool User&quot;, &quot;Referral&quot;,
+&quot;Referral - Former Retool User&quot;, &quot;Referral&quot;,
+&quot;Referral - Retool Employee Personal Referral&quot;, &quot;Referral&quot;,
+&quot;Referral - Retool Customer Success Referral&quot;, &quot;Referral&quot;,
+&quot;ABM&quot;,&quot;Marketing - Paid/Direct&quot;,
+&quot;N/A&quot;)</formula>
+    <inlineHelpText>Standardizes the Campaign Type field into a few select values for reporting.</inlineHelpText>
+    <label>zOLDCampaign Category</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

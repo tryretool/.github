@@ -1,0 +1,7 @@
+<apex:page controller="DOZISF.InlineIframController" sidebar="false">
+        <c:InlineIframe route="app?organizationId={!$Organization.Id}"/>
+        <script>
+                const removePxByTheme = {!IF(BEGINS($User.UIThemeDisplayed, 'Theme4'), 20, 205)};
+                document.getElementsByTagName('iframe')[0].height = document.documentElement.clientHeight - removePxByTheme;
+        </script>
+</apex:page>

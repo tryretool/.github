@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Company List Accounts Matched Total --></label>
+        <name>adroll__Company_List_Accounts_Matched_Total__c</name>
+    </CustomFieldTranslation>

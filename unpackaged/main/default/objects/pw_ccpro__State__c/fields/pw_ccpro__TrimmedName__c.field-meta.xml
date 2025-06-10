@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pw_ccpro__TrimmedName__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Takes the first 80 characters of the state name which ensures the right length for inserting into standard state fields.</description>
+    <externalId>false</externalId>
+    <formula>TRIM ( LEFT (Name, 80) )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Trimmed Name</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

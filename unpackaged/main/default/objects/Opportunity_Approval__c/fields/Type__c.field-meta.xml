@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Below 18k ARR</fullName>
+                <default>false</default>
+                <label>Below 18k ARR</label>
+            </value>
+            <value>
+                <fullName>Below 25 users</fullName>
+                <default>false</default>
+                <label>Below 25 users</label>
+            </value>
+            <value>
+                <fullName>Platform fee under minimum</fullName>
+                <default>false</default>
+                <label>Platform fee under minimum</label>
+            </value>
+            <value>
+                <fullName>Standard user price under minimum</fullName>
+                <default>false</default>
+                <label>Standard user price under minimum</label>
+            </value>
+            <value>
+                <fullName>End user price under minimum</fullName>
+                <default>false</default>
+                <label>End user price under minimum</label>
+            </value>
+            <value>
+                <fullName>Mobile-only user price under minimum</fullName>
+                <default>false</default>
+                <label>Mobile-only user price under minimum</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

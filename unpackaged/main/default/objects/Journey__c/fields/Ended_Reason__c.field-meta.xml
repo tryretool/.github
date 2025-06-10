@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ended_Reason__c</fullName>
+    <label>Ended Reason</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Auto-Closed</fullName>
+                <default>false</default>
+                <label>Auto-Closed</label>
+            </value>
+            <value>
+                <fullName>Bad Contact Info</fullName>
+                <default>false</default>
+                <label>Bad Contact Info</label>
+            </value>
+            <value>
+                <fullName>Converted Other Journey</fullName>
+                <default>false</default>
+                <label>Converted Other Journey</label>
+            </value>
+            <value>
+                <fullName>Do Not Contact</fullName>
+                <default>false</default>
+                <label>Do Not Contact</label>
+            </value>
+            <value>
+                <fullName>Email Objection</fullName>
+                <default>false</default>
+                <label>Email Objection</label>
+            </value>
+            <value>
+                <fullName>Meeting Not Progressing</fullName>
+                <default>false</default>
+                <label>Meeting Not Progressing</label>
+            </value>
+            <value>
+                <fullName>No Response</fullName>
+                <default>false</default>
+                <label>No Response</label>
+            </value>
+            <value>
+                <fullName>Passed to Docs/Community</fullName>
+                <default>false</default>
+                <label>Passed to Docs/Community</label>
+            </value>
+            <value>
+                <fullName>Passed to Partnerships</fullName>
+                <default>false</default>
+                <label>Passed to Partnerships</label>
+            </value>
+            <value>
+                <fullName>Passed to ProServ</fullName>
+                <default>false</default>
+                <label>Passed to ProServ</label>
+            </value>
+            <value>
+                <fullName>Passed to Support</fullName>
+                <default>false</default>
+                <label>Passed to Support</label>
+            </value>
+            <value>
+                <fullName>Qual: No Authority</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Qual: No Authority</label>
+            </value>
+            <value>
+                <fullName>Qual: No Timing</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Qual: No Timing</label>
+            </value>
+            <value>
+                <fullName>Qual: No Use Case</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Qual: No Use Case</label>
+            </value>
+            <value>
+                <fullName>Referred to Other Contact</fullName>
+                <default>false</default>
+                <label>Referred to Other Contact</label>
+            </value>
+            <value>
+                <fullName>Requested Later Follow-up</fullName>
+                <default>false</default>
+                <label>Requested Later Follow-up</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

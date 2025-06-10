@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Needs_Sync_To_User__c</fullName>
+    <formula>NOT(ISBLANK(User__c)) &amp;&amp;
+CASESAFEID(User__r.UserRoleId) &lt;&gt; Current_User_Role__r.User_Role_ID__c
+&amp;&amp; User__r.Is_integration_user__c = FALSE</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Needs Sync To User?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

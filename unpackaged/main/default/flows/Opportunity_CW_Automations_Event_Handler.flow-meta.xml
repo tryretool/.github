@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Run_Committed_CW_Automations</name>
+        <label>Run Committed CW Automations</label>
+        <locationX>649</locationX>
+        <locationY>374</locationY>
+        <actionName>FlowAction_CallSubflowHandler</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>flowApiName</name>
+            <value>
+                <stringValue>Opportunity_Committed_Closed_Won_Automations_v2</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>inputVariablesJSON</name>
+            <value>
+                <elementReference>variableJSON</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>FlowAction_CallSubflowHandler</nameSegment>
+    </actionCalls>
+    <apiVersion>61.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>Opportunity - CW Automations Event Handler {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - CW Automations Event Handler</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>519</locationX>
+        <locationY>126</locationY>
+        <connector>
+            <targetReference>Run_Committed_CW_Automations</targetReference>
+        </connector>
+        <flowRunAsUser>TriggeringUser</flowRunAsUser>
+        <object>CW_Automation__e</object>
+        <triggerType>PlatformEvent</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>variableJSON</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{
+&quot;OpportunityId&quot; : &quot;{!$Record.OpportunityId__c}&quot;,
+&quot;post_slack_to_test_channel&quot; : &quot;{!$Record.Post_Gong_to_Slack_Test_Channel__c}&quot;,
+&quot;ring_gong&quot; : &quot;{!$Record.Ring_Gongs__c}&quot;
+}</text>
+    </textTemplates>
+</Flow>

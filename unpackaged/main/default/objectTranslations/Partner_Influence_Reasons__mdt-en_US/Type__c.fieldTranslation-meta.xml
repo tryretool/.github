@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Cosell</masterLabel>
+            <translation><!-- Cosell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketplace</masterLabel>
+            <translation><!-- Marketplace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reseller</masterLabel>
+            <translation><!-- Reseller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Delivery</masterLabel>
+            <translation><!-- Service Delivery --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

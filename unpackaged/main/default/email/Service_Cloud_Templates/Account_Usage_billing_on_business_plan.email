@@ -1,0 +1,3 @@
+User types are determined based on usage, there's no toggle for Standard vs End user. A Standard user is a user that has edited an app or workflow during a given month, and an End user is a user that didn't edit an app or workflow during a given month.​
+
+<p>Since you're on the Business plan though, you can use permissions to limit those you want only to be End users to only have ""Use"" permissions, so they won't have any access to edit apps (and therefore can't trigger Standard user billing): <a href="https://docs.retool.com/docs/permission-groups" target="_blank">https://docs.retool.com/docs/permission-groups</a></p>

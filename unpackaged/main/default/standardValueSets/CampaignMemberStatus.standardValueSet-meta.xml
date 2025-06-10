@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>Added</fullName>
+        <default>false</default>
+        <label>Added</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Attended</fullName>
+        <default>false</default>
+        <label>Attended</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Booth Scan</fullName>
+        <default>false</default>
+        <label>Booth Scan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Canceled</fullName>
+        <default>false</default>
+        <label>Canceled</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Checked In</fullName>
+        <default>false</default>
+        <label>Checked In</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Clean</fullName>
+        <default>false</default>
+        <label>Clean</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Confirmed Attending</fullName>
+        <default>false</default>
+        <label>Confirmed Attending</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Confirming Address</fullName>
+        <default>false</default>
+        <label>Confirming Address</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Delivered</fullName>
+        <default>false</default>
+        <label>Delivered</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Did Not Attend</fullName>
+        <default>false</default>
+        <label>Did Not Attend</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Downloaded Content</fullName>
+        <default>false</default>
+        <label>Downloaded Content</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Downloaded Content-</fullName>
+        <default>false</default>
+        <label>Downloaded Content-</label>
+    </standardValue>
+    <standardValue>
+        <fullName>eGift Clicked</fullName>
+        <default>false</default>
+        <label>eGift Clicked</label>
+    </standardValue>
+    <standardValue>
+        <fullName>eGift Expired/Credited</fullName>
+        <default>false</default>
+        <label>eGift Expired/Credited</label>
+    </standardValue>
+    <standardValue>
+        <fullName>eGift Opened</fullName>
+        <default>false</default>
+        <label>eGift Opened</label>
+    </standardValue>
+    <standardValue>
+        <fullName>eGift Sent</fullName>
+        <default>false</default>
+        <label>eGift Sent</label>
+    </standardValue>
+    <standardValue>
+        <fullName>eGift Used</fullName>
+        <default>false</default>
+        <label>eGift Used</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Invited</fullName>
+        <default>false</default>
+        <label>Invited</label>
+    </standardValue>
+    <standardValue>
+        <fullName>No Show</fullName>
+        <default>false</default>
+        <label>No Show</label>
+    </standardValue>
+    <standardValue>
+        <fullName>No Show - Waitlist</fullName>
+        <default>false</default>
+        <label>No Show - Waitlist</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Not Checked In</fullName>
+        <default>false</default>
+        <label>Not Checked In</label>
+    </standardValue>
+    <standardValue>
+        <fullName>On Demand</fullName>
+        <default>false</default>
+        <label>On Demand</label>
+    </standardValue>
+    <standardValue>
+        <fullName>On-demand</fullName>
+        <default>false</default>
+        <label>On-demand</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Processing</fullName>
+        <default>false</default>
+        <label>Processing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Prospected</fullName>
+        <default>false</default>
+        <label>Prospected</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Registered</fullName>
+        <default>false</default>
+        <label>Registered</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Registered - Waitlist</fullName>
+        <default>false</default>
+        <label>Registered - Waitlist</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Registereed</fullName>
+        <default>false</default>
+        <label>Registereed</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responded</fullName>
+        <default>false</default>
+        <label>Responded</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Responded-</fullName>
+        <default>false</default>
+        <label>Responded-</label>
+    </standardValue>
+    <standardValue>
+        <fullName>RSVP No</fullName>
+        <default>false</default>
+        <label>RSVP No</label>
+    </standardValue>
+    <standardValue>
+        <fullName>RSVP Yes</fullName>
+        <default>false</default>
+        <label>RSVP Yes</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Scanned Badge</fullName>
+        <default>false</default>
+        <label>Scanned Badge</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Scanned Badge (Cold)</fullName>
+        <default>false</default>
+        <label>Scanned Badge (Cold)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sent</fullName>
+        <default>false</default>
+        <label>Sent</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Shipped</fullName>
+        <default>false</default>
+        <label>Shipped</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Signed Up</fullName>
+        <default>false</default>
+        <label>Signed Up</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Strong Conversation (Hot)</fullName>
+        <default>false</default>
+        <label>Strong Conversation (Hot)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Undeliverable</fullName>
+        <default>false</default>
+        <label>Undeliverable</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Waitlist</fullName>
+        <default>false</default>
+        <label>Waitlist</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Waitlisted</fullName>
+        <default>false</default>
+        <label>Waitlisted</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Warm conversation (Warm)</fullName>
+        <default>false</default>
+        <label>Warm conversation (Warm)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Watched On Demand Video</fullName>
+        <default>false</default>
+        <label>Watched On Demand Video</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Watched Recording</fullName>
+        <default>false</default>
+        <label>Watched Recording</label>
+    </standardValue>
+</StandardValueSet>

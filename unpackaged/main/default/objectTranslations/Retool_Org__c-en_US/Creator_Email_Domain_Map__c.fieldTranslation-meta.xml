@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Related Account found by matching the `Creator Email Domain Clean` value against existing `Domain Map` records and returning the `Matched Account` record ID. --></help>
+        <label><!-- Creator Email Domain Map --></label>
+        <name>Creator_Email_Domain_Map__c</name>
+        <relationshipLabel><!-- Retool Orgs --></relationshipLabel>
+    </CustomFieldTranslation>

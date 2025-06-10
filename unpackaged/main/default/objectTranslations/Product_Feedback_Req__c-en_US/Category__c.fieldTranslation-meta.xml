@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+        <picklistValues>
+            <masterLabel>APIs in Retool</masterLabel>
+            <translation><!-- APIs in Retool --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>App Building</masterLabel>
+            <translation><!-- App Building --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Application Building</masterLabel>
+            <translation><!-- Application Building --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Authentication</masterLabel>
+            <translation><!-- Authentication --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bugs</masterLabel>
+            <translation><!-- Bugs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cron Jobs</masterLabel>
+            <translation><!-- Cron Jobs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deployment</masterLabel>
+            <translation><!-- Deployment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design</masterLabel>
+            <translation><!-- Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dev Toolchain</masterLabel>
+            <translation><!-- Dev Toolchain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Docs</masterLabel>
+            <translation><!-- Docs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Documentation</masterLabel>
+            <translation><!-- Documentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Flows/BPM</masterLabel>
+            <translation><!-- Flows/BPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grid</masterLabel>
+            <translation><!-- Grid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infra</masterLabel>
+            <translation><!-- Infra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed DBs</masterLabel>
+            <translation><!-- Managed DBs --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile</masterLabel>
+            <translation><!-- Mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Onboarding &amp; Discovery</masterLabel>
+            <translation><!-- Onboarding &amp; Discovery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Org Admin</masterLabel>
+            <translation><!-- Org Admin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Permissions</masterLabel>
+            <translation><!-- Permissions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resource Auth</masterLabel>
+            <translation><!-- Resource Auth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resources (APIs, DBs, connectors)</masterLabel>
+            <translation><!-- Resources (APIs, DBs, connectors) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Resources (APIs, DBs, etc.)</masterLabel>
+            <translation><!-- Resources (APIs, DBs, etc.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Security</masterLabel>
+            <translation><!-- Security --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Services</masterLabel>
+            <translation><!-- Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown/needs triage</masterLabel>
+            <translation><!-- Unknown/needs triage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workflows</masterLabel>
+            <translation><!-- Workflows --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

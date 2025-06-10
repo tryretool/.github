@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_Pause_Until_Date_on_Paused</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+TEXT( Status__c ) = &quot;Paused&quot;,
+ISBLANK( Pause_Until__c )
+)</errorConditionFormula>
+    <errorMessage>To set a Reference as Paused, please ensure you populate the Pause Until Date</errorMessage>
+</ValidationRule>

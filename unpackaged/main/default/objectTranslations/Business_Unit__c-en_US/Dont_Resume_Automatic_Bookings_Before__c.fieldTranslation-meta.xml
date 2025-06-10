@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- zOLD Don&apos;t Resume Automatic Bookings Bef --></label>
+        <name>Dont_Resume_Automatic_Bookings_Before__c</name>
+    </CustomFieldTranslation>

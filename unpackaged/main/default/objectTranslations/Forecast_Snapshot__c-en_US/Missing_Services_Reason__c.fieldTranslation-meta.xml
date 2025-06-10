@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Reason if the deal does not have an attached professional services deal at the time of snapshot.
+Reason if the deal does not have an attached professional services deal at the time of snapshot.
+- Upgrading from deployed SSOP
+- Lack of budget
+- Strong internal technical capability
+- Other --></help>
+        <label><!-- Missing Services Reason --></label>
+        <name>Missing_Services_Reason__c</name>
+    </CustomFieldTranslation>

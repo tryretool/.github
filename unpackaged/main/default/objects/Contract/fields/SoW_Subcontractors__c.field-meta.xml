@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SoW_Subcontractors__c</fullName>
+    <label>SoW: Subcontractors?</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Specified</fullName>
+                <default>false</default>
+                <label>Not Specified</label>
+            </value>
+            <value>
+                <fullName>Allowed</fullName>
+                <default>false</default>
+                <label>Allowed</label>
+            </value>
+            <value>
+                <fullName>Allowed with Permission</fullName>
+                <default>false</default>
+                <label>Allowed with Permission</label>
+            </value>
+            <value>
+                <fullName>Not allowed</fullName>
+                <default>false</default>
+                <label>Not allowed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Segment_Does_Not_Match_Ultimate_Parent__c</fullName>
+    <description>TRUE if the Account Segment does not align with the Ultimate Parent Account Segment.</description>
+    <formula>TEXT(Segment__c) != TEXT(Ultimate_Parent_Account__r.Segment__c) &amp;&amp;
+NOT(ISBLANK(Ultimate_Parent_Account__c)) &amp;&amp;
+TEXT(Ultimate_Parent_Account__r.Segment__c) != &quot;&quot;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>TRUE if the Account Segment does not align with the Ultimate Parent Account Segment.</inlineHelpText>
+    <label>Segment Does Not Match Ultimate Parent?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

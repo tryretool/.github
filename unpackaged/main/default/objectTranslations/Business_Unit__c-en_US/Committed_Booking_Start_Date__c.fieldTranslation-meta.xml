@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Equal to the Booking Date of the first opportunity in the opportunity chain (i.e., the Originating Opportunity). --></help>
+        <label><!-- Committed Booking Start Date --></label>
+        <name>Committed_Booking_Start_Date__c</name>
+    </CustomFieldTranslation>

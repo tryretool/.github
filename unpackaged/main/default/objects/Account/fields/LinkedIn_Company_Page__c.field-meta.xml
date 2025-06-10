@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LinkedIn_Company_Page__c</fullName>
+    <description>The URL of the Account&#39;s company page on LinkedIn. Source: LinkedIn</description>
+    <inlineHelpText>The URL of the Account&#39;s company page on LinkedIn. Source: LinkedIn</inlineHelpText>
+    <label>LinkedIn Company Page</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Url</type>
+</CustomField>

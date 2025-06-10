@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Approximate budget of the company&apos;s IT department. --></help>
+        <label><!-- IT Department Budget --></label>
+        <name>DOZISF__IT_Department_Budget__c</name>
+    </CustomFieldTranslation>

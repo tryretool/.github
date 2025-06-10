@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Qualification_Meeting_Set_At_Month__c</fullName>
+    <description>&lt;a href=&quot;https://retoolconfluence.atlassian.net/wiki/spaces/SAL/pages/121077975/Booking+and+Contract+Dates&quot; target=&quot;_blank&quot;&gt;Learn more about Opportunity date fields&lt;/a&gt;</description>
+    <formula>DATE(YEAR(Qualification_Meeting_Set_At__c),MONTH(Qualification_Meeting_Set_At__c),1)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The calendar month in which the Sales Qualification Meeting Set At Date falls. Returns the date of the first of that month.</inlineHelpText>
+    <label>Sales Qualification Meeting Set At Month</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

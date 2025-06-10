@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quick_Links__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;https://admin.retool.dev/apps/2bd5478c-ba96-11ec-a092-8b3fc062814a/Product/Product%20Feedback%20Requests#caseNumber=&quot;&amp;CaseNumber, &quot;PFR Link&quot;)&amp;BR()&amp; 
+
+IF( OR( ISBLANK( ContactId ), ISBLANK(  Contact.Email )), &quot;Contact email missing for Support Dash and Stripe Link&quot;,
+
+HYPERLINK(&quot;https://admin.retool.dev/apps/bafec4e6-5779-11eb-97af-73e73b7d8e6f/Admins%20ONLY/Support%20Dashboard#search=&quot;&amp;Contact.Email, &quot;Support Dash Link&quot;)&amp;BR()&amp; 
+
+HYPERLINK(&quot;https://dashboard.stripe.com/search?query=&quot;&amp;Contact.Email, &quot;Stripe Link&quot;)
+)</formula>
+    <label>Quick Links</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

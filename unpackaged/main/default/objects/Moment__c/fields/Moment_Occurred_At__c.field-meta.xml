@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moment_Occurred_At__c</fullName>
+    <description>The date/time when the Moment occurred.
+
+In System Use: Moment_Date; &#39;Case - Handoff Button&#39;; &#39;Contact - After Save Automations&#39;; &#39;Koala Intent Signal - After Save Automations&#39;; &#39;Moment: After Save Automations&#39;; &#39;Moment: Before Save Automations&#39;; &#39;Retool User - After Save Automations&#39;; &#39;Task - After Save Automations&#39;
+
+External Systems Utilization: None</description>
+    <inlineHelpText>The date/time when the Moment occurred.</inlineHelpText>
+    <label>Moment Occurred At</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

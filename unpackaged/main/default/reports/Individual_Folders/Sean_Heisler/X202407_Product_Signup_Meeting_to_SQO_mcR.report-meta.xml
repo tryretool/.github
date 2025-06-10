@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>Journey__c.Is_Meeting_Booked__c:SUM /Journey__c.Is_MQL__c:SUM</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Conversion to Meeting</masterLabel>
+        <scale>1</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>Journey__c.Is_SQO__c:SUM / Journey__c.Is_Meeting_Booked__c:SUM</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Conversion to SQO</masterLabel>
+        <scale>1</scale>
+    </aggregates>
+    <columns>
+        <field>Journey__c$Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Journey__c$Is_Meeting_Booked__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Journey_Subtype__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Journey__c$Is_SQO__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Journey__c$Is_Meeting_Booked__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c$Journey_Subtype__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Product</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Journey__c$Account__c.Segment__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>Journey__c$Identified_At__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2024-07 Product Signup Meeting to SQO</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Journeys_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Journey__c$Identified_At__c</dateColumn>
+        <interval>INTERVAL_PREV1</interval>
+    </timeFrameFilter>
+</Report>

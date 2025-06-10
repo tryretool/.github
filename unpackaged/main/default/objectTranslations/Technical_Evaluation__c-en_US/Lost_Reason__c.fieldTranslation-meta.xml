@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The primary reason why Retool lost this technical evaluation --></help>
+        <label><!-- Lost Reason --></label>
+        <name>Lost_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Chose Competitor/Alternative</masterLabel>
+            <translation><!-- Chose Competitor/Alternative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Evaluation Incomplete</masterLabel>
+            <translation><!-- Evaluation Incomplete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Evaluation Never Started</masterLabel>
+            <translation><!-- Evaluation Never Started --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Gap</masterLabel>
+            <translation><!-- Product Gap --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Shifting Priorities</masterLabel>
+            <translation><!-- Shifting Priorities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Competency</masterLabel>
+            <translation><!-- Technical Competency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technical Resourcing</masterLabel>
+            <translation><!-- Technical Resourcing --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

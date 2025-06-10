@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>GTM Boot Camp - App</fullName>
+        <default>false</default>
+        <label>GTM Boot Camp - App</label>
+    </customValue>
+    <customValue>
+        <fullName>GTM Boot Camp - Pitch</fullName>
+        <default>false</default>
+        <label>GTM Boot Camp - Pitch</label>
+    </customValue>
+    <customValue>
+        <fullName>GTM Boot Camp - Knowledge Check (Day 1)</fullName>
+        <default>false</default>
+        <label>GTM Boot Camp - Knowledge Check (Day 1)</label>
+    </customValue>
+    <customValue>
+        <fullName>GTM Boot Camp - Knowledge Check (Day 2)</fullName>
+        <default>false</default>
+        <label>GTM Boot Camp - Knowledge Check (Day 2)</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Boot Camp - Knowledge Check (Day 1)</fullName>
+        <default>false</default>
+        <label>Sales Boot Camp - Knowledge Check (Day 1)</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Boot Camp - Knowledge Check (Day 2)</fullName>
+        <default>false</default>
+        <label>Sales Boot Camp - Knowledge Check (Day 2)</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Boot Camp - Knowledge Check (Day 3)</fullName>
+        <default>false</default>
+        <label>Sales Boot Camp - Knowledge Check (Day 3)</label>
+    </customValue>
+    <masterLabel>Enablement Milestone Types</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

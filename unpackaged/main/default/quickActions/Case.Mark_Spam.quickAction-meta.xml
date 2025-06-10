@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldOverrides>
+        <field>Effort__c</field>
+        <literalValue>1 - Bored</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Outcome__c</field>
+        <literalValue>Spam</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Spam_Quick_Close__c</field>
+        <formula>true</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Status</field>
+        <literalValue>Closed</literalValue>
+    </fieldOverrides>
+    <label>Mark Spam</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Status</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Outcome__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns/>
+    </quickActionLayout>
+    <successMessage>Mark as Spam successful</successMessage>
+    <type>Update</type>
+</QuickAction>

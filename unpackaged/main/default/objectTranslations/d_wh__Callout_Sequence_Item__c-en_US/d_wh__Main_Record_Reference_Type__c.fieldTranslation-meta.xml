@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Main Record Reference Type --></label>
+        <name>d_wh__Main_Record_Reference_Type__c</name>
+        <picklistValues>
+            <masterLabel>Custom</masterLabel>
+            <translation><!-- Custom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Related Record</masterLabel>
+            <translation><!-- Related Record --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Same Record</masterLabel>
+            <translation><!-- Same Record --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Business Status --></label>
+        <name>Business_Status__c</name>
+        <picklistValues>
+            <masterLabel>Allowed</masterLabel>
+            <translation><!-- Allowed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do not sell</masterLabel>
+            <translation><!-- Do not sell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High risk</masterLabel>
+            <translation><!-- High risk --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

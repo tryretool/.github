@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sync_Update_Website__c</fullName>
+    <description>Checked TRUE if `Do Not Update Website` is FALSE and the Account Website does not equal the Harmonic Company Profile Website URL.</description>
+    <formula>NOT(ISBLANK(Account__c)) &amp;&amp;
+Account__r.Website != Website_URL__c &amp;&amp;
+NOT(ISBLANK(Website_URL__c)) &amp;&amp;
+Do_Not_Update_Website__c = FALSE</formula>
+    <inlineHelpText>Checked TRUE if `Do Not Update Website` is FALSE and the Account Website does not equal the Harmonic Company Profile Website URL.</inlineHelpText>
+    <label>Sync: Update Website?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

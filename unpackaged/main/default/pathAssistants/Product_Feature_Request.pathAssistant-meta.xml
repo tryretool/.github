@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Product_Feedback_Req__c</entityName>
+    <fieldName>Status__c</fieldName>
+    <masterLabel>Product Feature Request</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Type__c</fieldNames>
+        <fieldNames>Category__c</fieldNames>
+        <fieldNames>Is_workaround_available__c</fieldNames>
+        <fieldNames>Severity__c</fieldNames>
+        <fieldNames>Description__c</fieldNames>
+        <info>&lt;p&gt;Help test&lt;/p&gt;</info>
+        <picklistValueName>New</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>__MASTER__</recordTypeName>
+</PathAssistant>

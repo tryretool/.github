@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- What is the current lifecycle stage of the customer? --></help>
+        <label><!-- Stage --></label>
+        <name>Stage__c</name>
+        <picklistValues>
+            <masterLabel>Activated</masterLabel>
+            <translation><!-- Activated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Onboarding - Build</masterLabel>
+            <translation><!-- Onboarding - Build --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Onboarding - Deploy</masterLabel>
+            <translation><!-- Onboarding - Deploy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Onboarding - Train</masterLabel>
+            <translation><!-- Onboarding - Train --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unassigned</masterLabel>
+            <translation><!-- Unassigned --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

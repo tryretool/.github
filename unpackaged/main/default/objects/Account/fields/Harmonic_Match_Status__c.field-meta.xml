@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Harmonic_Match_Status__c</fullName>
+    <description>Status used to indicate the status of an associated Harmonic Company Profile record related to the given Account record.
+
+Matched: Account record is successfully matched to a Harmonic Company Profile record.
+Needs Review: Account data issue has been submitted and needs review from the Rev Ops team.
+Reviewed: Rev Ops team has confirmed the data issue and is working on correcting.
+Reported: Rev Ops team has submitted a correction request to the Harmonic team.
+Unmatched: Account is unmatched from a Harmonic Company Profile record and needs to be resynced.
+Not Found: No Harmonic Company Profile record is a suitable match for the Account record.
+
+External Systems Utilization: Retool</description>
+    <inlineHelpText>Status used to indicate the status of an associated Harmonic Company Profile record related to the given Account record.</inlineHelpText>
+    <label>Harmonic Match Status</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Matched</fullName>
+                <default>false</default>
+                <label>Matched</label>
+            </value>
+            <value>
+                <fullName>Needs Review</fullName>
+                <default>false</default>
+                <label>Needs Review</label>
+            </value>
+            <value>
+                <fullName>Reviewed</fullName>
+                <default>false</default>
+                <label>Reviewed</label>
+            </value>
+            <value>
+                <fullName>Reported</fullName>
+                <default>false</default>
+                <label>Reported</label>
+            </value>
+            <value>
+                <fullName>Unmatched</fullName>
+                <default>false</default>
+                <label>Unmatched</label>
+            </value>
+            <value>
+                <fullName>Not Found</fullName>
+                <default>false</default>
+                <label>Not Found</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <label>None</label>
+    </customValue>
+    <customValue>
+        <fullName>0.25</fullName>
+        <default>false</default>
+        <label>15 min</label>
+    </customValue>
+    <customValue>
+        <fullName>0.5</fullName>
+        <default>false</default>
+        <label>30 min</label>
+    </customValue>
+    <customValue>
+        <fullName>1</fullName>
+        <default>false</default>
+        <label>1 hour</label>
+    </customValue>
+    <customValue>
+        <fullName>2</fullName>
+        <default>false</default>
+        <label>2 hours</label>
+    </customValue>
+    <customValue>
+        <fullName>4</fullName>
+        <default>false</default>
+        <label>4 hours</label>
+    </customValue>
+    <customValue>
+        <fullName>8</fullName>
+        <default>false</default>
+        <label>1 day</label>
+    </customValue>
+    <customValue>
+        <fullName>16</fullName>
+        <default>false</default>
+        <label>2 days</label>
+    </customValue>
+    <customValue>
+        <fullName>24</fullName>
+        <default>false</default>
+        <label>3 days</label>
+    </customValue>
+    <customValue>
+        <fullName>32</fullName>
+        <default>false</default>
+        <label>4 days</label>
+    </customValue>
+    <masterLabel>SLA: Response Times</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

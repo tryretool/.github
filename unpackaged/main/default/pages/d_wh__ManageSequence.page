@@ -1,0 +1,553 @@
+<apex:page standardController="d_wh__Callout_Sequence__c" extensions="d_wh.ManageSequence" docType="html-5.0">
+
+    <link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.OrgChart, '/jquery.orgchart.css')}" />
+
+    <script src="{!URLFOR($Resource.jQuery)}"></script>
+    <script src="{!URLFOR($Resource.OrgChart, '/jquery.orgchart.js')}"></script>
+    <script>
+        var j$ = jQuery.noConflict();
+    </script>
+
+    <apex:slds />
+
+    <style>
+        .vf-message-wrapper .message {
+            margin: 0px;
+        }
+        .vf-message-wrapper .message table td:first-child {
+            width: 35px;
+        }
+        .slds-modal__container { 
+            position: fixed !important;
+            right: 0 !important;
+            padding: 0px !important;
+        }
+        .slds-modal__container .slds-modal__header {
+            border-top-right-radius: 0 !important;
+            border-top-left-radius: 0 !important;
+        }
+        .slds-modal__container .slds-modal__content {
+            height: 100% !important;
+        }
+        .slds-modal__container .slds-modal__footer {
+            border-bottom-right-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+        }
+    </style>
+
+    <style>
+        .lookupInput a {
+            border: 0px !important;
+            width: 50px !important;
+        }
+
+        #chart-container {
+            overflow: auto;
+            text-align: center;
+        }
+
+        #chart-container .orgchart .slds-card-custom-width {
+            width: 275px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        #chart-container .orgchart .node .edge {
+            display: none;
+        }
+
+        #chart-container .orgchart .node .edge {
+            display: none;
+        }
+
+        #chart-container .orgchart .plus-action {
+            position: absolute;
+            left: calc(50% - 16px);
+            bottom: -48px;
+            z-index: 1;
+        }
+
+    </style>
+
+    <div class="slds-scope" style="padding: 20px;">
+
+        <apex:form id="mainForm">
+
+            <apex:actionStatus id="actionStatus">
+                <apex:facet name="start">
+                    <div style="width: 100%; height: 100%; position: fixed; z-index: 10000; background-color: rgba(255, 255, 255, 0.5);">
+                        <div role="status" class="slds-spinner slds-spinner_medium">
+                            <span class="slds-assistive-text">{!$Label.Loading}</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionStatus>
+
+            <apex:outputPanel layout="none" rendered="{!sequencesEnabled}">
+
+                <apex:outputPanel layout="none" rendered="{!step == 1}">
+
+                    <div class="slds-page-header slds-page-header_record-home">
+                        <div class="slds-page-header__row">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span>{!$Label.Edit_Callout_Sequence} : <b>{!sequence.Name}</b></span>
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.Callout_Sequence_Details}">{!$Label.Callout_Sequence_Details}</span>
+                                                    <br />
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-page-header__col-actions">
+                                <div class="slds-page-header__controls">
+                                    <div class="slds-page-header__control">
+                                        <ul class="slds-button-group-list">
+                                            <li>
+                                                <apex:commandButton action="{!Cancel}" value="{!$Label.d_wh__Cancel}" styleClass="slds-button slds-button_neutral" />
+                                            </li>
+                                            <li>
+                                                <apex:commandButton action="{!SaveSequenceQuick}" value="{!$Label.d_wh__Quick_Save}" styleClass="slds-button slds-button_brand" reRender="mainForm" status="actionStatus" />
+                                            </li>
+                                            <li>
+                                                <apex:commandButton action="{!SaveSequenceContinue}" value="{!$Label.d_wh__Save_and_Continue}" styleClass="slds-button slds-button_brand" reRender="mainForm" status="actionStatus" />
+                                            </li>
+                                            <li>
+                                                <apex:commandButton action="{!SaveSequenceClose}" value="{!$Label.d_wh__Save_and_Close}" styleClass="slds-button slds-button_brand" reRender="mainForm" status="actionStatus" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                            <div class="slds-page-header__col-details">
+
+                                <br />
+                                <c:PathComponent items="{!pathComponentItems}" />
+                                <br />
+
+                                <br />
+                                <div class="vf-message-wrapper">
+                                    <apex:pageMessages />
+                                </div>
+                                <br />
+
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="{!$Component.nameInput}">
+                                                <abbr class="slds-required" title="required">* </abbr>{!$Label.Callout_Sequence_Name}
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText value="{!sequence.Name}" id="nameInput" styleClass="slds-input" />
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label">
+                                                <abbr class="slds-required" title="required">* </abbr>{!$Label.Main_Object}
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputHidden id="MainObjectInput" value="{!sequence.d_wh__Main_Object__c}" />
+                                                <c:SearchablePicklist rendered="{!canEditObject}" options="{!objectsOptions}" value="{!sequence.d_wh__Main_Object__c}" valueInputId="{!$Component.MainObjectInput}" />
+                                                
+                                                <apex:outputPanel rendered="{!!canEditObject}" layout="none">
+                                                    <apex:outputText rendered="{!sequence.d_wh__Main_Object__c != null}" value="{!sequence.d_wh__Main_Object__c}" />
+                                                    <apex:outputText rendered="{!sequence.d_wh__Main_Object__c == null}" value="{!$Label.d_wh__None_Picklist}" />
+                                                </apex:outputPanel>
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </apex:outputPanel>
+
+                <apex:outputPanel layout="none" rendered="{!step == 2}">
+
+                    <div class="slds-page-header slds-page-header_record-home">
+                        <div class="slds-page-header__row">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span>{!$Label.Edit_Callout_Sequence} : <b>{!sequence.Name}</b></span>
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.Callout_Sequence_Items}">{!$Label.Callout_Sequence_Items}</span>
+                                                    <br />
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-page-header__col-actions">
+                                <div class="slds-page-header__controls">
+                                    <div class="slds-page-header__control">
+                                        <ul class="slds-button-group-list">
+                                            <li>
+                                                <apex:commandButton action="{!Cancel}" value="{!$Label.d_wh__Cancel}" styleClass="slds-button slds-button_neutral" />
+                                            </li>
+                                            <li>
+                                                <apex:commandButton action="{!SaveItemsQuick}" value="{!$Label.d_wh__Quick_Save}" styleClass="slds-button slds-button_brand" reRender="mainForm" status="actionStatus" />
+                                            </li>
+                                            <li>
+                                                <apex:commandButton action="{!SaveItemsClose}" value="{!$Label.d_wh__Save_and_Close}" styleClass="slds-button slds-button_brand" reRender="mainForm" status="actionStatus" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                            <div class="slds-page-header__col-details">
+
+                                <br />
+                                <c:PathComponent items="{!pathComponentItems}" />
+                                <br />
+
+                                <br />
+                                <div class="vf-message-wrapper">
+                                    <apex:pageMessages />
+                                </div>
+                                <br />
+
+                                <apex:actionFunction name="AddChildItem" action="{!AddChildItem}" reRender="mainForm" status="actionStatus">
+                                    <apex:param name="parentGuid" value="" />
+                                </apex:actionFunction>
+                                <apex:actionFunction name="OpenEditItem" action="{!OpenEditItem}" reRender="mainForm" status="actionStatus">
+                                    <apex:param name="itemGuid" value="" />
+                                </apex:actionFunction>
+                                <apex:actionFunction name="RemoveItem" action="{!RemoveItem}" reRender="mainForm" status="actionStatus">
+                                    <apex:param name="itemGuid" value="" />
+                                </apex:actionFunction>
+
+                                <div id="chart-container"></div>
+
+                                <br /><br />
+
+                                <script type="text/javascript">
+                                    
+                                    var datasource = JSON.parse('{!JSENCODE(dataJSON)}');
+                                    var templatesMap = JSON.parse('{!JSENCODE(templatesJSON)}');
+                                    
+                                    var nodeTemplate = function(data) {
+                                        if (data.isAdd) {
+                                            var toReturn = '<div style="width: 250px; text-align: center;">';
+                                            toReturn +=        '<a class="slds-button slds-button_brand" href="#" onclick="AddChildItem(\'' + data.guid + '\')">{!$Label.Add_Item}</a>';
+                                            toReturn +=    '</div>';
+                                            return toReturn;
+                                        } else {
+                                            var toReturn = '<div class="slds-card slds-card-custom-width" style="' + (data.isStart ? '' : 'cursor: pointer;') + '" ' + (data.isStart ? '' : 'onclick="OpenEditItem(\'' + data.guid + '\')"') + '>' +
+                                                                '<div class="slds-card__header slds-grid">' +
+                                                                    '<header class="slds-media slds-media_center slds-has-flexi-truncate">' +
+                                                                        '<div class="slds-media__body slds-truncate">' +
+                                                                            '<h2 class="slds-card__header-title" style="display: inline;">' +
+                                                                                '<span href="#" class="slds-card__header-link slds-truncate" title="' + (data.isStart ? '{!$Label.Start}' : data.name) + '">' +
+                                                                                    (data.isStart ? '{!$Label.Start}' : data.name) +
+                                                                                '</span>' +
+                                                                            '</h2>' +
+                                                                        '</div>' +
+                                                                    '</header>' +
+                                                                '</div>' +
+                                                                '<div class="slds-card__body slds-card__body_inner">' +
+                                                                    (data.isStart ? '' : ('<span>Template: ' + templatesMap[data.template] + '</span>')) +
+                                                                    '<button class="slds-button slds-button_icon slds-button_icon-brand plus-action" title="Add Callout Below" onclick="AddChildItem(\'' + data.guid + '\'); event.stopPropagation(); return false;">' +
+                                                                        '<img src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/add.svg')}" style="width: 20px;" />' +
+                                                                        '<span class="slds-assistive-text">Search</span>' +
+                                                                    '</button>' +
+                                                                '</div>' +
+                                                            '</div>';
+
+
+                                            return toReturn;
+                                        }
+                                    };
+                                    
+                                    j$('#chart-container').orgchart({
+                                        'data': datasource,
+                                        'nodeTemplate': nodeTemplate
+                                    });
+                                    
+                                </script>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </apex:outputPanel>
+
+                <apex:outputPanel layout="none" rendered="{!ItemEditMode}">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        
+                        <div class="slds-modal__container" style="max-width: none;">
+                            <header class="slds-modal__header">
+                                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{!$Label.Edit_Item_Details}</h2>
+                            </header>
+                            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                <apex:outputPanel layout="block" id="modalForm">
+
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">
+                                            {!$Label.d_wh__Item_Name} <span style="color: red;">*</span>
+                                        </label>
+                                        <div class="slds-form-element__control">
+                                            <apex:inputText value="{!ItemEdit.item.Name}" styleClass="slds-input" />
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">
+                                            {!$Label.Callout_Template} <span style="color: red;">*</span>
+                                        </label>
+                                        <div class="slds-form-element__control">
+                                            <apex:selectList value="{!ItemEdit.item.d_wh__Callout_Template__c}" styleClass="slds-input" size="1" multiselect="false">
+                                                <apex:selectOptions value="{!CalloutsAvailable}" />
+                                                <apex:actionSupport action="{!TemplateSelected}" event="onchange" rerender="mainForm" status="actionStatus" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                    
+
+                                    <apex:outputPanel layout="none" rendered="{!AND(ItemEditTemplate.d_wh__Object__c != null, ItemEditTemplate.d_wh__Object__c != '')}">
+                                        <hr />
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label">
+                                                {!$Label.Identify_Main_Record} ({!ItemEditTemplate.Object__c}) <span style="color: red;">*</span>
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <apex:selectList value="{!ItemEdit.item.d_wh__Main_Record_Reference_Type__c}" styleClass="slds-input" size="1" multiselect="false">
+                                                    <apex:selectOption itemLabel="Same record the sequence started from" itemValue="Same Record" rendered="{!ItemEditTemplate.d_wh__Object__c == sequence.d_wh__Main_Object__c}" />
+                                                    <apex:selectOption itemLabel="A record the sequence main record is related to" itemValue="Related Record" />
+                                                    <apex:selectOption itemLabel="Same record as the previous callout" itemValue="Previous Callout" rendered="{!AND(ItemEditPreviousTemplate != null, ItemEditTemplate.d_wh__Object__c == ItemEditPreviousTemplate.d_wh__Object__c)}" />
+                                                    <apex:selectOption itemLabel="A record created / upserted by the previous callout's actions" itemValue="Previous Action" rendered="{!ItemEditActionHasOptions}" />
+                                                    <apex:selectOption itemLabel="Use the field selector to choose" itemValue="Custom" />
+                                                    <apex:actionSupport event="onchange" action="{!ResetMainRecordReference}" rerender="mainForm" status="actionStatus" />
+                                                </apex:selectList>
+                                                <apex:outputPanel layout="none" rendered="{!ItemEdit.item.d_wh__Main_Record_Reference_Type__c == 'Related Record'}">
+                                                    <br /><br />
+                                                    <apex:selectList value="{!ItemEdit.item.d_wh__Main_Record_Reference__c}" styleClass="slds-input" size="1" multiselect="false">
+                                                        <apex:selectOptions value="{!ItemEditFieldOptions}" />
+                                                    </apex:selectList>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel layout="none" rendered="{!ItemEdit.item.d_wh__Main_Record_Reference_Type__c == 'Previous Action'}">
+                                                    <br /><br />
+                                                    <apex:selectList value="{!ItemEdit.item.d_wh__Main_Record_Reference__c}" styleClass="slds-input" size="1" multiselect="false">
+                                                        <apex:selectOptions value="{!ItemEditActionOptions}" />
+                                                    </apex:selectList>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel layout="none" rendered="{!ItemEdit.item.d_wh__Main_Record_Reference_Type__c == 'Custom'}">
+                                                    <br /><br />
+                                                    <apex:inputHidden id="mainRecHidden" value="{!ItemEdit.item.d_wh__Main_Record_Reference__c}" />
+                                                    <c:FieldSelector listType="Reference:{!ItemEditTemplate.d_wh__Object__c};Related" objectName="{!sequence.d_wh__Main_Object__c}" fieldPath="{!ItemEdit.item.d_wh__Main_Record_Reference__c}" inputValueId="{!$Component.mainRecHidden}" />
+                                                </apex:outputPanel>
+                                            </div>
+                                        </div>
+                                    </apex:outputPanel>
+
+                                    <hr />
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">
+                                            {!$Label.This_callout_will_run} <span style="color: red;">*</span>
+                                        </label>
+                                        <div class="slds-form-element__control">
+                                            <apex:selectList value="{!ItemEdit.Condition.t}" id="authInput" styleClass="slds-input" size="1" multiselect="false">
+                                                <apex:selectOption itemLabel="Always" itemValue="Always" />
+                                                <apex:selectOption itemLabel="If previous call was successful" itemValue="Success" rendered="{!ItemEdit.parent.parent != null}" />
+                                                <apex:selectOption itemLabel="Based on a custom condition" itemValue="Custom" />
+                                                <apex:actionSupport event="onchange" rerender="mainForm" status="actionStatus" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <apex:outputPanel layout="none" rendered="{!ItemEdit.Condition.t == 'Custom'}">
+                                        
+                                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                            <thead>
+                                                <tr class="slds-line-height_reset">
+                                                    <th class="" scope="col">
+                                                    </th>
+                                                    <th class="" scope="col">
+                                                        <div class="slds-truncate" title="{!$Label.Item}">{!$Label.Item}</div>
+                                                    </th>
+                                                    <th class="" scope="col">
+                                                        <div class="slds-truncate" title=""></div>
+                                                    </th>
+                                                    <th class="" scope="col">
+                                                        <div class="slds-truncate" title="{!$Label.Operator}">{!$Label.Operator}</div>
+                                                    </th>
+                                                    <th class="" scope="col">
+                                                        <div class="slds-truncate" title="{!$Label.Value}">{!$Label.Value}</div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <apex:variable var="indx" value="{!0}" />
+                                                <apex:repeat value="{!ItemEdit.condition.cs}" var="crit">
+                                                    <tr class="slds-hint-parent">
+                                                        <td data-label="">
+                                                            <div class="">
+                                                                <apex:commandLink action="{!RemoveConditionRule}" rerender="mainForm" status="actionStatus">
+                                                                    <apex:param name="guid" value="{!crit.guid}" />
+                                                                    <img src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/delete.svg')}" style="width: 24px; height:24px; filter: brightness(0) saturate(100%) invert(28%) sepia(57%) saturate(3354%) hue-rotate(346deg) brightness(83%) contrast(80%);" />
+                                                                </apex:commandLink>
+                                                            </div>
+                                                        </td>
+                                                        <td data-label="{!$Label.d_wh__Item}">
+                                                            <div class="">
+                                                                <apex:selectList value="{!crit.t}" size="1" multiselect="false" styleClass="slds-input">
+                                                                    <apex:selectOption itemValue="" itemLabel="-- Please select --" />
+                                                                    <apex:selectOption itemValue="ResponseStatus" itemLabel="Previous Call Response Status" rendered="{!ItemEdit.parent.parent != null}" />
+                                                                    <apex:selectOption itemValue="ResponseNode" itemLabel="Previous Call Response Node" rendered="{!ItemEdit.parent.parent != null}" />
+                                                                    <apex:selectOption itemValue="ObjectField" itemLabel="Field from the Sequence Main Object" />
+                                                                    <apex:actionSupport event="onchange" reRender="mainForm" status="actionStatus" />
+                                                                </apex:selectList>
+                                                            </div>
+                                                        </td>
+                                                        <td data-label="">
+                                                            <div class="">
+                                                                <apex:outputPanel layout="none" rendered="{!crit.t == 'ResponseStatus'}">
+                                                                </apex:outputPanel>
+                                                                <apex:outputPanel layout="none" rendered="{!crit.t == 'ResponseNode'}">
+                                                                    <apex:inputHidden id="nodeValHidden" value="{!crit.e}" />
+                                                                    <c:JSONSelectorEmbedded rootNode="{!prevCalloutResponse}" currentValue="{!crit.e}" inputValueId="{!$Component.nodeValHidden}" selectionType="Values" selectedActionFunction="justRerender" indx="{!indx}" />
+                                                                </apex:outputPanel>
+                                                                <apex:outputPanel layout="none" rendered="{!crit.t == 'ObjectField'}">
+                                                                    <apex:inputHidden id="fieldValHidden" value="{!crit.e}" />
+                                                                    <c:FieldSelector listType="Fields;Related" objectName="{!sequence.d_wh__Main_Object__c}" fieldPath="{!crit.e}" inputValueId="{!$Component.fieldValHidden}" />
+                                                                </apex:outputPanel>
+                                                            </div>
+                                                        </td>
+                                                        <td data-label="{!$Label.d_wh__Operator}">
+                                                            <div class="">
+                                                                <apex:selectList value="{!crit.o}" size="1" multiselect="false" styleClass="slds-input">
+                                                                    <apex:selectOption itemValue="=" itemLabel="=" />
+                                                                    <apex:selectOption itemValue="!=" itemLabel="!=" />
+                                                                    <apex:selectOption itemValue=">" itemLabel=">" />
+                                                                    <apex:selectOption itemValue="<" itemLabel="<" />
+                                                                    <apex:selectOption itemValue=">=" itemLabel=">=" />
+                                                                    <apex:selectOption itemValue="<=" itemLabel="<=" />
+                                                                    <apex:selectOption itemValue="CONTAINS" itemLabel="CONTAINS" />
+                                                                    <apex:selectOption itemValue="ISNULL" itemLabel="IS NULL" />
+                                                                    <apex:selectOption itemValue="ISNOTNULL" itemLabel="IS NOT NULL" />
+                                                                    <apex:actionSupport event="onchange" reRender="mainForm" status="actionStatus" />
+                                                                </apex:selectList>
+                                                            </div>
+                                                        </td>
+                                                        <td data-label="{!$Label.d_wh__Value}">
+                                                            <div class="">
+                                                                <apex:inputText value="{!crit.v}" styleClass="slds-input" rendered="{!AND(crit.o != null, crit.o != '', crit.o != 'ISNULL', crit.o != 'ISNOTNULL')}" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <apex:variable var="indx" value="{!indx + 1}" />
+                                                </apex:repeat>
+                                                <apex:outputPanel layout="none" rendered="{!ItemEdit.condition.showBooleanCriteria}">
+                                                    <tr class="slds-hint-parent">
+                                                        <td data-label="" colspan="5">
+                                                            <div class="">
+                                                                <b>{!$Label.Run_If}:&nbsp;&nbsp;</b>
+                                                                <apex:selectList value="{!ItemEdit.condition.o}" size="1" multiselect="false" styleClass="slds-input" style="width:300px;">
+                                                                    <apex:selectOption itemValue="AND" itemLabel="{!$Label.d_wh__All_Criteria_Is_Satisfied}" />
+                                                                    <apex:selectOption itemValue="OR" itemLabel="{!$Label.d_wh__Any_Criteria_Is_Satisfied}" />
+                                                                </apex:selectList>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </apex:outputPanel>
+                                            </tbody>
+                                        </table>
+                                        <br />
+                                        <apex:commandButton value="{!$Label.d_wh__Add_Condition_Rule}" action="{!AddConditionRule}" styleClass="slds-button slds-button_brand" rerender="mainForm" status="actionStatus" />
+                                        <apex:actionFunction name="justRerender" rerender="mainForm" status="actionStatus" />
+
+                                    </apex:outputPanel>
+
+                                    <div class="vf-message-wrapper">
+                                        <apex:pageMessages />
+                                    </div>
+
+                                </apex:outputPanel>
+                                
+                            </div>
+                            <footer class="slds-modal__footer">
+                                <apex:commandButton styleClass="slds-button slds-button_brand" value="{!$Label.d_wh__Done}" reRender="mainForm" action="{!SaveEditItem}" status="actionStatus" />
+                                <apex:commandButton styleClass="slds-button slds-button_neutral" value="{!$Label.d_wh__Cancel}" reRender="mainForm" action="{!CancelEditItem}" status="actionStatus" immediate="true" />
+                                <apex:outputPanel layout="none" rendered="{!ItemEditParentGuid == null}">
+                                    <a class="slds-button slds-button_text-destructive" href="#" onclick="if (confirm('{!$Label.d_wh__Sequence_Item_Remove_Confirmation}')) RemoveItem('{!ItemEditOriginal.guid}');">{!$Label.d_wh__Remove}</a>
+                                </apex:outputPanel>
+                            </footer>
+                        </div>
+                        
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </apex:outputPanel>
+
+            </apex:outputPanel>
+
+            <apex:outputPanel layout="none" rendered="{!NOT(sequencesEnabled)}">
+
+                <div class="slds-page-header slds-page-header_record-home">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <div class="slds-page-header__name">
+                                        <div class="slds-page-header__name-title">
+                                            <h1>
+                                                <span>{!$Label.Edit_Callout_Sequence}</span>
+                                                <br />
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__col-actions">
+                            <div class="slds-page-header__controls">
+                                <div class="slds-page-header__control">
+                                    <ul class="slds-button-group-list">
+                                        <li>
+                                            <apex:commandButton action="{!Cancel}" value="{!$Label.d_wh__Cancel}" styleClass="slds-button slds-button_neutral" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                        <div class="slds-page-header__col-details">
+
+                            <div style="text-align: center; font-size: 20px; font-weight: bold; margin: 30px;">
+                                <apex:outputText value="{!$Label.d_wh__Sequences_Not_Enabled}" escape="false" />
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </apex:outputPanel>
+            
+        </apex:form>
+
+    </div>
+
+</apex:page>

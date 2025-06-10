@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <assignments>
+        <name>Trigger_drive_connect_create</name>
+        <label>Trigger drive connect (create plan)</label>
+        <locationX>851</locationX>
+        <locationY>532</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Drive_Connect_Action__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Create account plan</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_new_account_plan</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Trigger_drive_connect_replace_plan</name>
+        <label>Trigger drive connect (replace plan)</label>
+        <locationX>596</locationX>
+        <locationY>693</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Drive_Connect_Action__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Replace account plan</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_account</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Has_account_plan</name>
+        <label>Has account plan?</label>
+        <locationX>683</locationX>
+        <locationY>239</locationY>
+        <defaultConnector>
+            <targetReference>Trigger_drive_connect_create</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_has_plan</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Account_Plan__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Account_Plan_Found</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Account - Account Plan Button {!$Flow.CurrentDateTime} {!recordId.Name}</interviewLabel>
+    <label>Account - Account Plan Button</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Update_account</name>
+        <label>Update account</label>
+        <locationX>705</locationX>
+        <locationY>885</locationY>
+        <inputReference>recordId</inputReference>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Account_Plan_Found</name>
+        <label>Account Plan Found</label>
+        <locationX>597</locationX>
+        <locationY>533</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Trigger_drive_connect_replace_plan</targetReference>
+        </connector>
+        <fields>
+            <name>Existing_plan</name>
+            <fieldText>&lt;p&gt;An account plan as found for this account. You can see it on the Account Plan tab.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;To generate a new account plan and archive the current plan, click the button below.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>Create new account plan and replace current plan</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Create_new_account_plan</name>
+        <label>Create new account plan</label>
+        <locationX>933</locationX>
+        <locationY>742</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Update_account</targetReference>
+        </connector>
+        <fields>
+            <name>Existing_plan_0</name>
+            <fieldText>&lt;p&gt;Click the button below to generate an account plan. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;u&gt;Note: Generation may take a minute or two&lt;/u&gt;. When your plan is ready, it will be available on the Account Plan tab.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>Create account plan</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>561</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Has_account_plan</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+</Flow>

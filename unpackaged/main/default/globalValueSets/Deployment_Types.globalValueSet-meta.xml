@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Docker: single compute resource</fullName>
+        <default>false</default>
+        <label>Docker: single compute resource</label>
+    </customValue>
+    <customValue>
+        <fullName>Docker: multiple compute resources</fullName>
+        <default>false</default>
+        <label>Docker: multiple compute resources</label>
+    </customValue>
+    <customValue>
+        <fullName>Kubernetes: Retool Helm chart</fullName>
+        <default>false</default>
+        <label>Kubernetes: Retool Helm chart</label>
+    </customValue>
+    <customValue>
+        <fullName>Kubernetes: custom configuration</fullName>
+        <default>false</default>
+        <label>Kubernetes: custom configuration</label>
+    </customValue>
+    <customValue>
+        <fullName>Container orchestration</fullName>
+        <default>false</default>
+        <label>Container orchestration</label>
+    </customValue>
+    <customValue>
+        <fullName>Container orchestration: serverless</fullName>
+        <default>false</default>
+        <label>Container orchestration: serverless</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Applicable</fullName>
+        <default>false</default>
+        <label>Not Applicable</label>
+    </customValue>
+    <masterLabel>Deployment Types</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

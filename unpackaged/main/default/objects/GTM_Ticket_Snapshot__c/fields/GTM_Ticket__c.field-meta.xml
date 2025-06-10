@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GTM_Ticket__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>GTM Ticket</label>
+    <referenceTo>GTM_Ticket__c</referenceTo>
+    <relationshipLabel>GTM Ticket Snapshots (GTM Ticket)</relationshipLabel>
+    <relationshipName>GTM_Ticket_Snapshots</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

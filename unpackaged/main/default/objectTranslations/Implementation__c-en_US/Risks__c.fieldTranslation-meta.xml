@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Are there are known risks that could prevent penetration or growth? --></help>
+        <label><!-- Risks --></label>
+        <name>Risks__c</name>
+    </CustomFieldTranslation>

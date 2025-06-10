@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Category --></label>
+        <name>LeanData__Category__c</name>
+        <picklistValues>
+            <masterLabel>Account Type</masterLabel>
+            <translation><!-- Account Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign Member Status</masterLabel>
+            <translation><!-- Campaign Member Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign Member Status By Campaign Type Exclusion</masterLabel>
+            <translation><!-- Campaign Member Status By Campaign Type Exclusion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign Member Status Weight</masterLabel>
+            <translation><!-- Campaign Member Status Weight --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign Member Status Weighting On</masterLabel>
+            <translation><!-- Campaign Member Status Weighting On --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign Type</masterLabel>
+            <translation><!-- Campaign Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign Type Weight</masterLabel>
+            <translation><!-- Campaign Type Weight --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Campaign Type Weighting On</masterLabel>
+            <translation><!-- Campaign Type Weighting On --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed Opportunity Stage</masterLabel>
+            <translation><!-- Closed Opportunity Stage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed Opportunity Type</masterLabel>
+            <translation><!-- Closed Opportunity Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Day Range</masterLabel>
+            <translation><!-- Day Range --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delete All Bulk Campaigns</masterLabel>
+            <translation><!-- Delete All Bulk Campaigns --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Display Fields</masterLabel>
+            <translation><!-- Display Fields --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event Type</masterLabel>
+            <translation><!-- Event Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exclude Campaign Member Status</masterLabel>
+            <translation><!-- Exclude Campaign Member Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exclude Campaign Type</masterLabel>
+            <translation><!-- Exclude Campaign Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exclude Lead Status</masterLabel>
+            <translation><!-- Exclude Lead Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exclude Opportunity Stage</masterLabel>
+            <translation><!-- Exclude Opportunity Stage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Exclude Opportunity Type</masterLabel>
+            <translation><!-- Exclude Opportunity Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open Opportunity Stage</masterLabel>
+            <translation><!-- Open Opportunity Stage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open Opportunity Type</masterLabel>
+            <translation><!-- Open Opportunity Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Closed Filter</masterLabel>
+            <translation><!-- Opportunity Closed Filter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunity Created Filter</masterLabel>
+            <translation><!-- Opportunity Created Filter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Query Limit</masterLabel>
+            <translation><!-- Query Limit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Search Fields</masterLabel>
+            <translation><!-- Search Fields --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Task Status</masterLabel>
+            <translation><!-- Task Status --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Task Type</masterLabel>
+            <translation><!-- Task Type --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unchecked Campaigns</masterLabel>
+            <translation><!-- Unchecked Campaigns --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Deep link to the Retool License Key management app to extend or modify the license key --></help>
+        <label><!-- Manage Key --></label>
+        <name>Manage_Key__c</name>
+    </CustomFieldTranslation>

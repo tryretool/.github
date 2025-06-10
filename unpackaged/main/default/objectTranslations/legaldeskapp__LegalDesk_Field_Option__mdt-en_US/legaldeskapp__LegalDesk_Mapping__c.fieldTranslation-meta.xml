@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Enter the Streamline AI Mapping field that this option will be used for --></help>
+        <label><!-- Streamline AI Mapping --></label>
+        <name>legaldeskapp__LegalDesk_Mapping__c</name>
+        <relationshipLabel><!-- LegalDesk Field Options --></relationshipLabel>
+    </CustomFieldTranslation>

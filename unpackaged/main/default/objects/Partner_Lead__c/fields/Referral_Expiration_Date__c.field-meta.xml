@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Referral_Expiration_Date__c</fullName>
+    <formula>IF(NOT(ISBLANK(Approval_Date__c)) &amp;&amp; ISPICKVAL(Type__c,&quot;Referral&quot;),
+  IF(
+    Referral_Is_Resubmission__c,
+    Approval_Date__c+Referral_Resubmit_Effective_Days_c__c,
+    Approval_Date__c+Referral_First_Submit_Effective_Days__c
+  ),
+  NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Referral: Expiration Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

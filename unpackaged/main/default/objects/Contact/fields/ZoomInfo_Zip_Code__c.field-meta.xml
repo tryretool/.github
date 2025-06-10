@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZoomInfo_Zip_Code__c</fullName>
+    <description>Address fields populated by ZoomInfo so misaligned Country/State values can be manipulated prior to updating our standard Address fields.
+
+External Systems Utilization: ZoomInfo</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Address fields populated by ZoomInfo so misaligned Country/State values can be manipulated prior to updating our standard Address fields.</inlineHelpText>
+    <label>ZoomInfo Zip Code</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

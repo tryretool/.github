@@ -1,0 +1,25 @@
+<p>Hi {!Contact.FirstName},</p>
+
+<p>Thanks for reaching out to us. </p>
+
+<p>For your particular issue we recommend [INSERT COMMUNITY POST OR QUICK NOTE].</p>
+
+<p>We recommend continuing the discussion about this technical question/issue report by bringing it to the <a href="https://community.retool.com/t/retool-community-guidelines/30917" target="_blank">Developer Community Forums</a> or <a href="https://community.retool.com/t/come-join-retool-office-hours-now-in-discord/12348" target="_blank">live video office hours</a> where Retool employees including our Community Support Engineers and Engineers actively respond. We’re very excited about our work over the last year establishing a highly active Developer Community managed by our Community Support Engineers who are dedicated to providing guidance on the forum and Office Hours. In these channels, we welcome bug reports, feature requests, help-I’m-stuck-and-don’t-know-what-to-do and any Retool-related question or discussion you can think of.</p>
+
+
+<p>We’ve noticed that topics that include the following get more quality responses with shorter response times: </p>
+<ul>
+<li>A detailed title and clear description of the problem</li>
+<li>Screenshots, recordings and/or code snippets of any of the following that apply:</li>
+<ul>
+<li>browser console</li>
+<li>logs</li>
+<li>error messages</li>
+<li>related components and configuration</li>
+</ul></ul>
+
+<p>Here is an example of a well-written post that was easily understood and as a result received a swift response: <a href="https://community.retool.com/t/bulk-inserting-to-db-from-checkbox-group/42333" target="_blank">https://community.retool.com/t/bulk-inserting-to-db-from-checkbox-group/42333</a></p>
+
+<p>Via email, we're unable to provide technical support for this issue because this channel, and my team, is dedicated to account and billing-related inquiries.</p>
+
+<p>Thank you for your understanding!</p>

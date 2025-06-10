@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Decision_criteria__c</fullName>
+    <description>&lt;a href=&quot;https://retoolconfluence.atlassian.net/wiki/spaces/SAL/pages/45842590/MEDDPICC+sales+methodology&quot; target=&quot;_blank&quot;&gt;Learn more about MEDDPICC&lt;/a&gt;</description>
+    <inlineHelpText>Describe the prospect&#39;s decision criteria (how will they select a solution to their problem?)</inlineHelpText>
+    <label>[D] Decision Criteria</label>
+    <length>131072</length>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>8</visibleLines>
+</CustomField>

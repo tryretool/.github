@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Subteam --></label>
+        <name>Subteam__c</name>
+        <picklistValues>
+            <masterLabel>ENT</masterLabel>
+            <translation><!-- ENT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GRW</masterLabel>
+            <translation><!-- GRW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MMK</masterLabel>
+            <translation><!-- MMK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>STR</masterLabel>
+            <translation><!-- STR --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

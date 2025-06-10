@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Support Self Serve Auto Reply</name>
+    <pageDevName>Support_Self_Serve_Auto_Reply</pageDevName>
+    <relatedEntityType>Case</relatedEntityType>
+    <style>none</style>
+    <subject>Re: {{{Case.Subject}}} - Ticket #{{{Case.CaseNumber}}}</subject>
+    <textOnly>Hello!
+
+Thank you for contacting Retool Customer Support! The ticket number for your message is {{{Case.CaseNumber}}}. This inbox is focused on account and billing issues, and we aim to respond within 1-2 business days.
+
+If you are looking for Enterprise plans that include dedicated support resources, book some time with our team here &lt; https://retool.com/demo?meeting_page_source=support_auto_reply &gt; . If you are already on the Enterprise plan, please reply and let us know!
+
+For technical guidance, bug reports, and feature requests, please visit our Developer Community Forum &lt; https://community.retool.com/t/welcome-to-the-retool-community &gt; where our community experts and Retool Community Engineers provide hundreds of solutions weekly. If there isn&#39;t already a helpful answer for your question, we want there to be one, so please sign up &lt; https://community.retool.com/signup &gt; or log in &lt; https://community.retool.com/login &gt; and ask! Ensure your posts get timely engagement by including:
+
+ - A detailed title and clear description
+ - Screenshots, recordings, or code snippets (e.g., browser console, logs, error messages)
+ - Example &lt; https://retool.file.force.com/email/templaterenderer?id=00XQo000002Ye6j&amp;base_href=https%253A%252F%252Fretool.my.salesforce.com&amp;preview_frame=previewFrame&amp;render_type=REPLACED_HTML_BODY&amp;setupid=CommunicationTemplatesEmail &gt; topic with good inputs that received swift responses
+
+In addition to our forums and our docs &lt; https://docs.retool.com/ &gt; , take a look at these additional resources:
+
+ - Account, billing, and user permissions FAQs: Cloud FAQ &lt; https://community.retool.com/t/accounts-users-and-billing-faq/29043 &gt; , Self-Hosted FAQ &lt; https://community.retool.com/t/self-hosted-account-billing-faq/38653 &gt; 
+ - Performance issues, lining or other app errors? Inspect debug tools &lt; https://docs.retool.com/apps/concepts/debug-tools &gt; for clues to get unblocked.
+ - We offer live video office hours &lt; https://community.retool.com/t/come-join-retool-office-hours-now-in-discord/12348 &gt; hosted on Discord several times per week. If you’re interested in learning more about Retool in general, join us to discuss use cases in a group.
+
+Thank you for understanding and for being a part of the Retool community!
+
+Sincerely,
+
+The Retool Support Team
+
+Original message: 
+
+{{{Case.Description}}}
+
+{{{Case.Thread_Token}}}</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

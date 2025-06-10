@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Utilization_Users_Unique_Queries_Run__c</fullName>
+    <formula>IF(
+  Platform_Seats_Unlimited__c = TRUE,
+  1,
+  IF(
+   ISBLANK(Total_Seats__c) || Total_Seats__c = 0,
+   NULL,
+   Current_MAU_Unique_Queries_Run__c /  Total_Seats__c
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>zOLD Utilization (Users: Unique Q</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__Disable_Breadwinner_Sync__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>If this field value is checked at the org level NetSuite Object record, then we skip the Regular Sync for that NetSuite Object.</description>
+    <label>Disable Breadwinner Sync</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

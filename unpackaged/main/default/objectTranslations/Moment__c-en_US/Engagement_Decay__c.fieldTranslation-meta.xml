@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The length of time a moment is included in the Rolling Engagement Score --></help>
+        <label><!-- Engagement Decay --></label>
+        <name>Engagement_Decay__c</name>
+    </CustomFieldTranslation>

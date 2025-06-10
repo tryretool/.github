@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Product - Bugs or performance issues</fullName>
+        <default>false</default>
+        <label>Product - Bugs or performance issues</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Feature gaps</fullName>
+        <default>false</default>
+        <label>Product - Feature gaps</label>
+    </customValue>
+    <customValue>
+        <fullName>Product - Builder learning curve</fullName>
+        <default>false</default>
+        <label>Product - Builder learning curve</label>
+    </customValue>
+    <customValue>
+        <fullName>Relationship - No or loss of champion</fullName>
+        <default>false</default>
+        <label>Relationship - No or loss of champion</label>
+    </customValue>
+    <customValue>
+        <fullName>Relationship - Unresponsive</fullName>
+        <default>false</default>
+        <label>Relationship - Unresponsive</label>
+    </customValue>
+    <customValue>
+        <fullName>Value - Budget constraints</fullName>
+        <default>false</default>
+        <label>Value - Budget constraints</label>
+    </customValue>
+    <customValue>
+        <fullName>Value - Poor use case fit</fullName>
+        <default>false</default>
+        <label>Value - Poor use case fit</label>
+    </customValue>
+    <customValue>
+        <fullName>Value - Poor adoption</fullName>
+        <default>false</default>
+        <label>Value - Poor adoption</label>
+    </customValue>
+    <customValue>
+        <fullName>Value - Failed to activate</fullName>
+        <default>false</default>
+        <label>Value - Failed to activate</label>
+    </customValue>
+    <customValue>
+        <fullName>Value - Cost or pricing model</fullName>
+        <default>false</default>
+        <label>Value - Cost or pricing model</label>
+    </customValue>
+    <customValue>
+        <fullName>Organization - Business closed</fullName>
+        <default>false</default>
+        <label>Organization - Business closed</label>
+    </customValue>
+    <customValue>
+        <fullName>Organization - Business acquired</fullName>
+        <default>false</default>
+        <label>Organization - Business acquired</label>
+    </customValue>
+    <customValue>
+        <fullName>Organization - Downsizing</fullName>
+        <default>false</default>
+        <label>Organization - Downsizing</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Self Service (On Prem)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Self Service (On Prem)</label>
+    </customValue>
+    <customValue>
+        <fullName>Self Service (Cloud)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Self Service (Cloud)</label>
+    </customValue>
+    <customValue>
+        <fullName>rebuilt</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Rebuilt internally</label>
+    </customValue>
+    <customValue>
+        <fullName>competitor</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Switched to competitor</label>
+    </customValue>
+    <customValue>
+        <fullName>acquired</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Business acquired</label>
+    </customValue>
+    <customValue>
+        <fullName>business-closed</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Business closed</label>
+    </customValue>
+    <customValue>
+        <fullName>cost</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Cost-cutting</label>
+    </customValue>
+    <customValue>
+        <fullName>use-cases</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>No use cases</label>
+    </customValue>
+    <customValue>
+        <fullName>champion</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>No champion</label>
+    </customValue>
+    <masterLabel>Churn/Contraction Reasons</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

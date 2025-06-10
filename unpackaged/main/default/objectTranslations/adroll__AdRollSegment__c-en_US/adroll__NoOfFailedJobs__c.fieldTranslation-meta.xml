@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Denotes the Number of jobs that failed --></help>
+        <label><!-- No Of Failed Jobs --></label>
+        <name>adroll__NoOfFailedJobs__c</name>
+    </CustomFieldTranslation>

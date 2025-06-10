@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- StatePicklist --></label>
+        <name>UniqueEntry__StatePicklist__c</name>
+        <picklistValues>
+            <masterLabel>California</masterLabel>
+            <translation><!-- California --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>La&#39;Henry</masterLabel>
+            <translation><!-- La&apos;Henry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missouri</masterLabel>
+            <translation><!-- Missouri --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New York</masterLabel>
+            <translation><!-- New York --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>O&#39; Brian</masterLabel>
+            <translation><!-- O&apos; Brian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ontario</masterLabel>
+            <translation><!-- Ontario --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <description>Flow invoked via PushToLegalDeskController apex class to send support email notification when a request to Streamline AI fails</description>
+    <label>Send Request Error Email</label>
+    <processType>AutoLaunchedFlow</processType>
+</Flow>

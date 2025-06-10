@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Failed Authentication Code --></label>
+        <name>d_wh__Failed_Authentication_Code__c</name>
+        <picklistValues>
+            <masterLabel>401 Unauthorized</masterLabel>
+            <translation><!-- 401 Unauthorized --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>403 Forbidden</masterLabel>
+            <translation><!-- 403 Forbidden --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Confidence threshold for account, only accounts that have higher confidence score than this value will be marked as potential duplicate records. --></help>
+        <label><!-- Threshold a --></label>
+        <name>UniqueEntry__Threshold__c</name>
+    </CustomFieldTranslation>

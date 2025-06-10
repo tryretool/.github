@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_to_Qualification_Decision__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISPICKVAL(Stage__c,&quot;Converted&quot;) &amp;&amp; NOT(ISBLANK(Opportunity__c)) &amp;&amp; NOT(ISBLANK(AE_Meeting_Date__c)),
+  CASE(Opportunity__r.StageName,
+    &quot;Closed Lost&quot;,Opportunity__r.CloseDate - AE_Meeting_Date__c,
+    &quot;(1) Qualification&quot;,TODAY() - AE_Meeting_Date__c,
+    Opportunity__r.Sales_Qualified_At__c - AE_Meeting_Date__c
+  ),
+  NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Days to Qualification Decision</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

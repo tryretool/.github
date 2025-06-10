@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Eligible_for_ownership_change__c</fullName>
+    <description>Used in sharing rules so account owners and pre-assigned AEs can change contact owners.</description>
+    <formula>(Account.OwnerId = $User.Id || Account.Sales_Development_Representative__r.Id = $User.Id) 
+&amp;&amp; ChampifyIo__No_longer_at_company__c = FALSE
+&amp;&amp; Outreach_Actively_Being_Sequenced__c = FALSE
+&amp;&amp; NOT(ISPICKVAL(Contact_Status__c, &#39;Trash&#39;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Used in sharing rules so account owners and pre-assigned AEs can change contact owners.</inlineHelpText>
+    <label>Eligible for ownership change?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

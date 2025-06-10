@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Call Quarter --></label>
+        <name>Call_Quarter__c</name>
+        <picklistValues>
+            <masterLabel>2024-Q2</masterLabel>
+            <translation><!-- 2024-Q2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2024-Q3</masterLabel>
+            <translation><!-- 2024-Q3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2024-Q4</masterLabel>
+            <translation><!-- 2024-Q4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2025-Q1</masterLabel>
+            <translation><!-- 2025-Q1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2025-Q2</masterLabel>
+            <translation><!-- 2025-Q2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2025-Q3</masterLabel>
+            <translation><!-- 2025-Q3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2025-Q4</masterLabel>
+            <translation><!-- 2025-Q4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2026-Q1</masterLabel>
+            <translation><!-- 2026-Q1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2026-Q2</masterLabel>
+            <translation><!-- 2026-Q2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2026-Q3</masterLabel>
+            <translation><!-- 2026-Q3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2026-Q4</masterLabel>
+            <translation><!-- 2026-Q4 --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

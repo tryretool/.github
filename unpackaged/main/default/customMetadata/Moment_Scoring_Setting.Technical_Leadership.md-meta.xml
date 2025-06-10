@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Technical Leadership</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Calculation__c</field>
+        <value xsi:type="xsd:string">Sum</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">Person Grade</value>
+    </values>
+    <values>
+        <field>Duration_Decay__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Factor__c</field>
+        <value xsi:type="xsd:string">Technical Leadership</value>
+    </values>
+    <values>
+        <field>Score__c</field>
+        <value xsi:type="xsd:double">30.0</value>
+    </values>
+    <values>
+        <field>Status__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Type__c</field>
+        <value xsi:type="xsd:string">Department</value>
+    </values>
+    <values>
+        <field>Version__c</field>
+        <value xsi:type="xsd:string">v1</value>
+    </values>
+</CustomMetadata>

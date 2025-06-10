@@ -1,0 +1,5 @@
+<apex:page standardController="d_wh__Inbound_Call_Template__c">
+
+    <apex:canvasApp developerName="Declarative_Webhooks_Relay_Server" height="170px" width="100%" parameters="{!$Label.d_wh__Canvas_location_InboundTemplateCanvasSimple}" />
+
+</apex:page>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exception_Type__c</fullName>
+    <label>Exception Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Snooze Test Run</fullName>
+                <default>false</default>
+                <label>Snooze Test Run</label>
+            </value>
+            <value>
+                <fullName>Snooze Test</fullName>
+                <default>false</default>
+                <label>Snooze Test</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

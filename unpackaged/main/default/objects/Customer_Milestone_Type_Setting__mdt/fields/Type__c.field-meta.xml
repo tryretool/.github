@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Type</label>
+    <required>true</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Kick-off</fullName>
+                <default>true</default>
+                <label>Kick-off</label>
+            </value>
+            <value>
+                <fullName>Success Plan</fullName>
+                <default>false</default>
+                <label>Success Plan</label>
+            </value>
+            <value>
+                <fullName>Customer Activated</fullName>
+                <default>false</default>
+                <label>Customer Activated</label>
+            </value>
+            <value>
+                <fullName>Primary Value Moment</fullName>
+                <default>false</default>
+                <label>Primary Value Moment</label>
+            </value>
+            <value>
+                <fullName>Services Complete</fullName>
+                <default>false</default>
+                <label>Services Complete</label>
+            </value>
+            <value>
+                <fullName>Hackathon</fullName>
+                <default>false</default>
+                <label>Hackathon</label>
+            </value>
+            <value>
+                <fullName>Technical Enablement</fullName>
+                <default>false</default>
+                <label>Technical Enablement</label>
+            </value>
+            <value>
+                <fullName>Business Review</fullName>
+                <default>false</default>
+                <label>Business Review</label>
+            </value>
+            <value>
+                <fullName>Red Account</fullName>
+                <default>false</default>
+                <label>Red Account</label>
+            </value>
+            <value>
+                <fullName>Renewal Kick-off</fullName>
+                <default>false</default>
+                <label>Renewal Kick-off</label>
+            </value>
+            <value>
+                <fullName>Post-mortem</fullName>
+                <default>false</default>
+                <label>Post-mortem</label>
+            </value>
+            <value>
+                <fullName>Upgrade Plan</fullName>
+                <default>false</default>
+                <label>Upgrade Plan</label>
+            </value>
+            <value>
+                <fullName>Roadmap Review</fullName>
+                <default>false</default>
+                <label>Roadmap Review</label>
+            </value>
+            <value>
+                <fullName>App Demo</fullName>
+                <default>false</default>
+                <label>App Demo</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

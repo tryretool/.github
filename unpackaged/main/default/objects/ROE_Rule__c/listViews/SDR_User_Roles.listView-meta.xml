@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SDR_User_Roles</fullName>
+    <columns>NAME</columns>
+    <columns>Num_Active_Users__c</columns>
+    <columns>SE_Assignment_Method__c</columns>
+    <columns>Opportunity_Segment__c</columns>
+    <columns>Attributable_Region_Subteams__c</columns>
+    <columns>Team__c</columns>
+    <columns>Subteam__c</columns>
+    <columns>Level__c</columns>
+    <columns>Territory__c</columns>
+    <columns>Region__c</columns>
+    <columns>User_Role_Short_Name__c</columns>
+    <columns>Role_Family__c</columns>
+    <columns>Account_Claim_Method__c</columns>
+    <columns>Account_Max_Days_Without_Activity__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <filters>
+        <field>Team__c</field>
+        <operation>equals</operation>
+        <value>Sales Development</value>
+    </filters>
+    <filters>
+        <field>Subteam__c</field>
+        <operation>equals</operation>
+        <value>BDR,ASE</value>
+    </filters>
+    <label>SDR User Roles</label>
+</ListView>

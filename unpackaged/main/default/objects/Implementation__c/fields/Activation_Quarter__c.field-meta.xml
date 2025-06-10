@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activation_Quarter__c</fullName>
+    <description>The first day of the calendar quarter in which the Activation Date falls.</description>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Activation_Date__c), &quot;&quot;,
+TEXT(YEAR(Activation_Date__c))
+&amp; &quot;-&quot;&amp;
+CASE(Month(Activation_Date__c),
+1, &quot;Q1&quot; ,
+2, &quot;Q1&quot;,
+3, &quot;Q1&quot;,
+4, &quot;Q2&quot;,
+5, &quot;Q2&quot;,
+6, &quot;Q2&quot;,
+7, &quot;Q3&quot;,
+8, &quot;Q3&quot;,
+9, &quot;Q3&quot;,
+10, &quot;Q4&quot;,
+11, &quot;Q4&quot;,
+12, &quot;Q4&quot;,
+&quot;None&quot;)
+)</formula>
+    <inlineHelpText>The first day of the calendar quarter in which the Activation Date falls.</inlineHelpText>
+    <label>Activation Quarter</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

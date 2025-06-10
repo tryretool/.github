@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Open_Journeys</fullName>
+    <columns>NAME</columns>
+    <columns>Account__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Stage__c</columns>
+    <columns>Most_Recent_Inbound_Email__c</columns>
+    <columns>Most_Recent_Outbound_Email__c</columns>
+    <columns>First_Inbound_Email__c</columns>
+    <columns>First_Outbound_Email__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Open</value>
+    </filters>
+    <label>My Open Journeys</label>
+</ListView>

@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <assignments>
+        <name>Assign_Contact</name>
+        <label>Assign Contact</label>
+        <locationX>1357</locationX>
+        <locationY>590</locationY>
+        <assignmentItems>
+            <assignToReference>TriggeringContact</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Contact</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_for_MQL</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Lead</name>
+        <label>Assign Lead</label>
+        <locationX>1965</locationX>
+        <locationY>909</locationY>
+        <assignmentItems>
+            <assignToReference>TriggeringLead</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Lead</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_for_MQL</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Campaign_to_Moment_Campaign</name>
+        <label>Campaign to Moment Campaign</label>
+        <locationX>918</locationX>
+        <locationY>1352</locationY>
+        <assignmentItems>
+            <assignToReference>CampaignID</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>TriggeringMoment.Campaign__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Moment</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Contact_Needs_Enrichment_Update</name>
+        <label>Contact Needs Enrichment Update</label>
+        <locationX>2018</locationX>
+        <locationY>1562</locationY>
+        <assignmentItems>
+            <assignToReference>TriggeringContact.Needs_Enrichment__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Contact</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Lead_Needs_Enrichment_Update</name>
+        <label>Lead Needs Enrichment Update</label>
+        <locationX>1749</locationX>
+        <locationY>1344</locationY>
+        <assignmentItems>
+            <assignToReference>TriggeringLead.Needs_Enrichment__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>MQL_Moment_Update</name>
+        <label>MQL Moment Update</label>
+        <locationX>908</locationX>
+        <locationY>910</locationY>
+        <assignmentItems>
+            <assignToReference>TriggeringMoment.Check_MQL__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TriggeringMoment.MQL_Check_At__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TriggeringMoment.Is_MQL__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>TriggeringMoment.MQL_Eligible__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TriggeringMoment.MQL_Check_Results__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PassOpsNotes</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>What_Campaign_to_Populate</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Needs_Enrichment_Moment_Update</name>
+        <label>Needs Enrichment Moment Update</label>
+        <locationX>1738</locationX>
+        <locationY>1074</locationY>
+        <assignmentItems>
+            <assignToReference>TriggeringMoment.MQL_Check_At__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TriggeringMoment.Is_MQL__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TriggeringMoment.MQL_Check_Results__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CriteriaNotes</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Lead_or_Contact_0</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Not_MQL_Moment_Update</name>
+        <label>Not MQL Moment Update</label>
+        <locationX>1266</locationX>
+        <locationY>1127</locationY>
+        <assignmentItems>
+            <assignToReference>TriggeringMoment.Check_MQL__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TriggeringMoment.MQL_Check_At__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TriggeringMoment.Is_MQL__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>TriggeringMoment.MQL_Check_Results__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CriteriaNotes</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Moment</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Error</name>
+        <label>Set Error</label>
+        <locationX>2089</locationX>
+        <locationY>367</locationY>
+        <assignmentItems>
+            <assignToReference>ErrorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>What_Records_Does_the_Moment_Relate_To</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Error_0</name>
+        <label>Set Error</label>
+        <locationX>1746</locationX>
+        <locationY>723</locationY>
+        <assignmentItems>
+            <assignToReference>ErrorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_for_MQL</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Error_0_0</name>
+        <label>Set Error</label>
+        <locationX>1676</locationX>
+        <locationY>1579</locationY>
+        <assignmentItems>
+            <assignToReference>ErrorMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Check_for_MQL</name>
+        <label>Check for MQL</label>
+        <locationX>1259</locationX>
+        <locationY>911</locationY>
+        <defaultConnector>
+            <targetReference>Not_MQL_Moment_Update</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not MQL Eligible</defaultConnectorLabel>
+        <rules>
+            <name>Domain_is_retool_com</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TriggeringMoment.Email_Formula__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>@retool.com</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Not_MQL_Moment_Update</targetReference>
+            </connector>
+            <label>Domain is retool.com</label>
+        </rules>
+        <rules>
+            <name>PersonBlock_Is_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>PersonBlock</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Not_MQL_Moment_Update</targetReference>
+            </connector>
+            <label>PersonBlock Is True</label>
+        </rules>
+        <rules>
+            <name>Needs_Enrichment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>NeedsEnrichment</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Needs_Enrichment_Moment_Update</targetReference>
+            </connector>
+            <label>Needs Enrichment</label>
+        </rules>
+        <rules>
+            <name>MQL_Eligible_Moment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TriggeringMoment.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Criteria1EmailOptOut</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Criteria2PersonalEmail</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Criteria3Plan</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Criteria4AccountType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Criteria5OpenOpp</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Criteria6Russia</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Criteria7SuppressionReason</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Criteria8Employees</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Criteria9CurrentOpenJourney</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>MQL_Moment_Update</targetReference>
+            </connector>
+            <label>MQL Eligible Moment</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Lead_or_Contact_0</name>
+        <label>Lead or Contact</label>
+        <locationX>2010</locationX>
+        <locationY>1235</locationY>
+        <defaultConnector>
+            <targetReference>Lead_Needs_Enrichment_Update</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Lead</defaultConnectorLabel>
+        <rules>
+            <name>Contact_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TriggeringContact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contact_Needs_Enrichment_Update</targetReference>
+            </connector>
+            <label>Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Was_a_Moment_Provided</name>
+        <label>Was a Moment Provided?</label>
+        <locationX>1251</locationX>
+        <locationY>402</locationY>
+        <defaultConnector>
+            <targetReference>Check_for_MQL</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Moment Provided</defaultConnectorLabel>
+        <rules>
+            <name>Moment_Provided</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TriggeringMoment.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Was_a_User_included_on_the_Moment</targetReference>
+            </connector>
+            <label>Moment Provided</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Was_a_User_included_on_the_Moment</name>
+        <label>Was a User included on the Moment</label>
+        <locationX>1493</locationX>
+        <locationY>214</locationY>
+        <defaultConnector>
+            <targetReference>What_Records_Does_the_Moment_Relate_To</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No User</defaultConnectorLabel>
+        <rules>
+            <name>User_was_included</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TriggeringMoment.Retool_User__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_RetoolUser</targetReference>
+            </connector>
+            <label>User was included</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>What_Campaign_to_Populate</name>
+        <label>What Campaign to Populate</label>
+        <locationX>900</locationX>
+        <locationY>1108</locationY>
+        <defaultConnector>
+            <targetReference>Update_Moment</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>Campaign_on_Moment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TriggeringMoment.Campaign__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Campaign_to_Moment_Campaign</targetReference>
+            </connector>
+            <label>Campaign on Moment</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>What_Records_Does_the_Moment_Relate_To</name>
+        <label>What Records Does the Moment Relate To?</label>
+        <locationX>1609</locationX>
+        <locationY>369</locationY>
+        <defaultConnectorLabel>Neither contact nor lead</defaultConnectorLabel>
+        <rules>
+            <name>Has_a_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TriggeringMoment.Contact__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Contact</targetReference>
+            </connector>
+            <label>Has a Contact</label>
+        </rules>
+        <rules>
+            <name>Has_a_Lead</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>TriggeringMoment.Lead__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Lead</targetReference>
+            </connector>
+            <label>Has a Lead</label>
+        </rules>
+    </decisions>
+    <description>Modifying C9 Open Journey criteria to ignore false MQL checks if the Contact Open Journey is the same as the triggering Moment Journey and the triggering Moment Journey Relationship is &#39;Created&#39;</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>If email opt out = true then true</description>
+        <name>Criteria1EmailOptOut</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( LEFT({!TriggeringMoment.Moment_Description__c}, 22)  =&quot;Submitted Form &#39;[Demo]&quot;, FALSE, 
+IF( NOT( {!TriggeringContact.Id}=&quot;&quot;) , 
+/*contact*/ IF({!TriggeringContact.HasOptedOutOfEmail} =TRUE, TRUE, FALSE),
+/*lead*/ IF( {!TriggeringLead.HasOptedOutOfEmail} =TRUE, TRUE, FALSE)
+))</expression>
+    </formulas>
+    <formulas>
+        <name>Criteria2PersonalEmail</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( NOT( {!TriggeringContact.Id}=&quot;&quot;) , 
+/*contact*/  IF( TEXT({!TriggeringContact.Email_Domain_Type__c}) = &quot;Public&quot;, TRUE, FALSE),
+/*lead*/  IF( TEXT({!TriggeringLead.Email_Domain_Type__c}) = &quot;Public&quot; , TRUE, FALSE)
+)</expression>
+    </formulas>
+    <formulas>
+        <description>If there&#39;s a user; looks for none of Active Trial on Org, Stripe Annualized Revenue =  0 or Licence Billing Type = trial;
+if contact; check Account Status (Self-service) = &#39;Active Customer&#39;, if true, then true
+If not; Plan Name is not Null and does not contain Free (Lead)</description>
+        <name>Criteria3Plan</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( LEFT({!TriggeringMoment.Moment_Description__c}, 22)  =&quot;Submitted Form &#39;[Demo]&quot;, FALSE, IF(TEXT({!TriggeringMoment.Moment_Type__c})= &quot;Endgame Alert&quot;, FALSE,
+IF( NOT( {!Get_RetoolUser.Id}=&quot;&quot;), 
+/*user*/  IF( 
+   OR( {!Get_RetoolUser.Retool_Org__r.Active_Trial__c} = TRUE, 
+   {!Get_RetoolUser.Retool_Org__r.Stripe_Annualized_Revenue__c} = 0, 
+   IF({!Get_RetoolUser.Retool_Org__r.Retool_License__c} = &quot;&quot;, FALSE, {!Get_RetoolUser.Retool_Org__r.Retool_License__r.Billing_Type__c}=&quot;trial&quot; )), FALSE, TRUE),
+IF( NOT( {!TriggeringContact.Id}=&quot;&quot;) , 
+/*contact*/ 
+IF({!TriggeringContact.Account.Account_Status_Self_Service__c} = &quot;Active Customer&quot;, TRUE, FALSE),
+
+/*lead*/ 
+FALSE
+))))</expression>
+    </formulas>
+    <formulas>
+        <description>Account Type = Disqualified (Contact Only) OR Account Type = Active Customer (Contact Only)</description>
+        <name>Criteria4AccountType</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( NOT( {!TriggeringContact.Id}=&quot;&quot;) , 
+/*contact*/ 
+IF( 
+     OR( {!TriggeringContact.Account.Account_Status_Committed__c} = &quot;Active Customer&quot;, 
+                     {!TriggeringContact.Account.Account_Status_Committed__c} = &quot;Disqualified&quot;,
+                      TEXT({!TriggeringContact.Account.Suppress_Emails_to_Product_Signups__c}) = &quot;Stop Emails&quot;,
+                      TEXT({!TriggeringMoment.Retool_User__r.Retool_Org__r.Account__r.Suppress_Emails_to_Product_Signups__c}) = &quot;Stop Emails&quot;)
+     , TRUE
+    , FALSE)
+,
+/*lead*/  FALSE
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Account Open Committed Opportunities &gt; 0 (Contact Only)</description>
+        <name>Criteria5OpenOpp</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( LEFT({!TriggeringMoment.Moment_Description__c}, 22)  =&quot;Submitted Form &#39;[Demo]&quot;, FALSE, 
+IF( NOT( {!TriggeringContact.Id}=&quot;&quot;) , 
+/*contact*/ IF( {!TriggeringContact.Account.Num_Open_Opportunities__c} &gt; 0 , TRUE, FALSE)
+,
+/*lead*/  FALSE
+))</expression>
+    </formulas>
+    <formulas>
+        <name>Criteria6Russia</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( NOT( {!TriggeringContact.Id}=&quot;&quot;) , 
+/*contact*/ IF(  LEFT({!TriggeringContact.Account.ShippingCountry} , 6)=&quot;Russia&quot;    , TRUE, FALSE)
+,
+/*lead*/  FALSE
+)</expression>
+    </formulas>
+    <formulas>
+        <description>Person has already been marked as “Junk Data”, “Email Hard Bounce”, or “No longer at company” as a Suppression Reason</description>
+        <name>Criteria7SuppressionReason</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( LEFT({!TriggeringMoment.Moment_Description__c}, 22)  =&quot;Submitted Form &#39;[Demo]&quot;, FALSE, 
+IF( NOT( {!TriggeringContact.Id}=&quot;&quot;) , 
+/*contact*/ IF(TEXT( {!TriggeringContact.Suppression_Reason__c} ) != NULL , TRUE, FALSE)
+,
+FALSE
+))</expression>
+    </formulas>
+    <formulas>
+        <description>Employees &lt; 25</description>
+        <name>Criteria8Employees</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( NOT( {!TriggeringContact.Id}=&quot;&quot;) , 
+/*contact*/ IF({!TriggeringContact.Account.NumberOfEmployees} &lt;25, TRUE, FALSE)
+,
+/*lead*/  IF( {!TriggeringLead.NumberOfEmployees} &lt; 25, TRUE, FALSE)
+)</expression>
+    </formulas>
+    <formulas>
+        <name>Criteria9CurrentOpenJourney</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( NOT( {!TriggeringContact.Id}=&quot;&quot;) , 
+/*contact*/ IF(  
+OR(
+  ISBLANK({!TriggeringContact.Current_Open_Journey__c}),
+  AND(
+    NOT(ISPICKVAL({!TriggeringMoment.Journey_Relationship__c}, &#39;Created&#39;)),
+    {!TriggeringMoment.Journey__c} != {!TriggeringContact.Current_Open_Journey__c}
+  )
+)
+, FALSE, TRUE)
+,
+/*lead*/  FALSE
+)</expression>
+    </formulas>
+    <formulas>
+        <name>CriteriaNotes</name>
+        <dataType>String</dataType>
+        <expression>&quot;MQL Filter Criteria Flagged: &quot;&amp;
+IF(AND({!NeedsEnrichment}=TRUE, {!PersonBlock} = FALSE), &quot;Needs Enrichment &quot;&amp;IF( {!TriggeringContact.Account.Is_Orphan_Account__c} = TRUE, {!TriggeringContact.Account.Name}, &quot;&quot;) , 
+IF({!Criteria1EmailOptOut}=TRUE, &quot;C1EmailOptOut &quot;, &quot;&quot;)&amp;
+IF({!Criteria2PersonalEmail}=TRUE, &quot;C2PersonalEmail &quot;, &quot;&quot;)&amp;
+IF({!Criteria3Plan}=TRUE, &quot;C3PlanName &quot;, &quot;&quot;)&amp;
+IF({!Criteria4AccountType}=TRUE, &quot;C4AccountType &quot;, &quot;&quot;)&amp;
+IF({!Criteria5OpenOpp}=TRUE, &quot;C5OpenOpp &quot;, &quot;&quot;)&amp;
+IF({!Criteria6Russia}=TRUE, &quot;C6Russia &quot;, &quot;&quot;)&amp;
+IF({!Criteria7SuppressionReason}=TRUE, &quot;C7SuppressionReason&quot;, &quot;&quot;)&amp;
+IF({!Criteria8Employees}=TRUE, &quot;C8Employees &quot;, &quot;&quot;)&amp;
+IF({!Criteria9CurrentOpenJourney}=TRUE, &quot;C9CurrentOpenJourney &quot;, &quot;&quot;)
+
+)</expression>
+    </formulas>
+    <formulas>
+        <name>NeedsEnrichment</name>
+        <dataType>Boolean</dataType>
+        <expression>IF( NOT( {!TriggeringContact.Id} = &quot;&quot;) , 
+/*contact*/  
+IF( 
+  TEXT({!TriggeringContact.Email_Domain_Type__c}) = &quot;Public&quot;
+  || ISBLANK({!TriggeringContact.Account.NumberOfEmployees})
+  || {!TriggeringContact.Account.Is_Orphan_Account__c} = TRUE
+, TRUE, FALSE
+),
+/*lead*/  
+IF( 
+  TEXT({!TriggeringLead.Email_Domain_Type__c}) = &quot;Public&quot; 
+  || ISBLANK({!TriggeringLead.NumberOfEmployees})
+  || {!TriggeringLead.Company} = &quot;[[Unknown]]&quot;
+ || {!TriggeringLead.Company} = &quot;[not provided]&quot;
+  || BEGINS({!TriggeringLead.Company}, &quot;Orphan Orgs&quot;)
+, TRUE, FALSE
+)
+)</expression>
+    </formulas>
+    <formulas>
+        <name>PassOpsNotes</name>
+        <dataType>String</dataType>
+        <expression>TEXT(TODAY())&amp;&quot; MQL Check Passed&quot;&amp;IF({!TriggeringMoment.MQL_Eligible__c}=FALSE, &quot; but Moment Type Not Eligible&quot;, &quot;&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>PersonBlock</name>
+        <dataType>Boolean</dataType>
+        <expression>OR( {!Criteria1EmailOptOut}, {!Criteria2PersonalEmail}, {!Criteria7SuppressionReason}, {!Criteria9CurrentOpenJourney})</expression>
+    </formulas>
+    <interviewLabel>DRAFT Autolaunch: Check MQL {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Autolaunch: Check MQL</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Contact</name>
+        <label>Get Contact</label>
+        <locationX>1529</locationX>
+        <locationY>590</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Contact</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Set_Error_0</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>TriggeringMoment.Contact__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Lead</name>
+        <label>Get Lead</label>
+        <locationX>2092</locationX>
+        <locationY>579</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Lead</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Set_Error_0</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>TriggeringMoment.Lead__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_RetoolUser</name>
+        <label>Get RetoolUser</label>
+        <locationX>1964</locationX>
+        <locationY>217</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>What_Records_Does_the_Moment_Relate_To</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Set_Error</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>TriggeringMoment.Retool_User__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Retool_User__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Contact</name>
+        <label>Update Contact</label>
+        <locationX>1555</locationX>
+        <locationY>1771</locationY>
+        <connector>
+            <targetReference>Update_Moment</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Set_Error_0_0</targetReference>
+        </faultConnector>
+        <inputReference>TriggeringContact</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead</name>
+        <label>Update Lead</label>
+        <locationX>1542</locationX>
+        <locationY>1344</locationY>
+        <connector>
+            <targetReference>Update_Moment</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Set_Error_0_0</targetReference>
+        </faultConnector>
+        <inputReference>TriggeringLead</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Moment</name>
+        <label>Update Moment</label>
+        <locationX>1343</locationX>
+        <locationY>1344</locationY>
+        <inputReference>TriggeringMoment</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1133</locationX>
+        <locationY>99</locationY>
+        <connector>
+            <targetReference>Was_a_Moment_Provided</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>CampaignID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ErrorMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>TriggeringContact</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <name>TriggeringLead</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Lead</objectType>
+    </variables>
+    <variables>
+        <name>TriggeringMoment</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Moment__c</objectType>
+    </variables>
+</Flow>

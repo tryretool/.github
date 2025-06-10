@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Last time we found a press release/article mentioning that contact. --></help>
+        <label><!-- Last Mentioned --></label>
+        <name>DOZISF__Last_Mentioned__c</name>
+    </CustomFieldTranslation>

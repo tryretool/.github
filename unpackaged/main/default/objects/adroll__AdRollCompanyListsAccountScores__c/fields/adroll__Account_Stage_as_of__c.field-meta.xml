@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>adroll__Account_Stage_as_of__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Date When the RollWorks Journey Stage was last updated</description>
+    <inlineHelpText>Date When the RollWorks Journey Stage was last updated</inlineHelpText>
+    <label>Journey Stage as of</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

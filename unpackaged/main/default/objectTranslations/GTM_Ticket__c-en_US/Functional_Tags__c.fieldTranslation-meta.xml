@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Functional Tags --></label>
+        <name>Functional_Tags__c</name>
+        <picklistValues>
+            <masterLabel>Billing</masterLabel>
+            <translation><!-- Billing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data</masterLabel>
+            <translation><!-- Data --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal Desk</masterLabel>
+            <translation><!-- Deal Desk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Demand Gen</masterLabel>
+            <translation><!-- Demand Gen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enablement</masterLabel>
+            <translation><!-- Enablement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Infrastructure</masterLabel>
+            <translation><!-- Infrastructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pipeline Management</masterLabel>
+            <translation><!-- Pipeline Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q2-23 Pricing Changes</masterLabel>
+            <translation><!-- Q2-23 Pricing Changes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROE</masterLabel>
+            <translation><!-- ROE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Renewals</masterLabel>
+            <translation><!-- Renewals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reporting</masterLabel>
+            <translation><!-- Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Revenue</masterLabel>
+            <translation><!-- Revenue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAM</masterLabel>
+            <translation><!-- TAM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Variable Comp</masterLabel>
+            <translation><!-- Variable Comp --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

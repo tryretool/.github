@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age_from_SQO__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ Sales_Qualified_Opportunity__c,
+ IF(IsClosed,CloseDate - Sales_Qualified_At__c,TODAY()-Sales_Qualified_At__c),
+ IF(
+   Is_Qualified_Pipeline__c,
+   IF(IsClosed,CloseDate - Qualified_Pipeline_AR_Date__c,TODAY()-Qualified_Pipeline_AR_Date__c),
+   NULL
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>For open sales qualified opportunities (SQOs), equal to the number of days between the current date and the sales qualified at date. For closed SQOs, equal to the number of days between the close date and the sales qualified at date.</inlineHelpText>
+    <label>Age from SQO</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

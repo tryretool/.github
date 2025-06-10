@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moves_back_to_pool_at__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>The date after which the account will be automatically moved back into the Account Pool based on current ROE. #ROE</description>
+    <formula>IF(  
+ Is_ROE_Hold__c || ISBLANK(Owner.Account_Max_Days_Without_Activity__c) || Num_Open_Opportunities__c &gt; 0 || NOT(ISPICKVAL(Owner.Subteam__c,&quot;GRW&quot;)),
+ null,
+ IF(ISBLANK(Most_Recent_Sales_Activity__c) || Most_Recent_Sales_Activity__c &lt; DATEVALUE(Owner_Assigned_At__c) ,DATEVALUE(Owner_Assigned_At__c),Most_Recent_Sales_Activity__c) + Owner.Account_Max_Days_Without_Activity__c + 1  
+)</formula>
+    <inlineHelpText>The date after which the account will be automatically moved back into the Account Pool based on current ROE.</inlineHelpText>
+    <label>Moves Back to Pool At</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

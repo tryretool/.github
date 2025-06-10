@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Logos__c</fullName>
+    <externalId>false</externalId>
+    <formula>1 *
+CASE(
+  Subtype__c,
+  &quot;Expansion - Committed&quot;,0,
+  &quot;Expansion - Uncommitted&quot;,0,
+  &quot;Contraction - Uncommitted&quot;,0,
+  &quot;Conversion - Non-Annual to Annual&quot;,0,
+  &quot;Conversion - Self-Service to Annual&quot;,0,
+  &quot;New Commitment - Annual&quot;,1,
+  &quot;New Commitment - Quarterly&quot;,0,
+  &quot;New Commitment - Monthly&quot;, 0,
+  &quot;New Commitment - Other&quot;,1,
+  &quot;New Subsidiary - Annual&quot;,0,
+  &quot;Partnership&quot;,0,
+  &quot;Pilot - Paid&quot;,0,
+  &quot;Renewal - Annual&quot;,0,
+  &quot;Renewal - Quarterly&quot;,0,
+  &quot;Renewal - Bi-Monthly&quot;,0,
+  &quot;Renewal - Bridge&quot;,0,
+  &quot;Renewal - Monthly&quot;,0,
+  &quot;Renewal - Pilot Conversion&quot;,1,
+  &quot;Renewal - Pilot Extension&quot;,0,
+  0
+) * IF(ISPICKVAL(Booking_Type__c,&quot;Debook&quot;),-1,1)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True if the deal represents a net-new logo to Retool.</inlineHelpText>
+    <label>Total Logos</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

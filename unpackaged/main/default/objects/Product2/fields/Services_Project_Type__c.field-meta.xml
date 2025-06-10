@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Services_Project_Type__c</fullName>
+    <label>Services Project: Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Family</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Services_Project_Templates</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Project Delivery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Platform Configuration</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Expert Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Professional Services</controllingFieldValue>
+            <valueName>Application Launch</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Links to any relevant linear tickets for features/bugs the initial use cases are dependent on. --></help>
+        <label><!-- Relevant Linear Tickets --></label>
+        <name>Relevant_Linear_Tickets__c</name>
+    </CustomFieldTranslation>

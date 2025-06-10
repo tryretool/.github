@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>FF Turned On - Directions For Seeing Changes (Self-Hosted)</name>
+    <style>none</style>
+    <subject>Re: {!Case.Subject}</subject>
+    <textOnly>I went ahead and turned on the flag to enable this feature. Please go to Settings -&gt; Advanced and click Check Key to run a license check. If you still don’t see the new feature after doing that and refreshing the page, please restart your Retool instance. Once you spin it down and back up, it should be there. Please let me know if this is successful for you.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

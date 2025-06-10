@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Has Overdue Balance 121+ Days? --></label>
+        <name>Has_Overdue_Balance_121_Days__c</name>
+    </CustomFieldTranslation>

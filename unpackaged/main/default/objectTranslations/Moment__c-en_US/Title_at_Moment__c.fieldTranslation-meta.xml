@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The title of the Contact or Lead at the time the Moment was created. --></help>
+        <label><!-- Title at Moment --></label>
+        <name>Title_at_Moment__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- If Checked the data has been processed and merged with the Contact / Lead --></help>
+        <label><!-- Processed --></label>
+        <name>adroll__Processed__c</name>
+    </CustomFieldTranslation>

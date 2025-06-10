@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Slack_CSAT_Sent__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>If we send Slack CSAT, mark this as true to ensure we don&#39;t send multiple times</description>
+    <label>CSAT Sent</label>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

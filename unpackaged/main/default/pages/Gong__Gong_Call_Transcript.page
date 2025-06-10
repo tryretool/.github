@@ -1,0 +1,3 @@
+<apex:page standardController="Gong__Gong_Call__c">
+  <apex:canvasApp width="100%" height="500px" scrolling="yes" applicationName="Gong_Canvas_App_PROD" parameters="{crmCallId: '{!Gong__Gong_Call__c.ID}', method: 'transcript'}"/>
+</apex:page>

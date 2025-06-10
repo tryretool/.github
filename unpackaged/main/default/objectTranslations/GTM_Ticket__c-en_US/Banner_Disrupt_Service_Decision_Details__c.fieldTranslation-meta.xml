@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Provides details as to why the internal decision was made to turn on a customer&apos;s expiration banner. --></help>
+        <label><!-- Banner Disrupt Service Decision Details --></label>
+        <name>Banner_Disrupt_Service_Decision_Details__c</name>
+    </CustomFieldTranslation>

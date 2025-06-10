@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- True if the provided website does not resolve --></help>
+        <label><!-- Website: Is Broken? --></label>
+        <name>Website_Is_Broken__c</name>
+    </CustomFieldTranslation>

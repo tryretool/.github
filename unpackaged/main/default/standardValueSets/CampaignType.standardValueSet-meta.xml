@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>ABM</fullName>
+        <default>false</default>
+        <label>ABM</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Advertisement</fullName>
+        <default>false</default>
+        <label>Advertisement</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Banner Ads</fullName>
+        <default>false</default>
+        <label>Banner Ads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Content Download</fullName>
+        <default>false</default>
+        <label>Content Download</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Demo Request</fullName>
+        <default>false</default>
+        <label>Demo Request</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email</fullName>
+        <default>false</default>
+        <label>Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>In-App Feature Gate</fullName>
+        <default>false</default>
+        <label>In-App Feature Gate</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Inbound Chat</fullName>
+        <default>false</default>
+        <label>Inbound Chat</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Live Event - Retool Hosted</fullName>
+        <default>false</default>
+        <label>Live Event - Retool Hosted</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Live Event - Tradeshow</fullName>
+        <default>false</default>
+        <label>Live Event - Tradeshow</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partners</fullName>
+        <default>false</default>
+        <label>Partners</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Product Action</fullName>
+        <default>false</default>
+        <label>Product Action</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Product Non-Action</fullName>
+        <default>false</default>
+        <label>Product Non-Action</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Programmatic Outreach</fullName>
+        <default>false</default>
+        <label>Programmatic Outreach</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Prospective Event Attendees</fullName>
+        <default>false</default>
+        <label>Prospective Event Attendees</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Public Relations</fullName>
+        <default>false</default>
+        <label>Public Relations</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Referral - Current Retool User</fullName>
+        <default>false</default>
+        <label>Referral - Current Retool User</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Referral - Former Retool User</fullName>
+        <default>false</default>
+        <label>Referral - Former Retool User</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Referral Program</fullName>
+        <default>false</default>
+        <label>Referral Program</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Referral - Retool Customer Success Referral</fullName>
+        <default>false</default>
+        <label>Referral - Retool Customer Success Referral</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Referral - Retool Employee Personal Referral</fullName>
+        <default>false</default>
+        <label>Referral - Retool Employee Personal Referral</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales Outbound</fullName>
+        <default>false</default>
+        <label>Sales Outbound</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales Outbound - AE</fullName>
+        <default>false</default>
+        <label>Sales Outbound - AE</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales Outbound - CSM</fullName>
+        <default>false</default>
+        <label>Sales Outbound - CSM</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sales Outbound - SDR</fullName>
+        <default>false</default>
+        <label>Sales Outbound - SDR</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Seminar / Conference</fullName>
+        <default>false</default>
+        <label>Seminar / Conference</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sendoso</fullName>
+        <default>false</default>
+        <label>Sendoso</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sign up</fullName>
+        <default>false</default>
+        <label>Sign up</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Sponsored Podcast</fullName>
+        <default>false</default>
+        <label>Sponsored Podcast</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Telemarketing</fullName>
+        <default>false</default>
+        <label>Telemarketing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Trial Sign up</fullName>
+        <default>false</default>
+        <label>Trial Sign up - Cloud</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Trial Sign up - SSOP</fullName>
+        <default>false</default>
+        <label>Trial Sign up - SSOP</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Webinar - CS</fullName>
+        <default>false</default>
+        <label>Webinar - CS</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Webinar - Live</fullName>
+        <default>false</default>
+        <label>Webinar - Live</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Webinar - Recorded</fullName>
+        <default>false</default>
+        <label>Webinar - Recorded</label>
+    </standardValue>
+</StandardValueSet>

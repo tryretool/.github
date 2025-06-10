@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Submitter</fullName>
+        <default>false</default>
+        <label>Submitter</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Collaborator</fullName>
+        <default>false</default>
+        <label>Collaborator</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Retool</fullName>
+        <default>false</default>
+        <label>Retool</label>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#4D49E6</headerColor>
+        <logo>ChampifyIo__crown_sq2_1</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>Champify</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>true</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Champify</label>
+    <navType>Standard</navType>
+    <tabs>ChampifyIo__Champify_Configuration</tabs>
+    <tabs>standard-Lead</tabs>
+    <tabs>ChampifyIo__ChampifyExplorer</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>ChampifyIo__Admin_Dashboard</tabs>
+    <tabs>ChampifyIo__Sales_Dashboard</tabs>
+    <tabs>ChampifyIo__Success_Dashboard</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>ChampifyIo__Champify_UtilityBar</utilityBar>
+</CustomApplication>

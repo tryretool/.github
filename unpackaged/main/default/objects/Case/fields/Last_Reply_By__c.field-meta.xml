@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Reply_By__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISBLANK(Last_Retool_Reply_At__c) &amp;&amp; ISBLANK(Last_Customer_Reply_At__c),
+  &quot;New&quot;,
+  IF(
+    ISBLANK(Last_Retool_Reply_At__c) || Last_Customer_Reply_At__c &gt; Last_Retool_Reply_At__c,
+    &quot;Customer&quot;,
+    IF(
+      ISBLANK(Last_Customer_Reply_At__c) || Last_Customer_Reply_At__c &lt; Last_Retool_Reply_At__c,
+      &quot;Retool&quot;,
+      &quot;Error&quot;
+    )
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Last Reply By</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

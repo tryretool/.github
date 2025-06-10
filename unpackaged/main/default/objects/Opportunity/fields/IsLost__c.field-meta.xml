@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsLost__c</fullName>
+    <formula>IF(IsWon = FALSE &amp;&amp; IsClosed = TRUE,TRUE,FALSE)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True if the deal was lost (i.e., stage is Closed Lost or Churn)</inlineHelpText>
+    <label>Lost</label>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

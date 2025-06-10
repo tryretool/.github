@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Retool Campaign ID. Intended to be a hidden field used on our Demo Form, which is populated by our website. The Retool Campaign ID is tied to SFDC Campaigns. --></help>
+        <label><!-- rcid --></label>
+        <name>rcid__c</name>
+    </CustomFieldTranslation>

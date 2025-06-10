@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>d_wh__Send_Body_As_Parameter_Name__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <inlineHelpText>If populated, the body of the call is sent as a parameter, for example &#39;requestJobDescription={&quot;type&quot;:&quot;create&quot;...}&#39;.
+Enter the name of the parameter.</inlineHelpText>
+    <label>Send Body As Parameter - Name</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

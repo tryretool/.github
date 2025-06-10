@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Operation used for Comparison --></help>
+        <label><!-- Operation --></label>
+        <name>adroll__Operation__c</name>
+        <picklistValues>
+            <masterLabel>!=</masterLabel>
+            <translation><!-- != --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>!=NULL</masterLabel>
+            <translation><!-- !=NULL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&lt;</masterLabel>
+            <translation><!-- &lt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&lt;=</masterLabel>
+            <translation><!-- &lt;= --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>=</masterLabel>
+            <translation><!-- = --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>=NULL</masterLabel>
+            <translation><!-- =NULL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&gt;</masterLabel>
+            <translation><!-- &gt; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&gt;=</masterLabel>
+            <translation><!-- &gt;= --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Excludes</masterLabel>
+            <translation><!-- Excludes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Includes</masterLabel>
+            <translation><!-- Includes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Like</masterLabel>
+            <translation><!-- Like --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Like</masterLabel>
+            <translation><!-- Not Like --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

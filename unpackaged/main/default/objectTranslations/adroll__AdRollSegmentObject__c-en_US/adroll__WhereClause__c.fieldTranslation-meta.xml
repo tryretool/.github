@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Resulting where clause to filter records --></help>
+        <label><!-- Where Clause --></label>
+        <name>adroll__WhereClause__c</name>
+    </CustomFieldTranslation>

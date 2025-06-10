@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Existing admin can grant you admin permissions</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Account - Make Admin</name>
+    <style>none</style>
+    <subject>Becoming an admin</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

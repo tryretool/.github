@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Journey</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Journeys</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Journey Layout</layout>
+        <sections>
+            <label><!-- Accepted --></label>
+            <section>Accepted</section>
+        </sections>
+        <sections>
+            <label><!-- Approached --></label>
+            <section>Approached</section>
+        </sections>
+        <sections>
+            <label><!-- Closed --></label>
+            <section>Closed</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Data Stamps --></label>
+            <section>Data Stamps</section>
+        </sections>
+        <sections>
+            <label><!-- Engaged --></label>
+            <section>Engaged</section>
+        </sections>
+        <sections>
+            <label><!-- Identified --></label>
+            <section>Identified</section>
+        </sections>
+        <sections>
+            <label><!-- Linked Records --></label>
+            <section>Linked Records</section>
+        </sections>
+        <sections>
+            <label><!-- Meeting Booked --></label>
+            <section>Meeting Booked</section>
+        </sections>
+        <sections>
+            <label><!-- Owner --></label>
+            <section>Owner</section>
+        </sections>
+        <sections>
+            <label><!-- Qualification --></label>
+            <section>Qualification</section>
+        </sections>
+        <sections>
+            <label><!-- Resting --></label>
+            <section>Resting</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Close Journey --></label>
+        <name>Close_Journey</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Pass to Opp --></label>
+        <name>Pass_to_Opp</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Qualification Journey --></label>
+        <name>Qualification_Journey</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Reject Journey --></label>
+        <name>Reject_Journey</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Reopen Journey --></label>
+        <name>Reopen_Journey</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Update Stage --></label>
+        <name>Update_Stage</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Demand --></label>
+        <name>Demand</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

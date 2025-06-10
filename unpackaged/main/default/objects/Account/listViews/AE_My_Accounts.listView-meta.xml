@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AE_My_Accounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Website_Clean__c</columns>
+    <columns>Segment__c</columns>
+    <columns>Outbound_Tier__c</columns>
+    <columns>Sales_Development_Representative__c</columns>
+    <columns>Account_Status_Committed__c</columns>
+    <columns>Account_Status_Self_Service__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>[AE] My Accounts</label>
+</ListView>

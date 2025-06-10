@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pause_Automatic_Bookings__c</fullName>
+    <businessStatus>DeprecateCandidate</businessStatus>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>If true, the billing script will not create any new opportunities related to this BU</inlineHelpText>
+    <label>zOLD Pause Automatic Bookings?</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

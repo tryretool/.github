@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trigger_Round_Robin__c</fullName>
+    <description>Enables manual trigger for re-assigning Account records owned by the Account Pool via LeanData following standard routing rules: https://retoolconfluence.atlassian.net/wiki/spaces/RO/pages/913965070/Salesforce+Contact+Account+Routing
+
+External Systems Utilization: LeanData</description>
+    <inlineHelpText>Enables manual trigger for re-assigning Account records owned by the Account Pool via LeanData following standard routing rules: https://retoolconfluence.atlassian.net/wiki/spaces/RO/pages/913965070/Salesforce+Contact+Account+Routing</inlineHelpText>
+    <label>Trigger Round Robin</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Inbound SDR Only</fullName>
+                <default>false</default>
+                <label>Inbound SDR Only</label>
+            </value>
+            <value>
+                <fullName>Outbound SDR Only</fullName>
+                <default>false</default>
+                <label>Outbound SDR Only</label>
+            </value>
+            <value>
+                <fullName>AE Only</fullName>
+                <default>false</default>
+                <label>AE Only</label>
+            </value>
+            <value>
+                <fullName>AE /w Mapped SDR</fullName>
+                <default>false</default>
+                <label>AE /w Mapped SDR</label>
+            </value>
+            <value>
+                <fullName>AE Only - Partner Lead</fullName>
+                <default>false</default>
+                <label>AE Only - Partner Lead</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

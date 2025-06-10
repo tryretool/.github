@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Opens this company in Harmonic.ai --></help>
+        <label><!-- View in Harmonic --></label>
+        <name>View_in_Harmonic__c</name>
+    </CustomFieldTranslation>

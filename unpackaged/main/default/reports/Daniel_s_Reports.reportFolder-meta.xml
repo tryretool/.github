@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>daniel.kim@retool.com</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>k.giori@retool.com</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <name>Daniel&#39;s Reports</name>
+</ReportFolder>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Days_Past_Due__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(breadwinner_ns__Status__c = &quot;Open&quot;,
+  IF(
+    ISBLANK(breadwinner_ns__DueDate__c),
+    TODAY() - breadwinner_ns__TranDate__c, 
+    IF(
+      breadwinner_ns__DueDate__c &gt;= TODAY(),
+      NULL,
+      TODAY() - breadwinner_ns__DueDate__c
+    )
+  ),
+  NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Days Past Due</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

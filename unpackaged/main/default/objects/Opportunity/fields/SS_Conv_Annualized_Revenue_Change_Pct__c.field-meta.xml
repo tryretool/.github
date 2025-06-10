@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SS_Conv_Annualized_Revenue_Change_Pct__c</fullName>
+    <formula>IF(ISBLANK(Converted_Org_Final_Annualized_Revenue__c) || Converted_Org_Final_Annualized_Revenue__c =0,NULL,(Total_ARR__c / Converted_Org_Final_Annualized_Revenue__c)-1)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Self Service: Conv Org Ann Rev Chg</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>NetSuite Item Layout</layout>
+        <sections>
+            <label><!-- Accounts --></label>
+            <section>Accounts</section>
+        </sections>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Breadwinner Information --></label>
+            <section>Breadwinner Information</section>
+        </sections>
+        <sections>
+            <label><!-- Breadwinner Layout --></label>
+            <section>Breadwinner Layout</section>
+        </sections>
+        <sections>
+            <label><!-- Classification --></label>
+            <section>Classification</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Item Information --></label>
+            <section>Item Information</section>
+        </sections>
+        <sections>
+            <label><!-- Pricing --></label>
+            <section>Pricing</section>
+        </sections>
+        <sections>
+            <label><!-- Purchase --></label>
+            <section>Purchase</section>
+        </sections>
+        <sections>
+            <label><!-- Sales --></label>
+            <section>Sales</section>
+        </sections>
+        <sections>
+            <label><!-- Shipping --></label>
+            <section>Shipping</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

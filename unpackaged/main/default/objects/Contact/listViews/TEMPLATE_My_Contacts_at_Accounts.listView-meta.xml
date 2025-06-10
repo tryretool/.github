@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TEMPLATE_My_Contacts_at_Accounts</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CONTACT.PHONE1</columns>
+    <columns>CONTACT.PHONE3</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>CONTACT.TITLE</columns>
+    <columns>Outreach_Status__c</columns>
+    <columns>Outreach_Actively_Being_Sequenced__c</columns>
+    <columns>Outreach_Current_Sequence_Name__c</columns>
+    <columns>Current_Open_Journey__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>ACCOUNT.NAME</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Opt_Out_Sales__c</field>
+        <operation>notEqual</operation>
+        <value>True</value>
+    </filters>
+    <filters>
+        <field>Suppression_Reason__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>[TEMPLATE] My Contacts at __ Accounts</label>
+</ListView>

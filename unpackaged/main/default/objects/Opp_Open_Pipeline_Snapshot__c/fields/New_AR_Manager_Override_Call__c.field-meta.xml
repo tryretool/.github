@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_AR_Manager_Override_Call__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Manager only field used in forecasting to override unweighted new annualized revenue amounts on opportunities.</description>
+    <inlineHelpText>Manager only field used in forecasting to override unweighted new annualized revenue amounts on opportunities.</inlineHelpText>
+    <label>zNew AR Manager Override: Call</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

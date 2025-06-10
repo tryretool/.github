@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Group_No_Ramp</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISBLANK(Ramp_Pct__c)) &amp;&amp; NOT(ISPICKVAL(Type__c,&quot;Individual&quot;))</errorConditionFormula>
+    <errorDisplayField>Ramp_Pct__c</errorDisplayField>
+    <errorMessage>No Ramp % for Group goal</errorMessage>
+</ValidationRule>

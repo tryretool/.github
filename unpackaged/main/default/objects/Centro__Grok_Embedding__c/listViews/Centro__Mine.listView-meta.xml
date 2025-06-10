@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Centro__Mine</fullName>
+    <columns>NAME</columns>
+    <columns>Centro__Embedding_Name__c</columns>
+    <columns>Centro__Source_URL__c</columns>
+    <columns>Centro__Topic_Name__c</columns>
+    <columns>Centro__Status__c</columns>
+    <columns>Centro__Embedding_Date__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>My Embeddings</label>
+</ListView>

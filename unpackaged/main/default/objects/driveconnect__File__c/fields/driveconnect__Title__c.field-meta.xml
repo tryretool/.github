@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>driveconnect__Title__c</fullName>
+    <deprecated>false</deprecated>
+    <description>The is the full name of the file. The Salesforce Name field is limited to 80 characters and therefore file names longer than that are truncated. This field is able to store file names up to 255 characters.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field stores the full name of the file since the Salesforce Name field is limited to 80 characters.</inlineHelpText>
+    <label>Title</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

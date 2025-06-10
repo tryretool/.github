@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>IAM Admin</fullName>
+        <default>false</default>
+        <label>IAM Admin</label>
+    </customValue>
+    <customValue>
+        <fullName>Developer</fullName>
+        <default>false</default>
+        <label>Developer</label>
+    </customValue>
+    <customValue>
+        <fullName>Analyst</fullName>
+        <default>false</default>
+        <label>Analyst</label>
+    </customValue>
+    <customValue>
+        <fullName>Support Specialist</fullName>
+        <default>false</default>
+        <label>Support Specialist</label>
+    </customValue>
+    <customValue>
+        <fullName>View Only</fullName>
+        <default>false</default>
+        <label>View Only</label>
+    </customValue>
+    <masterLabel>Stripe: Roles</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

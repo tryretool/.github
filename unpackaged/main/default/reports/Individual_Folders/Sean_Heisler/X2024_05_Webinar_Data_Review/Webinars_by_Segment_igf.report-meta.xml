@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <acrossGroupingContext>Moment__c$Account__c.Segment__c</acrossGroupingContext>
+        <calculatedFormula>RowCount / PARENTGROUPVAL(RowCount, Moment__c.Campaign__c.Name, COLUMN_GRAND_SUMMARY)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>Moment__c$Campaign__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>%</masterLabel>
+        <scale>1</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_7728273</developerName>
+        <masterLabel>Seniority (Buckets)</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Moment__c$Contact__c.Seniority__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Individual Contributor</sourceValue>
+            </sourceValues>
+            <value>IC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Manager</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Senior Manager</sourceValue>
+            </sourceValues>
+            <value>Manager</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>C-Level</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Vice President</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Senior Vice President</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Senior Director / Head of</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Director / Head of</sourceValue>
+            </sourceValues>
+            <value>Senior (Director +)</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Moment__c$Name</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Id</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Moment_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Webinar - Live,Webinar - Recorded</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Campaign__c.StartDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>11/1/2023</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Campaign_Member_Status_at_Moment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>RSVP Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Campaign__c.StartDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessThan</operator>
+            <value>6/1/2024</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Moment__c$Account__c.Segment__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Moment__c$Campaign__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Webinars by Segment</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

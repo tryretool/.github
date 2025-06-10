@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ticket_Hours__c</fullName>
+    <description>Extracts the number of estimated hours from the &#39;Priority&#39; picklist value.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISPICKVAL(Size__c, &quot;XS (10 min)&quot;),
+  0.17,
+  IF(
+    ISPICKVAL(Size__c, &quot;S (1 hr)&quot;),
+    1,
+    IF(
+      ISPICKVAL(Size__c, &quot;XXL (40+ hrs)&quot;),
+      40,
+      VALUE(
+        SUBSTITUTE(
+          SUBSTITUTE(
+            MID(
+              TEXT(Size__c),
+              FIND(&quot;(&quot;, TEXT(Size__c)) + 1,
+              FIND(&quot;hrs&quot;, TEXT(Size__c)) - FIND(&quot;(&quot;, TEXT(Size__c)) - 1
+            ),
+            &quot;,&quot;, &quot;&quot;
+          ),
+          &quot; &quot;,
+          &quot;&quot;
+        )
+      )
+    )
+  )
+)</formula>
+    <inlineHelpText>Extracts the number of estimated hours from the &#39;Priority&#39; picklist value.</inlineHelpText>
+    <label>Ticket Hours</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

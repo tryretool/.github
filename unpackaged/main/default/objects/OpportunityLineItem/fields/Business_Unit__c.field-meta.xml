@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Unit__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Business Unit</label>
+    <referenceTo>Business_Unit__c</referenceTo>
+    <relationshipLabel>Opportunity Products</relationshipLabel>
+    <relationshipName>Opportunity_Product</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Lookup</type>
+</CustomField>

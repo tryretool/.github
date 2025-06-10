@@ -1,0 +1,580 @@
+<apex:page controller="breadwinner_ns.CustomURLGeneratorController" tabstyle="BreadwinnerForNetSuite__tab" sidebar="false" title="{!IF(Parent_Object,'Transactions',objectname)} Button URL Generation" >
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>
+            <apex:slds />
+            <apex:includeScript value="{!URLFOR($Resource.breadwinner_ns__Breadwinner_for_NetSuite, 'Breadwinner/Scripts/jquery-3.5.1.min.js')}" />
+            <apex:variable value="{!OR($User.UIThemeDisplayed == 'Theme4d', $User.UIThemeDisplayed == 'Theme4t')}" var="isLightningUI" />
+            <script>
+				// jqCUG = jQuery Custom URL Generator
+				var jqCUG = jQuery.noConflict();
+
+				function messageUI() {
+					jqCUG(".infoM6, .infoM4, .infoM3, .infoM2, .infoS1").addClass("slds-notify slds-notify_alert slds-theme_inverse-text  slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px","background-color":"rgba(84,105,141,.95)","border-color":"rgba(84,105,141,.95)"});
+					jqCUG(".errorM6, .errorM4, .errorM3, .errorM2, .errorS1").addClass("slds-notify slds-notify_alert slds-theme_error slds-text-align_left slds-text-heading_small slds-m-bottom_small").css({"font-weight":"500","line-height":"1.4","word-spacing":"1px"});
+					jqCUG(".warningM6, .warningM4, .warningM3, .warningM2, .warningS1").addClass("slds-notify slds-notify_alert slds-theme_warning slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+					jqCUG(".confirmM6, .confirmM4, .confirmM3, .confirmM2, .confirmS1").addClass("slds-notify slds-notify_alert slds-theme_success slds-text-align_left slds-text-heading_small slds-m-bottom_small").css( {"font-weight":"500","line-height":"1.4","word-spacing":"1px"} ) ;
+
+					jqCUG("div .messageText h4").css( "color", "white" );
+					jqCUG("div[class*='warning'] div.messageText h4").css( "color", "black" );
+					jqCUG("table.messageTable td").css({"color" : "white"});
+					jqCUG("div[class*='warning'] table.messageTable td").css( "color", "black" );
+				}
+				function identifyfield(elementt, helptext, TopMinusparam,LeftMinusParam) {
+					var x = jqCUG(elementt).offset();
+					var isLightningUIparam='{!isLightningUI}';
+					if(isLightningUIparam=='true'){
+						LeftMinusParam=LeftMinusParam-9;
+						TopMinusparam=TopMinusparam-105;
+					}
+					var ToSetleft = x.left - LeftMinusParam;
+					jqCUG("#help p").text(helptext);
+					var ToSetheight = x.top - TopMinusparam;
+					var heptextdiv = document.getElementById("help");
+					jqCUG(heptextdiv).css({
+						top: ToSetheight + 'px',
+						left: ToSetleft + 'px',
+						display: ""
+					})
+				}
+				function mouseoutclose() {
+					var heptextdiv = document.getElementById("help");
+					jqCUG(heptextdiv).css({
+						top: "0px",
+						left: "0px",
+						display: "none"
+					});
+				}
+				jqCUG(function() {
+					messageUI();
+					initializeCustomURLGenerator();
+				});
+            </script>
+            <style>
+                .msgIcon {
+                display: none;
+                }
+                .message .messageText {
+                margin: 0px;
+                }
+                .message .messageText h4 {
+                font-weight: inherit;
+                display: initial;
+                }
+            </style>
+        </head>
+            <div class="slds-scope">
+                <!-- fields level help -->
+                <div id="help" class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left" role="tooltip" aria-live="polite" style="display:none;position:absolute;top:0px;left:0px;">
+                    <div class="slds-popover__body slds-text-longform">
+                        <p>Help text will come here dynamically</p>
+                    </div>
+                </div>
+                <!-- fields level help -->
+                <!-- header start -->
+                <div class="slds-page-header" role="banner">
+                    <div class="slds-media slds-media_center">
+                        <div class="slds-media__body">
+                            <apex:outputPanel styleclass="slds-page-header__title slds-truncate" id="header" layout="block">
+                                <apex:outputText value="Button URL Generation For {!IF(Parent_Object,'Transactions',objectname)}"/>
+                            </apex:outputPanel>
+                            <p class="slds-text-body_small">Breadwinner • NetSuite </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- header end -->
+
+                <apex:form styleClass="slds-m-top_medium slds-m-left_small" id="curl-form">
+                    <apex:actionFunction name="initializeCustomURLGenerator" action="{!initializeCustomURLGenerator}" reRender="curl-form,header" status="action-status"/>
+                    <apex:pagemessages ></apex:pagemessages>
+                    <div class="slds-m-bottom_medium">
+                        <apex:outputPanel layout="block" rendered="{!Parent_Object}">
+                            <h3 class="slds-section-title_divider">Select Transaction</h3>
+                            <div class="slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_6-of-12 slds-m-horizontal_small">
+                                <apex:outputPanel id="transactionSelectionId" layout="block" styleclass="slds-form-element slds-m-vertical_medium slds-size_1-of-1 slds-small-size_6-of-12 slds-medium-size_6-of-12 slds-large-size_8-of-12">
+                                    <label class="slds-form-element__label">Select the transaction for which you want to generate URL for Custom Button</label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container">
+                                            <apex:selectList value="{!objectname}" size="1" styleClass="slds-select">
+                                                <apex:selectOption itemLabel="Credit Memo" itemValue="Credit Memo"></apex:selectOption>
+                                                <apex:selectOption itemLabel="Estimate" itemValue="Estimate"></apex:selectOption>
+                                                <apex:selectOption itemLabel="Invoice" itemValue="Invoice"></apex:selectOption>
+                                                <apex:selectOption itemLabel="Purchase Order" itemValue="Purchase Order"></apex:selectOption>
+                                                <apex:selectOption itemLabel="Return Authorization" itemValue="Return Authorization"></apex:selectOption>
+                                                <apex:selectOption itemLabel="Sales Order" itemValue="Sales Order"></apex:selectOption>
+                                                <apex:selectOption itemLabel="Vendor Bill" itemValue="Vendor Bill"></apex:selectOption>
+                                                <apex:actionSupport event="onchange" reRender="header,refreshpanel" status="action-status">
+                                                </apex:actionSupport>
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                            <h3 class="slds-section-title_divider">Select Originating Object</h3>
+                            <div class="slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_6-of-12 slds-m-horizontal_small">
+                                <apex:outputPanel layout="block" styleclass="slds-form-element slds-m-vertical_medium slds-size_1-of-1 slds-small-size_6-of-12 slds-medium-size_6-of-12 slds-large-size_8-of-12" id="refreshpanel">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select the object from which you want to create a {!objectname} from"/></label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container">
+                                            <apex:selectList value="{!selectedObject}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!objectNames}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                        </apex:outputPanel>
+
+                        <apex:outputPanel layout="block" rendered="{!Child_Object}">
+                            <h3 class="slds-section-title_divider slds-m-bottom_medium">Select Child Object</h3>
+                            <div class="slds-m-top_medium">
+                                <apex:pageMessage severity="INFO" strength="1" summary="This field is optional, you may leave this blank and just click proceed"></apex:pageMessage>
+                            </div>
+                            <div class="slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_6-of-12 slds-m-horizontal_small">
+                                <div class="slds-form-element slds-size_1-of-1 slds-medium-size_3-of-6 slds-large-size_8-of-12">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select the child object from which you want to fetch {!objectname} Line Items"/></label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-select_container">
+                                                <apex:selectList value="{!selectedChildObject}" size="1" styleClass="slds-select">
+                                                    <apex:selectOption value="{!null}"></apex:selectOption>
+                                                    <apex:selectOptions value="{!ChildSObjectsList}" />
+                                                </apex:selectList>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </apex:outputPanel>
+
+                        <apex:outputPanel layout="block" rendered="{!Object_Fields}">
+                            <h3 class="slds-section-title_divider"><apex:outputText value=" Map {!objectname} fields with {!ParentObjectName} fields"/></h3>
+                            <div class="slds-grid slds-wrap slds-m-horizontal_small">
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label">
+                                        <abbr class="slds-required" title="required">*</abbr><apex:outputText value=" Select a field for {!objectname} Account ({!IF(OR(objectname='Purchase Order',objectname='Vendor Bill'),'Vendor','Customer')})"/>
+                                    </label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Parent_Account" value="{!Parent_Account}" label="Select a field for {!objectname} Account ({!IF(OR(objectname='Purchase Order',objectname='Vendor Bill'),'Vendor','Customer')})" size="1"  styleClass="slds-select">
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!AccountReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+								<apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!(objectname='Sales Order')}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Created From"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_CreatedFrom" value="{!Sobject_CreatedFrom}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Currency"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_Currency" value="{!Sobject_Currency}" size="1" styleClass="slds-select">
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Custom Form"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_CustomForm" value="{!Sobject_CustomForm}" size="1" styleClass="slds-select">
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!objectname!='Vendor Bill'}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for {!IF(objectname='Purchase Order','Vendor','PO')} #"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_OtherRefNum" value="{!Sobject_OtherRefNum}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Date"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_TranDate" value="{!Sobject_TranDate}" size="1" styleClass="slds-select">
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectDateFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Memo"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_Memo" value="{!Sobject_Memo}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!OR(objectname='Invoice', objectname='Purchase Order', objectname='Vendor Bill', objectname='Estimate')}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for {!IF(objectname='Purchase Order','Receive By',IF(objectname='Estimate', 'Expires', 'Due Date'))}"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_DueDate" value="{!Sobject_DueDate}" size="1" styleClass="slds-select">
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectDateFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!(objectname='Estimate')}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Exp. Close"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_ExpectedCloseDate" value="{!Sobject_ExpectedCloseDate}" size="1" styleClass="slds-select">
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectDateFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!AND(objectname!='Purchase Order',objectname!='Vendor Bill')}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Sales Rep"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_SalesRep" value="{!Sobject_SalesRep}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Department"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_Department" value="{!Sobject_Department}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Location"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_Location" value="{!Sobject_Location}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Class"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_Class" value="{!Sobject_Class}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+								<apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Subsidiary"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_Subsidiary" value="{!Sobject_Subsidiary}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!NOT(OR(objectname='Credit Memo',objectname='Return Authorization'))}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Terms"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_Terms" value="{!Sobject_Terms}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!(objectname='Sales Order')}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Start Date"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_StartDate" value="{!Sobject_StartDate}" size="1" styleClass="slds-select">
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectDateFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!(objectname='Sales Order')}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Sales Effective Date"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_SalesEffectiveDate" value="{!Sobject_SalesEffectiveDate}" size="1" styleClass="slds-select">
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectDateFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!(objectname='Sales Order')}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for End Date"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_EndDate" value="{!Sobject_EndDate}" size="1" styleClass="slds-select">
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectDateFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!OR(objectname='Sales Order',objectname='Estimate')}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Ship Method"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_ShipMethod" value="{!Sobject_ShipMethod}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!NOT(OR(objectname='Purchase Order',objectname='Vendor Bill'))}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Discount Item"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_DiscountItem" value="{!Sobject_DiscountItem}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+								<apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!NOT(OR(objectname='Purchase Order',objectname='Vendor Bill'))}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Discount Rate"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_DiscountRate" value="{!Sobject_DiscountRate}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!objectname='Sales Order'}">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for Billing Schedule"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_BillingSchedule" value="{!Sobject_BillingSchedule}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label"><apex:outputText value="Select a field for External Id"/></label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Sobject_ExternalId" value="{!Sobject_ExternalId}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!sobjectTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                        </apex:outputPanel>
+
+                        <apex:outputPanel layout="block" styleClass="slds-m-top_medium" rendered="{!Object_Fields && (!isBlank(selectedChildObject) && selectedChildObject!='None')}">
+                            <h3 class="slds-section-title_divider"><apex:outputText value="Map Line Item fields with {!ChildObjectName} fields"/></h3>
+                            <div class="slds-grid slds-wrap slds-m-horizontal_small">
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label">
+                                        <abbr class="slds-required" title="required">*</abbr> Select a field for NetSuite Item
+                                    </label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_Item" value="{!Child_Object_Item}" size="1" styleClass="slds-select" >
+                                                <apex:selectOptions value="{!childItemReferenceFields}" />
+                                                <apex:selectOptions value="{!childTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label">Select a field for Department</label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_Department" value="{!Child_Object_Department}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!childTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label">Select a field for Description</label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_Description" value="{!Child_Object_Description}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!childTextReferenceFields}" />
+                                                <apex:selectOptions value="{!childLongTextAreaFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label">Select a field for Class</label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_Class" value="{!Child_Object_Class}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!childTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label">Select a field for Quantity</label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_Quantity" value="{!Child_Object_Quantity}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOption itemValue="blankQuantity" itemLabel="Use the number 1 for Quantity"/>
+                                                <apex:selectOptions value="{!childNumberFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label">Select a field for Location</label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_Location" value="{!Child_Object_Location}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!childTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label">Select a field for Rate</label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_Rate" value="{!Child_Object_Rate}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!childNumberFields}" />
+                                                <apex:selectOptions value="{!childTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2">
+                                    <label class="slds-form-element__label">Select a field for Sort By</label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_SortBy" value="{!Child_Object_SortBy}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!ChildSObjectsFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </div>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!objectname ='Sales Order'}">
+                                    <label class="slds-form-element__label">Select a field for Billing Schedule</label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_BillingSchedule" value="{!Child_Object_BillingSchedule}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!childTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!AND(objectname!='Estimate',objectname!='Purchase Order',objectname!='Vendor Bill')}">
+                                    <label class="slds-form-element__label">Select a field for Rev. Rec. Schedule</label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_RevRecSchedule" value="{!Child_Object_RevRecSchedule}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!childTextReferenceFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2"/>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!AND(objectname!='Estimate',objectname!='Purchase Order',objectname!='Vendor Bill')}">
+                                    <label class="slds-form-element__label">Select a field for Rev. Rec. Start Date</label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_RevRecStartDate" value="{!Child_Object_RevRecStartDate}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!childDateFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                                <div class="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2"/>
+                                <apex:outputPanel styleClass="slds-form-element slds-m-top_small slds-col_padded slds-size_1-of-1 slds-medium-size_1-of-1 slds-large-size_1-of-2" rendered="{!AND(objectname!='Estimate',objectname!='Purchase Order',objectname!='Vendor Bill')}">
+                                    <label class="slds-form-element__label">Select a field for Rev. Rec. End Date</label>
+                                    <div class="slds-form-element__control slds-large-size_1-of-2 slds-size_1-of-1 slds-medium-size_1-of-1">
+                                        <div class="slds-select_container">
+                                            <apex:selectList id="Child_Object_RevRecEndDate" value="{!Child_Object_RevRecEndDate}" size="1" styleClass="slds-select" >
+                                                <apex:selectOption value="{!null}"></apex:selectOption>
+                                                <apex:selectOptions value="{!childDateFields}" />
+                                            </apex:selectList>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                        </apex:outputPanel>
+                        <apex:outputPanel layout="block" rendered="{!Object_Fields}" styleClass="slds-m-top_medium slds-m-horizontal_small">
+                            <apex:pageMessage severity="INFO" strength="2" detail="If you are unable to map something, create formula fields according to your requirement, and restart this." summary="If you are unable to find some field, make sure that field level security is visible."></apex:pageMessage>
+                        </apex:outputPanel>
+                    </div>
+
+                    <div align="center" class="slds-m-bottom_medium slds-m-top_medium">
+                        <apex:commandButton value="Next" styleClass="slds-button slds-button_brand" action="{!ChildObjects}" rendered="{!Parent_Object}" reRender="curl-form,header" oncomplete="messageUI();" status="action-status"/>
+                        <apex:commandButton value="Proceed and Map fields" styleClass="slds-button slds-button_brand" action="{!next2}" rendered="{!Child_Object}" reRender="curl-form" oncomplete="messageUI();" status="action-status"/>
+                        <apex:commandButton value="Generate URL" styleClass="slds-button slds-button_brand" action="{!generateURL}" rendered="{!generateURLb}" reRender="curl-form" oncomplete="messageUI();" status="action-status"/>
+                    </div>
+
+                    <apex:outputPanel layout="block" rendered="{!URLblock}">
+                        <h3 class="slds-section-title_divider">Custom URL for new Button</h3>
+                        <div class="slds-col_padded slds-size_1-of-2 slds-medium-size_3-of-6 slds-large-size_6-of-12">
+                            <div class="slds-form-element slds-m-top_medium">
+                                <label class="slds-form-element__label" ><apex:outputText value="Copy and Paste the following URL in the Custom Button (New {!objectname})"/></label>
+                                <div class="slds-form-element__control">
+                                    <apex:inputTextarea id="url" onfocus="this.select();" styleClass="slds-textarea" cols="120" rows="8" value="{!url}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                </apex:form>
+            </div>
+    </html>
+</apex:page>

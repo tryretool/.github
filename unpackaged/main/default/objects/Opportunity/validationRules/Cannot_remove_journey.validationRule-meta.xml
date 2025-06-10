@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_remove_journey</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK(Qualification_Journey__c) &amp;&amp;
+NOT(isblank(PRIORVALUE(Qualification_Journey__c))) &amp;&amp;
+NOT(ISPICKVAL($User.Team__c,&quot;Revenue Operations&quot;))</errorConditionFormula>
+    <errorMessage>Cannot disassociate Qualification Journey from Opportunity</errorMessage>
+</ValidationRule>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>dominic@retool.com</contactEmail>
+    <iconUrl>https://d3399nw8s4ngfo.cloudfront.net/sfdc-integration-assets/sfdc-retool-symbol-16x16.png</iconUrl>
+    <label>Retool</label>
+    <logoUrl>https://d3399nw8s4ngfo.cloudfront.net/sfdc-integration-assets/sfdc-retool-lockup-125x125-f3f6f9.png</logoUrl>
+    <oauthConfig>
+        <callbackUrl>https://oauth.tryretool.com/oauth/user/oauthcallback
+https://oauth.tryretool.com/oauth/oauthcallback
+https://oauth.retool.com/oauth/oauthcallback
+https://oauth.retool.com/oauth/user/oauthcallback
+https://admin.retool.dev/oauth/oauthcallback
+https://support.admin.retool.dev/oauth/user/oauthcallback
+https://support.admin.retool.dev/oauth/oauthcallback</callbackUrl>
+        <consumerKey>3MVG9vrJTfRxlfl4o0oShT.sE1o9Lka6yRyC6Es.VbgjVcRdlljNb8mbEVJyJnfIRaBV9OFoAbFfPjSu7dvNk</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Basic</scopes>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>Full</scopes>
+        <scopes>Chatter</scopes>
+        <scopes>CustomApplications</scopes>
+        <scopes>RefreshToken</scopes>
+        <scopes>OpenID</scopes>
+        <scopes>CustomPermissions</scopes>
+        <scopes>Wave</scopes>
+        <scopes>Eclair</scopes>
+        <scopes>Pardot</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

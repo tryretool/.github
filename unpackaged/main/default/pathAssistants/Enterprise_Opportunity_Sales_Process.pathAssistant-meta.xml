@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>Opportunity</entityName>
+    <fieldName>StageName</fieldName>
+    <masterLabel>Enterprise - Opportunity Sales Process</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Before_Scenarios__c</fieldNames>
+        <fieldNames>Negative_Consequences__c</fieldNames>
+        <fieldNames>Value_Driver__c</fieldNames>
+        <info>&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;To advance to (2) Discovery stage identify the following Customer Verifiable Outcomes:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Before Scenarios:&lt;/strong&gt; A use case / initiative to build / rebuild some operations workflow&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Negative Consequences:&lt;/strong&gt; Pain (or gain) with urgency / intent to resolve aligned to one of our &lt;strong&gt;Value Drivers&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;Stakeholder who is an influencer &lt;/li&gt;&lt;li&gt;A &lt;strong&gt;Next Step&lt;/strong&gt; on the calendar&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Then, the AE may click &lt;strong&gt;Mark SQO&lt;/strong&gt;. The opportunity and account will automatically transfer into the AE&amp;#39;s name.&lt;/p&gt;</info>
+        <picklistValueName>(1) Qualification</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Use_Cases__c</fieldNames>
+        <fieldNames>Positive_Business_Outcomes__c</fieldNames>
+        <fieldNames>Test_Champion__c</fieldNames>
+        <fieldNames>Competition__c</fieldNames>
+        <fieldNames>After_Scenarios__c</fieldNames>
+        <info>&lt;p&gt;&lt;strong&gt;To advance to (3) POC Scoping stage identify the following Customer Verifiable Outcomes:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Any pre-existing Retool product knowledge / customer experience / technical expertise&lt;/li&gt;&lt;li&gt;Top 1-3 &lt;strong&gt;Use Cases&lt;/strong&gt; that tie to core &lt;strong&gt;Positive Business Outcomes&lt;/strong&gt;&lt;/li&gt;&lt;li&gt;Validated technical feasibility&lt;/li&gt;&lt;li&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;Champion: &lt;/strong&gt;Suspected or potential&lt;strong&gt; &lt;/strong&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Competition&lt;/strong&gt;: How they would solve the identified pain (or gain) without Retool (i.e. what is their alternative?)&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>(2) Discovery</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Decision_process_D__c</fieldNames>
+        <fieldNames>Economic_Buyer_E__c</fieldNames>
+        <fieldNames>Required_Capabilities__c</fieldNames>
+        <fieldNames>Metrics__c</fieldNames>
+        <info>&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;To advance to (4) Proof of Concept stage identify the following Customer Verifiable Outcomes:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Decision Process:&lt;/strong&gt; Agreement on a specific validation approach to prove out use cases or required capabilities as well as supporting success metrics&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Economic Buyer&lt;/strong&gt; identified, path to engage with them, and preliminary understanding of their priorities and approach to quantify them&lt;/li&gt;&lt;li&gt;Validation the champion is a true champion &lt;/li&gt;&lt;li&gt;Preliminary pricing discussed &amp;amp; deemed feasible&lt;/li&gt;&lt;li&gt;Understanding of competitive landscape and shape evaluation criteria &lt;/li&gt;&lt;li&gt;Customer agrees to commit necessary resources &lt;span style=&quot;font-size: 13px;&quot;&gt;(e.g., infrastructure or personnel)&lt;/span&gt; for technical validation&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>(3) POC Scoping</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>NextStep</fieldNames>
+        <fieldNames>Next_Step_Date__c</fieldNames>
+        <info>&lt;p&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt;To advance to (5) &lt;/strong&gt;&lt;strong&gt;Validating Business Case / Negotiating&lt;/strong&gt;&lt;strong style=&quot;font-size: 13px;&quot;&gt; stage identify the following Customer Verifiable Outcomes:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Validation from Economic Buyer &amp;amp; Champion that we have won the technical evaluation &lt;/li&gt;&lt;li&gt;Commitment from the Champion to build a Mutual Action Plan (MAP) together&lt;/li&gt;&lt;li&gt;Draft business case reviewed with the Champion&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>(4) Proof of Concept</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Paper_Process__c</fieldNames>
+        <fieldNames>NextStep</fieldNames>
+        <fieldNames>Next_Step_Date__c</fieldNames>
+        <info>&lt;p&gt;&lt;strong&gt;To advance to (6) Signature stage identify the following Customer Verifiable Outcomes:&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Economic Buyer &amp;amp; Finance sign off on business case&lt;/li&gt;&lt;li&gt;Aligned on specific proposal (incl. pricing details)&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Paper Process:&lt;/strong&gt; Agreement on all key business, legal, and other deal requirements &lt;/li&gt;&lt;li&gt;Agreement sent for signature&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>(5) Validating Business Case/Negotiating</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>NextStep</fieldNames>
+        <fieldNames>Next_Step_Date__c</fieldNames>
+        <info>&lt;p&gt;To mark this deal as&lt;strong&gt; Closed Won &lt;/strong&gt;you must have a valid, fully executed agreement. Then, the AE may click the &lt;strong&gt;Close Won&lt;/strong&gt; button.&lt;/p&gt;</info>
+        <picklistValueName>(6) Signature</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Lost_Reason__c</fieldNames>
+        <fieldNames>Lost_Reason_Details__c</fieldNames>
+        <picklistValueName>Closed Lost</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>Enterprise</recordTypeName>
+</PathAssistant>

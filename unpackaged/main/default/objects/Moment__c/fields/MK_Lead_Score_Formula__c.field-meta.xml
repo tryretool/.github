@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MK_Lead_Score_Formula__c</fullName>
+    <description>The Madkudu engagement score for the related contact or lead.
+
+In System Use: Reports
+
+External Systems Utilization: Madkudu</description>
+    <externalId>false</externalId>
+    <formula>BLANKVALUE(  Contact__r.MK_Lead_Engagement_Score__c ,  Lead__r.MK_Lead_Engagement_Score__c )</formula>
+    <inlineHelpText>The Madkudu engagement score for the related contact or lead.</inlineHelpText>
+    <label>MK Lead Score (Formula)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

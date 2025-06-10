@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vendor__c</fullName>
+    <description>For reporting segmentation
+
+in System Use -
+Required field in Flow: &#39;Campaign - Create Campaign Button
+
+External Systems Utilization: None</description>
+    <inlineHelpText>For reporting segmentation</inlineHelpText>
+    <label>Vendor</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Ben&#39;s Bites</fullName>
+                <default>false</default>
+                <label>Ben&#39;s Bites</label>
+            </value>
+            <value>
+                <fullName>Dzone</fullName>
+                <default>false</default>
+                <label>Dzone</label>
+            </value>
+            <value>
+                <fullName>Gartner</fullName>
+                <default>false</default>
+                <label>Gartner</label>
+            </value>
+            <value>
+                <fullName>Google</fullName>
+                <default>false</default>
+                <label>Google</label>
+            </value>
+            <value>
+                <fullName>LinkedIn</fullName>
+                <default>false</default>
+                <label>LinkedIn</label>
+            </value>
+            <value>
+                <fullName>Meta</fullName>
+                <default>false</default>
+                <label>Meta</label>
+            </value>
+            <value>
+                <fullName>NDC Conferences</fullName>
+                <default>false</default>
+                <label>NDC Conferences</label>
+            </value>
+            <value>
+                <fullName>Reddit</fullName>
+                <default>false</default>
+                <label>Reddit</label>
+            </value>
+            <value>
+                <fullName>Retool</fullName>
+                <default>false</default>
+                <label>Retool</label>
+            </value>
+            <value>
+                <fullName>Smooth Media</fullName>
+                <default>false</default>
+                <label>Smooth Media</label>
+            </value>
+            <value>
+                <fullName>Superhuman AI</fullName>
+                <default>false</default>
+                <label>Superhuman AI</label>
+            </value>
+            <value>
+                <fullName>The Neuron</fullName>
+                <default>false</default>
+                <label>The Neuron</label>
+            </value>
+            <value>
+                <fullName>The Rundown AI</fullName>
+                <default>false</default>
+                <label>The Rundown AI</label>
+            </value>
+            <value>
+                <fullName>TLDR</fullName>
+                <default>false</default>
+                <label>TLDR</label>
+            </value>
+            <value>
+                <fullName>Vendor Not Associated</fullName>
+                <default>false</default>
+                <label>Vendor Not Associated</label>
+            </value>
+            <value>
+                <fullName>X</fullName>
+                <default>false</default>
+                <label>X</label>
+            </value>
+            <value>
+                <fullName>YouTube</fullName>
+                <default>false</default>
+                <label>YouTube</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

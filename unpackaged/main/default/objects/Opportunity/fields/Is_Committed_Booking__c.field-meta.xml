@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Committed_Booking__c</fullName>
+    <description>[Utilized by Xactly]</description>
+    <formula>IF(
+  IsWon = TRUE || ISPICKVAL(StageName,&#39;Churn&#39;) || (ISPICKVAL(Subtype__c,&#39;Renewal - Pilot Conversion&#39;) &amp;&amp; ISPICKVAL(StageName,&#39;Closed Lost&#39;)),
+  TRUE,
+  FALSE
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True if the opportunity represents a valid booking for the committed business.</inlineHelpText>
+    <label>Is Committed Booking?</label>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

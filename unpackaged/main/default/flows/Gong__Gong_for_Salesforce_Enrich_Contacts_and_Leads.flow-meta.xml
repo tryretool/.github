@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <assignments>
+        <description>Assign Contact fields from the participant record</description>
+        <name>Assign_new_Contact</name>
+        <label>Assign new Contact</label>
+        <locationX>110</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>NewContact.LastName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>str_LastName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewContact.Email</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Gong__Participant_Email__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewContact.Title</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Gong__Gong_Participant_Title__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewContact.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Gong__Gong_Call__r.Gong__Primary_Account__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewContact.FirstName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>str_FirstName</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_new_Contact</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assign new Lead fields based on the participant record</description>
+        <name>Assign_new_Lead</name>
+        <label>Assign new Lead</label>
+        <locationX>374</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>NewLead.LastName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>str_LastName</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewLead.Email</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Gong__Participant_Email__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewLead.Title</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Gong__Gong_Participant_Title__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewLead.Company</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>EmailDomain</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NewLead.FirstName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>str_FirstName</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_new_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Split_Full_Participant_Name</name>
+        <label>Split Full Participant Name</label>
+        <locationX>242</locationX>
+        <locationY>539</locationY>
+        <assignmentItems>
+            <assignToReference>str_FullName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Gong__Full_Name_Temp__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>str_FirstName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>str_FirstName_Formula</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>str_LastName</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>str_LastName_Formula</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Primary_Account_Exists</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Determine of the participant is a Lead or a Contact</description>
+        <name>Lead_or_Contact</name>
+        <label>Lead or Contact?</label>
+        <locationX>770</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Update_Lead_Title</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Participant is Lead</defaultConnectorLabel>
+        <rules>
+            <name>Participant_is_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Gong__Participant_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Contact</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_Title</targetReference>
+            </connector>
+            <label>Participant is Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This Decision comes to determine if the participant is from your own organization, so you might consider not to create a Contact/Lead out of this participant. This can happen when you push your Internal calls which involves departments that are not necessarily using the CRM (Such as engineering). Alternatively you can eliminate this scenario by filtering the Conversations you are pushing to Salesforce, and exclude Internal Calls.</description>
+        <name>My_Domain</name>
+        <label>My Domain?</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Participant_Type_is_Unknown</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>My_Company_Domain</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>EmailDomain</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>gong.io</stringValue>
+                </rightValue>
+            </conditions>
+            <label>My Domain</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This decision determines if the Participant is of type Unknown. If so then a Lead or Contact will be created.
+Alternatively the next steps will be updating the Title of either the Contact or the Lead</description>
+        <name>Participant_Type_is_Unknown</name>
+        <label>Participant Type is Unknown</label>
+        <locationX>506</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Lead_or_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Update Contact/Lead Title</defaultConnectorLabel>
+        <rules>
+            <name>Type_is_Unknown</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Gong__Participant_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Unknown</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Split_Full_Participant_Name</targetReference>
+            </connector>
+            <label>Type is Unknown</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Determine if the Unknown participant relates to a Conversation that has a Primary Account value. This will indicate if the newly created record should be a Contact or Lead</description>
+        <name>Primary_Account_Exists</name>
+        <label>Primary Account Exists?</label>
+        <locationX>242</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Assign_new_Lead</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Create Lead</defaultConnectorLabel>
+        <rules>
+            <name>Create_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Gong__Gong_Call__r.Gong__Primary_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_new_Contact</targetReference>
+            </connector>
+            <label>Create Contact</label>
+        </rules>
+    </decisions>
+    <description>Flow template that provides a process to create new Leads or Contacts, or update existing Contact or Lead Title</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>The Formula below captures the domain name of the participant email, and will be used in the My Domain Decision element</description>
+        <name>EmailDomain</name>
+        <dataType>String</dataType>
+        <expression>RIGHT({!$Record.Gong__Participant_Email__c}, LEN({!$Record.Gong__Participant_Email__c}) - FIND(&quot;@&quot;,{!$Record.Gong__Participant_Email__c}))</expression>
+    </formulas>
+    <formulas>
+        <description>Extract first name out of the full name string</description>
+        <name>str_FirstName_Formula</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!str_FullName}, FIND(&#39; &#39;, {!str_FullName})-1)</expression>
+    </formulas>
+    <formulas>
+        <description>Extracting the Last Name from the full name string</description>
+        <name>str_LastName_Formula</name>
+        <dataType>String</dataType>
+        <expression>Trim(right({!str_FullName}, len({!str_FullName})-FIND(&#39; &#39;, {!str_FullName})))</expression>
+    </formulas>
+    <interviewLabel>Gong for Salesforce - Enrich Contacts and Leads {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>Gong for Salesforce - Enrich Contacts and Leads</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create new Contact</description>
+        <name>Create_new_Contact</name>
+        <label>Create new Contact</label>
+        <locationX>110</locationX>
+        <locationY>863</locationY>
+        <inputReference>NewContact</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <description>Create new Lead</description>
+        <name>Create_new_Lead</name>
+        <label>Create new Lead</label>
+        <locationX>374</locationX>
+        <locationY>863</locationY>
+        <inputReference>NewLead</inputReference>
+    </recordCreates>
+    <recordUpdates>
+        <description>Update the Contact&#39;s Title</description>
+        <name>Update_Contact_Title</name>
+        <label>Update Contact Title</label>
+        <locationX>638</locationX>
+        <locationY>647</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ContactId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Title</field>
+            <value>
+                <elementReference>$Record.Gong__Gong_Participant_Title__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Lead Title</description>
+        <name>Update_Lead_Title</name>
+        <label>Update Lead Title</label>
+        <locationX>902</locationX>
+        <locationY>647</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>LeadId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Title</field>
+            <value>
+                <elementReference>$Record.Gong__Gong_Participant_Title__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>My_Domain</targetReference>
+        </connector>
+        <filterFormula>{!$Record.Gong__Participant_Type__c}!=&#39;User&#39;  &amp;&amp; DATETIMEVALUE({!$Record.CreatedDate} ) =DATETIMEVALUE( {!$Record.Gong__Gong_Call__r.CreatedDate})  &amp;&amp; !ISBLANK({!$Record.Gong__Full_Name_Temp__c})</filterFormula>
+        <object>Gong__Call_Participant__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <description>Contact Id, which will be used to update the Contact&#39;s Title</description>
+        <name>ContactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Record.Gong__Contact_Participant__r.Id</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <description>Lead Id, which will be used to update the Lead&#39;s Title</description>
+        <name>LeadId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Record.Gong__Lead_Participant__r.Id</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <description>New Contact variable that will be assigned with the participant details</description>
+        <name>NewContact</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <description>New Lead variable that will be assigned with the participant details</description>
+        <name>NewLead</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Lead</objectType>
+    </variables>
+    <variables>
+        <name>str_FirstName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>String containing the full participant name</description>
+        <name>str_FullName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>str_LastName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

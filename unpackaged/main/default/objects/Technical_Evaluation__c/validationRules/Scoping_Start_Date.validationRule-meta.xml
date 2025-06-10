@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Scoping_Start_Date</fullName>
+    <active>true</active>
+    <errorConditionFormula>Evaluation_Start_Date__c &lt; Scoping_Start_Date__c &amp;&amp; NOT(ISCHANGED(Permission_Check__c))</errorConditionFormula>
+    <errorDisplayField>Scoping_Start_Date__c</errorDisplayField>
+    <errorMessage>Scoping start date must be before evaluation start date</errorMessage>
+</ValidationRule>

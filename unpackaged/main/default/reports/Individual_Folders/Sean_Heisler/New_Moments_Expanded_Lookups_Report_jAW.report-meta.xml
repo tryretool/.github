@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_43752384</developerName>
+        <masterLabel>Product Score</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Moment__c$MK_Product_Score__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>0</to>
+            </sourceValues>
+            <value>MK Blank</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>0</from>
+                <to>49</to>
+            </sourceValues>
+            <value>MK Low</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>49</from>
+                <to>69</to>
+            </sourceValues>
+            <value>MK Medium</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>69</from>
+                <to>84</to>
+            </sourceValues>
+            <value>MK High</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>84</from>
+            </sourceValues>
+            <value>MK Very High</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Moment__c$Name</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Moment_Description__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Email_at_Moment__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Moment_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>6/5/2024</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <field>Moment__c$Moment_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_43752384</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Moment__c$Moment_Type__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2024-05 Moments MK Product Score</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

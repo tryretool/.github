@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>rocketlane__RlSettingsClassic</defaultLandingTab>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Rocketlane Classic</label>
+    <logo>rocketlane__rl_logo/rocketlane__logo_194.png</logo>
+    <tabs>rocketlane__RlSettingsClassic</tabs>
+    <tabs>Customer_Reference__c</tabs>
+    <uiType>Aloha</uiType>
+</CustomApplication>

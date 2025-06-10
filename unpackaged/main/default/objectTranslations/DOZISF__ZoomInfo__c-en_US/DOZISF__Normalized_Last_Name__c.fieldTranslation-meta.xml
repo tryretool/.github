@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- ZoomInfo normalized last name based on input value. --></help>
+        <label><!-- Normalized Last Name --></label>
+        <name>DOZISF__Normalized_Last_Name__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <decisions>
+        <name>In_Solved_for_5_days</name>
+        <label>In Solved for 5 days?</label>
+        <locationX>182</locationX>
+        <locationY>552</locationY>
+        <defaultConnectorLabel>Not Applicable</defaultConnectorLabel>
+        <rules>
+            <name>Solved_to_Closed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Solved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Last_Solved_At__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference>daysago5</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Case_to_Closed</targetReference>
+            </connector>
+            <label>Solved to Closed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>On_Hold_or_Waiting_with_Snooze</name>
+        <label>On Hold or Waiting with Snooze</label>
+        <locationX>182</locationX>
+        <locationY>252</locationY>
+        <defaultConnector>
+            <targetReference>In_Solved_for_5_days</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No snooze trigger</defaultConnectorLabel>
+        <rules>
+            <name>Snooze_Until_Today</name>
+            <conditionLogic>(1 OR 2 ) AND 3 AND 4</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Waiting for Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Snoozed_Until__c</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Snoozed_Until__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_case_to_Open_clear_snoozed</targetReference>
+            </connector>
+            <label>Snooze Until Today</label>
+        </rules>
+    </decisions>
+    <description>Adding Suppress Automations</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>daysago5</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()-5</expression>
+    </formulas>
+    <interviewLabel>Case - Scheduled Automations {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Scheduled Automations</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Case_to_Closed</name>
+        <label>Case to Closed</label>
+        <locationX>50</locationX>
+        <locationY>660</locationY>
+        <inputAssignments>
+            <field>Reply_to_Closed_Status__c</field>
+            <value>
+                <stringValue>Needs notification</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_case_to_Open_clear_snoozed</name>
+        <label>Update case to Open, clear snoozed</label>
+        <locationX>50</locationX>
+        <locationY>360</locationY>
+        <connector>
+            <targetReference>In_Solved_for_5_days</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Snoozed_Until__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Open</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>On_Hold_or_Waiting_with_Snooze</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Merged</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Suppress_Automations__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2024-09-20</startDate>
+            <startTime>05:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

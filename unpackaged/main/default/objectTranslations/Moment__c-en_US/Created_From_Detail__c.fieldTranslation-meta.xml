@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- References the event from which the Moment was created. This is typically an automatically inserted value listing the flow that created the Moment. --></help>
+        <label><!-- Created From Detail --></label>
+        <name>Created_From_Detail__c</name>
+    </CustomFieldTranslation>

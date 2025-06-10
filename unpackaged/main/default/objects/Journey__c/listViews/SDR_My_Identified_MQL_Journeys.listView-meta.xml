@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SDR_My_Identified_MQL_Journeys</fullName>
+    <columns>NAME</columns>
+    <columns>Stage__c</columns>
+    <columns>Identified_At__c</columns>
+    <columns>Account__c</columns>
+    <columns>Contact__c</columns>
+    <columns>Journey_Subtype__c</columns>
+    <columns>Moment_Description__c</columns>
+    <columns>Moment_Type_Reporting__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Stage__c</field>
+        <operation>equals</operation>
+        <value>Identified</value>
+    </filters>
+    <filters>
+        <field>Is_MQL__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>[SDR] My Identified MQL Journeys</label>
+    <language>en_US</language>
+</ListView>

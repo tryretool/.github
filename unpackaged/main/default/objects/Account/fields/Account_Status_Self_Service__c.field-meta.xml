@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Status_Self_Service__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>The current status of this Account within the Self Service business line.
+
+Disqualified: DQ reason is not null
+Active Customer: # of SS Orgs &gt; 0
+Former Customer: # of Cancelled SS Orgs &gt; 0
+Prospect: Everything else</description>
+    <externalId>false</externalId>
+    <formula>IF(NOT(ISPICKVAL(Disqualified_Reason__c,&quot;&quot;)), &quot;Disqualified&quot;,   
+  IF(Annualized_Revenue_Self_Service__c &gt; 0, &quot;Active Customer&quot;, 
+    &quot;Prospect&quot;   
+)  
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The current status of this Account within the Self Service business line.
+
+Disqualified: DQ reason is not null
+Active Customer: # of SS Orgs &gt; 0
+Former Customer: # of Cancelled SS Orgs &gt; 0
+Prospect: Everything else</inlineHelpText>
+    <label>Account Status (Self Service)</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

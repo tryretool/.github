@@ -1,0 +1,10 @@
+<p>Can you please generate a HAR file and send it over to help us continue troubleshooting? I want to check the network trace to see what could be going on. You can follow the steps below, or <a href="https://support.zendesk.com/hc/en-us/articles/4408828867098-Generating-a-HAR-file-for-troubleshooting" target="_blank" rel="noopener noreferrer">read directions here</a>. 
+<ol>
+  <li>Open your browser&rsquo;s Developer Tools.</li>
+  <li>Click the Network tab.</li>
+  <li>Refresh the page.</li>
+  <li>Make sure <b>Preserve log</b> is checked. </li>
+  <li>Reproduce the issue you&rsquo;re experiencing.</li>
+  <li>Export the HAR file via the icon with the down arrow.</li>
+</ol>  
+</p>

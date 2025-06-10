@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- URL to the company website in http://www.example.com format. --></help>
+        <label><!-- Website --></label>
+        <name>DOZISF__Website__c</name>
+    </CustomFieldTranslation>

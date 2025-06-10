@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>WON:SUM/RowCount</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>SQO to CW %</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>Opportunity.IsLost__c:SUM/RowCount</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>SQO to CL %</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>1 - ((Opportunity.IsLost__c:SUM/RowCount) + (WON:SUM/RowCount))</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA3</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>SQO Open %</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>WON:SUM</calculatedFormula>
+        <datatype>currency</datatype>
+        <developerName>FORMULA4</developerName>
+        <isActive>false</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Won AR</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_7419412</developerName>
+        <masterLabel>Opp Segment</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Opportunity.Employees_at_SQL__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>25</to>
+            </sourceValues>
+            <value>&lt; 25</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>25</from>
+                <to>100</to>
+            </sourceValues>
+            <value>25 - 100</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>100</from>
+                <to>1,000</to>
+            </sourceValues>
+            <value>100 - 1,000</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>1,000</from>
+            </sourceValues>
+            <value>1,000+</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_59431631</developerName>
+        <masterLabel>Segment</masterLabel>
+        <nullTreatment>z</nullTreatment>
+        <sourceColumnName>Opportunity.Employees_at_SQL__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>100</to>
+            </sourceValues>
+            <value>SMB</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>100</from>
+                <to>300</to>
+            </sourceValues>
+            <value>MMK</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>300</from>
+            </sourceValues>
+            <value>ENT</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_38448800</developerName>
+        <masterLabel>Stage</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Won</sourceValue>
+            </sourceValues>
+            <value>Won</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Lost</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Churn</sourceValue>
+            </sourceValues>
+            <value>Lost</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>(1) Qualification</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(1) Onboarding</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(2) Discovery</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(2) Nurture</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3) POC Scoping</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3) Proposal</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(4) Proof of Concept</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(5) Validating Business Case/Negotiating</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(6) Signature</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pending</sourceValue>
+            </sourceValues>
+            <value>Open</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_27593887</developerName>
+        <masterLabel>Status</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>STAGE_NAME</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>(2) Discovery</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(3) POC Scoping</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(4) Proof of Concept</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(5) Validating Business Case/Negotiating</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>(6) Signature</sourceValue>
+            </sourceValues>
+            <value>Open</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Lost</sourceValue>
+            </sourceValues>
+            <value>Closed Lost</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Closed Won</sourceValue>
+            </sourceValues>
+            <value>Closed Won</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <aggregate>Sum</aggregate>
+            <axisBinding>y</axisBinding>
+            <column>Opportunity.Qualified_Pipeline_AR__c</column>
+        </chartSummaries>
+        <chartType>VerticalColumn</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>CREATED_DATE</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Sourced_By__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Sales_Qualified_At__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Employees_at_SQL__c</field>
+    </columns>
+    <columns>
+        <field>BucketField_27593887</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Qualified_Pipeline_AR__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Forecast_New_AR__c</field>
+    </columns>
+    <description>Opps SQO&#39;d in Jan 24&#39; by Open/Lost/Won.</description>
+    <filter>
+        <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Jasmine Mireshghi</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Closed Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSED</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Closed Lost</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Month</dateGranularity>
+        <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Owner_Subteam_Team__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Copy of [DG] GRW + MMK January 2024 Pipe</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Sales_Qualified_At__c</dateColumn>
+        <endDate>2024-03-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-01-01</startDate>
+    </timeFrameFilter>
+</Report>

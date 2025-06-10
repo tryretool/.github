@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inactive_use_flow</fullName>
+    <active>true</active>
+    <errorConditionFormula>IsActive = FALSE &amp;&amp;
+ISCHANGED(IsActive) &amp;&amp;
+Num_of_Goals__c &gt; 0 &amp;&amp;
+ISBLANK(End_Date__c)</errorConditionFormula>
+    <errorMessage>Please use the Terminate User flow on the Salesforce home page to deactivate users with goals</errorMessage>
+</ValidationRule>

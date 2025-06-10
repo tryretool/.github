@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Fast Pass Reason --></label>
+        <name>Fast_Pass_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Director+ invited to meeting</masterLabel>
+            <translation><!-- Director+ invited to meeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineering Manager+ invited to meeting</masterLabel>
+            <translation><!-- Engineering Manager+ invited to meeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Instructed to by sales leadership</masterLabel>
+            <translation><!-- Instructed to by sales leadership --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meeting booked by Director+</masterLabel>
+            <translation><!-- Meeting booked by Director+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meeting booked by Engineering Manager+</masterLabel>
+            <translation><!-- Meeting booked by Engineering Manager+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

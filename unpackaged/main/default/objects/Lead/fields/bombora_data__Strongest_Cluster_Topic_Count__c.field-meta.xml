@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bombora_data__Strongest_Cluster_Topic_Count__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This will show the topic count of the cluster that has the most intent activity on a given Lead and can be used in routing records into workflows based on the cluster.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The topic count of the cluster identified in the “Strongest Intent Cluster” field</inlineHelpText>
+    <label>Strongest Cluster - Topic Count</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

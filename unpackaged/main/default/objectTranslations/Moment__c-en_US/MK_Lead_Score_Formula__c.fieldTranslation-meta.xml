@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The Madkudu engagement score for the related contact or lead. --></help>
+        <label><!-- MK Lead Score (Formula) --></label>
+        <name>MK_Lead_Score_Formula__c</name>
+    </CustomFieldTranslation>

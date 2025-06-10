@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Qualified_Lead__c</fullName>
+    <formula>IF( 
+ Sales_Qualified_Opportunity__c = TRUE,
+ TRUE,
+ IF(
+  OR(ISBLANK(Qualification_Meeting_Set_At__c),ISBLANK(SQL_At_S1__c)),
+  FALSE,
+  TRUE
+ )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True if the Sales Qualification Meeting Set At date is not blank</inlineHelpText>
+    <label>Sales Qualified Lead (S1)</label>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

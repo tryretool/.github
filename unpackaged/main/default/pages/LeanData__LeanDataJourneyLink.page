@@ -1,0 +1,43 @@
+<apex:page id="LeanDataJourneyLinkPage"
+  showQuickActionVfHeader="false"
+  standardController="LeanData__Journey__c"
+  extensions="LeanData.DashboardBaseController,LeanData.RemotingRouter"
+>
+  <head>
+    <base href="./LeanDataJourneyLink"></base>
+    <link rel="stylesheet" href="{!URLFOR($Resource.layout_views_app, 'styles.css')}"></link>
+    <style>
+      html {
+        height: 100%;
+        body.sfdcBody {
+          padding: 0px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <layout-views-root style="display: flex; height: 100%;"></layout-views-root>
+
+    <!-- Default initial values -->
+    <script>
+      // Page level variables
+      Visualforce.remoting.timeout = 120000;
+
+      window.ns = '{!nameSpace}';
+      // Retrieve the record ID from the standard controller
+      window.objId = '{!JSENCODE(Id)}';
+    </script>
+
+
+    <!-- Salesforce Canvas -->
+    <script type='text/javascript' src='/canvas/sdk/js/publisher.js'></script>
+
+    <!-- Angular -->
+    <script type="text/javascript" src="{!URLFOR($Resource.layout_views_app, 'runtime.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.layout_views_app, 'polyfills.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.layout_views_app, 'scripts.js')}"></script>
+    <script type="text/javascript" src="{!URLFOR($Resource.layout_views_app, 'vendor.js')}"></script> <!-- dev build only -->
+    <script type="text/javascript" src="{!URLFOR($Resource.layout_views_app, 'main.js')}"></script>
+  </body>
+</apex:page>

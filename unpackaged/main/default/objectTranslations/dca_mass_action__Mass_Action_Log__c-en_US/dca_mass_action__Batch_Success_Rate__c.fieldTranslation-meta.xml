@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Visualizes the batch success percentage in color. --></help>
+        <label><!-- Batch Success Rate --></label>
+        <name>dca_mass_action__Batch_Success_Rate__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Country_Definition__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Billing Country Definition</label>
+    <referenceTo>pw_ccpro__CountryObject__c</referenceTo>
+    <relationshipLabel>Business Units</relationshipLabel>
+    <relationshipName>Business_Units</relationshipName>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

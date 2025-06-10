@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Formula that displays the Implied Subteam from the related Contact or Lead. --></help>
+        <label><!-- Implied Subteam (Formula) --></label>
+        <name>Implied_Subteam_Formula__c</name>
+    </CustomFieldTranslation>

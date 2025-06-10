@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>User_Check__c</fullName>
+    <formula>IF(
+ LEN(User_SID__c)&lt;=37 &amp;&amp; LEFT(User_SID__c,5) = &quot;user_&quot;, 
+ TRUE, 
+ FALSE
+ )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>User Check</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

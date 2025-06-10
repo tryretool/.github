@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Not used</fullName>
+        <default>false</default>
+        <label>Not used</label>
+    </customValue>
+    <customValue>
+        <fullName>Retool-managed Temporal cluster</fullName>
+        <default>false</default>
+        <label>Retool-managed Temporal cluster</label>
+    </customValue>
+    <customValue>
+        <fullName>Self-managed Temporal cluster</fullName>
+        <default>false</default>
+        <label>Self-managed Temporal cluster</label>
+    </customValue>
+    <customValue>
+        <fullName>Local Temporal cluster</fullName>
+        <default>false</default>
+        <label>Local Temporal cluster</label>
+    </customValue>
+    <masterLabel>Deployment Types (Workflows)</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

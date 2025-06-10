@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The date and time when the Harmonic sync last ran for the record --></help>
+        <label><!-- Last Harmonic Update At --></label>
+        <name>Last_Harmonic_Update_At__c</name>
+    </CustomFieldTranslation>

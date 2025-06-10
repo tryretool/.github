@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChampifyIo__Enable_Champify_Data_Platform__c</fullName>
+    <defaultValue>true</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Enable the latest version of the Champify Data Platform.</description>
+    <label>Enable Champify Data Platform</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

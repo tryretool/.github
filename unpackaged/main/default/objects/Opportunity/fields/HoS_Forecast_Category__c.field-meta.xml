@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HoS_Forecast_Category__c</fullName>
+    <description>Used to capture Head of Sales forecast category classifications.</description>
+    <inlineHelpText>Used to capture Head of Sales forecast category classifications.</inlineHelpText>
+    <label>HoS Forecast Category</label>
+    <required>false</required>
+    <securityClassification>Confidential</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Forecast_Categories</valueSetName>
+    </valueSet>
+</CustomField>

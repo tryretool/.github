@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_Status_CP__c</fullName>
+    <description>Mapped via Chili Piper.
+
+Notes: This field is only relevant when using Concierge &quot;Inbound Router&quot;. The value &quot;Booked&quot; will be written when the meeting is booked / event created in Salesforce. The value &quot;Not Booked&quot; will be written based on the timeout (7 min, 10 min, etc.) defined in Queues for prospects who didn&#39;t take action within your Router settings.
+
+*You must have at least one queue in the &quot;Queues for prospects who didn&#39;t take action&quot; section of your router for the &quot;Not Booked&quot; value to write to Salesforce, even if you don&#39;t want distribution. If you have another system using this field to route and do not want to have Chili Piper distribute those leads who do not book, you can add a &quot;fake&quot; queue into this section, with rules that will never match. i.e. RelatedLead.Email = 123.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>This field is only relevant when using Concierge &quot;Inbound Router&quot;. The value &quot;Booked&quot; will be written when the meeting is booked / event created in Salesforce. The value &quot;Not Booked&quot; will be written based on the timeout (7 min, 10 min, etc.) defined in Queues for prospects who didn&#39;t take action within your Router settings.</inlineHelpText>
+    <label>Booking Status</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

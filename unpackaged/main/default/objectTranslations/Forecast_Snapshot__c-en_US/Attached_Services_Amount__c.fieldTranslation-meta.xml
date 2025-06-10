@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Current amount of the attached professional services deal at the time of snapshot. --></help>
+        <label><!-- Attached Services Amount --></label>
+        <name>Attached_Services_Amount__c</name>
+    </CustomFieldTranslation>

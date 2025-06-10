@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retool_Org__c</fullName>
+    <label>Retool Org</label>
+    <referenceTo>Retool_Org__c</referenceTo>
+    <relationshipLabel>Retool Users</relationshipLabel>
+    <relationshipName>Retool_Users</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

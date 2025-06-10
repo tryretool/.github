@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country_Address_Tools__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>Country (Address Tools)</label>
+    <referenceTo>pw_ccpro__CountryObject__c</referenceTo>
+    <relationshipLabel>Country Definitions</relationshipLabel>
+    <relationshipName>Country_Definitions</relationshipName>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

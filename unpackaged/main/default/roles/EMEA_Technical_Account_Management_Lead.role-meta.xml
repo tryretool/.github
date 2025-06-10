@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Read</contactAccessLevel>
+    <description>EMEA Technical Account Management Lead</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMEA Technical Account Management Lead</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>Head_of_Technical_Account_Management</parentRole>
+</Role>

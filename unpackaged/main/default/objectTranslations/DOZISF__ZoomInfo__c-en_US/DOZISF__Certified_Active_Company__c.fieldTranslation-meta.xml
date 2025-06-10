@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Yes or no value which denotes if ZoomInfo&apos;s research and data team has confirmed activity within the past 12 months. --></help>
+        <label><!-- Certified Active Company --></label>
+        <name>DOZISF__Certified_Active_Company__c</name>
+    </CustomFieldTranslation>

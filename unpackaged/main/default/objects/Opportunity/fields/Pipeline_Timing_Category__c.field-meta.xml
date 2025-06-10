@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pipeline_Timing_Category__c</fullName>
+    <label>Pipeline Timing Category</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Create &amp; Close</fullName>
+                <default>false</default>
+                <label>Create &amp; Close</label>
+            </value>
+            <value>
+                <fullName>Pulled In</fullName>
+                <default>false</default>
+                <label>Pulled In</label>
+            </value>
+            <value>
+                <fullName>Starting Pipeline</fullName>
+                <default>false</default>
+                <label>Starting Pipeline</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Support_Queues_Assigned__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(INCLUDES( $User.Eligible_Queues__c , &quot;Premium Queue&quot;), &quot;Premium Queue, &quot;, &quot;&quot;) &amp;
+ IF(INCLUDES( $User.Eligible_Queues__c , &quot;Enterprise Queue&quot;), &quot;Enterprise Queue, &quot;, &quot;&quot;) &amp;
+ IF(INCLUDES( $User.Eligible_Queues__c , &quot;Customer Service Queue&quot;), &quot;Customer Service Queue, &quot;, &quot;&quot;)</formula>
+    <label>Current Support Queues Assigned</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

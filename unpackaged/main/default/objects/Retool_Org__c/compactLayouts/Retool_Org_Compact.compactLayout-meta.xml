@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retool_Org_Compact</fullName>
+    <fields>Name</fields>
+    <fields>Stripe_State__c</fields>
+    <fields>Subscription_Type__c</fields>
+    <fields>Hostname__c</fields>
+    <fields>Num_Users_Total__c</fields>
+    <fields>Plan_Name__c</fields>
+    <fields>Stripe_Annualized_Revenue__c</fields>
+    <label>Retool Org Compact</label>
+</CompactLayout>

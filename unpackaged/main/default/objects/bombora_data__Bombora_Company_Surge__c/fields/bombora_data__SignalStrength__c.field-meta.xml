@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bombora_data__SignalStrength__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Label assigned to the following bands of intent scores: 0-49 (Low), 50-59 (Baseline), 60-72 (Moderate), 73-79 (Strong), 80+ (Very Strong) Scores below 60 are not imported into Salesforce to conserve data storage meaning only Moderate, Strong and Very Strong values will be seen within Salesforce</description>
+    <externalId>false</externalId>
+    <label>Intent Score Strength</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

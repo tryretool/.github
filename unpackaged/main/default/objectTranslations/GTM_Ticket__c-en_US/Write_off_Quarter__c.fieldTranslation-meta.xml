@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Used to attribute what quarter the write-off will hit (in the YYYY-QQ format). --></help>
+        <label><!-- Write-off Quarter --></label>
+        <name>Write_off_Quarter__c</name>
+    </CustomFieldTranslation>

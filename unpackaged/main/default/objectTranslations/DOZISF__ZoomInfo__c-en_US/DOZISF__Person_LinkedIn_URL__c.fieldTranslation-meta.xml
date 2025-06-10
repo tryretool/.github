@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Url of the person profile within linkedin. --></help>
+        <label><!-- Person LinkedIn URL --></label>
+        <name>DOZISF__Person_LinkedIn_URL__c</name>
+    </CustomFieldTranslation>

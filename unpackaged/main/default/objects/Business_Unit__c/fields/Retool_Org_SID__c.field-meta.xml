@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retool_Org_SID__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>The Org SID from the Retool Workspace used for billing. Used in Business Unit Process Builder to ensure alignment with Opportunities, BUs, and Account. Updated upon creation from the corresponding field on the Opportunity that triggers it. Will map to new Opportunities created under this BU if the corresponding field is blank.https://paper.dropbox.com/doc/New-Salesforce-Fields-Opportunities-Business-Units-Accounts--Ay1q1~SCRlqq2EmE9wVHvqBrAQ-PkyPecvObh7GLmPeED6TBhttps://paper.dropbox.com/doc/How-to-Use-the-Opportunity-Fields-April-2020--Ay52tLsUoyROBPXqkP99eIafAQ-Wy8AxHfGwiplwNW20Jhl3</description>
+    <externalId>true</externalId>
+    <label>zOLD Retool Org SID</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

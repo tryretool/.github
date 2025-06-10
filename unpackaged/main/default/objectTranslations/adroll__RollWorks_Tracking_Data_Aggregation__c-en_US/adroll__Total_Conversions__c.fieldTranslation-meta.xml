@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Total Conversions --></help>
+        <label><!-- Total Conversions --></label>
+        <name>adroll__Total_Conversions__c</name>
+    </CustomFieldTranslation>

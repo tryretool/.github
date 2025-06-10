@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Admin</fullName>
+        <default>false</default>
+        <label>Admin</label>
+    </customValue>
+    <customValue>
+        <fullName>Builder</fullName>
+        <default>false</default>
+        <label>Builder</label>
+    </customValue>
+    <masterLabel>Contact: Max Role</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

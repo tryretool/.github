@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Archive_Field_Values_Overwritten__c</fullName>
+    <description>RingLead: concatenated values from the the records that were merged.
+
+External Systems Utilization: RingLead</description>
+    <inlineHelpText>RingLead: concatenated values from the the records that were merged.</inlineHelpText>
+    <label>Archive Field Values Overwritten</label>
+    <length>32768</length>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

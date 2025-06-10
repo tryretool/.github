@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Formula that indicates that the Moment is MQL Eligible if it is NOT a Champify Alert, Endgame Alert or Koala Alert. --></help>
+        <label><!-- MQL Eligible --></label>
+        <name>MQL_Eligible__c</name>
+    </CustomFieldTranslation>

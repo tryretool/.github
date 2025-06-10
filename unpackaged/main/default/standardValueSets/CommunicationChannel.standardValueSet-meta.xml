@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Deals Won</fullName>
+        <default>false</default>
+        <label>Deals Won</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Deals to Watch</fullName>
+        <default>false</default>
+        <label>Deals to Watch</label>
+    </standardValue>
+</StandardValueSet>

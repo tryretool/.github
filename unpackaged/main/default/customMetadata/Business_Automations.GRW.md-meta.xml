@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Growth</label>
+    <protected>false</protected>
+    <values>
+        <field>Closed_Lost_Reopen_Days__c</field>
+        <value xsi:type="xsd:double">30.0</value>
+    </values>
+    <values>
+        <field>Days_to_Close_in_Prior_Owner_s_Name__c</field>
+        <value xsi:type="xsd:double">14.0</value>
+    </values>
+    <values>
+        <field>Default_Amount__c</field>
+        <value xsi:type="xsd:double">24000.0</value>
+    </values>
+    <values>
+        <field>Default_Close_Days__c</field>
+        <value xsi:type="xsd:double">30.0</value>
+    </values>
+    <values>
+        <field>Default_Days_to_Activation__c</field>
+        <value xsi:type="xsd:double">45.0</value>
+    </values>
+    <values>
+        <field>Default_SQO_Days__c</field>
+        <value xsi:type="xsd:double">30.0</value>
+    </values>
+    <values>
+        <field>Default_SQO_Probability__c</field>
+        <value xsi:type="xsd:double">10.0</value>
+    </values>
+    <values>
+        <field>Employee_Lower_Bound__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>Employee_Upper_Bound__c</field>
+        <value xsi:type="xsd:double">100.0</value>
+    </values>
+    <values>
+        <field>Material_Deal_Change__c</field>
+        <value xsi:type="xsd:double">25.0</value>
+    </values>
+    <values>
+        <field>Material_Deal_Size_XL__c</field>
+        <value xsi:type="xsd:double">250000.0</value>
+    </values>
+    <values>
+        <field>Material_Deal_Size__c</field>
+        <value xsi:type="xsd:double">100000.0</value>
+    </values>
+    <values>
+        <field>Min_Land_Size__c</field>
+        <value xsi:type="xsd:double">18000.0</value>
+    </values>
+    <values>
+        <field>Planning_Period__c</field>
+        <value xsi:type="xsd:string">Half</value>
+    </values>
+    <values>
+        <field>Region__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>SE_Assignment_Lead_Group_ID__c</field>
+        <value xsi:type="xsd:string">S084J5PF2DU</value>
+    </values>
+    <values>
+        <field>Segment__c</field>
+        <value xsi:type="xsd:string">GRW</value>
+    </values>
+    <values>
+        <field>Small_Land_Size__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Sourced_By_Override_Activity_Days__c</field>
+        <value xsi:type="xsd:double">14.0</value>
+    </values>
+</CustomMetadata>

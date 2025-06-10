@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- If applicable, ID of the WorkRamp Assignment record that this log is related to --></help>
+        <label><!-- WorkRamp Assignment --></label>
+        <name>WorkRamp_Assignment__c</name>
+        <relationshipLabel><!-- WorkRamp Assignment Logs --></relationshipLabel>
+    </CustomFieldTranslation>

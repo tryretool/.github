@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Orphan_Account__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>TRUE if the Account is Orphan Orgs; the placeholder Account for unassociated Retool Orgs.</description>
+    <inlineHelpText>TRUE if the Account is Orphan Orgs; the placeholder Account for unassociated Retool Orgs.</inlineHelpText>
+    <label>Is Orphan Account?</label>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

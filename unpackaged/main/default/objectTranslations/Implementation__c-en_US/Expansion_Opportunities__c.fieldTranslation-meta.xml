@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Brief description of any expansion opportunities identified in sales process (e.g. new team or product launch). --></help>
+        <label><!-- Expansion Opportunities --></label>
+        <name>Expansion_Opportunities__c</name>
+    </CustomFieldTranslation>

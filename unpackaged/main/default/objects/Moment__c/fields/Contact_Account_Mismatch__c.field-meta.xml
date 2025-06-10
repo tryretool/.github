@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Account_Mismatch__c</fullName>
+    <description>Formula that checks true if the Contact’s associated Account is different from the one specified in the related Account.
+
+In System Use: Reports
+
+External Systems Utilization: None</description>
+    <formula>NOT(   Contact__r.AccountId =  Account__c ) &amp;&amp; NOT(ISBLANK(Contact__c))</formula>
+    <inlineHelpText>Formula that checks true if the Contact’s associated Account is different from the one specified in the related Account.</inlineHelpText>
+    <label>Contact Account Mismatch</label>
+    <securityClassification>Caution</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Value Source --></label>
+        <name>d_wh__Value_Source__c</name>
+        <picklistValues>
+            <masterLabel>Build a JWT</masterLabel>
+            <translation><!-- Build a JWT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Custom Metadata</masterLabel>
+            <translation><!-- Custom Metadata --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Custom Setting</masterLabel>
+            <translation><!-- Custom Setting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field</masterLabel>
+            <translation><!-- Field --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Formula</masterLabel>
+            <translation><!-- Formula --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Static</masterLabel>
+            <translation><!-- Static --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

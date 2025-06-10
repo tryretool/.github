@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outreach_Call_Duration__c</fullName>
+    <description>Identifies the total number of seconds the call lasted.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Identifies the total number of seconds the call lasted.</inlineHelpText>
+    <label>Outreach Call Duration</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

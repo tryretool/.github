@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Default Support Region --></label>
+        <name>Default_Support_Region__c</name>
+        <picklistValues>
+            <masterLabel>24/5</masterLabel>
+            <translation><!-- 24/5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>24/7</masterLabel>
+            <translation><!-- 24/7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>APAC</masterLabel>
+            <translation><!-- APAC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US East</masterLabel>
+            <translation><!-- US East --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Late</masterLabel>
+            <translation><!-- US Late --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US West</masterLabel>
+            <translation><!-- US West --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

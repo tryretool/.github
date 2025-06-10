@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Batch Size for Delete Segments Operation --></help>
+        <label><!-- Delete Segment Members Batch Size --></label>
+        <name>adroll__DeleteSegmentMembersBatchSize__c</name>
+    </CustomFieldTranslation>

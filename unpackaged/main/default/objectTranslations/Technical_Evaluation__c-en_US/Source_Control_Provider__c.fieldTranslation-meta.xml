@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- What provider do they use for source control in production? --></help>
+        <label><!-- Source Control Provider --></label>
+        <name>Source_Control_Provider__c</name>
+    </CustomFieldTranslation>

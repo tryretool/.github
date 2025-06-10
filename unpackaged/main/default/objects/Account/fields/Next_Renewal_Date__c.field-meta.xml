@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Next_Renewal_Date__c</fullName>
+    <description>The contract start date of the upcoming/next contract term</description>
+    <inlineHelpText>The contract start date of the upcoming/next contract term</inlineHelpText>
+    <label>Next Renewal Date</label>
+    <securityClassification>Caution</securityClassification>
+    <summarizedField>Opportunity.Term_Start_Date__c</summarizedField>
+    <summaryFilterItems>
+        <field>Opportunity.IsClosed</field>
+        <operation>equals</operation>
+        <value>False</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Opportunity.RecordTypeId</field>
+        <operation>equals</operation>
+        <value>Renewal</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Opportunity.AccountId</summaryForeignKey>
+    <summaryOperation>min</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

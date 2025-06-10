@@ -1,0 +1,27 @@
+<apex:page >
+</apex:page>
+<!--<apex:page controller="UeQScoreExt">-->
+<!--    <html>-->
+<!--    <apex:form >-->
+<!--        <apex:pageBlock >-->
+<!--            <apex:pageMessages ></apex:pageMessages>-->
+
+<!--            <apex:pageBlockSection >-->
+<!--                <div>-->
+<!--                    This will have a dropdown list of all objects. Can also create another one for Trigger before/after cases.-->
+<!--                </div>-->
+<!--                <br/>-->
+<!--                <div>-->
+<!--                    <apex:inputText value="{!userInput}"/>-->
+<!--                </div>-->
+
+
+<!--            </apex:pageBlockSection>-->
+<!--            <apex:pageBlockButtons >-->
+<!--                <apex:commandButton action="{!doSubmit}" value="Submit"/>-->
+<!--            </apex:pageBlockButtons>-->
+
+<!--        </apex:pageBlock>-->
+<!--    </apex:form>-->
+<!--    </html>-->
+<!--</apex:page>-->

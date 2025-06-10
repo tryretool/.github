@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Journey_Meeting_Booked_At_S0_Month__c</fullName>
+    <formula>DATE(YEAR( Journey_Meeting_Booked_At_S0__c ),MONTH( Journey_Meeting_Booked_At_S0__c ),1)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Journey Meeting Booked At (S0) Month</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

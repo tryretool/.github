@@ -1,0 +1,1630 @@
+<apex:page sideBar="false" showHeader="false" standardStylesheets="false" docType="html-5.0" standardcontroller="Campaign" extensions="LeanData.Reporting_CampaignViewController,LeanData.CheckOnDemandAllowed"
+    action="{!doDMLAndFetchData}">
+    
+    <!-- Bootstrap Core CSS -->
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__bootstrap_v3_3_4, 'css/bootstrap.css')}" />  <!-- includes modified data selectors for v5.0.2 -->
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__angela_app, 'styles.css')}"/> 
+    <!-- Fonts -->
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__DataTables, 'DataTables/2.0.2-responsive.dataTables.min.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__Libraries, 'styles/jquery.dataTables.min.css')}"/>  <!-- 1.10.16 -->
+    <apex:includeScript value="{!$Resource.LeanData__viewJSResource}"/>
+
+    <c:style />
+    <style>
+        @font-face {
+            font-family: 'Open Sans';
+            src: url("{!URLFOR($Resource.Libraries, 'fonts/OpenSans-Regular.ttf')}") format('truetype')
+        }
+        body{
+            margin: 0;
+        }
+
+        .bs .semi-bold{
+            font-weight: 600;
+        }
+
+        .clear{
+            clear:both;
+        }
+        .bs {
+            line-height: 1;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 200;
+            font-size: 16px;
+            display: table;
+            width: 100%;
+            min-width: 1000px;
+        }
+
+        .bs .header-title {
+            font-size: 12pt;
+            font-family: 'Open Sans';
+            line-height: 50px;
+            margin-left: 20px;
+            float:left;
+            color: #555555;
+        }
+
+        .bs .header-metrics {
+            display: flex;
+            font-size: 8pt;
+            float: right;
+            margin-right: 7.5px;
+            font-family: 'Open Sans';
+        }
+
+        .bs .header-metrics div{
+            float: right;
+            margin-left: 35px;
+            line-height: 50px;
+        }
+        .bs .logo {
+            display: block;
+            float:left;
+            margin-left: 12.5px;
+            margin-top: 13px;
+        }
+
+        .bs .inner-wrapper {
+            width: 100%;
+            background: white;
+            border: 1px solid var(--lt-grey-2);
+            border-radius: 7.5px;     
+            padding-bottom: 35px;    
+        }
+
+        .bs .legend-div{
+            float:left;
+            margin-top: 12.5px;
+            margin-left: 12.5px;
+            cursor: pointer;
+        }
+
+        .bs .legend-div:hover{
+            opacity: .5;
+        }
+
+        .bs .clarity-link-div{
+            float:right;
+            margin-top: 12.5px;
+            margin-right: 12.5px;
+            font-size: 10pt;
+            color: var(--lt-grey-2);
+        }
+
+        .bs .timeline{
+            margin: 100px auto;
+            width:950px;
+        }
+
+        .bs .detail-table-div{
+            min-width: 850px;
+            height: 380px;
+            margin-top: 30px;
+            pointer-events: none;
+        }
+
+        .detail-table th{
+            padding-left:10px !important;
+        }
+
+        .bs .detail-table-div a, .bs .detail-table-div thead{
+            pointer-events: auto;
+        }
+        <!-- modal -->
+        .bs .modal-backdrop {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1040;
+            background-color: #000;
+        }
+
+        .bs .modal-backdrop.fade {
+            filter: alpha(opacity=0);
+            opacity: 0;
+        }
+
+        .bs .modal-backdrop.in {
+            filter: alpha(opacity=50);
+            opacity: .5;
+        }
+
+        .bs .modal-header {
+            border-bottom: none;
+        }
+
+        .bs .close {
+            background: none;
+            border: none;
+            opacity: 1;
+            color: #6ab4c9;
+            font-size: 32px;
+            margin-top: -10px !important;
+        }
+
+         button:focus {outline:0;}
+
+        .bs .close:active {
+            border:none;
+        }
+
+        .bs .lean {
+            font-size: 14px !important;
+        }
+
+        .bs .modal-body h2 {
+            color: #005980;
+            font-size: 18px;
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 30px;
+            font-weight: 200;
+            margin-top: -10px;
+            margin-bottom: 32px;
+        }
+
+        .bs .modal-body p {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #666666;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 20px;
+            margin-bottom: 28px
+        }
+
+        .bs .modal-dialog {
+            margin: 100px auto;
+        }
+
+        .bs .modal-backdrop {
+            opacity: 0.34 !important;
+        }
+
+        .bs .dg_inner-wrapper {
+            background: white;
+            border: 1.5px solid #8da8bf;
+            border-radius: 7.5px;
+            margin: 20px 20px 20px 20px;
+            float: left;
+        }
+
+        .bs .dg_inner-wrapper:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .bs .dg_inner-wrapper-header {
+            width: 100%;
+            height: 30px;
+            font-size: 15px;
+            color: #000000;
+            text-align: center;
+            line-height: 30px;
+            border-bottom: 1px solid #9da8bf;
+        }
+
+        .bs .dg_inner-wrapper-content {
+            width: 100%;
+            padding: 15px;
+        }
+
+        .bs .dg_inner-wrapper-content:not(:last-child) {
+            border-bottom: 1px solid var(--lt-grey-2);
+        }
+
+        .bs .dg_inner-wrapper-content:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        <!-- End Modal -->
+        .bs .tool-tip-header{
+            font-size: 9pt;
+        }
+        .bs .active-toggle{
+            color:white !important;
+            background: var(--lt-green-2) !important;
+        }
+        .bs .view-toggle, .bs .attribution-toggle{
+            color:#555;
+            cursor:pointer;
+            text-align:center;
+            line-height:14px;
+            font-size:6pt;
+            font-weight:400;
+            float:left;
+            width:40px;
+            height:14px;
+            border-radius:5px;
+        }
+        .bs .attribution-toggle{
+            width: 25px;
+        }
+        .bs .toggle-mode-div{
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 12.5px;
+            background:var(--lt-grey-1);
+            border-radius:7.5px; 
+            width: 92px;
+            height:20px;
+            padding:3px;
+            /*position: fixed;*/
+            left:50%;
+            transform: translateX(-50%);
+            display: none;
+        }
+
+        .bs .metrics{
+            width: 100%;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-top: 22.5px;
+            display: none;
+        }
+
+        .bs .loading-wheel {
+            @extend .metrics;
+        }
+
+        .bs .stage-breakdown{
+            border: 1px solid var(--lt-grey-2);
+            text-align: center;
+            border-radius : 7.5px;
+        }
+
+        .bs .stage-breakdown-title{
+            background: var(--lt-grey-2);
+            padding: 10px;
+            margin-top: -15px;
+            margin-left: 20px;
+            width: 210px;
+            font-size: 11pt;
+            border-radius: 7.5px;
+            font-weight: 400;
+        }
+        .bs .stage-breakdown-detail{
+            margin-top: 15px;
+            padding-bottom: 25px;
+            text-align:center;
+            padding: 0 12.5px 25px 12.5px;
+        }
+
+        .bs .bottom-column{
+            width: 50%;
+            float:left;
+        }
+        .bs .campaign-metrics, .bs .top-opportunities{
+            border: 1px solid var(--lt-grey-2);
+            text-align: center;
+            border-radius : 7.5px;
+        }
+        .bs .stage-header{
+            font-size:10pt;
+        }
+        .bs .stage-bar{
+            margin-top: 7.5px;
+            border-radius: 3px;
+            width:100%;
+            background: var(--lt-green);
+            padding: 7px 0px;
+            text-align: center;
+            color:white;
+        }
+        .stage-breakdown-table td{
+            padding-left: 2.5px;
+        }
+        .campaign-metrics-table td{
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 5px;
+            padding-right: 5px;
+            text-align: left;
+            vertical-align: bottom;
+        }
+        .filter-table td{
+          padding-top: 8px;
+          padding-bottom: 8px;
+          padding-left: 5px;
+          padding-right: 5px;
+          text-align: left;
+        }
+        .bs .top-opportunities-table tr{
+            border-bottom: 1px solid var(--lt-grey-1);
+        }
+        .bs .top-opportunities-table td, .bs .top-opportunities-table th{
+            padding: 5px;
+            text-align: left;
+            padding-left: 15px;
+            font-size: 8pt;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .bs .top-opportunities-table th{
+            background: var(--lt-grey-2);
+        }
+
+        .bs .dark-grey-2{
+            color: var(--dk-grey-2);
+        }
+        .bs .stage-bar .tool-tip {
+            display: none;
+            color: var(--dk-grey-2);
+            text-decoration: none;
+            padding: 3px;
+            border: 1px solid var(--lt-grey-2);
+            border-radius: 5px;
+            width: auto;
+            font-size: 9pt;
+            padding-left: 10px;
+            padding-bottom:10px;
+            padding-top:10px;
+        }
+        .bs .stage-bar:hover .tool-tip{
+            display: block;
+            position: absolute;
+            background-color: #FFF;
+            margin: -125px -35px;
+        }
+        .tool-tip:after, .tool-tip:before {
+            top: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .tool-tip:after {
+            border-color: rgba(255, 255, 255, 0);
+            border-top-color: #fff;
+            border-width: 10px;
+            margin-left: -10px;
+        }
+        .tool-tip:before {
+            border-color: rgba(27, 82, 127, 0);
+            border-top-color: var(--lt-grey-2);
+            border-width: 11px;
+            margin-left: -11px;
+        }
+
+        .bs .semi-bold{
+            font-weight: 600;
+        }
+
+        .bs .dataTable th{
+            padding: 10px;
+        }
+
+        .view .dataCell{
+            padding-left: 10px !important;
+        }
+        .bs .dataTable{
+            width: 100%;
+            font-size: 10px !important;
+        }
+
+        #closedFilter{
+            height: 36px;
+            padding: 10px;
+            z-index: 1; /* Stay on top */
+            top: 0;
+            left: 0;
+            background-color: #e1f0fb;
+            cursor: pointer;
+            cursor: hand;
+            background: var(--ld-green);
+        }
+
+        .closedFilterLabel {
+            background: var(--ld-green);
+            color: var(--white);
+        }
+
+        .sidenav {
+            font-weight: bold;
+            height: 0px;
+            width: 500px;
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Stay on top */
+            top: 0;
+            background-color: var(--white);
+            overflow-x: hidden; /* Disable horizontal scroll */
+            margin-top: 50px;
+            transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+            box-shadow: 0em 0 .9em grey;
+            right: 177px;
+            visibility: hidden;
+        }
+
+        .sidenav .filterLabel {
+            padding: 8px 8px 8px 26px;
+            text-decoration: none;
+            font-size: 13px;
+            color: #111;
+            transition: 0.3s;
+            text-align: right;
+        }
+
+        /* Position and style the Filter header */
+        .filterTitle {
+          padding: 24px 8px 8px 32px;
+          font-size: 16px;
+        }
+
+        /* Position and style the close button (top right corner) */
+        .sidenav .closebtn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            margin-left: 50px;
+            cursor: pointer;
+            cursor: hand;
+        }
+
+        .sidenav .closebtn:hover {
+            color: var(--ld-green);
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+        }
+
+        .select-list-color {
+            border: 1px solid var(--lt-grey-2);
+            background: var(--white);
+            color: var(--dk-grey-2);
+        }
+
+        .filter-search {
+          border-radius: 0px !important;
+          font-size: 12px !important;
+          left: 32px !important;
+        }
+
+        .campaign-view-wrapper {
+            overflow: scroll;
+            height: 500px;
+            padding-bottom: 0px !important;
+        }
+        
+        .download-button{
+            float: right;
+            margin-bottom: 15px;
+        }
+
+        .download-button a{
+            text-decoration: none;
+        }
+
+        .download-button:hover a{
+            text-decoration: none;
+            color: white;
+        }
+        
+        .clearButton {
+          font-weight: bold;
+          margin-right: 15px;
+          font-size: 12px;
+          cursor: pointer;
+          text-decoration: underline;
+          display: none;
+        }
+
+        .top-right-container {
+          display: flex; 
+          flex-direction: row; 
+          justify-content: flex-end; 
+          align-items: center;
+        }
+
+        .bs a.customTarget{
+            color: var(--dk-grey-2);
+            text-decoration: underline;
+        }
+        .bs a.customTarget:hover{
+            color: var(--ld-green);
+            text-decoration: underline;
+        }
+
+        .campaign-view-table .dataRow {
+            line-height: 2;
+        }
+
+        .attribution-mode-dropdown-options {
+            @extend .select-list-color;
+            border-radius: 0px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            margin-left: 10px;
+            padding-left: 10px;
+            margin-top: 23px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #invalidNotice, #invalidNoticeMetrics {
+            margin-top: 50px;
+            height:186px;
+            display:none;
+            text-align:center;
+            color:#4D4D4D;
+            font-size: 16px;
+            font-weight: regular;
+            background-image: url("{!URLFOR($Resource.DashboardImages,'LD-logo_watermark_2x.png')}");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 185px;
+        }
+
+        #invalidNoticeInnerContainer, #invalidNoticeInnerContainerMetrics {
+            height: 186px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #invalidNoticeMessage {
+            margin-top: 10px;
+        }
+    </style>
+
+    <div class="bs view ">
+        <apex:form >
+            <apex:actionFunction name="rerenderTopPanel" rerender="fullPanel" />
+            <apex:actionFunction name="rerenderFiltersPanel" rerender="filtersTablePanel" />
+            <apex:actionFunction name="rerenderFullPage" rerender="pagePanel" />
+            <apex:outputPanel id="pagePanel">
+                <div style="min-width:1200px;">
+                    <div>
+                        <div class="logo">
+                            <img height="24" src="{!URLFOR($Resource.DashboardImages,'LD-logo_2x.png')}" alt="Logo" />
+                        </div>
+                        <div class="header-title salesforce-sans">
+                            Opportunities Influenced by &nbsp;<apex:outputLink styleClass="customTarget" target="_blank" disabled="{!reportLinkURL == null}" value="{!JSENCODE(reportLinkURL)}" >{!selectedCampaignName}</apex:outputLink>
+                        </div>
+
+                        <div class="top-right-container">
+                          <div class="clearButton" onclick="clearFilters();">Clear Filters</div>
+                          <div class="ld-secondary-small-button" onclick="openNav()" style="font-weight:bold !important;">Filters</div>
+                          <div id="mySidenav" class="sidenav">
+                              <div class="closebtn" onclick="closeNav()">&times;</div>
+                              <div class="filterTitle">Filters</div>
+                            <apex:outputPanel id="filtersTablePanel">
+                                <table class="filter-table">
+                                    <tr>
+                                        <td><div class="filterLabel">Opportunity Record Type</div></td>
+                                        <td>
+                                            <select id="recordTypeFilterOptions" class="attribution-mode-dropdown-options" onchange="dropdownOptionsChanged(this, 'recordTypeFilter');">
+                                                <!-- options added dynamically -->
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr id="oppTypeFilterRow">
+                                        <td><div class="filterLabel">Opportunity Type</div></td>
+                                        <td>
+                                            <select id="opportunityTypeFilterOptions" class="attribution-mode-dropdown-options" onchange="dropdownOptionsChanged(this, 'opportunityTypeFilter');">
+                                                <!-- options added dynamically -->
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="filterLabel">Marketing Touch Model</div></td>
+                                        <td>
+                                            <select id="attributionModelOptions" class="attribution-mode-dropdown-options" onchange="dropdownOptionsChanged(this, 'attributionModel');">
+                                                <option value="Weighted">Weighted</option>
+                                                <option value="Unweighted">Unweighted</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="filterLabel">Child Campaigns</div></td>
+                                        <td>
+                                            <select id="includeChildCampaignOptions" class="attribution-mode-dropdown-options" onchange="dropdownOptionsChanged(this, 'includeChildCampaigns');">
+                                                <option value="true">Included</option>
+                                                <option value="false">Excluded</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr id="segmentOptionsRow" style="visibility: hidden;">
+                                        <td><div class="filterLabel">Segment</div></td>
+                                        <td>
+                                            <select id="segmentFilterOptions" class="attribution-mode-dropdown-options" onchange="dropdownOptionsChanged(this, 'segment');">
+                                                <!-- options added dynamically -->
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </apex:outputPanel>
+                          </div>
+                          <div class="header-metrics">
+                              <div><b>Report is current as of:</b></div>
+                              <div class="last-run-date"></div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="inner-wrapper campaign-view-wrapper">
+                        <apex:outputPanel layout="block" id="fullPanel" onclick="closeNav()">
+                            <div id="emptyLoadingDiv" class="loading-wheel">
+                                <apex:image style="vertical-align:center;width:30px;height:30px;margin-left:50%;margin-top:15%;" value="{!URLFOR($Resource.LeanData__spinning)}"/>
+                            </div>
+                            <div id="invalidNoticeMetrics" style="display: none;">
+                                <div id="invalidNoticeInnerContainerMetrics">
+                                    <div id="invalidNoticeErrorText"></div>
+                                    <div id="invalidNoticeMessageMetrics"></div>
+                                </div>
+                            </div>
+                            <div class="metrics">
+                                <div class="stage-breakdown" >
+                                    <div class="stage-breakdown-title" style="position:relative;">
+                                        Opportunities by Stage
+                                    </div>
+
+                                    <div class="stage-breakdown-detail">
+                                        <div style="margin:0 auto;overflow: hidden;">
+                                            <table class="stage-breakdown-table" style="width:99%;">
+                                                <tr id="oppsTouchedHeaderRow"><!-- td's dynamically added --></tr>
+                                                <tr id="oppsTouchedRow">
+                                                    <td
+                                                        style="font-size:7pt;width:5%;font-weight:bold;">
+                                                        Opps touched at this stage
+                                                    </td>
+                                                    <!-- remaining td's dynamically added -->
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bottom-section" style="margin-top: 25px;width:100%;margin-bottom: 12.5px;">
+                                    <div class="bottom-column" style="padding-right: 12.5px;width:40%">
+                                        <div class="campaign-metrics" style="padding-bottom:6px;min-height:250px;">
+                                            <div class="stage-breakdown-title" style="position:relative;" >
+                                                Campaign Metrics
+                                            </div>
+                                            <div class="campaign-metrics-details" style="font-size:9pt;text-align:center; width:100%;padding-top:12.5px; padding-bottom: 12.5px;padding-left: 10%; padding-right: 10%;">
+                                                <table class="campaign-metrics-table" style="margin: 0 auto; width:100%;">
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td style="text-align:center;">
+                                                            <select id="attributionModeOptions" class="attribution-mode-dropdown-options" onchange="dropdownOptionsChanged(this, 'attributionMode');">
+                                                                <option value="MT">Multi-Touch</option>
+                                                                <option value="MT Generated">Multi-Touch Generated</option>
+                                                                <option value="MT Accelerated">Multi-Touch Accelerated</option>
+                                                                <option value="FT">First Touch</option>
+                                                                <option value="LT">Last Touch</option>
+                                                                <option value="LT Generated">Last Touch Generated</option>
+                                                            </select>
+                                                        </td>
+                                                        <td style="text-align:center;">
+                                                            <div class="rankFilter">
+                                                                <b>{!IF(selectedCampaignType != "", "Rank vs. " + selectedCampaignTypeLabel + "s", "Rank vs. -")}</b>
+                                                                <select id="timeFrameOptions" class="attribution-mode-dropdown-options" onchange="dropdownOptionsChanged(this, 'timeFrameOption');">
+                                                                    <option value="ALL_TIME">All Time</option>
+                                                                    <option value="LAST_FISCAL_YEAR">Last Year</option>
+                                                                    <option value="THIS_FISCAL_YEAR">This Year</option>
+                                                                    <option value="LAST_FISCAL_QUARTER">Last Quarter</option>
+                                                                    <option value="THIS_FISCAL_QUARTER">This Quarter</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="dark-grey-2">
+                                                            <b>Pipeline Attribution</b>
+                                                        </td>
+                                                        <td id="pipelineAttributionValue"><!-- content dynamically added --></td>
+                                                        <td style="text-align:center;" class="rankFilter" id="pipelineRank"><!-- content dynamically added --></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="dark-grey-2">
+                                                            <b>Bookings Attribution</b>
+                                                        </td>
+                                                        <td id="bookingsAttributionValue"><!-- content dynamically added --></td>
+                                                        <td style="text-align:center;">
+                                                            <div id="filtered">Ranking not available <br />with filters <br/></div>
+                                                            <div class="rankFilter" id="bookingsRank"><!-- content dynamically added --></div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="dark-grey-2">
+                                                            <b>ROI</b>
+                                                        </td>
+                                                        <td id="ROIValue"><!-- content dynamically added --></td>
+                                                        <td style="text-align:center;" class="rankFilter" id="ROIRank"><!-- content dynamically added --></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bottom-column" style="padding-left: 12.5px;width:60%;">
+                                        <div class="top-opportunities" style="min-height:250px;" >
+                                            <div class="stage-breakdown-title" style="position:relative;" >
+                                                Top Opportunities
+                                            </div>
+
+                                            <div class="top-opportunities-details" style="padding-top:10px !important;padding-bottom:15px !important;padding:20px;text-align:center;">
+                                                <table class="top-opportunities-table" style="margin:0 auto;width:100%;" id="topOpportunitiesTable">
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Stage</th>
+                                                        <th>Amount</th>
+                                                        <th id="topOppsFTAttr">FT Attribution</th>
+                                                        <th id="topOppsMTAttr">MT Attribution</th>
+                                                    </tr>
+                                                    <!-- remaining tr's dynamically added -->
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="height:10px;"/>
+                            </div>
+                            <div class="detail-table-div" style="display:none;text-align:center;padding: 50px;padding-top: 0px;">
+                                <div class="ld-secondary-small-button download-button" id="downloadButton"><a onClick="downloadCSV();" href="#">Export</a></div>
+                                <table class="campaign-view-table lean-table" style="width:100%;" id="detailsTable"/>
+                                <div id="invalidNotice">
+                                    <div id="invalidNoticeInnerContainer">
+                                        <div id="invalidDefaultMessage">There are over 2,000 Marketing Touches associated to this Campaign.</div>
+                                        <div id="invalidNoticeMessage"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="clear"></span>
+                            <div style="margin-top:10px;">
+                                <div class="toggle-mode-div">
+                                    <div onClick="toggleView();" class="view-metrics-toggle view-toggle active-toggle" >
+                                        METRICS
+                                    </div>
+                                    <div onClick="toggleView();" class="view-details-toggle view-toggle"  >
+                                        DETAILS
+                                    </div>
+                                </div>
+                            </div>
+                        </apex:outputPanel>
+                    </div> <!-- Close Metrics wrapper -->
+                </div>
+                <!-- Begin Tooltip -->
+                <div id="infoModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content" style="display: inline-block;background: #eeefef;border-radius: 0px;">
+
+                            <apex:commandLink rerender="x" html-data-dismiss="modal" style="position:absolute; float:right;top:5px;right:5px;">
+                                <apex:image width="15px" height="15px" value="{!URLFOR($Resource.LeanData__Reporting_Images, 'Close_Window_Icon.png')}"/>
+                            </apex:commandLink>
+
+                            <div class="dg_inner-wrapper" style="width:355px;">
+                                <div class="dg_inner-wrapper-header" >
+                                    Legend
+                                </div>
+
+                                <div class="dg_inner-wrapper-content" >
+                                    <p><apex:image style="width:24px;height:24px;" value="{!URLFOR($Resource.LeanData__Reporting_Images, '1st_Icon.png')}" /> - First Touch </p>
+                                    <p><apex:image style="width:24px;height:24px;" value="{!URLFOR($Resource.LeanData__Reporting_Images, 'Opp_Created_Icon.png')}" /> - Opportunity Created Date</p>
+                                    <p><apex:image style="width:24px;height:24px;" value="{!URLFOR($Resource.LeanData__Reporting_Images, 'Closed_Won_Icon.png')}" /> - Opportunity Closed Date</p>
+                                    <p><apex:image style="width:24px;height:24px;" value="{!URLFOR($Resource.LeanData__Reporting_Images, 'Today_Icon.png')}" /> - Current Date</p>
+                                    <p><div style="float:left;height:20px;width:20px;background:#fcd79c;" /> <div class="float:left;">- Opportunity Stage Change</div></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Tooltip -->
+            </apex:outputPanel>
+        </apex:form>
+    </div>
+
+    <!-- jQuery Version 3.5.1 -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'jquery-3.7.0.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'jquery-ui-1.13.2.min.js')}" />
+    <!-- Bootstrap Core JavaScript -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'bootstrap-5.0.2.bundle.min.js')}" />  <!-- includes popper.js dependency -->
+    <!-- JavaScript -->
+    <c:googleAnalytics analyticsCategory="View" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'dataTables-1.11.5.min.js')}" />  <!-- jquery dataTables -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__DataTables, 'DataTables/2.0.2-responsive.dataTables.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'moment-2.29.4.min.js')}" />
+
+    <script>
+        if({!isProductionOrg}) {
+          (function(apiKey) {
+              (function(p, e, n, d, o) {
+                  var v, w, x, y, z;
+                  o = p[d] = p[d] || {};
+                  o._q = [];
+                  v = ['initialize', 'identify', 'updateOptions', 'pageLoad'];
+                  for (w = 0, x = v.length; w < x; ++w)(function(m) {
+                      o[m] = o[m] || function() {
+                          o._q[m === v[0] ? 'unshift' : 'push']([m].concat([].slice.call(arguments, 0)));
+                      };
+                  })(v[w]);
+                  y = e.createElement(n);
+                  y.async = !0;
+                  y.src = 'https://cdn.pendo.io/agent/static/' + apiKey + '/pendo.js';
+                  z = e.getElementsByTagName(n)[0];
+                  z.parentNode.insertBefore(y, z);
+              })(window, document, 'script', 'pendo');
+          })('7e7cd4b3-14da-445e-7723-b673afae6f3c');
+
+          pendo.initialize({
+              sanitizeUrl: function (url) {
+                  /*
+                    When Campaign View is loaded from Classic, the URL is masked with `servlet/servlet.Integration`
+                    and does not contain Reporting_CampaignView like it should so we want to manually 
+                    edit the URL so Pendo can track it properly
+                  */
+                  const sanitizedUrl = location.origin + '/apex/Reporting_CampaignView?id={!selectedCampaignId}';
+                  
+                  // if classic, return sanitized URL
+                  // if LEX, return original URL
+                  return url.includes('servlet/servlet.Integration') ? sanitizedUrl : url;
+              },
+              visitor: {
+                  id: '{!JSENCODE(userId)}', // Salesforce User Id
+                  userProfile: '{!JSENCODE(userProfile)}', //Salesforce User Profile
+                  userRole: '{!JSENCODE(userRole)}' //Salesforce User Role
+              },
+              account: {
+                  id: '{!JSENCODE(orgId)}' // Salesforce Org Id
+              }
+          });
+        }
+        
+        Visualforce.remoting.timeout = 120000; // Set timeout at page level
+        j$ = jQuery.noConflict();
+        ga_event('Campaign View');
+
+        var nameSpace;
+        var currencySymbol;
+        var campaignMemberStatusAPINameToLabel;
+        var datatablesInit = false;
+        let viewObject;
+        let retrievedChunkedCampaignIds = false;
+        let chunkedCampaignIds;
+        let totalCampaigns = 0;
+        let unweightedClosedMTData, unweightedOpenMTData, weightedClosedMTData, weightedOpenMTData;
+        let recordTypeFilterOptions, opportunityTypeFilterOptions, segmentFilterOptions;
+        let attributionMode = 'MT';
+        let timeFrameOption = 'ALL_TIME';
+        let recordTypeFilter = 'All Record Types';
+        let opportunityTypeFilter = 'All Types';
+        let attributionModel = 'Weighted';
+        let isParentCampaign = false;
+        let stageWidth;
+        let reportingContextFields, campaignCostField;
+        let includeChildCampaigns = false;
+        let sortedStageNames;
+        let isLDANInstalled = {!isLDANInstalled};
+        let selectedSegment = 'Default';
+        let shouldQueryMATFields = {!shouldQueryMATFields};
+        let nonDefaultSegmentsExist = false;
+        let conversionRate = 0;
+        let oppToCurrencySymbol;
+        let lastRunDate;
+        let isMultiCurrencyOrg;
+        let oppStageToDetails;
+        let defaultCurrencySymbol;
+
+        j$(document).ready(function() {
+            nameSpace = '{! JSENCODE(nameSpace)}';
+            getDetailsView();
+        });
+
+        function retrieveMarketingTouchColumns() {
+            const mtField = nameSpace + ((attributionModel === "Weighted" ? "Weighted_" : "") + (shouldQueryMATFields ? "MT_Attr_Amount__c" : "MT_Attribution_Amount__c"));
+            const ftField = nameSpace + ((attributionModel === "Weighted" ? "Weighted_" : "") + (shouldQueryMATFields ? "FT_Generated_Attr_Amount__c" : "FT_Attribution_Amount__c"));
+            return [
+                {
+                    "label": "Campaign Member",
+                    "name": nameSpace+"Campaign_Member_Id__c",
+                    "type": "CUSTOM",
+                },
+                {
+                    "label": "Status",
+                    "name": nameSpace + "Campaign_Member_Status__c",
+                    "type": "STRING",
+                },
+                {
+                    "label": "Object Type",
+                    "name": nameSpace + "Campaign_Member_Object_Type__c",
+                    "type": "CUSTOM",
+                },
+                {
+                    "label": "Account",
+                    "name": nameSpace + "Account__c",
+                    "type" : "REFERENCE",
+                },
+                {
+                    "label": "Opportunity",
+                    "name": nameSpace + "Related_Opportunity__c",
+                    "type" : "REFERENCE"
+                },
+                {
+                    "label": (attributionModel === "Weighted" ? "Weighted " : "") + "Multi-Touch Attribution",
+                    "name": mtField,
+                    "type": "CURRENCY"
+                },
+                {
+                    "label": (attributionModel === "Weighted" ? "Weighted " : "") + "First Touch Attribution",
+                    "name": ftField,
+                    "type": "CURRENCY"
+                },
+                {
+                    "label": "Date",
+                    "name": nameSpace + (shouldQueryMATFields ? "Campaign_Member_Date__c" : "Campaign_Member_Created_Date__c"),
+                    "type": "DATETIME"
+                },
+            ];
+        }
+
+        function getDetailsView() {
+            if (!retrievedChunkedCampaignIds) {
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.Reporting_CampaignViewController.retrieveOneTimeInfo}',
+                    {
+                        'selectedCampaignType': unescape('{!JSENCODE(selectedCampaignType)}'),
+                        'selectedCampaignId': '{!selectedCampaignId}',
+                        'selectedSegment': selectedSegment,
+                        'shouldQueryMATFields': shouldQueryMATFields,
+                        'isLDANInstalled': isLDANInstalled
+                    },
+                    function(result, event) {
+                        if (!event.status) {
+                            setErrorMsg(event.message);
+                            return;
+                        }
+                        retrievedChunkedCampaignIds = true;
+                        // hack to escape `$quot;` from the remote call response.
+                        chunkedCampaignIds = unescapeHTMLChars(result.chunkedCampaignIds);
+                        unweightedOpenMTData = (Object.prototype.hasOwnProperty.call(result, 'unweightedOpenMTData') ?
+                                               unescapeHTMLChars(result.unweightedOpenMTData) :
+                                               'null');
+                        unweightedClosedMTData = (Object.prototype.hasOwnProperty.call(result, 'unweightedClosedMTData') ?
+                                                 unescapeHTMLChars(result.unweightedClosedMTData) :
+                                                 'null');
+                        weightedOpenMTData = (Object.prototype.hasOwnProperty.call(result, 'weightedOpenMTData') ?
+                                             unescapeHTMLChars(result.weightedOpenMTData) :
+                                             'null');
+                        weightedClosedMTData = (Object.prototype.hasOwnProperty.call(result, 'weightedClosedMTData') ?
+                                               unescapeHTMLChars(result.weightedClosedMTData) :
+                                               'null');
+                        recordTypeFilterOptions = JSON.parse(unescapeHTMLChars(result.recordTypeFilterOptions));
+                        opportunityTypeFilterOptions = JSON.parse(unescapeHTMLChars(result.opportunityTypeFilterOptions));
+                        segmentFilterOptions = JSON.parse(unescapeHTMLChars(result.segmentFilterOptions));
+                        selectedSegment = result.selectedSegment;
+                        nonDefaultSegmentsExist = result.nonDefaultSegmentsExist;
+                        lastRunDate = result.lastRunDate
+                        if (shouldQueryMATFields && isLDANInstalled) {
+                            nameSpace = 'LDAN__';
+                        }
+                        populateReportingContextFields(result);
+                        fetchMetricsDetails();
+                        
+                        j$('.last-run-date').text(getDateValueFrom(new Date(lastRunDate)));
+                    }
+                )
+            } else {
+                fetchMetricsDetails();
+            }
+        }
+
+        function unescapeHTMLChars(text) {
+            return j$('<div>').html(text)[0].textContent;
+        }
+
+        function populateReportingContextFields(result) {
+            campaignCostField = result.campaignCostField;
+            reportingContextFields = JSON.stringify({
+                'customOpportunityStageSwitch': result.customOpportunityStageSwitch,
+                'closedWonStages': result.closedWonStages,
+                'closedLostStages': result.closedLostStages,
+                'opportunityStages': result.opportunityStages,
+                'stageMapping': result.stageMapping,
+                'oppAmountField': result.oppAmountField,
+            });
+
+            // check for any critical errors on load and set feature param
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.CheckOnDemandAllowed.setFeatureParamForCriticalErrors}', function(result, event) { }
+            );
+        }
+
+        function fetchMetricsDetails() {
+            const fields = {
+                'selectedCampaignName': unescape('{!JSENCODE(selectedCampaignName)}'),
+                'selectedCampaignType': unescape('{!JSENCODE(selectedCampaignType)}'),
+                'attributionModel': attributionModel,
+                'selectedCampaignId': '{!selectedCampaignId}',
+                'attributionMode': attributionMode,
+                'recordTypeFilter': recordTypeFilter,
+                'opportunityTypeFilter': opportunityTypeFilter,
+                'selectedCampaignReportingCost': '{!selectedCampaignReportingCost}',
+                'timeFrame': timeFrameOption,
+                'chunkedCampaignIds': chunkedCampaignIds,
+                'closedMTData': (attributionModel === 'Weighted' ? weightedClosedMTData : unweightedClosedMTData),
+                'openMTData': (attributionModel === 'Weighted' ? weightedOpenMTData : unweightedOpenMTData),
+                'includeChildCampaigns': includeChildCampaigns,
+                'isLDANInstalled': isLDANInstalled,
+                'selectedSegment': selectedSegment,
+                'shouldQueryMATFields': shouldQueryMATFields,
+            };
+
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.Reporting_CampaignViewController.calculateMetrics}',
+                fields, reportingContextFields,
+                function(metricsResult, event) {
+                    if (!event.status) {
+                        setErrorMsg(event.message);
+                        return;
+                    }
+                    if (Object.prototype.hasOwnProperty.call(metricsResult, 'Private Opportunities')) {
+                        setErrorMsg('Private Opportunities');
+                        return;
+                    }
+                    currencySymbol = metricsResult.currencySymbol;
+                    campaignMemberStatusAPINameToLabel = metricsResult.campaignMemberStatusAPINameToLabel;
+                    conversionRate = metricsResult.conversionRate;
+                    oppToCurrencySymbol = metricsResult.oppToCurrencySymbol;
+                    isMultiCurrencyOrg = metricsResult.isMultiCurrencyOrg;
+                    oppStageToDetails = metricsResult.oppStageToDetails;
+                    defaultCurrencySymbol = metricsResult.defaultCurrencySymbol;
+                    fetchRanksDetails(fields, metricsResult);
+                },
+                { escape: false }
+            );
+        }
+
+        function fetchRanksDetails(fields, metricsResult) {
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.Reporting_CampaignViewController.calculateRanks}',
+                fields, campaignCostField,
+                function(ranksResult, event) {
+                    if (!event.status) {
+                        setErrorMsg(event.message);
+                        return;
+                    }
+                    totalCampaigns = ranksResult.totalCampaigns;
+                    combinedResult = Object.assign({}, metricsResult, ranksResult);
+                    sortStageNames(oppStageToDetails);
+                    buildDetailsPage(combinedResult);
+                    if (Object.prototype.hasOwnProperty.call(combinedResult, 'data')) {
+                        viewObject = combinedResult.data;
+                        setTable();
+                    } else {
+                        datatablesInit = true;
+                        setLDWatermark();
+                    }
+                    toggleClearButton();
+                    j$('#emptyLoadingDiv').toggle(); // remove loading overlay and show metrics
+                    j$('.metrics').css('display', 'inline-block');
+                    j$('.toggle-mode-div').css('display', 'block');
+                    if (shouldQueryMATFields) {
+                        j$('#oppTypeFilterRow').toggle();
+                    }
+                    j$("#topOppsMTAttr").innerText = (attributionModel === "Weighted" ? "Weighted " : "") + "MT Attribution";
+                    j$("#topOppsFTAttr").innerText = (attributionModel === "Weighted" ? "Weighted " : "") + "FT Attribution";
+                }
+            )
+        }
+
+        function sortStageNames(stageMetrics) {
+            sortedStageNames = Object.keys(stageMetrics).sort();
+            let preOppExists = Object.prototype.hasOwnProperty.call(stageMetrics, 'Pre-Opportunity');
+            let closedWonExists = Object.prototype.hasOwnProperty.call(stageMetrics, 'Closed Won');
+            let closedLostExists = Object.prototype.hasOwnProperty.call(stageMetrics, 'Closed Lost');
+
+            if (preOppExists) {
+                sortedStageNames.splice(sortedStageNames.indexOf('Pre-Opportunity'), 1);
+                sortedStageNames.splice(0, 0, 'Pre-Opportunity');
+            }
+            if (closedLostExists) {
+                sortedStageNames.splice(sortedStageNames.indexOf('Closed Lost'), 1);
+                sortedStageNames.push('Closed Lost');
+            }
+            if (closedWonExists) {
+                sortedStageNames.splice(sortedStageNames.indexOf('Closed Won'), 1);
+                sortedStageNames.push('Closed Won');
+            }
+        }
+
+        function setErrorMsg(msg) {
+            let errorMsg;
+            if (msg.startsWith('Insufficient permissions') || msg.includes('does not have permission to')) {
+                const psetType = shouldQueryMATFields ? 'Analytics' : 'Marketing Touch'
+                const securedFields = msg.includes('does not have permission to')
+                    ? msg.substring(msg.indexOf(': {'))
+                    : '';
+                errorMsg = `You do not have access to the LeanData View. Please ask your LeanData Admin or System Admin for the \
+                    LeanData ${psetType} Permission Set or enable permissions to these required fields${securedFields}`;
+            } else if (msg.includes('Private') || msg.includes('Cannot read property') || msg.includes('sharing access')) {
+                errorMsg = 'You do not have permission to view some of the records on this page.';
+            } else if (msg.includes('cannot be read by')) {
+                errorMsg = `You do not have access to the LeanData View. ${msg}`;
+            } else {
+                errorMsg = 'Unknown error while fetching data. Please contact LeanData for assistance.';
+            }
+            j$('#invalidNoticeErrorText').text(errorMsg);
+            j$('#invalidNoticeMetrics').toggle();
+            j$('#emptyLoadingDiv').toggle();
+        }
+
+        function setLDWatermark() {
+            j$('#downloadButton').toggle();
+            j$('#detailsTable').toggle();
+            j$('#invalidNotice').toggle();
+            j$('#invalidNoticeMessage').html(
+                `<a target="_blank" href="{!JSENCODE(reportLinkURL)}">View them in a Salesforce Report.</a>`);
+        }
+
+        function dropdownOptionsChanged(selectedDropdown, type) {
+            let segmentOptionChanged = false;
+
+            switch (type) {
+                case 'timeFrameOption':
+                    timeFrameOption = selectedDropdown.value;
+                    break;
+                case 'attributionMode':
+                    attributionMode = selectedDropdown.value;
+                    break;
+                case 'recordTypeFilter':
+                    recordTypeFilter = selectedDropdown.value;
+                    break;
+                case 'opportunityTypeFilter':
+                    opportunityTypeFilter = selectedDropdown.value;
+                    break;
+                case 'attributionModel':
+                    attributionModel = selectedDropdown.value;
+                    break;
+                case 'includeChildCampaigns':
+                    includeChildCampaigns = (selectedDropdown.value === 'true' ? true : false);
+                    break;
+                case 'segment':
+                    selectedSegment = selectedDropdown.value;
+                    segmentOptionChanged = true;
+                    retrievedChunkedCampaignIds = false;
+                    break;
+                default:
+                    break;
+            }
+            rerenderFullPage();
+            segmentOptionChanged ? getDetailsView() : fetchMetricsDetails();
+        }
+
+        /* Sets the inner text for various DOM elements on the 'Details' page. `result` is an object returned by the
+        remoting function and contains information related to ranks/top opportunties/etc. */
+        function buildDetailsPage(result) {
+            // Set state
+            isParentCampaign = result.isParentCampaign;
+            stageWidth = result.stageWidth;
+
+            // Build the "opps touched at this stage row" table.
+            buildOppsTouchedHeader(result);
+
+            // Build the "opps touched row table".
+            buildOppsTouchedRow(result);
+
+            // Add pipeline attribution
+            const pipelineAttributionValue = document.getElementById('pipelineAttributionValue');
+            pipelineAttributionValue.appendChild(
+                document.createTextNode(formatNumberWithDecimals(result.pipelineAttribution, currencySymbol))
+            );
+            if (!includeChildCampaigns) {
+                const pipelineRank = document.getElementById('pipelineRank');
+                const pipelineRankText = ((result.pipelineAttribution != 0 && totalCampaigns != 0) ?
+                                         (result.PipelineRank !== 'N/A' ? `${result.PipelineRank} out of ${totalCampaigns}` : 'N/A') :
+                                         'N/A');
+                pipelineRank.appendChild(document.createTextNode(pipelineRankText));
+            }
+
+            // Add bookings attribution
+            const bookingsAttributionValue = document.getElementById('bookingsAttributionValue');
+            bookingsAttributionValue.appendChild(document.createTextNode(formatNumberWithDecimals(result.bookingsAttribution, currencySymbol)));
+            if (!includeChildCampaigns) {
+                const bookingsRank = document.getElementById('bookingsRank');
+                const bookingsRankText = ((result.bookingsAttribution != 0  && totalCampaigns != 0) ?
+                                         (result.BookingsRank !== 'N/A' ? `${result.BookingsRank} out of ${totalCampaigns}` : 'N/A') :
+                                         'N/A');
+                bookingsRank.appendChild(document.createTextNode(bookingsRankText));
+            }
+
+            // Add ROI
+            const ROIValue = document.getElementById('ROIValue');
+            ROIValue.appendChild(document.createTextNode(
+                Object.prototype.hasOwnProperty.call(result, 'ROI') ?
+                (formatNumberWithDecimals(result.ROI, currencySymbol) + '%').substr(1) : // substr() to remove the '$' sign
+                '%' ));
+            if (!includeChildCampaigns) {
+                const ROIRank = document.getElementById('ROIRank');
+                const ROIRankText = ((Object.prototype.hasOwnProperty.call(result, 'ROI') && result.ROI != 0 && totalCampaigns != 0) ?
+                                    (result.ROIRank !== 'N/A' ? `${result.ROIRank} out of ${totalCampaigns}` : 'N/A') :
+                                    'N/A');
+                ROIRank.appendChild(document.createTextNode(ROIRankText));
+            }
+
+            // Add top opportunities
+            let idx = 1; // 1 because a `tr` already exists in HTML for the header row.
+            const topOpportunitiesTable = document.getElementById('topOpportunitiesTable');
+            for (const topOpportunity of result.topOpportunities) {
+                const row = topOpportunitiesTable.insertRow(idx++);
+                addTopOpportunityAttributes(topOpportunity, row)
+            }
+
+            // Build Filters dropdowns
+            buildDropdownOptions('recordTypeFilterOptions', recordTypeFilterOptions);
+            buildDropdownOptions('opportunityTypeFilterOptions', opportunityTypeFilterOptions);
+            if (nonDefaultSegmentsExist) {
+                document.getElementById('segmentOptionsRow').style.visibility = 'visible';
+                buildDropdownOptions('segmentFilterOptions', segmentFilterOptions);
+            }
+
+            // Reset `select` option values
+            attributionMode = result.attributionMode;
+            document.getElementById('attributionModeOptions').value = attributionMode;
+            timeFrameOption = result.timeFrame;
+            document.getElementById('timeFrameOptions').value = timeFrameOption;
+            recordTypeFilter = result.recordTypeFilter;
+            document.getElementById('recordTypeFilterOptions').value = recordTypeFilter;
+            opportunityTypeFilter = result.opportunityTypeFilter;
+            document.getElementById('opportunityTypeFilterOptions').value = opportunityTypeFilter;
+            attributionModelOption = result.attributionModel;
+            document.getElementById('attributionModelOptions').value = attributionModel;
+            includeChildCampaigns = result.includeChildCampaigns;
+            document.getElementById('includeChildCampaignOptions').value = String(includeChildCampaigns);
+            if (nonDefaultSegmentsExist) {
+                document.getElementById('segmentFilterOptions').value = String(selectedSegment);
+            }
+        }
+
+        function addTopOpportunityAttributes(topOpportunity, row) {
+            let idx = 0;
+            const oppNameLink = document.createElement('a');
+
+            // Set attributes for the hyperlinked element.
+            oppNameLink.setAttribute('target', '_blank');
+            oppNameLink.setAttribute('class', 'customTarget');
+            oppNameLink.setAttribute('href', topOpportunity.oppLink);
+            oppNameLink.append(document.createTextNode(topOpportunity.name));
+
+            let newCell = row.insertCell(idx++);
+            newCell.appendChild(oppNameLink); // opp name + link
+            newCell = row.insertCell(idx++);
+            newCell.appendChild(document.createTextNode(topOpportunity.stageName));
+            for (const attribute of ['oppAmount', 'FTAttribution', 'MTAttribution']) {
+                newCell = row.insertCell(idx++);
+                if (topOpportunity[attribute] !== undefined) {
+                    newCell.appendChild(document.createTextNode(formatNumberWithDecimals(topOpportunity[attribute],
+                        (attribute === 'oppAmount' ? oppToCurrencySymbol[topOpportunity.oppId] : currencySymbol))));
+                } else {
+                    newCell.appendChild(document.createTextNode('-'));
+                }
+            }
+        }
+
+        function buildOppsTouchedHeader(result) {
+            let idx = 0;
+            const oppsTouchedHeader = document.getElementById('oppsTouchedHeaderRow');
+            let newCell = oppsTouchedHeader.insertCell(idx++);
+
+            newCell.style.width = '5%';
+            for (const stageName of sortedStageNames) {
+                newCell = oppsTouchedHeader.insertCell(idx++);
+                newCell.style.fontSize = '10pt';
+                const oppsAtStage = oppStageToDetails[stageName].oppsAtStage ? oppStageToDetails[stageName].oppsAtStage : 0;
+                if (oppsAtStage > 0)
+                    newCell.appendChild(document.createTextNode(stageName));
+            }
+        }
+
+        function buildOppsTouchedRow(result) {
+            // Build everything other than `Opps touched at this stage`.
+            let idx = 1;
+            const oppsTouchedRow = document.getElementById('oppsTouchedRow');
+
+            for (const stageName of sortedStageNames) {
+                newCell = oppsTouchedRow.insertCell(idx++);
+                const oppsAtStage = oppStageToDetails[stageName].oppsAtStage ? oppStageToDetails[stageName].oppsAtStage : 0;
+                if (oppsAtStage > 0) {
+                    newCell.style.width = String(stageWidth) + '%';
+                    const stageBarDiv = document.createElement('div');
+                    stageBarDiv.setAttribute('class', 'stage-bar');
+                    let styles = '';
+                    styles += (oppsAtStage > (result.highestCount * 1/3) ?
+                              'color: white;' :
+                              'color: var(--dk-grey-2);');
+                    if (oppsAtStage > (result.highestCount * 2/3)) {
+                        styles += 'background: var(--lt-green-2);';
+                    } else {
+                        styles += (oppsAtStage > (result.highestCount * 1/3) ?
+                                  'background: #8CDDCD;' :
+                                  'background: var(--lt-green-1);');
+                    }
+                    stageBarDiv.appendChild(document.createTextNode(oppsAtStage));
+                    stageBarDiv.style.cssText = styles;
+                    newCell.appendChild(stageBarDiv);
+
+                    // create tooltips.
+                    const toolTipDiv = document.createElement('div');
+                    const oppsDiv = document.createElement('div');
+                    const oppAmountDiv = document.createElement('div');
+                    const closedWonDiv = document.createElement('div');
+
+                    toolTipDiv.setAttribute('class', 'tool-tip');
+                    styleDivAndAppendImageAndText(toolTipDiv, oppsDiv, 'width:100%;text-align:left;',
+                        `#Opps - ${oppsAtStage}`);
+                    if (!isMultiCurrencyOrg) {
+                        const oppAmounts = formatNumberWithDecimals(oppStageToDetails[stageName].totalAmount, defaultCurrencySymbol);
+                        styleDivAndAppendImageAndText(toolTipDiv, oppAmountDiv,
+                            'margin-top:5px;width:100%;text-align:left;',
+                            `Opp Amount - ${oppAmounts.slice(0, oppAmounts.length)}`);
+                    }
+
+                    const closedOppsAtStage = (oppStageToDetails[stageName] && oppStageToDetails[stageName].closedWonOpps ?
+                        oppStageToDetails[stageName].closedWonOpps :
+                        0);
+                    styleDivAndAppendImageAndText(toolTipDiv, closedWonDiv,
+                        'margin-top:5px;width:100%;text-align:left;',
+                        `Closed Won - ${closedOppsAtStage ? closedOppsAtStage : 0}`);
+                    stageBarDiv.appendChild(toolTipDiv);
+                }
+            }
+            removeEmptyCells();
+        }
+
+        function styleDivAndAppendImageAndText(parentDiv, div, divCSSText, divText) {
+            const img = document.createElement('img');
+            const imgSrc = "{!URLFOR($Resource.LeanData__Reporting_Images, 'Green_Arrow_Icon.png')}";
+            const imgCSSText = 'width:10px;height:10px;margin-right:5px;';
+
+            img.style.cssText = imgCSSText;
+            img.src = imgSrc;
+            div.appendChild(img);
+            div.style.cssText = divCSSText;
+            div.appendChild(document.createTextNode(divText));
+            parentDiv.appendChild(div);
+        }
+
+        function formatNumberWithDecimals(totalAmount, symbol) {
+            const options = {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            };
+
+            return symbol + totalAmount.toLocaleString('en', options);
+        }
+
+        function buildDropdownOptions(divID, options) {
+            const selectNode = document.getElementById(divID);
+
+            Object.keys(options).forEach((option) => {
+                const optionNode = document.createElement('option');
+
+                optionNode.setAttribute('value', option);
+                optionNode.appendChild(document.createTextNode(options[option]));
+                selectNode.appendChild(optionNode);
+            })
+        }
+
+        function setTable(){
+            datatablesInit = true;
+            const marketingTouchColumns = retrieveMarketingTouchColumns();
+
+            tableParent = j$('.campaign-view-table')[0]; //getPageBlockBody("campaign_history_pb");
+            tableParent.appendChild(table = generateTableAndHeader(tableParent, marketingTouchColumns, 'marketing_touches'));
+            table.style.tableLayout = "auto";
+
+            table.appendChild(tbody = document.createElement("tbody"));
+            displayColumns = marketingTouchColumns;
+            objs = viewObject;
+            for (var i=0;i<objs.length;i++) {
+                obj = objs[i];
+                tbody.appendChild(row = generateTableRow());
+
+                for (var j = 0; j < displayColumns.length; j++) {
+                    var cell = generateDataTablesCell(row, false);
+                    if(displayColumns[j]["name"] == "Type")
+                      cell.innerHTML = obj["IsNote"] ? "Note" : "Attachment"
+                    else if(displayColumns[j]["name"] == "Title")
+                      cell.innerHTML = '<a target="_blank" class="customTarget" href="/' + obj["Id"] + '">' + obj["Title"] + '</a>';
+                    else if(displayColumns[j]["label"] == "Object Type") {
+                      var objLink = obj[nameSpace+"Contact__c"] || obj[nameSpace+"Lead__c"] || '#';
+                      cell.innerHTML = '<a target="_blank" class="customTarget" href="/' + objLink + '">' + obj[nameSpace+"Campaign_Member_Object_Type__c"] + '</a>';
+                    }
+                    else if(displayColumns[j]["label"] == "Object Type Id") {
+                        cell.innerHTML = obj[nameSpace+"Contact__r"] ? obj[nameSpace+"Contact__c"] : obj[nameSpace+"Lead__c"];
+                    }
+                    else if(displayColumns[j]["type"] == "CURRENCY") {
+                        cell.textContent = formatNumberWithDecimals(Number(obj[displayColumns[j].name]), currencySymbol);
+                    }
+                    else if(                        
+                        displayColumns[j]["label"] == "Status" && 
+                        obj[nameSpace+"Campaign_Member_Status__c"] && 
+                        campaignMemberStatusAPINameToLabel[obj[nameSpace+"Campaign_Member_Status__c"]]
+                    ) {
+                        cell.innerHTML = campaignMemberStatusAPINameToLabel[obj[nameSpace+"Campaign_Member_Status__c"]];
+                    }
+                    else {
+                      cell.innerHTML = getHTMLForValue(obj, displayColumns[j]);
+                    }
+                    cell.innerHTML = cell.innerHTML === '' ? '-' : cell.innerHTML;
+                }
+            }
+            initializeDataTable(j$(table), 'marketing-touches');
+        }
+
+        function toggleView() {
+            j$(".metrics").toggle();
+            j$(".detail-table-div").toggle();
+            
+
+             if( !datatablesInit )
+                getDetailsView();
+                
+                
+            j$(".view-toggle").toggleClass("active-toggle");
+
+        }
+        function switchAttribution(mode) {
+            j$(".attribution-toggle").toggleClass("active-toggle");
+            switchAttributionAF( mode );
+        }
+    // need to sanitize data here?
+
+        function downloadCSV(){
+            const mtField = nameSpace + ((attributionModel === "Weighted" ? "Weighted_" : "") + (shouldQueryMATFields ? "MT_Attr_Amount__c" : "MT_Attribution_Amount__c"));
+            const ftField = nameSpace + ((attributionModel === "Weighted" ? "Weighted_" : "") + (shouldQueryMATFields ? "FT_Generated_Attr_Amount__c" : "FT_Attribution_Amount__c"));
+            const MARKETING_TOUCH_CSV_COLUMNS = [
+                {"label" : "Campaign Member", "name" : nameSpace+"Campaign_Member_Id__c", "type" : "CUSTOM"},
+                {"label" : "Status", "name" : nameSpace+"Campaign_Member_Status__c", "type" : "STRING"},
+                {"label" : "Object Type", "name" : nameSpace+"Campaign_Member_Object_Type__c", "type" : "CUSTOM"},
+                {"label" : "Object Type Id", "name" : nameSpace+"Contact__c", "type" : "STRING"},
+                {"label" : "Account", "name" : nameSpace+"Account__r", "type" : "REFERENCE"},
+                {"label" : "Account Id", "name" : nameSpace+"Account__c", "type" : "STRING"},
+                {"label" : "Opportunity", "name" : nameSpace+"Related_Opportunity__r", "type" : "REFERENCE"},
+                {"label" : "Opportunity Id", "name" : nameSpace+"Related_Opportunity__c", "type" : "STRING"},
+                {"label" : (attributionModel === "Weighted" ? "Weighted " : "") + "Multi-Touch Attribution", "name" : mtField, "type" : "CURRENCY"},
+                {"label" : (attributionModel === "Weighted" ? "Weighted " : "") + "First Touch Attribution", "name" : ftField, "type" : "CURRENCY"},
+                {"label" : "Date", "name" : nameSpace + (shouldQueryMATFields ? "Campaign_Member_Date__c" : "Campaign_Member_Created_Date__c"), "type" : "DATETIME"}
+            ];
+            let objs = viewObject;
+            const filename = unescape("{!JSENCODE(selectedCampaignName)}" + '_Campaign_Data_Export.csv');
+
+            let csvFile = 'Campaign Member,Status,Object Type,Object Type Id,Account,Account Id,Opportunity, Opportunity Id,MT Attribution,FT Attribution,Date\r\n';
+            objs.forEach((rowObj) => {
+                let rowElements = [];
+                MARKETING_TOUCH_CSV_COLUMNS.forEach((field) => {
+                    let rowElement = field["type"] === 'REFERENCE' ? rowObj[field["name"]]["Name"] : rowObj[field["name"]];
+                    if (field["name"] === nameSpace + (shouldQueryMATFields ? 'Campaign_Member_Date__c' : 'Campaign_Member_Created_Date__c')) {
+                        rowElement = getDateValueFrom(new Date(rowElement));
+                    } else if (field["type"] === 'CURRENCY') {
+                        rowElement = formatNumberWithDecimals(Number(rowElement), currencySymbol);
+                    } else if (field["label"] === 'Object Type Id') {
+                        if (rowObj[nameSpace+"Contact__c"]){ // campaign member is a contact
+                            rowElement = rowObj[nameSpace+"Contact__c"];
+                        } else if (rowObj[nameSpace+"Lead__c"]){ // campaign member is a lead
+                            rowElement = rowObj[nameSpace+"Lead__c"];
+                        }
+                    } else if (field["label"] == 'Status' && rowElement && campaignMemberStatusAPINameToLabel[rowElement]) {
+                        rowElement = campaignMemberStatusAPINameToLabel[rowObj[nameSpace+"Campaign_Member_Status__c"]];
+                    }
+                    // Question for reviewer: I don't think I need to escape formulas here since data here is stringify'd. Does that sound right?
+                    rowElements.push(rowElement ? JSON.stringify(rowElement) : '');
+                })
+                csvFile += rowElements.join() + '\r\n';
+            })
+                
+            var a = document.createElement('a');
+            a.href     = 'data:attachment/csv;charset=utf-8,\ufeff' + encodeURIComponent(csvFile);
+            a.target   ='_blank';
+            a.download = filename;
+            a.innerHTML = "Click me to download the file.";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function getDateValueFrom(originalDateVal){
+            return (originalDateVal.getMonth() + 1) + '/' + originalDateVal.getDate() + '/' +  originalDateVal.getFullYear();
+        }
+        
+        function removeEmptyCells(){
+            const oppsTouchedRow = document.getElementById("oppsTouchedRow");
+            const oppsTouchedHeaderRow = document.getElementById("oppsTouchedHeaderRow");
+
+            for(let idx = oppsTouchedRow.cells.length - 1; idx >= 0; idx--){
+                if (oppsTouchedRow.cells[idx].innerText.trim() === ""){
+                    oppsTouchedRow.deleteCell(idx);
+                }
+            }
+
+            // Terminate loop at 1 to NOT delete dummy `td` which is a counterpart to 'Opps touched at this stage'
+            for (let idx = oppsTouchedHeaderRow.cells.length - 1; idx >= 1; idx--) {
+                if (oppsTouchedHeaderRow.cells[idx].innerText.trim() === "") {
+                    oppsTouchedHeaderRow.deleteCell(idx);
+                }
+            }
+
+            let oppTypeFilterValue = opportunityTypeFilter;
+            let oppRecordTypeFilterValue = recordTypeFilter;
+            var filterLayover = document.getElementById("filtered");
+            var rankContent = document.getElementsByClassName("rankFilter");
+
+            if (oppTypeFilterValue != "All Types" || oppRecordTypeFilterValue != "All Record Types") {
+                filterLayover.classList.remove("hidden");
+                for(content in rankContent){
+                    if(rankContent[content].classList != undefined)
+                        rankContent[content].classList.add("hidden");
+                }
+            } else if (includeChildCampaigns) {
+                filterLayover.innerHTML = "Ranking not available with Parent Campaigns";
+                filterLayover.classList.remove("hidden");
+                for(content in rankContent){
+                    if(rankContent[content].classList != undefined)
+                        rankContent[content].classList.add("hidden");
+                }
+
+            } else {
+                filterLayover.classList.add("hidden");
+                filterLayover.style.visibility = 'hidden';
+                for(content in rankContent){
+                    if(rankContent[content].classList != undefined)
+                        rankContent[content].classList.remove("hidden");
+                }
+            }
+
+        }
+
+        /* Set the height of the side navigation to 30% */
+        function openNav() {
+            document.getElementById("mySidenav").style.visibility = "visible";
+            document.getElementById("mySidenav").style.height = "50%";
+        }
+
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.visibility = "hidden";
+            document.getElementById("mySidenav").style.height = "0";
+        }
+
+        function toggleClearButton() {
+          // Check the values in the picklist. If they are both 'All Types', hide the button, else show it
+          if (opportunityTypeFilter === 'All Types' &&
+                recordTypeFilter === 'All Record Types' && attributionModel === 'Weighted' && !includeChildCampaigns) {
+            j$('.clearButton').hide();
+          } else {
+            j$('.clearButton').show();
+          }
+        }
+
+        function clearFilters() {
+            opportunityTypeFilter = 'All Types';
+            recordTypeFilter = 'All Record Types';
+            attributionModel = 'Weighted';
+            includeChildCampaigns = false;
+            rerenderFullPage();
+            fetchMetricsDetails();
+        }
+
+        // to prevent CSV injection attacks we escape =, +, -, and @ characters by prepending a single quote
+        function escapeFormulaData(data) {
+          if (isNil(data)) return '';
+          const regex = /^([=\+\-\@\+])/;
+          return data.replace(regex, '\'$1');
+        }
+
+    </script>
+</apex:page>

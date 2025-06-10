@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>AE Plan</fullName>
+        <default>false</default>
+        <label>AE Plan</label>
+    </customValue>
+    <customValue>
+        <fullName>OKR Plan</fullName>
+        <default>false</default>
+        <label>OKR Plan</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Group Plan</fullName>
+        <default>false</default>
+        <label>Sales Group Plan</label>
+    </customValue>
+    <customValue>
+        <fullName>SDR Plan</fullName>
+        <default>false</default>
+        <label>SDR Plan</label>
+    </customValue>
+    <customValue>
+        <fullName>Success Team Plan</fullName>
+        <default>false</default>
+        <label>Success Team Plan</label>
+    </customValue>
+    <customValue>
+        <fullName>Renewal Manager</fullName>
+        <default>false</default>
+        <label>Renewal Manager</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Leads</fullName>
+        <default>false</default>
+        <label>Sales Leads</label>
+    </customValue>
+    <customValue>
+        <fullName>Professional Services</fullName>
+        <default>false</default>
+        <label>Professional Services</label>
+    </customValue>
+    <customValue>
+        <fullName>AM Plan</fullName>
+        <default>false</default>
+        <label>AM Plan</label>
+    </customValue>
+    <customValue>
+        <fullName>TAM Plan</fullName>
+        <default>false</default>
+        <label>TAM Plan</label>
+    </customValue>
+    <customValue>
+        <fullName>AM Manager Plan</fullName>
+        <default>false</default>
+        <label>AM Manager Plan</label>
+    </customValue>
+    <customValue>
+        <fullName>Partner Plan</fullName>
+        <default>false</default>
+        <label>Partner Plan</label>
+    </customValue>
+    <masterLabel>Variable Incentive Plans</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

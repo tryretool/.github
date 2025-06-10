@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trigger__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>RevOps use only. Used to rerun record triggered automations.
+
+In System Use: &#39;MAS: Trigger Moment Update&#39;, &#39;Moment: Before Save Automations&#39;
+
+External Systems Utilization: None</description>
+    <label>Trigger</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Annualized_Revenue__c</fullName>
+    <description>New Annualized Revenue value recognizing manager overrides (if applicable).</description>
+    <formula>IF(ISBLANK(Forecast_New_AR_Override__c) ||  ISPICKVAL(Forecast_Category__c, &#39;Closed&#39;), Forecast_New_AR__c, Forecast_New_AR_Override__c)</formula>
+    <label>New Annualized Revenue</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

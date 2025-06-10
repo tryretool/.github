@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_NRR__c</fullName>
+    <formula>IF(
+ (Subscription_Type__c = &quot;Nonrecurring&quot; || Revenue_Type__c = &quot;NRR&quot;) &amp;&amp; NOT(Opportunity.IsLost__c) &amp;&amp; Revenue_Type__c != &quot;Ignore&quot;,
+ TotalPrice,
+ 0
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total NRR</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <securityClassification>Safe</securityClassification>
+    <type>Currency</type>
+</CustomField>

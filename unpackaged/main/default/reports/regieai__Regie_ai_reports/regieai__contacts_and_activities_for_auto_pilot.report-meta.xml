@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Contact$Name</field>
+    </columns>
+    <columns>
+        <field>Contact.Activities$Account</field>
+    </columns>
+    <columns>
+        <field>Contact.Activities$Subject</field>
+    </columns>
+    <columns>
+        <field>Contact.Activities$ActivityDate</field>
+    </columns>
+    <columns>
+        <field>Contact.Activities$Owner</field>
+    </columns>
+    <crossFilters>
+        <criteriaItems>
+            <column>regieai__Regie_status__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Auto-pilot</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>Contact$Id</primaryTableColumn>
+        <relatedTable>Activity</relatedTable>
+        <relatedTableJoinColumn>Who</relatedTableJoinColumn>
+    </crossFilters>
+    <format>Tabular</format>
+    <name>Contacts and activities for auto-pilot</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>regieai__Contacts_with_activities__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Contact.Activities$ActivityDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

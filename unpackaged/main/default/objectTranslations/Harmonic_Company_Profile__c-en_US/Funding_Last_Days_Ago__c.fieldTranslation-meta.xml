@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The number of days prior to today&apos;s date when the last funding round occurred --></help>
+        <label><!-- Funding: Last Days Ago --></label>
+        <name>Funding_Last_Days_Ago__c</name>
+    </CustomFieldTranslation>

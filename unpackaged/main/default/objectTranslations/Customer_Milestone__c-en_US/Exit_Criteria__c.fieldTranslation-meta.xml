@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Exit Criteria for a red account to return to healthy standing. --></help>
+        <label><!-- Exit Criteria --></label>
+        <name>Exit_Criteria__c</name>
+    </CustomFieldTranslation>

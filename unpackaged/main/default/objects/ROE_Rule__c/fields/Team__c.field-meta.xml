@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Team__c</fullName>
+    <label>Team</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Department__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Role_Team</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>EPD</controllingFieldValue>
+            <valueName>Data</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>EPD</controllingFieldValue>
+            <controllingFieldValue>Marketing</controllingFieldValue>
+            <controllingFieldValue>Operations</controllingFieldValue>
+            <controllingFieldValue>Success</controllingFieldValue>
+            <controllingFieldValue>Sales</controllingFieldValue>
+            <controllingFieldValue>Support</controllingFieldValue>
+            <controllingFieldValue>Finance</controllingFieldValue>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <controllingFieldValue>Leadership</controllingFieldValue>
+            <valueName>Leadership</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>EPD</controllingFieldValue>
+            <controllingFieldValue>Marketing</controllingFieldValue>
+            <controllingFieldValue>Operations</controllingFieldValue>
+            <controllingFieldValue>Success</controllingFieldValue>
+            <controllingFieldValue>Sales</controllingFieldValue>
+            <controllingFieldValue>Support</controllingFieldValue>
+            <controllingFieldValue>Finance</controllingFieldValue>
+            <controllingFieldValue>Legal</controllingFieldValue>
+            <controllingFieldValue>Leadership</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>EPD</controllingFieldValue>
+            <valueName>Product</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>EPD</controllingFieldValue>
+            <valueName>Security Engineering</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marketing</controllingFieldValue>
+            <valueName>Marketing Demand Gen</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Marketing</controllingFieldValue>
+            <valueName>Product Marketing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Operations</controllingFieldValue>
+            <valueName>Revenue Operations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Success</controllingFieldValue>
+            <valueName>Professional Services</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Success</controllingFieldValue>
+            <valueName>Technical Account Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales</controllingFieldValue>
+            <valueName>Account Executives</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales</controllingFieldValue>
+            <valueName>Sales Account Management</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales</controllingFieldValue>
+            <valueName>Sales Development</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales</controllingFieldValue>
+            <valueName>Sales Engineering</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales</controllingFieldValue>
+            <valueName>Revenue Enablement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sales</controllingFieldValue>
+            <valueName>Partnerships</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Support</controllingFieldValue>
+            <valueName>Customer Service</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Support</controllingFieldValue>
+            <valueName>Community Support</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Support</controllingFieldValue>
+            <valueName>Enterprise Support Engineering</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Support</controllingFieldValue>
+            <valueName>Escalation Engineering</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finance</controllingFieldValue>
+            <valueName>Accounting</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finance</controllingFieldValue>
+            <valueName>Business Operations</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Finance</controllingFieldValue>
+            <valueName>FP&amp;A</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

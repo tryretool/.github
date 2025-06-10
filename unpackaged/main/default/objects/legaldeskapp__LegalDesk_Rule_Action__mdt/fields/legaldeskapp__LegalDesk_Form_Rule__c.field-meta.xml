@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>legaldeskapp__LegalDesk_Form_Rule__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Metadata relationship field that relates this Streamline AI Rule Action to a Streamline AI Form Rule custom metadata type record</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Streamline AI Form Rule</label>
+    <referenceTo>legaldeskapp__LegalDesk_Form_Rule__mdt</referenceTo>
+    <relationshipName>LegalDesk_Rule_Actions</relationshipName>
+    <required>false</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

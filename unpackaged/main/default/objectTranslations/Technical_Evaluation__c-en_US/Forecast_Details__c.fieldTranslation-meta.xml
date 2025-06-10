@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Date &amp; brief overview of evaluation status and any forecast risks --></help>
+        <label><!-- Forecast Details --></label>
+        <name>Forecast_Details__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Owner_Role__c</fullName>
+    <description>Helper field that displays the name of the user role of the Account Owner.</description>
+    <externalId>false</externalId>
+    <formula>Owner.Role_Name__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Helper field that displays the name of the user role of the Account Owner.</inlineHelpText>
+    <label>Owner Role</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

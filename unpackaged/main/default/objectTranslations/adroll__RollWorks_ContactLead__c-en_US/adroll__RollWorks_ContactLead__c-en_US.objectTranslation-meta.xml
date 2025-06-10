@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>RollWorks Aggregated Contact/Lead Data Layout</layout>
+        <sections>
+            <label><!-- Contact Advertising Data --></label>
+            <section>Contact Advertising Data</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Engagement Data --></label>
+            <section>Contact Engagement Data</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- RollWorks Profile Information --></label>
+            <section>RollWorks Profile Information</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

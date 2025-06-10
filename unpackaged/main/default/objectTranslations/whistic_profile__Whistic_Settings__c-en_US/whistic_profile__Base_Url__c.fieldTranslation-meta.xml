@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- remember to remove the &apos;/&apos; from the end of the url if it exists --></help>
+        <label><!-- Base Url --></label>
+        <name>whistic_profile__Base_Url__c</name>
+    </CustomFieldTranslation>

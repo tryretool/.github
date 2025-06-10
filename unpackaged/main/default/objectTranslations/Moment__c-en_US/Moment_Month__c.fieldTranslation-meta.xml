@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Formula that displays the month, the first day of the month and the year of the Moment. --></help>
+        <label><!-- Moment Month --></label>
+        <name>Moment_Month__c</name>
+    </CustomFieldTranslation>

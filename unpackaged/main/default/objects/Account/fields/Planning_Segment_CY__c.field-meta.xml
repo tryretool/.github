@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Planning_Segment_CY__c</fullName>
+    <description>Pending new Segment planned for the calendar year.</description>
+    <inlineHelpText>Pending new Segment planned for the calendar year.</inlineHelpText>
+    <label>Planning Segment CY</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Customer_Segment</valueSetName>
+    </valueSet>
+</CustomField>

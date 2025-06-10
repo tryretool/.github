@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bombora_data__Status_Detail__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This is a longer descripttion of any issues that occured during the features execution.</description>
+    <label>Status Details</label>
+    <length>32768</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>

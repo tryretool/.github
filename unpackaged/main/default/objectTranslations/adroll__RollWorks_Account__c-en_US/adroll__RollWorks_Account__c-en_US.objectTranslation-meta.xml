@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>RollWorks Aggregated Account Data Layout</layout>
+        <sections>
+            <label><!-- Account Advertising Data --></label>
+            <section>Account Advertising Data</section>
+        </sections>
+        <sections>
+            <label><!-- Account Engagement Data --></label>
+            <section>Account Engagement Data</section>
+        </sections>
+        <sections>
+            <label><!-- Account List Data --></label>
+            <section>Account List Data</section>
+        </sections>
+        <sections>
+            <label><!-- Account Spike Data --></label>
+            <section>Account Spike Data</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- ICP Data --></label>
+            <section>ICP Data</section>
+        </sections>
+        <sections>
+            <label><!-- Journey Stage Data --></label>
+            <section>Journey Stage Data</section>
+        </sections>
+        <sections>
+            <label><!-- Keyword Intent Data --></label>
+            <section>Keyword Intent Data</section>
+        </sections>
+        <sections>
+            <label><!-- RollWorks Profile Information --></label>
+            <section>RollWorks Profile Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Rollworks --></label>
+        <name>Rollworks</name>
+    </quickActions>
+</CustomObjectTranslation>

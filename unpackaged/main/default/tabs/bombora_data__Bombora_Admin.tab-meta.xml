@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>App for configuring and updating the Bombora and Salesforce integration settings.</description>
+    <icon>bombora_data__Bombora_Icons/bombora_data__Bombora_Tab_Icon_b.png</icon>
+    <label>Bombora Admin</label>
+    <lwcComponent>bombora_data__bomboraAdmin</lwcComponent>
+    <motif>Custom228: TV Widescreen</motif>
+</CustomTab>

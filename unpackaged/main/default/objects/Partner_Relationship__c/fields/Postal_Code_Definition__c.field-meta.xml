@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Postal_Code_Definition__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Postal Code Definition</label>
+    <referenceTo>pw_ccpro__ZipCode__c</referenceTo>
+    <relationshipLabel>Partner_Relationship__c (__cZipCodeLookup)</relationshipLabel>
+    <relationshipName>FKZipCodeLookupAuto</relationshipName>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

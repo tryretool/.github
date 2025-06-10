@@ -1,0 +1,42 @@
+<apex:page sidebar="false" standardController="breadwinner_ns__BW_Contact__c" extensions="breadwinner_ns.NetSuiteContactController">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <title>Breadwinner Contact Record</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />    
+            <apex:includeLightning />
+            <apex:slds />
+            <apex:variable value="{!OR($User.UIThemeDisplayed == 'Theme4d', $User.UIThemeDisplayed == 'Theme4t')}" var="isLightning" />
+            <apex:variable value="{!$User.UIThemeDisplayed == 'Theme4t'}" var="isSalesforce1" />
+        </head>
+        <body>
+            <div class="slds-scope">
+                <apex:outputPanel layout="block" styleClass="slds-p-around_small">
+                    <div id="CreateContactComponentid" />
+                    <div id="CreateContactComponentid-spin">
+                        <div style="height: 3rem;position:relative;">
+                            <div role="status" class="slds-spinner slds-spinner_small slds-spinner_brand">
+                                <span class="slds-assistive-text">Loading</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $Lightning.use("{!getCompNamespacePrefix}:lightningOutUnstyled", function() {
+                            $Lightning.createComponent("{!getCompNamespacePrefix}:netsuiteContact",
+                            { 
+                                lookupId : '{!lookupId}'
+                            },
+                            "CreateContactComponentid", 
+                            function(cmp) {
+                                document.getElementById('CreateContactComponentid-spin').style.display="none";
+                            });
+                        });
+                    </script>
+                </apex:outputPanel>
+            </div>
+        </body>
+    </html>
+</apex:page>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Annualized_Revenue_Pacing_CY__c</fullName>
+    <formula>IF(New_Annualized_Revenue_Goal_YTD__c = 0,0,(New_Annualized_Revenue_Actual_YTD__c / New_Annualized_Revenue_Goal_YTD__c) - 1)</formula>
+    <label>New Annualized Revenue Pacing (CY)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

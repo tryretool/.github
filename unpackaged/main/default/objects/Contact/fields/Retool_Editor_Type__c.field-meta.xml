@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retool_Editor_Type__c</fullName>
+    <description>Active Power Editor: 60+ app saves/month in the last 90 days || 180+ total app saves in the last 90 days
+Active Editor: 1+ app saves/month in the last 90 days
+Inactive Power Editor: 60+ average app saves/month in the last 2 years
+Inactive Editor: 10+ average app saves/month in the last 2 years
+
+Link to Polytomic Model: https://app.polytomic.com/models/ef9214f1-27ce-408e-b3d6-b1b6e8340fc2</description>
+    <inlineHelpText>Active Power Editor: 60+ app saves/month in the last 90 days || 180+ total app saves in the last 90 days
+Active Editor: 1+ app saves/month in the last 90 days
+Inactive Power Editor: 60+ average app saves/month in the last 2 years
+Inactive Editor: 10+ average app saves/month in the last 2 years</inlineHelpText>
+    <label>Retool Editor Type</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Active Power Editor</fullName>
+                <default>false</default>
+                <label>Active Power Editor</label>
+            </value>
+            <value>
+                <fullName>Active Editor</fullName>
+                <default>false</default>
+                <label>Active Editor</label>
+            </value>
+            <value>
+                <fullName>Inactive Power Editor</fullName>
+                <default>false</default>
+                <label>Inactive Power Editor</label>
+            </value>
+            <value>
+                <fullName>Inactive Editor</fullName>
+                <default>false</default>
+                <label>Inactive Editor</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

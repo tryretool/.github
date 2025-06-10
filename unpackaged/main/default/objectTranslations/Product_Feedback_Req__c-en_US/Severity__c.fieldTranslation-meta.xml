@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The severity of the feature request from the perspective of the prospect/customer --></help>
+        <label><!-- Severity --></label>
+        <name>Severity__c</name>
+        <picklistValues>
+            <masterLabel>0 - Deal blocker/churn risk</masterLabel>
+            <translation><!-- 0 - Deal blocker/churn risk --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1 - Nice to have</masterLabel>
+            <translation><!-- 1 - Nice to have --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 - Idea/future concept</masterLabel>
+            <translation><!-- 2 - Idea/future concept --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P0: Immediate action</masterLabel>
+            <translation><!-- P0: Immediate action --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P1: Action within 1 mo</masterLabel>
+            <translation><!-- P1: Action within 1 mo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P2: Action within 3 mo</masterLabel>
+            <translation><!-- P2: Action within 3 mo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P3: Action within 6 mo</masterLabel>
+            <translation><!-- P3: Action within 6 mo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>P4: Backlog</masterLabel>
+            <translation><!-- P4: Backlog --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Moment__c$Id</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Contact__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Campaign_Member_Status_at_Moment__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c.Account_Status_Committed__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Moment__c$Check_MQL__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$MQL_Check_Results__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Journey__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c.Segment__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Campaign__c</field>
+    </columns>
+    <description>[Moments] example of event moments</description>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Campaign__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>24Q4 - Live Event - Tradeshow - CIOMeet Miami</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>[Moments] example of event moments</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Moment__c$Account__c.Account_Status_Committed__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$Moment_Occurred_At__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-10-21</startDate>
+    </timeFrameFilter>
+</Report>

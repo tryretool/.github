@@ -1,0 +1,658 @@
+<apex:page standardController="d_wh__Callout_Log__c" extensions="d_wh.RetryFromLog">
+
+    <apex:slds />
+
+    <div class="slds-scope" style="padding: 20px;">
+
+        <apex:form id="mainForm">
+
+            <apex:actionStatus id="actionStatus">
+                <apex:facet name="start">
+                    <div style="width: 100%; height: 100%; position: fixed; z-index: 10000; background-color: rgba(255, 255, 255, 0.5);">
+                        <div role="status" class="slds-spinner slds-spinner_medium">
+                            <span class="slds-assistive-text">{!$Label.Loading}</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionStatus>
+            
+
+            <apex:outputPanel layout="none" rendered="{!step == 1}">
+
+                <div class="slds-page-header slds-page-header_record-home">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <div class="slds-page-header__name">
+                                        <div class="slds-page-header__name-title">
+                                            <h1>
+                                                <span>
+                                                    <apex:outputLabel value="{!$Label.d_wh__Retry_Call}" />
+                                                </span>
+                                                <apex:outputPanel layout="none" rendered="{!isOutbound}">
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.d_wh__How_do_you_want_to_retry}">{!$Label.d_wh__How_do_you_want_to_retry}</span>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel layout="none" rendered="{!isInbound}">
+                                                    <span class="slds-page-header__title slds-truncate" title="Retry actions for an inbound call">Retry actions for an inbound call</span>
+                                                </apex:outputPanel>
+                                                <br />
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__col-actions">
+                            <div class="slds-page-header__controls">
+                                <div class="slds-page-header__control">
+                                    <ul class="slds-button-group-list">
+                                        <li>
+                                            <apex:commandButton action="{!BackToLog}" value="{!$Label.d_wh__Cancel}" styleClass="slds-button slds-button_neutral" rerender="mainForm" status="actionStatus" />
+                                        </li>
+                                        <apex:outputPanel layout="none" rendered="{!isOutbound}">
+                                            <li>
+                                                <apex:commandButton action="{!MoveToStep2Outbound}" value="{!$Label.d_wh__Continue}" styleClass="slds-button slds-button_brand" rerender="mainForm" status="actionStatus" />
+                                            </li>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!AND(isInbound,rebuildDetailsAvailable)}">
+                                            <li>
+                                                <apex:commandButton action="{!RunInboundActions}" value="Run inbound call actions" styleClass="slds-button slds-button_brand" rerender="mainForm" status="actionStatus" />
+                                            </li>
+                                        </apex:outputPanel>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                        <div class="slds-page-header__col-details">
+
+                            <br />
+                            <apex:pageMessages />
+                            
+                            <apex:outputPanel layout="none" rendered="{!isOutbound}">
+                                
+                                <fieldset class="slds-form-element">
+                                    <legend class="slds-form-element__legend slds-form-element__label">{!$Label.d_wh__How_do_you_want_to_retry}</legend>
+                                    <div class="slds-form-element__control">
+
+                                        <apex:outputPanel layout="none" rendered="{!sameDetailsAvailable}">
+                                            <span class="slds-radio">
+                                                <input type="radio" id="radio-out-same" value="same" name="radio-out" checked="" onchange="setRetryTypeValue();" />
+                                                <label class="slds-radio__label" for="radio-out-same">
+                                                    <span class="slds-radio_faux" title="blah blah blah"></span>
+                                                    <span class="slds-form-element__label">{!$Label.Call_Using_Same_Details}</span>
+                                                </label>
+                                            </span>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!!sameDetailsAvailable}">
+                                            <span class="slds-radio">
+                                                <input type="radio" id="radio-out-same" value="same" name="radio-out" checked="" disabled="true" />
+                                                <label class="slds-radio__label" for="radio-out-same" style="position: relative;">
+                                                    <span class="slds-radio_faux" onmouseover="document.getElementById('out-same-popup').style.display = 'block';" onmouseout="document.getElementById('out-same-popup').style.display = 'none';"></span>
+                                                    <section class="slds-popover slds-nubbin_left-top" role="dialog" style="position: absolute; left: 30px; top: -13px;display: none;" id="out-same-popup">
+                                                        <div class="slds-popover__body">
+                                                            <div class="slds-media">
+                                                                <div class="slds-media__body">
+                                                                    <p>{!$Label.Inactive_Same_Details}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <span class="slds-form-element__label">{!$Label.Call_Using_Same_Details}</span>
+                                                </label>
+                                            </span>
+                                        </apex:outputPanel>
+
+                                        <apex:outputPanel layout="none" rendered="{!rebuildDetailsAvailable}">
+                                            <span class="slds-radio">
+                                                <input type="radio" id="radio-out-rebuild" value="rebuild" name="radio-out" checked="" onchange="setRetryTypeValue();" />
+                                                <label class="slds-radio__label" for="radio-out-rebuild">
+                                                    <span class="slds-radio_faux"></span>
+                                                    <span class="slds-form-element__label">{!$Label.Call_After_Rebuilding}</span>
+                                                </label>
+                                            </span>
+                                        </apex:outputPanel>
+                                        <apex:outputPanel layout="none" rendered="{!!rebuildDetailsAvailable}">
+                                            <span class="slds-radio">
+                                                <input type="radio" id="radio-out-rebuild" value="rebuild" name="radio-out" checked="" disabled="true" />
+                                                <label class="slds-radio__label" for="radio-out-rebuild" style="position: relative;">
+                                                    <span class="slds-radio_faux" onmouseover="document.getElementById('out-rebuild-popup').style.display = 'block';" onmouseout="document.getElementById('out-rebuild-popup').style.display = 'none';"></span>
+                                                    <section class="slds-popover slds-nubbin_left-top" role="dialog" style="position: absolute; left: 30px; top: -13px;display: none;" id="out-rebuild-popup">
+                                                        <div class="slds-popover__body">
+                                                            <div class="slds-media">
+                                                                <div class="slds-media__body">
+                                                                    <p>{!$Label.Inactive_Rebuild_Details}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <span class="slds-form-element__label">{!$Label.Call_After_Rebuilding}</span>
+                                                </label>
+                                            </span>
+                                        </apex:outputPanel>
+
+                                        <apex:inputHidden value="{!retryType}" id="retryTypeHidden" />
+                                        <script>
+                                            function setRetryTypeValue() {
+                                                var elems = document.getElementsByName('radio-out');
+                                                for (i = 0; i < elems.length; i++) {
+                                                    if (elems[i].checked) {
+                                                        document.getElementById("{!$Component.retryTypeHidden}").value = elems[i].value;
+                                                    }
+                                                }
+                                            }
+                                        </script>
+
+                                    </div>
+                                </fieldset>
+
+                            </apex:outputPanel>
+                            
+                            <apex:outputPanel layout="none" rendered="{!isInbound}">
+
+                                <apex:outputPanel layout="none" rendered="{!!rebuildDetailsAvailable}">
+                                    <apex:pageMessage title="Details not available" detail="The original request was too large to be entirely stored in the log. You cannot re-run the actions for this log." severity="error" />
+                                </apex:outputPanel>
+
+                                <apex:outputPanel layout="none" rendered="{!rebuildDetailsAvailable}">
+
+                                    <div class="slds-grid slds-gutters">
+                                        <div class="slds-col slds-size_9-of-12">
+                                            <div class="slds-form-element slds-form-element_readonly">
+                                                <span class="slds-form-element__label">URL parameters</span>
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-form-element__static">
+                                                        {!URLParameters}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-size_3-of-12" style="text-align: right;">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">Skip Authentication</label>
+                                                <div class="slds-form-element__control" style="padding-right: 8px;">
+                                                    <apex:inputCheckbox value="{!skipAuth}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="slds-form-element slds-form-element_readonly">
+                                        <span class="slds-form-element__label">Headers</span>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-element__static">
+                                                <pre>{!log.Headers__c}</pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="slds-form-element slds-form-element_readonly">
+                                        <span class="slds-form-element__label">Request Body</span>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-form-element__static">
+                                                <pre>{!log.Request_Body__c}</pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                </apex:outputPanel>
+                                
+                            </apex:outputPanel>
+
+                            <br />
+
+                        </div>
+                    </div>
+                </div>
+
+            </apex:outputPanel>
+
+            <apex:outputPanel layout="none" rendered="{!step == 2}">
+
+                <apex:outputPanel layout="none">
+                    <div class="slds-page-header slds-page-header_record-home">
+                        <div class="slds-page-header__row">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span>
+                                                        <apex:outputLabel value="{!$Label.d_wh__Retry_Call}" />
+                                                    </span>
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.Preview_Callout}">{!$Label.Preview_Callout}</span>
+                                                    <br />
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-page-header__col-actions">
+                                <div class="slds-page-header__controls">
+                                    <div class="slds-page-header__control">
+                                        <ul class="slds-button-group-list">
+                                            <li>
+                                                <apex:commandButton action="{!BackToLog}" value="{!$Label.d_wh__Cancel}" styleClass="slds-button slds-button_neutral" rerender="mainForm" status="actionStatus" />
+                                            </li>
+                                            <li>
+                                                <input class="btn slds-button slds-button_destructive" onclick="if (confirm('{!$Label.Callout_Test_Page_Confirmation}')) MakeCall();" value="{!$Label.Make_Callout}" type="button" />
+                                                <apex:actionFunction action="{!MakeCall}" name="MakeCall" rerender="mainForm" status="actionStatus" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                            <div class="slds-page-header__col-details">
+
+                                <br />
+                                <apex:pageMessages />
+
+                                <div class="slds-grid slds-gutters">
+                                    <apex:outputPanel layout="none" rendered="{!preCalloutReq != null}">
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    <b>{!$Label.d_wh__Pre_Callout_URL}</b>
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputText value="{!preCalloutReq.Url}" styleClass="slds-input" />
+                                                </div>
+                                            </div>
+                                            <br />
+            
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    <b>{!$Label.Pre_Callout_Method}</b>
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    <apex:selectList size="1" multiselect="false" value="{!preCalloutReq.Method}" styleClass="slds-input">
+                                                        <apex:selectOption itemValue="GET" itemLabel="GET" />
+                                                        <apex:selectOption itemValue="POST" itemLabel="POST" />
+                                                        <apex:selectOption itemValue="PUT" itemLabel="PUT" />
+                                                        <apex:selectOption itemValue="PATCH" itemLabel="PATCH" />
+                                                        <apex:selectOption itemValue="DELETE" itemLabel="DELETE" />
+                                                    </apex:selectList>
+                                                </div>
+                                            </div>
+                                            <br />
+            
+                                            <br />
+                                            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                                <thead>
+                                                    <tr class="slds-line-height_reset">
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate" title="{!$Label.Pre_Callout_Headers}">{!$Label.Pre_Callout_Headers}</div>
+                                                        </th>
+                                                        <th class="" scope="col">
+                                                            <div class="slds-truncate"></div>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <apex:repeat value="{!preCalloutReq.Headers}" var="header">
+                                                        <tr class="slds-hint-parent">
+                                                            <td data-label="{!$Label.d_wh__Header_Name}">
+                                                                <apex:outputText value="{!header.name}" />
+                                                            </td>
+                                                            <td data-label="{!$Label.d_wh__Header_Value}">
+                                                                <apex:inputText value="{!header.value}" styleClass="slds-input" />
+                                                            </td>
+                                                        </tr>
+                                                    </apex:repeat>
+                                                </tbody>
+                                            </table>
+                                            <br />
+                                        </div>
+                                    </apex:outputPanel>
+                                    <div class="slds-col {!IF(preCalloutReq == null, 'slds-size_1-of-1', 'slds-size_1-of-2')}">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label">
+                                                <b>{!$Label.d_wh__URL}</b>
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText value="{!calloutReq.Url}" styleClass="slds-input" />
+                                            </div>
+                                        </div>
+                                        <br />
+        
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label">
+                                                <b>{!$Label.Method}</b>
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <apex:selectList size="1" multiselect="false" value="{!calloutReq.Method}" styleClass="slds-input">
+                                                    <apex:selectOption itemValue="GET" itemLabel="GET" />
+                                                    <apex:selectOption itemValue="POST" itemLabel="POST" />
+                                                    <apex:selectOption itemValue="PUT" itemLabel="PUT" />
+                                                    <apex:selectOption itemValue="PATCH" itemLabel="PATCH" />
+                                                    <apex:selectOption itemValue="DELETE" itemLabel="DELETE" />
+                                                </apex:selectList>
+                                            </div>
+                                        </div>
+                                        <br />
+        
+                                        <br />
+                                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                            <thead>
+                                                <tr class="slds-line-height_reset">
+                                                    <th class="" scope="col">
+                                                        <div class="slds-truncate" title="{!$Label.Headers}">{!$Label.Headers}</div>
+                                                    </th>
+                                                    <th class="" scope="col">
+                                                        <div class="slds-truncate"></div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <apex:repeat value="{!calloutReq.Headers}" var="header">
+                                                    <tr class="slds-hint-parent">
+                                                        <td data-label="{!$Label.d_wh__Header_Name}">
+                                                            <apex:outputText value="{!header.name}" />
+                                                        </td>
+                                                        <td data-label="{!$Label.d_wh__Header_Value}">
+                                                            <apex:inputText value="{!header.value}" styleClass="slds-input" />
+                                                        </td>
+                                                    </tr>
+                                                </apex:repeat>
+                                            </tbody>
+                                        </table>
+                                        <br />
+                                    </div>
+                                </div>
+
+                                <div class="slds-grid slds-gutters">
+                                    <apex:outputPanel layout="none" rendered="{!preCalloutReq != null}">
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <br />
+                                            <apex:outputPanel rendered="{!preCalloutReq.Method != 'GET'}">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label">
+                                                        <b>{!$Label.d_wh__Pre_Callout_Body}</b>
+                                                    </label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputTextarea value="{!preCalloutReq.RequestBody}" styleClass="slds-input" style="line-height: 160%; height: 200px;" />
+                                                    </div>
+                                                </div>
+                                                <br />
+                                            </apex:outputPanel>
+                                        </div>
+                                    </apex:outputPanel>
+                                    <div class="slds-col {!IF(preCalloutReq == null, 'slds-size_1-of-1', 'slds-size_1-of-2')}">
+                                        <br />
+                                        <apex:outputPanel rendered="{!calloutReq.Method != 'GET'}">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    <b>{!$Label.d_wh__Body}</b>
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    <apex:inputTextarea value="{!calloutReq.RequestBody}" styleClass="slds-input" style="line-height: 160%; height: 200px;" />
+                                                </div>
+                                            </div>
+                                            <br />
+                                        </apex:outputPanel>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </apex:outputPanel>
+
+            </apex:outputPanel>
+
+            <apex:outputPanel layout="none" rendered="{!step == 3}">
+
+                <apex:outputPanel layout="none" rendered="{!isOutbound}">
+
+                    <div class="slds-page-header slds-page-header_record-home">
+                        <div class="slds-page-header__row">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span>
+                                                        <apex:outputLabel value="{!$Label.d_wh__Retry_Call}" />
+                                                    </span>
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.Callout_Results}">{!$Label.Callout_Results}</span>
+                                                    <br />
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-page-header__col-actions">
+                                <div class="slds-page-header__controls">
+                                    <div class="slds-page-header__control">
+                                        <ul class="slds-button-group-list">
+                                            <li>
+                                                <apex:commandButton action="{!BackToLog}" value="{!$Label.d_wh__Back_to_Initial_Log}" styleClass="slds-button slds-button_brand" rerender="mainForm" status="actionStatus" />
+                                            </li>
+                                            <apex:outputPanel layout="none" rendered="{!AND(preCalloutReq != null, preCalloutReq.logId != null)}">
+                                                <li>
+                                                    <apex:commandButton action="{!GoToPreLog}" value="{!$Label.d_wh__View_New_Pre_Callout_Log_Record}" styleClass="slds-button slds-button_brand" rerender="mainForm" status="actionStatus" />
+                                                </li>
+                                            </apex:outputPanel>
+                                            <apex:outputPanel layout="none" rendered="{!calloutReq.logId != null}">
+                                                <li>
+                                                    <apex:commandButton action="{!GoToLog}" value="{!$Label.d_wh__View_New_Callout_Log_Record}" styleClass="slds-button slds-button_brand" rerender="mainForm" status="actionStatus" />
+                                                </li>
+                                            </apex:outputPanel>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                            <div class="slds-page-header__col-details">
+
+                                <br />
+                                <apex:pageMessages />
+
+                                <div class="slds-grid slds-gutters">
+                                    <apex:outputPanel layout="none" rendered="{!preCalloutReq != null}">
+                                        <div class="slds-col slds-size_1-of-2">
+                                            
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    <b>{!$Label.Pre_Callout_Response_Code}</b>
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    {!preCalloutReq.ResponseCode}
+                                                </div>
+                                            </div>
+                                            <br />
+                
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label">
+                                                    <b>{!$Label.Pre_Callout_Response_Body}</b>
+                                                </label>
+                                                <div class="slds-form-element__control">
+                                                    <div style="background-color: rgb(250, 250, 250); border: solid 1px lightgray; padding: 20px;">
+                                                        <pre>
+                                                            <apex:outputText value="{!preCalloutReq.ResponseBody}" /> 
+                                                        </pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            
+                                        </div>
+                                    </apex:outputPanel>
+                                    <div class="slds-col {!IF(preCalloutReq == null, 'slds-size_1-of-1', 'slds-size_1-of-2')}">
+                                        
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label">
+                                                <b>{!$Label.Response_Code}</b>
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                {!calloutReq.ResponseCode}&nbsp;
+                                            </div>
+                                        </div>
+                                        <br />
+            
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label">
+                                                <b>{!$Label.Response_Body}</b>
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <div style="background-color: rgb(250, 250, 250); border: solid 1px lightgray; padding: 20px;">
+                                                    <pre>
+                                                        <apex:outputText value="{!calloutReq.ResponseBody}" /> 
+                                                    </pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        
+                                    </div>
+                                </div>
+
+                                <br />
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="{!$Label.Created_Updates_Records}">{!$Label.Created_Updates_Records}</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!updatedRecords}" var="updRec">
+                                            <tr class="slds-hint-parent">
+                                                <td>
+                                                    <a target="_blank" href="{!updRec.link}">{!updRec.type} : {!updRec.name}</a>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+
+                </apex:outputPanel>
+
+                <apex:outputPanel layout="none" rendered="{!isInbound}">
+
+                    <div class="slds-page-header slds-page-header_record-home">
+                        <div class="slds-page-header__row">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span>
+                                                        <apex:outputLabel value="{!$Label.d_wh__Retry_Call}" />
+                                                    </span>
+                                                    <span class="slds-page-header__title slds-truncate" title="View Results">View Results</span>
+                                                    <br />
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-page-header__col-actions">
+                                <div class="slds-page-header__controls">
+                                    <div class="slds-page-header__control">
+                                        <ul class="slds-button-group-list">
+                                            <li>
+                                                <apex:commandButton action="{!BackToLog}" value="{!$Label.d_wh__Back_to_Initial_Log}" styleClass="slds-button slds-button_brand" rerender="mainForm" status="actionStatus" />
+                                            </li>
+                                            <apex:outputPanel layout="none" rendered="{!inboundReq.logId != null}">
+                                                <li>
+                                                    <apex:commandButton action="{!GoToLog}" value="{!$Label.d_wh__View_New_Callout_Log_Record}" styleClass="slds-button slds-button_brand" rerender="mainForm" status="actionStatus" />
+                                                </li>
+                                            </apex:outputPanel>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                            <div class="slds-page-header__col-details">
+
+                                <br />
+                                <apex:pageMessages />
+
+                                <div class="slds-grid slds-gutters">
+                                    
+                                    <div class="slds-col slds-size_1-of-1">
+                                        
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label">
+                                                <b>{!$Label.Response_Code}</b>
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                {!inboundReq.ResponseCode}&nbsp;
+                                            </div>
+                                        </div>
+                                        <br />
+            
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label">
+                                                <b>{!$Label.Response_Body}</b>
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <div style="background-color: rgb(250, 250, 250); border: solid 1px lightgray; padding: 20px;">
+                                                    <pre>
+                                                        <apex:outputText value="{!inboundReq.ResponseBody}" /> 
+                                                    </pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        
+                                    </div>
+                                </div>
+
+                                <br />
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="{!$Label.Created_Updates_Records}">{!$Label.Created_Updates_Records}</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!updatedRecords}" var="updRec">
+                                            <tr class="slds-hint-parent">
+                                                <td>
+                                                    <a target="_blank" href="{!updRec.link}">{!updRec.type} : {!updRec.name}</a>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+
+                </apex:outputPanel>
+
+            </apex:outputPanel>
+
+        </apex:form>
+    </div>
+
+</apex:page>

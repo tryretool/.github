@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- SE forecast for the opportunity; new = evaluation not started, on track = evaluation progressing as expected, at risk = evaluation progressing with concerns, blocked = evaluation cannot proceed, closed = evaluation complete --></help>
+        <label><!-- Forecast --></label>
+        <name>Forecast__c</name>
+    </CustomFieldTranslation>

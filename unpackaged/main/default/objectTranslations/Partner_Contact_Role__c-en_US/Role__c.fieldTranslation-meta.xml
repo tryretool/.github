@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Role --></label>
+        <name>Role__c</name>
+        <picklistValues>
+            <masterLabel>Full Stack Engineer</masterLabel>
+            <translation><!-- Full Stack Engineer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Account Manager</masterLabel>
+            <translation><!-- Partner Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Marketing Manager</masterLabel>
+            <translation><!-- Partner Marketing Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Operations</masterLabel>
+            <translation><!-- Partner Operations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Sales Account Exec</masterLabel>
+            <translation><!-- Partner Sales Account Exec --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Solution Engineer</masterLabel>
+            <translation><!-- Partner Solution Engineer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Sponsor</masterLabel>
+            <translation><!-- Partner Sponsor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Project Manager</masterLabel>
+            <translation><!-- Project Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationship POC</masterLabel>
+            <translation><!-- Relationship POC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retool Engineer</masterLabel>
+            <translation><!-- Retool Engineer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UX Designer</masterLabel>
+            <translation><!-- UX Designer --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

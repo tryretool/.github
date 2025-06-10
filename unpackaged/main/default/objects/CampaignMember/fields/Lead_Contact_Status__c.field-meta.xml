@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Contact_Status__c</fullName>
+    <description>Formula that uses the Contact Status if available. If the member is a Lead, then the Status on the Lead is used.
+
+In System Use: Layout and Reports
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <formula>IF( ISBLANK(  TEXT(Contact.Contact_Status__c) ) ,  TEXT(Lead.Status)  , TEXT(Contact.Contact_Status__c))</formula>
+    <label>Lead/Contact Status</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Forecast_Setting_View</fullName>
+    <columns>Segment__c</columns>
+    <columns>Type__c</columns>
+    <columns>MasterLabel</columns>
+    <columns>Adjustment_Factor__c</columns>
+    <columns>NamespacePrefix</columns>
+    <columns>DeveloperName</columns>
+    <filterScope>Everything</filterScope>
+    <label>Forecast Setting View</label>
+    <language>en_US</language>
+</ListView>

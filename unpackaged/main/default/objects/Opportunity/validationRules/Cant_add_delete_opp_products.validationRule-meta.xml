@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cant_add_delete_opp_products</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  PRIORVALUE(Num_of_Line_Items__c) != Num_of_Line_Items__c,
+   $User.Sales_Operations__c = FALSE,
+   $User.Manage_Bookings__c = FALSE,
+   $User.Full_Name__c != &quot;RevOps Integration&quot;,
+   $User.Full_Name__c != &quot;Polytomic Integration&quot;,
+   IsLost__c = FALSE
+)</errorConditionFormula>
+    <errorMessage>You may not edit the line items on this opportunity directly. To change line item details, please open this deal in RevOps and modify there or contact Sales Operations.</errorMessage>
+</ValidationRule>

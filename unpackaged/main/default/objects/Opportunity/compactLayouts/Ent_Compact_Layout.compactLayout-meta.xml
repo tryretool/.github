@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ent_Compact_Layout</fullName>
+    <fields>Name</fields>
+    <fields>AccountId</fields>
+    <fields>CloseDate</fields>
+    <fields>Forecast_Total_AR__c</fields>
+    <fields>Opportunity_Owner__c</fields>
+    <fields>Sales_Engineer__c</fields>
+    <fields>Subtype__c</fields>
+    <label>Ent Compact Layout</label>
+</CompactLayout>

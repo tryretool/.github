@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Dupe Contact Lookup --></label>
+        <name>LeanData__Dupe_Contact_Lookup__c</name>
+        <relationshipLabel><!-- LA Dupe Contact Lookup --></relationshipLabel>
+    </CustomFieldTranslation>

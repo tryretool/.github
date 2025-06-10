@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Indicates whether the opportunity was included in the Manager Quarter Forecast Call for the given snapshot week. --></help>
+        <label><!-- zCall Type: Manager (Qtr) --></label>
+        <name>Call_Type_Manager_Qtr__c</name>
+        <picklistValues>
+            <masterLabel>Best Case</masterLabel>
+            <translation><!-- Best Case --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Call</masterLabel>
+            <translation><!-- Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Omitted</masterLabel>
+            <translation><!-- Omitted --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

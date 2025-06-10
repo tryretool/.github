@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Channel__c</fullName>
+    <description>Segmentation of the campaign for reporting.
+
+In System Use: Campaign Layout, Report Type &#39;Campaigns with Campaign Members and Other&#39;.
+
+External Systems Utilization: None</description>
+    <inlineHelpText>Segmentation of the campaign for reporting.</inlineHelpText>
+    <label>Channel</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Content</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Content</label>
+            </value>
+            <value>
+                <fullName>Content Syndication</fullName>
+                <default>false</default>
+                <label>Content Syndication</label>
+            </value>
+            <value>
+                <fullName>Demo Request</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Demo Request</label>
+            </value>
+            <value>
+                <fullName>Display</fullName>
+                <default>false</default>
+                <label>Display</label>
+            </value>
+            <value>
+                <fullName>Email</fullName>
+                <default>false</default>
+                <label>Email</label>
+            </value>
+            <value>
+                <fullName>Event</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Event</label>
+            </value>
+            <value>
+                <fullName>Event-Hackathon</fullName>
+                <default>false</default>
+                <label>Event-Hackathon</label>
+            </value>
+            <value>
+                <fullName>Event-Other</fullName>
+                <default>false</default>
+                <label>Event-Other</label>
+            </value>
+            <value>
+                <fullName>Event-Tradeshow</fullName>
+                <default>false</default>
+                <label>Event-Tradeshow</label>
+            </value>
+            <value>
+                <fullName>Event-Webinar</fullName>
+                <default>false</default>
+                <label>Event-Webinar</label>
+            </value>
+            <value>
+                <fullName>Organic</fullName>
+                <default>false</default>
+                <label>Organic</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Outbound</fullName>
+                <default>false</default>
+                <label>Outbound</label>
+            </value>
+            <value>
+                <fullName>Out of Home</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Out of Home</label>
+            </value>
+            <value>
+                <fullName>Paid/Direct</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Paid/Direct</label>
+            </value>
+            <value>
+                <fullName>Paid Search</fullName>
+                <default>false</default>
+                <label>Paid Search</label>
+            </value>
+            <value>
+                <fullName>Podcast</fullName>
+                <default>false</default>
+                <label>Podcast</label>
+            </value>
+            <value>
+                <fullName>Product</fullName>
+                <default>false</default>
+                <label>Product</label>
+            </value>
+            <value>
+                <fullName>Referral</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Referral</label>
+            </value>
+            <value>
+                <fullName>Sendoso</fullName>
+                <default>false</default>
+                <label>Sendoso</label>
+            </value>
+            <value>
+                <fullName>Video</fullName>
+                <default>false</default>
+                <label>Video</label>
+            </value>
+            <value>
+                <fullName>Webinar</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Webinar</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

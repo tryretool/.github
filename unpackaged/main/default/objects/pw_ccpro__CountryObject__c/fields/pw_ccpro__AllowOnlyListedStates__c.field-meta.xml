@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pw_ccpro__AllowOnlyListedStates__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When set to “Yes” and there are no states for the specified country then this setting will be ignored.</description>
+    <label>Allow only listed States</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

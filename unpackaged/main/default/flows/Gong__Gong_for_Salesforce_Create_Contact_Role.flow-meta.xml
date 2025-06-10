@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <decisions>
+        <name>Contact_Role_Exists</name>
+        <label>Contact Role Exists?</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Contact Role Exists</defaultConnectorLabel>
+        <rules>
+            <name>No_Contact_Role</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Contact_Role_Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Contact_Role</targetReference>
+            </connector>
+            <label>No Contact Role</label>
+        </rules>
+    </decisions>
+    <description>This flow will capture participants that are Contacts in Salesforce, and create a Contac Role, if a related Opportunity exists. This Flow step can be also added to the Enrich Contacts and Leads Flow, as final step, when a Contact is being created</description>
+    <environments>Default</environments>
+    <interviewLabel>Gong for Salesforce - Create Contact Role {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>Gong for Salesforce - Create Contact Role</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Contact_Role</name>
+        <label>Create Contact Role</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>$Record.Gong__Contact_Participant__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OpportunityId</field>
+            <value>
+                <elementReference>$Record.Gong__Gong_Call__r.Gong__Primary_Opportunity__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Role</field>
+            <value>
+                <stringValue>Influencer</stringValue>
+            </value>
+        </inputAssignments>
+        <object>OpportunityContactRole</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Query Salesforce to find if the Contact is already a Contact Role</description>
+        <name>Find_Contact_Role</name>
+        <label>Find Contact Role</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_Role_Exists</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Gong__Contact_Participant__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Gong__Gong_Call__r.Gong__Primary_Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <object>OpportunityContactRole</object>
+        <outputAssignments>
+            <assignToReference>Contact_Role_Id</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Find_Contact_Role</targetReference>
+        </connector>
+        <filterFormula>!ISBLANK({!$Record.Gong__Contact_Participant__c})   &amp;&amp; !ISBLANK({!$Record.Gong__Gong_Call__r.Gong__Primary_Opportunity__c})  &amp;&amp; DATETIMEVALUE({!$Record.CreatedDate} ) =DATETIMEVALUE( {!$Record.Gong__Gong_Call__r.CreatedDate})</filterFormula>
+        <object>Gong__Call_Participant__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <description>Contact Role Id</description>
+        <name>Contact_Role_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

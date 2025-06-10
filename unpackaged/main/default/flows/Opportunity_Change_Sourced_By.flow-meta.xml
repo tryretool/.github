@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <assignments>
+        <name>Update_opp</name>
+        <label>Update opp</label>
+        <locationX>393</locationX>
+        <locationY>637</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Sourced_By__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>new_sourced_by.recordId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Sourced_By_Override_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>full_reason</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_opp_a</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Can_change</name>
+        <label>Can change?</label>
+        <locationX>212</locationX>
+        <locationY>347</locationY>
+        <defaultConnector>
+            <targetReference>Error</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_can_change</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Sales_Qualified_Opportunity__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Change_Sourced_By</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Added validation for reason to be &lt; 255 chars</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>can_change_sourced</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+ NOT({!recordId.Sales_Qualified_Opportunity__c}) || 
+ {!recordId.Sales_Qualified_At_Month__c} = DATE(YEAR({!$Flow.CurrentDate}),MONTH({!$Flow.CurrentDate}),1) ||
+ ({!recordId.Sales_Qualified_At_Month__c} = DATE(YEAR({!$Flow.CurrentDate}),MONTH({!$Flow.CurrentDate})-1,1) &amp;&amp; DAY({!$Flow.CurrentDate}) &lt;= 5),
+ TRUE,
+ FALSE
+)</expression>
+    </formulas>
+    <formulas>
+        <name>full_reason</name>
+        <dataType>String</dataType>
+        <expression>{!Please_enter_a_reason_why_you_are_changing_the_Sourced_By_value}&amp;&quot; (&quot;&amp;LEFT({!$User.FirstName}&amp;&quot; &quot;&amp;{!$User.LastName},35)&amp;&quot;)&quot;</expression>
+    </formulas>
+    <interviewLabel>Opportunity - Change Source {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Opportunity - Change Sourced By</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Update_opp_a</name>
+        <label>Update opp</label>
+        <locationX>594</locationX>
+        <locationY>637</locationY>
+        <inputReference>recordId</inputReference>
+    </recordUpdates>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Change_Sourced_By</name>
+        <label>Change Sourced By</label>
+        <locationX>209</locationX>
+        <locationY>637</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Update_opp</targetReference>
+        </connector>
+        <fields>
+            <name>warning_header</name>
+            <fieldText>&lt;p&gt;&lt;strong style=&quot;color: rgb(253, 0, 0);&quot;&gt;&lt;em&gt;WARNING: &lt;/em&gt;&lt;/strong&gt;&lt;em style=&quot;color: rgb(253, 0, 0);&quot;&gt;Use caution when changing historical SQOs after the 3rd business day of the month following the SQO date ({!recordId.Sales_Qualified_At__c})&lt;/em&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>can_change_sourced</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <booleanValue>false</booleanValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>header</name>
+            <fieldText>&lt;p&gt;{!recordId.Sourced_By__r.FirstName} &lt;span style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;{!recordId.Sourced_By__r.LastName} ({!recordId.Sourced_By__r.UserRole.Name}) is currently assigned sourcing credit for this opportunity.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;Change the Sourced By attribution by selecting a new user below:&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>new_sourced_by</name>
+            <extensionName>flowruntime:lookup</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>recordId.Sourced_By__c</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>objectApiName</name>
+                <value>
+                    <stringValue>Opportunity</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Sourced By</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>fieldApiName</name>
+                <value>
+                    <stringValue>Sourced_By__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>Please_enter_a_reason_why_you_are_changing_the_Sourced_By_value</name>
+            <dataType>String</dataType>
+            <fieldText>Please enter the reason why you are changing the Sourced By value:</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;Input must be no more than 220 characters&lt;/p&gt;</errorMessage>
+                <formulaExpression>LEN({!Please_enter_a_reason_why_you_are_changing_the_Sourced_By_value})&lt;=220</formulaExpression>
+            </validationRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Error</name>
+        <label>Error</label>
+        <locationX>448</locationX>
+        <locationY>371</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Error_header</name>
+            <fieldText>&lt;p&gt;You cannot change the Sourced By attribution for this opportunity because it is not a SQO.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>62</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Can_change</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Opportunity</objectType>
+    </variables>
+</Flow>

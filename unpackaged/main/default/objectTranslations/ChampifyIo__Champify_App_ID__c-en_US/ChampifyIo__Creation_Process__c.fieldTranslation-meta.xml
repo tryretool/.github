@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Contacts, Leads, or Hybrid --></help>
+        <label><!-- Creation Process --></label>
+        <name>ChampifyIo__Creation_Process__c</name>
+    </CustomFieldTranslation>

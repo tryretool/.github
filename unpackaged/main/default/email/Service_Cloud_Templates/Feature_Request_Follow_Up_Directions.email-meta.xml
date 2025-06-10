@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Feature Request - Follow Up Directions</name>
+    <style>none</style>
+    <subject>Re: {!Case.Subject}</subject>
+    <textOnly>Thanks again for the feedback! I went ahead and filed a feature request for this. While I don’t have an exact timeline right now, you can follow the Retool Changelog/Release Notes for product updates to see if and when this gets implemented.
+I&#39;ll go ahead and close out this ticket now, but please reach out to Retool Support if anything else comes up.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

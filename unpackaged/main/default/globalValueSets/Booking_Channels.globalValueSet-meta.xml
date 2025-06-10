@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>New</fullName>
+        <default>false</default>
+        <label>New</label>
+    </customValue>
+    <customValue>
+        <fullName>Upsell</fullName>
+        <default>false</default>
+        <label>Upsell</label>
+    </customValue>
+    <customValue>
+        <fullName>Expansion</fullName>
+        <default>false</default>
+        <label>Expansion</label>
+    </customValue>
+    <customValue>
+        <fullName>Flat</fullName>
+        <default>false</default>
+        <label>Flat</label>
+    </customValue>
+    <customValue>
+        <fullName>Churn</fullName>
+        <default>false</default>
+        <label>Churn</label>
+    </customValue>
+    <customValue>
+        <fullName>Contraction</fullName>
+        <default>false</default>
+        <label>Contraction</label>
+    </customValue>
+    <customValue>
+        <fullName>Partner</fullName>
+        <default>false</default>
+        <label>Partner</label>
+    </customValue>
+    <customValue>
+        <fullName>Services</fullName>
+        <default>false</default>
+        <label>Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Pilot</fullName>
+        <default>false</default>
+        <label>Pilot</label>
+    </customValue>
+    <customValue>
+        <fullName>New / Upsell</fullName>
+        <default>false</default>
+        <label>New / Upsell</label>
+    </customValue>
+    <masterLabel>Booking Channels</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

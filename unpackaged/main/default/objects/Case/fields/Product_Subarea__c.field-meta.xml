@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Subarea__c</fullName>
+    <description>Dependent picklist based on Product Area</description>
+    <label>Product Subarea (opt)</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Product_Area__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>UI (components, app settings, modules, etc)</fullName>
+                <default>false</default>
+                <label>UI (components, app settings, modules, etc)</label>
+            </value>
+            <value>
+                <fullName>Logic (code editing, transformers, JS queries)</fullName>
+                <default>false</default>
+                <label>Logic (code editing, transformers, JS queries)</label>
+            </value>
+            <value>
+                <fullName>IDE (state, event handlers, debug tools, etc)</fullName>
+                <default>false</default>
+                <label>IDE (state, event handlers, debug tools, etc)</label>
+            </value>
+            <value>
+                <fullName>Query Library</fullName>
+                <default>false</default>
+                <label>Query Library</label>
+            </value>
+            <value>
+                <fullName>Platform (runtime, history, import, etc)</fullName>
+                <default>false</default>
+                <label>Platform (runtime, history, import, etc)</label>
+            </value>
+            <value>
+                <fullName>Invoice Inquiry</fullName>
+                <default>false</default>
+                <label>Invoice Inquiry</label>
+            </value>
+            <value>
+                <fullName>Stripe</fullName>
+                <default>false</default>
+                <label>Stripe</label>
+            </value>
+            <value>
+                <fullName>Billing Detail Updates</fullName>
+                <default>false</default>
+                <label>Billing Detail Updates</label>
+            </value>
+            <value>
+                <fullName>Payment Remittance</fullName>
+                <default>false</default>
+                <label>Payment Remittance</label>
+            </value>
+            <value>
+                <fullName>Purchase Orders</fullName>
+                <default>false</default>
+                <label>Purchase Orders</label>
+            </value>
+            <value>
+                <fullName>Vendor Portal</fullName>
+                <default>false</default>
+                <label>Vendor Portal</label>
+            </value>
+            <value>
+                <fullName>Tax</fullName>
+                <default>false</default>
+                <label>Tax</label>
+            </value>
+            <value>
+                <fullName>RetoolDB - Building</fullName>
+                <default>false</default>
+                <label>RetoolDB - Building</label>
+            </value>
+            <value>
+                <fullName>RetoolDB - Administration</fullName>
+                <default>false</default>
+                <label>RetoolDB - Administration</label>
+            </value>
+            <value>
+                <fullName>RetoolDB - Deployment</fullName>
+                <default>false</default>
+                <label>RetoolDB - Deployment</label>
+            </value>
+            <value>
+                <fullName>Discount Programs</fullName>
+                <default>false</default>
+                <label>Discount Programs</label>
+            </value>
+            <value>
+                <fullName>Tutorials</fullName>
+                <default>false</default>
+                <label>Tutorials</label>
+            </value>
+            <value>
+                <fullName>Templates</fullName>
+                <default>false</default>
+                <label>Templates</label>
+            </value>
+            <value>
+                <fullName>Toolscript</fullName>
+                <default>false</default>
+                <label>Toolscript</label>
+            </value>
+            <value>
+                <fullName>Source Control</fullName>
+                <default>false</default>
+                <label>Source Control</label>
+            </value>
+            <value>
+                <fullName>Environments</fullName>
+                <default>false</default>
+                <label>Environments</label>
+            </value>
+            <value>
+                <fullName>Invites and archives</fullName>
+                <default>false</default>
+                <label>Invites and archives</label>
+            </value>
+            <value>
+                <fullName>Authentication to Retool</fullName>
+                <default>false</default>
+                <label>Authentication to Retool</label>
+            </value>
+            <value>
+                <fullName>Retool Portals</fullName>
+                <default>false</default>
+                <label>Retool Portals</label>
+            </value>
+            <value>
+                <fullName>Permissions</fullName>
+                <default>false</default>
+                <label>Permissions</label>
+            </value>
+            <value>
+                <fullName>Billing</fullName>
+                <default>false</default>
+                <label>Billing</label>
+            </value>
+            <value>
+                <fullName>Public Apps</fullName>
+                <default>false</default>
+                <label>Public Apps</label>
+            </value>
+            <value>
+                <fullName>Retool Embed</fullName>
+                <default>false</default>
+                <label>Retool Embed</label>
+            </value>
+            <value>
+                <fullName>Themes</fullName>
+                <default>false</default>
+                <label>Themes</label>
+            </value>
+            <value>
+                <fullName>Navigation</fullName>
+                <default>false</default>
+                <label>Navigation</label>
+            </value>
+            <value>
+                <fullName>Audit Logs</fullName>
+                <default>false</default>
+                <label>Audit Logs</label>
+            </value>
+            <value>
+                <fullName>Workflow Building</fullName>
+                <default>false</default>
+                <label>Workflow Building</label>
+            </value>
+            <value>
+                <fullName>Administration (pricing, usage, observability, etc)</fullName>
+                <default>false</default>
+                <label>Administration (pricing, usage, observability, etc)</label>
+            </value>
+            <value>
+                <fullName>Deployment</fullName>
+                <default>false</default>
+                <label>Deployment</label>
+            </value>
+            <value>
+                <fullName>Spam</fullName>
+                <default>false</default>
+                <label>Spam</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Discovery</controllingFieldValue>
+            <controllingFieldValue>App Building</controllingFieldValue>
+            <controllingFieldValue>Billing</controllingFieldValue>
+            <controllingFieldValue>Deployments</controllingFieldValue>
+            <controllingFieldValue>Connect</controllingFieldValue>
+            <controllingFieldValue>Hub</controllingFieldValue>
+            <controllingFieldValue>Mobile</controllingFieldValue>
+            <controllingFieldValue>Workflows</controllingFieldValue>
+            <controllingFieldValue>Uncategorized</controllingFieldValue>
+            <controllingFieldValue>Toolchain</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Discovery</controllingFieldValue>
+            <valueName>Discount Programs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Discovery</controllingFieldValue>
+            <valueName>Tutorials</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Discovery</controllingFieldValue>
+            <valueName>Templates</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>App Building</controllingFieldValue>
+            <valueName>UI (components, app settings, modules, etc)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>App Building</controllingFieldValue>
+            <valueName>Logic (code editing, transformers, JS queries)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>App Building</controllingFieldValue>
+            <valueName>IDE (state, event handlers, debug tools, etc)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>App Building</controllingFieldValue>
+            <valueName>Query Library</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>App Building</controllingFieldValue>
+            <valueName>Platform (runtime, history, import, etc)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Billing</controllingFieldValue>
+            <valueName>Invoice Inquiry</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Billing</controllingFieldValue>
+            <valueName>Stripe</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Billing</controllingFieldValue>
+            <valueName>Billing Detail Updates</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Billing</controllingFieldValue>
+            <valueName>Payment Remittance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Billing</controllingFieldValue>
+            <valueName>Purchase Orders</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Billing</controllingFieldValue>
+            <valueName>Vendor Portal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Billing</controllingFieldValue>
+            <valueName>Tax</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Billing</controllingFieldValue>
+            <valueName>Spam</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Connect</controllingFieldValue>
+            <valueName>RetoolDB - Building</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Connect</controllingFieldValue>
+            <valueName>RetoolDB - Administration</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Connect</controllingFieldValue>
+            <valueName>RetoolDB - Deployment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hub</controllingFieldValue>
+            <valueName>Invites and archives</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hub</controllingFieldValue>
+            <valueName>Authentication to Retool</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hub</controllingFieldValue>
+            <valueName>Retool Portals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hub</controllingFieldValue>
+            <valueName>Permissions</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hub</controllingFieldValue>
+            <valueName>Billing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hub</controllingFieldValue>
+            <valueName>Public Apps</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hub</controllingFieldValue>
+            <valueName>Retool Embed</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hub</controllingFieldValue>
+            <valueName>Themes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hub</controllingFieldValue>
+            <valueName>Navigation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Hub</controllingFieldValue>
+            <valueName>Audit Logs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Workflows</controllingFieldValue>
+            <valueName>Workflow Building</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Workflows</controllingFieldValue>
+            <valueName>Administration (pricing, usage, observability, etc)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Workflows</controllingFieldValue>
+            <valueName>Deployment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Toolchain</controllingFieldValue>
+            <valueName>Toolscript</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Toolchain</controllingFieldValue>
+            <valueName>Source Control</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Toolchain</controllingFieldValue>
+            <valueName>Environments</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

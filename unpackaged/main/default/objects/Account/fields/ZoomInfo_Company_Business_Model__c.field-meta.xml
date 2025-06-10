@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZoomInfo_Company_Business_Model__c</fullName>
+    <description>Company Business Model (B2B, B2C, B2G) from ZoomInfo.
+
+External Systems Utilization: ZoomInfo</description>
+    <inlineHelpText>Company Business Model (B2B, B2C, B2G) from ZoomInfo.</inlineHelpText>
+    <label>ZoomInfo Company Business Model</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>B2B</fullName>
+                <default>false</default>
+                <label>B2B</label>
+            </value>
+            <value>
+                <fullName>B2C</fullName>
+                <default>false</default>
+                <label>B2C</label>
+            </value>
+            <value>
+                <fullName>B2G</fullName>
+                <default>false</default>
+                <label>B2G</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

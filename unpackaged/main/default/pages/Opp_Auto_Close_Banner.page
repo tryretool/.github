@@ -1,0 +1,6 @@
+<apex:page standardController="Opportunity">
+    <p style="color:red; font-size:14px">This renewal will automatically close on<apex:outputText value="{0, DATE, MMMM' 'dd', 'yyyy}"><apex:param value="{!Opportunity.Auto_close_Date__c}"/>
+        </apex:outputText> and cannot be edited.      
+        The AE or RM can prevent this renewal from automatically closing by clicking "Remove Auto Close" above.
+    </p>
+</apex:page>

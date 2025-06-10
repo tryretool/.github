@@ -1,0 +1,23 @@
+<apex:page controller="UniqueEntry.ringleadConfigurationController" sidebar="false" standardStylesheets="false">
+    <head>
+        <script type="text/javascript">
+        window.appSessionId = '{!appSessionId}';
+        window.sfInstanceUrl = '{!$Site.BaseUrl}';
+        window.urlForLogo = '{!URLFOR($Resource.ringlead_logo)}'
+        window.packageVersion = '{!packageVersion}';
+        window.tabId = '{!tabId}';
+        window.dynamicTriggerURL = '{!dynamicTriggerURLendPoint}';
+        console.log('{!$Site.BaseUrl}')
+        </script>
+    </head>
+    <body style="height: 100%;" >
+        <div id="body"></div>
+    </body>
+    <footer>
+   
+ 		 <apex:includeScript value="{!$Resource.UniqueEntry__ringlead_trigger}"/> 
+   <!--<script src="https://0310-111-92-42-141.ngrok-free.app/bundle.js"></script>-->
+
+    </footer>
+
+</apex:page>

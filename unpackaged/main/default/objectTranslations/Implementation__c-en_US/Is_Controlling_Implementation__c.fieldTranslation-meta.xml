@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- True if there is a bi-directional link between the implementation record as the associated business unit --></help>
+        <label><!-- Is Controlling Implementation? --></label>
+        <name>Is_Controlling_Implementation__c</name>
+    </CustomFieldTranslation>

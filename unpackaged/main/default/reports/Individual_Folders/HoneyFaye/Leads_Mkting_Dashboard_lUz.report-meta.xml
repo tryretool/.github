@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <aggregateTypes>Unique</aggregateTypes>
+        <field>FK_CNTC_ID</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c.Moment_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Champify Alert,Koala Intent Signal,Regie.ai - Started,Regie.ai - Conversion,Regie.ai - Expansion</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>Moment__c.Moment_Occurred_At__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Leads - Mkting Dashboard</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Moment__c@Moment__c.Contact__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Moment__c.Moment_Occurred_At__c</dateColumn>
+        <interval>INTERVAL_PREVCURFY</interval>
+    </timeFrameFilter>
+</Report>

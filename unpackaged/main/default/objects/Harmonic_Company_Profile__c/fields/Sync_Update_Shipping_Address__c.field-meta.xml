@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sync_Update_Shipping_Address__c</fullName>
+    <description>Checked TRUE if `Do Not Update Shipping Address` is FALSE and the Account Shipping City does not equal the Harmonic Company City.</description>
+    <formula>NOT(ISBLANK(Account__c)) &amp;&amp;
+(
+Account__r.ShippingCity != City__c ||
+(ISBLANK(Account__r.ShippingCountry) &amp;&amp; NOT(ISBLANK(Country__c)))
+)
+&amp;&amp; NOT(ISBLANK(Country__c))
+&amp;&amp; Do_Not_Update_Shipping_Address__c = FALSE</formula>
+    <inlineHelpText>Checked TRUE if `Do Not Update Shipping Address` is FALSE and the Account Shipping City does not equal the Harmonic Company City.</inlineHelpText>
+    <label>Sync: Update Shipping Address?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

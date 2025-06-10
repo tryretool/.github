@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The expected value (e.g., &quot;Yes&quot;, &quot;Director&quot;, &quot;Tradeshow&quot;) --></help>
+        <label><!-- Factor --></label>
+        <name>Factor__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outcome__c</fullName>
+    <label>Outcome</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Solved - Retool Team</fullName>
+                <default>false</default>
+                <label>Solved - Retool Team</label>
+            </value>
+            <value>
+                <fullName>Solved - Customer</fullName>
+                <default>false</default>
+                <label>Solved - Customer</label>
+            </value>
+            <value>
+                <fullName>Solved - Community</fullName>
+                <default>false</default>
+                <label>Solved - Community</label>
+            </value>
+            <value>
+                <fullName>Solved - Documentation</fullName>
+                <default>false</default>
+                <label>Solved - Documentation</label>
+            </value>
+            <value>
+                <fullName>Unsolved - Bug Filed</fullName>
+                <default>false</default>
+                <label>Unsolved - Bug Filed</label>
+            </value>
+            <value>
+                <fullName>Unsolved - Request Filed</fullName>
+                <default>false</default>
+                <label>Unsolved - Request Filed</label>
+            </value>
+            <value>
+                <fullName>Unsolved - Unresolved</fullName>
+                <default>false</default>
+                <label>Unsolved - Unresolved</label>
+            </value>
+            <value>
+                <fullName>Unsolved - Customer Unresponsive</fullName>
+                <default>false</default>
+                <label>Unsolved - Customer Unresponsive</label>
+            </value>
+            <value>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+                <label>Duplicate</label>
+            </value>
+            <value>
+                <fullName>Spam</fullName>
+                <default>false</default>
+                <label>Spam</label>
+            </value>
+            <value>
+                <fullName>Solved - Outbound</fullName>
+                <default>false</default>
+                <label>Solved - Outbound</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

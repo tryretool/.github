@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Epic_Implementation_Owner__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Used to assign an &#39;Implementation Owner&#39; to Epics.</description>
+    <inlineHelpText>Used to assign an &#39;Implementation Owner&#39; to Epics.</inlineHelpText>
+    <label>Epic: Implementation Owner</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>GTM_Tickets_Implementation_Owner</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

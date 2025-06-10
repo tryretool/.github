@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pipeline_View</fullName>
+    <columns>NAME</columns>
+    <columns>Status__c</columns>
+    <columns>Activity_Subcategory__c</columns>
+    <columns>Activity_Detail__c</columns>
+    <columns>Account__c</columns>
+    <columns>Account_Industry__c</columns>
+    <columns>Contact_Name__c</columns>
+    <columns>Contact_Email__c</columns>
+    <columns>Submitted_By__c</columns>
+    <columns>Submitted_At__c</columns>
+    <columns>Trigger__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OWNER.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Nina</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Identified - Advocate,Identified - Activity</value>
+    </filters>
+    <label>Nina&#39;s Pipeline View</label>
+</ListView>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outreach_Added_to_Sequence_At__c</fullName>
+    <description>Date/Time field that is updated automatically when Contact are added to a new sequence. This field is updated by our Contact - Before Save Automations flow and not through Outreach.</description>
+    <inlineHelpText>Date/Time field that is updated automatically when Contact are added to a new sequence.</inlineHelpText>
+    <label>Added to Sequence At</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

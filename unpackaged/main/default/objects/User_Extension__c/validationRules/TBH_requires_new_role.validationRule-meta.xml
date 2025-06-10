@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TBH_requires_new_role</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK(New_User_Role__c) &amp;&amp; NOT(ISPICKVAL(TBH_Index__c,&quot;&quot;))</errorConditionFormula>
+    <errorDisplayField>New_User_Role__c</errorDisplayField>
+    <errorMessage>TBH requires a defined new user role</errorMessage>
+</ValidationRule>

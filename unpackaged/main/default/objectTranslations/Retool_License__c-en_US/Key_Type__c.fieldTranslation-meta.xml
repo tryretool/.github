@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Key Type --></label>
+        <name>Key_Type__c</name>
+        <picklistValues>
+            <masterLabel>SSOP</masterLabel>
+            <translation><!-- SSOP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self-hosted</masterLabel>
+            <translation><!-- Self-hosted --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

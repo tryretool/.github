@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Unit__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>Business Unit</label>
+    <lookupFilter>
+        <active>false</active>
+        <errorMessage>You cannot select a Self Service BU.</errorMessage>
+        <filterItems>
+            <field>Business_Unit__c.Subscription_Typ__c</field>
+            <operation>notEqual</operation>
+            <value>Self Service</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Business_Unit__c</referenceTo>
+    <relationshipLabel>Implementations</relationshipLabel>
+    <relationshipName>Implementations</relationshipName>
+    <required>true</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

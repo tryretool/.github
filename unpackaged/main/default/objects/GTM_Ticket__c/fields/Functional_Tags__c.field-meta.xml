@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Functional_Tags__c</fullName>
+    <label>Functional Tags</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Infrastructure</fullName>
+                <default>false</default>
+                <label>Infrastructure</label>
+            </value>
+            <value>
+                <fullName>Billing</fullName>
+                <default>false</default>
+                <label>Billing</label>
+            </value>
+            <value>
+                <fullName>Deal Desk</fullName>
+                <default>false</default>
+                <label>Deal Desk</label>
+            </value>
+            <value>
+                <fullName>Demand Gen</fullName>
+                <default>false</default>
+                <label>Demand Gen</label>
+            </value>
+            <value>
+                <fullName>Revenue</fullName>
+                <default>false</default>
+                <label>Revenue</label>
+            </value>
+            <value>
+                <fullName>Enablement</fullName>
+                <default>false</default>
+                <label>Enablement</label>
+            </value>
+            <value>
+                <fullName>Renewals</fullName>
+                <default>false</default>
+                <label>Renewals</label>
+            </value>
+            <value>
+                <fullName>Data</fullName>
+                <default>false</default>
+                <label>Data</label>
+            </value>
+            <value>
+                <fullName>Pipeline Management</fullName>
+                <default>false</default>
+                <label>Pipeline Management</label>
+            </value>
+            <value>
+                <fullName>Variable Comp</fullName>
+                <default>false</default>
+                <label>Variable Comp</label>
+            </value>
+            <value>
+                <fullName>ROE</fullName>
+                <default>false</default>
+                <label>ROE</label>
+            </value>
+            <value>
+                <fullName>TAM</fullName>
+                <default>false</default>
+                <label>TAM</label>
+            </value>
+            <value>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+                <label>Reporting</label>
+            </value>
+            <value>
+                <fullName>Q2-23 Pricing Changes</fullName>
+                <default>false</default>
+                <label>Q2-23 Pricing Changes</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

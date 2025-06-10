@@ -1,0 +1,20 @@
+<apex:page standardController="contact">
+    <apex:includeLightning />
+    <div id="LcDisplayId"></div> 
+    
+    <script>
+        $Lightning.use("c:securityProfileShareFormApp", function() {
+           $Lightning.createComponent(
+               "c:securityProfileShareFormContainer",
+                {recordId: "{!$CurrentPage.parameters.Id}"}, 
+                "LcDisplayId",
+                function(cmp) {
+                }
+            );
+        });
+
+        
+    </script>
+
+
+</apex:page>

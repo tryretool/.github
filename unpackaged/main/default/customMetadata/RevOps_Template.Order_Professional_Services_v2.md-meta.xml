@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Order - Professional Services v2</label>
+    <protected>false</protected>
+    <values>
+        <field>Id__c</field>
+        <value xsi:type="xsd:string">f08275ba-092d-498d-ab70-326185d27a5f</value>
+    </values>
+    <values>
+        <field>Status__c</field>
+        <value xsi:type="xsd:string">active</value>
+    </values>
+</CustomMetadata>

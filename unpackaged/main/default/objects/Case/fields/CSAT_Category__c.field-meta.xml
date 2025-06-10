@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CSAT_Category__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(VALUE(TEXT(CSAT_Score__c)), 5, &quot;Positive&quot;, 4, &quot;Positive&quot;, 3, &quot;Negative&quot;, 2, &quot;Negative&quot;, 1, &quot;Negative&quot;, &quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>CSAT Category</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

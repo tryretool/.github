@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Business_Units__r$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Business_Units__r.Business_Unit_Contact_Roles__r$Name</field>
+    </columns>
+    <columns>
+        <field>Account.Business_Units__r.Business_Unit_Contact_Roles__r$Contact__c</field>
+    </columns>
+    <columns>
+        <field>Account.Business_Units__r.Business_Unit_Contact_Roles__r$Role__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account$Account_Status_Committed__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Active Customer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Business_Units__r.Business_Unit_Contact_Roles__r$Role__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Security</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Security Contacts for Committed</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_with_Business_Units_with_Business_Unit_Contact_Roles__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

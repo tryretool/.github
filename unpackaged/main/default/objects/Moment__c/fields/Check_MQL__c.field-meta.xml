@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_MQL__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates if the Moment should be checked as MQL eligible.
+
+In System Use: &#39;Autolaunch: Check MQL&#39;, &#39;Contact - After Save Automations&#39;, &#39;Campaign Member: After Save Automations&#39;, &#39;Koala Intent Signal - After Save Automations&#39;, &#39;Moment: After Save Automations&#39;,  &#39;Retool User - After Save Automations&#39;, &#39;Task - After Save Automations&#39;
+
+External Systems Utilization: Koala</description>
+    <inlineHelpText>Indicates if the Moment should be checked as MQL eligible.</inlineHelpText>
+    <label>Check MQL</label>
+    <securityClassification>Caution</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

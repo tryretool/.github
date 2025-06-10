@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Item --></label>
+        <name>breadwinner_ns__Item__c</name>
+        <relationshipLabel><!-- NetSuite Pricing --></relationshipLabel>
+    </CustomFieldTranslation>

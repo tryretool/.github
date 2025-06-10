@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disqualified_Reason_Details_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISPICKVAL(Disqualified_Reason__c,&quot;Other&quot;) &amp;&amp;
+ISBLANK( Disqualified_Reason_Details__c )</errorConditionFormula>
+    <errorDisplayField>Disqualified_Reason_Details__c</errorDisplayField>
+    <errorMessage>You must populate Disqualified Reason Details when the disqualification reason is &quot;Other&quot;</errorMessage>
+</ValidationRule>

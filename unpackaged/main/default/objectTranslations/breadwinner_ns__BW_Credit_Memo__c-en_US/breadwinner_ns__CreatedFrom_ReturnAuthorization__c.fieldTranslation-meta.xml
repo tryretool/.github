@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Created From Return Authorization --></label>
+        <name>breadwinner_ns__CreatedFrom_ReturnAuthorization__c</name>
+        <relationshipLabel><!-- Credit Memos Created From this Return Authorization --></relationshipLabel>
+    </CustomFieldTranslation>

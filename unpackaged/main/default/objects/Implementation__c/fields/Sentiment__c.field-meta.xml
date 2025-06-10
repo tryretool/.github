@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sentiment__c</fullName>
+    <inlineHelpText>If the customer’s contract ended today, how confident would you be in a renewal?</inlineHelpText>
+    <label>Sentiment</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Red</fullName>
+                <default>false</default>
+                <label>Red</label>
+            </value>
+            <value>
+                <fullName>Yellow</fullName>
+                <default>false</default>
+                <label>Yellow</label>
+            </value>
+            <value>
+                <fullName>Green</fullName>
+                <default>false</default>
+                <label>Green</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,393 @@
+<apex:page id="DashboardPage" 
+    sideBar="false" 
+    standardStylesheets="false" 
+    docType="html-5.0" 
+    controller="LeanData.DashboardBaseController" 
+    extensions="LeanData.RemotingRouter,LeanData.TerritoryRouting,LeanData.TaggingFieldController,LeanData.DashboardANOneTimeL2AController,LeanData.CheckOnDemandAllowed,LeanData.DashboardAdminController,LeanData.DatatableRouting">
+
+  <!-- Main Dashboard page with Angular template code -->
+  <head>
+    <base href="./Dashboard"></base>
+    <link rel="stylesheet" href="{!angelaResourceUrlDBC + '/styles.css'}"></link> <!-- Prod Only -->
+    <style>
+      @font-face {
+        font-family: "Open Sans";
+        src: url("{!URLFOR($Resource.Libraries, 'fonts/OpenSans-Light.ttf')}") format('truetype');
+        font-weight: 300;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Open Sans";
+        src: url("{!URLFOR($Resource.Libraries, 'fonts/OpenSans-Regular.ttf')}") format('truetype');
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Open Sans";
+        src: url("{!URLFOR($Resource.Libraries, 'fonts/OpenSans-SemiBold.ttf')}") format('truetype');
+        font-weight: 600;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Open Sans";
+        src: url("{!URLFOR($Resource.Libraries, 'fonts/OpenSans-Bold.ttf')}") format('truetype');
+        font-weight: 700;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <ld-root style="display: flex;"></ld-root>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGKZMSKN" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Default initial values -->
+    <script>
+      // Controller Variables
+      window.ns = '{!nameSpace}';
+      window.userTimeZone = '{!userTimeZone}';
+      window.loggedInUserId = '{!$User.ID}';
+      window.autoNavigateToMembers = {!autoNavigateToMembers};
+      // Page level variables
+      Visualforce.remoting.timeout = 120000;
+      // Magellan Global Object
+      window.orgId = '{!orgId}';
+      window.Magellan = window.Magellan || {
+        Initializers: {},
+        Models: {},
+        Views: {},
+        Controllers: {},
+        Navigation: {},
+        Validation: {}, 
+      };
+      window.Angela = window.Angela || {
+        Navigation: {
+          queryParams: {},
+        },
+      };
+      // resource URLs
+      window.resourceURL = "{!magellanResourceUrlDBC}";
+      window.angelaResourceURL = "{!angelaResourceUrlDBC}";
+      // #LD_LEGACY
+      window.j$ = $ = jQuery.noConflict();
+      window.leandataDebuggerOn = false;
+      window.fieldMetaData = {};
+      window.actionNodeMetaData = {};
+      window.modalDirtyFlag = null;
+      window.modalDirtyConfirmed = null;
+      window.modalDestination = null;
+      window.modalParameters = null;
+      window.currentDeploymentId = null;
+      window.magellanPage = null;
+      window.taggingResources = null;
+    </script>
+
+    <!-- New Relic Browser Monitor api script -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'newrelic-sfdc-dashboard.js')}" />
+
+    <!-- Google Analytics / Tracking api script -->
+    <script>
+      // Google Tag Manager
+      if ('{!isGaDisabled}'!='true') {
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WGKZMSKN');
+      }
+      // In order to get OrgId as a GTM event param for BookIt pages (iframed in) we need to send from FM. When BookIt iframe is ready it make a call and we respond with the orgId
+      const recieverFn = (event) => {
+        const data = event.data;
+        if (data && data.message && data.message == 'LD_BOOKIT_READY') {
+          event.source.postMessage({
+            message: 'LD_SFDC_ORGID',
+            orgId: window.orgId,
+            isGaDisabled: '{!isGaDisabled}',
+          }, event.origin);
+        }
+      }
+      window.addEventListener("message", recieverFn, false);
+    </script>
+
+    <!-- Global variables accessible by all pages at the window level -->
+    <script>
+      // Instantiate dashboard
+      DashboardController = function () { 
+        /*
+          View object retrieved through interpolation.
+          It contains data used throughout all the components.
+          Data is retrieved as part of the original page request, with no additional AJAX calls be required.
+        */
+        this.viewObject = JSON.parse('{!JSENCODE((viewObject))}');
+      };
+
+      dashboardController = new DashboardController();
+
+      // Legacy Global functions
+      window.leavePageAnyway = function(){
+        modalDirtyConfirmed = false;
+        changePage(modalDestination, modalParameters);
+        j$('.modal-backdrop').hide();
+      }
+
+      window.numberWithCommas = function(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
+      window.clearModalDiv = function() {
+        j$('#modalDiv').empty();
+      }
+
+      window.showErrorModal = function(msg) {
+        _LeanData.Notification.showConfirmationDialog({
+          header: 'Error Occurred',
+          message: msg,
+          confirmButtonText: 'Ok',
+          showRejectButton: false,
+        });
+      }
+
+      window.showSettingsSavedModal = function() {
+        _LeanData.Notification.showConfirmationDialog({
+          header: 'Settings Saved',
+          message: 'Your settings have been successfully saved.',
+          confirmButtonText: 'Ok',
+          showRejectButton: false,
+        });
+      }
+            
+      // Global click event listeners
+      j$(document).click(function(event) {
+        if(!j$(event.target).closest('.ld-tooltip-hint').length) {
+          j$('.page-content .ld-tooltip-hint.open .ld-tooltip-close-icon').trigger('click');
+        }
+      });
+
+      j$('#settingsSavedModal').on('hidden.bs.modal', function (e) {
+        window.history.back();
+      });
+    </script>
+
+    <div class="bs">
+      <apex:form >
+        <apex:pageMessages id="pm" />
+
+        <!-- AF to change the active component/page. Triggers Loading status.-->
+        <apex:actionFunction action="{!setActivePage}" name="setActivePageAF" rerender="mainContent" status="loadingComponent" oncomplete="clearModalDiv();initComponent();">
+          <apex:param name="activePage" assignTo="{!activePage}" value=""/>
+          <apex:param name="parameters" assignTo="{!parameters}" value=""/>
+        </apex:actionFunction>
+
+        <!-- AF to set Edge settings. Triggered by the View and Merge duplicates pages. -->
+        <apex:actionFunction action="{!setEdgeSettingsAndReturn}" name="setEdgeSettingsAndReturnAF" rerender="x" status="loadingComponent" oncomplete="showSettingsSavedModal();">
+          <apex:param name="edgeSettings" assignTo="{!edgeSettings}" value=""/>
+        </apex:actionFunction>
+
+        <div class="page-content">
+          <div class="sandbox-warning-banner hidden">
+            <div>
+              <div class="sandbox-refresh-icon"></div>
+              <div id="sandbox-refresh-text">You have opened LeanData in a Salesforce Sandbox org. If you refresh this sandbox org in Salesforce, you will lose key settings and routing graphs created here. Please export your graphs prior to refreshing.&nbsp;<a href="https://leandatahelp.zendesk.com/hc/en-us/articles/360020399894-How-do-I-Import-and-Export-my-Router-Flow-" target="_blank">See here for instructions</a></div>
+            </div>
+            <div id="close-sandbox-warning-banner" class="ld-cross-icon-white-to-grey" ></div>
+          </div>
+          <!-- .header -->
+          <div class="header">
+              <div class="logo package-logo">
+                  <img src="{!URLFOR($Resource.magellan_app, 'images/ld-subscription-logo-blank-2x.png')}" alt="Logo" />
+              </div>
+          </div>
+
+          <apex:outputPanel id="mainContent" layout="block" styleClass="main-content">
+          
+            <!-- Loading action status. -->
+            <apex:actionStatus id="loadingComponent">
+              <apex:facet name="start">
+                <div class="loadingOverlay">
+                  <div class="loadingParent">
+                    <div class="sk-circle">
+                      <div class="sk-circle1 sk-child"></div>
+                      <div class="sk-circle2 sk-child"></div>
+                      <div class="sk-circle3 sk-child"></div>
+                      <div class="sk-circle4 sk-child"></div>
+                      <div class="sk-circle5 sk-child"></div>
+                      <div class="sk-circle6 sk-child"></div>
+                      <div class="sk-circle7 sk-child"></div>
+                      <div class="sk-circle8 sk-child"></div>
+                      <div class="sk-circle9 sk-child"></div>
+                      <div class="sk-circle10 sk-child"></div>
+                      <div class="sk-circle11 sk-child"></div>
+                      <div class="sk-circle12 sk-child"></div>
+                    </div>
+                  </div>
+                </div>
+              </apex:facet>
+            </apex:actionStatus>
+            
+            <!-- Dynamic component. Each tab has its own component. -->
+            <apex:dynamicComponent componentValue="{!pageComponent}"/>
+          </apex:outputPanel>
+          <div id="magellan-modals"></div>
+          <div id="app-waiting-screen"></div>
+          <div id="angela-app-wrapper"></div>
+        </div>
+      </apex:form>
+
+      <div id="defaultModalDiv"></div>
+      <div id="modalDiv"></div>
+    </div>
+
+    <!-- Angular -->
+    <script type="text/javascript" src="{!angelaResourceUrlDBC + '/runtime.js'}"></script>
+    <script type="text/javascript" src="{!angelaResourceUrlDBC + '/polyfills.js'}"></script>
+    <script type="text/javascript" src="{!angelaResourceUrlDBC + '/scripts.js'}"></script>
+    <!-- only exists with build configuration "vendorChunk: true". We still need this for our watch command to work -->
+    <script type="text/javascript" src="{!angelaResourceUrlDBC + '/vendor.js'}"></script>
+    <script type="text/javascript" src="{!angelaResourceUrlDBC + '/main.js'}"></script>
+    
+    <!-- Detach angular app wrapper to be loaded later in Dashboard.page -->
+    <script>
+      window.angelaApp = window.j$('ld-root').detach();
+    </script>
+
+    <!-- Core FrontEnd Library Stylesheets -->
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__Libraries, 'styles/bootstrap-3.3.4.css')}" />  <!-- includes modified data selectors for v5.0.2 -->
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__Libraries, 'styles/jquery-ui-timepicker-addon.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__Libraries, 'styles/jquery.dataTables.min.css')}"/>  <!-- 1.10.16 -->
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__Libraries, 'styles/loading_spinner.css')}"/>
+
+    <!-- JointPlus 4.0.1 Stylesheets -->
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__Libraries, 'jointjs/joint-plus.min.css')}"/>
+
+    <!-- Core FrontEnd Libraries -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'jquery-3.7.0.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'jquery-ui-1.13.2.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'lodash-4.17.15.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'backbone-min-1.4.1.js')}" />
+    
+    <!-- JointPlus 4.0.1 Library Files -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'jointjs/joint-plus.min.js')}" />
+
+    <!-- Other Libraries / Javascript Helpers -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'download-4.2.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'chartjs-2.9.4.min.js')}" />
+
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'jquery-ui-timepicker-addon-1.6.3.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'dataTables-1.11.5.min.js')}" />  <!-- jquery dataTables -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'dataTables.editor-1.7.0.min.js')}" />  <!-- jquery dataTables -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'bootstrap-5.0.2.bundle.min.js')}" />  <!-- includes popper.js dependency -->
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'typeahead-0.11.1.bundle.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'd3-4.10.0.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'moment-2.29.4.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'moment-timezone-with-data.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'autonumeric_min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'loadingoverlay-2.1.7.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'autosize-3.0.17.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'highcharts-10.2.1.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'highcharts-funnel.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'human-format.min.js')}" />
+    <apex:includeScript value="{!URLFOR($Resource.LeanData__Libraries, 'keyboard.js')}" />
+    <apex:includeScript value="{!$Resource.LeanData__viewJSResource}" />
+    <apex:includeScript value="{!$Resource.LeanData__htmlSanitizer}" />
+    <apex:includeScript value="{!$Resource.LeanData__UploadCsvJs}" />
+    <c:ModalJS />
+    <c:javascriptPaginator />
+
+    <!-- Initialize key magellan_app files -->
+    <apex:includeScript value="{!magellanResourceUrlDBC + '/main.bundle.js'}" />
+    <apex:includeScript value="{!magellanResourceUrlDBC + '/initializers.js'}" />
+
+    <!-- --------------------- Start Legacy Code Block --------------------- -->
+    <script>
+      if (typeof $ == 'undefined') $ = jQuery.noConflict();
+
+      j$(document).ready(function() {
+        // Display loading animation.
+        j$('.loadingOverlay').parent().css('display', 'block');
+        
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.CheckOnDemandAllowed.setFeatureParamForCriticalErrors}', function(result, event) { }
+          );
+
+        // initialize default modals
+        j$('#defaultModalDiv').append(createModal('settingsSaved', 'Settings Saved', '<div class="modal-body"><p>Your settings have been successfully saved.</p><p class="lean">The LeanData Team</p></div>', 'OK', null, null, null, null, 40));
+        j$('#defaultModalDiv').append(createModal('viewSettingsWarning', 'Warning: Unsaved Changes', '<div class="modal-body"><p>You have unsaved changes. If you leave this page before updating the settings for this Profile, these changes will not be saved.</p></div>', 'OK', null, null, null, null, 40));
+        j$('#defaultModalDiv').append(createModal('error', 'Error Occurred', '', 'OK', null, null, null));
+      });
+    </script>
+    <!-- --------------------- END Legacy Code Block ----------------------- -->
+
+    <script>
+      // Put angular app inside Dashboard.page
+      $('#angela-app-wrapper').html(window.angelaApp);
+      // Hiding/Showing happens in router.js based on if it's a backbone router page or angular page route
+      $('.main-content').hide();
+
+      const debugModeEnabled = sessionStorage.getItem('ld_debugging') === '1';
+      
+      let overlordState = JSON.parse(dashboardController.viewObject.overlordState);
+      if (overlordState.isManagedPackage && !overlordState.isSandbox) {
+        (function(apiKey){
+          (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
+          v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
+              o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
+              y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
+              z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+        })('7e7cd4b3-14da-445e-7723-b673afae6f3c');
+
+        if (debugModeEnabled) {
+          console.log('Pendo Data');
+          console.log('[userId]', '{!JSENCODE(userId)}');
+          console.log('[CoL]', '{!JSENCODE(userClassicOrLightning)}');
+          console.log('[userName]', '{!JSENCODE(userName)}');
+          console.log('[userProfile]', '{!JSENCODE(userProfile)}');
+          console.log('[userRole]', '{!JSENCODE(userRole)}');
+          console.log('[orgId]', '{!JSENCODE(orgId)}');
+          console.log('[rtr]', '{!isRTREnabled}');
+        }
+
+        pendo.initialize({
+          visitor: {
+            // Salesforce User Id
+            id: '{!JSENCODE(userId)}',
+            // Salesforce User Classic or Lightning
+            userClassicOrLightning: '{!JSENCODE(userClassicOrLightning)}',
+            // Salesforce User Profile
+            userProfile: '{!JSENCODE(userProfile)}',
+            // Salesforce User Role
+            userRole: '{!JSENCODE(userRole)}',
+          },
+          account: {
+            // Salesforce Org Id
+            id: '{!JSENCODE(orgId)}',
+            // Is RTR Enabled
+            isRTREnabled: '{!isRTREnabled}',
+          }
+        });
+      }
+
+      // Enable console logging and debugging features
+      let sessionTimer = 0;
+      let clearSessionInterval = _.debounce(() => sessionTimer = 0, 500);
+      let incrementSessionTime = () => toggleSessionDisplay(++sessionTimer >= 3);
+      let toggleSessionDisplay = (enable) => {
+        if (enable) {
+          console.log('Debugging Mode Enabled (current tab only, via sessionStorage key ld_debugging).')
+          sessionStorage.setItem('ld_debugging', '1');
+        }
+        clearSessionInterval();
+      }
+      j$('.logo.package-logo').click((e) => incrementSessionTime());
+
+      // Show blue warning/information banner if in a sandbox
+      if (overlordState.isSandbox) {
+        const warningBanner = j$('.sandbox-warning-banner');
+        warningBanner.removeClass('hidden');
+        j$('#close-sandbox-warning-banner').click((e) => warningBanner.addClass('hidden'));
+      }
+    </script>
+  </body>
+</apex:page>

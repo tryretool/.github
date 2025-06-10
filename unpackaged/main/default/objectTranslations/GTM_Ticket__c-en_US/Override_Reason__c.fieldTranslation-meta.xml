@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Category related to &apos;RevOps Override Details&apos;. --></help>
+        <label><!-- Override Reason --></label>
+        <name>Override_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Collection No Longer Needed</masterLabel>
+            <translation><!-- Collection No Longer Needed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Committed to Pay</masterLabel>
+            <translation><!-- Committed to Pay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contract Restructure</masterLabel>
+            <translation><!-- Contract Restructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invoice Correction</masterLabel>
+            <translation><!-- Invoice Correction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketplace</masterLabel>
+            <translation><!-- Marketplace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missing PO</masterLabel>
+            <translation><!-- Missing PO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Payment Plan</masterLabel>
+            <translation><!-- Payment Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portal Upload</masterLabel>
+            <translation><!-- Portal Upload --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Professional Services</masterLabel>
+            <translation><!-- Professional Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Updated Contact Details</masterLabel>
+            <translation><!-- Updated Contact Details --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

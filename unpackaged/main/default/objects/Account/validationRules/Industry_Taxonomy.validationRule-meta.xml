@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Industry_Taxonomy</fullName>
+    <active>false</active>
+    <description>Industry values must match one of the values from the available picklist options. Currently using ZoomInfo&#39;s primary Industry taxonomy.</description>
+    <errorConditionFormula>NOT(
+    OR(
+        ISPICKVAL(Industry, &quot;Agriculture&quot;),
+        ISPICKVAL(Industry, &quot;Business Services&quot;),
+        ISPICKVAL(Industry, &quot;Construction&quot;),
+        ISPICKVAL(Industry, &quot;Consumer Services&quot;),
+        ISPICKVAL(Industry, &quot;Education&quot;),
+        ISPICKVAL(Industry, &quot;Energy, Utilities &amp; Waste&quot;),
+        ISPICKVAL(Industry, &quot;Finance&quot;),
+        ISPICKVAL(Industry, &quot;Government&quot;),
+        ISPICKVAL(Industry, &quot;Healthcare Services&quot;),
+        ISPICKVAL(Industry, &quot;Holding Companies &amp; Conglomerates&quot;),
+        ISPICKVAL(Industry, &quot;Hospitality&quot;),
+        ISPICKVAL(Industry, &quot;Hospitals &amp; Physicians Clinics&quot;),
+        ISPICKVAL(Industry, &quot;Insurance&quot;),
+        ISPICKVAL(Industry, &quot;Law Firms &amp; Legal Services&quot;),
+        ISPICKVAL(Industry, &quot;Manufacturing&quot;),
+        ISPICKVAL(Industry, &quot;Media &amp; Internet&quot;),
+        ISPICKVAL(Industry, &quot;Minerals &amp; Mining&quot;),
+        ISPICKVAL(Industry, &quot;Organizations&quot;),
+        ISPICKVAL(Industry, &quot;Pharmaceuticals&quot;),
+        ISPICKVAL(Industry, &quot;Real Estate&quot;),
+        ISPICKVAL(Industry, &quot;Retail&quot;),
+        ISPICKVAL(Industry, &quot;Software&quot;),
+        ISPICKVAL(Industry, &quot;Telecommunications&quot;),
+        ISPICKVAL(Industry, &quot;Transportation&quot;),
+        ISPICKVAL(Industry, &quot;&quot;)
+    )
+)</errorConditionFormula>
+    <errorMessage>Industry values must match one of the values from the available picklist options.</errorMessage>
+</ValidationRule>

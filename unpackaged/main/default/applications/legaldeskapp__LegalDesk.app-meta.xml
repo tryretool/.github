@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#5D47EF</headerColor>
+        <logo>legaldeskapp__streamline_favicon_box_gradient2_19</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <description>Lightning App For Streamline AI integration</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Streamline AI</label>
+    <navType>Standard</navType>
+    <tabs>legaldeskapp__LegalDesk</tabs>
+    <tabs>legaldeskapp__LegalDesk_Web_App</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>legaldeskapp__LegalDesk_UtilityBar</utilityBar>
+</CustomApplication>

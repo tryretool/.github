@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Below 18k ARR</masterLabel>
+            <translation><!-- Below 18k ARR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Below 25 users</masterLabel>
+            <translation><!-- Below 25 users --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>End user price under minimum</masterLabel>
+            <translation><!-- End user price under minimum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile-only user price under minimum</masterLabel>
+            <translation><!-- Mobile-only user price under minimum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platform fee under minimum</masterLabel>
+            <translation><!-- Platform fee under minimum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard user price under minimum</masterLabel>
+            <translation><!-- Standard user price under minimum --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

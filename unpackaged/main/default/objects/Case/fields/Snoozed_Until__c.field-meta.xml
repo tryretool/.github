@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Snoozed_Until__c</fullName>
+    <inlineHelpText>If Snooze Until is populated and the ticket is in On Hold or Waiting at 8:00am Pacific time, the ticket will move itself back to Open automatically. Any other motion in the ticket status will clear this value.</inlineHelpText>
+    <label>Snoozed Until</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

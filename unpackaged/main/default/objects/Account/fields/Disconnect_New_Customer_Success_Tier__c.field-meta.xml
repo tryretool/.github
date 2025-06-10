@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disconnect_New_Customer_Success_Tier__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Disconnects `New Customer Success Tier` from Account if checked true.</description>
+    <inlineHelpText>Disconnects `New Customer Success Tier` from Account if checked true.</inlineHelpText>
+    <label>Disconnect New Customer Success Tier?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

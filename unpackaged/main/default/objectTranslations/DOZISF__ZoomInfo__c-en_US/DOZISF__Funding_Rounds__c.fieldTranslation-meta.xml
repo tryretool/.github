@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- List of funding rounds including date, type and amount. --></help>
+        <label><!-- Funding Rounds --></label>
+        <name>DOZISF__Funding_Rounds__c</name>
+    </CustomFieldTranslation>

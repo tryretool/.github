@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Services_Project_Delivery_Partner_ID__c</fullName>
+    <externalId>false</externalId>
+    <label>Services Project: Delivery Partner ID</label>
+    <length>18</length>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

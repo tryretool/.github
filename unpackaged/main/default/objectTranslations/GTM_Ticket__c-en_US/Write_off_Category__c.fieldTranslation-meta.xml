@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Used to attribute what booking channel the write-off will hit. --></help>
+        <label><!-- Write-off Category --></label>
+        <name>Write_off_Category__c</name>
+        <picklistValues>
+            <masterLabel>Churn</masterLabel>
+            <translation><!-- Churn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nue</masterLabel>
+            <translation><!-- Nue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PS</masterLabel>
+            <translation><!-- PS --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

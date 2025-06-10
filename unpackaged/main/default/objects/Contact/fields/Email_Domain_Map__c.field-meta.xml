@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Email_Domain_Map__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup relationship to the Domain Map record associated with the Contact&#39;s `Email Domain`.</description>
+    <inlineHelpText>Lookup relationship to the Domain Map record associated with the Contact&#39;s `Email Domain`.</inlineHelpText>
+    <label>Email Domain Map</label>
+    <referenceTo>Domain_Map__c</referenceTo>
+    <relationshipLabel>Contacts</relationshipLabel>
+    <relationshipName>Contacts</relationshipName>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

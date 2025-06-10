@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>CDF1:SUM /RowCount</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>% Security Coverage</masterLabel>
+        <scale>1</scale>
+    </aggregates>
+    <columns>
+        <field>Business_Unit__c$Name</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Business_Unit__c$Num_of_Security_Contacts__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <columns>
+        <field>Business_Unit__c$Account__c.Owner</field>
+    </columns>
+    <columns>
+        <field>Business_Unit__c$Business_Unit_ID_case_safe__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(Business_Unit__c.Num_of_Security_Contacts__c &gt; 0, 1, 0)</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Has Security Contacts</label>
+        <scale>0</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Business_Unit__c$BU_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Active</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Business_Unit__c$Account__c.Customer_Success_Tier__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Digital</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Business_Unit__c$Account__c.Technical_Account_Manager__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Security Contact Coverage</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Business_Units__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Business_Unit__c$Committed_Booking_Start_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

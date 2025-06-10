@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_Stage__c</fullName>
+    <label>Opportunity Stage</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>(1) Qualification</fullName>
+                <default>false</default>
+                <label>(1) Qualification</label>
+            </value>
+            <value>
+                <fullName>(1) Onboarding</fullName>
+                <default>false</default>
+                <label>(1) Onboarding</label>
+            </value>
+            <value>
+                <fullName>(2) Discovery</fullName>
+                <default>false</default>
+                <label>(2) Discovery</label>
+            </value>
+            <value>
+                <fullName>(2) Nurture</fullName>
+                <default>false</default>
+                <label>(2) Nurture</label>
+            </value>
+            <value>
+                <fullName>(3) POC Scoping</fullName>
+                <default>false</default>
+                <label>(3) POC Scoping</label>
+            </value>
+            <value>
+                <fullName>(3) Proposal</fullName>
+                <default>false</default>
+                <label>(3) Proposal</label>
+            </value>
+            <value>
+                <fullName>(4) Proof of Concept</fullName>
+                <default>false</default>
+                <label>(4) Proof of Concept</label>
+            </value>
+            <value>
+                <fullName>(5) Validating Business Case/Negotiating</fullName>
+                <default>false</default>
+                <label>(5) Validating Business Case/Negotiating</label>
+            </value>
+            <value>
+                <fullName>(6) Signature</fullName>
+                <default>false</default>
+                <label>(6) Signature</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

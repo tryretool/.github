@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_SAL__c</fullName>
+    <formula>OR(
+NOT(ISBLANK(  Accepted_At__c )),
+NOT(ISBLANK(   Approached_At__c  )),
+NOT(ISBLANK(   Engaged_At__c  )),
+NOT(ISBLANK(   Meeting_Booked_At__c ))
+)</formula>
+    <label>Is SAL?</label>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

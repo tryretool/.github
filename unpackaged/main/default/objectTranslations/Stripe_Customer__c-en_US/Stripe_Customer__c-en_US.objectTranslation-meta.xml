@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Stripe Customer</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Stripe Customers</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Stripe Customer Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Products &amp; Services --></label>
+            <section>Products &amp; Services</section>
+        </sections>
+        <sections>
+            <label><!-- Subscription --></label>
+            <section>Subscription</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Primary Stripe Customer --></label>
+        <name>Primary_Stripe_Customer</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

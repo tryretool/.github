@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The hosting style the customer will ultimately use in production --></help>
+        <label><!-- zOLD Production Hosting Style --></label>
+        <name>Production_Hosting_Style__c</name>
+    </CustomFieldTranslation>

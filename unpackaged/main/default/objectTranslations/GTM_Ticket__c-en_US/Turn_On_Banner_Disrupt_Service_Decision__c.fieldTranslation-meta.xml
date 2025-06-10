@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Checked TRUE if there was an internal decision to turn on a customer&apos;s expiration banner within Retool. --></help>
+        <label><!-- Turn On Banner Disrupt Service Decision --></label>
+        <name>Turn_On_Banner_Disrupt_Service_Decision__c</name>
+    </CustomFieldTranslation>

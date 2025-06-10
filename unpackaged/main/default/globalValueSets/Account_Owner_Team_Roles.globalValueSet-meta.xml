@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Account Executive</fullName>
+        <default>false</default>
+        <label>Account Executive</label>
+    </customValue>
+    <customValue>
+        <fullName>Outbound SDR</fullName>
+        <default>false</default>
+        <label>Outbound SDR</label>
+    </customValue>
+    <customValue>
+        <fullName>Inbound SDR</fullName>
+        <default>false</default>
+        <label>Inbound SDR</label>
+    </customValue>
+    <customValue>
+        <fullName>Account Manager</fullName>
+        <default>false</default>
+        <label>Account Manager</label>
+    </customValue>
+    <masterLabel>Account Owner Team Roles</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

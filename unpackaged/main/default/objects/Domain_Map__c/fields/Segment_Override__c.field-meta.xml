@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Segment_Override__c</fullName>
+    <businessStatus>DeprecateCandidate</businessStatus>
+    <externalId>false</externalId>
+    <formula>CASE(Type__c,
+  &quot;Education&quot;,&quot;EDU&quot;,
+  &quot;Government&quot;,&quot;GOV&quot;,
+  NULL
+ )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>zOLD Segment Override</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

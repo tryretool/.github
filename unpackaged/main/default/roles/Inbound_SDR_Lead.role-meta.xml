@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Read</contactAccessLevel>
+    <description>Inbound SDR Lead</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Inbound SDR Lead</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>Head_of_Sales_Development</parentRole>
+</Role>

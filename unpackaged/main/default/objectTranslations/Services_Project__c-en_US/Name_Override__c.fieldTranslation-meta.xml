@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- If set, replaces the line item name in the record&apos;s standard name with the value (up to 20 characters). --></help>
+        <label><!-- Name Override --></label>
+        <name>Name_Override__c</name>
+    </CustomFieldTranslation>

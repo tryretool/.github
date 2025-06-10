@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pw_ccpro__BatchReportIds__c</fullName>
+    <deprecated>false</deprecated>
+    <description>95 characters allows only 5 reports</description>
+    <externalId>false</externalId>
+    <label>Batch Report IDs</label>
+    <length>95</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

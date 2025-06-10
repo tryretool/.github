@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Domain_Validation__c</fullName>
+    <description>Used to validate existing Domain Maps associated with Account records.</description>
+    <inlineHelpText>Used to validate existing Domain Maps associated with Account records.</inlineHelpText>
+    <label>Domain Validation</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pending Review</fullName>
+                <default>false</default>
+                <label>Pending Review</label>
+            </value>
+            <value>
+                <fullName>Confirmed</fullName>
+                <default>false</default>
+                <label>Confirmed</label>
+            </value>
+            <value>
+                <fullName>Wrong Company</fullName>
+                <default>false</default>
+                <label>Wrong Company</label>
+            </value>
+            <value>
+                <fullName>Invalid Domain</fullName>
+                <default>false</default>
+                <label>Invalid Domain</label>
+            </value>
+            <value>
+                <fullName>Invalid Website</fullName>
+                <default>false</default>
+                <label>Invalid Website</label>
+            </value>
+            <value>
+                <fullName>Invalid Domain/Website</fullName>
+                <default>false</default>
+                <label>Invalid Domain/Website</label>
+            </value>
+            <value>
+                <fullName>Trash</fullName>
+                <default>false</default>
+                <label>Trash</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

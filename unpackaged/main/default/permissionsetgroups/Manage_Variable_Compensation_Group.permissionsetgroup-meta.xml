@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Manage Variable Compensation Group</label>
+    <permissionSets>Manage_Comp_Adjustments</permissionSets>
+    <permissionSets>Manage_OKRs</permissionSets>
+    <permissionSets>Manage_Variable_Compensation_Fields</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

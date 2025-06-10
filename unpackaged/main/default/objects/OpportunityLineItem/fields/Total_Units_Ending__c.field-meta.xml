@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Units_Ending__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(PricebookEntry.Product2.Product_Type__c,
+  &quot;Usage&quot;,Quantity * PricebookEntry.Product2.Unit_Quantity_Factor__c,
+  &quot;Platform&quot;,Included_Units__c,
+  &quot;Feature&quot;,Included_Units__c,
+  &quot;Service&quot;,Quantity * IF(Included_Units__c = 0,1,Included_Units__c),
+  0
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Units (Ending)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

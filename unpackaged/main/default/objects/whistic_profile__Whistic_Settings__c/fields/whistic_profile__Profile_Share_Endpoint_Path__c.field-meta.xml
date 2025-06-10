@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>whistic_profile__Profile_Share_Endpoint_Path__c</fullName>
+    <defaultValue>&#39;/salesforce/org/&#39; + $Organization.Id + &#39;/securityProfileShare&#39;</defaultValue>
+    <deprecated>false</deprecated>
+    <description>Used to specify the path to the profile share endpoint</description>
+    <externalId>false</externalId>
+    <inlineHelpText>remember to start with a &#39;/&#39; as it will be appended to the &quot;Base Url&quot;</inlineHelpText>
+    <label>Profile Share Endpoint Path</label>
+    <length>200</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

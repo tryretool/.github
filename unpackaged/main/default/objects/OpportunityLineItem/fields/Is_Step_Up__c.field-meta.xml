@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Step_Up__c</fullName>
+    <formula>ServiceDate &gt; Opportunity.Term_Start_Date__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Step Up?</label>
+    <securityClassification>Safe</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

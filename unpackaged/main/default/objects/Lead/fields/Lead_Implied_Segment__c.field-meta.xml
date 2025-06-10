@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Implied_Segment__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(Employee_Picklist__c,
+ &quot;1-25&quot;,&quot;GRW&quot;,
+ &quot;26-50&quot;,&quot;GRW&quot;,
+ &quot;51-100&quot;,&quot;GRW&quot;,
+ &quot;101-300&quot;,&quot;MMK&quot;,
+ &quot;301-500&quot;,&quot;MMK&quot;,
+ &quot;501-1,000&quot;,&quot;MMK&quot;,
+ &quot;1,001-2,500&quot;,&quot;ENT&quot;,
+ &quot;2,501-5,000&quot;, &quot;ENT&quot;,
+ &quot;5,001+&quot;, &quot;ENT&quot;,
+ &quot;2,500+&quot;,&quot;ENT&quot;,
+ &quot;101-500&quot;,&quot;MMK&quot;,
+ &quot;501-2,500&quot;,&quot;ENT&quot;,
+ IF(
+  NumberOfEmployees &lt;= $CustomMetadata.Business_Automations__mdt.GRW.Employee_Upper_Bound__c,
+  &quot;GRW&quot;,
+  IF(NumberOfEmployees &lt;= $CustomMetadata.Business_Automations__mdt.MMK.Employee_Upper_Bound__c,
+   &quot;MMK&quot;,
+   IF(NumberOfEmployees &gt; $CustomMetadata.Business_Automations__mdt.MMK.Employee_Upper_Bound__c,
+   &quot;ENT&quot;,
+   &quot;&quot;
+   )
+  )
+ )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Lead Implied Segment</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

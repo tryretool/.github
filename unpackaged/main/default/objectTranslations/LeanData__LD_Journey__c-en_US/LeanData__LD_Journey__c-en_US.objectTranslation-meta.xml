@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>LeanData Managed Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Close Journey --></label>
+        <name>LeanData__LD_Journey_Close</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Link Journey --></label>
+        <name>LeanData__LD_Journey_Link</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Unlink Journey --></label>
+        <name>LeanData__LD_Journey_Unlink</name>
+    </quickActions>
+</CustomObjectTranslation>

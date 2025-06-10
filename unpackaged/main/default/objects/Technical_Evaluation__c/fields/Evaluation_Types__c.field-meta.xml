@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Evaluation_Types__c</fullName>
+    <inlineHelpText>List any evaluation types leveraged. More information about each can be found in the Evaluation Playbook.</inlineHelpText>
+    <label>Evaluation Types</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Comprehensive Demo</fullName>
+                <default>false</default>
+                <label>Comprehensive Demo</label>
+            </value>
+            <value>
+                <fullName>Custom Demo</fullName>
+                <default>false</default>
+                <label>Custom Demo</label>
+            </value>
+            <value>
+                <fullName>Low-Touch POC</fullName>
+                <default>false</default>
+                <label>Low-Touch POC</label>
+            </value>
+            <value>
+                <fullName>Workshop</fullName>
+                <default>false</default>
+                <label>Workshop</label>
+            </value>
+            <value>
+                <fullName>High-Touch POC</fullName>
+                <default>false</default>
+                <label>High-Touch POC</label>
+            </value>
+            <value>
+                <fullName>Self-led</fullName>
+                <default>false</default>
+                <label>Self-led</label>
+            </value>
+            <value>
+                <fullName>RFP</fullName>
+                <default>false</default>
+                <label>RFP</label>
+            </value>
+            <value>
+                <fullName>Architecture Design/Review</fullName>
+                <default>false</default>
+                <label>Architecture Design/Review</label>
+            </value>
+            <value>
+                <fullName>Security Review</fullName>
+                <default>false</default>
+                <label>Security Review</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

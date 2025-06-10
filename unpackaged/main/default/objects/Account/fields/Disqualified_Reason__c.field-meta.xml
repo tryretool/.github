@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disqualified_Reason__c</fullName>
+    <description>If set, the reason why the Account has been disqualified for sale by Retool.</description>
+    <inlineHelpText>If set, the reason why the Account has been disqualified for sale by Retool.</inlineHelpText>
+    <label>Disqualified Reason</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Do Not Sell</fullName>
+                <default>false</default>
+                <label>Do Not Sell</label>
+            </value>
+            <value>
+                <fullName>Competitor</fullName>
+                <default>false</default>
+                <label>Competitor</label>
+            </value>
+            <value>
+                <fullName>Internal</fullName>
+                <default>false</default>
+                <label>Internal</label>
+            </value>
+            <value>
+                <fullName>Test</fullName>
+                <default>false</default>
+                <label>Test</label>
+            </value>
+            <value>
+                <fullName>Defunct</fullName>
+                <default>false</default>
+                <label>Defunct</label>
+            </value>
+            <value>
+                <fullName>Sanctioned Country</fullName>
+                <default>false</default>
+                <label>Sanctioned Country</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

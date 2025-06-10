@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Strategic</fullName>
+        <default>false</default>
+        <label>Strategic</label>
+    </customValue>
+    <customValue>
+        <fullName>Dedicated</fullName>
+        <default>false</default>
+        <label>Dedicated</label>
+    </customValue>
+    <customValue>
+        <fullName>Scale</fullName>
+        <default>false</default>
+        <label>Scale</label>
+    </customValue>
+    <customValue>
+        <fullName>Digital</fullName>
+        <default>false</default>
+        <label>Digital</label>
+    </customValue>
+    <masterLabel>Customer Success Tiers</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

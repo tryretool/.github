@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Custom Metadata Type object to store a Form Rule&#39;s Action metadata</description>
+    <label>Streamline Rule Action</label>
+    <pluralLabel>LegalDesk Rule Actions</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

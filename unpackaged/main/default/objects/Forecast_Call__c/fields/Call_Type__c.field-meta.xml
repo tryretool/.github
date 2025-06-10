@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Type__c</fullName>
+    <description>Forecast Call Type for the current forecast period (i.e. NUE or Churn/Contraction).</description>
+    <inlineHelpText>Forecast Call Type for the current forecast period (i.e. NUE or Churn/Contraction).</inlineHelpText>
+    <label>Call Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Forecast_Call_Types</valueSetName>
+    </valueSet>
+</CustomField>

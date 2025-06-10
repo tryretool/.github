@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moment_Month__c</fullName>
+    <description>Formula that displays the month, the first day of the month and the year of the Moment.
+
+In System Use: Reports
+
+External Systems Utilization: None</description>
+    <formula>DATE(YEAR(Moment_Date__c),MONTH(Moment_Date__c),1)</formula>
+    <inlineHelpText>Formula that displays the month, the first day of the month and the year of the Moment.</inlineHelpText>
+    <label>Moment Month</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

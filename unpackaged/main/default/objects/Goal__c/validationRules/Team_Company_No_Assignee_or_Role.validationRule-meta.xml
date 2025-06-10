@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Team_Company_No_Assignee_or_Role</fullName>
+    <active>true</active>
+    <errorConditionFormula>(
+ ISPICKVAL(Type__c,&quot;Company&quot;) || 
+ ISPICKVAL(Type__c,&quot;Team&quot;)
+) &amp;&amp;
+(
+ NOT(ISBLANK(Assignee__c)) ||
+ NOT(ISBLANK(Assignee_Role__c))
+)</errorConditionFormula>
+    <errorMessage>Team or company goals cannot have an Assignee or Assignee Role</errorMessage>
+</ValidationRule>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Journey_Meeting_Booked_At_S0_Half__c</fullName>
+    <externalId>false</externalId>
+    <formula>TEXT(YEAR( Journey_Meeting_Booked_At_S0__c ))
+
+&amp; &quot;-&quot;&amp;
+
+CASE(Month( Journey_Meeting_Booked_At_S0__c ),
+1, &quot;H1&quot;,
+2, &quot;H1&quot;,
+3, &quot;H1&quot;,
+4, &quot;H1&quot;,
+5, &quot;H1&quot;,
+6, &quot;H1&quot;,
+7, &quot;H2&quot;,
+8, &quot;H2&quot;,
+9, &quot;H2&quot;,
+10, &quot;H2&quot;,
+11, &quot;H2&quot;,
+12, &quot;H2&quot;,
+&quot;None&quot;)</formula>
+    <label>Journey Meeting Booked At (S0) Half</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

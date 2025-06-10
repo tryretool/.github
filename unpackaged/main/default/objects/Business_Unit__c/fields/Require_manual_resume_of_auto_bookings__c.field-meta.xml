@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Require_manual_resume_of_auto_bookings__c</fullName>
+    <businessStatus>DeprecateCandidate</businessStatus>
+    <defaultValue>false</defaultValue>
+    <label>zOLD Require manual resume of auto booki</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

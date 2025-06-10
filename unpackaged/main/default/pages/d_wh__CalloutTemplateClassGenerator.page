@@ -1,0 +1,698 @@
+<apex:page standardController="d_wh__Callout_Template__c" extensions="d_wh.CalloutTemplateClassGenerator">
+
+    <script type="text/javascript" src="/canvas/sdk/js/50.0/controller.js"></script>
+
+    <apex:slds />
+
+    <style>
+        .vf-message-wrapper .message {
+            margin: 0px;
+        }
+        .vf-message-wrapper .message table td:first-child {
+            width: 35px;
+        }
+        .slds-scope .slds-nubbin_left-top:before {
+            top: 1.2rem !important;
+        }
+        .slds-scope .slds-nubbin_left-top:after {
+            top: 1.2rem !important;
+        }
+    </style>
+
+    <div class="slds-scope" style="padding: 20px;">
+
+        <apex:form id="mainForm">
+
+            <apex:outputPanel layout="none" rendered="{!Enabled}">
+
+                <apex:actionStatus id="actionStatus">
+                    <apex:facet name="start">
+                        <div style="width: 100%; height: 100%; position: fixed; z-index: 10000; background-color: rgba(255, 255, 255, 0.5);">
+                            <div role="status" class="slds-spinner slds-spinner_medium">
+                                <span class="slds-assistive-text">{!$Label.Loading}</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </div>
+                    </apex:facet>
+                </apex:actionStatus>
+                
+                <apex:outputPanel layout="none" rendered="{!step == 1}">
+
+                    <div class="slds-page-header slds-page-header_record-home" style="margin-left: auto; margin-right: auto;">
+                        <div class="slds-page-header__row">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span>{!$Label.Generate_Response_Classes} : <b>{!Template.Name}</b></span>
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.Callout_Template_Details}">{!$Label.Class_Names}</span>
+                                                    <br />
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-page-header__col-actions">
+                                <div class="slds-page-header__controls">
+                                    <div class="slds-page-header__control">
+                                        <ul class="slds-button-group-list">
+                                            <li>
+                                                <apex:commandButton action="{!Cancel}" value="{!$Label.d_wh__Cancel}" styleClass="slds-button slds-button_neutral" />
+                                            </li>
+                                            <li>
+                                                <apex:commandButton action="{!ContinueToStep2}" value="{!$Label.d_wh__Continue}" styleClass="slds-button slds-button_brand" reRender="mainForm" status="actionStatus" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                            <div class="slds-page-header__col-details">
+
+                                <br />
+                                <div style="font-weight: bold; font-size: 110%; background-color: #EEEEEE; padding: 15px; border: solid 1px #DDDDDD;">
+                                    <apex:outputText escape="false" value="{!$Label.d_wh__Class_Generator_Message_1}" />
+                                    <br /><br />
+                                    <a target="_blank" href="{!$Label.Class_Generator_User_Guide_Link}">See more details in the User Guide</a>
+                                </div>
+                                <br />
+
+                                <div class="vf-message-wrapper">
+                                    <apex:pageMessages escape="false" />
+                                </div>
+                                <br />
+                                
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col">
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="{!$Label.JSON_Node}">{!$Label.JSON_Node}</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="{!$Label.Class_Name}">{!$Label.Class_Name}</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="{!$Label.Test_Class_Name}">{!$Label.Test_Class_Name}</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="slds-hint-parent">
+                                            <td>
+                                                <apex:outputPanel rendered="{!InvocableClass.Status == 'OK'}">
+                                                    <img title="" src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/check.svg')}" 
+                                                                onmouseover="document.getElementById('class-msg-popup-IN').style.display = 'block';" 
+                                                                onmouseout="document.getElementById('class-msg-popup-IN').style.display = 'none';"
+                                                                style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(51%) sepia(17%) saturate(6409%) hue-rotate(84deg) brightness(126%) contrast(117%);" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!InvocableClass.Status == 'Warning'}">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/warning.svg')}" 
+                                                                onmouseover="document.getElementById('class-msg-popup-IN').style.display = 'block';" 
+                                                                onmouseout="document.getElementById('class-msg-popup-IN').style.display = 'none';"
+                                                                style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(1220%) hue-rotate(1deg) brightness(103%) contrast(104%);" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!InvocableClass.Status == 'Error'}">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/error.svg')}" 
+                                                                onmouseover="document.getElementById('class-msg-popup-IN').style.display = 'block';" 
+                                                                onmouseout="document.getElementById('class-msg-popup-IN').style.display = 'none';"
+                                                                style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(17%) sepia(88%) saturate(7480%) hue-rotate(1deg) brightness(109%) contrast(117%);" />
+                                                </apex:outputPanel>
+
+                                                <div class="slds-popover slds-nubbin_left-top" role="dialog" style="position: absolute; left: 60px; top: 0px; width: auto; display: none;" id="class-msg-popup-IN">
+                                                    <div class="slds-popover__body">
+                                                        <div class="slds-media">
+                                                            <div class="slds-media__body">
+                                                                <p>{!InvocableClass.Message}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$Label.JSON_Node}">
+                                                Invocable class
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td data-label="{!$Label.d_wh__Class_Name}">
+                                                <apex:inputText value="{!InvocableClass.ClassName}" styleClass="slds-input" />
+                                            </td>
+                                            <td data-label="{!$Label.d_wh__Test_Class_Name}">
+                                                <apex:inputText value="{!InvocableClass.TestClassName}" styleClass="slds-input" />
+                                            </td>
+                                        </tr>
+                                        <apex:variable var="classIndex" value="{!0}" />
+                                        <apex:repeat value="{!Classes}" var="classVar">
+                                            <tr class="slds-hint-parent">
+                                                <td>
+                                                    <apex:outputPanel rendered="{!classVar.Status == 'OK'}">
+                                                        <img title="" src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/check.svg')}" 
+                                                                    onmouseover="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'block';" 
+                                                                    onmouseout="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'none';"
+                                                                    style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(51%) sepia(17%) saturate(6409%) hue-rotate(84deg) brightness(126%) contrast(117%);" />
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel rendered="{!classVar.Status == 'Warning'}">
+                                                        <img src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/warning.svg')}" 
+                                                                    onmouseover="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'block';" 
+                                                                    onmouseout="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'none';"
+                                                                    style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(1220%) hue-rotate(1deg) brightness(103%) contrast(104%);" />
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel rendered="{!classVar.Status == 'Error'}">
+                                                        <img src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/error.svg')}" 
+                                                                    onmouseover="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'block';" 
+                                                                    onmouseout="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'none';"
+                                                                    style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(17%) sepia(88%) saturate(7480%) hue-rotate(1deg) brightness(109%) contrast(117%);" />
+                                                    </apex:outputPanel>
+
+                                                    <div class="slds-popover slds-nubbin_left-top" role="dialog" style="position: absolute; left: 60px; top: 0px; width: auto; display: none;" id="class-msg-popup-{!classIndex}">
+                                                        <div class="slds-popover__body">
+                                                            <div class="slds-media">
+                                                                <div class="slds-media__body">
+                                                                    <p>{!classVar.Message}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td data-label="{!$Label.JSON_Node}">
+                                                    <apex:outputPanel rendered="{!classVar.NodePath == 'ROOT'}">
+                                                        Main Response Class
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel rendered="{!classVar.NodePath != 'ROOT'}">
+                                                        Child Node Class: <b>{!classVar.NodePathPre}</b>
+                                                    </apex:outputPanel>
+                                                </td>
+                                                <td>
+                                                    <apex:outputPanel layout="none" rendered="{!classVar.NameValid}">
+                                                        <a onclick="switchFields('{!classIndex}')">
+                                                            <img id="fields-switcher-{!classIndex}" src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/chevronright.svg')}" 
+                                                                    style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(24%) sepia(0%) saturate(1%) hue-rotate(157deg) brightness(100%) contrast(89%);" />
+                                                        </a>
+                                                    </apex:outputPanel>
+                                                </td>
+                                                <apex:outputPanel layout="none" rendered="{!classVar.NameValid}">
+                                                    <td data-label="{!$Label.d_wh__Class_Name}">
+                                                        <apex:inputText value="{!classVar.ClassName}" styleClass="slds-input" />
+                                                    </td>
+                                                    <td data-label="{!$Label.d_wh__Test_Class_Name}">
+                                                        <apex:inputText value="{!classVar.TestClassName}" styleClass="slds-input" />
+                                                    </td>
+                                                </apex:outputPanel>
+                                                <apex:outputPanel layout="none" rendered="{!!classVar.NameValid}">
+                                                    <td colspan="2">
+                                                        <span style="color: red;"><apex:outputText value="{!classVar.Message}" /></span>
+                                                    </td>
+                                                </apex:outputPanel>
+                                            </tr>
+                                            <apex:outputPanel layout="none" rendered="{!classVar.NameValid}">
+                                                <tr class="slds-hint-parent" id="extra-fields-{!classIndex}" style="display:none;">
+                                                    <td colspan="5" style="padding-left: 150px;">
+                                                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                                            <thead>
+                                                                <tr class="slds-line-height_reset">
+                                                                    <th class="" scope="col">
+                                                                        <div class="slds-truncate" title="{!$Label.d_wh__JSON_Node}">{!$Label.d_wh__JSON_Node}</div>
+                                                                    </th>
+                                                                    <th class="" scope="col">
+                                                                        <div class="slds-truncate" title="{!$Label.d_wh__Node_Data_Type}">{!$Label.d_wh__Node_Data_Type}</div>
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <apex:repeat value="{!classVar.Fields}" var="fieldVar">
+                                                                    <tr class="slds-hint-parent">
+                                                                        <td>
+                                                                            {!fieldVar.Name}
+                                                                        </td>
+                                                                        <td>
+                                                                            <apex:outputText rendered="{!fieldVar.NameValid}" value="{!fieldVar.DataType}" />
+                                                                            <apex:outputText rendered="{!!fieldVar.NameValid}" value="{!fieldVar.NameInvalidReason}" style="color: red;" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </apex:repeat>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </apex:outputPanel>
+                                            <apex:variable var="classIndex" value="{!classIndex + 1}" />
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+
+                                <script>
+                                    function switchFields(index) {
+                                        let row = document.getElementById('extra-fields-' + index);
+                                        let img = document.getElementById('fields-switcher-' + index);
+                                        if (row.style.display == 'none') {
+                                            row.style.display = 'table-row';
+                                            img.src = "{!URLFOR($Resource.DWDesign, '/slds-icons/utility/chevrondown.svg')}";
+                                        } else {
+                                            row.style.display = 'none';
+                                            img.src = "{!URLFOR($Resource.DWDesign, '/slds-icons/utility/chevronright.svg')}";
+                                        }
+                                    }
+                                </script>
+
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+
+                </apex:outputPanel>
+
+                <apex:outputPanel layout="none" rendered="{!step == 2}">
+
+                    <div class="slds-page-header slds-page-header_record-home" style="margin-left: auto; margin-right: auto;">
+                        <div class="slds-page-header__row">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span>{!$Label.Generate_Response_Classes} : <b>{!Template.Name}</b></span>
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.Callout_Template_Details}">{!$Label.Class_Names}</span>
+                                                    <br />
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-page-header__col-actions">
+                                <div class="slds-page-header__controls">
+                                    <div class="slds-page-header__control">
+                                        <ul class="slds-button-group-list">
+                                            <li>
+                                                <apex:commandButton action="{!Cancel}" value="{!$Label.d_wh__Cancel}" styleClass="slds-button slds-button_neutral" />
+                                            </li>
+                                            <li>
+                                                <apex:commandButton action="{!ContinueToStep3}" value="{!$Label.d_wh__Continue}" styleClass="slds-button slds-button_brand" reRender="mainForm" status="actionStatus" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                            <div class="slds-page-header__col-details">
+
+                                <br />
+                                <div style="font-weight: bold; font-size: 110%; background-color: #EEEEEE; padding: 15px; border: solid 1px #DDDDDD;">
+                                    <apex:outputText escape="false" value="{!$Label.d_wh__Class_Generator_Message_2}" />
+                                    <br /><br />
+                                    <a target="_blank" href="{!$Label.Class_Generator_User_Guide_Link}">See more details in the User Guide</a>
+                                </div>
+                                <br />
+                                
+                                <div class="vf-message-wrapper">
+                                    <apex:pageMessages escape="false" />
+                                </div>
+                                <br />
+                                
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col">
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="{!$Label.JSON_Node}">{!$Label.JSON_Node}</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="{!$Label.Class_Name}">{!$Label.Class_Name}</div>
+                                            </th>
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="{!$Label.Test_Class_Name}">{!$Label.Test_Class_Name}</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="slds-hint-parent">
+                                            <td>
+                                                <apex:outputPanel rendered="{!InvocableClass.Status == 'OK'}">
+                                                    <img title="" src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/check.svg')}" 
+                                                                onmouseover="document.getElementById('class-msg-popup-IN').style.display = 'block';" 
+                                                                onmouseout="document.getElementById('class-msg-popup-IN').style.display = 'none';"
+                                                                style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(51%) sepia(17%) saturate(6409%) hue-rotate(84deg) brightness(126%) contrast(117%);" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!InvocableClass.Status == 'Warning'}">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/warning.svg')}" 
+                                                                onmouseover="document.getElementById('class-msg-popup-IN').style.display = 'block';" 
+                                                                onmouseout="document.getElementById('class-msg-popup-IN').style.display = 'none';"
+                                                                style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(1220%) hue-rotate(1deg) brightness(103%) contrast(104%);" />
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!InvocableClass.Status == 'Error'}">
+                                                    <img src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/error.svg')}" 
+                                                                onmouseover="document.getElementById('class-msg-popup-IN').style.display = 'block';" 
+                                                                onmouseout="document.getElementById('class-msg-popup-IN').style.display = 'none';"
+                                                                style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(17%) sepia(88%) saturate(7480%) hue-rotate(1deg) brightness(109%) contrast(117%);" />
+                                                </apex:outputPanel>
+
+                                                <div class="slds-popover slds-nubbin_left-top" role="dialog" style="position: absolute; left: 60px; top: 0px; width: auto; display: none;" id="class-msg-popup-IN">
+                                                    <div class="slds-popover__body">
+                                                        <div class="slds-media">
+                                                            <div class="slds-media__body">
+                                                                <p>{!InvocableClass.Message}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td data-label="{!$Label.JSON_Node}">
+                                                Invocable class
+                                            </td>
+                                            <td data-label="{!$Label.d_wh__Class_Name}">
+                                                {!InvocableClass.ClassName}
+                                            </td>
+                                            <td data-label="{!$Label.d_wh__Test_Class_Name}">
+                                                {!InvocableClass.TestClassName}
+                                            </td>
+                                        </tr>
+                                        <apex:variable var="classIndex" value="{!0}" />
+                                        <apex:repeat value="{!Classes}" var="classVar">
+                                            <apex:outputPanel layout="none" rendered="{!classVar.NameValid}">
+                                                <tr class="slds-hint-parent">
+                                                    <td>
+                                                        <apex:outputPanel rendered="{!classVar.Status == 'OK'}">
+                                                            <img title="" src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/check.svg')}" 
+                                                                        onmouseover="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'block';" 
+                                                                        onmouseout="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'none';"
+                                                                        style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(51%) sepia(17%) saturate(6409%) hue-rotate(84deg) brightness(126%) contrast(117%);" />
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{!classVar.Status == 'Warning'}">
+                                                            <img src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/warning.svg')}" 
+                                                                        onmouseover="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'block';" 
+                                                                        onmouseout="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'none';"
+                                                                        style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(1220%) hue-rotate(1deg) brightness(103%) contrast(104%);" />
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{!classVar.Status == 'Error'}">
+                                                            <img src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/error.svg')}" 
+                                                                        onmouseover="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'block';" 
+                                                                        onmouseout="document.getElementById('class-msg-popup-{!classIndex}').style.display = 'none';"
+                                                                        style="width: 20px; height:20px; vertical-align: baseline; filter: brightness(0) saturate(100%) invert(17%) sepia(88%) saturate(7480%) hue-rotate(1deg) brightness(109%) contrast(117%);" />
+                                                        </apex:outputPanel>
+
+                                                        <div class="slds-popover slds-nubbin_left-top" role="dialog" style="position: absolute; left: 60px; top: 0px; width: auto; display: none;" id="class-msg-popup-{!classIndex}">
+                                                            <div class="slds-popover__body">
+                                                                <div class="slds-media">
+                                                                    <div class="slds-media__body">
+                                                                        <p>{!classVar.Message}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td data-label="{!$Label.JSON_Node}">
+                                                        <apex:outputPanel rendered="{!classVar.NodePath == 'ROOT'}">
+                                                            Main Response Class
+                                                        </apex:outputPanel>
+                                                        <apex:outputPanel rendered="{!classVar.NodePath != 'ROOT'}">
+                                                            Child Node Class: <b>{!classVar.NodePathPre}</b>
+                                                        </apex:outputPanel>
+                                                    </td>
+                                                    <td data-label="{!$Label.d_wh__Class_Name}">
+                                                        {!classVar.ClassName}
+                                                    </td>
+                                                    <td data-label="{!$Label.d_wh__Test_Class_Name}">
+                                                        {!classVar.TestClassName}
+                                                    </td>
+                                                </tr>
+                                            </apex:outputPanel>
+                                            <apex:variable var="classIndex" value="{!classIndex + 1}" />
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+
+                </apex:outputPanel>
+
+                <apex:outputPanel layout="none" rendered="{!step == 3}">
+
+                    <div class="slds-page-header slds-page-header_record-home" style="margin-left: auto; margin-right: auto;">
+                        <div class="slds-page-header__row">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span>{!$Label.Generate_Response_Classes} : <b>{!Template.Name}</b></span>
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.Callout_Template_Details}">{!$Label.Class_Names}</span>
+                                                    <br />
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-page-header__col-actions">
+                                <div class="slds-page-header__controls">
+                                    <div class="slds-page-header__control">
+                                        <ul class="slds-button-group-list">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                            <div class="slds-page-header__col-details">
+
+                                <br />
+                                <div style="font-weight: bold; font-size: 110%; background-color: #EEEEEE; padding: 15px; border: solid 1px #DDDDDD;">
+                                    <apex:outputText escape="false" value="{!$Label.d_wh__Class_Generator_Message_3}" />
+                                    <br /><br />
+                                    <a target="_blank" href="{!$Label.Class_Generator_User_Guide_Link}">See more details in the User Guide</a>
+                                </div>
+                                <br />
+                                
+                                <apex:outputPanel id="canvasAppRender">
+                                    <apex:outputPanel rendered="{!NOT(Deploying)}">
+                                        <apex:canvasApp developerName="Declarative_Webhooks_Relay_Server" height="300px" width="100%" parameters="{!ClassesJSON}" />
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!Deploying}">
+                                        <apex:canvasApp developerName="Declarative_Webhooks_Relay_Server" height="300px" width="100%" parameters="{!RefIdJSON}" />
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+
+                                <script>
+                                    Sfdc.canvas.controller.subscribe({name : 'dwrs.refresh', onData : function (e) {
+                                        DeploymentStarted(e.refId);
+                                    }});
+                                    Sfdc.canvas.controller.subscribe({name : 'dwrs.failed', onData : function (e) {
+                                        DeploymentFailed(e.errors);
+                                    }});
+                                    Sfdc.canvas.controller.subscribe({name : 'dwrs.success', onData : function (e) {
+                                        DeploymentSuccess();
+                                    }});
+                                </script>
+
+                                <apex:actionFunction name="DeploymentStarted" action="{!DeploymentStarted}" rerender="canvasAppRender">
+                                    <apex:param name="refId" value="" />
+                                </apex:actionFunction>
+
+                                <apex:actionFunction name="DeploymentFailed" action="{!DeploymentFailed}" reRender="mainForm" status="actionStatus">
+                                    <apex:param name="errors" value="" />
+                                </apex:actionFunction>
+
+                                <apex:actionFunction name="DeploymentSuccess" action="{!DeploymentSuccess}" reRender="mainForm" status="actionStatus" />
+
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </apex:outputPanel>
+
+                <apex:outputPanel layout="none" rendered="{!step == 4}">
+
+                    <div class="slds-page-header slds-page-header_record-home" style="margin-left: auto; margin-right: auto;">
+                        <div class="slds-page-header__row">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span>{!$Label.Generate_Response_Classes} : <b>{!Template.Name}</b></span>
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.Callout_Template_Details}">{!$Label.Class_Names}</span>
+                                                    <br />
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-page-header__col-actions">
+                                <div class="slds-page-header__controls">
+                                    <div class="slds-page-header__control">
+                                        <ul class="slds-button-group-list">
+                                            <li>
+                                                <apex:commandButton action="{!Cancel}" value="{!$Label.d_wh__Finished}" styleClass="slds-button slds-button_brand" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                            <div class="slds-page-header__col-details">
+
+                                <br /><br />
+
+                                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                                    <span class="slds-assistive-text">error</span>
+                                    <h2>{!$Label.Deployment_Failed_See_Errors_Below}</h2>
+                                </div>
+
+                                <br /><br />
+
+                                <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-label="Example table of Opportunities with a single column">
+                                    <thead>
+                                        <tr class="slds-line-height_reset">
+                                            <th class="" scope="col">
+                                                <div class="slds-truncate" title="{!$Label.Error}">{!$Label.Error}</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!errorsFormatted}" var="err">
+                                            <tr class="slds-hint-parent">
+                                                <td data-label="{!$Label.d_wh__Error}">
+                                                    <div class="slds-truncate" title="Cloudhub">
+                                                        {!err}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </apex:outputPanel>
+
+                <apex:outputPanel layout="none" rendered="{!step == 5}">
+
+                    <div class="slds-page-header slds-page-header_record-home" style="margin-left: auto; margin-right: auto;">
+                        <div class="slds-page-header__row">
+                            <div class="slds-page-header__col-title">
+                                <div class="slds-media">
+                                    <div class="slds-media__body">
+                                        <div class="slds-page-header__name">
+                                            <div class="slds-page-header__name-title">
+                                                <h1>
+                                                    <span>{!$Label.Generate_Response_Classes} : <b>{!Template.Name}</b></span>
+                                                    <span class="slds-page-header__title slds-truncate" title="{!$Label.Callout_Template_Details}">{!$Label.Class_Names}</span>
+                                                    <br />
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-page-header__col-actions">
+                                <div class="slds-page-header__controls">
+                                    <div class="slds-page-header__control">
+                                        <ul class="slds-button-group-list">
+                                            <li>
+                                                <apex:commandButton action="{!Cancel}" value="{!$Label.d_wh__Finished}" styleClass="slds-button slds-button_brand" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                            <div class="slds-page-header__col-details">
+
+                                <br /><br />
+                                <div class="slds-notify slds-notify_alert" style="background-color: green;">
+                                    <span class="slds-assistive-text">error</span>
+                                    <h2>Deployment Succeeded!</h2>
+                                </div>
+                                <br /><br />
+
+                                <br />
+                                <div style="font-weight: bold; font-size: 110%; background-color: #EEEEEE; padding: 15px; border: solid 1px #DDDDDD;">
+                                    <apex:outputText escape="false" value="{!$Label.d_wh__Class_Generator_Message_5}" />
+                                    <br /><br />
+                                    "DW Callout : {!Template.Name}"
+                                    <br /><br />
+                                    <a target="_blank" href="{!$Label.Class_Generator_User_Guide_Link}">See more details in the User Guide</a>
+                                </div>
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </apex:outputPanel>
+
+            </apex:outputPanel>
+
+            <apex:outputPanel layout="none" rendered="{!NOT(Enabled)}">
+
+                <div class="slds-page-header slds-page-header_record-home">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <div class="slds-page-header__name">
+                                        <div class="slds-page-header__name-title">
+                                            <h1>
+                                                <span>{!$Label.Generate_Response_Classes}</span>
+                                                <br />
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-page-header__col-actions">
+                            <div class="slds-page-header__controls">
+                                <div class="slds-page-header__control">
+                                    <ul class="slds-button-group-list">
+                                        <li>
+                                            <apex:commandButton action="{!Cancel}" value="{!$Label.d_wh__Cancel}" styleClass="slds-button slds-button_neutral" />
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                        <div class="slds-page-header__col-details">
+
+                            <div style="text-align: center; font-size: 20px; font-weight: bold; margin: 30px;">
+                                <apex:outputText value="{!$Label.d_wh__Flow_Response_Not_Enabled}" escape="false" />
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </apex:outputPanel>
+
+        </apex:form>
+    </div>
+</apex:page>

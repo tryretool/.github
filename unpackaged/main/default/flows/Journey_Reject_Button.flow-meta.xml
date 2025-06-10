@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <assignments>
+        <name>Assign_Rejected</name>
+        <label>Assign Rejected</label>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Rejected</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Rejected_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Rejected_Reason</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Ended_Reason_Details__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Rejected_Reason_Details</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Confirmation_Screen</targetReference>
+        </connector>
+    </assignments>
+    <choices>
+        <name>Already_in_sales_conversation</name>
+        <choiceText>Already in sales conversation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Already in sales conversation	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Bad_Data_Junk_Data</name>
+        <choiceText>Bad Data - Junk Data</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Bad Data - Junk Data	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Bad_Data_Moved_to_correct_account</name>
+        <choiceText>Bad Data - Moved to correct account</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Bad Data - Moved to correct account	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Bad_Data_Not_worthwhile_target_company</name>
+        <choiceText>Bad Data - Not worthwhile target company</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Bad Data - Not worthwhile target company	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Bad_Data_Not_worthwhile_target_individual</name>
+        <choiceText>Bad Data - Not worthwhile target individual</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Bad Data - Not worthwhile target individual	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Competitor</name>
+        <choiceText>Competitor</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Competitor</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Consultancy_Agency</name>
+        <choiceText>Consultancy/Agency</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Consultancy/Agency	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Legal_Country_Restriction</name>
+        <choiceText>Legal - Country Restriction</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Legal - Country Restriction	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Legal_Entity_Restriction</name>
+        <choiceText>Legal - Entity Restriction</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Legal - Entity Restriction	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Opted_Out</name>
+        <choiceText>Opted Out</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Opted Out	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Retool_Internal</name>
+        <choiceText>Retool Internal</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Retool Internal	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Student</name>
+        <choiceText>Student</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Student</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>Can_Reject</name>
+        <label>Can Reject?</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <defaultConnector>
+            <targetReference>Cannot_Reject_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Reject</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Is_Closed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Identified</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Rejected_Screen</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Rejects the open `Identified` Stage Journey.</description>
+    <environments>Default</environments>
+    <interviewLabel>Journey - Reject Button {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Journey - Reject Button</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordUpdates>
+        <name>Update_Journey</name>
+        <label>Update Journey</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <connector>
+            <targetReference>Sucess_Screen</targetReference>
+        </connector>
+        <inputReference>recordId</inputReference>
+    </recordUpdates>
+    <screens>
+        <name>Cannot_Reject_Screen</name>
+        <label>Cannot Reject</label>
+        <locationX>314</locationX>
+        <locationY>242</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Cannot_Reject_Text</name>
+            <fieldText>&lt;p&gt;Journey must be &lt;strong&gt;open&lt;/strong&gt; and in the &lt;strong&gt;Identified&lt;/strong&gt; Stage in order to reject.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please reach out to the Revenue Operations team for assistance (&lt;em&gt;#rev_ops-team&lt;/em&gt;)&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Confirmation_Screen</name>
+        <label>Confirmation Screen</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Update_Journey</targetReference>
+        </connector>
+        <fields>
+            <name>Confirmation_Text</name>
+            <fieldText>&lt;p&gt;Are you sure you want to reject &lt;a href=&quot;https://retool.lightning.force.com/lightning/r/Journey__c/{!recordId.Id}/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;{!recordId.Name}&lt;/strong&gt;&lt;/a&gt; with the following &lt;strong&gt;Rejected&lt;/strong&gt; &lt;strong&gt;Reason&lt;/strong&gt; and &lt;strong&gt;details&lt;/strong&gt;?&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Rejected_Reason_Text</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Rejected Reason&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!Rejected_Reason}&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Rejected Reason Details&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;{!Rejected_Reason_Details}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Rejected_Screen</name>
+        <label>Rejected Screen</label>
+        <locationX>50</locationX>
+        <locationY>242</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Assign_Rejected</targetReference>
+        </connector>
+        <fields>
+            <name>Rejected_Reason</name>
+            <choiceReferences>Already_in_sales_conversation</choiceReferences>
+            <choiceReferences>Bad_Data_Junk_Data</choiceReferences>
+            <choiceReferences>Bad_Data_Moved_to_correct_account</choiceReferences>
+            <choiceReferences>Bad_Data_Not_worthwhile_target_company</choiceReferences>
+            <choiceReferences>Bad_Data_Not_worthwhile_target_individual</choiceReferences>
+            <choiceReferences>Competitor</choiceReferences>
+            <choiceReferences>Consultancy_Agency</choiceReferences>
+            <choiceReferences>Legal_Country_Restriction</choiceReferences>
+            <choiceReferences>Legal_Entity_Restriction</choiceReferences>
+            <choiceReferences>Retool_Internal</choiceReferences>
+            <choiceReferences>Student</choiceReferences>
+            <choiceReferences>Opted_Out</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Rejected Reason</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Rejected_Reason_Details</name>
+            <dataType>String</dataType>
+            <fieldText>Rejected Reason Details</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Sucess_Screen</name>
+        <label>Sucess Screen</label>
+        <locationX>50</locationX>
+        <locationY>674</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Copy_1_of_Confirmation_Text</name>
+            <fieldText>&lt;p&gt;&lt;a href=&quot;https://retool.lightning.force.com/lightning/r/Journey__c/{!recordId.Id}/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;﻿&lt;strong&gt;{!recordId.Name}&lt;/strong&gt;&lt;/a&gt;&lt;strong&gt; &lt;/strong&gt;is now&lt;strong&gt; &lt;/strong&gt;rejected!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Can_Reject</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Journey__c</objectType>
+    </variables>
+</Flow>

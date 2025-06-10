@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Order - Committed - Renewal v4</label>
+    <protected>false</protected>
+    <values>
+        <field>Id__c</field>
+        <value xsi:type="xsd:string">0c50297f-13a6-4308-afc1-a439d0a46331</value>
+    </values>
+    <values>
+        <field>Status__c</field>
+        <value xsi:type="xsd:string">active</value>
+    </values>
+</CustomMetadata>

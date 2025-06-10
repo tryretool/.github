@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BU_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(Subscription_Typ__c,
+ &quot;Self Service&quot;,IF(MRR__c &gt; 0,&quot;Active&quot;,&quot;Churned&quot;),
+ IF(
+  Most_Recent_Base_Opportunity__r.IsLost__c || (Most_Recent_Base_Opportunity__r.Debooked_deal__c &amp;&amp; Annualized_Amount__c = 0 ),
+  &quot;Churned&quot;,
+  &quot;Active&quot;
+ )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

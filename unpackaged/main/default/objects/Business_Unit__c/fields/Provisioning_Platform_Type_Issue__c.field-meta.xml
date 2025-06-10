@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Provisioning_Platform_Type_Issue__c</fullName>
+    <formula>IF(
+  BU_Status__c != &quot;Active&quot;,
+  FALSE,
+  IF(
+    CASE(Platform_Type__c,
+      &quot;Self-hosted&quot;,IF(Num_Retool_Cloud_Orgs__c &gt; 0 || Num_Active_Retool_Licenses__c &lt; 1 || Num_Active_Air_gapped_Keys__c &gt; 0,1,0),
+      &quot;Cloud&quot;,IF(Num_Retool_Cloud_Orgs__c &lt; 1 || Num_Active_Retool_Licenses__c &gt; 0 || Num_Active_Air_gapped_Keys__c &gt; 0,1,0),
+      &quot;Managed Cloud&quot;,IF(Num_Retool_Cloud_Orgs__c &gt; 0 || Num_Active_Retool_Licenses__c &lt; 1 || Num_Active_Air_gapped_Keys__c &gt; 0,1,0),
+      &quot;Air-gapped&quot;,IF(Num_Retool_Cloud_Orgs__c &gt; 0 || Num_Active_Retool_Licenses__c &lt; 1 || Num_Active_Air_gapped_Keys__c &lt; 1,1,0),
+      0
+    )=1,
+    TRUE,
+    FALSE
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Provisioning: Platform Type Issue?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Owner_Region_Subteam__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL(Owner_Region__c,&quot;&quot;),&quot;XXXX&quot;,TEXT(Owner_Region__c))&amp;
+&quot;-&quot;&amp;
+IF(ISPICKVAL(Owner_Subteam__c,&quot;&quot;),&quot;XXX&quot;,TEXT(Owner_Subteam__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Owner Region-Subteam</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

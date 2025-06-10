@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Rep Weekly Quarter Call (GMT)</label>
+    <protected>false</protected>
+    <values>
+        <field>Call_App_URL__c</field>
+        <value xsi:type="xsd:string">https://admin.retool.dev/apps/1696cd9a-c427-11ee-88f8-6ffcb699cf08/Adam/Sales%20Shotcaller</value>
+    </values>
+    <values>
+        <field>Call_Submit_Deadline_Hour__c</field>
+        <value xsi:type="xsd:double">19.0</value>
+    </values>
+    <values>
+        <field>Is_Enabled__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+</CustomMetadata>

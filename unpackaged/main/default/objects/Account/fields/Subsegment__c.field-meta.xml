@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subsegment__c</fullName>
+    <description>Classifies the Subsegment of the Account (i.e. MMK1, MMK2, ENT1, ENT2), based on number of employees.</description>
+    <externalId>false</externalId>
+    <formula>CASE(Segment__c,
+  &quot;GRW&quot;,&quot;GRW&quot;,
+  &quot;STR&quot;,&quot;STR&quot;,
+  &quot;MMK&quot;,IF(NumberOfEmployees&lt;=500,&quot;MMK1&quot;,&quot;MMK2&quot;),
+  &quot;ENT&quot;,IF(NumberOfEmployees&lt;=5000,&quot;ENT1&quot;,&quot;ENT2&quot;),
+  NULL
+)</formula>
+    <inlineHelpText>Classifies the Subsegment of the Account (i.e. MMK1, MMK2, ENT1, ENT2), based on number of employees.</inlineHelpText>
+    <label>Subsegment</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

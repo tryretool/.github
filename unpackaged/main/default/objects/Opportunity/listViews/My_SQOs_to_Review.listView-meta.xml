@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_SQOs_to_Review</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>SQO_Review_Priority__c</columns>
+    <columns>First_Contact_Role__c</columns>
+    <columns>Sales_Qualified_At__c</columns>
+    <columns>Critical_Event_Type__c</columns>
+    <columns>Critical_Event_Link__c</columns>
+    <columns>Critical_Event_Comments__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>SQO_Reviewed_By__c</field>
+        <operation>equals</operation>
+        <value>$USER</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.Enterprise</value>
+    </filters>
+    <label>My SQOs to Review</label>
+</ListView>

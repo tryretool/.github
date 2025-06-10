@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Used to validate existing Domain Maps associated with Account records. --></help>
+        <label><!-- Domain Validation --></label>
+        <name>Domain_Validation__c</name>
+        <picklistValues>
+            <masterLabel>Confirmed</masterLabel>
+            <translation><!-- Confirmed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid Domain</masterLabel>
+            <translation><!-- Invalid Domain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid Domain/Website</masterLabel>
+            <translation><!-- Invalid Domain/Website --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invalid Website</masterLabel>
+            <translation><!-- Invalid Website --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Review</masterLabel>
+            <translation><!-- Pending Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trash</masterLabel>
+            <translation><!-- Trash --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wrong Company</masterLabel>
+            <translation><!-- Wrong Company --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

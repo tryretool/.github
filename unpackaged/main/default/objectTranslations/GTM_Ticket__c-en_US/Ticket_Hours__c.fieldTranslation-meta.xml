@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Extracts the number of estimated hours from the &apos;Priority&apos; picklist value. --></help>
+        <label><!-- Ticket Hours --></label>
+        <name>Ticket_Hours__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Forecasted_Days_to_Activation__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Customer_Activation_Deadline__c),NULL,Customer_Activation_Deadline__c-Business_Unit__r.Originating_Opportunity__r.CloseDate)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Forecasted Days to Activation</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

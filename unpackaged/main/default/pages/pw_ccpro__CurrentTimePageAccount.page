@@ -1,0 +1,3 @@
+<apex:page standardController="Account">
+    <c:CurrentTime ZipCode="{!Account.BillingPostalCode}" State="{!Account.BillingState}" Country="{!Account.BillingCountry}" />
+</apex:page>

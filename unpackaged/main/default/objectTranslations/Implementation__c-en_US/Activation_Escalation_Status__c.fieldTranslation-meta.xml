@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Activation Escalation Status --></label>
+        <name>Activation_Escalation_Status__c</name>
+        <picklistValues>
+            <masterLabel>Complete - No Reply</masterLabel>
+            <translation><!-- Complete - No Reply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Complete - Reply at Stage 1</masterLabel>
+            <translation><!-- Complete - Reply at Stage 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Complete - Reply at Stage 2</masterLabel>
+            <translation><!-- Complete - Reply at Stage 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalation 1 Sent</masterLabel>
+            <translation><!-- Escalation 1 Sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Escalation 2 Sent</masterLabel>
+            <translation><!-- Escalation 2 Sent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Triggered</masterLabel>
+            <translation><!-- Triggered --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

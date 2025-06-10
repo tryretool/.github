@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Toggles to show or hide the &quot;powered by&quot; logo at the top right corner on dupes pages --></help>
+        <label><!-- Hidden --></label>
+        <name>UniqueEntry__hide_logo__c</name>
+    </CustomFieldTranslation>

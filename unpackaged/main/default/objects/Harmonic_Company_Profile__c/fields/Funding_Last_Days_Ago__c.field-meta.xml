@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Funding_Last_Days_Ago__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(Funding_Last_At__c),NULL,TODAY()-Funding_Last_At__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The number of days prior to today&#39;s date when the last funding round occurred</inlineHelpText>
+    <label>Funding: Last Days Ago</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

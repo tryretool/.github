@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company__c</fullName>
+    <description>Primarily used in Chili Piper forms to store `Company Name` values. Alternative text field used due to standard Name field being a lookup relationship (Id type) that cannot be edited from a text company name value.
+
+External Systems Utilization: Chili Piper</description>
+    <inlineHelpText>Primarily used in Chili Piper forms to store `Company Name` values.</inlineHelpText>
+    <label>Company</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>TextArea</type>
+</CustomField>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Call_Type_AE_Month__c</fullName>
+    <description>Indicates whether the opportunity was included in the AE Month Forecast Call for the given snapshot week.</description>
+    <inlineHelpText>Indicates whether the opportunity was included in the AE Month Forecast Call for the given snapshot week.</inlineHelpText>
+    <label>zCall Type: AE (Month)</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Call</fullName>
+                <default>false</default>
+                <label>Call</label>
+            </value>
+            <value>
+                <fullName>Best Case</fullName>
+                <default>false</default>
+                <label>Best Case</label>
+            </value>
+            <value>
+                <fullName>Omitted</fullName>
+                <default>false</default>
+                <label>Omitted</label>
+            </value>
+            <value>
+                <fullName>New</fullName>
+                <default>false</default>
+                <label>New</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

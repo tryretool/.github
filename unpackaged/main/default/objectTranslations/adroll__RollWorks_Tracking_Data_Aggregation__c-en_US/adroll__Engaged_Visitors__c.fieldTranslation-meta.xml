@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Engaged Visitors --></help>
+        <label><!-- Engaged Visitors (Deprecated) --></label>
+        <name>adroll__Engaged_Visitors__c</name>
+    </CustomFieldTranslation>

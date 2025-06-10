@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CP_Don_t_Show_Calendar__c</fullName>
+    <formula>IF(
+ISPICKVAL(Employee_Picklist__c,&quot;1-25&quot;) || ISPICKVAL(Employee_Picklist__c,&quot;26-50&quot;) || ISBLANK(TEXT( Employee_Picklist__c)) || ISPICKVAL(Email_Domain_Type__c, &quot;Public&quot;) || ISPICKVAL(Email_Domain_Type__c, &quot;Education&quot;)
+
+,
+
+TRUE,
+FALSE
+)</formula>
+    <label>CP Don&#39;t Show Calendar</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

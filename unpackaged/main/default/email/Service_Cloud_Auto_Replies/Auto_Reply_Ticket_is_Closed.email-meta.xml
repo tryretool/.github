@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto response to send to customers who reply to a close thread.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Auto Reply: Ticket is Closed</name>
+    <style>none</style>
+    <subject>This support ticket is closed, please open a new one</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Qual: Largest Need Identified --></label>
+        <name>Qual_Largest_Need_Identified__c</name>
+        <picklistValues>
+            <masterLabel>Business Initiative</masterLabel>
+            <translation><!-- Business Initiative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Centralized Governance</masterLabel>
+            <translation><!-- Centralized Governance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Developer Productivity</masterLabel>
+            <translation><!-- Developer Productivity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Economics of Software</masterLabel>
+            <translation><!-- Economics of Software --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Good Software by Default</masterLabel>
+            <translation><!-- Good Software by Default --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scoped Use Case</masterLabel>
+            <translation><!-- Scoped Use Case --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

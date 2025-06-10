@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_24490812</developerName>
+        <masterLabel>Account Segment</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Account.New_Segment__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>ENT</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>STR</sourceValue>
+            </sourceValues>
+            <value>ENT/STR/EDU</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_57101697</developerName>
+        <masterLabel>Subtype</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Opportunity.Qualification_Journey_Subtype__c</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Demo Request</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Demo Request (Non-MQL)</sourceValue>
+            </sourceValues>
+            <value>Demo Request</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Endgame</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Product Action</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Product Signup</sourceValue>
+            </sourceValues>
+            <value>Product</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Outbound Sequence</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Other Meeting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Other Journey</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Koala</sourceValue>
+            </sourceValues>
+            <value>Sales Prospecting</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.New_Segment__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <description>Pipeline Stages</description>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Booking_Channel_ARR__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New,Upsell,Pilot</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>5/1/2024 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Segment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>,GRW</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Sourced_By_Subteam__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>ASE,BDR</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>STAGE_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Pipeline Stages</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Opportunity.Sales_Qualified_At__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Dedicated (10001 emp) (100001-200000 ARR</label>
+    <protected>false</protected>
+    <values>
+        <field>ARR_Lower_Bound__c</field>
+        <value xsi:type="xsd:double">100001.0</value>
+    </values>
+    <values>
+        <field>ARR_Upper_Bound__c</field>
+        <value xsi:type="xsd:double">200000.0</value>
+    </values>
+    <values>
+        <field>Employee_Lower_Bound__c</field>
+        <value xsi:type="xsd:double">10001.0</value>
+    </values>
+    <values>
+        <field>Employee_Upper_Bound__c</field>
+        <value xsi:type="xsd:double">9.999999999999E12</value>
+    </values>
+    <values>
+        <field>Tier__c</field>
+        <value xsi:type="xsd:string">Dedicated</value>
+    </values>
+</CustomMetadata>

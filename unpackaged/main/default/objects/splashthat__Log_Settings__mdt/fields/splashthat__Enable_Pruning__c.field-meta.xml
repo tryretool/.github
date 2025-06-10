@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>splashthat__Enable_Pruning__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>When True, LogScience will perform deletes on persistently-stored logging data in the Log__c object</description>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Enable Pruning</label>
+    <type>Checkbox</type>
+</CustomField>

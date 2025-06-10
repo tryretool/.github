@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Domain_Validation_Last_Updated__c</fullName>
+    <description>Date of when the Domain Validation field was most recently updated.</description>
+    <inlineHelpText>Date of when the Domain Validation field was most recently updated.</inlineHelpText>
+    <label>Domain Validation Last Updated</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

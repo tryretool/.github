@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Support Portal Auto Reply</name>
+    <pageDevName>Support_Portal_Auto_Reply</pageDevName>
+    <relatedEntityType>Case</relatedEntityType>
+    <style>none</style>
+    <subject>Re: {{{Case.Subject}}} - Ticket #{{{Case.CaseNumber}}}</subject>
+    <textOnly>Hello! 
+
+Thank you for reaching out to Retool Support! Your ticket number is {{{Case.CaseNumber}}}.
+
+We highly recommend subscribing to our status page &lt; https://status.retool.com/ &gt; for staying informed about any ongoing incidents or maintenance updates that might impact your experience with Retool.
+
+Rest assured, we&#39;re here to help and will be in touch as soon as we have an update or need further information regarding your issue.
+
+Sincerely,
+
+The Retool Support Team
+
+Original message: 
+
+{{{Case.Description}}}
+
+{{{Case.Thread_Token}}}</textOnly>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

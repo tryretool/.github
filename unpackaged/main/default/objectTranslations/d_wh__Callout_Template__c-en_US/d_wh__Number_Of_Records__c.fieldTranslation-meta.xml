@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Number Of Records --></label>
+        <name>d_wh__Number_Of_Records__c</name>
+        <picklistValues>
+            <masterLabel>Multiple Records (Batch)</masterLabel>
+            <translation><!-- Multiple Records (Batch) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>One Record</masterLabel>
+            <translation><!-- One Record --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

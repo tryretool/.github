@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Planning_Notes__c</fullName>
+    <description>Notes used for planning future Account transitions.</description>
+    <inlineHelpText>Notes used for planning future Account transitions.</inlineHelpText>
+    <label>Planning Notes</label>
+    <length>4096</length>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

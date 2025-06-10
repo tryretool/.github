@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unique_Name</fullName>
+    <active>true</active>
+    <errorConditionFormula>VLOOKUP($ObjectType.User_Extension__c.Fields.Name,$ObjectType.User_Extension__c.Fields.Name,Name)=Name &amp;&amp; (ISNEW() || ISCHANGED(Name))</errorConditionFormula>
+    <errorMessage>User ROE record already exists</errorMessage>
+</ValidationRule>

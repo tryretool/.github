@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PVM_Type__c</fullName>
+    <description>Primary Value Moment type. Customer stated value that they are getting out of Retool, related to 3 primary categories: Cost, Revenue, and Risk</description>
+    <inlineHelpText>Primary Value Moment type. Customer stated value that they are getting out of Retool, related to 3 primary categories: Cost, Revenue, and Risk.</inlineHelpText>
+    <label>PVM Type</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Maximize engineers’ effectiveness and impact [cost]</fullName>
+                <default>false</default>
+                <label>Maximize engineers’ effectiveness and impact [cost]</label>
+            </value>
+            <value>
+                <fullName>Launch new products and markets faster [revenue]</fullName>
+                <default>false</default>
+                <label>Launch new products and markets faster [revenue]</label>
+            </value>
+            <value>
+                <fullName>Effectively adapt to minimize emerging business risks [risk]</fullName>
+                <default>false</default>
+                <label>Effectively adapt to minimize emerging business risks [risk]</label>
+            </value>
+            <value>
+                <fullName>Enable more efficient operations and collaboration [cost]</fullName>
+                <default>false</default>
+                <label>Enable more efficient operations and collaboration [cost]</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Primary Value Moment</controllingFieldValue>
+            <valueName>Maximize engineers’ effectiveness and impact [cost]</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Primary Value Moment</controllingFieldValue>
+            <valueName>Launch new products and markets faster [revenue]</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Primary Value Moment</controllingFieldValue>
+            <valueName>Effectively adapt to minimize emerging business risks [risk]</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Primary Value Moment</controllingFieldValue>
+            <valueName>Enable more efficient operations and collaboration [cost]</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

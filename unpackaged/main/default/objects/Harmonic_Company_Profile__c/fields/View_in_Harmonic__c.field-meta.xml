@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>View_in_Harmonic__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;https://console.harmonic.ai/dashboard/company/&quot;&amp;ID__c, &quot;Link&quot;, &quot;_blank&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Opens this company in Harmonic.ai</inlineHelpText>
+    <label>View in Harmonic</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

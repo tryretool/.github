@@ -1,0 +1,67 @@
+table td, table th {
+    padding: 3px 8px !important;
+}
+
+.comma-between-children span span a:after {
+    content: ",";
+}
+.comma-between-children :last-child span a:after {
+    content: none;
+}
+
+.show-on-small-device {
+    display: none;
+}
+
+.small-device .hide-on-small-device {
+    display: none;
+}
+.small-device .table .show-on-small-device {
+    display: table-row;
+}
+.table .slds-truncate {
+    white-space: normal !important;
+}
+.small-device .detail-row .table {
+    margin: 0 0 0 0px;
+    width: auto;
+    border: none;
+    background-color: transparent;
+}
+
+div.mini-small-device table tr.show-on-small-device td {
+    padding-left: 10px !important;
+}
+
+.small-device tr.show-on-small-device td {
+    padding-left: 40px !important;
+}
+
+.small-device .table tr.show-on-small-device td {
+    border-top: none;
+}
+
+.detail-row .table th, .detail-row .table td {
+    border-top: none;
+}
+
+.small-device tr:hover > td {
+    box-shadow: none !important;
+}
+.detail-row tr:hover > td {
+    background-color: transparent !important;
+}
+
+.small-device tr.slds-hint-parent:hover + tr {
+    background-color: #f4f6f9;
+}
+
+.datetime {
+    text-transform: lowercase;
+    white-space: normal;
+}
+
+.editCell {
+    text-align: right !important;
+    padding-right: 20px !important;
+}

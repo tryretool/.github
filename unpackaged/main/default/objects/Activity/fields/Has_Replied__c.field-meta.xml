@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Replied__c</fullName>
+    <description>TRUE if the email activity has a reply date value (from Outreach.io or Regie.ai).</description>
+    <formula>IF( ISBLANK( Outreach_Replied_At__c ) &amp;&amp; ISBLANK(  regieai__RepliedAt__c  ), FALSE, TRUE )</formula>
+    <inlineHelpText>TRUE if the email activity has a reply date value (from Outreach.io or Regie.ai).</inlineHelpText>
+    <label>Has Replied?</label>
+    <securityClassification>Ignore</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

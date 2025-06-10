@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Support Entitlement Automation --></label>
+        <name>Support_Entitlement_Automation__c</name>
+        <picklistValues>
+            <masterLabel>Create or Replace</masterLabel>
+            <translation><!-- Create or Replace --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create or Update</masterLabel>
+            <translation><!-- Create or Update --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

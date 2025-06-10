@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <description>Asking if the Participant is a Contact Role</description>
+        <name>Is_Contact_Role</name>
+        <label>Is Contact Role?</label>
+        <locationX>182</locationX>
+        <locationY>455</locationY>
+        <defaultConnectorLabel>Not Contact Role</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Role</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ContactRole</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Participant</targetReference>
+            </connector>
+            <label>Contact Role</label>
+        </rules>
+    </decisions>
+    <description>This Flow will update the Contact Role custom field in the Participant record, if the Participant is a Contact and is a contact role in the related Primary Opportunity  of the Conversation</description>
+    <environments>Default</environments>
+    <interviewLabel>Gong for Salesforce - Update Participant Contact Role {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>Gong for Salesforce - Update Participant Contact Role</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Locate the Contact Role of the participant</description>
+        <name>Get_Contact_Role</name>
+        <label>Get Contact Role</label>
+        <locationX>182</locationX>
+        <locationY>335</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_Contact_Role</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Gong__Gong_Call__r.Gong__Primary_Opportunity__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>ContactId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Gong__Contact_Participant__c</elementReference>
+            </value>
+        </filters>
+        <object>OpportunityContactRole</object>
+        <outputAssignments>
+            <assignToReference>ContactRole</assignToReference>
+            <field>Role</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update the participant record and add the contact role value to the Contact Role custom field</description>
+        <name>Update_Participant</name>
+        <label>Update Participant</label>
+        <locationX>50</locationX>
+        <locationY>575</locationY>
+        <inputAssignments>
+            <field>Gong__Contact_Role__c</field>
+            <value>
+                <elementReference>Contact_Role</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Contact_Role</targetReference>
+        </connector>
+        <filterFormula>!ISNULL({!$Record.Gong__Gong_Call__r.Gong__Primary_Opportunity__c}) &amp;&amp; {!$Record.Gong__Participant_Type__c}=&#39;Contact&#39;</filterFormula>
+        <object>Gong__Call_Participant__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <description>The contact role value which will be assigned to the Contact Role custom field</description>
+        <name>ContactRole</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

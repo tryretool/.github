@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- If we lost the technical evaluation, what solution will be used instead? --></help>
+        <label><!-- Evaluation Winner --></label>
+        <name>Evaluation_Winner__c</name>
+    </CustomFieldTranslation>

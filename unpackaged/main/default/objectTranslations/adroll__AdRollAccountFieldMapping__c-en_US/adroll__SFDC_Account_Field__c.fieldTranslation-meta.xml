@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Name of the Salesforce Account object field --></help>
+        <label><!-- SFDC Account Field --></label>
+        <name>adroll__SFDC_Account_Field__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Case_After_Save_Automations</flowApiName>
+    <label>New Billing case</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;AccountId&quot;:&quot;&quot;,&quot;Account_Region_at_Create__c&quot;:&quot;NAMER&quot;,&quot;ContactId&quot;:&quot;&quot;,&quot;Description&quot;:&quot;Hopefully this is fixed 🤞\n\n-- \n*Jay Higgs*\nSupport Operations Analyst\n[image: Retool | Build internal tools, remarkably fast.]&quot;,&quot;EntitlementId&quot;:&quot;550Qo00000g5dINIAY&quot;,&quot;First_Closed_By_Bot__c&quot;:false,&quot;First_Customer_Reply_At__c&quot;:&quot;2025-05-02T23:18:36.000Z&quot;,&quot;IsEscalated&quot;:false,&quot;Is_Auto_reply_Skipped__c&quot;:false,&quot;Last_Customer_Reply_At__c&quot;:&quot;2025-05-02T23:18:36.000Z&quot;,&quot;Next_Milestone_At__c&quot;:&quot;2025-05-06T23:19:00.000Z&quot;,&quot;Next_Milestone_Type__c&quot;:&quot;First Response&quot;,&quot;Origin&quot;:&quot;Email&quot;,&quot;OwnerId&quot;:&quot;00GQo000004Y3HKMA0&quot;,&quot;Plan_Name_at_Create__c&quot;:&quot;&quot;,&quot;Primary_Org_SID_at_Create__c&quot;:&quot;&quot;,&quot;Primary_Org_Version_at_Create__c&quot;:&quot;&quot;,&quot;Primary_Org__c&quot;:&quot;&quot;,&quot;Priority&quot;:&quot;Medium&quot;,&quot;Product_Area__c&quot;:&quot;Billing&quot;,&quot;RecordTypeId&quot;:&quot;012Qo000008NXwMIAW&quot;,&quot;SSO_Details_at_Create__c&quot;:&quot;; ;&quot;,&quot;SlaStartDate&quot;:&quot;2025-05-02T23:18:50.000Z&quot;,&quot;Slack_CSAT_Sent__c&quot;:false,&quot;Source_Control_at_Create__c&quot;:&quot;:&quot;,&quot;Spam_Quick_Close__c&quot;:false,&quot;Status&quot;:&quot;New&quot;,&quot;Subject&quot;:&quot;final routing test&quot;,&quot;Submitted_At__c&quot;:&quot;2025-05-02T23:18:50.000Z&quot;,&quot;Submitted_By_Email_at_Create__c&quot;:&quot;jay@retool.com&quot;,&quot;SuppliedEmail&quot;:&quot;jay@retool.com&quot;,&quot;Support_Tier_Stamped__c&quot;:&quot;&quot;,&quot;Suppress_Automations__c&quot;:false,&quot;Triage_Status__c&quot;:&quot;Needed&quot;,&quot;Trigger_Linking__c&quot;:true,&quot;Trigger__c&quot;:false}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>Call_Record_Linking_Flow.Case.Support_Tier_Stamped__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+    </testPoints>
+</FlowTest>

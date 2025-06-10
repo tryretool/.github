@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Known gaps in our org chart that we need to fill. --></help>
+        <label><!-- Stakeholder Gaps --></label>
+        <name>Stakeholder_Gaps__c</name>
+    </CustomFieldTranslation>

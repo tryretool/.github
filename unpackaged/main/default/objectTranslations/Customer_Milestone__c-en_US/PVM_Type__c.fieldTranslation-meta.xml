@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Primary Value Moment type. Customer stated value that they are getting out of Retool, related to 3 primary categories: Cost, Revenue, and Risk. --></help>
+        <label><!-- PVM Type --></label>
+        <name>PVM_Type__c</name>
+        <picklistValues>
+            <masterLabel>Effectively adapt to minimize emerging business risks [risk]</masterLabel>
+            <translation><!-- Effectively adapt to minimize emerging business risks [risk] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enable more efficient operations and collaboration [cost]</masterLabel>
+            <translation><!-- Enable more efficient operations and collaboration [cost] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Launch new products and markets faster [revenue]</masterLabel>
+            <translation><!-- Launch new products and markets faster [revenue] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maximize engineers’ effectiveness and impact [cost]</masterLabel>
+            <translation><!-- Maximize engineers’ effectiveness and impact [cost] --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,206 @@
+/*Global CSS used in bomboraAdmin.css namespaced with bombora-admin */
+.bombora-admin .flex {
+  display: flex;
+}
+
+.bombora-admin .flex-vc {
+  align-items: center
+}
+
+.bombora-admin .flex-hc {
+  justify-content: center;
+}
+.bombora-admin .flex-between {
+  justify-content: space-between;
+}
+.bombora-admin .flex-align-right {
+  justify-content: flex-end;
+}
+
+.bombora-admin .flex-col {
+  flex-direction: column;
+}
+.bombora-admin .flex-grow {
+  flex: 1;
+}
+/*Global CSS used in bomboraAdmin.css*/
+
+/* */
+.company-trends .flex {
+  display: flex;
+}
+
+.company-trends .flex-vc {
+  align-items: center
+}
+
+.company-trends .flex-hc {
+  justify-content: center;
+}
+.company-trends .flex-between {
+  justify-content: space-between;
+}
+.company-trends .flex-around {
+  justify-content: space-around;
+}
+.company-trends .flex-evenly {
+  justify-content: space-evenly;
+}
+.company-trends .flex-align-right {
+  justify-content: flex-end;
+}
+
+.company-trends .flex-col {
+  flex-direction: column;
+}
+.company-trends .flex-grow {
+  flex: 1;
+}
+/* */
+
+/*LWC sldc-card Overrides*/
+.app-card .flex-col {
+  height: 100%;
+}
+.app-card .slds-card {
+  height: 100%;
+}
+.app-card .slds-card .slds-card__body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.app-card .slds-card .app-card__container {
+  height: 100%;
+}
+.app-card .slds-card .slds-card__header {
+  padding: 0;
+  margin: 0;
+}
+/*LWC sldc-card Overrides*/
+
+/*LWC icons */
+.approval-icon {
+  background-color: rgb(75,202,129);
+}
+
+.tablinks.active .slds-icon_container svg {
+  fill: rgb(22, 137, 238);
+  width: var(--lwc-squareIconUtilitySmall,1rem);
+  height: var(--lwc-squareIconUtilitySmall,1rem);
+  line-height: var(--lwc-lineHeightReset,1);
+}
+/*LWC icons */
+
+.setup-assistant-item .slds-progress__item .slds-icon_container {
+    visibility: hidden;
+    display: none;
+}
+.setup-assistant-item.slds-is-active .slds-icon_container {
+    visibility: hidden;
+    display: none;
+}
+.setup-assistant-item.slds-is-active .progress-incomplete {
+    visibility: visible;
+    display: inline-block;
+}
+.setup-assistant-item.slds-is-active .slds-progress__marker {
+    box-shadow: var(--lwc-progressColorBackground,rgb(255, 255, 255)) 0 0 0 4px;
+}
+.setup-assistant-item.slds-is-active .slds-progress__marker {
+    background: var(--lwc-progressColorBackground,rgb(255, 255, 255));
+    border-color: var(--lwc-progressColorBorderActive,rgb(21, 137, 238));
+}
+.setup-assistant-item.slds-is-completed .progress-incomplete {
+    visibility: hidden;
+    display: none;
+}
+.setup-assistant-item.slds-is-completed .slds-icon_container.slds-icon-utility-error {
+    visibility: hidden;
+    display: none;
+}
+.setup-assistant-item.slds-is-completed .slds-icon_container {
+    visibility: visible;
+    display: inline-block;
+}
+.setup-assistant-item.slds-has-error .slds-icon_container.slds-icon-utility-error {
+    visibility: visible;
+    display: inline-block;
+}
+.setup-assistant-item.slds-has-error .slds-icon_container.slds-icon-utility-success {
+    visibility: hidden;
+    display: none;
+}
+.setup-assistant-item.slds-has-error .progress-incomplete {
+    visibility: hidden;
+    display: none;
+}
+
+.setup-assistant-item {
+    display: block;
+    position: relative;
+}
+.slds-progress_vertical .setup-assistant-item:before {
+    top: 0;
+    bottom: 50%;
+}
+.slds-progress_vertical .setup-assistant-item:after {
+    top: 50%;
+    bottom: 0;
+}
+.slds-progress_vertical .setup-assistant-item:first-child:before,.slds-progress_vertical .setup-assistant-item:last-child:after {
+    display: none
+}
+
+.slds-progress_vertical .setup-assistant-item:before, .slds-progress_vertical .setup-assistant-item:after {
+    content: "";
+    width: 2px;
+    background-color: #dddbda;
+}
+
+.slds-progress_success .setup-assistant-item:before, .slds-progress_success .setup-assistant-item:after, .slds-progress_success .setup-assistant-item:before, .slds-progress_success .setup-assistant-item:before {
+    opacity: .3;
+    background-color: var(--lwc-progressBarColorBackgroundFillSuccess,rgb(75, 202, 129));
+}
+.slds-progress_vertical .setup-assistant-item.slds-is-completed .slds-progress__marker_icon-success svg {
+    fill: var(--lwc-progressBarColorBackgroundFillSuccess,rgb(75, 202, 129));
+}
+
+.slds-progress_vertical .setup-assistant-item.slds-is-completed:after {
+    opacity: .3;
+    background-color: #4bca81;
+}
+
+.slds-progress_vertical .setup-assistant-item.slds-is-active:before {
+    opacity: .3;
+    background-color: #4bca81;
+}
+.slds-progress_vertical .setup-assistant-item.slds-is-completed:before {
+    opacity: .3;
+    background-color: #4bca81;
+}
+.setup-assistant-item.slds-is-completed .slds-progress__marker{
+  background: var(--lwc-progressColorBackground,rgb(255, 255, 255));
+  border-color: var(--lwc-progressColorBorderActive,rgb(21, 137, 238));
+}
+.setup-assistant-item.slds-is-completed .slds-progress__marker_icon {
+    border-color: var(--lwc-progressColorBackground,rgb(255, 255, 255));
+    color: var(--lwc-progressBarColorBackgroundFill,rgb(94, 180, 255));
+}
+
+.slds-progress_vertical .slds-progress__list-bordered .setup-assistant-item:not(:last-child) .slds-progress__item_content {
+    border-bottom: 1px solid #dddbda
+}
+header.flexipageHeader.slds-page-header { 
+  display: none;
+}
+
+.bombora-admin .slds-dueling-list__column_responsive.slds-dueling-list__column {
+  display: block;
+}
+.bombora-admin .slds-dueling-list__column_responsive .slds-dueling-list__options {
+  width: var(--lwc-sizeSmall,15rem);
+}
+.bombora-admin .dueling-picklist {
+  display: inline-block;
+}

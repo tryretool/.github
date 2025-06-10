@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_for_Demo__c</fullName>
+    <label>Reason for Demo</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Explore Retool Enterprise</fullName>
+                <default>false</default>
+                <label>Explore Retool Enterprise</label>
+            </value>
+            <value>
+                <fullName>Explore a Retool Use Case</fullName>
+                <default>false</default>
+                <label>Explore a Retool Use Case</label>
+            </value>
+            <value>
+                <fullName>Partnerships</fullName>
+                <default>false</default>
+                <label>Partnerships</label>
+            </value>
+            <value>
+                <fullName>Professional Services</fullName>
+                <default>false</default>
+                <label>Professional Services</label>
+            </value>
+            <value>
+                <fullName>I need guidance building an app</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>I need guidance building an app</label>
+            </value>
+            <value>
+                <fullName>I’m curious about pricing</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>I’m curious about pricing</label>
+            </value>
+            <value>
+                <fullName>Just looking to learn how Retool works</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Just looking to learn how Retool works</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Other (See Notes Field)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

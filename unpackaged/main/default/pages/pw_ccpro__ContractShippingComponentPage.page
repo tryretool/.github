@@ -1,0 +1,3 @@
+<apex:page standardController="Contract">
+    <c:ValidationComponent objectName="Contract" addressBlockField="ShippingCountry" enableEditMode="true" hideFields="map"/>
+</apex:page>

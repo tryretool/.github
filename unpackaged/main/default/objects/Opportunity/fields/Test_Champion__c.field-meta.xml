@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Test_Champion__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>&lt;a href=&quot;https://retoolconfluence.atlassian.net/wiki/spaces/SAL/pages/45842590/MEDDPICC+sales+methodology&quot; target=&quot;_blank&quot;&gt;Learn more about MEDDPICC&lt;/a&gt;</description>
+    <inlineHelpText>The person with the power and influence to advance the deal.</inlineHelpText>
+    <label>[C] Champion</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Opportunities (Contact)</relationshipLabel>
+    <relationshipName>Opportunities2</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

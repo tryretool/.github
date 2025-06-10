@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The date ZoomInfo notified the person that they are in our database. --></help>
+        <label><!-- Notice Provided Date --></label>
+        <name>DOZISF__Notice_Provided_Date__c</name>
+    </CustomFieldTranslation>

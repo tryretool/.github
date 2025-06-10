@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Logo Image for Xactly tab in mobile navigation</description>
+    <internalUseOnly>false</internalUseOnly>
+    <name>xtab_logo</name>
+    <public>true</public>
+</Document>

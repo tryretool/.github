@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <assignments>
+        <name>Assign_Ended_Details</name>
+        <label>Assign Ended + Details</label>
+        <locationX>512</locationX>
+        <locationY>1766</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Stage__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Ended</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Ended_Reason__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Ended_Reason</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Ended_Reason_Details__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Ended_Reason_Details</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Journey</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Journey</name>
+        <label>Assign Journey</label>
+        <locationX>50</locationX>
+        <locationY>1490</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Journey_Which_Triggered_End__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Journey_Table.firstSelectedRow.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_Ended_Details</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Meeting_Disposition</name>
+        <label>Assign Meeting Disposition</label>
+        <locationX>182</locationX>
+        <locationY>566</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Meeting_Disposition__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Meeting_Disposition</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Meeting_Booked_At__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Qual_Meeting_Booked_At</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Meeting_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Qual_Meeting_Date</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Ended_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Rest_Until</name>
+        <label>Assign Rest Until</label>
+        <locationX>578</locationX>
+        <locationY>1274</locationY>
+        <assignmentItems>
+            <assignToReference>recordId.Rest_Until__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Reengage_Date</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Re_engage_Post_Rest__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>recordId.Rest_For_Days__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Days_Until_Reengage</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_Ended_Details</targetReference>
+        </connector>
+    </assignments>
+    <choices>
+        <name>Bad_Contact_Info</name>
+        <choiceText>Bad Contact Info</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Bad Contact Info</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Converted_Other_Journey</name>
+        <choiceText>Converted Other Journey</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Converted Other Journey</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Do_Not_Contact</name>
+        <choiceText>Do Not Contact</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Do Not Contact	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Email_Objection</name>
+        <choiceText>Email Objection</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Email Objection	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Meeting_Not_Progressing</name>
+        <choiceText>Meeting Not Progressing</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Meeting Not Progressing	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>No_Response</name>
+        <choiceText>No Response</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>No Response	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>No_Show</name>
+        <choiceText>No Show</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>No Show</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Not_Qualified_Authority</name>
+        <choiceText>Not Qualified - Authority</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Not Qualified - Authority</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Not_Qualified_Budget</name>
+        <choiceText>Not Qualified - Budget</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Not Qualified - Budget</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Not_Qualified_Need</name>
+        <choiceText>Not Qualified - Need</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Not Qualified - Need</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Not_Qualified_Timing</name>
+        <choiceText>Not Qualified - Timing</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Not Qualified - Timing</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Passed_to_Docs_Community</name>
+        <choiceText>Passed to Docs/Community</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Passed to Docs/Community	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Passed_to_Partnerships</name>
+        <choiceText>Passed to Partnerships</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Passed to Partnerships	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Passed_to_ProServ</name>
+        <choiceText>Passed to ProServ</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Passed to ProServ	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Passed_to_Support</name>
+        <choiceText>Passed to Support</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Passed to Support	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Pricing_Packaging</name>
+        <choiceText>Pricing &amp; Packaging</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>	Pricing &amp; Packaging</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Product_Limitation</name>
+        <choiceText>Product Limitation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Product Limitation</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Referred_to_Other_Contact</name>
+        <choiceText>Referred to Other Contact</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Referred to Other Contact	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Requested_Later_Follow_up</name>
+        <choiceText>Requested Later Follow-up</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Requested Later Follow-up	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Rescheduled</name>
+        <choiceText>Rescheduled</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Rescheduled	</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Self_Serve_Meets_Needs</name>
+        <choiceText>Self Serve Meets Needs</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Self Serve Meets Needs</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Unsure_What_To_Pick</name>
+        <choiceText>Unsure What To Pick</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Unsure What To Pick</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <description>Journeys must be</description>
+        <name>Can_Close</name>
+        <label>Can Close?</label>
+        <locationX>765</locationX>
+        <locationY>134</locationY>
+        <defaultConnector>
+            <targetReference>Cannot_Close_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Close</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Is_Closed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Meeting_Booked</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Ended_Reason_Decision</name>
+        <label>Ended Reason?</label>
+        <locationX>512</locationX>
+        <locationY>1058</locationY>
+        <defaultConnector>
+            <targetReference>Assign_Ended_Details</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>Converted_Other_Journey_Decision</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Ended_Reason</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Converted_Other_Journey</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Journeys</targetReference>
+            </connector>
+            <label>Converted Other Journey</label>
+        </rules>
+        <rules>
+            <name>Requested_Later_Follow_up_Decision</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Ended_Reason</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Requested_Later_Follow_up</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Select_Reengage_Date</targetReference>
+            </connector>
+            <label>Requested Later Follow-up</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Found_Converted_Journeys</name>
+        <label>Found Converted Journeys?</label>
+        <locationX>182</locationX>
+        <locationY>1274</locationY>
+        <defaultConnector>
+            <targetReference>No_Converted_Journeys_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Journeys</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Select_Journey_Which_Triggered_End</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Meeting_Booked</name>
+        <label>Meeting Booked?</label>
+        <locationX>512</locationX>
+        <locationY>242</locationY>
+        <defaultConnector>
+            <targetReference>Ended_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Meeting</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Meeting Booked</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Meeting_Disposition_Screen</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Meeting_With_Populated</name>
+        <label>Meeting With Populated?</label>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
+        <defaultConnector>
+            <targetReference>Meeting_With_Required_Screen</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Populated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId.Meeting_Booked_With__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>recordId.First_Call_Run_By__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Meeting_Disposition</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Closes open Journeys and populates the Ended Reason, Ended Reason Details, and Meeting Dispositions (if applicable).</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Days_Until_Reengage</name>
+        <dataType>Number</dataType>
+        <expression>{!Reengage_Date} - TODAY()</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Journey - Close Button {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Journey - Close Button</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>Get_Journeys</name>
+        <label>Get Journeys</label>
+        <locationX>182</locationX>
+        <locationY>1166</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_Converted_Journeys</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId.Account__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Stage__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Converted</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>recordId.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Journey__c</object>
+        <sortField>Close_Date__c</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Journey</name>
+        <label>Update Journey</label>
+        <locationX>512</locationX>
+        <locationY>1874</locationY>
+        <connector>
+            <targetReference>Success_Screen</targetReference>
+        </connector>
+        <inputReference>recordId</inputReference>
+    </recordUpdates>
+    <screens>
+        <name>Cannot_Close_Screen</name>
+        <label>Cannot Close Screen</label>
+        <locationX>1018</locationX>
+        <locationY>242</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Cannot_Close_Text</name>
+            <fieldText>&lt;p&gt;Cannot close Journey&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Ended_Screen</name>
+        <label>Ended Screen</label>
+        <locationX>512</locationX>
+        <locationY>950</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Ended_Reason_Decision</targetReference>
+        </connector>
+        <fields>
+            <name>Ended_Reason</name>
+            <choiceReferences>Bad_Contact_Info</choiceReferences>
+            <choiceReferences>Converted_Other_Journey</choiceReferences>
+            <choiceReferences>Do_Not_Contact</choiceReferences>
+            <choiceReferences>Email_Objection</choiceReferences>
+            <choiceReferences>Meeting_Not_Progressing</choiceReferences>
+            <choiceReferences>No_Response</choiceReferences>
+            <choiceReferences>Passed_to_Docs_Community</choiceReferences>
+            <choiceReferences>Passed_to_Partnerships</choiceReferences>
+            <choiceReferences>Passed_to_ProServ</choiceReferences>
+            <choiceReferences>Passed_to_Support</choiceReferences>
+            <choiceReferences>Referred_to_Other_Contact</choiceReferences>
+            <choiceReferences>Requested_Later_Follow_up</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Ended Reason</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Ended_Reason_Details</name>
+            <dataType>String</dataType>
+            <fieldText>Ended Reason Details</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Meeting_Disposition_Screen</name>
+        <label>Meeting Disposition Screen</label>
+        <locationX>314</locationX>
+        <locationY>350</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Meeting_With_Populated</targetReference>
+        </connector>
+        <fields>
+            <name>Meeting_Booked_Text</name>
+            <fieldText>&lt;p&gt;Please &lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;confirm the following &lt;/span&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Qualification Meeting details&lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt; and &lt;/span&gt;set the &lt;strong&gt;Meeting Disposition &lt;/strong&gt;before closing this Journey.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Meeting_Disposition_Screen_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Meeting_Disposition_Screen_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <fieldType>ObjectProvided</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <objectFieldReference>recordId.Meeting_Booked_With__c</objectFieldReference>
+                </fields>
+                <fields>
+                    <fieldType>ObjectProvided</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <objectFieldReference>recordId.First_Call_Run_By__c</objectFieldReference>
+                </fields>
+                <fields>
+                    <name>Meeting_Field_Validation_Text</name>
+                    <fieldText>&lt;p&gt;&lt;strong style=&quot;color: rgb(255, 0, 0);&quot;&gt;Qual Meeting Booked With&lt;/strong&gt;&lt;span style=&quot;color: rgb(255, 0, 0);&quot;&gt; and&lt;/span&gt;&lt;strong style=&quot;color: rgb(255, 0, 0);&quot;&gt; First Call Run By &lt;/strong&gt;&lt;span style=&quot;color: rgb(255, 0, 0);&quot;&gt;must be filled out&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                    <visibilityRule>
+                        <conditionLogic>or</conditionLogic>
+                        <conditions>
+                            <leftValueReference>recordId.Meeting_Booked_With__c</leftValueReference>
+                            <operator>IsNull</operator>
+                            <rightValue>
+                                <booleanValue>true</booleanValue>
+                            </rightValue>
+                        </conditions>
+                        <conditions>
+                            <leftValueReference>recordId.First_Call_Run_By__c</leftValueReference>
+                            <operator>IsNull</operator>
+                            <rightValue>
+                                <booleanValue>true</booleanValue>
+                            </rightValue>
+                        </conditions>
+                    </visibilityRule>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Meeting_Disposition_Screen_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Qual_Meeting_Booked_At</name>
+                    <dataType>DateTime</dataType>
+                    <defaultValue>
+                        <elementReference>recordId.Meeting_Booked_At__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Qual Meeting Booked At</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Qual_Meeting_Date</name>
+                    <dataType>Date</dataType>
+                    <defaultValue>
+                        <elementReference>recordId.Meeting_Date__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Qual Meeting Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Meeting_Disposition</name>
+                    <choiceReferences>No_Show</choiceReferences>
+                    <choiceReferences>Not_Qualified_Authority</choiceReferences>
+                    <choiceReferences>Not_Qualified_Budget</choiceReferences>
+                    <choiceReferences>Not_Qualified_Need</choiceReferences>
+                    <choiceReferences>Not_Qualified_Timing</choiceReferences>
+                    <choiceReferences>Pricing_Packaging</choiceReferences>
+                    <choiceReferences>Product_Limitation</choiceReferences>
+                    <choiceReferences>Rescheduled</choiceReferences>
+                    <choiceReferences>Self_Serve_Meets_Needs</choiceReferences>
+                    <choiceReferences>Unsure_What_To_Pick</choiceReferences>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>recordId.Meeting_Disposition__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Meeting Disposition</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Meeting_With_Required_Screen</name>
+        <label>Meeting With Required</label>
+        <locationX>446</locationX>
+        <locationY>566</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>false</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Meeting_With_Required_Text</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Qual Meeting Booked With&lt;/strong&gt; and&lt;strong&gt; First Call Run By&lt;/strong&gt; must be filled out. Please return to the previous screen to assign a user.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>No_Converted_Journeys_Screen</name>
+        <label>No Converted Journeys Screen</label>
+        <locationX>314</locationX>
+        <locationY>1382</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>No_Converted_Journeys_Text</name>
+            <fieldText>&lt;p&gt;&lt;strong style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;No converted Journeys found at this Account. &lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;Click &lt;/span&gt;&lt;strong style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;Previous&lt;/strong&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt; to return to the previous screen, or reach out to the &lt;/span&gt;&lt;strong style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;Revenue Operations Team&lt;/strong&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt; (&lt;/span&gt;&lt;em style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;#rev_ops-team) &lt;/em&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;if you feel that this is mistake and require assistance.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Select_Journey_Which_Triggered_End</name>
+        <label>Select Journey Which Triggered End</label>
+        <locationX>50</locationX>
+        <locationY>1382</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Assign_Journey</targetReference>
+        </connector>
+        <fields>
+            <name>Select_Journey_Text</name>
+            <fieldText>&lt;p&gt;Please select the &lt;strong&gt;Converted Journe&lt;/strong&gt;y that triggered the end of your current Journey record.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Journey_Table</name>
+            <dataTypeMappings>
+                <typeName>T</typeName>
+                <typeValue>Journey__c</typeValue>
+            </dataTypeMappings>
+            <extensionName>flowruntime:datatable</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Converted Journeys</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>selectionMode</name>
+                <value>
+                    <stringValue>SINGLE_SELECT</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>minRowSelection</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>shouldDisplayLabel</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>tableData</name>
+                <value>
+                    <elementReference>Get_Journeys</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>isShowSearchBar</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>maxRowSelection</name>
+                <value>
+                    <numberValue>1.0</numberValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>columns</name>
+                <value>
+                    <stringValue>[{&quot;apiName&quot;:&quot;Name&quot;,&quot;guid&quot;:&quot;column-6cca&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;label&quot;:&quot;Journey Name&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Stage__c&quot;,&quot;guid&quot;:&quot;column-8b24&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1,&quot;label&quot;:&quot;Stage&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Created_At__c&quot;,&quot;guid&quot;:&quot;column-4406&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:2,&quot;label&quot;:&quot;Started At&quot;,&quot;type&quot;:&quot;customDateTime&quot;},{&quot;apiName&quot;:&quot;Close_Date__c&quot;,&quot;guid&quot;:&quot;column-18d1&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:3,&quot;label&quot;:&quot;Close Date&quot;,&quot;type&quot;:&quot;date-local&quot;}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Select_Reengage_Date</name>
+        <label>Select Reengage Date</label>
+        <locationX>578</locationX>
+        <locationY>1166</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Assign_Rest_Until</targetReference>
+        </connector>
+        <fields>
+            <name>Reengage_Date</name>
+            <dataType>Date</dataType>
+            <fieldText>Please select the date in which the prospect will be reengaged:</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Reengage_Text</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;A new Journey will be created to follow up with this prospect in &lt;/span&gt;&lt;strong style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!Days_Until_Reengage} &lt;/strong&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;days. Please confirm that this is correct before proceeding.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Reengage_Date</leftValueReference>
+                    <operator>IsNull</operator>
+                    <rightValue>
+                        <booleanValue>false</booleanValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Success_Screen</name>
+        <label>Success Screen</label>
+        <locationX>512</locationX>
+        <locationY>1982</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Success_Text</name>
+            <fieldText>&lt;p&gt;&lt;a href=&quot;https://retool.lightning.force.com/lightning/r/Journey__c/{!recordId.Id}/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;&lt;strong&gt;﻿{!recordId.Name}&lt;/strong&gt;&lt;/a&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt; &lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;has ended!&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>639</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Can_Close</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Journey__c</objectType>
+    </variables>
+</Flow>

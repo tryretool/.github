@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>End_Date_Matches_Opp</fullName>
+    <active>false</active>
+    <errorConditionFormula>NOT(ISBLANK( End_Date__c )) &amp;&amp;
+End_Date__c &lt;=  Opportunity.Contract_End_Date__c &amp;&amp;
+ $User.Is_integration_user__c = FALSE</errorConditionFormula>
+    <errorDisplayField>End_Date__c</errorDisplayField>
+    <errorMessage>Invalid end date - greater than opp end date</errorMessage>
+</ValidationRule>

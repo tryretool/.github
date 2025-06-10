@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- DateTime When the RollWorks Segment Member was last synced --></help>
+        <label><!-- Last Synced Time (Deprecated) --></label>
+        <name>adroll__LastSyncedTime__c</name>
+    </CustomFieldTranslation>

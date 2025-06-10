@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Indicates whether the company still exists. --></help>
+        <label><!-- Company isDefunct --></label>
+        <name>DOZISF__Company_isDefunct__c</name>
+    </CustomFieldTranslation>

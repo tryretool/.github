@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Estimated_Sprint__c</fullName>
+    <description>Estimated Sprint of the given Project/Task. Sprint values are added as they come up.</description>
+    <inlineHelpText>Estimated Sprint of the given Project/Task. Sprint values are added as they come up.</inlineHelpText>
+    <label>Estimated Sprint</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>GTM_Ticket_Estimated_Sprint</valueSetName>
+    </valueSet>
+</CustomField>

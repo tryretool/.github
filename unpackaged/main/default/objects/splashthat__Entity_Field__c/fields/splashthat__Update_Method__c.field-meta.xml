@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>splashthat__Update_Method__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Update Method</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Never</fullName>
+                <default>true</default>
+                <label>Never Update Value</label>
+            </value>
+            <value>
+                <fullName>Empty</fullName>
+                <default>false</default>
+                <label>Only Update When Empty</label>
+            </value>
+            <value>
+                <fullName>Always</fullName>
+                <default>false</default>
+                <label>Always Update</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

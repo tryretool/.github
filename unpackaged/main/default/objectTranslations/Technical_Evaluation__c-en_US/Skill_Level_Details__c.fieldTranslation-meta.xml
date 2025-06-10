@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Context on the skill level of the people managing and building in Retool, (e.g. discrepancy in deployment vs. app building skill level or in different team skill level, where teams need help, etc.) --></help>
+        <label><!-- Skill Level Details --></label>
+        <name>Skill_Level_Details__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Action --></label>
+        <name>legaldeskapp__Action__c</name>
+        <picklistValues>
+            <masterLabel>hide</masterLabel>
+            <translation><!-- hide --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>notrequire</masterLabel>
+            <translation><!-- notrequire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>require</masterLabel>
+            <translation><!-- require --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>show</masterLabel>
+            <translation><!-- show --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Rollup of the total number of points associated with the child tickets of a related Epic. --></help>
+        <label><!-- Epic: Total Points --></label>
+        <name>Epic_Total_Points__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>legaldeskapp__Value__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field tracks the value of an option for LegalDesk_Mapping fields with a DataType of Select, Radio or Checkbox.</description>
+    <externalId>false</externalId>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Enter an option value.</inlineHelpText>
+    <label>Value</label>
+    <length>100</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

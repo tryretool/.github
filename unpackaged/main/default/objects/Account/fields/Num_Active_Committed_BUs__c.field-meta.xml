@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Num_Active_Committed_BUs__c</fullName>
+    <description>Number of active Business Units related to the account in the Committed business line.
+
+External Systems Utilization: DLRS</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Number of active Business Units related to the account in the Committed business line.</inlineHelpText>
+    <label># Active Committed BUs</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

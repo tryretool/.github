@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Callout Log Layout</layout>
+        <sections>
+            <label><!-- Body --></label>
+            <section>Body</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label><!-- Retry_This_Call --></label>
+        <name>d_wh__Retry_This_Call</name>
+    </webLinks>
+</CustomObjectTranslation>

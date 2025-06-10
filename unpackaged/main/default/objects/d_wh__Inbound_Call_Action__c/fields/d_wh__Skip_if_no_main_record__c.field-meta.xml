@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>d_wh__Skip_if_no_main_record__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <label>Skip if no main record</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

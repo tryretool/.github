@@ -1,0 +1,3 @@
+<apex:page standardcontroller="pw_ccpro__CountryObject__c">
+	<c:LocationMap Zoom="4" Latitude="{!pw_ccpro__CountryObject__c.pw_ccpro__Geolocation__Latitude__s}" Longitude="{!pw_ccpro__CountryObject__c.pw_ccpro__Geolocation__Longitude__s}"></c:LocationMap>
+</apex:page>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Date stamp for when the ticket status changes to &apos;In Review&apos;. --></help>
+        <label><!-- In Review At --></label>
+        <name>In_Review_At__c</name>
+    </CustomFieldTranslation>

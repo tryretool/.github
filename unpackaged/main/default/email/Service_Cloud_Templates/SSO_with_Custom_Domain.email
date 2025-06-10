@@ -1,0 +1,12 @@
+<p>Hi {!Contact.FirstName},</p>
+
+<p>Thanks for reaching out to us. </p>
+
+<p>For your particular issue, we recommend checking out this <a href="https://community.retool.com/t/retool-custom-domain-cannot-see-sign-in-with-google/30880/6" target="_blank">Community Post about SSO with Custom Domains.</a>.</p>
+
+<p>We recommend continuing the discussion about this technical question/issue report by bringing it to the <a href="https://community.retool.com/t/retool-community-guidelines/30917" target="_blank">Developer Community Forums</a>, <a href="https://community.retool.com/t/come-join-retool-office-hours-now-in-discord/12348" target="_blank">live video office hours</a>, or in our <a href="https://discord.com/invite/retool" target="_blank">Discord Server</a> where Retool employees including our Community Support Engineers and Engineers actively respond. We’re very excited about our work over the last year establishing a highly active Developer Community managed by our Community Support Engineers who are dedicated to providing guidance on the forum and Office Hours. In these channels, we welcome bug reports, feature requests, help-I’m-stuck-and-don’t-know-what-to-do and any Retool-related question or discussion you can think of.</p>
+
+<p>Via email, we're unable to provide technical support for this issue because this channel, and my team, is dedicated to account and billing-related inquiries.</p>
+
+
+<p>Thank you for your understanding!</p>

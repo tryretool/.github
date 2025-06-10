@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>legaldeskapp__Custom_Form_UpdatedAt__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field stores the Streamline form/request type&#39;s &quot;updatedAt&quot; value string that is returned from requestForms payload</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Custom Form UpdatedAt</label>
+    <length>50</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_ID_case_safe__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>#primaryKey</description>
+    <externalId>false</externalId>
+    <formula>CASESAFEID(Id)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>18 character case insensitive version of this record&#39;s Salesforce ID</inlineHelpText>
+    <label>Account ID (case safe)</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

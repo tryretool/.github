@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Checked TRUE if the Harmonic Website Domain does not equal the Account domain aka `Website (Clean)` and does not match one of the existing `Mapped Domains`. --></help>
+        <label><!-- Domain Mismatch? --></label>
+        <name>Domain_Mismatch__c</name>
+    </CustomFieldTranslation>

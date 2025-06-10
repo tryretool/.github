@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- LD Journey Persona --></label>
+        <name>LeanData__LD_Journey_Persona__c</name>
+        <relationshipLabel><!-- LD Journey Personas --></relationshipLabel>
+    </CustomFieldTranslation>

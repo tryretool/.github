@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sync_Update_LinkedIn_Company_Page__c</fullName>
+    <description>Checked TRUE if `Do Not Update LinkedIn Company Page` is FALSE and the Account Linkedin Company Page does not equal the Harmonic Company Profile Linkedin: Profile.</description>
+    <formula>NOT(ISBLANK(Account__c)) &amp;&amp;
+NOT(ISBLANK(LinkedIn_Profile__c)) &amp;&amp;
+Account__r.LinkedIn_Company_Page__c != LinkedIn_Profile__c
+&amp;&amp; Do_Not_Update_LinkedIn_Company_Page__c = FALSE</formula>
+    <inlineHelpText>Checked TRUE if `Do Not Update LinkedIn Company Page` is FALSE and the Account Linkedin Company Page does not equal the Harmonic Company Profile Linkedin: Profile.</inlineHelpText>
+    <label>Sync: Update LinkedIn Company Page?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

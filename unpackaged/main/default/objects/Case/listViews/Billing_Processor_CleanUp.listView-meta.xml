@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Billing_Processor_CleanUp</fullName>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>CASES.CREATED_DATE</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>CASES.RECORDTYPE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>Support_Tier__c</columns>
+    <columns>Support_Tier_Stamped__c</columns>
+    <columns>Trigger_Linking__c</columns>
+    <columns>Submitted_By_Email_at_Create__c</columns>
+    <columns>CASES.SUBJECT</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CASES.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Case.Billing</value>
+    </filters>
+    <filters>
+        <field>OWNER_NAME</field>
+        <operation>equals</operation>
+        <value>Customer Service Queue</value>
+    </filters>
+    <label>Billing &lt;&gt; CSR CleanUp</label>
+</ListView>

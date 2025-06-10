@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Time frame (days) for which to aggregate tracking data. --></help>
+        <label><!-- Tracking Data Timeframe (days) --></label>
+        <name>adroll__TrackingDataTimeFrame__c</name>
+    </CustomFieldTranslation>

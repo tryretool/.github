@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Platform_fields_req</fullName>
+    <active>false</active>
+    <errorConditionFormula>Product_Type__c = &quot;Platform&quot; &amp;&amp;
+(
+  ISBLANK(Included_Units__c) ||
+ ISBLANK( Included_Units__c ) ||
+ ISBLANK( Unit_Overage_Rate__c )
+
+) &amp;&amp;
+ $User.Is_integration_user__c = FALSE &amp;&amp;
+PricebookEntry.Product2.Unlimited_units__c = FALSE</errorConditionFormula>
+    <errorMessage>Included unit type, units and overage rate required for Platform products</errorMessage>
+</ValidationRule>

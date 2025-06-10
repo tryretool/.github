@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Unit_Platform_Type</fullName>
+    <active>false</active>
+    <errorConditionFormula>ISCHANGED(Business_Unit__c) &amp;&amp;
+NOT(ISBLANK(Business_Unit__c)) &amp;&amp;
+NOT(
+  ISPICKVAL(Business_Unit__r.Platform_Type__c,&quot;Managed Cloud&quot;) || 
+  ISPICKVAL(Business_Unit__r.Platform_Type__c,&quot;Self-hosted&quot;) 
+)
+&amp;&amp; NOT(ISCHANGED(Permission_Check__c))</errorConditionFormula>
+    <errorDisplayField>Business_Unit__c</errorDisplayField>
+    <errorMessage>Can only associate Retool License with Self-hosted or Managed Cloud BUs</errorMessage>
+</ValidationRule>

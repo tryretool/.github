@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Team_company_start_date</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISPICKVAL(Type__c,&quot;Individual&quot;)) &amp;&amp; DAY(Start_Date__c) != 1</errorConditionFormula>
+    <errorDisplayField>Start_Date__c</errorDisplayField>
+    <errorMessage>Start date must be the first of a month for team and company goals</errorMessage>
+</ValidationRule>

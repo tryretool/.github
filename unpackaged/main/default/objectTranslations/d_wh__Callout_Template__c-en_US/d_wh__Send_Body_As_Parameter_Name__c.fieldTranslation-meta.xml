@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- If populated, the body of the call is sent as a parameter, for example &apos;requestJobDescription={&quot;type&quot;:&quot;create&quot;...}&apos;.
+Enter the name of the parameter. --></help>
+        <label><!-- Send Body As Parameter - Name --></label>
+        <name>d_wh__Send_Body_As_Parameter_Name__c</name>
+    </CustomFieldTranslation>

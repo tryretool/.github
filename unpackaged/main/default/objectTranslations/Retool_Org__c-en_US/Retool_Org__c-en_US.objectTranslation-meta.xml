@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Retool Org</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Retool Orgs</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Retool Org Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Org Stats --></label>
+            <section>Org Stats</section>
+        </sections>
+        <sections>
+            <label><!-- Subscription --></label>
+            <section>Subscription</section>
+        </sections>
+        <sections>
+            <label><!-- Usage &amp; Adoption --></label>
+            <section>Usage &amp; Adoption</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Reparent --></label>
+        <name>Reparent</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Account is required --></errorMessage>
+        <name>Account_required</name>
+    </validationRules>
+</CustomObjectTranslation>

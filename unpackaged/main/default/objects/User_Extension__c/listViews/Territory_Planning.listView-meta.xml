@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Territory_Planning</fullName>
+    <booleanFilter>(1 OR 3) AND (2 OR 4)</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Role_Name_Current__c</columns>
+    <columns>TBH_Index__c</columns>
+    <columns>Team_Current__c</columns>
+    <columns>Subteam_Current__c</columns>
+    <columns>New_User_Role__c</columns>
+    <columns>Manager_New__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>User_Is_Active__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Department_New__c</field>
+        <operation>equals</operation>
+        <value>Sales</value>
+    </filters>
+    <filters>
+        <field>TBH_Index__c</field>
+        <operation>equals</operation>
+        <value>TBH01,TBH02,TBH03,TBH04,TBH05,TBH06,TBH07,TBH08,TBH09,TBH10,TBH11,TBH12,TBH13,TBH14,TBH15,TBH16,TBH17,TBH18,TBH19,TBH20</value>
+    </filters>
+    <filters>
+        <field>Department_Current__c</field>
+        <operation>equals</operation>
+        <value>Sales</value>
+    </filters>
+    <label>Territory Planning (Sales &amp; Success)</label>
+    <sharedTo>
+        <roleAndSubordinates>CFO</roleAndSubordinates>
+    </sharedTo>
+</ListView>

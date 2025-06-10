@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bounced__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>True if this email bounced.</inlineHelpText>
+    <label>Bounced?</label>
+    <securityClassification>Safe</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

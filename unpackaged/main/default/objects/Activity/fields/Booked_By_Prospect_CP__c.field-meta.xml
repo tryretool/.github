@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booked_By_Prospect_CP__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>True if the meeting was booked by the prospect themselves via an online link. False if the meeting is booked via the Chili Piper Instant Booker by a Retool employee. (via Chili Piper)</inlineHelpText>
+    <label>Booked by Prospect?</label>
+    <securityClassification>Safe</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_61898962</developerName>
+        <masterLabel>SQO Category</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Opportunity.Qualification_Journey_Subtype__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Product Signup</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Product Action</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Endgame</sourceValue>
+            </sourceValues>
+            <value>Product</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Demo Request</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Demo Request (Non-MQL)</sourceValue>
+            </sourceValues>
+            <value>Demo Request</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Other Meeting</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Koala</sourceValue>
+            </sourceValues>
+            <value>Other</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Outbound Sequence</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Champify</sourceValue>
+            </sourceValues>
+            <value>Sales</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Event</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Content</sourceValue>
+            </sourceValues>
+            <value>Event/Content</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Opportunity.Opportunity_ID_case_safe__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Booking_Channel_Annualized_Revenue__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Qualified_Pipeline_AR__c</field>
+    </columns>
+    <columns>
+        <field>Account.Shipping_Region__c</field>
+    </columns>
+    <columns>
+        <field>Account.Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Sourced_By_Subteam__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Sourced_By_Team__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Qualification_Journey_Subtype__c</field>
+    </columns>
+    <columns>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    AND(
+        
+    OR(Opportunity.Qualification_Journey_Subtype__c = &#39;Other Meeting&#39;, Opportunity.Qualification_Journey_Subtype__c = &#39;Other Meeting)&#39;),
+    
+    OR( TEXT(Opportunity.Sourced_By_Team__c ) = &#39;Account Executives&#39;, TEXT(Opportunity.Sourced_By_Team__c ) = &#39;Account Executives&#39;)),
+    
+    &quot;Sales&quot;,&quot;Marketing&quot;)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Other Meeting Role</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <description>[JC] SQO Actuals, Q125</description>
+    <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Opportunity.Professional_Services</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Qualified_Pipeline_AR_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2025</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Qualified_Pipeline_AR_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>3/31/2025</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Booking_Channel_Annualized_Revenue__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New,Upsell,Pilot</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Is_Test_Account__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Month</dateGranularity>
+        <field>Opportunity.Qualified_Pipeline_AR_Date__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_61898962</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>[JC] SQO Actuals, Q125</name>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Opportunity</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

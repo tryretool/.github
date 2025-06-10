@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Created From Sales Order --></label>
+        <name>breadwinner_ns__CreatedFrom_SalesOrder__c</name>
+        <relationshipLabel><!-- Item Fulfillments created from this Sales Order --></relationshipLabel>
+    </CustomFieldTranslation>

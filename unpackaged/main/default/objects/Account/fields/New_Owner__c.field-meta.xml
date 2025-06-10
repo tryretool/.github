@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Owner__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Link to associated `User Extension` record. Used to plan for Account ownership transitions.</description>
+    <inlineHelpText>Link to associated `User Extension` record. Used to plan for Account ownership transitions.</inlineHelpText>
+    <label>New Owner</label>
+    <lookupFilter>
+        <active>false</active>
+        <booleanFilter>1 OR (2 AND 3) OR 4 OR 5</booleanFilter>
+        <filterItems>
+            <field>User_Extension__c.TBH_Index__c</field>
+            <operation>contains</operation>
+            <value>TBH</value>
+        </filterItems>
+        <filterItems>
+            <field>User_Extension__c.New_User_Role__r.Account_Team_Primary_Role__c</field>
+            <operation>equals</operation>
+            <value>Owner</value>
+        </filterItems>
+        <filterItems>
+            <field>User_Extension__c.User__r.IsActive</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>User_Extension__c.User__r.Is_Account_Pool__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>User_Extension__c.User__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.OwnerId</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>User_Extension__c</referenceTo>
+    <relationshipLabel>Accounts</relationshipLabel>
+    <relationshipName>Accounts</relationshipName>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

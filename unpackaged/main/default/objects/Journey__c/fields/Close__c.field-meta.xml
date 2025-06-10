@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close__c</fullName>
+    <description>Link that invokes &#39;Close Journey&#39; flow. Used in Journey List Views.</description>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(
+  &#39;https://retool.lightning.force.com/lightning/action/quick/Journey__c.Close_Journey?objectApiName&amp;context=RECORD_DETAIL&amp;recordId=&#39; + 
+  Journey_ID_case_safe__c + 
+  &#39;&amp;backgroundContext=%2Flightning%2Fr%2FJourney__c%2F&#39; + 
+  Journey_ID_case_safe__c + 
+  &#39;%2Fview&#39;,
+  IMAGE(
+    &quot;https://tse1.mm.bing.net/th?id=OIP.KefxXFoZdlOu4IobAbhdgAHaHa&amp;pid=Api&quot;, 
+    &quot;Close Journey&quot;, 
+    16, 
+    16
+  ),
+  &quot;_self&quot;
+)</formula>
+    <inlineHelpText>Link that invokes &#39;Close Journey&#39; flow. Used in Journey List Views.</inlineHelpText>
+    <label>Close</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

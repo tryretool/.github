@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booking_Channel_Annualized_Revenue__c</fullName>
+    <description>&lt;a href=&quot;https://docs.google.com/spreadsheets/d/1tsKZYdDf99UVnJHWhEJtZOKp3x7svnCvOM-DPHcEhrY/edit#gid=1870438679&quot; target=&quot;_blank&quot;&gt;See Retool Bookings Taxonomy&lt;/a&gt;
+
+[Utilized by Xactly]</description>
+    <externalId>false</externalId>
+    <formula>CASE(Subtype__c,
+ &quot;Conversion - Self-Service to Annual&quot;,&quot;Upsell&quot;,
+ &quot;New Commitment - Annual&quot;,&quot;New&quot;,
+ &quot;New Commitment - Quarterly&quot;,&quot;New&quot;,
+ &quot;New Commitment - Monthly&quot;,&quot;New&quot;,
+ &quot;New Commitment - Other&quot;,&quot;New&quot;,
+ &quot;New Subsidiary - Annual&quot;,&quot;Expansion&quot;,
+ &quot;Baseline Transfer - In&quot;,&quot;Baseline Transfer&quot;,
+ &quot;Baseline Transfer - Out&quot;,&quot;Baseline Transfer&quot;,
+ &quot;Expansion - Committed&quot;,&quot;Expansion&quot;,
+ &quot;Expansion - Uncommitted&quot;,&quot;Expansion&quot;,
+ &quot;Partnership&quot;,&quot;Partner&quot;,
+ &quot;Pilot - Paid&quot;,&quot;Pilot&quot;,
+ &quot;Renewal - Pilot Conversion&quot;,&quot;New&quot;,
+ &quot;Renewal - Pilot Extension&quot;,&quot;Pilot&quot;,
+ &quot;Unqualified - Sales&quot;,&quot;New&quot;,
+ &quot;Unqualified - Expansion&quot;,&quot;Expansion&quot;,
+ &quot;&quot;,&quot;&quot;,
+ IF(
+  ISPICKVAL(StageName, &quot;Churn&quot;) || (IsClosed = FALSE &amp;&amp; RecordType.Name = &quot;Renewal&quot; &amp;&amp; Forecast_Total_AR__c = 0),
+  &quot;Churn&quot;,
+  IF(
+   Forecast_New_AR__c = 0,
+   &quot;Flat&quot;,
+   IF(
+    Forecast_New_AR__c * IF(ISPICKVAL(Booking_Type__c,&quot;Debook&quot;),-1,1) &gt; 0,
+    &quot;Expansion&quot;,
+    IF(
+     Forecast_New_AR__c * IF(ISPICKVAL(Booking_Type__c,&quot;Debook&quot;),-1,1) &lt; 0,
+     &quot;Contraction&quot;,
+     &quot;&quot;
+    )
+   )
+  )
+ )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The financial classification (i.e., Booking Channel) for the Annualized Revenue represented by this opportunity.</inlineHelpText>
+    <label>Booking Channel (Annualized Revenue)</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

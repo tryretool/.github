@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Self_Serve_Billing</fullName>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>CASES.CREATED_DATE</columns>
+    <columns>CASES.SUBJECT</columns>
+    <columns>Age__c</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>CASES.PRIORITY</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Queue</filterScope>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>New,Open,On Hold,Waiting for Customer</value>
+    </filters>
+    <filters>
+        <field>Support_Tier__c</field>
+        <operation>equals</operation>
+        <value>4; Self Service</value>
+    </filters>
+    <filters>
+        <field>Age__c</field>
+        <operation>lessOrEqual</operation>
+        <value>2</value>
+    </filters>
+    <filters>
+        <field>CASES.SUBJECT</field>
+        <operation>notContain</operation>
+        <value>remittance</value>
+    </filters>
+    <label>CSR Billing Queue</label>
+    <queue>Billing_Queue</queue>
+</ListView>

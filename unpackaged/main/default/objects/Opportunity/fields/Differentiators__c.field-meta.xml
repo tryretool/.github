@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Differentiators__c</fullName>
+    <label>Differentiator(s)</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Consistent security and compliance across teams</fullName>
+                <default>false</default>
+                <label>Consistent security and compliance across teams</label>
+            </value>
+            <value>
+                <fullName>Build software in a more collaborative way</fullName>
+                <default>false</default>
+                <label>Build software in a more collaborative way</label>
+            </value>
+            <value>
+                <fullName>The more you build, the more value you get</fullName>
+                <default>false</default>
+                <label>The more you build, the more value you get</label>
+            </value>
+            <value>
+                <fullName>Compatibility with an enterprise tech stack</fullName>
+                <default>false</default>
+                <label>Compatibility with an enterprise tech stack</label>
+            </value>
+            <value>
+                <fullName>Don’t waste time on the solved problems of software</fullName>
+                <default>false</default>
+                <label>Don’t waste time on the solved problems of software</label>
+            </value>
+            <value>
+                <fullName>Expert guidance, services, and support</fullName>
+                <default>false</default>
+                <label>Expert guidance, services, and support</label>
+            </value>
+            <value>
+                <fullName>Trusted and battle-tested pioneers in a new category</fullName>
+                <default>false</default>
+                <label>Trusted and battle-tested pioneers in a new category</label>
+            </value>
+            <value>
+                <fullName>Differentiator 2</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Differentiator 2</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

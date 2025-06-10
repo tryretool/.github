@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Anonymous Apex script to execute. Your script must include a method definition for `void execute( List&lt;Map&lt;String, Object&gt;&gt; sourceRecordsBatch )`, which will be passed the current batch of source records. No script state is preserved between executions. --></help>
+        <label><!-- Target Apex Script --></label>
+        <name>dca_mass_action__Target_Apex_Script__c</name>
+    </CustomFieldTranslation>

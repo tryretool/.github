@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Territory_Transfer_Status__c</fullName>
+    <description>Returns whether or not the Account record has pending ownership changes relative to the running user.</description>
+    <externalId>false</externalId>
+    <formula>IF(
+  $CustomMetadata.Global_Permission__mdt.Public_Territory_Changes_Visibile.Is_Enabled__c,
+  IF(
+    $User.Id = New_Owner__r.User__c &amp;&amp; $User.Id != OwnerId,
+    &quot;Incoming&quot;,
+    IF(
+      $User.Id != New_Owner__r.User__c &amp;&amp; $User.Id = OwnerId,
+      &quot;Outgoing&quot;,
+      IF(
+        $User.Id = OwnerId,
+        &quot;No Change&quot;,
+        &quot;Another Owner&quot;
+      )
+    )
+  ),
+  &quot;Not Released&quot;
+)</formula>
+    <inlineHelpText>Returns whether or not the Account record has pending ownership changes relative to the running user.</inlineHelpText>
+    <label>Territory Transfer Status</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

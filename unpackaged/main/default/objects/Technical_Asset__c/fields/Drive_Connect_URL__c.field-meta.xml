@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Drive_Connect_URL__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(Format__c,
+  &quot;Google Document&quot;,&quot;Link__c&quot;,
+  &quot;Google Slides&quot;,&quot;Link__c&quot;,
+  &quot;Google Sheet&quot;,&quot;Link__c&quot;,
+  NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Drive Connect URL</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

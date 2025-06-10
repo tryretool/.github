@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Red_account_reasons_required</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK(Entered_Red_Account_Reasons__c) &amp;&amp; ISPICKVAL(Type__c,&quot;Red Account&quot;) &amp;&amp; ISNEW()</errorConditionFormula>
+    <errorDisplayField>Entered_Red_Account_Reasons__c</errorDisplayField>
+    <errorMessage>Entered Red Account Reasons required for type Red Account</errorMessage>
+</ValidationRule>

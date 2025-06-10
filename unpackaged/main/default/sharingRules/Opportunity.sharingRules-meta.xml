@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>All_Open_Opps_with_RevOps</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>All Open Opps with RevOps</label>
+        <sharedTo>
+            <roleAndSubordinates>Head_of_Revenue_Operations</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>IsClosed</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CSOPS_R_W2</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CSOPS R/W2</label>
+        <sharedTo>
+            <role>GTM_Strategy</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>IsClosed</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Not_Invoiced_Opps_with_Accounting</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Not Invoiced Opps with Accounting</label>
+        <sharedTo>
+            <roleAndSubordinates>Controller</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>StageName</field>
+            <operation>equals</operation>
+            <value>Churn,Closed Won</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>has_been_invoiced__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Head_of_TCX</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Head of TCX</label>
+        <sharedTo>
+            <role>Head_of_Technical_Experience</role>
+        </sharedTo>
+        <sharedFrom>
+            <group>All_Users</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

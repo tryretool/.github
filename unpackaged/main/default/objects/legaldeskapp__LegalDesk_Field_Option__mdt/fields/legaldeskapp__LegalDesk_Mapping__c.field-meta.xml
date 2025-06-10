@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>legaldeskapp__LegalDesk_Mapping__c</fullName>
+    <deprecated>false</deprecated>
+    <description>This field looks up to the corresponding LegalDesk_Mapping__mdt record.</description>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <inlineHelpText>Enter the Streamline AI Mapping field that this option will be used for</inlineHelpText>
+    <label>Streamline AI Mapping</label>
+    <referenceTo>legaldeskapp__LegalDesk_Mapping__mdt</referenceTo>
+    <relationshipLabel>LegalDesk Field Options</relationshipLabel>
+    <relationshipName>LegalDesk_Field_Options</relationshipName>
+    <required>false</required>
+    <type>MetadataRelationship</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <autoResponseRule>
+        <fullName>Fallback</fullName>
+        <active>false</active>
+    </autoResponseRule>
+    <autoResponseRule>
+        <fullName>Portal Response</fullName>
+        <active>false</active>
+    </autoResponseRule>
+    <autoResponseRule>
+        <fullName>Response on Closed Case</fullName>
+        <active>false</active>
+        <ruleEntry>
+            <formula>First_Close_At__c &lt;=  Last_Customer_Reply_At__c  &amp;&amp; CaseNumber = &quot;00001073&quot;</formula>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>salesforce-process-notifications@retool.com</senderEmail>
+            <senderName>Support @ Retool</senderName>
+            <template>Service_Cloud_Auto_Replies/Auto_Reply_Ticket_is_Closed</template>
+        </ruleEntry>
+    </autoResponseRule>
+</AutoResponseRules>

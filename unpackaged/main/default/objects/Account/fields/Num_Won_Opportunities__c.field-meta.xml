@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Num_Won_Opportunities__c</fullName>
+    <description>Total number of won Opportunities related to the Account in any business line.</description>
+    <inlineHelpText>Total number of won Opportunities related to the Account in any business line.</inlineHelpText>
+    <label># Won Opportunities</label>
+    <securityClassification>Safe</securityClassification>
+    <summaryFilterItems>
+        <field>Opportunity.IsWon</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Opportunity.AccountId</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

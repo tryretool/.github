@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The number of Retool Licenses that are associated with this Business Unit --></help>
+        <label><!-- # Retool Licenses --></label>
+        <name>Num_Retool_Licenses__c</name>
+    </CustomFieldTranslation>

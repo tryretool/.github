@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Customer Milestone</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Customer Milestones</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Customer Milestone Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Approve --></label>
+        <name>Approve</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Reject --></label>
+        <name>Reject</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- `Virtual` or `Onsite` Delivery Method is required if Business Review, Hackathon, or Technical Enablement milestone is selected. --></errorMessage>
+        <name>Business_Review_Delivery_Method</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Milestone may not be created with a created date in the future --></errorMessage>
+        <name>Created_date_in_future</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please use Salesforce or an approved application to create Customer Milestones --></errorMessage>
+        <name>Must_use_approved_tooling_for_new</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Selected opportunity must be related to the Business Unit --></errorMessage>
+        <name>Opp_on_bu</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Entered Red Account Reasons required for type Red Account --></errorMessage>
+        <name>Red_account_reasons_required</name>
+    </validationRules>
+</CustomObjectTranslation>

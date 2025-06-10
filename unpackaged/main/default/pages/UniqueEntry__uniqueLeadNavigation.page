@@ -1,0 +1,96 @@
+<!--
+*  PageName       : uniqueLeadNavigation
+*  JIRATicket     : RLSF-1
+*  CreatedOn      : 25/02/2015
+*  ModifiedBy     : Vivek Yadav
+*  Description    : This page will detect if it's launched from SF1 or standard SF, and based on that it will direct to respective versions.  
+-->
+<!-- 2016.10.21 generate page layout by Connected App Start -->
+
+<apex:page standardController="Lead" extensions="UniqueEntry.uniqueEntryNavigationController" action="{!checkAccessToken}" docType="html-5.0" sidebar="false" lightningStylesheets="true">
+<!-- 2016.10.21 generate page layout by Connected App End -->
+
+	
+	<style type="text/css">
+		.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+			background-color: #F88962 !important;
+			border-color: #F88962 !important;
+		}
+		/* 2016.10.21 generate page layout by Connected App Start */
+		body {
+			font-size: 12px !important;
+    		line-height: normal !important;
+		}
+		#accessTokenGroup { font-size: 12.5px !important; }
+		#accessTokenGroup h3 { font-weight: bold; }
+		#accessTokenGroup .tertiaryPalette { 
+			background-color: rgba(189, 187, 187, 0.83) !important; 
+			border-color: rgba(189, 187, 187, 0.83) !important; 
+			padding: 6px;
+			color: black;
+		}
+		/* 2016.10.21 generate page layout by Connected App End */
+	</style>
+	
+	<c:UE_Navigation />	
+
+	<apex:form id="formId">		
+		<apex:commandbutton action="{!navigateOnSelectRecordType}" style="display:none" styleclass="btnNavigate"></apex:commandbutton>
+		<apex:inputtext value="{!RT}" style="display:none" styleclass="hdnRecordType" />
+
+		<!-- <div class="container">
+			<div class="list-group">
+				<div class="list-group-item active disabled">Select Lead Record Type</div>
+				<apex:repeat id="recordTypeList" value="{!lstRecordTypes}" var="recType">
+					<a href="#" class="list-group-item" id="{!recType.id}" onclick="redirectToLeadNewLayout(this)">{!recType.Name}</a>
+				</apex:repeat>
+			</div>
+		</div> -->
+
+		<!-- 2016.10.21 generate page layout by Connected App Start -->
+		<div id="recordTypeGroup">
+			<apex:outputPanel rendered="{!hasAccessToken}">
+				<div class="container">
+					<div class="list-group">
+						<div class="list-group-item active disabled">Select Lead Record Type</div>
+						<apex:repeat id="recordTypeList" value="{!lstRecordTypes}" var="recType">
+							<a href="#" class="list-group-item" id="{!recType.id}" onclick="redirectToLeadNewLayout(this)">{!recType.Name}</a>
+						</apex:repeat>
+					</div>
+				</div>
+			</apex:outputPanel>
+		</div>
+		<div id="accessTokenGroup">
+			<apex:actionFunction action="{!checkAccessToken}" name="jsCheckAccessTokenIgnore" reRender="formId">
+				<apex:param assignTo="{!isIgnoreAccessToken}" name="isIgnoreAccessToken" value="" />
+				<apex:param assignTo="{!hasAccessToken}" name="hasAccessToken" value="" />
+			</apex:actionFunction>
+			<apex:pageblock rendered="{!!hasAccessToken}">
+				<apex:pageBlockSection title="Authentication Settings" columns="1" rendered="{!isGroupProEdition}" collapsible="false">
+						<apex:outputText value="{!HTMLENCODE(AuthMessage)}" escape="false"/>
+						<apex:commandButton value="Get Access Token" onclick="openPopupAuth(); return false;"/>
+					</apex:pageBlockSection>
+			</apex:pageblock>
+		</div>
+		<!-- 2016.10.21 generate page layout by Connected App Start -->
+	</apex:form>
+
+	<script type="text/javascript">
+		// 2016.10.21 generate page layout by Connected App Start
+		var authPopup;
+		function openPopupAuth() {
+			authPopup = window.open('{!$Page.uniqueAuthorize}', 'Authentication', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no, resizable=no,copyhistory=no,width=600,height=300,top=200,left=300');
+			authPopup.focus();
+		}
+		
+		function closeWindow() {
+			authPopup.close();
+			var ignore = false;
+			if(window.location.search.indexOf('isRefreshToken') >= 0) { 
+				ignore = true;
+			}
+			jsCheckAccessTokenIgnore(ignore, true);
+		}
+		// 2016.10.21 generate page layout by Connected App End
+	</script>
+</apex:page>

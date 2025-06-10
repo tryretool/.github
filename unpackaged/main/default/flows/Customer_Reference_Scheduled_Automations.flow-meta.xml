@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Paused_Until_Today_Email</name>
+        <label>Send Paused Until Today Email</label>
+        <locationX>50</locationX>
+        <locationY>468</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>elise@retool.com, nina@retool.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>Body</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <decisions>
+        <name>Is_Pause_Until_Date_Today</name>
+        <label>Is Pause Until Date Today</label>
+        <locationX>182</locationX>
+        <locationY>252</locationY>
+        <defaultConnectorLabel>Pause Until NOT Today</defaultConnectorLabel>
+        <rules>
+            <name>Pause_Until_Today</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Pause_Until__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Move_to_Accepted</targetReference>
+            </connector>
+            <label>Pause Until Today</label>
+        </rules>
+    </decisions>
+    <description>Adding Nina to the email alert</description>
+    <environments>Default</environments>
+    <interviewLabel>Customer Reference - Scheduled Automations {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Customer Reference - Scheduled Automations</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Move_to_Accepted</name>
+        <label>Move to Accepted &amp; Clear Date</label>
+        <locationX>50</locationX>
+        <locationY>360</locationY>
+        <connector>
+            <targetReference>Send_Paused_Until_Today_Email</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Pause_Until__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Accepted</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Is_Pause_Until_Date_Today</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Paused</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Pause_Until__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Customer_Reference__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2024-11-13</startDate>
+            <startTime>06:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>Body</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;The following record has reached its &#39;Pause Until&#39; date and has been moved back to &quot;Accepted&quot;.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Name: {!$Record.Name}&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 13px;&quot;&gt;https://retool.lightning.force.com/lightning/r/Customer_Reference__c/{!$Record.Id}/view&lt;/span&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>Subject</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>[SFDC] Pause Until Reached on {!$Record.Name}</text>
+    </textTemplates>
+</Flow>

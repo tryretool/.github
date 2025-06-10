@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sendoso_Sender_Full_Name__c</fullName>
+    <description>Full Name of the person who sent the gift from Sendoso.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Full Name of the person who sent the gift from Sendoso.</inlineHelpText>
+    <label>Sendoso: Sender Full Name</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

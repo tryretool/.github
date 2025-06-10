@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>pw_ccpro__AddressToolsLogo_Lightning</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <defaultLandingTab>pw_ccpro__AddressToolsAdmin</defaultLandingTab>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>AddressTools</label>
+    <navType>Standard</navType>
+    <tabs>standard-home</tabs>
+    <tabs>pw_ccpro__AddressToolsAdmin</tabs>
+    <tabs>pw_ccpro__CountryObject__c</tabs>
+    <tabs>pw_ccpro__TimeZone__c</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-Contract</tabs>
+    <tabs>standard-Lead</tabs>
+    <tabs>pw_ccpro__ScheduledAddressValidation</tabs>
+    <tabs>pw_ccpro__CountryComplete</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

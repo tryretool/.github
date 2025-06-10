@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moment_Context__c</fullName>
+    <description>Stores the information related to the Moment creation source.
+
+In System Use: &#39;Case - Handoff Button&#39;; &#39;Contact - After Save Automations&#39;; &#39;Koala Intent Signal - After Save Automations&#39;; &#39;Moment: After Save Automations&#39;; &#39;Moment: Before Save Automations&#39;; &#39;Retool User - After Save Automations&#39;; &#39;Task - After Save Automations&#39;
+
+External Systems Utilization: Champify; Hubspot; Koala; Madkudu; Regie.ai</description>
+    <inlineHelpText>Stores the information related to the Moment creation source.</inlineHelpText>
+    <label>Moment Context</label>
+    <length>32768</length>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>5</visibleLines>
+</CustomField>

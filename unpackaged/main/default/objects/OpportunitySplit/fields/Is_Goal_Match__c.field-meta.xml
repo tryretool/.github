@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Goal_Match__c</fullName>
+    <formula>NOT(ISBLANK(Attributable_Goal__c)) &amp;&amp; Opportunity__r.Booking_Month__c = Attributable_Goal__r.Period_Start__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>zOLD Is Goal Match?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

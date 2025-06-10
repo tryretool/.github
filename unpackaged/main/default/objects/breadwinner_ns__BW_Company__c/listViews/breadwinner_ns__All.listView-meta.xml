@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__All</fullName>
+    <columns>NAME</columns>
+    <columns>breadwinner_ns__IsInactive__c</columns>
+    <columns>breadwinner_ns__IsPerson__c</columns>
+    <columns>breadwinner_ns__CompanyName__c</columns>
+    <columns>breadwinner_ns__FirstName__c</columns>
+    <columns>breadwinner_ns__LastName__c</columns>
+    <columns>breadwinner_ns__Salesforce_Account__c</columns>
+    <columns>breadwinner_ns__Parent__c</columns>
+    <columns>breadwinner_ns__Subsidiary__c</columns>
+    <columns>breadwinner_ns__Currency__c</columns>
+    <columns>breadwinner_ns__EntityStatus__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

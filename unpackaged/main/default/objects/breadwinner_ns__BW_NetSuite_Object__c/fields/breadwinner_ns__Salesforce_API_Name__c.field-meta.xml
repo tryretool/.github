@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__Salesforce_API_Name__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Mapped Salesforce object API name when Category is Additional or CustomObject</description>
+    <externalId>false</externalId>
+    <label>Salesforce API Name</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

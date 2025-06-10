@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Field Type --></help>
+        <label><!-- Type --></label>
+        <name>adroll__Type__c</name>
+        <picklistValues>
+            <masterLabel>Address</masterLabel>
+            <translation><!-- Address --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anytype</masterLabel>
+            <translation><!-- Anytype --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Base64</masterLabel>
+            <translation><!-- Base64 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boolean</masterLabel>
+            <translation><!-- Boolean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Combobox</masterLabel>
+            <translation><!-- Combobox --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Currency</masterLabel>
+            <translation><!-- Currency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datacategorygroupreference</masterLabel>
+            <translation><!-- Datacategorygroupreference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Date</masterLabel>
+            <translation><!-- Date --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Datetime</masterLabel>
+            <translation><!-- Datetime --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Double</masterLabel>
+            <translation><!-- Double --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Encryptedstring</masterLabel>
+            <translation><!-- Encryptedstring --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Id</masterLabel>
+            <translation><!-- Id --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Integer</masterLabel>
+            <translation><!-- Integer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multipicklist</masterLabel>
+            <translation><!-- Multipicklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Percent</masterLabel>
+            <translation><!-- Percent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Picklist</masterLabel>
+            <translation><!-- Picklist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reference</masterLabel>
+            <translation><!-- Reference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>String</masterLabel>
+            <translation><!-- String --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text</masterLabel>
+            <translation><!-- Text --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Textarea</masterLabel>
+            <translation><!-- Textarea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Time</masterLabel>
+            <translation><!-- Time --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Url</masterLabel>
+            <translation><!-- Url --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

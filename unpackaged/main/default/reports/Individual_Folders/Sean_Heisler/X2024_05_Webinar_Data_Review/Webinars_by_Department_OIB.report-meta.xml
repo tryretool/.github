@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <acrossGroupingContext>BucketField_7728273</acrossGroupingContext>
+        <calculatedFormula>RowCount / PARENTGROUPVAL(RowCount, Moment__c.Campaign__c.Name, COLUMN_GRAND_SUMMARY)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>Moment__c$Campaign__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>%</masterLabel>
+        <scale>1</scale>
+    </aggregates>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_7728273</developerName>
+        <masterLabel>Department (Buckets)</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>Moment__c$Contact__c.Department</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Engineering</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Technical Leadership</sourceValue>
+            </sourceValues>
+            <value>Engineering</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Customer Success</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Customer Support</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Marketing</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Marketing Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Post Sales Engineering</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales/Business Development</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Sales Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Support</sourceValue>
+            </sourceValues>
+            <value>GTM</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Data</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Information Technology</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Product</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Strategy and Operations</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Design</sourceValue>
+            </sourceValues>
+            <value>Product/Data/IT/Ops</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Legal and Compliance</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Human Resources</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>HR</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Finance</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Executive</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Other</sourceValue>
+            </sourceValues>
+            <value>G&amp;A/Executive/Other</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Moment__c$Name</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Id</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Moment_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Webinar - Live,Webinar - Recorded</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Campaign__c.StartDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>11/1/2023</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Campaign_Member_Status_at_Moment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>RSVP Yes</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Moment__c$Campaign__c.StartDate</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessThan</operator>
+            <value>6/1/2024</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_7728273</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Moment__c$Campaign__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Webinars by Department</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

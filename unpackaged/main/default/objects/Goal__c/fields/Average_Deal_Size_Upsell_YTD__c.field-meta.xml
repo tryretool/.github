@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Average_Deal_Size_Upsell_YTD__c</fullName>
+    <formula>IF(Deal_Count_Actual_Upsell_YTD__c &gt; 0, New_Annualized_Rev_Actual_Upsell_YTD__c / Deal_Count_Actual_Upsell_YTD__c, NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Average Deal Size (Upsell) (YTD)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Rollup of Churn/Contraction Worst Case quarterly forecast. Quarterly forecast updated weekly.
+
+Primarily used in Sales Manager Shotcaller Retool App. --></help>
+        <label><!-- Churn/Contraction (Worst Case) --></label>
+        <name>Churn_Contraction_Worst_Case__c</name>
+    </CustomFieldTranslation>

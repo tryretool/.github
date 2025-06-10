@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Started_Stage__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( NOT(ISBLANK( Identified_At__c )), &quot;Identified&quot;,
+IF( NOT(ISBLANK( Accepted_At__c )), &quot;Accepted&quot;,
+IF( NOT(ISBLANK( Approached_At__c )), &quot;Approached&quot;,
+IF( NOT(ISBLANK( Engaged_At__c )), &quot;Engaged&quot;,
+IF( NOT(ISBLANK(  Meeting_Booked_At__c )), &quot;Meeting Booked&quot;, &quot;ERROR&quot;
+)))))</formula>
+    <label>Started Stage</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

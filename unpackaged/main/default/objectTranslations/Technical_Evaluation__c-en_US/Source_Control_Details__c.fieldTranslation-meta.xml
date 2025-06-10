@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Details on source control setup (e.g. single vs. multi-instance, workflow requirements like number of branches or cherry-picking releases, Protected Resources requirement, idP not supported, etc.) --></help>
+        <label><!-- Source Control Details --></label>
+        <name>Source_Control_Details__c</name>
+    </CustomFieldTranslation>

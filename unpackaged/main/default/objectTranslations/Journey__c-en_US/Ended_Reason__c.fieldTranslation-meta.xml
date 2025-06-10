@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Ended Reason --></label>
+        <name>Ended_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Auto-Closed</masterLabel>
+            <translation><!-- Auto-Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bad Contact Info</masterLabel>
+            <translation><!-- Bad Contact Info --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Converted Other Journey</masterLabel>
+            <translation><!-- Converted Other Journey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do Not Contact</masterLabel>
+            <translation><!-- Do Not Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email Objection</masterLabel>
+            <translation><!-- Email Objection --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meeting Not Progressing</masterLabel>
+            <translation><!-- Meeting Not Progressing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Response</masterLabel>
+            <translation><!-- No Response --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passed to Docs/Community</masterLabel>
+            <translation><!-- Passed to Docs/Community --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passed to Partnerships</masterLabel>
+            <translation><!-- Passed to Partnerships --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passed to ProServ</masterLabel>
+            <translation><!-- Passed to ProServ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passed to Support</masterLabel>
+            <translation><!-- Passed to Support --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Referred to Other Contact</masterLabel>
+            <translation><!-- Referred to Other Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested Later Follow-up</masterLabel>
+            <translation><!-- Requested Later Follow-up --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

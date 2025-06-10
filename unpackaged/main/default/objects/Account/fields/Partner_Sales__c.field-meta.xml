@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_Sales__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Link to the related Partner Sales record.</description>
+    <inlineHelpText>Link to the related Partner Sales record.</inlineHelpText>
+    <label>Partner Sales</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Accounts</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

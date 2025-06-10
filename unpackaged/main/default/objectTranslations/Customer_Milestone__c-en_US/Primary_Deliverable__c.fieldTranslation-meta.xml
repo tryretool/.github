@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Link to relevant collateral or the primary deliverable (an app, a presentation, etc). Ensure appropriate Google Drive permissions --></help>
+        <label><!-- Primary Deliverable --></label>
+        <name>Primary_Deliverable__c</name>
+    </CustomFieldTranslation>

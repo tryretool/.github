@@ -1,0 +1,1840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>EmailAdmin</name>
+        <label>EmailAdmin</label>
+        <locationX>1319</locationX>
+        <locationY>1180</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Added_to_Sequence_Changed</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <stringValue>adam.louie@retool.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Journey Record Deleted</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <stringValue>Journey associated with {!$Record.Email} has been deleted.</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <assignments>
+        <name>Set_AccountId</name>
+        <label>Set AccountId</label>
+        <locationX>263</locationX>
+        <locationY>811</locationY>
+        <assignmentItems>
+            <assignToReference>New_Account_Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Create_New_Account</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Open_Journey</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_AccountId_Manual</name>
+        <label>Set AccountId</label>
+        <locationX>50</locationX>
+        <locationY>610</locationY>
+        <assignmentItems>
+            <assignToReference>New_Account_Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Create_New_Account_Manual</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Domain_Map</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Account_found</name>
+        <label>Account found?</label>
+        <locationX>462</locationX>
+        <locationY>617</locationY>
+        <defaultConnector>
+            <targetReference>Create_New_Account_Manual</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Found (Manual)</defaultConnectorLabel>
+        <rules>
+            <name>Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_for_existing_account.Matched_Account__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Move_Contact_to_Account</targetReference>
+            </connector>
+            <label>Found</label>
+        </rules>
+        <rules>
+            <name>Not_Found_ZoomInfo_Enrich</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Orphan_Orgs_Enrichment_ZoomInfo</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_New_Account</targetReference>
+            </connector>
+            <label>Not Found (ZoomInfo Enrich)</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Added_to_Sequence_Changed</name>
+        <label>Added to Sequence Changed?</label>
+        <locationX>1475</locationX>
+        <locationY>1343</locationY>
+        <defaultConnector>
+            <targetReference>Outbound_Sequencing_without_Journey</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Changed</defaultConnectorLabel>
+        <rules>
+            <name>Regie_Expansion</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Added_to_Sequence_At__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Added_to_Sequence_At__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>Regie</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Expansion</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Moment_0_0</targetReference>
+            </connector>
+            <label>Regie - Expansion</label>
+        </rules>
+        <rules>
+            <name>Regie_Started</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Added_to_Sequence_At__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Added_to_Sequence_At__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>Regie</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Moment_0</targetReference>
+            </connector>
+            <label>Regie - Started</label>
+        </rules>
+        <rules>
+            <name>Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Added_to_Sequence_At__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Added_to_Sequence_At__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Journey_Sequence_At</targetReference>
+            </connector>
+            <label>Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Champify_Update</name>
+        <label>Was There a Champify Update</label>
+        <locationX>816</locationX>
+        <locationY>2227</locationY>
+        <defaultConnectorLabel>No Champify Update</defaultConnectorLabel>
+        <rules>
+            <name>Champify_Updated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ChampifyIo__Job_Change_Detected_Date__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ChampifyIo__Job_Change_Detected_Date__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.ChampifyIo__Job_Change_Detected_Date__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ChampifyIo__Is_a_Champify__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Moment</targetReference>
+            </connector>
+            <label>Champify Updated</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Current_Open_Journey_Populated</name>
+        <label>Current Open Journey Populated</label>
+        <locationX>818</locationX>
+        <locationY>1189</locationY>
+        <defaultConnector>
+            <targetReference>Added_to_Sequence_Changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Journey</defaultConnectorLabel>
+        <rules>
+            <name>Current_Open_Journey</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Current_Open_Journey__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Open_Journey__r.Is_Closed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Removed_from_OB_Sequence</targetReference>
+            </connector>
+            <label>Current Open Journey</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Enrichment_Backfill</name>
+        <label>Enrichment Backfill?</label>
+        <locationX>255</locationX>
+        <locationY>1182</locationY>
+        <defaultConnector>
+            <targetReference>Update_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Backfill</defaultConnectorLabel>
+        <rules>
+            <name>Is_Backfill</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Enriched_At__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <elementReference>started_at_7</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Contact_0</targetReference>
+            </connector>
+            <label>Is Backfill</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>AccountId = 0016e00002asz8xAAA is Orphan Orgs
+AccountId = 001Qo00000SVKDfIAP is Support Integration Account
+UserId = 0016e00002asz8xAAA is Account Pool</description>
+        <name>Enrichment_Check</name>
+        <label>Enrichment Check</label>
+        <locationX>815</locationX>
+        <locationY>377</locationY>
+        <defaultConnector>
+            <targetReference>Current_Open_Journey_Populated</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Does Not Need Enrichment</defaultConnectorLabel>
+        <rules>
+            <name>Orphan_Orgs_Enrichment_ZoomInfo</name>
+            <conditionLogic>(1 AND 2 AND 3 AND 4 AND 5) OR (2 AND 3 AND 4 AND 6)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Needs_Enrichment__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ZoomInfo_Company_Name__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ZoomInfo_Company_Website__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ZoomInfo_Company_Website__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>$Record.Email_Domain__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>0016e00002asz8xAAA</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AccountId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>001Qo00000SVKDfIAP</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_for_existing_account_0</targetReference>
+            </connector>
+            <label>Orphan Orgs Enrichment (ZoomInfo)</label>
+        </rules>
+        <rules>
+            <name>Aggregation_Account_Manual_Enrichment</name>
+            <conditionLogic>1 AND 2 AND 3 AND (4 OR 5)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Enriched_Company_Name__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Enriched_Company_Website__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Is_Aggregation_Account__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Enriched_Company_Name__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Enriched_Company_Website__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_for_existing_account</targetReference>
+            </connector>
+            <label>Aggregation Account - Manual Enrichment</label>
+        </rules>
+        <rules>
+            <name>Not_Orphan_Orgs_Company_Size_Enrichment</name>
+            <conditionLogic>(1 OR 2) AND 3 AND 4 AND 5 AND 6</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.DOZISF__ZoomInfo_Enrich_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Enriched</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.DOZISF__ZoomInfo_Enrich_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Company Enriched Only</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ZoomInfo_Company_Employees__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.NumberOfEmployees</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.ZoomInfo_Company_Website__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>$Record.Email_Domain__c</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Needs_Enrichment__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Account_Employees</targetReference>
+            </connector>
+            <label>Not Orphan Orgs Company Size Enrichment</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>MK_Threshold_Crossed</name>
+        <label>MK Threshold Crossed?</label>
+        <locationX>813</locationX>
+        <locationY>1841</locationY>
+        <defaultConnector>
+            <targetReference>Champify_Update</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No new MK Threshold</defaultConnectorLabel>
+        <rules>
+            <name>Yes_new_MK_Threshold</name>
+            <conditionLogic>((1 AND 2) OR (3 AND 4 AND 9) OR (5 AND 6 AND 9)) AND 7 AND 8</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.MK_Lead_Engagement_Score__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>85.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.MK_Lead_Engagement_Score__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>85.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.MK_Lead_Engagement_Score__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>70.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.MK_Lead_Engagement_Score__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>70.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.MK_Lead_Engagement_Score__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>50.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.MK_Lead_Engagement_Score__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <numberValue>50.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Account_Status_Committed__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Active Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Account_Status_Committed__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Disqualified</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Account.Segment__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>GRW</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Product_Moment</targetReference>
+            </connector>
+            <label>Yes new MK Threshold</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Open_Journey</name>
+        <label>Open Journey?</label>
+        <locationX>255</locationX>
+        <locationY>1004</locationY>
+        <defaultConnector>
+            <targetReference>Update_Contact_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Current_Open_Journey__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Enrichment_Backfill</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Open_Journey_but_Can_t_Email</name>
+        <label>Open Journey but Can&#39;t Email</label>
+        <locationX>2056</locationX>
+        <locationY>1327</locationY>
+        <defaultConnector>
+            <targetReference>Added_to_Sequence_Changed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>All good</defaultConnectorLabel>
+        <rules>
+            <name>Open_Journey_and_Opted_Out</name>
+            <conditionLogic>1 AND 4 AND (2 OR 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Current_Open_Journey__r.Is_Closed__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opt_Out_Sales__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>True</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Do Not Contact</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Open_Journey__r.Moment_Type_Reporting__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Demo Request</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Close_Journey_Opt_Out</targetReference>
+            </connector>
+            <label>Open Journey and Opted Out</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Open_Journey_with_Different_Owner</name>
+        <label>Open Journey with Different Owner</label>
+        <locationX>1749</locationX>
+        <locationY>1187</locationY>
+        <defaultConnector>
+            <targetReference>Open_Journey_but_Can_t_Email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Same Owner or No Journey</defaultConnectorLabel>
+        <rules>
+            <name>Different_Owner</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Current_Open_Journey__r.OwnerId</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record.OwnerId</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Journey</targetReference>
+            </connector>
+            <label>Different Owner</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Outbound_Sequencing_without_Journey</name>
+        <label>Outbound Sequencing without Journey</label>
+        <locationX>815</locationX>
+        <locationY>1637</locationY>
+        <defaultConnector>
+            <targetReference>MK_Threshold_Crossed</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not outbound sequence or has a journey</defaultConnectorLabel>
+        <rules>
+            <name>Contact_in_Outbound_Sequence_Without_Journey</name>
+            <conditionLogic>1 AND 2 AND 12 AND 7 AND 8 AND 9 AND 10 AND (3 OR 4 OR 5 OR 6 OR 11 OR 13 OR 14 OR 15 OR 16)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Current_Open_Journey__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Actively_Being_Sequenced__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>[PROACTIVE]</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>[ENGAGEMENT]</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>[SALES PLAYS]</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>[Legacy Outbound]</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.HasOptedOutOfEmail</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opt_Out_Sales__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>True</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Bad Contact Info</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Do Not Contact</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>[VERTICALS]</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Task_Due_Date__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>[SALESPLAYS]</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>[INVITE]</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>[RE-ENG]</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>[SALES</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Outbound_Journey</targetReference>
+            </connector>
+            <label>Contact in Outbound Sequence Without Journey</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Current Sequence Name IS NULL
+Prior Current Sequence Name IS NOT NULL
+Current Open Journey Stage = &#39;Accepted&#39;
+Current Open Journey Outbound Sequence = TRUE</description>
+        <name>Removed_from_OB_Sequence</name>
+        <label>Removed from OB Sequence</label>
+        <locationX>1476</locationX>
+        <locationY>984</locationY>
+        <defaultConnector>
+            <targetReference>Open_Journey_with_Different_Owner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Removed</defaultConnectorLabel>
+        <rules>
+            <name>Removed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.Outreach_Current_Sequence_Name__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Open_Journey__r.Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Accepted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Current_Open_Journey__r.Outbound_Sequence__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Outreach_Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Replied</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Journey</targetReference>
+            </connector>
+            <label>Removed</label>
+        </rules>
+    </decisions>
+    <description>Adding starts with `[SALES` to the sequence name check that determines the creation of outbound Journeys.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Enriched_Website_Clean</name>
+        <dataType>String</dataType>
+        <expression>SUBSTITUTE(
+IF(
+FIND(&quot;/&quot;,
+IF(
+FIND(&quot;www.&quot;, {!$Record.Enriched_Company_Website__c}) &gt; 0,
+IF(
+FIND(&quot;//&quot;, {!$Record.Enriched_Company_Website__c}) &gt; 0,
+SUBSTITUTE(
+{!$Record.Enriched_Company_Website__c},
+LEFT(
+{!$Record.Enriched_Company_Website__c},
+FIND(&quot;//www.&quot;, {!$Record.Enriched_Company_Website__c}) + 5),
+NULL
+),
+{!$Record.Enriched_Company_Website__c}
+),
+IF(
+FIND(&quot;//&quot;, {!$Record.Enriched_Company_Website__c}) &gt; 0,
+SUBSTITUTE(
+{!$Record.Enriched_Company_Website__c},
+LEFT(
+{!$Record.Enriched_Company_Website__c},
+FIND(&quot;//&quot;, {!$Record.Enriched_Company_Website__c}) + 1),
+NULL),
+{!$Record.Enriched_Company_Website__c}
+)
+)
+) &gt; 0,
+LEFT(
+IF(
+FIND(&quot;www.&quot;,{!$Record.Enriched_Company_Website__c})&gt;0,
+IF(
+FIND(&quot;//&quot;,{!$Record.Enriched_Company_Website__c})&gt;0,
+SUBSTITUTE(
+{!$Record.Enriched_Company_Website__c},
+LEFT(
+{!$Record.Enriched_Company_Website__c},
+FIND(&quot;//www.&quot;,{!$Record.Enriched_Company_Website__c}) + 5
+),
+NULL),
+{!$Record.Enriched_Company_Website__c}
+),
+IF(
+FIND(&quot;//&quot;,{!$Record.Enriched_Company_Website__c})&gt;0,
+SUBSTITUTE(
+{!$Record.Enriched_Company_Website__c},
+LEFT(
+{!$Record.Enriched_Company_Website__c},
+FIND(&quot;//&quot;,{!$Record.Enriched_Company_Website__c}) + 1
+),
+NULL
+),
+{!$Record.Enriched_Company_Website__c}
+)
+),
+FIND(&quot;/&quot;,
+IF(
+FIND(&quot;www.&quot;,{!$Record.Enriched_Company_Website__c})&gt;0,
+IF(
+FIND(&quot;//&quot;,{!$Record.Enriched_Company_Website__c})&gt;0,
+SUBSTITUTE(
+{!$Record.Enriched_Company_Website__c},
+LEFT(
+{!$Record.Enriched_Company_Website__c},
+FIND(&quot;//www.&quot;, {!$Record.Enriched_Company_Website__c}) + 5
+),
+NULL
+),
+{!$Record.Enriched_Company_Website__c}),
+IF(
+FIND(&quot;//&quot;,{!$Record.Enriched_Company_Website__c}) &gt; 0,
+SUBSTITUTE(
+{!$Record.Enriched_Company_Website__c},
+LEFT(
+{!$Record.Enriched_Company_Website__c},
+FIND(&quot;//&quot;,{!$Record.Enriched_Company_Website__c}) + 1
+),
+NULL
+),
+{!$Record.Enriched_Company_Website__c}
+)
+)
+) -1
+),
+IF(
+FIND(&quot;www.&quot;,{!$Record.Enriched_Company_Website__c})&gt;0,
+IF(
+FIND(&quot;//&quot;,{!$Record.Enriched_Company_Website__c})&gt;0,
+SUBSTITUTE(
+{!$Record.Enriched_Company_Website__c},
+LEFT(
+{!$Record.Enriched_Company_Website__c},
+FIND(&quot;//www.&quot;,{!$Record.Enriched_Company_Website__c})+5),
+NULL
+),
+{!$Record.Enriched_Company_Website__c}
+),
+IF(
+FIND(&quot;//&quot;,{!$Record.Enriched_Company_Website__c})&gt;0,
+SUBSTITUTE(
+{!$Record.Enriched_Company_Website__c},
+LEFT(
+{!$Record.Enriched_Company_Website__c},
+FIND(
+&quot;//&quot;,
+{!$Record.Enriched_Company_Website__c}) + 1
+),
+NULL
+),
+{!$Record.Enriched_Company_Website__c})
+)
+),
+&#39;www.&#39;,
+&#39;&#39;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>MomentContextChampify</name>
+        <dataType>String</dataType>
+        <expression>&quot;A job change was identified for &quot;&amp;{!$Record.FirstName}&amp;&quot; &quot;&amp;{!$Record.LastName}&amp;&quot; (https://retool.lightning.force.com/lightning/r/Contact/&quot;&amp;{!$Record.Id}&amp;&quot;/view)&quot;&amp;BR()&amp;
+&quot;New Account: &quot;&amp;{!$Record.Account.Name}&amp;&quot; (&quot;&amp;&quot;https://retool.lightning.force.com/lightning/r/Account/&quot;&amp;{!$Record.AccountId}&amp;&quot;/view)&quot;&amp;BR()&amp;
+&quot;New Account Owner: &quot;&amp;{!$Record.Account.Account_Owner__c}&amp;BR()&amp;
+&quot;Past Account: &quot;&amp; {!$Record.ChampifyIo__Past_Account__r.Name}&amp;&quot; (https://retool.lightning.force.com/lightning/r/Account/&quot;&amp;{!$Record.ChampifyIo__Past_Account__c}&amp;&quot;/view)&quot;&amp;BR()&amp;
+&quot;Past Account Owner: &quot;&amp;{!$Record.ChampifyIo__Past_Account__r.Account_Owner__c}&amp;BR()&amp;
+&quot;Job Started Date: &quot;&amp;TEXT({!$Record.ChampifyIo__Champify_Job_Started_Date__c})&amp;BR()&amp;
+&quot;LinkedIn URL: &quot;&amp;{!$Record.ChampifyIo__LinkedIn_URL__c}&amp;BR()&amp;
+&quot;Previous Relationship: &quot;&amp;{!$Record.ChampifyIo__Champify_Persona__c}</expression>
+    </formulas>
+    <formulas>
+        <name>MomentContextRegie</name>
+        <dataType>String</dataType>
+        <expression>&quot;Regie.ai added &quot;&amp;{!$Record.FirstName}&amp;&quot; &quot;&amp;{!$Record.LastName}&amp;&quot; (https://retool.lightning.force.com/lightning/r/Contact/&quot;&amp;{!$Record.Id}&amp;&quot;/view)&quot;&amp;&quot; to sequence: &quot;&amp;{!$Record.Outreach_Current_Sequence_Name__c}</expression>
+    </formulas>
+    <formulas>
+        <name>MomentOccurred</name>
+        <dataType>DateTime</dataType>
+        <expression>DATETIMEVALUE({!$Record.ChampifyIo__Job_Change_Detected_Date__c}+10/24)</expression>
+    </formulas>
+    <formulas>
+        <name>RestForDays</name>
+        <dataType>Number</dataType>
+        <expression>BLANKVALUE(VALUE(TEXT({!$Record.Current_Open_Journey__r.Rest_For_Days__c})), 60)</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>RestUntil</name>
+        <dataType>DateTime</dataType>
+        <expression>{!$Flow.CurrentDateTime}+BLANKVALUE(VALUE(TEXT({!$Record.Current_Open_Journey__r.Rest_For_Days__c})), 60)</expression>
+    </formulas>
+    <formulas>
+        <description>14 days after `Created_At__c` (aka Started At)</description>
+        <name>started_at_7</name>
+        <dataType>DateTime</dataType>
+        <expression>{!$Record.Current_Open_Journey__r.Created_At__c} + 14</expression>
+    </formulas>
+    <interviewLabel>Contact - Check {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - After Save Automations</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Moment</name>
+        <label>Create Moment</label>
+        <locationX>488</locationX>
+        <locationY>2229</locationY>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Check_MQL__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Created_From_Detail__c</field>
+            <value>
+                <stringValue>Contact - After Save Automations</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Created_From__c</field>
+            <value>
+                <stringValue>Champify Update</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Context__c</field>
+            <value>
+                <elementReference>MomentContextChampify</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Description__c</field>
+            <value>
+                <stringValue>Champify: Identified a new job change arrival from {!$Record.ChampifyIo__Past_Account__r.Name}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Occurred_At__c</field>
+            <value>
+                <elementReference>MomentOccurred</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Type__c</field>
+            <value>
+                <stringValue>Champify Alert</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Moment__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Moment_0</name>
+        <label>Create Moment</label>
+        <locationX>1732</locationX>
+        <locationY>1562</locationY>
+        <connector>
+            <targetReference>Outbound_Sequencing_without_Journey</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Check_MQL__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Created_From_Detail__c</field>
+            <value>
+                <stringValue>Contact - After Save Automations</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Created_From__c</field>
+            <value>
+                <stringValue>Regie.ai</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Context__c</field>
+            <value>
+                <elementReference>MomentContextRegie</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Description__c</field>
+            <value>
+                <stringValue>Regie.ai - Started with {!$Record.Email}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Occurred_At__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Type__c</field>
+            <value>
+                <stringValue>Regie.ai - Started</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Moment__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Moment_0_0</name>
+        <label>Create Moment</label>
+        <locationX>1620</locationX>
+        <locationY>1482</locationY>
+        <connector>
+            <targetReference>Outbound_Sequencing_without_Journey</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Check_MQL__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Created_From_Detail__c</field>
+            <value>
+                <stringValue>Contact - After Save Automations</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Created_From__c</field>
+            <value>
+                <stringValue>Regie.ai</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Context__c</field>
+            <value>
+                <elementReference>MomentContextRegie</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Description__c</field>
+            <value>
+                <stringValue>Regie.ai - Expansion Sourced {!$Record.Email}</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Occurred_At__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Type__c</field>
+            <value>
+                <stringValue>Regie.ai - Expansion</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Moment__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_New_Account</name>
+        <label>Create New Account</label>
+        <locationX>471</locationX>
+        <locationY>811</locationY>
+        <connector>
+            <targetReference>Set_AccountId</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>$Record.ZoomInfo_Company_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>NumberOfEmployees</field>
+            <value>
+                <elementReference>$Record.ZoomInfo_Company_Employees__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>0055A00000BExg9QAD</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Website</field>
+            <value>
+                <elementReference>$Record.ZoomInfo_Company_Website__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_New_Account_Manual</name>
+        <label>Create New Account</label>
+        <locationX>257</locationX>
+        <locationY>610</locationY>
+        <connector>
+            <targetReference>Set_AccountId_Manual</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>LinkedIn_Company_Page__c</field>
+            <value>
+                <elementReference>$Record.Enriched_LinkedIn_Company_Profile__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>$Record.Enriched_Company_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>NumberOfEmployees</field>
+            <value>
+                <elementReference>$Record.Enriched_Company_Employees__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>0055A00000BExg9QAD</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Website</field>
+            <value>
+                <elementReference>$Record.Enriched_Company_Website__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Outbound_Journey</name>
+        <label>Create Outbound Journey</label>
+        <locationX>531</locationX>
+        <locationY>1643</locationY>
+        <connector>
+            <targetReference>MK_Threshold_Crossed</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Accepted_At__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Accepted_By_Role__c</field>
+            <value>
+                <elementReference>$Record.Owner.Role_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Accepted_By__c</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Added_to_Sequence_At__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Create_Method__c</field>
+            <value>
+                <stringValue>Contact After Save Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <stringValue>New Outbound Journey</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Outbound_Sequence__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Owner__c</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Stage__c</field>
+            <value>
+                <stringValue>Accepted</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Open</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Journey__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Product_Moment</name>
+        <label>Create Product Moment</label>
+        <locationX>688</locationX>
+        <locationY>2013</locationY>
+        <connector>
+            <targetReference>Champify_Update</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Check_MQL__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Created_From_Detail__c</field>
+            <value>
+                <stringValue>Contact - After Save Automations</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Created_From__c</field>
+            <value>
+                <stringValue>Madkudu Score Change</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Context__c</field>
+            <value>
+                <elementReference>$Record.MK_Lead_Engagement_Signals__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Description__c</field>
+            <value>
+                <stringValue>Product Engagement Threshold Crossed (From {!$Record__Prior.MK_Lead_Engagement_Score__c} to {!$Record.MK_Lead_Engagement_Score__c})</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Occurred_At__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Moment_Type__c</field>
+            <value>
+                <stringValue>Product Action</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Moment__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordDeletes>
+        <name>Delete_Journey</name>
+        <label>Delete Journey</label>
+        <locationX>1485</locationX>
+        <locationY>1180</locationY>
+        <connector>
+            <targetReference>EmailAdmin</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Added_to_Sequence_Changed</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Current_Open_Journey__c</elementReference>
+            </value>
+        </filters>
+        <object>Journey__c</object>
+    </recordDeletes>
+    <recordLookups>
+        <name>Check_for_existing_account</name>
+        <label>Check for existing account</label>
+        <locationX>680</locationX>
+        <locationY>523</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Account_found</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>$Record.Email_Domain__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>Enriched_Website_Clean</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Domain_Map__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Matched_Account__c</queriedFields>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Check_for_existing_account_0</name>
+        <label>Check for existing account</label>
+        <locationX>470</locationX>
+        <locationY>375</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Account_found</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>$Record.Email_Domain__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Domain_Map__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Matched_Account__c</queriedFields>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Domain_Map</name>
+        <label>Get Domain Map</label>
+        <locationX>50</locationX>
+        <locationY>814</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Move_Domain_to_Account</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>Contains</operator>
+            <value>
+                <elementReference>$Record.Email_Domain__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Domain_Map__c</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Matched_Account__c</queriedFields>
+        <sortField>LastModifiedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Close_Journey_Opt_Out</name>
+        <label>Close Journey (Opt Out)</label>
+        <locationX>1884</locationX>
+        <locationY>1648</locationY>
+        <connector>
+            <targetReference>Outbound_Sequencing_without_Journey</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Closed_At__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Country_Definition_at_Close__c</field>
+            <value>
+                <elementReference>$Record.Account.Country_Definition__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Employees_at_Close__c</field>
+            <value>
+                <elementReference>$Record.Account.NumberOfEmployees</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ended_Reason_Details__c</field>
+            <value>
+                <stringValue>Automatic from Contact Record</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ended_Reason__c</field>
+            <value>
+                <stringValue>Do Not Contact</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Is_Closed__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Is_Resting__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Rest_For_Days__c</field>
+            <value>
+                <elementReference>RestForDays</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Rest_Until__c</field>
+            <value>
+                <elementReference>RestUntil</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Resting_At__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Segment_at_Close__c</field>
+            <value>
+                <elementReference>$Record.Account.Segment__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Stage__c</field>
+            <value>
+                <stringValue>Ended</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Lost</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subregion_at_Close__c</field>
+            <value>
+                <elementReference>$Record.Account.Country_Definition__r.Subregion__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Current_Open_Journey__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Move_Contact_to_Account</name>
+        <label>Move Contact to Account</label>
+        <locationX>675</locationX>
+        <locationY>725</locationY>
+        <connector>
+            <targetReference>Current_Open_Journey_Populated</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>Check_for_existing_account.Matched_Account__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Needs_Enrichment__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ops_Notes__c</field>
+            <value>
+                <stringValue>route - enrich</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>0055A00000BExg9QAD</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Move_Domain_to_Account</name>
+        <label>Move Domain to Account</label>
+        <locationX>50</locationX>
+        <locationY>1002</locationY>
+        <connector>
+            <targetReference>Open_Journey</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Domain_Map.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Matched_Account__c</field>
+            <value>
+                <elementReference>New_Account_Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Domain_Map__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Account_Employees</name>
+        <label>Update Account Employees</label>
+        <locationX>1006</locationX>
+        <locationY>530</locationY>
+        <connector>
+            <targetReference>Update_Contact_0_0</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>NumberOfEmployees</field>
+            <value>
+                <elementReference>$Record.ZoomInfo_Company_Employees__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Contact</name>
+        <label>Update Contact</label>
+        <locationX>567</locationX>
+        <locationY>1329</locationY>
+        <connector>
+            <targetReference>Current_Open_Journey_Populated</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>New_Account_Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Needs_Enrichment__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ops_Notes__c</field>
+            <value>
+                <stringValue>route - enrich</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>0055A00000BExg9QAD</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Contact_0</name>
+        <label>Update Contact</label>
+        <locationX>565</locationX>
+        <locationY>1014</locationY>
+        <connector>
+            <targetReference>Current_Open_Journey_Populated</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>New_Account_Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Needs_Enrichment__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <stringValue>0055A00000BExg9QAD</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Contact_0_0</name>
+        <label>Update Contact</label>
+        <locationX>1006</locationX>
+        <locationY>929</locationY>
+        <connector>
+            <targetReference>Current_Open_Journey_Populated</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Needs_Enrichment__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Journey</name>
+        <label>Update Journey</label>
+        <locationX>2064</locationX>
+        <locationY>989</locationY>
+        <connector>
+            <targetReference>Open_Journey_but_Can_t_Email</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.OwnerId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Current_Open_Journey__r</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Journey_Sequence_At</name>
+        <label>Update Journey Sequence At</label>
+        <locationX>823</locationX>
+        <locationY>1345</locationY>
+        <connector>
+            <targetReference>Outbound_Sequencing_without_Journey</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Added_to_Sequence_At__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Outreach_Added_to_Sequence_At__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Added_to_Sequence_At__c</field>
+            <value>
+                <elementReference>$Record.Outreach_Added_to_Sequence_At__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.Current_Open_Journey__r</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>697</locationX>
+        <locationY>49</locationY>
+        <connector>
+            <targetReference>Enrichment_Check</targetReference>
+        </connector>
+        <object>Contact</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>Added_To_Sequence_Timestamp</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Record.Outreach_Added_to_Sequence_At__c</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>New_Account_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

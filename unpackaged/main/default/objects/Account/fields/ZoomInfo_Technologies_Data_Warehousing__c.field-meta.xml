@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZoomInfo_Technologies_Data_Warehousing__c</fullName>
+    <description>List of &#39;Data Warehousing&#39; technologies used by the company, provided by ZoomInfo (i.e. Snowflake).
+
+External Systems Utilization: ZoomInfo</description>
+    <inlineHelpText>List of &#39;Data Warehousing&#39; technologies used by the company, provided by ZoomInfo (i.e. Snowflake).</inlineHelpText>
+    <label>ZoomInfo Technologies: Data Warehousing</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Num_Action_Required_Journeys__c</fullName>
+    <description>Number of Open Journey records with Action Required values from all related Contacts at the Account.
+
+External Systems Utilization: Polytomic</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Number of Open Journey records with Action Required values from all related Contacts at the Account.</inlineHelpText>
+    <label># Action Required Journeys</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

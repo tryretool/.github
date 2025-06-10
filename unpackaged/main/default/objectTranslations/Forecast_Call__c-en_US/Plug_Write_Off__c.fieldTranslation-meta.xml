@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Used to record &apos;Write-Offs&apos; that contribute to gaps in revenue not represented by pipeline. --></help>
+        <label><!-- Plug: Write-Off --></label>
+        <name>Plug_Write_Off__c</name>
+    </CustomFieldTranslation>

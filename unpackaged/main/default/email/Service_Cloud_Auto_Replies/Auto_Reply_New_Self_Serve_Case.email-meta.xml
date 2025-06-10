@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto reply for self-serve customer emailing support</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Auto Reply: Self-Serve</name>
+    <style>none</style>
+    <subject>We&#39;ve received your request</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

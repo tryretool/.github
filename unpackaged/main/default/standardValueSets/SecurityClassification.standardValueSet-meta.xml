@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>Confidential</fullName>
+        <default>false</default>
+        <label>0 Confidential</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Safe</fullName>
+        <default>false</default>
+        <label>1 Safe</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Caution</fullName>
+        <default>false</default>
+        <label>2 Caution</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Ignore</fullName>
+        <default>false</default>
+        <label>3 Ignore</label>
+    </standardValue>
+</StandardValueSet>

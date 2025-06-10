@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Debook_Putback_Reason__c</fullName>
+    <label>Debook/Putback Reason</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Restructure - Concession</fullName>
+                <default>false</default>
+                <label>Restructure - Concession</label>
+            </value>
+            <value>
+                <fullName>Restructure - Product Swap</fullName>
+                <default>false</default>
+                <label>Restructure - Product Swap</label>
+            </value>
+            <value>
+                <fullName>Restructure - Upside</fullName>
+                <default>false</default>
+                <label>Restructure - Upside</label>
+            </value>
+            <value>
+                <fullName>Write-off - Non-payment</fullName>
+                <default>false</default>
+                <label>Write-off - Non-payment</label>
+            </value>
+            <value>
+                <fullName>Write-off - Billing Error</fullName>
+                <default>false</default>
+                <label>Write-off - Billing Error</label>
+            </value>
+            <value>
+                <fullName>Write-off - Concession</fullName>
+                <default>false</default>
+                <label>Write-off - Concession</label>
+            </value>
+            <value>
+                <fullName>Write-off - Partial Payment</fullName>
+                <default>false</default>
+                <label>Write-off - Partial Payment</label>
+            </value>
+            <value>
+                <fullName>Replacement - Deal Error</fullName>
+                <default>false</default>
+                <label>Replacement - Deal Error</label>
+            </value>
+            <value>
+                <fullName>Replacement - Product Swap</fullName>
+                <default>false</default>
+                <label>Replacement - Product Swap</label>
+            </value>
+            <value>
+                <fullName>Replacement - Concession</fullName>
+                <default>false</default>
+                <label>Replacement - Concession</label>
+            </value>
+            <value>
+                <fullName>Replacement - Fulfillment Change</fullName>
+                <default>false</default>
+                <label>Replacement - Fulfillment Change</label>
+            </value>
+            <value>
+                <fullName>Replacement - Billing Error</fullName>
+                <default>false</default>
+                <label>Replacement - Billing Error</label>
+            </value>
+            <value>
+                <fullName>Baseline Transfer</fullName>
+                <default>false</default>
+                <label>Baseline Transfer</label>
+            </value>
+            <value>
+                <fullName>Winback</fullName>
+                <default>false</default>
+                <label>Winback</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

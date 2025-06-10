@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ROE Rule</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ROE Rules</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>ROE Rule Layout</layout>
+        <sections>
+            <label><!-- Account Rules --></label>
+            <section>Account Rules</section>
+        </sections>
+        <sections>
+            <label><!-- Activity Rules --></label>
+            <section>Activity Rules</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- External Application Permissions --></label>
+            <section>External Application Permissions</section>
+        </sections>
+        <sections>
+            <label><!-- Opportunity Rules --></label>
+            <section>Opportunity Rules</section>
+        </sections>
+        <sections>
+            <label><!-- Role Hierarchy --></label>
+            <section>Role Hierarchy</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Clone Rule --></label>
+        <name>Clone_Rule</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Update All Users --></label>
+        <name>Update_All_Users</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

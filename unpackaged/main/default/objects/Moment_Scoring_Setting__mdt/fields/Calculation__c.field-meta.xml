@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Calculation__c</fullName>
+    <description>Defines how the score is calculated. For example, max or sum.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Defines how the score is calculated. For example, max or sum.</inlineHelpText>
+    <label>Calculation</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Max</fullName>
+                <default>false</default>
+                <label>Max</label>
+            </value>
+            <value>
+                <fullName>Sum</fullName>
+                <default>false</default>
+                <label>Sum</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

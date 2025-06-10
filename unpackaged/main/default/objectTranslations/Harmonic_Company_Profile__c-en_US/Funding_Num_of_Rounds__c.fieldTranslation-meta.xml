@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Total number of funding rounds raised by the company to date --></help>
+        <label><!-- Funding: # of Rounds --></label>
+        <name>Funding_Num_of_Rounds__c</name>
+    </CustomFieldTranslation>

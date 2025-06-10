@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Product Feedback Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Product Feedback Requests</value>
+    </caseValues>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Product Feedback Request Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Related Deal --></label>
+            <section>Related Deal</section>
+        </sections>
+        <sections>
+            <label><!-- Request Details --></label>
+            <section>Request Details</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Case Related PFRs --></label>
+        <name>Case_Related_PFRs</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You cannot create a product feedback request related to a closed opportunity. --></errorMessage>
+        <name>Only_relate_to_open_opps</name>
+    </validationRules>
+</CustomObjectTranslation>

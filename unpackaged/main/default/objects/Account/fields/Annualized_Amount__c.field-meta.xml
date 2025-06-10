@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Annualized_Amount__c</fullName>
+    <description>The current total Annualized Revenue ((MRR * 12) + ARR) of all Business Units related to the Account. 
+
+#revenue</description>
+    <inlineHelpText>The current total Annualized Revenue ((MRR * 12) + ARR) of all Business Units related to the Account.</inlineHelpText>
+    <label>Annualized Revenue (Committed)</label>
+    <securityClassification>Safe</securityClassification>
+    <summarizedField>Business_Unit__c.Annualized_Amount__c</summarizedField>
+    <summaryForeignKey>Business_Unit__c.Account__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

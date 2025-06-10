@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Status_Self_Service__c</fullName>
+    <description>Formula that uses the current self-service status of the related Account.
+
+Used In - Layout: Campaign Member Page Layout, Report Type: Campaigns_with_Campaign_Members and Other
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <formula>Contact.Account.Account_Status_Self_Service__c</formula>
+    <label>Account Status (Self Service)</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

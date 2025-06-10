@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Journey__c$Name</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Journey_Subtype__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Journey__c$Opportunity__c.Qualified_Pipeline_AR__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Journey__c$Is_Fast_Pass__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Closed_At__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Qual_Authority_Comments__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Qual_Budget__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Qual_Budget_Comments__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Qual_Champion__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Qual_Economic_Buyer__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Qual_Largest_Need_Identified__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Qual_Need_Comments__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Qual_Next_Step__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Qual_Timeline__c</field>
+    </columns>
+    <columns>
+        <field>Journey__c$Qual_Timing_Comments__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CDF1</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+
+IF(ISBLANK(Journey__c.Qual_Authority_Comments__c), 1, 0) +
+IF(TEXT(Journey__c.Qual_Budget__c)=&quot;&quot;, 1, 0) +
+IF(TEXT(Journey__c.Qual_Largest_Need_Identified__c)=&quot;&quot;, 1, 0) +
+IF(TEXT(Journey__c.Qual_Next_Step__c)=&quot;&quot;, 1, 0) +
+IF(TEXT(Journey__c.Qual_Timeline__c)=&quot;&quot;, 1, 0) &gt;= 3, 1, 0)</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>Blank Qual Fields</label>
+        <scale>0</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>Journey__c$Stage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Converted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c$Owner_Team__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Sales Development</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c$Segment_at_Close__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Journey__c$Opportunity__c.Subtype__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>New Commitment - Annual,New Subsidiary - Annual,Conversion - Self-Service to Annual,Unqualified - Sales</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>Journey__c$Segment_at_Close__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Journey__c$Owner_Subteam__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Journey__c$Is_SQO__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>2025-01-23 SDR Fast Pass Cut</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Journeys_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Journey__c$Closed_At__c</dateColumn>
+        <endDate>2024-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-07-01</startDate>
+    </timeFrameFilter>
+</Report>

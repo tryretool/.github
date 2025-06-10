@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>whistic_profile__Security_Profile_Id__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>whistic_profile__Security_Profile__r.whistic_profile__Whistic_Profile_Id__c</formula>
+    <label>Security Profile Id</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

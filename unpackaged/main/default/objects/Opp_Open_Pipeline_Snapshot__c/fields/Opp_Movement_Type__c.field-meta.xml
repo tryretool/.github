@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opp_Movement_Type__c</fullName>
+    <description>Identifies &#39;opportunity movement type&#39; by comparing the previous snapshot Close Date against the current Close Date.</description>
+    <externalId>false</externalId>
+    <formula>IF( ISBLANK(Previous_Snapshot__c), &quot;New&quot;,
+ IF( Booking_Month__c  &lt; Previous_Snapshot__r.Booking_Month__c, &quot;Pulled In&quot;, 
+  IF( Booking_Month__c &gt; Previous_Snapshot__r.Booking_Month__c, &quot;Pushed Out&quot;, 
+   IF( Previous_Snapshot__r.Stage__c = &#39;(1) Qualification&#39;, &quot;New&quot;, 
+   &quot;No Movement&quot;))))</formula>
+    <label>Opp Movement Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

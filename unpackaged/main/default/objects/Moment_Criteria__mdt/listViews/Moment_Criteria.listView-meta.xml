@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moment_Criteria</fullName>
+    <columns>Type__c</columns>
+    <columns>Journey_Category__c</columns>
+    <columns>Journey_Subcategory__c</columns>
+    <columns>Moment_Type__c</columns>
+    <columns>Journey__c</columns>
+    <columns>Include_in_MTA__c</columns>
+    <columns>Calculation__c</columns>
+    <columns>Active__c</columns>
+    <columns>DeveloperName</columns>
+    <filterScope>Everything</filterScope>
+    <label>Moment Criteria</label>
+    <language>en_US</language>
+</ListView>

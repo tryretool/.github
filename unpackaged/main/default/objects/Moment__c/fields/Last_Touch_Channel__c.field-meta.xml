@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Last_Touch_Channel__c</fullName>
+    <description>The channel of the Last Touch related to this moment, from the digital data attribution model
+
+In System Use: None
+
+External Systems Utilization: Polytomic</description>
+    <externalId>false</externalId>
+    <label>Last Touch Channel</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

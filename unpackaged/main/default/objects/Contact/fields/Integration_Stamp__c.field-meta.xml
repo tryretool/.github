@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Integration_Stamp__c</fullName>
+    <description>Tag to track systems integration activity related to the Account record. Used by Sales Operations.
+
+External Systems Utilization: Chili Piper, LeadIQ</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Tag to track systems integration activity related to the Account record. Used by Sales Operations.</inlineHelpText>
+    <label>Integration Stamp</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

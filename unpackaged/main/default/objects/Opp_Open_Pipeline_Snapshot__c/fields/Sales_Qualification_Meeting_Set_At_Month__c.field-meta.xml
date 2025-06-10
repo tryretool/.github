@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Qualification_Meeting_Set_At_Month__c</fullName>
+    <formula>DATE(YEAR(Sales_Qualification_Meeting_Set_At__c),MONTH(Sales_Qualification_Meeting_Set_At__c),1)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Sales Qualification Meeting Set At Month</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

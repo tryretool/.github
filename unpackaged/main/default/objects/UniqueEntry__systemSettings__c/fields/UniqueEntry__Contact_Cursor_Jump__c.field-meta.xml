@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UniqueEntry__Contact_Cursor_Jump__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <label>Contact Cursor Jump</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

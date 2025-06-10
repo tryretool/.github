@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Unknown</fullName>
+        <default>false</default>
+        <label>Unknown</label>
+    </customValue>
+    <customValue>
+        <fullName>DIY - React, Angular, etc.</fullName>
+        <default>false</default>
+        <label>DIY - React, Angular, etc.</label>
+    </customValue>
+    <customValue>
+        <fullName>Airbase</fullName>
+        <default>false</default>
+        <label>Airbase</label>
+    </customValue>
+    <customValue>
+        <fullName>Airplane</fullName>
+        <default>false</default>
+        <label>Airplane</label>
+    </customValue>
+    <customValue>
+        <fullName>Amazon Honeycode</fullName>
+        <default>false</default>
+        <label>Amazon Honeycode</label>
+    </customValue>
+    <customValue>
+        <fullName>Anvil</fullName>
+        <default>false</default>
+        <label>Anvil</label>
+    </customValue>
+    <customValue>
+        <fullName>Appian</fullName>
+        <default>false</default>
+        <label>Appian</label>
+    </customValue>
+    <customValue>
+        <fullName>Appsmith</fullName>
+        <default>false</default>
+        <label>AppSmith</label>
+    </customValue>
+    <customValue>
+        <fullName>Betty Blocks</fullName>
+        <default>false</default>
+        <label>Betty Blocks</label>
+    </customValue>
+    <customValue>
+        <fullName>Bubble</fullName>
+        <default>false</default>
+        <label>Bubble</label>
+    </customValue>
+    <customValue>
+        <fullName>Budibase</fullName>
+        <default>false</default>
+        <label>Budibase</label>
+    </customValue>
+    <customValue>
+        <fullName>Blaze</fullName>
+        <default>false</default>
+        <label>Blaze</label>
+    </customValue>
+    <customValue>
+        <fullName>Cursor</fullName>
+        <default>false</default>
+        <label>Cursor</label>
+    </customValue>
+    <customValue>
+        <fullName>DronaHQ</fullName>
+        <default>false</default>
+        <label>DronaHQ</label>
+    </customValue>
+    <customValue>
+        <fullName>Dynaboard</fullName>
+        <default>false</default>
+        <label>Dynaboard</label>
+    </customValue>
+    <customValue>
+        <fullName>edgeTI</fullName>
+        <default>false</default>
+        <label>edgeTI</label>
+    </customValue>
+    <customValue>
+        <fullName>Flowdash</fullName>
+        <default>false</default>
+        <label>Flowdash</label>
+    </customValue>
+    <customValue>
+        <fullName>Forest Admin</fullName>
+        <default>false</default>
+        <label>Forest Admin</label>
+    </customValue>
+    <customValue>
+        <fullName>Google AppSheet</fullName>
+        <default>false</default>
+        <label>Google AppSheet</label>
+    </customValue>
+    <customValue>
+        <fullName>GW Apps</fullName>
+        <default>false</default>
+        <label>GW Apps</label>
+    </customValue>
+    <customValue>
+        <fullName>illa</fullName>
+        <default>false</default>
+        <label>illa</label>
+    </customValue>
+    <customValue>
+        <fullName>Jet Admin</fullName>
+        <default>false</default>
+        <label>Jet Admin</label>
+    </customValue>
+    <customValue>
+        <fullName>Kissflow</fullName>
+        <default>false</default>
+        <label>Kissflow</label>
+    </customValue>
+    <customValue>
+        <fullName>Looker</fullName>
+        <default>false</default>
+        <label>Looker</label>
+    </customValue>
+    <customValue>
+        <fullName>Mendix</fullName>
+        <default>false</default>
+        <label>Mendix</label>
+    </customValue>
+    <customValue>
+        <fullName>Microsoft Copilot Studio</fullName>
+        <default>false</default>
+        <label>Microsoft Copilot Studio</label>
+    </customValue>
+    <customValue>
+        <fullName>Microsoft Power Apps</fullName>
+        <default>false</default>
+        <label>Microsoft Power Apps</label>
+    </customValue>
+    <customValue>
+        <fullName>Moment.dev</fullName>
+        <default>false</default>
+        <label>Moment.dev</label>
+    </customValue>
+    <customValue>
+        <fullName>None</fullName>
+        <default>false</default>
+        <label>None</label>
+    </customValue>
+    <customValue>
+        <fullName>Oracle (APEX or Visual Builder)</fullName>
+        <default>false</default>
+        <label>Oracle (APEX or Visual Builder)</label>
+    </customValue>
+    <customValue>
+        <fullName>OutSystems</fullName>
+        <default>false</default>
+        <label>OutSystems</label>
+    </customValue>
+    <customValue>
+        <fullName>Pega</fullName>
+        <default>false</default>
+        <label>Pega</label>
+    </customValue>
+    <customValue>
+        <fullName>Quick Base</fullName>
+        <default>false</default>
+        <label>Quick Base</label>
+    </customValue>
+    <customValue>
+        <fullName>Salesforce</fullName>
+        <default>false</default>
+        <label>Salesforce</label>
+    </customValue>
+    <customValue>
+        <fullName>ServiceNow</fullName>
+        <default>false</default>
+        <label>ServiceNow</label>
+    </customValue>
+    <customValue>
+        <fullName>Streamlit</fullName>
+        <default>false</default>
+        <label>Streamlit</label>
+    </customValue>
+    <customValue>
+        <fullName>Superblockshq</fullName>
+        <default>false</default>
+        <label>Superblockshq</label>
+    </customValue>
+    <customValue>
+        <fullName>ToolJet</fullName>
+        <default>false</default>
+        <label>ToolJet</label>
+    </customValue>
+    <customValue>
+        <fullName>UIBakery</fullName>
+        <default>false</default>
+        <label>UIBakery</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqork</fullName>
+        <default>false</default>
+        <label>Unqork</label>
+    </customValue>
+    <customValue>
+        <fullName>Interval</fullName>
+        <default>false</default>
+        <label>Interval</label>
+    </customValue>
+    <customValue>
+        <fullName>Jotform</fullName>
+        <default>false</default>
+        <label>Jotform</label>
+    </customValue>
+    <customValue>
+        <fullName>Tableau</fullName>
+        <default>false</default>
+        <label>Tableau</label>
+    </customValue>
+    <customValue>
+        <fullName>Tray.io</fullName>
+        <default>false</default>
+        <label>Tray.io</label>
+    </customValue>
+    <customValue>
+        <fullName>Windmill</fullName>
+        <default>false</default>
+        <label>Windmill</label>
+    </customValue>
+    <customValue>
+        <fullName>Workato</fullName>
+        <default>false</default>
+        <label>Workato</label>
+    </customValue>
+    <customValue>
+        <fullName>Zapier</fullName>
+        <default>false</default>
+        <label>Zapier</label>
+    </customValue>
+    <customValue>
+        <fullName>Zoho</fullName>
+        <default>false</default>
+        <label>Zoho</label>
+    </customValue>
+    <customValue>
+        <fullName>Internal.io</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Internal.io</label>
+    </customValue>
+    <masterLabel>Competitors</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

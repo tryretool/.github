@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Routing Action --></label>
+        <name>LeanData__Routing_Action_Picklist__c</name>
+        <picklistValues>
+            <masterLabel>assigned - account</masterLabel>
+            <translation><!-- assigned - account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>assigned - lead</masterLabel>
+            <translation><!-- assigned - lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>assigned - opportunity</masterLabel>
+            <translation><!-- assigned - opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>assigned - owner assignment</masterLabel>
+            <translation><!-- assigned - owner assignment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>assigned - round robin</masterLabel>
+            <translation><!-- assigned - round robin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>assigned - territory</masterLabel>
+            <translation><!-- assigned - territory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>assigned account team members</masterLabel>
+            <translation><!-- assigned account team members --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>convert error</masterLabel>
+            <translation><!-- convert error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>converted</masterLabel>
+            <translation><!-- converted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>converted - new account</masterLabel>
+            <translation><!-- converted - new account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>error</masterLabel>
+            <translation><!-- error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>fallback</masterLabel>
+            <translation><!-- fallback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>live routing - assigned</masterLabel>
+            <translation><!-- live routing - assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>live routing - error</masterLabel>
+            <translation><!-- live routing - error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>live routing - no action</masterLabel>
+            <translation><!-- live routing - no action --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>live routing - routed</masterLabel>
+            <translation><!-- live routing - routed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>merge error</masterLabel>
+            <translation><!-- merge error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>merged</masterLabel>
+            <translation><!-- merged --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>new account</masterLabel>
+            <translation><!-- new account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>new task</masterLabel>
+            <translation><!-- new task --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>routed - account</masterLabel>
+            <translation><!-- routed - account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>routed - assignment rule</masterLabel>
+            <translation><!-- routed - assignment rule --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>routed - lead</masterLabel>
+            <translation><!-- routed - lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>routed - opportunity</masterLabel>
+            <translation><!-- routed - opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>routed - owner assignment</masterLabel>
+            <translation><!-- routed - owner assignment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>routed - round robin</masterLabel>
+            <translation><!-- routed - round robin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>routed - territory</masterLabel>
+            <translation><!-- routed - territory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>send notification</masterLabel>
+            <translation><!-- send notification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>update error</masterLabel>
+            <translation><!-- update error --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

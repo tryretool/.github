@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Low: Builders did not build in Retool and do not have technical proficiency to build on Retool 
+
+Medium: Builders did not build in Retool but have the skillset to build in Retool (JS/SQL/APIs) or they have built in Retool but proficiency is still lacking (ex. not regularly using JS or need help with code gen)
+
+High: Builders built in Retool pre-sale or from a previous job. They are familiar with building in Retool and are proficient in front-end building due to their role (SWE, Developer, etc) --></help>
+        <label><!-- Skill Level --></label>
+        <name>Skill_Level__c</name>
+    </CustomFieldTranslation>

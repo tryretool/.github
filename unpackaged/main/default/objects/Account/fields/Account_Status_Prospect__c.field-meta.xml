@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Status_Prospect__c</fullName>
+    <description>Unaware: 1 or less unique visitors within last 30 days
+Aware: 2+ unique visitors within last 30 days
+Engaged: 1+ Moments within last 30 days OR more than 1 active self-service org
+Consideration: 1+ Open Journey with a Meeting Booked OR 1+ Journeys with a Meeting Booked 30 days ago
+Decision: 1+ Open Opportunities
+Committed Customer: Account Status (Committed) = Active Customer
+Disqualified: Account Status (Committed) = Disqualified
+
+External Systems Utilization: Polytomic</description>
+    <inlineHelpText>Unaware: 1 or less unique visitors within last 30 days
+Aware: 2+ unique visitors within last 30 days
+Engaged: 1+ Moments within last 30 days OR more than 1 active self-service org
+Consideration: 1+ Open Journey with a Meeting Booked OR 1+ Journeys with a Meeting Booked 30 days ago
+Decision: 1+ Open Opportunities
+Committed Customer: Account Status (Committed) = Active Customer
+Disqualified: Account Status (Committed) = Disqualified</inlineHelpText>
+    <label>Account Status (Prospect)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Unaware</fullName>
+                <default>false</default>
+                <label>Unaware</label>
+            </value>
+            <value>
+                <fullName>Aware</fullName>
+                <default>false</default>
+                <label>Aware</label>
+            </value>
+            <value>
+                <fullName>Engaged</fullName>
+                <default>false</default>
+                <label>Engaged</label>
+            </value>
+            <value>
+                <fullName>Consideration</fullName>
+                <default>false</default>
+                <label>Consideration</label>
+            </value>
+            <value>
+                <fullName>Decision</fullName>
+                <default>false</default>
+                <label>Decision</label>
+            </value>
+            <value>
+                <fullName>Committed Customer</fullName>
+                <default>false</default>
+                <label>Committed Customer</label>
+            </value>
+            <value>
+                <fullName>Disqualified</fullName>
+                <default>false</default>
+                <label>Disqualified</label>
+            </value>
+            <value>
+                <fullName>Unverified</fullName>
+                <default>false</default>
+                <label>Unverified</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

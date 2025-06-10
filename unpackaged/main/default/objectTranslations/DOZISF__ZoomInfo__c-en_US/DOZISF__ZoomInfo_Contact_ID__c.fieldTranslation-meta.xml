@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Internal ID number of the matching ZoomInfo person profile. --></help>
+        <label><!-- ZoomInfo Contact ID --></label>
+        <name>DOZISF__ZoomInfo_Contact_ID__c</name>
+    </CustomFieldTranslation>

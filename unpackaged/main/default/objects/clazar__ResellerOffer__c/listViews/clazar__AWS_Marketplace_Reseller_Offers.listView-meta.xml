@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clazar__AWS_Marketplace_Reseller_Offers</fullName>
+    <columns>NAME</columns>
+    <columns>clazar__name__c</columns>
+    <columns>clazar__cloud__c</columns>
+    <columns>clazar__status__c</columns>
+    <columns>clazar__published_at__c</columns>
+    <columns>clazar__accepted_at__c</columns>
+    <columns>clazar__expiration_at__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>clazar__cloud__c</field>
+        <operation>equals</operation>
+        <value>aws</value>
+    </filters>
+    <label>AWS Marketplace Reseller Offers</label>
+</ListView>

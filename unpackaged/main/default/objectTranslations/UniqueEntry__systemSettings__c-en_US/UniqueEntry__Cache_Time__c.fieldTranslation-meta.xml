@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Cache ultimate entry configuration whenever a user access one of the ultimate entry pages. Specify cache time in minutes! Set to 0 to disable caching --></help>
+        <label><!-- Cache Time --></label>
+        <name>UniqueEntry__Cache_Time__c</name>
+    </CustomFieldTranslation>

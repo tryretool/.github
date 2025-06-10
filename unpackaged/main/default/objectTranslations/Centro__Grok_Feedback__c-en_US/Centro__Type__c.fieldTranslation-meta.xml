@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Feedback Type --></label>
+        <name>Centro__Type__c</name>
+        <picklistValues>
+            <masterLabel>Answer Hallucinated</masterLabel>
+            <translation><!-- Answer Hallucinated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Answer Not Relevant</masterLabel>
+            <translation><!-- Answer Not Relevant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Comments</masterLabel>
+            <translation><!-- Other Comments --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Remove Source</masterLabel>
+            <translation><!-- Remove Source --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Source Incorrect</masterLabel>
+            <translation><!-- Source Incorrect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Source Not Relevant</masterLabel>
+            <translation><!-- Source Not Relevant --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

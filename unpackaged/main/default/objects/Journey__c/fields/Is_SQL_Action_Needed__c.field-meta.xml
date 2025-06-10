@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_SQL_Action_Needed__c</fullName>
+    <formula>AND(  Opportunity__r.IsClosed = FALSE,  ISBLANK(Opportunity__r.Sales_Qualified_At__c ) )</formula>
+    <label>Is SQL Action Needed?</label>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

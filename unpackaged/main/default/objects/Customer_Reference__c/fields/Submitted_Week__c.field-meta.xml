@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Submitted_Week__c</fullName>
+    <formula>CASE(MOD(Submitted_Date__c - DATE(1900, 1, 6), 7),
+0,  Submitted_Date__c  + 0,
+1, Submitted_Date__c + 6,
+2, Submitted_Date__c + 5,
+3, Submitted_Date__c + 4,
+4, Submitted_Date__c + 3,
+5, Submitted_Date__c + 2,
+6, Submitted_Date__c + 1,
+null)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Submitted Week</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

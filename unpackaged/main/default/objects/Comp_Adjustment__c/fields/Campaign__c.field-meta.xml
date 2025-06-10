@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Campaign__c</fullName>
+    <label>Campaign</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Type__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Spot Bonus</fullName>
+                <default>false</default>
+                <label>Spot Bonus</label>
+            </value>
+            <value>
+                <fullName>Parental Leave</fullName>
+                <default>false</default>
+                <label>Parental Leave</label>
+            </value>
+            <value>
+                <fullName>Policy Exception</fullName>
+                <default>false</default>
+                <label>Policy Exception</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Ramp</fullName>
+                <default>false</default>
+                <label>Ramp</label>
+            </value>
+            <value>
+                <fullName>SQO</fullName>
+                <default>false</default>
+                <label>SQO</label>
+            </value>
+            <value>
+                <fullName>New Annualized Revenue</fullName>
+                <default>false</default>
+                <label>New Annualized Revenue</label>
+            </value>
+            <value>
+                <fullName>Multi Year (Year 2)</fullName>
+                <default>false</default>
+                <label>Multi Year (Year 2)</label>
+            </value>
+            <value>
+                <fullName>Multi Year (Year 3)</fullName>
+                <default>false</default>
+                <label>Multi Year (Year 3)</label>
+            </value>
+            <value>
+                <fullName>Non-Recurring Revenue</fullName>
+                <default>false</default>
+                <label>Non-Recurring Revenue</label>
+            </value>
+            <value>
+                <fullName>Medical Leave</fullName>
+                <default>false</default>
+                <label>Medical Leave</label>
+            </value>
+            <value>
+                <fullName>Commission</fullName>
+                <default>false</default>
+                <label>Commission</label>
+            </value>
+            <value>
+                <fullName>OKR</fullName>
+                <default>false</default>
+                <label>OKR</label>
+            </value>
+            <value>
+                <fullName>Write-off Offset: Partial Payment</fullName>
+                <default>false</default>
+                <label>Write-off Offset: Partial Payment</label>
+            </value>
+            <value>
+                <fullName>2024: Q4 Oktoberfast Start SPIF</fullName>
+                <default>false</default>
+                <label>2024: Q4 Oktoberfast Start SPIF</label>
+            </value>
+            <value>
+                <fullName>2024: Q4 SDR SPIF</fullName>
+                <default>false</default>
+                <label>2024: Q4 SDR SPIF</label>
+            </value>
+            <value>
+                <fullName>2024: Q3 Self Sourced Create &amp; Close SPIF</fullName>
+                <default>false</default>
+                <label>2024: Q3 Self Sourced Create &amp; Close SPIF</label>
+            </value>
+            <value>
+                <fullName>2025: H1 Enterprise AE Expansion SPIF</fullName>
+                <default>false</default>
+                <label>2025: H1 Enterprise AE Expansion SPIF</label>
+            </value>
+            <value>
+                <fullName>2024: Q2 Enterprise Case Study SPIF</fullName>
+                <default>false</default>
+                <label>2024: Q2 Enterprise Case Study SPIF</label>
+            </value>
+            <value>
+                <fullName>2025: H1 Expansion SPIF - SE</fullName>
+                <default>false</default>
+                <label>2025: H1 Expansion SPIF - SE</label>
+            </value>
+            <value>
+                <fullName>2025: H1 Expansion SPIF - TAM</fullName>
+                <default>false</default>
+                <label>2025: H1 Expansion SPIF - TAM</label>
+            </value>
+            <value>
+                <fullName>2025: H1 BDR SPIF</fullName>
+                <default>false</default>
+                <label>2025: H1 BDR SPIF</label>
+            </value>
+            <value>
+                <fullName>2021: Monthly to Annual Conversion</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2021: Monthly to Annual Conversion</label>
+            </value>
+            <value>
+                <fullName>2021: Outbound SDR / BDR ARR</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2021: Outbound SDR / BDR ARR</label>
+            </value>
+            <value>
+                <fullName>2021: Uncommitted Expansion</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2021: Uncommitted Expansion</label>
+            </value>
+            <value>
+                <fullName>2022: Close Q4 Strong</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2022: Close Q4 Strong</label>
+            </value>
+            <value>
+                <fullName>2022: Inbound SQL to SQO Conversion</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2022: Inbound SQL to SQO Conversion</label>
+            </value>
+            <value>
+                <fullName>2022: Monthly to Annual Conversion</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2022: Monthly to Annual Conversion</label>
+            </value>
+            <value>
+                <fullName>2022: Multi-Year</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2022: Multi-Year</label>
+            </value>
+            <value>
+                <fullName>2022: Outbound SDR / BDR ARR</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2022: Outbound SDR / BDR ARR</label>
+            </value>
+            <value>
+                <fullName>2022: Q3 MMK POC Contest</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2022: Q3 MMK POC Contest</label>
+            </value>
+            <value>
+                <fullName>2023: H1 AE Outbound Contest</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2023: H1 AE Outbound Contest</label>
+            </value>
+            <value>
+                <fullName>2023: H1 BDR March Madness Contest</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2023: H1 BDR March Madness Contest</label>
+            </value>
+            <value>
+                <fullName>2023: H2 AE Create &amp; Close SPIF</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2023: H2 AE Create &amp; Close SPIF</label>
+            </value>
+            <value>
+                <fullName>2023: H2 Enterprise Awards</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2023: H2 Enterprise Awards</label>
+            </value>
+            <value>
+                <fullName>2023: H2 PS SPIF</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2023: H2 PS SPIF</label>
+            </value>
+            <value>
+                <fullName>2023: Q2 Sales Engineer Expansion SPIF</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2023: Q2 Sales Engineer Expansion SPIF</label>
+            </value>
+            <value>
+                <fullName>2023: Q4 Attached Services SPIF</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2023: Q4 Attached Services SPIF</label>
+            </value>
+            <value>
+                <fullName>2023: Q4 SDR Year-End SPIF</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2023: Q4 SDR Year-End SPIF</label>
+            </value>
+            <value>
+                <fullName>2024: MtM Committed Conversion</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2024: MtM Committed Conversion</label>
+            </value>
+            <value>
+                <fullName>2024: Q1 Fast Start</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2024: Q1 Fast Start</label>
+            </value>
+            <value>
+                <fullName>2024: Q2 June Enterprise BDR SPIF</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2024: Q2 June Enterprise BDR SPIF</label>
+            </value>
+            <value>
+                <fullName>2024: Q2 and Q3 Expansion SQOs SPIF</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>2024: Q2 and Q3 Expansion SQOs SPIF</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>SPIF</controllingFieldValue>
+            <valueName>Spot Bonus</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SPIF</controllingFieldValue>
+            <valueName>2025: H1 Enterprise AE Expansion SPIF</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SPIF</controllingFieldValue>
+            <valueName>2025: H1 Expansion SPIF - SE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SPIF</controllingFieldValue>
+            <valueName>2025: H1 Expansion SPIF - TAM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SPIF</controllingFieldValue>
+            <valueName>2025: H1 BDR SPIF</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leave</controllingFieldValue>
+            <valueName>Parental Leave</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Leave</controllingFieldValue>
+            <valueName>Medical Leave</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Discretionary</controllingFieldValue>
+            <valueName>Policy Exception</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commission</controllingFieldValue>
+            <valueName>SQO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commission</controllingFieldValue>
+            <valueName>New Annualized Revenue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commission</controllingFieldValue>
+            <valueName>Multi Year (Year 2)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commission</controllingFieldValue>
+            <valueName>Multi Year (Year 3)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commission</controllingFieldValue>
+            <valueName>Non-Recurring Revenue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commission</controllingFieldValue>
+            <valueName>Commission</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commission</controllingFieldValue>
+            <valueName>OKR</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Commission</controllingFieldValue>
+            <valueName>Write-off Offset: Partial Payment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Draw</controllingFieldValue>
+            <valueName>Ramp</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

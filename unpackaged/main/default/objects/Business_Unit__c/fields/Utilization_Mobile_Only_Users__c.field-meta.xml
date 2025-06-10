@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Utilization_Mobile_Only_Users__c</fullName>
+    <formula>IF(
+Platform_Seats_Unlimited__c = TRUE,
+1,
+IF(
+ISBLANK(Total_Users_Mobile_only__c) || Total_Users_Mobile_only__c = 0,
+NULL,
+Current_MAU_Mobile_only__c / Total_Users_Mobile_only__c
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Utilization (Mobile Only Users)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

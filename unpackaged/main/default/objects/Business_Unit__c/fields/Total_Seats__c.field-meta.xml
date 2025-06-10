@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Seats__c</fullName>
+    <description>All current seats rolling up to this BU. Updated via the Rollup Helper for Rollup Qualified Opportunities. This field will roll up to the corresponding Account field.
+
+https://paper.dropbox.com/doc/New-Salesforce-Fields-Opportunities-Business-Units-Accounts--Ay1q1~SCRlqq2EmE9wVHvqBrAQ-PkyPecvObh7GLmPeED6TB
+
+https://paper.dropbox.com/doc/How-to-Use-the-Opportunity-Fields-April-2020--Ay52tLsUoyROBPXqkP99eIafAQ-Wy8AxHfGwiplwNW20Jhl3</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Sum of the Seats Sold field on the Opportunity chain. This is equivalent to the total billed seats for this Business Unit (not MAUs).</inlineHelpText>
+    <label>Total Users (Standard)</label>
+    <precision>8</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activation_Pacing_Forecast__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(Forecasted_Days_to_Activation__c &gt; Expected_days_to_activation__c,&quot;Behind&quot;,&quot;On Track&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Activation Pacing Forecast</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

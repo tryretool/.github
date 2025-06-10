@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Champify App Setting --></label>
+        <name>ChampifyIo__Champify_App_Setting__c</name>
+        <relationshipLabel><!-- Champify App List Views --></relationshipLabel>
+    </CustomFieldTranslation>

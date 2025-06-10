@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clazar__ClazarContractCompactLayout</fullName>
+    <fields>clazar__uuid__c</fields>
+    <fields>clazar__cloud__c</fields>
+    <fields>clazar__status__c</fields>
+    <fields>clazar__accepted_at__c</fields>
+    <fields>clazar__start_at__c</fields>
+    <fields>clazar__end_at__c</fields>
+    <label>Clazar Contract Compact Layout</label>
+</CompactLayout>

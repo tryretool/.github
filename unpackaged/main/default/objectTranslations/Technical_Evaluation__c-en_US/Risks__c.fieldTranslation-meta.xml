@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Any identified deal risks (e.g. no executive alignment, limited urgency, APIs not yet built out, low skill builders, etc.) --></help>
+        <label><!-- Risks --></label>
+        <name>Risks__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Moment__c$Contact__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Contact__c.Title</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Contact__c.Email</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c.Account_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c.Account_Status_Committed__c</field>
+    </columns>
+    <columns>
+        <field>Moment__c$Account__c.Account_Status_Self_Service__c</field>
+    </columns>
+    <description>Full List: 25Q2 - Event-Other - Retool Community Showcase: NYC Edition 6/12</description>
+    <filter>
+        <criteriaItems>
+            <column>Moment__c$Campaign__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>25Q2 - Event-Other - Retool Community Showcase: NYC Edition 6/12</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>NY Full List: 25Q2 Comm Showcase</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Moments_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>Moment__c$Account__c.Account_Owner__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Moment__c$Moment_Occurred_At__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

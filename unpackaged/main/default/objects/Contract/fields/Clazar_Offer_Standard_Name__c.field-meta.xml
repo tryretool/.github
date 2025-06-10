@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clazar_Offer_Standard_Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Marketplace_Terms_Included__c,
+&quot;Retool offer for &quot;&amp;
+IF(ISBLANK(Customer_Entity_Name__c),Opportunity__r.Name_Entity_Prefix__c,Customer_Entity_Name__c)
+&amp;&quot; (&quot;&amp;Marketplace_Terms_Account_Number__c&amp;&quot;) &quot;,
+NULL
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Clazar Offer: Standard Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

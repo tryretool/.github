@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moment_on_Member_Responded__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>For RevOps Use Only. Part of the decision process for creating Moments. 
+
+In System Use:
+Flows: Campaign - After Save Automations, Campaign Member: After Save Automations
+Page Layout: Campaign
+Report Type: Campaigns_with_Campaign_Members_and_Other
+
+External Systems Utilization: None</description>
+    <inlineHelpText>For RevOps Use Only. Part of the decision process for creating Moments.</inlineHelpText>
+    <label>Moment on Member Responded</label>
+    <securityClassification>Caution</securityClassification>
+    <type>Checkbox</type>
+</CustomField>

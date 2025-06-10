@@ -1,0 +1,15 @@
+<div class="control-group">
+  <label class="control control--radio">
+    <div class="radio-labels">
+      <span><%- label %></span>
+      <br />
+      <span class="radio-sublabel"><%- sublabel %></span>
+    </div>
+    <input type="radio"
+      class="default-radio-option"
+      name="<%- name %>"
+      value="<%- value %>"
+      <%- checked ? 'checked' : ''%> />
+    <div class="control__indicator"></div>
+  </label>
+</div>

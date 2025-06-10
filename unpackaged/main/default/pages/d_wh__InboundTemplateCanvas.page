@@ -1,0 +1,17 @@
+<apex:page standardController="d_wh__Inbound_Call_Template__c">
+
+    <apex:outputPanel rendered="{!OR(d_wh__Inbound_Call_Template__c.d_wh__Access_Type__c == null, d_wh__Inbound_Call_Template__c.d_wh__Access_Type__c == 'Public', d_wh__Inbound_Call_Template__c.d_wh__Access_Type__c == 'Apex', d_wh__Inbound_Call_Template__c.d_wh__Access_Type__c == 'Basic', d_wh__Inbound_Call_Template__c.d_wh__Access_Type__c == 'SHA-256 Signed Body', d_wh__Inbound_Call_Template__c.d_wh__Access_Type__c == 'SHA-256 Signed URL + Body', d_wh__Inbound_Call_Template__c.d_wh__Access_Type__c == 'Bearer Token', d_wh__Inbound_Call_Template__c.d_wh__Access_Type__c == 'API Key')}" layout="none">
+        <apex:canvasApp developerName="Declarative_Webhooks_Relay_Server" height="150px" width="100%" parameters="{!$Label.d_wh__Canvas_location_InboundTemplateCanvas}" />
+    </apex:outputPanel>
+
+    <apex:outputPanel rendered="{!d_wh__Inbound_Call_Template__c.d_wh__Access_Type__c == 'Authenticated'}" layout="none">
+        <div style="font-size: 19px; font-family: 'Times New Roman', Times, serif; color: black;">
+            <apex:outputText value="{!$Label.d_wh__Authenticated_Inbound_Message}" escape="false" />
+        </div>
+        <br />
+        <div style="border: solid 2px #FE5000; background-color: #EFEFEF; padding: 15px; margin-top: 10px; font-size: 19px; font-family: 'Times New Roman', Times, serif; color: black;">
+            <b>{SalesforceBaseUrl}/services/apexrest/d_wh/InboundCall?templateId={!Inbound_Call_Template__c.Id}</b>
+        </div>
+    </apex:outputPanel>
+
+</apex:page>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clazar__ClazarListingCompactLayout</fullName>
+    <fields>clazar__cloud__c</fields>
+    <fields>clazar__cloud_id__c</fields>
+    <fields>clazar__status__c</fields>
+    <fields>clazar__cloud_url__c</fields>
+    <label>Clazar Listing Compact Layout</label>
+</CompactLayout>

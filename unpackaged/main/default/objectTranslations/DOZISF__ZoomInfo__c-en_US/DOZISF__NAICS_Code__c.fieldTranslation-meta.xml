@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Four-digit numerical codes assigned by the US government to business establishments to identify the primary business of the establishment. --></help>
+        <label><!-- NAICS Code --></label>
+        <name>DOZISF__NAICS_Code__c</name>
+    </CustomFieldTranslation>

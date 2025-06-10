@@ -1,0 +1,7 @@
+{
+    "expires_in": 604800,
+    "token_type": "bearer",
+    "scope": "user",
+    "access_token": "fake_token.eyJodHRwczovL2FwaS5zcGxhc2h0aGF0LmNvbS9zcGxhc2hfdXNlcl9pZCI6NjI4MTAwLCJodHRwczovL2FwaS5zcGxhc2h0aGF0LmNvbS9hcGlfY29uc3VtZXJfaWQiOiI2MjgxMDAiLCJodHRwczovL2FwaS5zcGxhc2h0aGF0LmNvbS9vcmdhbml6YXRpb25faWQiOjMwODAsImlzcyI6Imh0dHBzOi8vbG9naW4uc3BsYXNodGhhdC5jb20vIiwic3ViIjoiYXV0aDB8c3BsYXNoLTYyODEwMCIsImF1ZCI6Imh0dHBzOi8vYXBpLnNwbGFzaHRoYXQuY29tIiwiaWF0IjoxNjU3MjY4MDgzLCJleHAiOjE2NTc4NzI4ODMsImF6cCI6ImMyMDB0Sms3MmoyUklMRWNsbTVid0sxemxEQlB6UW55Iiwic2NvcGUiOiJ1c2VyIG9mZmxpbmVfYWNjZXNzIiwiZ3R5IjoicGFzc3dvcmQifQ.fake_token",
+    "refresh_token": "New_Refresh_Token"
+}

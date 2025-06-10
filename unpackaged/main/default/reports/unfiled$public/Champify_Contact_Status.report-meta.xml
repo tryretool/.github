@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>FK_CNTC_EMAIL</field>
+    </columns>
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_$Contact.ChampifyIo__Job_Change_Detected_Date__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Contact.ChampifyIo__Champify_Job_Started_Date__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Contact.ChampifyIo__ChampifySyncReason__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>FK_$Contact.Contact_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Disqualified,Committed Customer,Open Opportunity,Open Journey,Demand Suppressed,Demand Unmarketable</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_$Contact.Contact_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Champify Contact Status</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$ChampifyIo__ChampifyContext__c@ChampifyIo__ChampifyContext__c.ChampifyIo__Contact__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>FK_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

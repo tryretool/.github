@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Authorization Type --></label>
+        <name>d_wh__Authorization_Type__c</name>
+        <picklistValues>
+            <masterLabel>API Key (in header)</masterLabel>
+            <translation><!-- API Key (in header) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>API Key (in query param)</masterLabel>
+            <translation><!-- API Key (in query param) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Basic (username and password)</masterLabel>
+            <translation><!-- Basic (username and password) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bearer Token</masterLabel>
+            <translation><!-- Bearer Token --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Named Credentials</masterLabel>
+            <translation><!-- Named Credentials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

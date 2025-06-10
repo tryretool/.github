@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- True if the weekly snapshot is the first taken in the calendar month --></help>
+        <label><!-- Is First Snapshot of Month? --></label>
+        <name>Is_First_Snapshot_of_Month__c</name>
+    </CustomFieldTranslation>

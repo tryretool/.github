@@ -1,0 +1,37 @@
+<apex:page controller="pw_ccpro.ValidationComponentPageController" wizard="true">
+	<script type="text/javascript" src="{!URLFOR($Resource.BaseScripts, '/js/jQuery.js')}"></script>
+	<script type="text/javascript" src="{!URLFOR($Resource.BaseScripts, '/js/jQuery.blockUI.js')}"></script>
+
+	<script type="text/javascript">
+		var pw_cc_jQuery = jQuery.noConflict(true);
+      	pw_cc_jQuery("img[title$='Salesforce SFA']").remove();
+      	if ("{!JSINHTMLENCODE(addressBlockField)}" == "" || "{!JSINHTMLENCODE(objectId)}" == "") {
+      		pw_cc_jQuery("table[class$='importWizardTitle']").remove();
+      	}
+      	else {
+	      	if ("{!JSINHTMLENCODE(onlyOneAddress)}" != "true") {
+		      	var countryField = "{!JSINHTMLENCODE(addressBlockField)}";
+		      	if (countryField[countryField.length - 3] == '_' 
+		      	 && countryField[countryField.length - 2] == '_' 
+		      	 && countryField[countryField.length - 1] == 'c')
+		      		countryField = countryField.substr(0,countryField.length-3);     	
+		      	var countryFieldArr = countryField.split('__');
+		      	if (countryFieldArr.length > 1)
+		      		countryField = countryFieldArr[1];
+		      	var addressName = countryField.replace('Country', ' Address');
+		      	pw_cc_jQuery("table[class$='importWizardTitle']").append('<div style="text-align: center; vertical-align: middle; color: #FFFFFF;"><b>'+addressName+'</b></div>')
+			} else {
+				pw_cc_jQuery("table[class$='importWizardTitle']").remove();
+			}
+		}
+	</script>
+
+	<style>
+		body.sfdcBody {
+		    background-color: #FFFFFF;
+		    background-image: none;
+		}
+	</style>
+
+    <c:ValidationComponent cid="{!objectId}" objectName="{!objectName}" addressBlockField="{!addressBlockField}" enablePopUp="{!enablePopUp}" enableEditMode="{!enableEditMode}" hideFields="{!hideFields}" showFields="{!showFields}" openInEditMode="{!openInEditMode}" quickSave="{!quickSave}"/>
+</apex:page>

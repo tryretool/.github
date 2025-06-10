@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UniqueEntry__StatePicklist__c</fullName>
+    <deprecated>false</deprecated>
+    <label>StatePicklist</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>UniqueEntry__CountryPicklist__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>New York</fullName>
+                <default>true</default>
+                <label>New York</label>
+            </value>
+            <value>
+                <fullName>California</fullName>
+                <default>false</default>
+                <label>California</label>
+            </value>
+            <value>
+                <fullName>Ontario</fullName>
+                <default>false</default>
+                <label>Ontario</label>
+            </value>
+            <value>
+                <fullName>O&#39; Brian</fullName>
+                <default>false</default>
+                <label>O&#39; Brian</label>
+            </value>
+            <value>
+                <fullName>La&#39;Henry</fullName>
+                <default>false</default>
+                <label>La&#39;Henry</label>
+            </value>
+            <value>
+                <fullName>Missouri</fullName>
+                <default>false</default>
+                <label>Missouri</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>United States</controllingFieldValue>
+            <valueName>New York</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>United States</controllingFieldValue>
+            <valueName>California</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>United States</controllingFieldValue>
+            <valueName>O&#39; Brian</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>United States</controllingFieldValue>
+            <valueName>Missouri</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canada</controllingFieldValue>
+            <valueName>Ontario</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Canada</controllingFieldValue>
+            <valueName>La&#39;Henry</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

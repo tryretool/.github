@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status_MQ__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Status MQ</label>
+    <referenceTo>Centro__Message_Queue__c</referenceTo>
+    <relationshipLabel>Customer Milestones (Status MQ)</relationshipLabel>
+    <relationshipName>Customer_Milestones1</relationshipName>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

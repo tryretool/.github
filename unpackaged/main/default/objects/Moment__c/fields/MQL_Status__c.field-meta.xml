@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MQL_Status__c</fullName>
+    <description>Formula that indicates the MQL status. If there is an indication to check the MQL status, the value is &quot;Waiting Enrichment&quot;. if the MQL Check At date/time field is blank, the result is &quot;Not MQL&quot;.
+
+In System Use: Reports
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <formula>IF( Is_MQL__c = TRUE, &quot;MQL&quot;, IF( Check_MQL__c = TRUE, &quot;Waiting Enrichment&quot;, IF( ISBLANK(MQL_Check_At__c), &quot;&quot;,  &quot;Not MQL&quot;)))</formula>
+    <inlineHelpText>Formula that indicates the MQL status. If there is an indication to check the MQL status, the value is &quot;Waiting Enrichment&quot;. If the &#39;MQL Check At&#39; date/time field is blank, the result is &quot;Not MQL&quot;.</inlineHelpText>
+    <label>MQL Status</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

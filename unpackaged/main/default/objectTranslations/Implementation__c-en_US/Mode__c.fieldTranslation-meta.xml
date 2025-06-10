@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Mode --></label>
+        <name>Mode__c</name>
+        <picklistValues>
+            <masterLabel>Driving adoption</masterLabel>
+            <translation><!-- Driving adoption --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expanding</masterLabel>
+            <translation><!-- Expanding --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Activated</masterLabel>
+            <translation><!-- Not Activated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Recovery</masterLabel>
+            <translation><!-- Recovery --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Steady state</masterLabel>
+            <translation><!-- Steady state --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Member_ID_case_safe__c</fullName>
+    <description>Formula that provides the unique Salesforce 18 character identifier.
+
+In System Use: Layout and Reports
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <formula>CASESAFEID(Id)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Formula that provides the unique Salesforce 18 character identifier.</inlineHelpText>
+    <label>Member ID (case safe)</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

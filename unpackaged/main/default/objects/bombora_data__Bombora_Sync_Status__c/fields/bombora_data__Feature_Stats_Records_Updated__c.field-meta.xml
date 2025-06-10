@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>bombora_data__Feature_Stats_Records_Updated__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Based on the feature, this shows the number of records updated. For Surge Data this represents the Bombora Company Surge records that have changed since last sync. For Aggregations this represents the Account/Lead records that had thier custom field values updated.</description>
+    <externalId>false</externalId>
+    <label>Feature Stats - Records Updated</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

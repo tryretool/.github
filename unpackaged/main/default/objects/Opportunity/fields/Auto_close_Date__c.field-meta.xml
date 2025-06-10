@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Auto_close_Date__c</fullName>
+    <formula>IF( Auto_close__c = FALSE,NULL,  Term_Start_Date__c  -  (Auto_close_Notice_days__c + 1))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>The date on which the opportunity is set to automatically close. Applies only to renewal opportunities set to automatically close.</inlineHelpText>
+    <label>Auto Close: Date</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChampifyIo__CleanWebsite__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF(CONTAINS(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(Website,&#39;https://&#39;,&#39;&#39;),&#39;http://&#39;,&#39;&#39;),&#39;www.&#39;,&#39;&#39;),&#39;/&#39;),LEFT(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(Website,&#39;https://&#39;,&#39;&#39;),&#39;http://&#39;,&#39;&#39;),&#39;www.&#39;,&#39;&#39;),FIND(&#39;/&#39;,SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(Website,&#39;https://&#39;,&#39;&#39;),&#39;http://&#39;,&#39;&#39;),&#39;www.&#39;,&#39;&#39;))-1),SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(Website,&#39;https://&#39;,&#39;&#39;),&#39;http://&#39;,&#39;&#39;),&#39;www.&#39;,&#39;&#39;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Champify Clean Website</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

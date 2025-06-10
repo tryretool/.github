@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retool_UserID__c</fullName>
+    <description>The unique Id of the Retool User related to the Moment.
+
+In Systems Use: Reports
+
+External Systems Utilization: None</description>
+    <externalId>false</externalId>
+    <label>Retool UserID</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

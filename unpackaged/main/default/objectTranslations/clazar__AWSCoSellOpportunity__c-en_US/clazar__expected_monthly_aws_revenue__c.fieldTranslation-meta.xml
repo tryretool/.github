@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Estimated AWS MRR --></label>
+        <name>clazar__expected_monthly_aws_revenue__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- New Annualized Revenue Best Case amount for the given snapshot week. --></help>
+        <label><!-- New Annualized Revenue (Best Case) --></label>
+        <name>New_Annualized_Revenue_Best_Case__c</name>
+    </CustomFieldTranslation>

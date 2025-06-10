@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MSA_Late_Payment_Charge__c</fullName>
+    <label>MSA: Late Payment Charge</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Strike</fullName>
+                <default>false</default>
+                <label>Strike</label>
+            </value>
+            <value>
+                <fullName>0.5%</fullName>
+                <default>false</default>
+                <label>0.5%</label>
+            </value>
+            <value>
+                <fullName>1%</fullName>
+                <default>false</default>
+                <label>1%</label>
+            </value>
+            <value>
+                <fullName>1.5%</fullName>
+                <default>false</default>
+                <label>1.5%</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

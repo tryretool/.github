@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Notify__c</fullName>
+    <formula>User__r.IsActive = TRUE &amp;&amp; ISPICKVAL(User__r.Slack_Notifications_GTM_Tickets__c,&quot;Watched Tickets&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Notify?</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Enrich Status for the record - Enriched/No-Match etc. --></help>
+        <label><!-- ZoomInfo Enrich Status --></label>
+        <name>DOZISF__ZoomInfo_Enrich_Status__c</name>
+    </CustomFieldTranslation>

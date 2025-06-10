@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Seniority__c</fullName>
+    <description>Level of the Contact, derived from the `Title` value.</description>
+    <inlineHelpText>Level of the Contact, derived from the `Title` value.</inlineHelpText>
+    <label>Seniority</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Contact_Seniority</valueSetName>
+    </valueSet>
+</CustomField>

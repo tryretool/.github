@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>breadwinner_ns__All</fullName>
+    <columns>NAME</columns>
+    <columns>breadwinner_ns__Transaction_Type__c</columns>
+    <columns>breadwinner_ns__Estimate__c</columns>
+    <columns>breadwinner_ns__Sales_Order__c</columns>
+    <columns>breadwinner_ns__Item_Fulfillment__c</columns>
+    <columns>breadwinner_ns__Invoice__c</columns>
+    <columns>breadwinner_ns__Credit_Memo__c</columns>
+    <columns>breadwinner_ns__Item__c</columns>
+    <columns>breadwinner_ns__Quantity__c</columns>
+    <columns>breadwinner_ns__Rate__c</columns>
+    <columns>breadwinner_ns__Amount__c</columns>
+    <columns>breadwinner_ns__Tax1Amt__c</columns>
+    <columns>breadwinner_ns__GrossAmt__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Regie_ai_Exclusion__c</fullName>
+    <description>Used to exclude Contacts from being prospected by Regie.ai.
+
+External Systems Utilization: Regie.ai</description>
+    <formula>OR(
+  NOT(ISBLANK(Most_Recent_Event_Webinar_Registration__c)),
+  NOT(ISBLANK(Most_Recent_Retool_Signup_At__c)),
+  NOT(ISBLANK(Current_Open_Journey__c)),
+  NOT(ISPICKVAL(Owner.Subteam__c, &quot;BDR&quot;)),
+  Account.Regie_ai_Exclusion__c = TRUE
+)</formula>
+    <inlineHelpText>Used to exclude Contacts from being prospected by Regie.ai.</inlineHelpText>
+    <label>Regie.ai Exclusion?</label>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

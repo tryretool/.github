@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Call Segment --></label>
+        <name>Call_Segment__c</name>
+        <picklistValues>
+            <masterLabel>ENT (NYC)</masterLabel>
+            <translation><!-- ENT (NYC) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ENT (Remote)</masterLabel>
+            <translation><!-- ENT (Remote) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ENT (SF)</masterLabel>
+            <translation><!-- ENT (SF) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GRW</masterLabel>
+            <translation><!-- GRW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MMK (NYC)</masterLabel>
+            <translation><!-- MMK (NYC) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MMK (SF)</masterLabel>
+            <translation><!-- MMK (SF) --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

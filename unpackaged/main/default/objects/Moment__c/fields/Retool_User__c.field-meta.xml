@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retool_User__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The Retool User related to the Moment.
+
+In Systems Use: Email_Formula; &#39;Autolaunch: Check MQL&#39;; Moment_Priority; &#39;Retool User - After Save Automations&#39;
+
+External Systems Utilization: None</description>
+    <inlineHelpText>The Retool User related to the Moment.</inlineHelpText>
+    <label>Retool User</label>
+    <referenceTo>Retool_User__c</referenceTo>
+    <relationshipLabel>Moments</relationshipLabel>
+    <relationshipName>Moments</relationshipName>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

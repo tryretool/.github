@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NumberSent</fullName>
+    <description>A user-defined value that must be manually set. It is typically a value that is defined once at the beginning of a campaign to gauge the size of the marketing effort.
+
+In System Use: None
+
+External Systems Utilization: None</description>
+    <inlineHelpText>A value that is defined once at the beginning of a campaign to gauge the size of the marketing effort.</inlineHelpText>
+    <securityClassification>Ignore</securityClassification>
+</CustomField>

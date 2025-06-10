@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clean_Email_Issue__c</fullName>
+    <formula>IF( AND( Email__c &lt;&gt;  Contact__r.Email ,  Email_Clean__c =  Contact__r.Email ), TRUE, FALSE)</formula>
+    <label>Clean Email Issue</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

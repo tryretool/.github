@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Journey_Subcategory__c</fullName>
+    <description>Journey Subcategory derived from associated Moment, or Outbound Sequence flag. Formerly Journey Subtype formula field.</description>
+    <inlineHelpText>Journey Subcategory derived from associated Moment, or Outbound Sequence flag. Formerly Journey Subtype formula field.</inlineHelpText>
+    <label>Journey Subcategory</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Demo Request</fullName>
+                <default>false</default>
+                <label>Demo Request</label>
+            </value>
+            <value>
+                <fullName>Demo Request (Non-MQL)</fullName>
+                <default>false</default>
+                <label>Demo Request (Non-MQL)</label>
+            </value>
+            <value>
+                <fullName>Meeting Maker (Incentivized Demo)</fullName>
+                <default>false</default>
+                <label>Meeting Maker (Incentivized Demo)</label>
+            </value>
+            <value>
+                <fullName>Product Signup</fullName>
+                <default>false</default>
+                <label>Product Signup</label>
+            </value>
+            <value>
+                <fullName>Product Action</fullName>
+                <default>false</default>
+                <label>Product Action</label>
+            </value>
+            <value>
+                <fullName>Content</fullName>
+                <default>false</default>
+                <label>Content</label>
+            </value>
+            <value>
+                <fullName>Koala</fullName>
+                <default>false</default>
+                <label>Koala</label>
+            </value>
+            <value>
+                <fullName>Champify</fullName>
+                <default>false</default>
+                <label>Champify</label>
+            </value>
+            <value>
+                <fullName>Partner Referral</fullName>
+                <default>false</default>
+                <label>Partner Referral</label>
+            </value>
+            <value>
+                <fullName>Support Handoff</fullName>
+                <default>false</default>
+                <label>Support Handoff</label>
+            </value>
+            <value>
+                <fullName>Regie.ai</fullName>
+                <default>false</default>
+                <label>Regie.ai</label>
+            </value>
+            <value>
+                <fullName>Live Event</fullName>
+                <default>false</default>
+                <label>Live Event</label>
+            </value>
+            <value>
+                <fullName>Webinar</fullName>
+                <default>false</default>
+                <label>Webinar</label>
+            </value>
+            <value>
+                <fullName>Outbound Sequence</fullName>
+                <default>false</default>
+                <label>Outbound Sequence</label>
+            </value>
+            <value>
+                <fullName>Contact Engineering</fullName>
+                <default>false</default>
+                <label>Contact Engineering</label>
+            </value>
+            <value>
+                <fullName>Contact Sales</fullName>
+                <default>false</default>
+                <label>Contact Sales</label>
+            </value>
+            <value>
+                <fullName>Prospect Re-Engagement</fullName>
+                <default>false</default>
+                <label>Prospect Re-Engagement</label>
+            </value>
+            <value>
+                <fullName>AE Re-Engagement</fullName>
+                <default>false</default>
+                <label>AE Re-Engagement</label>
+            </value>
+            <value>
+                <fullName>SDR Re-Engagement</fullName>
+                <default>false</default>
+                <label>SDR Re-Engagement</label>
+            </value>
+            <value>
+                <fullName>Other Journey</fullName>
+                <default>false</default>
+                <label>Other Journey</label>
+            </value>
+            <value>
+                <fullName>Other Meeting</fullName>
+                <default>false</default>
+                <label>Other Meeting</label>
+            </value>
+            <value>
+                <fullName>Endgame</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Endgame</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

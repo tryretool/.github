@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Public</fullName>
+    <columns>NAME</columns>
+    <columns>Type__c</columns>
+    <columns>Domain_Validation__c</columns>
+    <columns>Domain_Validation_Details__c</columns>
+    <columns>Domain_Validation_Last_Updated__c</columns>
+    <columns>Matched_Account__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Type__c</field>
+        <operation>equals</operation>
+        <value>Public</value>
+    </filters>
+    <label>Public</label>
+</ListView>

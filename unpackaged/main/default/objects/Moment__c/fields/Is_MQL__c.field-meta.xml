@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_MQL__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates if the Moment is eligible as an MQL.
+
+In System Use: &#39;Moment.MQL_Status&#39;; &#39;Journey,.Journey_Subtype&#39;; &#39;Journey.Is_MQL&#39;; Autolaunch: Check MQL&#39;; &#39;Moment: After Save Automations&#39;
+
+External Systems Utilization: None</description>
+    <inlineHelpText>Indicates if the Moment is eligible as an MQL.</inlineHelpText>
+    <label>Is MQL</label>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

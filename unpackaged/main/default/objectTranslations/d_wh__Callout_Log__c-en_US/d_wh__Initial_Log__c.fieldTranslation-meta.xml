@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- If this log is created by a retry, this field is populated with the initial log that was retried. --></help>
+        <label><!-- Initial Log --></label>
+        <name>d_wh__Initial_Log__c</name>
+        <relationshipLabel><!-- Retry Logs --></relationshipLabel>
+    </CustomFieldTranslation>

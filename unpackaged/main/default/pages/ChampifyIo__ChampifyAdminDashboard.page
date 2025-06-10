@@ -1,0 +1,286 @@
+<apex:page controller="ChampifyIo.DashboardController" lightningStylesheets="true">
+  <div class="report-chart-grid report-chart-grid-4">
+    <!-- https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/pages_compref_analytics_reportChart.htm -->
+    <div class="chart-wrapper">
+      <div class="slds-scope">
+        <div class="width_tiny analyticsEmbeddedReportChart">
+          <div class="reportTitle">
+            <h2>{!data.numContactsTrackedCard.label}</h2>
+          </div>
+
+          <div class="outerbound">
+            <div class="chartContainer" data-aura-rendered-by="16:0">
+              <h1>{!data.numContactsTrackedCard.value}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-wrapper">
+      <analytics:reportChart reportId="{!data.developerNameToReportId['NumContactsTrackedByRelationship']}"
+        size="tiny"
+        showRefreshButton="false"
+        cacheAge="60000"
+        cacheResults="true"
+      />
+    </div>
+    <div class="chart-wrapper">
+      <div class="slds-scope">
+        <div class="width_tiny analyticsEmbeddedReportChart">
+          <div class="reportTitle">
+            <h2>{!data.numChampifyContactsCard.label}</h2>
+          </div>
+
+          <div class="outerbound">
+            <div class="chartContainer" data-aura-rendered-by="16:0">
+              <h1>{!data.numChampifyContactsCard.value}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-wrapper">
+      <div class="slds-scope">
+        <div class="width_tiny analyticsEmbeddedReportChart">
+          <div class="reportTitle">
+            <h2>{!data.numChampifyLeadsCard.label}</h2>
+          </div>
+
+          <div class="outerbound">
+            <div class="chartContainer" data-aura-rendered-by="16:0">
+              <h1>{!data.numChampifyLeadsCard.value}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-wrapper">
+      <analytics:reportChart reportId="{!data.developerNameToReportId['ChampifyAccounts']}"
+        size="tiny"
+        showRefreshButton="false"
+        cacheAge="60000"
+        cacheResults="true"
+      />
+    </div>
+    <div class="chart-wrapper">
+      <analytics:reportChart reportId="{!data.developerNameToReportId['ChampifyContactsByAccountType']}"
+        size="tiny"
+        showRefreshButton="false"
+        cacheAge="60000"
+        cacheResults="true"
+      />
+    </div>
+    <div class="chart-wrapper" id="chart-champify-contacts">
+      <analytics:reportChart reportId="{!data.developerNameToReportId['ChampifyContacts']}"
+        filter="[{column:'Contact.ChampifyIo__Job_Change_Detected_Date__c',operator:'equals',value:'LAST_N_MONTHS:3'}]"
+        size="tiny"
+        showRefreshButton="false"
+        cacheAge="60000"
+        cacheResults="true"
+      />
+    </div>
+    <div class="chart-wrapper" id="chart-champify-leads">
+      <analytics:reportChart reportId="{!data.developerNameToReportId['ChampifyLeads']}"
+        filter="[{column:'Lead.ChampifyIo__Job_Change_Detected_Date__c',operator:'equals',value:'LAST_N_MONTHS:3'}]"
+        size="tiny"
+        showRefreshButton="false"
+        cacheAge="60000"
+        cacheResults="true"
+      />
+    </div>
+    <div class="chart-wrapper" id="chart-contact-adoption">
+      <analytics:reportChart reportId="{!data.developerNameToReportId['ContactAdoption']}"
+        filter="[{column:'Contact.ChampifyIo__Job_Change_Detected_Date__c',operator:'equals',value:'THIS_YEAR'}]"
+        size="tiny"
+        showRefreshButton="false"
+        cacheAge="60000"
+        cacheResults="true"
+      />
+    </div>
+    <div class="chart-wrapper" id="chart-contact-adoption-over-time">
+      <analytics:reportChart reportId="{!data.developerNameToReportId['ContactAdoptionOverTime']}"
+        filter="[{column:'Contact.ChampifyIo__Job_Change_Detected_Date__c',operator:'equals',value:'LAST_N_MONTHS:3'}]"
+        size="tiny"
+        showRefreshButton="false"
+        cacheAge="60000"
+        cacheResults="true"
+      />
+    </div>
+    <div class="chart-wrapper" id="chart-lead-adoption">
+      <analytics:reportChart reportId="{!data.developerNameToReportId['LeadAdoption']}"
+        filter="[{column:'Lead.ChampifyIo__Job_Change_Detected_Date__c',operator:'equals',value:'THIS_YEAR'}]"
+        size="tiny"
+        showRefreshButton="false"
+        cacheAge="60000"
+        cacheResults="true"
+      />
+    </div>
+    <div class="chart-wrapper" id="chart-lead-adoption-over-time">
+      <analytics:reportChart reportId="{!data.developerNameToReportId['LeadAdoptionOverTime']}"
+        filter="[{column:'Lead.ChampifyIo__Job_Change_Detected_Date__c',operator:'equals',value:'LAST_N_MONTHS:3'}]"
+        size="tiny"
+        showRefreshButton="false"
+        cacheAge="60000"
+        cacheResults="true"
+      />
+    </div>
+    <div class="chart-wrapper chart-wrapper-medium">
+      <analytics:reportChart reportId="{!data.developerNameToReportId['ChampifyOpenOpportunities']}"
+        size="medium"
+        showRefreshButton="false"
+        cacheAge="60000"
+        cacheResults="true"
+      />
+    </div>
+    <div class="chart-wrapper chart-wrapper-medium">
+      <analytics:reportChart reportId="{!data.developerNameToReportId['ChampifyClosedWonOpps']}"
+        size="medium"
+        showRefreshButton="false"
+        cacheAge="60000"
+        cacheResults="true"
+      />
+    </div>
+  </div>
+  <style>
+    :root {
+      --champify-chart-height: 300px;
+      --champify-chart-width: 100%;
+    }
+
+    .report-chart-grid {
+      display: grid;
+      grid-gap: 10px;
+      border: 1px solid rgb(201, 201, 201);
+      border-radius: 0.25rem;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+      background-clip: padding-box;
+      padding: 0.75rem 1rem;
+      margin-bottom: 20px;
+    }
+
+    .report-chart-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .report-chart-grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .report-chart-grid > div.chart-wrapper {
+      background-color: whitesmoke;
+      border: 1px solid rgb(201, 201, 201);
+      border-radius: 0.25rem;
+      padding: 0 10px 10px;
+      box-sizing: border-box;
+    }
+
+    .report-chart-grid > div.chart-wrapper-medium {
+      grid-column: span 2;
+    }
+
+    .report-chart-grid > div.chart-wrapper-large {
+      grid-column: span 4;
+    }
+
+    .report-chart-grid > .analyticsEmbeddedReportChart {
+      margin: 0 auto;
+    }
+
+    .outerbound {
+      max-height: var(--champify-chart-height);
+    }
+
+    .reportsEclairChart {
+      max-height: var(--champify-chart-height);
+    }
+
+    .spacer {
+      padding-bottom: calc(var(--champify-chart-height) - 20px) !important;
+    }
+
+    div.chart-wrapper-large .outerbound {
+      max-height: calc(var(--champify-chart-height) * 2);
+    }
+
+    div.chart-wrapper-large .reportsEclairChart {
+      max-height: calc(var(--champify-chart-height) * 2);
+    }
+
+    div.chart-wrapper-large .spacer {
+      padding-bottom: calc(var(--champify-chart-height) * 2 - 20px) !important;
+    }
+
+    .analyticsEmbeddedReportChart.width_large {
+      width: var(--champify-chart-width);
+    }
+
+    .analyticsEmbeddedReportChart.width_medium {
+      width: var(--champify-chart-width);
+    }
+
+    .analyticsEmbeddedReportChart.width_tiny {
+      width: var(--champify-chart-width);
+    }
+
+    .analyticsEmbeddedReportChart.width_small {
+      width: var(--champify-chart-width);
+    }
+
+    .chartContainer h1 {
+      font-size: 7.5rem;
+      line-height: 8rem;
+      text-align: center;
+    }
+
+    .reportTitle > h2 {
+      font-size: 0.8rem;
+    }
+  </style>
+  <script>
+    function setChartName(chartId, name, cb) {
+      const headers = document.querySelectorAll("#" + chartId + " h2");
+      if (headers.length > 0) {
+        headers[0].innerText = name;
+        return true;
+      }
+    }
+
+    function updateChartName(chartId, name) {
+      const targetNode = document.getElementById(chartId);
+
+      const config = { attributes: true, childList: true, subtree: true };
+      const callback = (mutationList, o) => {
+        for (const mutation of mutationList) {
+          if (mutation.type === "childList") {
+            const result = setChartName(chartId, name, o.disconnect);
+            if (result) {
+              o.disconnect();
+            }
+          }
+        }
+      };
+
+      const observer = new MutationObserver(callback);
+      observer.observe(targetNode, config);
+    }
+
+    updateChartName(
+      "chart-champify-contacts",
+      "New Job Contacts (past 3 months)"
+    );
+    updateChartName("chart-champify-leads", "New Job Leads (past 3 months)");
+    updateChartName(
+      "chart-contact-adoption",
+      "% Contact Adoption (past 12 months)"
+    );
+    updateChartName(
+      "chart-contact-adoption-over-time",
+      "% Contact Adoption (past 3 months)"
+    );
+    updateChartName("chart-lead-adoption", "% Lead Adoption (past 12 months)");
+    updateChartName(
+      "chart-lead-adoption-over-time",
+      "% Lead Adoption (past 3 months)"
+    );
+  </script>
+</apex:page>

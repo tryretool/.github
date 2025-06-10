@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Alternative_Names__c</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>Alternate names the company does/did business under (e.g., previous name before a name change or acquisition)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Alternate names the company does/did business under (e.g., previous name before a name change or acquisition)</inlineHelpText>
+    <label>Alternative Names</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

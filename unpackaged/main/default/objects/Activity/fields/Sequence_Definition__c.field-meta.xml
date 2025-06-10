@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sequence_Definition__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>Sequence Definition</label>
+    <referenceTo>Sequence_Definition__c</referenceTo>
+    <relationshipLabel>Activities</relationshipLabel>
+    <relationshipName>Activities</relationshipName>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <type>Lookup</type>
+</CustomField>

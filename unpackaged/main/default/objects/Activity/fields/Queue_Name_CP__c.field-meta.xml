@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Queue_Name_CP__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>The name of the Chili Piper queue that the meeting was booked from.</inlineHelpText>
+    <label>Queue Name</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

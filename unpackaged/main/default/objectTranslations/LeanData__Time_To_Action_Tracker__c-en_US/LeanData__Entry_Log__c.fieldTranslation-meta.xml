@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Entry Log --></label>
+        <name>LeanData__Entry_Log__c</name>
+        <relationshipLabel><!-- TTA Entry Logs --></relationshipLabel>
+    </CustomFieldTranslation>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Provisioning_Support_Tier_Change__c</fullName>
+    <formula>IF(
+ISPICKVAL(Forecast_Support_Tier__c,&quot;&quot;) || ISBLANK(Originating_Opportunity__c),
+FALSE,
+IF(
+ISPICKVAL(Forecast_Support_Tier__c,&quot;&quot;) != ISPICKVAL(Originating_Opportunity__r.Forecast_Support_Tier__c,&quot;&quot;),
+TRUE,
+FALSE
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Provisioning: Support Tier Change?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

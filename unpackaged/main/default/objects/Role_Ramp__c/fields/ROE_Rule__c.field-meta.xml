@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ROE_Rule__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>ROE Rule</label>
+    <referenceTo>ROE_Rule__c</referenceTo>
+    <relationshipLabel>Role Ramps</relationshipLabel>
+    <relationshipName>Role_Ramps</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

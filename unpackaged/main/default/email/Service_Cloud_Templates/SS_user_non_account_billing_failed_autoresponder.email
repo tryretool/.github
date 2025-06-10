@@ -1,0 +1,20 @@
+<p>Hi {!Contact.FirstName} -
+
+<p>Thank you for contacting Retool Support and appreciate your patience with our delayed response! Apologies as it looks like our auto-response here outlining the best options to get help failed to deliver (but has been fixed now!). Please be aware that we have shifted this inbox to focus on account and billing issues.
+
+<p>Unfortunately, we cannot provide technical support on the issue you are writing in about via this inbox.</p>
+
+<p>If you are looking for technical guidance or to share a feature request or bug report, the Community Engineering team at Retool helps with these topics on our <a href="https://community.retool.com/t/retool-community-guidelines/30917" target="_blank">Developer Community Forums</a>. Hundreds of questions receive solutions there every week, and if there isn't already a helpful answer for your question, we want there to be one!</p>
+
+<p>We’re very excited about our work over the last year establishing a highly active Developer Community managed by our Community Support Engineers that participates both on the forums and in office hours.</p>
+
+<p>In addition to our forums and <a href="https://docs.retool.com/" target="_blank">docs</a>, take a look at these additional resources:</p>
+
+<ul>
+<li> Check out our <a href="https://community.retool.com/c/retool-tips-and-tricks/25" target="_blank">tips and tricks</a> for advice on a variety of Retool use cases, or our <a href="https://community.retool.com/t/accounts-users-and-billing-faq/29043" target="_blank">FAQ page</a> for answers to commonly asked account, billing, and user permission questions.</li>
+<li> We offer <a href="https://community.retool.com/t/come-join-retool-office-hours-now-in-discord/12348" target="_blank">live video office hours</a> hosted on our Discord server</li>
+</ul>
+
+<p>If you are looking for plans that include dedicated support resources, <a href="https://retool.com/demo/?meeting_page_source=support_auto_reply" target="_blank">book some time with our team here</a>. If you are on the Enterprise plan and are seeing this message, please let us know!</p>
+
+<p>Thank you for understanding and for being a part of the Retool community.</p>

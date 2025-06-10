@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>I_am_Account_Owner__c</fullName>
+    <description>Helper field that returns TRUE if the running user is the current owner of Account record.</description>
+    <formula>$User.Id=OwnerId</formula>
+    <inlineHelpText>Helper field that returns TRUE if the running user is the current owner of Account record.</inlineHelpText>
+    <label>I am Account Owner?</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

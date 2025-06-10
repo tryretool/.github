@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Breweries</fullName>
+        <default>false</default>
+        <label>Breweries</label>
+    </customValue>
+    <customValue>
+        <fullName>Distilleries</fullName>
+        <default>false</default>
+        <label>Distilleries</label>
+    </customValue>
+    <customValue>
+        <fullName>Internet News</fullName>
+        <default>false</default>
+        <label>Internet News</label>
+    </customValue>
+    <customValue>
+        <fullName>Racetracks</fullName>
+        <default>false</default>
+        <label>Racetracks</label>
+    </customValue>
+    <customValue>
+        <fullName>Renewable Energy Semiconductor Manufacturing</fullName>
+        <default>false</default>
+        <label>Renewable Energy Semiconductor Manufacturing</label>
+    </customValue>
+    <customValue>
+        <fullName>Sports Teams and Clubs</fullName>
+        <default>false</default>
+        <label>Sports Teams and Clubs</label>
+    </customValue>
+    <customValue>
+        <fullName>Wineries</fullName>
+        <default>false</default>
+        <label>Wineries</label>
+    </customValue>
+    <masterLabel>LinkedIn Level 4 Industry</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

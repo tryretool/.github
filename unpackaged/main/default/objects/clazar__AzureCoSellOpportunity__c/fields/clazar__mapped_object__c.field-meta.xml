@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clazar__mapped_object__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&quot;/lightning/r/&quot;+ clazar__mapped_object_type__c + &quot;/&quot; +  clazar__mapped_object_id__c + &quot;/view&quot;,  clazar__mapped_object_id__c ,&quot;_self&quot;)</formula>
+    <label>Mapped Object</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

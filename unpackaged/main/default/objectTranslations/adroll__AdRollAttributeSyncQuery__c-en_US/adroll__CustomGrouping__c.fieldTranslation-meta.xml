@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- This is text representing custom grouping of filter criteria. --></help>
+        <label><!-- Custom Grouping --></label>
+        <name>adroll__CustomGrouping__c</name>
+    </CustomFieldTranslation>

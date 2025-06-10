@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>partner_relationship_no_bu_no_opp</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT(ISBLANK(Partner_Relationship__c)) &amp;&amp; 
+(NOT(ISBLANK(Business_Unit__c)) || NOT(ISBLANK(Opportunity__c)))</errorConditionFormula>
+    <errorMessage>Partner license cannot be mapped to a business unit or opportunity</errorMessage>
+</ValidationRule>

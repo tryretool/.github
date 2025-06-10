@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Owner__c</fullName>
+    <businessStatus>Hidden</businessStatus>
+    <description>Used for integrations that need access to the account owner&#39;s name but cannot traverse SOQL lookups.
+
+External Systems Utilization: MadKudu</description>
+    <externalId>false</externalId>
+    <formula>Owner.FirstName&amp;&quot; &quot;&amp;Owner.LastName</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Full name of the current account owner</inlineHelpText>
+    <label>Account Owner</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

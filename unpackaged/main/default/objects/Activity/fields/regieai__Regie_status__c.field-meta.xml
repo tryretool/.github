@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>regieai__Regie_status__c</fullName>
+    <deprecated>false</deprecated>
+    <description>Was Regie.ai used in the generation of the email? Can be &quot;Rapid Writer&quot;, &quot;Personalized&quot; or blank, which means Regie.ai is not used in the email</description>
+    <label>Regie Generated</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Rapid Writer</fullName>
+                <default>false</default>
+                <label>Rapid Writer</label>
+            </value>
+            <value>
+                <fullName>Personalizer</fullName>
+                <default>false</default>
+                <label>Personalizer</label>
+            </value>
+            <value>
+                <fullName>Auto-pilot</fullName>
+                <default>false</default>
+                <label>Auto-pilot</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

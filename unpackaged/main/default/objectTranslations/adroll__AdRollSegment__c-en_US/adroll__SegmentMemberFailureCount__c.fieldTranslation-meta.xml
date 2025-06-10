@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Segement Member Count For Failed Records --></help>
+        <label><!-- Segment Member Failure Count(Deprecated) --></label>
+        <name>adroll__SegmentMemberFailureCount__c</name>
+    </CustomFieldTranslation>

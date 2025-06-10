@@ -1,0 +1,10 @@
+<apex:page >
+    <apex:includeLightning />
+    <div id="light"/>
+    <script>
+        $Lightning.use("rocketlane:RocketlaneAuraApp", function (){
+            $Lightning.createComponent("rocketlane:landingTab", {},"light" ,function (cmp){
+            });
+        });
+    </script>
+</apex:page>

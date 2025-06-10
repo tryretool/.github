@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Most_Recent_Activity_At__c</fullName>
+    <formula>IF(Most_Recent_Event_At__c &gt; Most_Recent_Task_At__c || ISBLANK(Most_Recent_Task_At__c) ,Most_Recent_Event_At__c,Most_Recent_Task_At__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Most Recent Activity At</label>
+    <required>false</required>
+    <type>Date</type>
+</CustomField>

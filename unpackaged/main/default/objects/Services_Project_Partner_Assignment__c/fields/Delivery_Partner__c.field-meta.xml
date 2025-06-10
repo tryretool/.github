@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Partner__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <label>Delivery Partner</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>This Partner Relationship is not record type Service Delivery</errorMessage>
+        <filterItems>
+            <field>Partner_Relationship__c.RecordType.Name</field>
+            <operation>equals</operation>
+            <value>Service Delivery</value>
+        </filterItems>
+        <infoMessage>Please select a Service Delivery partner relationship</infoMessage>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Partner_Relationship__c</referenceTo>
+    <relationshipLabel>Services Project Partner Assignments</relationshipLabel>
+    <relationshipName>Services_Delivery_Partners</relationshipName>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

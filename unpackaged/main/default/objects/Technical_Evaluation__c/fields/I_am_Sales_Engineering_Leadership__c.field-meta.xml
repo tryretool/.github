@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>I_am_Sales_Engineering_Leadership__c</fullName>
+    <formula>ISPICKVAL($User.Team__c,&quot;Sales Engineering&quot;) &amp;&amp;
+(
+ISPICKVAL($User.Level__c,&quot;Lead&quot;) ||
+ISPICKVAL($User.Level__c,&quot;Head&quot;) ||
+ISPICKVAL($User.Level__c,&quot;Staff&quot;) 
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>I Am Sales Engineering Leadership?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

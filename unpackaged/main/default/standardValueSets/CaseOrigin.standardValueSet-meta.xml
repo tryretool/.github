@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Email</fullName>
+        <default>false</default>
+        <label>Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Slack</fullName>
+        <default>false</default>
+        <label>Slack</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Community</fullName>
+        <default>false</default>
+        <label>Community</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Chat</fullName>
+        <default>false</default>
+        <label>Chat</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Internal</fullName>
+        <default>false</default>
+        <label>Internal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Experiment</fullName>
+        <default>false</default>
+        <label>Experiment</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Community Office Hours</fullName>
+        <default>false</default>
+        <label>Community Office Hours</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Portal</fullName>
+        <default>false</default>
+        <label>Portal</label>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ChampifyIo__Add_Batch_Invoke_Limit__c</fullName>
+    <defaultValue>40</defaultValue>
+    <deprecated>false</deprecated>
+    <description>The maximum number of executions each time the add job is started. The batch add job runs on a daily schedule by default, so this acts as a daily maximum unless you manually run &quot;Add Now&quot; in addition to the scheduled job.</description>
+    <externalId>false</externalId>
+    <label>Add Batch Invoke Limit</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

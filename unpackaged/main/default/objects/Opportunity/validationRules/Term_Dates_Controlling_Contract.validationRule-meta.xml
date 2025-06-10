@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Term_Dates_Controlling_Contract</fullName>
+    <active>true</active>
+    <errorConditionFormula>Contract.Is_Controlling_Contract__c = TRUE &amp;&amp; 
+ Contract.Unlink_opportunity_dates__c = FALSE &amp;&amp;
+( 
+ Term_Start_Date__c !=  Contract.StartDate ||
+ Contract_End_Date__c != Contract.EndDate ||
+ Contract_Term__c !=  Contract.ContractTerm 
+) &amp;&amp;
+(
+ ISCHANGED(Term_Start_Date__c) ||
+ ISCHANGED(Contract_End_Date__c) ||
+ ISCHANGED(Contract_Term__c)
+)
+&amp;&amp;  $User.User_ID_case_safe__c != &#39;0055A00000ApunnQAB&#39;
+&amp;&amp; $User.Is_integration_user__c = FALSE
+&amp;&amp; NOT(ISPICKVAL(Booking_Type__c,&quot;Putback&quot;))</errorConditionFormula>
+    <errorDisplayField>Term_Start_Date__c</errorDisplayField>
+    <errorMessage>This opportunity has a controlling contract. Please update term dates on the controlling contract.</errorMessage>
+</ValidationRule>

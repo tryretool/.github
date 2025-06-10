@@ -1,0 +1,3 @@
+Hi there, thanks for reaching out. ﻿As a security best practice, I’m not able to reset 2FA from the Retool side. Instead, someone with Admin permissions within your org can follow this documentation to <a href="https://docs.retool.com/org-users/guides/two-factor-authentication#reset-2fa-for-individual-users" target="_blank">reset 2fa for individual users</a>. 
+
+<p>Please let me know if you’re still blocked after an Admin tries those steps. Thanks!</p>

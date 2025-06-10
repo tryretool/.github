@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Score indicating the likelihood that a contact is reachable and still employed by the company listed. --></help>
+        <label><!-- Contact Accuracy Score --></label>
+        <name>DOZISF__Contact_Accuracy_Score__c</name>
+    </CustomFieldTranslation>

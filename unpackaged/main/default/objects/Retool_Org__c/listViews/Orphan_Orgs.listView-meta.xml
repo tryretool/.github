@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Orphan_Orgs</fullName>
+    <columns>NAME</columns>
+    <columns>Org_Priority__c</columns>
+    <columns>Creator_Email__c</columns>
+    <columns>Creator_Email_Clean__c</columns>
+    <columns>Creator_Email_Domain_Clean__c</columns>
+    <columns>Creator_Email_Domain_Type__c</columns>
+    <columns>Account__c</columns>
+    <columns>Stripe_Annualized_Revenue__c</columns>
+    <columns>Subscription_Type__c</columns>
+    <columns>Business_Unit__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Num_Users_Total__c</columns>
+    <columns>Trigger__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Creator_Email__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>Account__c</field>
+        <operation>equals</operation>
+        <value>Orphan Orgs</value>
+    </filters>
+    <filters>
+        <field>CREATED_DATE</field>
+        <operation>greaterOrEqual</operation>
+        <value>1/1/2024 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>Creator_Email_Domain_Clean__c</field>
+        <operation>notEqual</operation>
+        <value>gmail.com</value>
+    </filters>
+    <label>Orphan Orgs</label>
+    <sharedTo>
+        <group>Revenue_Operations</group>
+    </sharedTo>
+</ListView>

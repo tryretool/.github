@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Total amount of funding raised by the company to date --></help>
+        <label><!-- Funding: Total --></label>
+        <name>Funding_Total__c</name>
+    </CustomFieldTranslation>

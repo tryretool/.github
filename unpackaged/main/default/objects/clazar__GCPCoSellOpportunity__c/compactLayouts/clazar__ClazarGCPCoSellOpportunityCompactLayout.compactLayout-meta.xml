@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clazar__ClazarGCPCoSellOpportunityCompactLayout</fullName>
+    <fields>clazar__estimated_close_date__c</fields>
+    <fields>Name</fields>
+    <fields>clazar__state__c</fields>
+    <fields>clazar__stage__c</fields>
+    <fields>clazar__owner_email__c</fields>
+    <fields>clazar__cloud_opportunity_updated_time__c</fields>
+    <label>Clazar GCP CoSell Opportunity Compact layout</label>
+</CompactLayout>

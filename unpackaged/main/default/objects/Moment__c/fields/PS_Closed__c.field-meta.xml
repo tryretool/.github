@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PS_Closed__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Used by Professional Services
+
+In System Use: Reports
+
+External Systems Utilization: None</description>
+    <inlineHelpText>Used by Professional Services</inlineHelpText>
+    <label>PS Closed</label>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

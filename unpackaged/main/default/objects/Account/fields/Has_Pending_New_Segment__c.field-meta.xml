@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Has_Pending_New_Segment__c</fullName>
+    <description>TRUE if the `New Segment` is different than the current `Segment` value.</description>
+    <formula>NOT(ISPICKVAL(New_Segment__c,&quot;&quot;)) &amp;&amp; TEXT(New_Segment__c) != TEXT(Segment__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>TRUE if the `New Segment` is different than the current `Segment` value.</inlineHelpText>
+    <label>Has Pending New Segment?</label>
+    <securityClassification>Caution</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

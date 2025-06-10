@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LG_Invalidated_Reason__c</fullName>
+    <description>Reason why this lead record could not be enriched by LeadGenius.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Reason why this lead record could not be enriched by LeadGenius.</inlineHelpText>
+    <label>LG: Invalidated Reason</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UniqueEntry__All</fullName>
+    <columns>NAME</columns>
+    <columns>UniqueEntry__Object_Options__c</columns>
+    <columns>UniqueEntry__RingLead_DMS_Task__c</columns>
+    <columns>UniqueEntry__Enable_RingLead_Routing__c</columns>
+    <columns>UniqueEntry__After_Create__c</columns>
+    <columns>UniqueEntry__After_Create_Contact__c</columns>
+    <columns>UniqueEntry__After_Update__c</columns>
+    <columns>UniqueEntry__After_Update_Contact__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

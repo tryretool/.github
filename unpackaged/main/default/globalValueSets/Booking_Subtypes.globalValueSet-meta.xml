@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>New Commitment - Annual</fullName>
+        <default>false</default>
+        <label>New Commitment - Annual</label>
+    </customValue>
+    <customValue>
+        <fullName>New Subsidiary - Annual</fullName>
+        <default>false</default>
+        <label>New Subsidiary - Annual</label>
+    </customValue>
+    <customValue>
+        <fullName>Conversion - Self-Service to Annual</fullName>
+        <default>false</default>
+        <label>Conversion - Self-Service to Annual</label>
+    </customValue>
+    <customValue>
+        <fullName>Conversion - Non-Annual to Annual</fullName>
+        <default>false</default>
+        <label>Conversion - Non-Annual to Annual</label>
+    </customValue>
+    <customValue>
+        <fullName>Renewal - Annual</fullName>
+        <default>false</default>
+        <label>Renewal - Annual</label>
+    </customValue>
+    <customValue>
+        <fullName>Renewal - Pilot Conversion</fullName>
+        <default>false</default>
+        <label>Renewal - Pilot Conversion</label>
+    </customValue>
+    <customValue>
+        <fullName>Renewal - Bridge</fullName>
+        <default>false</default>
+        <label>Renewal - Bridge</label>
+    </customValue>
+    <customValue>
+        <fullName>Partnership</fullName>
+        <default>false</default>
+        <label>Partnership</label>
+    </customValue>
+    <customValue>
+        <fullName>Pilot - Paid</fullName>
+        <default>false</default>
+        <label>Pilot - Paid</label>
+    </customValue>
+    <customValue>
+        <fullName>Renewal - Pilot Extension</fullName>
+        <default>false</default>
+        <label>Renewal - Pilot Extension</label>
+    </customValue>
+    <customValue>
+        <fullName>Expansion - Committed</fullName>
+        <default>false</default>
+        <label>Expansion - Committed</label>
+    </customValue>
+    <customValue>
+        <fullName>Professional Services</fullName>
+        <default>false</default>
+        <label>Professional Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Professional Services</fullName>
+        <default>false</default>
+        <label>Unqualified - Professional Services</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Sales</fullName>
+        <default>false</default>
+        <label>Unqualified - Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>Baseline Transfer - In</fullName>
+        <default>false</default>
+        <label>Baseline Transfer - In</label>
+    </customValue>
+    <customValue>
+        <fullName>Baseline Transfer - Out</fullName>
+        <default>false</default>
+        <label>Baseline Transfer - Out</label>
+    </customValue>
+    <customValue>
+        <fullName>Services - Extension</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Services - Extension</label>
+    </customValue>
+    <customValue>
+        <fullName>Services - New</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Services - New</label>
+    </customValue>
+    <customValue>
+        <fullName>Services - Time &amp; Materials</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Services - Time &amp; Materials</label>
+    </customValue>
+    <customValue>
+        <fullName>Unqualified - Expansion</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Unqualified - Expansion</label>
+    </customValue>
+    <customValue>
+        <fullName>Contraction - Uncommitted</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Contraction - Uncommitted</label>
+    </customValue>
+    <customValue>
+        <fullName>Renewal - Semi-Annual</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Renewal - Semi-Annual</label>
+    </customValue>
+    <customValue>
+        <fullName>Expansion - Uncommitted</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Expansion - Uncommitted</label>
+    </customValue>
+    <customValue>
+        <fullName>Renewal - Monthly</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Renewal - Monthly</label>
+    </customValue>
+    <customValue>
+        <fullName>Renewal - Bi-Monthly</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Renewal - Bi-Monthly</label>
+    </customValue>
+    <customValue>
+        <fullName>New Commitment - Other</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>New Commitment - Other</label>
+    </customValue>
+    <customValue>
+        <fullName>New Commitment - Quarterly</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>New Commitment - Quarterly</label>
+    </customValue>
+    <customValue>
+        <fullName>New Commitment - Monthly</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>New Commitment - Monthly</label>
+    </customValue>
+    <customValue>
+        <fullName>Renewal - Quarterly</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Renewal - Quarterly</label>
+    </customValue>
+    <masterLabel>Booking Subtypes</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

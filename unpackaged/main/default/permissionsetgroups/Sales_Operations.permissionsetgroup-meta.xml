@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Sales Operations</label>
+    <permissionSets>Billing_and_Invoicing</permissionSets>
+    <permissionSets>Gong__Gong_Admin</permissionSets>
+    <permissionSets>HubSpot_Inc__HubSpot_Integration_Permissions</permissionSets>
+    <permissionSets>Leadership_Forecast_Call</permissionSets>
+    <permissionSets>Manage_Enablement_Milestones</permissionSets>
+    <permissionSets>Manage_ROE_Rules</permissionSets>
+    <permissionSets>Read_Only_Additional_Objects</permissionSets>
+    <permissionSets>Read_Write_Edit_Core_Objects</permissionSets>
+    <permissionSets>Sales_Management</permissionSets>
+    <permissionSets>Sales_Manager_Forecast_Fields</permissionSets>
+    <permissionSets>Transfer_Record</permissionSets>
+    <permissionSets>Update_License_Key_and_Org_Mapping</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

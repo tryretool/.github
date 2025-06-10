@@ -1,0 +1,77 @@
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00Dn000000093HZ!ARcAQF3HroVRuwBENV4.MpnrBSLfWxVsY04U.PFpAHEm7hpuzyYbLJXmhWSdOQ7TpJ2ayNQn3TOr7JDbPBBgG_S3IG_LUkvk</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+Starting new HTTPS connection (1): cs30.salesforce.com
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:ns0="urn:partner.soap.sforce.com" xmlns:ns1="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="urn:partner.soap.sforce.com" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header>
+      <tns:SessionHeader>
+         <tns:sessionId>00D46000000sdt9!AQ0AQFxWcZpV5AWJBYMTlMJZKzT19RLve.SeA7ARnEF0JaWI.p4vsEvOBJt1CEJp.hB.EL_RsZqtyz_QeKuVjFdzQwjNxMSN</tns:sessionId>
+      </tns:SessionHeader>
+   </SOAP-ENV:Header>
+   <ns1:Body>
+      <ns0:getUserInfo/>
+   </ns1:Body>
+</SOAP-ENV:Envelope>
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): th4se-devjmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com
+Starting new HTTPS connection (1): adrollabm-josephmcnulty-dev-ed.my.salesforce.com

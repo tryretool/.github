@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>I_am_Technical_Account_Manager__c</fullName>
+    <description>Helper field that returns TRUE if the running user is the current `Technical Account Manager` on the Account Record.</description>
+    <formula>IF( Technical_Account_Manager__r.User_ID_case_safe__c = $User.User_ID_case_safe__c , TRUE, FALSE )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Helper field that returns TRUE if the running user is the current `Technical Account Manager` on the Account Record.</inlineHelpText>
+    <label>I am Technical Account Manager?</label>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

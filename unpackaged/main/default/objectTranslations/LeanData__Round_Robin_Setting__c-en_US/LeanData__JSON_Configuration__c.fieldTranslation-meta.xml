@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Capping Ruleset Configuration Setting --></label>
+        <name>LeanData__JSON_Configuration__c</name>
+        <relationshipLabel><!-- Ruleset Configuration for Pool --></relationshipLabel>
+    </CustomFieldTranslation>

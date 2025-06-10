@@ -1,0 +1,84 @@
+<apex:page standardController="d_wh__Callout_Template__c" extensions="d_wh.ExportCalloutTemplate">
+
+    <apex:slds />
+
+    <apex:form id="entireForm">
+
+        <div class="slds-scope" style="padding: 20px;">
+
+            <apex:actionStatus id="actionStatus">
+                <apex:facet name="start">
+                    <div class="demo-only demo-only demo-only_viewport" style="height:0px">
+                        <div role="status" class="slds-spinner slds-spinner_medium">
+                            <span class="slds-assistive-text">{!$Label.Loading}</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionStatus>
+
+            <div class="slds-page-header slds-page-header_record-home">
+                <div class="slds-page-header__row">
+                    <div class="slds-page-header__col-title">
+                        <div class="slds-media">
+                            <div class="slds-media__body">
+                                <div class="slds-page-header__name">
+                                    <div class="slds-page-header__name-title">
+                                        <h1>
+                                            <span class="slds-page-header__title slds-truncate" title="{!$Label.Export_Template}">{!$Label.Export_Template}</span>
+                                            <br /><br />
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-page-header__col-actions">
+                        <div class="slds-page-header__controls">
+                            <div class="slds-page-header__control">
+                                <ul class="slds-button-group-list">
+                                    <li>
+                                        <apex:commandButton action="{!Cancel}" value="{!$Label.d_wh__Back_to_Template}" styleClass="slds-button slds-button_neutral" />
+                                    </li>
+                                    <apex:outputPanel layout="none" rendered="{!exportReady}">
+                                        <li>
+                                            <a onclick="downloadExport(); return false;" class="slds-button slds-button_brand">Download</a>
+                                            <script>
+                                                function downloadExport() {
+                                                    const link = document.createElement("a");
+                                                    link.href = 'data:application/json;charset=utf-8;base64,{!base64export}';
+                                                    link.download = '{!JSENCODE(template.Name)}.json';
+                                                    link.click();
+                                                }
+                                            </script>
+                                        </li>
+                                    </apex:outputPanel>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-page-header__row slds-page-header__row_gutters" style="background-color: white;">
+                    <div class="slds-page-header__col-details">
+
+                        <br />
+                        <apex:pageMessages />
+                        
+                        <apex:outputPanel layout="none" rendered="{!exportReady}">
+                            
+
+                            <apex:pageMessage title="{!$Label.d_wh__Export_Ready_Click_Download}" detail="{!$Label.d_wh__Credentials_Are_Not_Exported}" severity="info" />
+                        </apex:outputPanel>
+
+                        <br /><br />
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </apex:form>
+
+</apex:page>

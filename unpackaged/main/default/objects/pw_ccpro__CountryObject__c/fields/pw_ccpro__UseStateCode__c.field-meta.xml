@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>pw_ccpro__UseStateCode__c</fullName>
+    <defaultValue>false</defaultValue>
+    <deprecated>false</deprecated>
+    <description>If set to “Yes” then when the user selects “United States” and “Ohio” then we store [State].[IsoCode] “OH” in the State field.
+If value is “No” then we store the [State].[Name] – “Ohio”</description>
+    <inlineHelpText>When enabled the State field is completed with the state ISO Code value.  Otherwise the state Name value is used.</inlineHelpText>
+    <label>Use Subcountry Code in State field</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

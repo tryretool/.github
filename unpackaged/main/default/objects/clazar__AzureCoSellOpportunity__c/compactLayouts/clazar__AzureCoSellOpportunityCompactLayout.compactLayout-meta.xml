@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>clazar__AzureCoSellOpportunityCompactLayout</fullName>
+    <fields>Name</fields>
+    <fields>clazar__status__c</fields>
+    <fields>clazar__deal_type__c</fields>
+    <fields>clazar__deal_value__c</fields>
+    <fields>clazar__is_macc_eligible__c</fields>
+    <fields>clazar__closing_date_time__c</fields>
+    <label>Azure Co-Sell Opportunity Compact Layout</label>
+</CompactLayout>

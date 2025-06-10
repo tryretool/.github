@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Subscription_Type__c</fullName>
+    <businessStatus>DeprecateCandidate</businessStatus>
+    <externalId>false</externalId>
+    <formula>CASE(RecordType.Name,
+  &quot;Self Service&quot;,&quot;Self Service&quot;,
+  &quot;Churn&quot;,&quot;Self Service&quot;,
+  CASE(Subtype__c,
+   &quot;New Commitment - Quarterly&quot;,&quot;Enterprise Quarterly&quot;,
+   &quot;New Commitment - Monthly&quot;,&quot;Enterprise Monthly&quot;,
+   &quot;New Commitment - Other&quot;,&quot;Enterprise Monthly&quot;,
+   &quot;Partnership&quot;,&quot;Partnership&quot;,
+   &quot;Pilot - Paid&quot;,&quot;Pilot&quot;,
+   &quot;Renewal - Quarterly&quot;,&quot;Enterprise Quarterly&quot;,
+   &quot;Renewal - Semi-Annual&quot;,&quot;Enterprise Monthly&quot;,
+   &quot;Renewal - Bi-Monthly&quot;,&quot;Enterprise Monthly&quot;,
+   &quot;Renewal - Monthly&quot;,&quot;Enterprise Monthly&quot;,
+   &quot;Renewal - Pilot Extension&quot;,&quot;Pilot&quot;,
+   &quot;Expansion - Uncommitted&quot;,CASE(Originating_Opportunity__r.Subtype__c,
+    &quot;New Commitment - Monthly&quot;,&quot;Enterprise Monthly&quot;,
+    &quot;New Commitment - Quarterly&quot;,&quot;Enterprise Quarterly&quot;,
+    &quot;New Commitment - Other&quot;,&quot;Enterprise Monthly&quot;,
+    &quot;Renewal - Quarterly&quot;,&quot;Enterprise Quarterly&quot;,
+    &quot;Renewal - Semi-Annual&quot;,&quot;Enterprise Monthly&quot;,
+    &quot;Enterprise Annual&quot;
+   ),
+   &quot;Enterprise Annual&quot;
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>zOLD Subscription Type</label>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

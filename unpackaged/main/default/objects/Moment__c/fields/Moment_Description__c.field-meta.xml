@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Moment_Description__c</fullName>
+    <description>Stores the results of the MQL eligibility check.
+
+In Systems Use: Moment_Description;  &#39;Case - Handoff Button&#39;; &#39;Contact - After Save Automations&#39;; &#39;Koala Intent Signal - After Save Automations&#39;; &#39;Moment: After Save Automations&#39;; &#39;Moment: Before Save Automations&#39;; &#39;Retool User - After Save Automations&#39;; &#39;Task - After Save Automations&#39;
+
+External Systems Utilization: Koala</description>
+    <externalId>false</externalId>
+    <label>Moment Description</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

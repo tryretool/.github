@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ZoomInfo_Street__c</fullName>
+    <description>Geo data for company street provided by ZoomInfo. This information is mapped to separate fields to review before applying as our source of truth.
+
+External Systems Utilization: ZoomInfo</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Geo data for company street provided by ZoomInfo. This information is mapped to separate fields to review before applying as our source of truth.</inlineHelpText>
+    <label>ZoomInfo Street</label>
+    <length>255</length>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

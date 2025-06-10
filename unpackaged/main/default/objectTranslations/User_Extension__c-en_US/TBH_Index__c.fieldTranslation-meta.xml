@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- TBH Index --></label>
+        <name>TBH_Index__c</name>
+        <picklistValues>
+            <masterLabel>TBH01</masterLabel>
+            <translation><!-- TBH01 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH02</masterLabel>
+            <translation><!-- TBH02 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH03</masterLabel>
+            <translation><!-- TBH03 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH04</masterLabel>
+            <translation><!-- TBH04 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH05</masterLabel>
+            <translation><!-- TBH05 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH06</masterLabel>
+            <translation><!-- TBH06 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH07</masterLabel>
+            <translation><!-- TBH07 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH08</masterLabel>
+            <translation><!-- TBH08 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH09</masterLabel>
+            <translation><!-- TBH09 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH10</masterLabel>
+            <translation><!-- TBH10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH11</masterLabel>
+            <translation><!-- TBH11 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH12</masterLabel>
+            <translation><!-- TBH12 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH13</masterLabel>
+            <translation><!-- TBH13 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH14</masterLabel>
+            <translation><!-- TBH14 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH15</masterLabel>
+            <translation><!-- TBH15 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH16</masterLabel>
+            <translation><!-- TBH16 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH17</masterLabel>
+            <translation><!-- TBH17 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH18</masterLabel>
+            <translation><!-- TBH18 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH19</masterLabel>
+            <translation><!-- TBH19 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBH20</masterLabel>
+            <translation><!-- TBH20 --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

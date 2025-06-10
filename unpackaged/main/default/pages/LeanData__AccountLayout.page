@@ -1,0 +1,324 @@
+<apex:page standardController="Account" showHeader="false" extensions="LeanData.OnDemandView,LeanData.CheckOnDemandAllowed" action="{!initializeIsAllowed}">
+    <c:accessCheck isAllowed="{!isAllowed}">
+    <apex:stylesheet value="{!URLFOR($Resource.LeanData__angela_app, 'styles.css')}"/> 
+    <c:style />
+
+    <style>
+        #invalidNotice {
+            height:186px;
+            display:none;
+            text-align:center;
+            color:#4D4D4D;
+            font-size: 16px;
+            font-weight: regular;
+            background-image: url("{!URLFOR($Resource.DashboardImages,'LD-logo_watermark_2x.png')}");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 185px;
+        }
+
+        #securityExceptionText {
+            text-align: left;
+        }
+
+        #invalidNoticeInnerContainer {
+            height: 186px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+    <div id="invalidNotice">
+        <div id="invalidNoticeInnerContainer">
+            <div id="invalidNoticeErrorText"></div>
+            <div id="securityExceptionText"></div>
+        </div>
+    </div>
+        
+    <div class="view" >
+        <div class="pageLoading">
+            <c:loading />
+        </div>
+        
+        <div class="settingMessage" style="display: none;">
+            <p style="font-size:16px; color:Red; padding:15px">All LeanData View sections are off.  Please have a Salesforce Admin apply View settings to User Profiles under</p>
+            <a style="font-size:16px; color:Red; padding-left:15px" href="/apex/dashboard#view/general" target="_blank">LeanData --> Settings --> View --> Section Settings</a>
+        </div>
+        
+        <div class="timeoutMessage" style="display:none;">
+            <p style="font-size:16px; color:Red; padding:15px">There was a problem loading your Lead-to-Account View, please refresh the page to try again.</p>
+        </div>
+        
+        <div class="pageBody">
+            <div class="duplicateAccounts section-wrapper" >
+                <div class="wrapper">
+                    <div class="left" >
+                        <span class="table_title">
+                            <img class="leandata_logo" src="{!URLFOR($Resource.DashboardImages,'LD-logo_2x.png')}"/>&nbsp;&nbsp;&nbsp;
+                            <h3>Potential Duplicate Accounts</h3>
+                         </span>
+                        <span class="duplicateAccountsCountContainer">
+                            <span>|</span> 
+                            <a href="#LINKTOA2BMUSTBEGENERATEDBACKENDANDSERVEDUP" target="_blank" class="customTarget action_link duplicateAccountsViewLink ld-green">
+                                See All 
+                                (Accounts:<span class="accountsCount"/>) »
+                            </a>
+                        </span>
+                    </div>
+                     <div class="right">                                                 
+                         <span><a href="#RELATEDLEADSSETTINGSLINKS" target="_blank" class="customTarget action_link duplicateAccountsViewSettingsLink ld-green">Account Settings</a>
+                         </span>                                                       
+                     </div>
+                </div>                
+                <div class="duplicateAccountsHeightDiv tableWrapper outer-panel" >
+                    <div class="inner-panel" >
+                        <div class="scroll-panel">
+                            <table class="list content_table_account floatingHeaderTable" border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
+                                <thead class="duplicateAccountsTableHead">
+                                </thead>
+                                <tbody class="duplicateAccountsTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            
+            <div class="matchedLeads section-wrapper" >
+                <div class="wrapper">
+                    <div class="left">
+                        <span class="table_title">
+                            <img class="leandata_logo" src="{!URLFOR($Resource.DashboardImages,'LD-logo_2x.png')}"/>&nbsp;&nbsp;&nbsp;
+                            <h3>Matched Leads</h3>
+                         </span>
+                        <span class="matchedLeadsCountContainer">
+                            <span>|</span> 
+                            <a href="#LINKTOA2BMUSTBEGENERATEDBACKENDANDSERVEDUP" target="_blank" class="customTarget action_link matchedLeadsViewLink ld-green">
+                                See All 
+                                (Leads:<span class="leadsCount"/>) »
+                            </a>
+                            
+                            <span>|</span> 
+                            <span  class="mass_convert_link">
+                              <a href="#LINKTOA2BMUSTBEGENERATEDBACKENDANDSERVEDUP" target="_blank" class="customTarget action_link massConvertLink ld-green">
+                                Mass Convert »
+                              </a>
+                            
+                              <span>|</span> 
+                            </span>
+                            <a href="#LINKTOA2BMUSTBEGENERATEDBACKENDANDSERVEDUP" target="_blank" class="customTarget action_link leadActivityLink ld-green">
+                                See Lead Activity »
+                            </a>
+                            
+                        </span>
+                    </div>
+                    <div class="right" style="line-height:20px;">
+                        <span><a href="#RELATEDLEADSSETTINGSLINKS" target="_blank" class="customTarget action_link leadsViewSettingsLink ld-green">Lead Settings</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="matchedLeadsHeightDiv tableWrapper outer-panel" >
+                    <div class="inner-panel" >
+                        <div class="scroll-panel">
+                            <table class="list content_table_lead floatingHeaderTable" border="0" cellpadding="0" cellspacing="0"  style="table-layout:fixed;">
+                                <thead class="matchedLeadsTableHead">
+                                </thead>
+                                <tbody class="matchedLeadsTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        </div>
+        
+    </div>
+    <c:setTargetValue targetValue="{!targetValue}"/>
+        <c:matchedViewAssets view_type="Account" with_dupes="false" with_l2a_matches="false"/>
+        <script>
+            Visualforce.remoting.timeout = 120000; // Set timeout at page level
+            j$ = jQuery.noConflict();
+            // set viewJSResource variables 
+            objId = '{! JSENCODE((objId)) }';
+            pageType = 'Account';
+            startTime = Date.now();
+            hasAccess = {!hasAccess};
+            j$('document').ready(function(){
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.OnDemandView.getNewViewObject}',
+                    '{! JSENCODE((objId)) }', 'Account', null,
+                    function(result, event) {
+                        if (!event.status) {
+                            let errorMessage = event.message;
+                            j$('.view').toggle();
+                            j$('#invalidNotice').toggle();
+                            if(!hasAccess) {
+                                errorMessage = 'You do not have access to the LeanData View.<br><br> \
+                                    Please ask your LeanData Admin or System Admin for the LeanData View Permission Set to view potential duplicates and account matches.';
+                            }
+                            else if(errorMessage.includes('does not have permission to Read fields:')) {
+                                let exceptionError = errorMessage.substring(errorMessage.indexOf('{')+1, errorMessage.length-1);
+                                let exceptionList = exceptionError.split('}, ');
+                                exceptionError = '';
+                                errorMessage = 'To use the LeanData View, you need Read permission for these fields:<br><ul>';
+                                
+                                exceptionList[0] = exceptionList[0] + '}';
+                                exceptionList.forEach((objMap) => {
+                                  let objType = objMap.substring(0, objMap.indexOf('='));
+                                  let fieldList = objMap.substring(objMap.indexOf('{')+1, objMap.indexOf('}')).split(', ');
+                                  fieldList.forEach((field) => {
+                                    exceptionError += `<li>${objType}: ${field}</li>`;
+                                  });
+                                });
+                                exceptionError += `</ul>`;
+                                j$('#securityExceptionText').html(exceptionError);
+                            }
+                            j$('#invalidNoticeErrorText').html(errorMessage);
+                            return;
+                        }
+                        buildView(result);
+                    }
+                )
+            });
+            
+            // check for any critical errors on load and set feature param
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.CheckOnDemandAllowed.setFeatureParamForCriticalErrors}', function(result, event) { }
+            );
+        </script>
+    </c:accessCheck>
+    
+    <script>
+        function buildView(viewObject) {
+            if(viewObject == null){
+                j$('.pageLoading').hide();
+                j$('.pageBody').hide();
+                j$('.timeoutMessage').show();
+                return;
+            }
+            if(viewObject['accountMatches'].length>0) {
+              ga_event2('Account View with dupes');
+            }
+
+            if(viewObject['leadMatches'].length>0) {
+              ga_event2('Account View with l2a matches');
+            }
+
+            initializePage(viewObject);
+                
+            // [ZH tbd] j$('.leandata_logo').prop('src', viewObject['logoURL']);
+
+            // var totalHeight = j$('.pageBody').height();
+            // if( '{!$User.UIThemeDisplayed}' == 'Theme4d' )
+            //     totalHeight = totalHeight-70;
+            var totalHeight = 350;
+            var heights = calculateHeights( totalHeight, "Account", {           
+              "accountMatches" :   viewObject["accountMatches"].length,
+              "isDuplicatesViewOn" : viewObject["isDuplicatesViewOn"],
+              "leadMatches" : viewObject["leadMatches"].length,
+              "isMatchedLeadsViewOn" : viewObject["isMatchedLeadsViewOn"]
+            });
+            
+            var dupesHeight = heights['accountDupeHeight'];
+            var matchedHeight = heights['accountMatchedHeight'];
+            
+            
+            j$('.duplicateAccounts').css('height',''+ dupesHeight + 'px' );
+            j$('.matchedLeads').css('height',''+ matchedHeight + 'px' );
+
+            var counter = 0;
+            if(dupesHeight == 0){
+               j$('.duplicateAccounts').hide();
+               counter++;
+            }
+
+            if(matchedHeight == 0){
+               j$('.matchedLeads').hide();
+               counter++;
+            }
+                           
+            if(counter ==2)
+               j$('.settingMessage').show();
+
+            if (viewObject["isMatchedLeadsViewOn"]) {
+                initializeSection('Lead', viewObject["leadCols"], viewObject["leadColsMap"], viewObject["leadMatches"], viewObject);
+                j$('.matchedLeadsTableHead').html(generateHeader());
+                j$('.matchedLeadsTableBody').html(generateSObjectRows());
+                j$('.leadsCount').html(viewObject["leadMatches"].length);
+                j$('.matchedLeadsViewLink').prop('href', jDecode(viewObject['matchedLeadsViewLink']));
+
+                if(viewObject['hasColumnSettingAccess'] || viewObject['enableAllowUserColumnCustomizations']) 
+                  j$('.leadsViewSettingsLink').prop('href', jDecode(viewObject['leadsViewSettingsLink']));
+                else
+                  j$('.leadsViewSettingsLink').hide();
+
+                if (viewObject["isAccountMassConvertAllowed"]) {
+                    j$('.massConvertLink').prop('href', jDecode(viewObject['massConvertLink']));
+                } else {
+                    j$('.mass_convert_link').hide();
+                }
+                j$('.leadActivityLink').prop('href', jDecode(viewObject['leadActivityLink']));
+                
+            } else {
+                j$('.matchedLeadsCountContainer').hide();
+                j$('.matchedLeadsViewLink').hide();
+                j$('.leadsViewSettingsLink').hide();
+            }
+            
+            if (viewObject["isDuplicatesViewOn"]) {
+                initializeSection('Account', viewObject["accountCols"], viewObject["accountColsMap"], viewObject["accountMatches"], viewObject);
+                var hasStatus = false;
+                j$('.duplicateAccountsTableHead').html(generateHeader(hasStatus));
+                j$('.duplicateAccountsTableBody').html(generateSObjectRows());
+                j$('.accountsCount').html(viewObject["accountMatches"].length);
+                j$('.duplicateAccountsViewLink').prop('href', jDecode(viewObject['duplicateAccountsViewLink']));
+                if(viewObject['hasColumnSettingAccess'] || viewObject['enableAllowUserColumnCustomizations'])
+                  j$('.duplicateAccountsViewSettingsLink').prop('href', jDecode(viewObject['duplicateAccountsViewSettingsLink']));
+                else
+                  j$('.duplicateAccountsViewSettingsLink').hide();
+            } else {
+                j$('.duplicateAccountsCountContainer').hide();
+                j$('.duplicateAccountsViewLink').hide();
+                j$('.duplicateAccountsViewSettingsLink').hide();
+            }
+            
+            
+            var selectedLists = j$('.inline_editable').get();
+            [].forEach.call(selectedLists, function(selectList){
+              var toJ = j$(selectList);
+              toJ.change(function(event){
+              var touchedSelectList = event.target;
+              var leadId = touchedSelectList.className.split(" ")[1];
+              var newStatus = touchedSelectList.options[touchedSelectList.selectedIndex].value;
+              changeLead(leadId, htmlDecode(newStatus));
+              })
+            })
+            function changeLead (leadId, newStatus) {
+              Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.OnDemandView.updateLeadStatus}',
+                leadId,
+                newStatus,
+                function (result, event) {}
+              )
+            }
+            
+            j$('.pageLoading').hide();
+            j$('.pageBody').show();    
+
+            setTarget();
+
+            var dataTableOptions = {"pagination" : false, "emptyTableText": "No records to display"};
+            if (viewObject["isDuplicatesViewOn"]) initializeDataTable(j$('.content_table_account'), 'account', dataTableOptions);
+            if (viewObject["isMatchedLeadsViewOn"]) initializeDataTable(j$('.content_table_lead'), 'lead', dataTableOptions);
+       
+            // Re-adjust table height after container is made
+            j$('.duplicateAccountsHeightDiv').css('height',''+ (dupesHeight - 35) + 'px' );
+            j$('.matchedLeadsHeightDiv').css('height',''+ (matchedHeight - 35) + 'px' );
+            // Override extra border added
+            j$('.pageBody th').css({'border-right': 'none'})
+        }
+    
+    </script>
+</apex:page>

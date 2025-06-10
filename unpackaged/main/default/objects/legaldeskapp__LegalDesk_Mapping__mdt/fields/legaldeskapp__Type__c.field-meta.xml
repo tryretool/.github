@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>legaldeskapp__Type__c</fullName>
+    <deprecated>false</deprecated>
+    <fieldManageability>SubscriberControlled</fieldManageability>
+    <label>Type</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sales</fullName>
+                <default>true</default>
+                <label>Sales</label>
+            </value>
+            <value>
+                <fullName>NDA</fullName>
+                <default>false</default>
+                <label>NDA</label>
+            </value>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>Question</fullName>
+                <default>false</default>
+                <label>Question</label>
+            </value>
+            <value>
+                <fullName>Privacy</fullName>
+                <default>false</default>
+                <label>Privacy</label>
+            </value>
+            <value>
+                <fullName>Bidirectional</fullName>
+                <default>false</default>
+                <label>Bidirectional</label>
+            </value>
+            <value>
+                <fullName>User</fullName>
+                <default>false</default>
+                <label>User</label>
+            </value>
+            <value>
+                <fullName>Document</fullName>
+                <default>false</default>
+                <label>Document</label>
+            </value>
+            <value>
+                <fullName>Custom Form</fullName>
+                <default>false</default>
+                <label>Custom Form</label>
+            </value>
+            <value>
+                <fullName>Custom Form Id</fullName>
+                <default>false</default>
+                <label>Custom Form Id</label>
+            </value>
+            <value>
+                <fullName>Endpoint</fullName>
+                <default>false</default>
+                <label>Endpoint</label>
+            </value>
+            <value>
+                <fullName>Token</fullName>
+                <default>false</default>
+                <label>Token</label>
+            </value>
+            <value>
+                <fullName>Vendor</fullName>
+                <default>false</default>
+                <label>Vendor</label>
+            </value>
+            <value>
+                <fullName>Field Id for SFDC Id</fullName>
+                <default>false</default>
+                <label>Field Id for SFDC Id</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,208 @@
+<apex:page standardStylesheets="false" controller="d_wh.HomePage" sidebar="false">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{!URLFOR($Resource.DWDesign, '/bootstrap-iso.css')}" />
+    <link rel="stylesheet" href="{!URLFOR($Resource.DWDesign, '/styles.css')}" />
+
+    <div class="custom-dw">
+        <apex:form >
+            <apex:actionStatus id="actionStatus">
+                <apex:facet name="start">
+                    <div style="width: 100%; height: 100%; position: fixed; z-index: 10000; background-color: rgba(255, 255, 255, 0.5); text-align: center;">
+                        <img src="{!URLFOR($Resource.DWDesign, '/images/slds_spinner.gif')}" style="width: 80px; margin-top: 400px;" />
+                    </div>
+                </apex:facet>
+            </apex:actionStatus>
+
+            <div class="home">
+                <div class="container text-center">
+                    <h1 style="margin-bottom: 8px;">{!$Label.Welcome_to_Declarative_Webhooks}</h1>
+                    Version: {!version} <br /><br />
+                </div>
+
+                <div class="container home-blocks-section">
+                    <apex:outputPanel layout="none" rendered="{!IsInTrial}">
+                        <div class=" d-md-flex justify-content-between">
+                            <div class="home-block" href="{!$Label.Subscribe_Links}" target="_blank" style="width: 100%;">
+                                <div class="row">
+                                    <div class="col-1">
+                                        <img src="{!URLFOR($Resource.DWDesign, '/slds-icons/utility/warning.svg')}" alt="subscribe icon" 
+                                                style="filter: brightness(0) saturate(100%) invert(43%) sepia(96%) saturate(1220%) hue-rotate(1deg) brightness(103%) contrast(104%);" />
+                                    </div>
+                                    <div class="col-11 d-flex align-items-center">
+                                        <h2>{!$Label.Subscribe_Link_Title}</h2>
+                                    </div>
+                                    <div class="col-12">
+                                        <apex:outputText value="{!TrialLabel}" escape="false" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                    <div class=" d-md-flex justify-content-between">
+                        <apex:commandLink action="{!NewCalloutTemplate}" styleClass="home-block" rerender="nothing" status="actionStatus">
+                            <div class="row">
+                                <div class="col-3 col-lg-2">
+                                    <img src="{!URLFOR($Resource.DWDesign, '/images/outbound_call.svg')}" alt="outbound icon" />
+                                </div>
+                                <div class="col-9 col-lg-10 d-flex align-items-center">
+                                    <h2>{!$Label.Create_Callout_Template}</h2>
+                                </div>
+                                <div class="col-12">
+                                    <p>{!$Label.Create_Callout_Template_Details}</p>
+                                </div>
+                            </div>
+                        </apex:commandLink>
+                        <apex:commandLink action="{!NewInboundCallTemplate}" styleClass="home-block" rerender="nothing" status="actionStatus">
+                            <div class="row">
+                                <div class="col-3 col-lg-2">
+                                    <img src="{!URLFOR($Resource.DWDesign, '/images/incoming_call.svg')}" alt="incoming call icon" />
+                                </div>
+                                <div class="col-9 col-lg-10 d-flex align-items-center">
+                                    <h2>{!$Label.Create_Inbound_Call_Template}</h2>
+                                </div>
+                                <div class="col-12">
+                                    <p>{!$Label.Create_Callout_Template_Details}</p>
+                                </div>
+                            </div>
+                        </apex:commandLink>
+                    </div>
+                    <div class="d-md-flex  justify-content-between">
+                        <apex:commandLink action="{!CalloutTemplateList}" styleClass="home-block" rerender="nothing" status="actionStatus">
+                            <div class="row">
+                                <div class="col-3 col-lg-2">
+                                    <img src="{!URLFOR($Resource.DWDesign, '/images/existing-outbound.svg')}" alt="existing outbound icon" />
+                                </div>
+                                <div class="col-9 col-lg-10 d-flex align-items-center">
+                                    <h2>{!$Label.View_Existing_Callout_Templates}</h2>
+                                </div>
+                                <div class="col-12">
+                                    <p>{!$Label.View_Existing_Callout_Templates_Details}</p>
+                                </div>
+                            </div>
+                        </apex:commandLink>
+                        <apex:commandLink action="{!InboundCallTemplateList}" styleClass="home-block" rerender="nothing" status="actionStatus">
+                            <div class="row">
+                                <div class="col-3 col-lg-2">
+                                    <img src="{!URLFOR($Resource.DWDesign, '/images/existing-inbound.svg')}" alt="existing inbound icon" />
+                                </div>
+                                <div class="col-9 col-lg-10 d-flex align-items-center">
+                                    <h2>{!$Label.View_Existing_Inbound_Call_Templates}</h2>
+                                </div>
+                                <div class="col-12">
+                                    <p>{!$label.View_Existing_Inbound_Call_Templates_Details}</p>
+                                </div>
+                            </div>
+                        </apex:commandLink>
+                    </div>
+                    <div class="d-md-flex justify-content-between">
+                        <apex:commandLink action="{!LogsList}" styleClass="home-block" rerender="nothing" status="actionStatus">
+                            <div class="row">
+                                <div class="col-3 col-lg-2">
+                                    <img src="{!URLFOR($Resource.DWDesign, '/images/desktop.svg')}" alt="desktop icon" />
+                                </div>
+                                <div class="col-9 col-lg-10 d-flex align-items-center">
+                                    <h2>{!$Label.Monitor_Logs}</h2>
+                                </div>
+                                <div class="col-12">
+                                    <p>{!$Label.Monitor_Logs_Details}</p>
+                                </div>
+                            </div>
+                        </apex:commandLink>
+                        <apex:commandLink action="{!AdminPage}" styleClass="home-block" rerender="nothing" status="actionStatus">
+                            <div class="row">
+                                <div class="col-3 col-lg-2">
+                                    <img src="{!URLFOR($Resource.DWDesign, '/images/cog.svg')}" alt="cog icon" />
+                                </div>
+                                <div class="col-9 col-lg-10 d-flex align-items-center">
+                                    <h2>{!$Label.Administer_Declarative_Webhooks}</h2>
+                                </div>
+                                <div class="col-12">
+                                    <p>{!$Label.Administer_Declarative_Webhooks_Details}</p>
+                                </div>
+                            </div>
+                        </apex:commandLink>
+                    </div>
+                    <div class="d-md-flex justify-content-between">
+                        <a href="{!$Label.Documentation_Link}" class="home-block" target="_blank">
+                            <div class="row">
+                                <div class="col-3 col-lg-2">
+                                    <img src="{!URLFOR($Resource.DWDesign, '/images/copy.svg')}" alt="copy icon" />
+                                </div>
+                                <div class="col-9 col-lg-10 d-flex align-items-center">
+                                    <h2>{!$Label.Documentation}</h2>
+                                </div>
+                                <div class="col-12">
+                                    <p>{!$Label.Documentation_Details}</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" data-toggle="modal" data-target="#contact-us" class="home-block">
+                            <div class="row">
+                                <div class="col-3 col-lg-2">
+                                    <img src="{!URLFOR($Resource.DWDesign, '/images/chat.svg')}" alt="chat icon" />
+                                </div>
+                                <div class="col-9 col-lg-10 d-flex align-items-center">
+                                    <h2>{!$Label.Contact_Support}</h2>
+                                </div>
+                                <div class="col-12">
+                                    <p>{!$Label.Contact_Support_Details}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal modal-right fade" id="contact-us" tabindex="-1" role="dialog" aria-labelledby="contact-us" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-right modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="contact-us-title">Contact Support</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12 form-container">
+                                            <apex:outputPanel id="formContact">
+                                                <div class="row">
+                                                    
+                                                    <label for="subject">Subject <span style="color:red;">*</span></label><br />
+                                                    <apex:inputText value="{!subject}" styleClass="dw_input" />
+                                                    
+                                                    <label>Description</label>
+                                                    <apex:inputTextarea value="{!body}" styleClass="dw_input" style="height: 250px;" />
+
+                                                    <apex:pageMessages />
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btnx btnx-secondary" data-dismiss="modal">{!$Label.Cancel}</button>
+                                                        <apex:commandButton action="{!SendEmail}" styleClass="btnx btnx-primary" value="{!$Label.d_wh__Send}" reRender="formContact" status="actionStatus" />
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </apex:form>
+    </div>
+       
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{!URLFOR($Resource.DWDesign, '/jquery-3.3.1.slim.min.js')}"></script>
+    <script src="{!URLFOR($Resource.DWDesign, '/popper.min.js')}"></script>
+    <script src="{!URLFOR($Resource.DWDesign, '/bootstrap.min.js')}"></script>
+
+</apex:page>

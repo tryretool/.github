@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tag__c</fullName>
+    <label>Tag</label>
+    <required>false</required>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Workflows</fullName>
+                <default>false</default>
+                <label>Workflows</label>
+            </value>
+            <value>
+                <fullName>Public Applications (not-authenticated)</fullName>
+                <default>false</default>
+                <label>Public Applications (not-authenticated)</label>
+            </value>
+            <value>
+                <fullName>Retool DB</fullName>
+                <default>false</default>
+                <label>Retool DB</label>
+            </value>
+            <value>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+                <label>Mobile</label>
+            </value>
+            <value>
+                <fullName>Differentiated Pricing (builder / user)</fullName>
+                <default>false</default>
+                <label>Differentiated Pricing (builder / user)</label>
+            </value>
+            <value>
+                <fullName>External Applications (Retool Portal)</fullName>
+                <default>false</default>
+                <label>External Applications (Retool Portal)</label>
+            </value>
+            <value>
+                <fullName>External Applications (Retool Embed)</fullName>
+                <default>false</default>
+                <label>External Applications (Retool Embed)</label>
+            </value>
+            <value>
+                <fullName>External Applications (authenticated)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>External Applications (authenticated)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

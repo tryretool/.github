@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Country__c</fullName>
+    <description>External Country picklist populated by Chili Piper bookings. Used as a fallback in `Contact Implied Country` if the Account Shipping Country value is NULL.
+
+External Systems Utilization: Chili Piper</description>
+    <inlineHelpText>External Country picklist populated by Chili Piper bookings. Used as a fallback in `Contact Implied Country` if the Account Shipping Country value is NULL.</inlineHelpText>
+    <label>Country</label>
+    <required>false</required>
+    <securityClassification>Caution</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Countries</valueSetName>
+    </valueSet>
+</CustomField>

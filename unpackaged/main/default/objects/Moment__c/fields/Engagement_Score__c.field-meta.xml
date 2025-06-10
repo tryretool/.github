@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Engagement_Score__c</fullName>
+    <description>Moment score assigned from CMDT criteria.
+
+External System Utilization: Polytomic</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Score of the engagement within a defined time-frame.</inlineHelpText>
+    <label>Engagement Score</label>
+    <precision>4</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

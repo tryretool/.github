@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_In_Sales_Pipeline__c</fullName>
+    <formula>Account.Is_Test_Account__c = FALSE &amp;&amp;
+Business_Line__c = &quot;Committed&quot; &amp;&amp;
+NOT(ISPICKVAL(Subtype__c, &quot;Expansion - Uncommitted&quot;)) &amp;&amp;
+NOT(ISPICKVAL(Subtype__c, &quot;Contraction - Uncommitted&quot;)) &amp;&amp;
+(
+ IsWon = TRUE || 
+ ISPICKVAL(StageName,&#39;Churn&#39;) ||
+ (IsClosed = FALSE &amp;&amp; RecordType.Name = &quot;Renewal&quot;) ||
+ (IsClosed = FALSE &amp;&amp; Sales_Qualified_Opportunity__c = TRUE) ||
+ (IsClosed = FALSE &amp;&amp; ISPICKVAL(Booking_Type__c,&quot;Putback&quot;)) ||
+ (IsClosed = FALSE &amp;&amp; ISPICKVAL(Booking_Type__c,&quot;Debook&quot;))
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True if this opportunity is stage 2 or higher of &quot;Enterprise&quot; record type or a &quot;Renewal&quot; record type. Excludes uncommitted expansions.</inlineHelpText>
+    <label>Is In Sales Pipeline?</label>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amount</fullName>
+    <businessStatus>Active</businessStatus>
+    <description>The Total Contract Value of the opportunity.</description>
+    <inlineHelpText>The Total Contract Value of the opportunity.</inlineHelpText>
+    <securityClassification>Safe</securityClassification>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>true</trackTrending>
+</CustomField>

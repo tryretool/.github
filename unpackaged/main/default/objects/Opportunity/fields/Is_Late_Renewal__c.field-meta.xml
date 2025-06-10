@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Late_Renewal__c</fullName>
+    <formula>IF(Time_to_Renewal_days__c &lt; 0, TRUE, FALSE)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>True if the renewal is not closed before the Renewal Target Closed Date. Applies only to renewals.</inlineHelpText>
+    <label>Is Late Renewal?</label>
+    <securityClassification>Safe</securityClassification>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

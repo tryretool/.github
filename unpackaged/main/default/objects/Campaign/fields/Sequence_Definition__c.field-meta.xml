@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sequence_Definition__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Outreach sequence assigned to sales campaigns.
+
+In System Use:
+Layout	Sequence Definition Layout
+ReportType	Campaigns_with_Campaign_Members_and_Other
+
+External Systems Utilization: Outreach</description>
+    <inlineHelpText>Outreach sequence assigned to sales campaigns.</inlineHelpText>
+    <label>zOLDSequence Definition</label>
+    <referenceTo>Sequence_Definition__c</referenceTo>
+    <relationshipLabel>Campaigns</relationshipLabel>
+    <relationshipName>Campaigns</relationshipName>
+    <required>false</required>
+    <securityClassification>Ignore</securityClassification>
+    <type>Lookup</type>
+</CustomField>

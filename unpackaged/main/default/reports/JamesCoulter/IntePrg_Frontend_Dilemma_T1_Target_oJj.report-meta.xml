@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account$Account_ID_case_safe__c</field>
+    </columns>
+    <columns>
+        <field>Account$Account_Owner__c</field>
+    </columns>
+    <columns>
+        <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account$Website_Clean__c</field>
+    </columns>
+    <columns>
+        <field>Account$Account_Status_Committed__c</field>
+    </columns>
+    <columns>
+        <field>Account$Shipping_Region__c</field>
+    </columns>
+    <columns>
+        <field>Account$Segment__c</field>
+    </columns>
+    <columns>
+        <field>Account$ICP_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account$ZoomInfo_Industry__c</field>
+    </columns>
+    <description>[IntePrg] Frontend Dilemma, T1, Target</description>
+    <filter>
+        <criteriaItems>
+            <column>Account$Tags__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>FY25 TAP B22</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Account_Status_Prospect__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>[IntePrg] Frontend Dilemma, T1, Target</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Accounts_Expanded_Lookups__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Account$Cognism_Last_Updated_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
